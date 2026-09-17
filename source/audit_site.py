@@ -28,7 +28,12 @@ import xml.etree.ElementTree as ET
 from datetime import date, timedelta
 from pathlib import Path
 
-PUBLIC = Path(__file__).parent / "public"
+# Meme reglage que build_site.py, et pour la meme raison : l'action planifiee
+# construit depuis source/ vers la racine du depot. Sans cette variable,
+# l'audit cherchait source/public/, qui n'existe pas, et echouait chaque nuit
+# — ce qui bloquait la publication des articles au lieu de la proteger.
+PUBLIC = Path(os.environ.get("PREPACARDS_SORTIE")
+              or (Path(__file__).parent / "public")).resolve()
 
 TITRE_MAX = 65
 # Google affiche environ 155 caracteres. En dessous de 140 on laisse

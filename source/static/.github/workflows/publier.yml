@@ -59,6 +59,10 @@ jobs:
         # description hors bornes — l'action s'arrête ici et rien n'est
         # poussé. Mieux vaut un article qui paraît un jour plus tard qu'un
         # site cassé pendant vingt-quatre heures.
+        env:
+          # Comme à la construction : le site vérifié est à la racine du
+          # dépôt, pas dans source/public.
+          PREPACARDS_SORTIE: ${{ github.workspace }}
         run: python source/audit_site.py
 
       - name: Publier s'il y a du nouveau

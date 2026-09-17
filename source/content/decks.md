@@ -1,6 +1,6 @@
 ---
 title: Paquets de flashcards gratuits pour la prépa ECG | PrépaCards
-description: Des paquets de vocabulaire d'anglais prêts à réviser, chapitre par chapitre, gratuits et sans compte. Civilisation britannique, américaine et enjeux contemporains.
+description: Flashcards gratuites pour la prépa ECG : le vocabulaire d'anglais par thème et les formules de maths approfondies de première année, chapitre par chapitre.
 slug: decks
 faq: true
 ---
@@ -9,9 +9,10 @@ faq: true
   <div class="conteneur centre">
     <span class="eyebrow">Paquets gratuits</span>
     <h1>Les paquets qui m'ont fait entrer à HEC</h1>
-    <p class="chapeau">Ce sont mes propres paquets de vocabulaire d'anglais,
-      construits chapitre par chapitre pendant mes deux ans de prépa ECG, et
-      révisés jusqu'aux oraux. Je les mets à disposition tels quels.</p>
+    <p class="chapeau">Ce sont mes propres paquets, construits chapitre par
+      chapitre pendant mes deux ans de prépa ECG et révisés jusqu'aux oraux :
+      le vocabulaire d'anglais, et toutes les formules de maths approfondies
+      de première année. Je les mets à disposition tels quels.</p>
     <p class="sous-bouton">Gratuits · Sans compte · Un fichier, un double-clic</p>
   </div>
 </section>
@@ -26,8 +27,9 @@ format de PrépaCards. Ouvrez l'application, faites **Importer un paquet**, et
 choisissez le fichier — ou double-cliquez simplement dessus si vous avez
 associé l'extension à l'installation.
 
-Les cartes arrivent dans l'arborescence `Anglais › Civilisation › Chapitre`, et
-sont dues dès le premier jour. Vous n'avez rien à ranger.
+Les cartes arrivent dans l'arborescence `Anglais › Civilisation › Chapitre` ou
+`Maths approfondies › Chapitre`, et sont dues dès le premier jour. Vous n'avez
+rien à ranger.
 
 <div class="encart">
   <p><strong>Il vous faut l'application pour les ouvrir.</strong> Elle est
@@ -35,7 +37,7 @@ sont dues dès le premier jour. Vous n'avez rien à ranger.
   <a href="/telecharger/">Télécharger PrépaCards</a></p>
 </div>
 
-## Dans quel sens ils sont faits
+## Dans quel sens sont faites les cartes d'anglais
 
 Toutes les cartes vont du **français vers l'anglais**. C'est le sens de la
 production — celui que demandent l'essai, la synthèse et la colle. Une carte
@@ -45,6 +47,21 @@ que de produire, et ne sert donc à rien le jour de l'épreuve.
 Chaque paquet va du vocabulaire simple au vocabulaire pointu. Les premières
 cartes posent le lexique de base du thème, les dernières donnent les tournures
 qui font la différence dans une copie.
+
+## Comment sont faites les cartes de maths
+
+Une carte pose une question — *« Quelle est la formule de Pascal ? »* — et le
+dos affiche la formule composée, pas du texte : PrépaCards rend le LaTeX en
+image. Vous retrouvez la ligne telle que vous devez l'écrire sur la copie.
+
+Le sens est celui qui compte en colle et à l'écrit : **du nom de la formule
+vers la formule**. Savoir reconnaître une expression quand on la voit ne dit
+rien de votre capacité à la retrouver devant une feuille blanche.
+
+Les neuf paquets suivent le programme de première année dans l'ordre, du
+raisonnement par récurrence aux probabilités sur un ensemble quelconque. Les
+énoncés y sont réduits à leur écriture symbolique : ce sont des cartes de
+révision, pas un cours — elles supposent que vous avez déjà compris la notion.
 
 </div>
 </section>

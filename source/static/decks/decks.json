@@ -6,6 +6,7 @@
   "groupe": "Civilisation américaine",
   "annee": "2",
   "description": "Deuxième amendement, fusillades de masse et lobby : le lexique d'un débat américain sans équivalent.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3836
  },
@@ -16,6 +17,7 @@
   "groupe": "Civilisation britannique",
   "annee": "1",
   "description": "Du référendum de 2016 aux frictions commerciales actuelles : le lexique complet pour traiter le sujet à l'écrit comme en colle.",
+  "type": "vocabulaire",
   "cartes": 153,
   "octets": 3923
  },
@@ -26,6 +28,7 @@
   "groupe": "Civilisation britannique",
   "annee": "1",
   "description": "De l'Empire à l'association volontaire : héritage colonial, influence résiduelle et contestations actuelles.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3622
  },
@@ -36,6 +39,7 @@
   "groupe": "Civilisation britannique",
   "annee": "2",
   "description": "Écosse, Irlande du Nord, Pays de Galles : autonomie, référendums et tensions sur l'unité du Royaume-Uni.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3795
  },
@@ -46,6 +50,7 @@
   "groupe": "Civilisation britannique",
   "annee": "1",
   "description": "Public schools, universités et frais de scolarité : le lexique de la reproduction sociale par l'école.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3661
  },
@@ -56,6 +61,7 @@
   "groupe": "Enjeux contemporains",
   "annee": "1",
   "description": "Neutralité carbone, transition énergétique et justice climatique : le lexique indispensable du sujet le plus probable.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3578
  },
@@ -66,6 +72,7 @@
   "groupe": "Enjeux contemporains",
   "annee": "2",
   "description": "Égalité salariale, #MeToo et droit à l'avortement : le lexique des droits des femmes dans le monde anglophone.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3666
  },
@@ -76,6 +83,7 @@
   "groupe": "Enjeux contemporains",
   "annee": "2",
   "description": "Mariage pour tous, transidentité et reculs législatifs : le lexique précis d'un sujet à manier avec rigueur.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3522
  },
@@ -86,6 +94,7 @@
   "groupe": "Enjeux contemporains",
   "annee": "2",
   "description": "Alliances, rivalité sino-américaine, Ukraine et Moyen-Orient : le lexique des relations internationales.",
+  "type": "vocabulaire",
   "cartes": 151,
   "octets": 3395
  },
@@ -96,6 +105,7 @@
   "groupe": "Enjeux contemporains",
   "annee": "2",
   "description": "Algorithmes, régulation et vérité factuelle : le lexique du numérique, sujet devenu incontournable.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3521
  },
@@ -106,6 +116,7 @@
   "groupe": "Civilisation britannique",
   "annee": "2",
   "description": "Du multiculturalisme aux traversées de la Manche : le lexique du débat migratoire et identitaire britannique.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3672
  },
@@ -116,6 +127,7 @@
   "groupe": "Civilisation américaine",
   "annee": "2",
   "description": "Mur, DACA et réforme bloquée : le vocabulaire du débat migratoire américain.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3703
  },
@@ -126,6 +138,7 @@
   "groupe": "Civilisation britannique",
   "annee": "2",
   "description": "Welfare state, crise du coût de la vie et banques alimentaires : le vocabulaire des fractures sociales britanniques.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3566
  },
@@ -136,6 +149,7 @@
   "groupe": "Civilisation américaine",
   "annee": "1",
   "description": "Congrès, Cour suprême et séparation des pouvoirs : le lexique institutionnel des États-Unis.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3502
  },
@@ -146,6 +160,7 @@
   "groupe": "Civilisation britannique",
   "annee": "2",
   "description": "BBC, tabloïds et régulation : indépendance éditoriale, redevance et déontologie de la presse.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3630
  },
@@ -156,6 +171,7 @@
   "groupe": "Enjeux contemporains",
   "annee": "2",
   "description": "Statues, restitutions et excuses officielles : le lexique du débat mémoriel dans le monde anglophone.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3366
  },
@@ -166,6 +182,7 @@
   "groupe": "Civilisation britannique",
   "annee": "1",
   "description": "Couronne, succession, coût civil et débat républicain, depuis la mort d'Elizabeth II.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3762
  },
@@ -176,6 +193,7 @@
   "groupe": "Enjeux contemporains",
   "annee": "1",
   "description": "Libre-échange, chaînes de valeur et démondialisation : le lexique économique attendu à l'écrit.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3573
  },
@@ -186,6 +204,7 @@
   "groupe": "Civilisation britannique",
   "annee": "1",
   "description": "Gratuité des soins, listes d'attente, sous-financement et grèves : le vocabulaire du débat sanitaire britannique.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3776
  },
@@ -196,6 +215,7 @@
   "groupe": "Civilisation américaine",
   "annee": "1",
   "description": "Primaires, collège électoral et fracture partisane : le lexique de la vie politique américaine.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3421
  },
@@ -206,6 +226,7 @@
   "groupe": "Civilisation américaine",
   "annee": "2",
   "description": "De la ségrégation à Black Lives Matter : discrimination positive, violences policières et mémoire.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3636
  },
@@ -216,6 +237,7 @@
   "groupe": "Civilisation américaine",
   "annee": "1",
   "description": "Obésité, assurance privée et crise des opioïdes : le lexique du système de santé américain.",
+  "type": "vocabulaire",
   "cartes": 150,
   "octets": 3707
  },
@@ -226,7 +248,107 @@
   "groupe": "Enjeux contemporains",
   "annee": "2",
   "description": "Ubérisation, télétravail et fin du salariat : le lexique des transformations du monde du travail.",
+  "type": "vocabulaire",
   "cartes": 151,
   "octets": 3467
+ },
+ {
+  "fichier": "maths-appro-01-ensembles.pcards",
+  "titre": "1. Raisonnement et vocabulaire ensembliste",
+  "matiere": "Maths approfondies",
+  "groupe": "Programme de première année",
+  "annee": "1",
+  "description": "Quantificateurs, récurrences, sommes usuelles, coefficients binomiaux et applications.",
+  "type": "formules",
+  "cartes": 42,
+  "octets": 2263
+ },
+ {
+  "fichier": "maths-appro-02-polynomes.pcards",
+  "titre": "2. Polynômes",
+  "matiere": "Maths approfondies",
+  "groupe": "Programme de première année",
+  "annee": "1",
+  "description": "Degré, division euclidienne, racines et multiplicité, Vieta, Taylor et second degré.",
+  "type": "formules",
+  "cartes": 32,
+  "octets": 2025
+ },
+ {
+  "fichier": "maths-appro-03-matrices.pcards",
+  "titre": "3. Calcul matriciel et systèmes linéaires",
+  "matiere": "Maths approfondies",
+  "groupe": "Programme de première année",
+  "annee": "1",
+  "description": "Produit, transposée, inverse, trace, puissances, pivot de Gauss et sous-espaces vectoriels.",
+  "type": "formules",
+  "cartes": 35,
+  "octets": 2124
+ },
+ {
+  "fichier": "maths-appro-04-suites.pcards",
+  "titre": "4. Suites de nombres réels",
+  "matiere": "Maths approfondies",
+  "groupe": "Programme de première année",
+  "annee": "1",
+  "description": "Limites de référence, suites usuelles, récurrences linéaires et théorèmes de convergence.",
+  "type": "formules",
+  "cartes": 37,
+  "octets": 2211
+ },
+ {
+  "fichier": "maths-appro-05-fonctions.pcards",
+  "titre": "5. Fonctions d'une variable réelle",
+  "matiere": "Maths approfondies",
+  "groupe": "Programme de première année",
+  "annee": "1",
+  "description": "Limites usuelles, dérivées, théorèmes de Rolle et des accroissements finis, intégration sur un segment.",
+  "type": "formules",
+  "cartes": 47,
+  "octets": 2330
+ },
+ {
+  "fichier": "maths-appro-06-probabilites-finies.pcards",
+  "titre": "6. Probabilités sur un ensemble fini",
+  "matiere": "Maths approfondies",
+  "groupe": "Programme de première année",
+  "annee": "1",
+  "description": "Probabilités conditionnelles, Bayes, indépendance, espérance, variance et lois finies usuelles.",
+  "type": "formules",
+  "cartes": 37,
+  "octets": 1933
+ },
+ {
+  "fichier": "maths-appro-07-algebre-lineaire.pcards",
+  "titre": "7. Algèbre linéaire approfondie",
+  "matiere": "Maths approfondies",
+  "groupe": "Programme de première année",
+  "annee": "1",
+  "description": "Familles libres, bases et dimension, Grassmann, théorème du rang, noyau et image, projecteurs.",
+  "type": "formules",
+  "cartes": 37,
+  "octets": 2021
+ },
+ {
+  "fichier": "maths-appro-08-analyse-approfondie.pcards",
+  "titre": "8. Compléments d'analyse",
+  "matiere": "Maths approfondies",
+  "groupe": "Programme de première année",
+  "annee": "1",
+  "description": "Équivalents, séries numériques, intégrales généralisées, formules de Taylor, DL usuels et convexité.",
+  "type": "formules",
+  "cartes": 43,
+  "octets": 2485
+ },
+ {
+  "fichier": "maths-appro-09-probabilites-discretes.pcards",
+  "titre": "9. Probabilités sur un ensemble quelconque",
+  "matiere": "Maths approfondies",
+  "groupe": "Programme de première année",
+  "annee": "1",
+  "description": "Lois géométrique et de Poisson, couples de variables, covariance, Markov et Bienaymé-Tchebychev.",
+  "type": "formules",
+  "cartes": 34,
+  "octets": 2007
  }
 ]
