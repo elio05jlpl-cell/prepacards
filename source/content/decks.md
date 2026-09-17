@@ -1,6 +1,6 @@
 ---
 title: Paquets de flashcards gratuits pour la prépa ECG | PrépaCards
-description: Flashcards gratuites pour la prépa ECG : le vocabulaire d'anglais par thème et les formules de maths approfondies de première année, chapitre par chapitre.
+description: Flashcards gratuites pour la prépa ECG : vocabulaire d'anglais, d'allemand, d'espagnol et d'italien par chapitre, et les formules de maths approfondies.
 slug: decks
 faq: true
 ---
@@ -11,8 +11,9 @@ faq: true
     <h1>Les paquets qui m'ont fait entrer à HEC</h1>
     <p class="chapeau">Ce sont mes propres paquets, construits chapitre par
       chapitre pendant mes deux ans de prépa ECG et révisés jusqu'aux oraux :
-      le vocabulaire d'anglais, et toutes les formules de maths approfondies
-      de première année. Je les mets à disposition tels quels.</p>
+      le vocabulaire d'anglais, d'allemand, d'espagnol et d'italien, et toutes
+      les formules de maths approfondies de première année. Je les mets à
+      disposition tels quels.</p>
     <p class="sous-bouton">Gratuits · Sans compte · Un fichier, un double-clic</p>
   </div>
 </section>
@@ -27,7 +28,7 @@ format de PrépaCards. Ouvrez l'application, faites **Importer un paquet**, et
 choisissez le fichier — ou double-cliquez simplement dessus si vous avez
 associé l'extension à l'installation.
 
-Les cartes arrivent dans l'arborescence `Anglais › Civilisation › Chapitre` ou
+Les cartes arrivent dans l'arborescence `Langue › Catégorie › Chapitre` ou
 `Maths approfondies › Chapitre`, et sont dues dès le premier jour. Vous n'avez
 rien à ranger.
 
@@ -37,16 +38,22 @@ rien à ranger.
   <a href="/telecharger/">Télécharger PrépaCards</a></p>
 </div>
 
-## Dans quel sens sont faites les cartes d'anglais
+## Dans quel sens sont faites les cartes de langue
 
-Toutes les cartes vont du **français vers l'anglais**. C'est le sens de la
-production — celui que demandent l'essai, la synthèse et la colle. Une carte
-dans l'autre sens n'entraîne qu'à *reconnaître*, ce qui est bien plus facile
-que de produire, et ne sert donc à rien le jour de l'épreuve.
+Toutes les cartes vont du **français vers la langue étrangère**. C'est le sens
+de la production — celui que demandent l'essai, la synthèse et la colle. Une
+carte dans l'autre sens n'entraîne qu'à *reconnaître*, ce qui est bien plus
+facile que de produire, et ne sert donc à rien le jour de l'épreuve.
 
 Chaque paquet va du vocabulaire simple au vocabulaire pointu. Les premières
 cartes posent le lexique de base du thème, les dernières donnent les tournures
 qui font la différence dans une copie.
+
+Les paquets d'allemand, d'espagnol et d'italien portent en plus **une phrase
+d'exemple**, affichée sous la réponse une fois la carte retournée. Un mot seul
+ne dit ni la préposition qui le suit, ni le registre, ni la place du verbe :
+la phrase le montre en situation. Elle n'entre pas dans la vérification orale,
+qui ne porte que sur le mot lui-même.
 
 ## Comment sont faites les cartes de maths
 
