@@ -59,6 +59,46 @@ faq: true
   </div>
 </section>
 
+<section class="section actualites" aria-label="À lire sur PrépaCards">
+  <div class="conteneur grille-actus">
+
+    <a class="actu-vedette" href="/fonctionnalites/">
+      <img src="/img/demo/3-recto.webp"
+           alt="Écran d'étude de PrépaCards : une carte de vocabulaire, face question">
+      <h2>Vérifier sa prononciation, photographier une formule : ce que
+        PrépaCards fait de plus</h2>
+    </a>
+
+    <div class="actu-liste">
+
+      <a class="actu" href="/alternative-anki/">
+        <img src="/img/demo/1-accueil.webp"
+             alt="Liste de paquets dans PrépaCards, avec les compteurs de cartes">
+        <span>PrépaCards ou Anki : le comparatif, sans détour</span>
+      </a>
+
+      <a class="actu" href="/alternative-quizlet/">
+        <img src="/img/etude.png"
+             alt="Carte de vocabulaire retournée, avec sa traduction">
+        <span>PrépaCards ou Quizlet : lequel tient la distance en prépa ?</span>
+      </a>
+
+      <a class="actu" href="/blog/repetition-espacee-comment-ca-marche/">
+        <img src="/img/demo/5-statistiques.webp"
+             alt="Statistiques de révision de PrépaCards, mois par mois">
+        <span>La répétition espacée expliquée simplement</span>
+      </a>
+
+      <a class="actu" href="/blog/reviser-a-voix-haute/">
+        <img src="/img/retour-camera.png"
+             alt="Retour de la webcam pendant la vérification de la prononciation">
+        <span>Réviser à voix haute : pourquoi ça change tout</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
 <section class="bandeau-ecoles" aria-label="Concours préparés avec PrépaCards">
   <p class="bandeau-titre">Conçu pour préparer les concours d'entrée à</p>
   <div class="defile">

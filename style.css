@@ -330,6 +330,62 @@ strong { color: var(--encre); font-weight: 700; }
    Les noms sont en typographie, pas en logos : ce sont des marques deposees,
    et les afficher laisserait croire a un partenariat qui n'existe pas. */
 
+/* --- Grille « a lire » de l'accueil -------------------------------- */
+/*
+   Un grand article a gauche, quatre entrees empilees a droite. Les
+   vignettes portent un rapport de forme fixe : sans lui, la page saute au
+   chargement des images, ce qui compte reellement dans le classement.
+*/
+
+.actualites { padding-top: 56px; padding-bottom: 8px; }
+
+.grille-actus {
+  display: grid; grid-template-columns: 1.55fr 1fr; gap: 34px;
+  align-items: start;
+}
+
+.actu-vedette {
+  display: block; text-decoration: none; color: inherit;
+  background: #fff; border: 1px solid var(--bord);
+  border-radius: var(--rayon-l); overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.actu-vedette img {
+  display: block; width: 100%; aspect-ratio: 16 / 10;
+  object-fit: cover; object-position: top center;
+}
+.actu-vedette h2 {
+  margin: 0; padding: 22px 26px 26px;
+  font-size: 1.5rem; line-height: 1.25; letter-spacing: -0.02em;
+}
+.actu-vedette:hover {
+  transform: translateY(-3px); box-shadow: var(--ombre-panneau);
+  text-decoration: none;
+}
+
+.actu-liste { display: flex; flex-direction: column; }
+
+.actu {
+  display: grid; grid-template-columns: 148px 1fr; gap: 18px;
+  align-items: center; padding: 18px 0;
+  text-decoration: none; color: inherit;
+  border-bottom: 1px solid var(--bord);
+}
+.actu:first-child { padding-top: 0; }
+.actu:last-child { border-bottom: none; }
+.actu img {
+  display: block; width: 100%; aspect-ratio: 16 / 10;
+  object-fit: cover; object-position: top center;
+  border-radius: 10px; border: 1px solid var(--bord);
+}
+.actu span {
+  font-family: Poppins, 'Libre Franklin', sans-serif;
+  font-size: 1.02rem; font-weight: 600; line-height: 1.3;
+  letter-spacing: -0.01em; color: var(--encre);
+}
+.actu:hover { text-decoration: none; }
+.actu:hover span { color: var(--bleu-fonce); }
+
 .bandeau-ecoles { padding: 64px 0 40px; }
 
 .bandeau-titre {
@@ -624,6 +680,11 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
   .accroche { padding: 46px 0 40px; }
   .accroche .conteneur { grid-template-columns: 1fr; gap: 34px; }
   .grille-3, .grille-2, .grille-tarifs { grid-template-columns: 1fr; }
+  /* La grille « a lire » s'empile : deux colonnes sur un telephone
+     donneraient des vignettes de soixante pixels. */
+  .grille-actus { grid-template-columns: 1fr; gap: 24px; }
+  .actu-vedette h2 { font-size: 1.25rem; padding: 18px 20px 22px; }
+  .actu { grid-template-columns: 110px 1fr; gap: 14px; }
   /* Deux colonnes plutot qu'une : empilees, les quatre listes donnaient un
      pied de page plus long que certaines pages. */
   .pied-haut { grid-template-columns: 1fr 1fr; gap: 28px; }
