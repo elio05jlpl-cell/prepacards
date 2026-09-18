@@ -25,15 +25,17 @@ Contact : contact@prepacards.fr.
 
 Les présentes conditions régissent la vente de l'abonnement **PrépaCards
 Premium**, qui donne accès à des fonctions supplémentaires du logiciel
-PrépaCards : reconnaissance de formules mathématiques à partir d'une image,
-traduction automatique des cartes et lecture labiale par webcam.
+PrépaCards : écoute de la prononciation, vérification de la prononciation à la
+voix, lecture labiale par webcam, reconnaissance de formules mathématiques à
+partir d'une image, transformation d'une feuille photographiée en cartes et
+traduction automatique des cartes.
 
 La version gratuite du logiciel n'entre pas dans le champ des présentes
 conditions.
 
 ## 3. Prix
 
-Le prix de l'abonnement Premium est de **29 € par an**, toutes taxes comprises.
+Le prix de l'abonnement Premium est de **9,99 € par mois** ou de **95,90 € par an**, toutes taxes comprises. La formule annuelle revient à 7,99 € par mois.
 Les prix sont indiqués en euros. Le Vendeur se réserve le droit de les
 modifier ; le prix applicable est celui affiché au moment de la commande, et
 tout abonnement en cours reste au tarif souscrit jusqu'à son terme.

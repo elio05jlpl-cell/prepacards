@@ -1,6 +1,6 @@
 ---
 title: Tarifs : gratuit, mensuel ou annuel | PrépaCards
-description: PrépaCards est gratuit pour la répétition espacée et vos cartes en nombre illimité. L'offre complète ajoute la voix, la photo de formule et les paquets exclusifs.
+description: PrépaCards est gratuit pour la répétition espacée et vos cartes en nombre illimité. L'offre complète ajoute l'audio, la voix, la webcam et la photo.
 slug: tarifs
 faq: true
 ---
@@ -28,7 +28,7 @@ faq: true
         <li>Jours de repos</li>
         <li>Statistiques détaillées</li>
         <li>Import Anki, Quizlet et CSV</li>
-        <li>Paquet d'anglais ECG fourni</li>
+        <li>85 paquets gratuits : anglais, allemand, espagnol, italien et formules de maths</li>
         <li>Données stockées sur votre ordinateur</li>
       </ul>
       <p><a class="bouton-secondaire" href="/telecharger/">Télécharger</a></p>
@@ -37,14 +37,16 @@ faq: true
     <div class="offre">
       <h3>Mensuel</h3>
       <p class="offre-sous">L'offre complète, sans engagement</p>
-      <p class="prix">2,99 €<small>/ mois</small></p>
+      <p class="prix">9,99 €<small>/ mois</small></p>
       <p class="prix-detail">résiliable à tout moment</p>
       <ul class="offre-liste">
         <li><strong>Tout ce que contient l'offre gratuite</strong></li>
-        <li>Vérification de la prononciation à la voix</li>
+        <li>Écoute de la prononciation, dans les cinq langues</li>
+        <li>Vérification de sa prononciation à la voix</li>
         <li>Lecture labiale par la webcam</li>
         <li>Photo d'une formule convertie en notation mathématique</li>
         <li>Photo d'une feuille imprimée transformée en cartes</li>
+        <li>Création de cartes par IA <em>(en préparation)</em></li>
         <li>Traduction automatique à la saisie</li>
         <li>Paquets de cartes exclusifs <em>(en préparation)</em></li>
         <li>Annulation à tout moment — sans engagement</li>
@@ -56,14 +58,16 @@ faq: true
       <span class="offre-badge">Le plus avantageux</span>
       <h3>Annuel</h3>
       <p class="offre-sous">La même chose, 20&nbsp;% moins cher</p>
-      <p class="prix">28,70 €<small>/ an</small></p>
-      <p class="prix-detail">soit 2,39 € par mois</p>
+      <p class="prix">95,90 €<small>/ an</small></p>
+      <p class="prix-detail">soit 7,99 € par mois</p>
       <ul class="offre-liste">
         <li><strong>Exactement l'offre mensuelle</strong></li>
-        <li>Vérification de la prononciation à la voix</li>
+        <li>Écoute de la prononciation, dans les cinq langues</li>
+        <li>Vérification de sa prononciation à la voix</li>
         <li>Lecture labiale par la webcam</li>
         <li>Photo d'une formule convertie en notation mathématique</li>
         <li>Photo d'une feuille imprimée transformée en cartes</li>
+        <li>Création de cartes par IA <em>(en préparation)</em></li>
         <li>Traduction automatique à la saisie</li>
         <li>Paquets de cartes exclusifs <em>(en préparation)</em></li>
         <li><strong>20 % d'économie sur l'année</strong></li>
@@ -129,7 +133,7 @@ donc rien ne disparaît.
 ### Quelle différence entre l'offre mensuelle et l'annuelle ?
 
 Aucune, sauf le prix. Les deux donnent accès exactement aux mêmes fonctions.
-L'annuelle revient 20 % moins cher, soit 2,39 € par mois au lieu de 2,99 €.
+L'annuelle revient 20 % moins cher, soit 7,99 € par mois au lieu de 9,99 €.
 
 ### Que deviennent mes cartes si j'arrête de payer ?
 
