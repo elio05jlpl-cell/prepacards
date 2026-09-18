@@ -22,7 +22,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2208486d" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=fcb36135">
-<link rel="stylesheet" href="/style.css?v=276045117c">
+<link rel="stylesheet" href="/style.css?v=cda85100e6">
 <link rel="preload" href="/fonts/manrope-400-latin.woff2?v=a30ddcd3" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/manrope-800-latin.woff2?v=a30ddcd3" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Mes enregistrements vocaux sont-ils conservés ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. L'audio est transcrit en mémoire puis abandonné. Aucun fichier audio n'est écrit sur le disque, et rien n'est envoyé sur internet : la reconnaissance vocale fonctionne sur votre processeur."}}, {"@type": "Question", "name": "Les images de ma webcam sont-elles enregistrées ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Les images servent uniquement à mesurer le mouvement de vos lèvres, image par image, en mémoire. L'application n'écrit aucune capture et la caméra se referme quand vous quittez la session."}}, {"@type": "Question", "name": "Faut-il un compte pour utiliser l'application ?", "acceptedAnswer": {"@type": "Answer", "text": "Un compte est créé au premier lancement, mais il est entièrement local : il n'est enregistré nulle part ailleurs que sur votre ordinateur, et aucune vérification d'adresse e-mail n'a lieu. Personne, y compris nous, ne peut le récupérer — ce qui signifie aussi qu'il n'existe pas de procédure de mot de passe oublié."}}, {"@type": "Question", "name": "Ce site utilise-t-il Google Analytics ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Aucun outil de mesure d'audience n'est installé."}}]}</script>
@@ -171,24 +171,44 @@ démarche : <em>Fichier → Exporter en CSV</em> dans l'application.</p>
 
 <footer class="pied">
   <div class="conteneur">
-    <div class="pied-haut">
+    <nav class="pied-haut" aria-label="Liens de pied de page">
       <div class="pied-marque">
-        <img src="/img/logo.png?v=38e8d0d2" width="26" height="26" alt="">
+        <img src="/img/logo.png?v=38e8d0d2" width="72" height="72" alt="PrépaCards">
         <span>Prépa<strong>Cards</strong></span>
-        <p>Flashcards à répétition espacée pour les classes préparatoires.
-           Vos cartes restent sur votre ordinateur.</p>
       </div>
-      <nav class="pied-liens" aria-label="Liens de pied de page">
-          <a href="/telecharger/">Télécharger</a>
-          <a href="/alternative-anki/">Comparatif Anki</a>
-          <a href="/alternative-quizlet/">Comparatif Quizlet</a>
-          <a href="/vocabulaire-anglais-prepa-ecg/">Vocabulaire anglais ECG</a>
-          <a href="/colle-anglais-prepa/">Colle d&#x27;anglais</a>
-          <a href="/mentions-legales/">Mentions légales</a>
-          <a href="/confidentialite/">Confidentialité</a>
-          <a href="/cgv/">CGV</a>
-      </nav>
-    </div>
+      <div class="pied-colonne">
+        <h2>Révisions</h2>
+        <ul>
+          <li><a href="/prepa-commerciale/">Prépas commerciales</a></li>
+          <li><a href="/prepa-scientifique/">Prépas scientifiques</a></li>
+          <li><a href="/prepa-litteraire/">Prépas littéraires</a></li>
+        </ul>
+      </div>
+      <div class="pied-colonne">
+        <h2>Comparatifs</h2>
+        <ul>
+          <li><a href="/alternative-anki/">PrépaCards ou Anki</a></li>
+          <li><a href="/alternative-quizlet/">PrépaCards ou Quizlet</a></li>
+          <li><a href="/importer-anki-quizlet/">Importer ses paquets</a></li>
+        </ul>
+      </div>
+      <div class="pied-colonne">
+        <h2>Ressources</h2>
+        <ul>
+          <li><a href="/telecharger/">Télécharger</a></li>
+          <li><a href="/blog/">Le blog</a></li>
+          <li><a href="/decks/">Paquets gratuits</a></li>
+        </ul>
+      </div>
+      <div class="pied-colonne">
+        <h2>Informations</h2>
+        <ul>
+          <li><a href="/mentions-legales/">Mentions légales</a></li>
+          <li><a href="/cgv/">CGV</a></li>
+          <li><a href="/confidentialite/">Confidentialité</a></li>
+        </ul>
+      </div>
+    </nav>
     <p class="pied-bas">© 2026 PrépaCards — Application indépendante,
        sans lien avec Anki ni Quizlet.</p>
   </div>

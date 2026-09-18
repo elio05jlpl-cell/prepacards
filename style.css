@@ -501,16 +501,36 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
   color: #b4c0ce; padding: 68px 0 30px;
   font-size: .94rem; margin-top: 0;
 }
-.pied a { color: #d9e2ec; }
-.pied-haut { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; }
-.pied-marque { display: block; }
-.pied-marque img { vertical-align: middle; }
-.pied-marque span {
-  color: #fff; font-size: 1.12rem; vertical-align: middle;
-  margin-left: 9px; letter-spacing: -0.02em;
+.pied a { color: #d9e2ec; text-decoration: none; }
+.pied a:hover { color: #fff; text-decoration: underline; }
+
+/* La marque a gauche, puis autant de colonnes qu'il y en a. La premiere
+   piste est plus etroite que les autres : le logo n'a pas besoin de la
+   meme place qu'une liste de liens. */
+.pied-haut {
+  display: grid;
+  grid-template-columns: 0.9fr repeat(4, 1fr);
+  gap: 32px;
+  align-items: start;
 }
-.pied-marque p { margin-top: 16px; max-width: 420px; color: #94a3b8; }
-.pied-liens { display: flex; flex-direction: column; gap: 10px; }
+
+.pied-marque { display: flex; flex-direction: column; gap: 14px; }
+.pied-marque img { display: block; width: 72px; height: auto; }
+.pied-marque span {
+  color: #fff; font-size: 1.15rem; letter-spacing: -0.02em;
+  font-family: Poppins, sans-serif; font-weight: 600;
+}
+
+.pied-colonne h2 {
+  /* Le bleu vif de la palette, eclairci pour rester lisible sur le fond
+     nuit : le bleu des boutons y passerait inapercu. */
+  color: #60a5fa;
+  font-family: Poppins, sans-serif;
+  font-size: 1.12rem; font-weight: 700;
+  margin: 0 0 18px; letter-spacing: -0.01em;
+}
+.pied-colonne ul { list-style: none; margin: 0; padding: 0; }
+.pied-colonne li + li { margin-top: 12px; }
 .pied-bas {
   border-top: 1px solid rgba(148, 163, 184, .22); margin-top: 36px; padding-top: 22px;
   color: #7d8b9a; font-size: .86rem; margin-bottom: 0;
@@ -522,7 +542,11 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
   body { font-size: 16.5px; }
   .accroche { padding: 46px 0 40px; }
   .accroche .conteneur { grid-template-columns: 1fr; gap: 34px; }
-  .grille-3, .grille-2, .grille-tarifs, .pied-haut { grid-template-columns: 1fr; }
+  .grille-3, .grille-2, .grille-tarifs { grid-template-columns: 1fr; }
+  /* Deux colonnes plutot qu'une : empilees, les quatre listes donnaient un
+     pied de page plus long que certaines pages. */
+  .pied-haut { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .pied-marque { grid-column: 1 / -1; }
   .section-douce > .conteneur { padding: 36px 24px; border-radius: var(--rayon-l); }
   .article .conteneur-texte { padding: 32px 24px; border-radius: var(--rayon-l); }
   .feuille-texte { padding: 30px 22px; margin: 26px 14px 0; border-radius: var(--rayon-l); }

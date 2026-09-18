@@ -398,16 +398,35 @@ NAV = [
     ("/tarifs/", "Tarifs", None),
 ]
 
-FOOTER_LINKS = [
-    ("/telecharger/", "Télécharger"),
-    ("/alternative-anki/", "Comparatif Anki"),
-    ("/alternative-quizlet/", "Comparatif Quizlet"),
-    ("/vocabulaire-anglais-prepa-ecg/", "Vocabulaire anglais ECG"),
-    ("/colle-anglais-prepa/", "Colle d'anglais"),
-    ("/mentions-legales/", "Mentions légales"),
-    ("/confidentialite/", "Confidentialité"),
-    ("/cgv/", "CGV"),
+# Pied de page : quatre colonnes thematiques plutot qu'une liste unique.
+# Huit liens a la suite se lisaient comme un inventaire ; groupes, ils
+# disent aussi ce que le site contient.
+FOOTER_COLONNES = [
+    ("Révisions", [
+        ("/prepa-commerciale/", "Prépas commerciales"),
+        ("/prepa-scientifique/", "Prépas scientifiques"),
+        ("/prepa-litteraire/", "Prépas littéraires"),
+    ]),
+    ("Comparatifs", [
+        ("/alternative-anki/", "PrépaCards ou Anki"),
+        ("/alternative-quizlet/", "PrépaCards ou Quizlet"),
+        ("/importer-anki-quizlet/", "Importer ses paquets"),
+    ]),
+    ("Ressources", [
+        ("/telecharger/", "Télécharger"),
+        ("/blog/", "Le blog"),
+        ("/decks/", "Paquets gratuits"),
+    ]),
+    ("Informations", [
+        ("/mentions-legales/", "Mentions légales"),
+        ("/cgv/", "CGV"),
+        ("/confidentialite/", "Confidentialité"),
+    ]),
 ]
+
+# Conserve : l'audit s'en sert pour verifier que chaque page citee dans le
+# pied existe reellement.
+FOOTER_LINKS = [lien for _, liens in FOOTER_COLONNES for lien in liens]
 
 
 # Priorite dans le plan du site. Ce n'est qu'une indication relative donnee
@@ -673,9 +692,18 @@ def render_nav(current: str) -> str:
 
 
 def render_footer() -> str:
-    return "\n          ".join(
-        f'<a href="{href}">{html.escape(label)}</a>' for href, label in FOOTER_LINKS
-    )
+    """Les colonnes du pied de page, titre puis liste de liens."""
+    colonnes = []
+    for titre, liens in FOOTER_COLONNES:
+        entrees = "\n          ".join(
+            f'<li><a href="{href}">{html.escape(libelle)}</a></li>'
+            for href, libelle in liens)
+        colonnes.append(
+            f'<div class="pied-colonne">\n'
+            f'        <h2>{html.escape(titre)}</h2>\n'
+            f'        <ul>\n          {entrees}\n        </ul>\n'
+            f'      </div>')
+    return "\n      ".join(colonnes)
 
 
 def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str:
