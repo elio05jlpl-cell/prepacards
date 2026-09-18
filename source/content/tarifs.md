@@ -51,7 +51,7 @@ faq: true
         <li>Paquets de cartes exclusifs <em>(en préparation)</em></li>
         <li>Annulation à tout moment — sans engagement</li>
       </ul>
-      <p><a class="bouton-secondaire" href="#liste-attente">Être prévenu</a></p>
+      <p>{{bouton_mensuel}}</p>
     </div>
 
     <div class="offre mise-en-avant">
@@ -72,7 +72,7 @@ faq: true
         <li>Paquets de cartes exclusifs <em>(en préparation)</em></li>
         <li><strong>20 % d'économie sur l'année</strong></li>
       </ul>
-      <p><a class="bouton" href="#liste-attente">Être prévenu</a></p>
+      <p>{{bouton_annuel}}</p>
     </div>
 
   </div>
@@ -81,13 +81,7 @@ faq: true
 <section class="section" markdown="1">
 <div class="conteneur-texte" markdown="1">
 
-<div class="encart encart-attention" id="liste-attente">
-  <p><strong>Les offres payantes ne sont pas encore ouvertes à la vente.</strong>
-  L'application est téléchargeable et pleinement utilisable dès maintenant, et
-  aucune fonction n'est bridée pour l'instant. Laissez votre e-mail pour être
-  prévenu de l'ouverture — et bénéficier du tarif de lancement.</p>
-  <p><a class="bouton" href="mailto:contact@prepacards.fr?subject=Offre%20compl%C3%A8te%20-%20me%20prevenir">Me prévenir par e-mail</a></p>
-</div>
+{{bloc_paiement}}
 
 ## Pourquoi ces fonctions sont payantes
 

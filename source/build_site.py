@@ -115,7 +115,8 @@ BLOC_TELECHARGEMENT_ATTENTE = """<div class="encart encart-attention">
 # Marqueurs dont la valeur est un bloc HTML, et non du texte en
 # ligne : ils ne doivent jamais rester enfermes dans un <p>.
 MARQUEURS_DE_BLOC = ("{{bloc_telechargement}}", "{{bandeau_ecoles}}",
-                     "{{bloc_decks}}")
+                     "{{bloc_decks}}", "{{bloc_paiement}}",
+                     "{{bouton_mensuel}}", "{{bouton_annuel}}")
 
 
 def transformer_faq(corps: str) -> str:
@@ -417,6 +418,62 @@ NAV = [
     ("/fonctionnalites/", "Fonctionnalités", None),
     ("/tarifs/", "Tarifs", None),
 ]
+
+# Paiement : liens Stripe (« Payment Links »).
+#
+# C'est la forme la plus simple : le lien se cree dans le tableau de bord
+# Stripe, il n'y a ni serveur, ni cle d'API, ni webhook a heberger. Stripe
+# s'occupe de la page de paiement, de la TVA, des relances et des factures.
+#
+# Tant qu'une adresse est vide, la page des tarifs continue d'afficher la
+# liste d'attente : un bouton « S'abonner » qui n'ouvre rien coute plus
+# qu'il ne rapporte.
+PAIEMENT = {
+    "mensuel": "",   # https://buy.stripe.com/...
+    "annuel": "",    # https://buy.stripe.com/...
+}
+
+
+def paiement_ouvert() -> bool:
+    return all(PAIEMENT.get(cle, "").strip() for cle in ("mensuel", "annuel"))
+
+
+def bouton_abonnement(offre: str, principal: bool) -> str:
+    """Bouton d'une offre payante : vers Stripe, ou vers la liste d'attente."""
+    classe = "bouton" if principal else "bouton-secondaire"
+    adresse = PAIEMENT.get(offre, "").strip()
+    if not adresse:
+        return (f'<a class="{classe}" href="#liste-attente">Être prévenu</a>')
+    return (f'<a class="{classe}" href="{adresse}"'
+            f' rel="noopener">S\'abonner</a>')
+
+
+def bloc_paiement() -> str:
+    """L'encadre sous les offres : liste d'attente, ou mode d'emploi."""
+    if not paiement_ouvert():
+        return (
+            '<div class="encart encart-attention" id="liste-attente">\n'
+            '  <p><strong>Les offres payantes ne sont pas encore ouvertes à '
+            'la vente.</strong>\n'
+            '  L\'application est téléchargeable et pleinement utilisable dès '
+            'maintenant.\n'
+            '  Laissez votre e-mail pour être prévenu de l\'ouverture — et '
+            'bénéficier du\n'
+            '  tarif de lancement.</p>\n'
+            '  <p><a class="bouton" href="mailto:contact@prepacards.fr?'
+            'subject=Offre%20compl%C3%A8te%20-%20me%20prevenir">Me prévenir '
+            'par e-mail</a></p>\n'
+            '</div>')
+    return (
+        '<div class="encart" id="liste-attente">\n'
+        '  <p><strong>Le paiement est traité par Stripe.</strong> Vos '
+        'coordonnées bancaires\n'
+        '  ne transitent jamais par PrépaCards et ne sont pas conservées par '
+        'nos soins.\n'
+        '  L\'abonnement se résilie à tout moment depuis le lien reçu par '
+        'e-mail.</p>\n'
+        '</div>')
+
 
 # Reseaux sociaux de la barre sombre.
 #
@@ -885,6 +942,9 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{version_css}}": css_version(),
         "{{bloc_telechargement}}": bloc_telechargement(),
         "{{bloc_decks}}": bloc_decks(),
+        "{{bloc_paiement}}": bloc_paiement(),
+        "{{bouton_mensuel}}": bouton_abonnement("mensuel", False),
+        "{{bouton_annuel}}": bouton_abonnement("annuel", True),
         "{{bandeau_ecoles}}": bandeau_ecoles(),
     }
     for marker, value in replacements.items():
