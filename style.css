@@ -637,7 +637,12 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
    refermerait sur un visiteur dont le script n'a pas fini de charger.
 */
 
-.mega-panneau { min-width: 580px; padding: 10px; display: flex; }
+.nav-menu.mega-panneau {
+  /* Selecteur double a dessein : .nav-menu fixe min-width a 290px
+     plus bas dans le fichier et l'emportait a specificite egale,
+     ce qui laissait le panneau de droite deborder de la boite. */
+  min-width: 580px; padding: 10px; display: flex;
+}
 
 .mega-gauche {
   list-style: none; margin: 0; padding: 0;
@@ -689,8 +694,12 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 .mega-droite a:last-child { color: var(--gris); }
 .mega-droite a:last-child:hover { color: var(--bleu-fonce); }
 
-/* La premiere filiere est ouverte tant qu'aucune autre n'est survolee. */
-.mega-item.ouvert > .mega-droite,
+/* La premiere filiere est ouverte tant qu'aucune autre n'est survolee —
+   mais SEULEMENT quand le menu lui-meme est ouvert. « visibility: visible »
+   sur un descendant annule le « hidden » du parent : sans cette condition,
+   ses matieres restaient peintes par-dessus la page, menu ferme. */
+.nav-groupe:hover .mega-item.ouvert > .mega-droite,
+.nav-groupe:focus-within .mega-item.ouvert > .mega-droite,
 .mega-item:hover > .mega-droite,
 .mega-item:focus-within > .mega-droite { opacity: 1; visibility: visible; }
 .mega-gauche:hover .mega-item.ouvert:not(:hover) > .mega-droite {
