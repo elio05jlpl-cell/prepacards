@@ -418,6 +418,29 @@ NAV = [
     ("/tarifs/", "Tarifs", None),
 ]
 
+# Reseaux sociaux de la barre sombre.
+#
+# Les adresses sont DEDUITES du nom de marque, pas verifiees : un pseudo qui
+# ne serait pas le votre enverrait vos visiteurs chez un inconnu. A corriger
+# ici, en un seul endroit, des que les comptes sont ouverts.
+#
+# Les pictogrammes sont dessines en SVG plutot que charges en image : trois
+# fichiers pour trois icones de vingt pixels, c'est trois requetes de plus
+# sur chaque page, et ils resteraient flous sur un ecran a haute densite.
+RESEAUX = [
+    ("TikTok", "https://www.tiktok.com/@prepacards",
+     "M16.5 3c.3 2.3 1.9 3.8 4.2 4v2.9c-1.5.1-2.9-.3-4.2-1.1v5.9c0 3.6-2.9 "
+     "6.3-6.3 6.3-3.5 0-6.2-2.8-6.2-6.3 0-3.4 2.7-6.2 6.2-6.2.3 0 .6 0 .9.1v3"
+     "c-.3-.1-.6-.1-.9-.1-1.8 0-3.2 1.5-3.2 3.2 0 1.8 1.4 3.3 3.2 3.3 1.8 0 "
+     "3.3-1.4 3.3-3.3V3z"),
+    ("Instagram", "https://www.instagram.com/prepacards/", None),
+    ("LinkedIn", "https://www.linkedin.com/company/prepacards/",
+     "M3.2 9h3v11h-3zM4.7 3.3a1.9 1.9 0 1 1 0 3.8 1.9 1.9 0 0 1 0-3.8zM9.5 9h3"
+     "v1.6c.7-1.2 2-1.9 3.6-1.9 2.6 0 4.4 1.7 4.4 4.8V20h-3v-5.9c0-1.6-.8-2.5"
+     "-2.1-2.5-1.4 0-2.3 1-2.3 2.6V20h-3z"),
+]
+
+
 # Menu des matieres : a gauche les filieres, a droite ce que le site
 # propose pour celle que l'on survole.
 #
@@ -715,6 +738,32 @@ def css_version() -> str:
 SEPARATEUR_NAV = chr(10) + ' ' * 8
 
 
+def render_reseaux() -> str:
+    """Les pictogrammes des reseaux, dans la barre sombre.
+
+    Instagram n'a pas de chemin : sa marque est faite de trois formes
+    geometriques simples, plus justes dessinees que decrites en un trace.
+    """
+    liens = []
+    for nom, adresse, trace in RESEAUX:
+        if trace:
+            interieur = f'<path d="{trace}"/>'
+        else:
+            interieur = (
+                '<rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4"'
+                ' fill="none" stroke="currentColor" stroke-width="1.9"/>'
+                '<circle cx="12" cy="12" r="4.2" fill="none"'
+                ' stroke="currentColor" stroke-width="1.9"/>'
+                '<circle cx="17.5" cy="6.5" r="1.2"/>')
+        liens.append(
+            f'<a href="{adresse}" aria-label="{nom}" title="{nom}"'
+            f' target="_blank" rel="noopener">'
+            f'<svg viewBox="0 0 24 24" width="19" height="19"'
+            f' fill="currentColor" aria-hidden="true" focusable="false">'
+            f'{interieur}</svg></a>')
+    return "".join(liens)
+
+
 def render_menu_matieres(current: str) -> str:
     """Le menu a deux panneaux : filieres a gauche, matieres a droite.
 
@@ -825,6 +874,7 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{script_etapes}}": scripts_animes(page["body_html"]),
         "{{jsonld}}": jsonld,
         "{{nav}}": render_nav(url_path),
+        "{{reseaux}}": render_reseaux(),
         "{{footer_links}}": render_footer(),
         "{{og_image}}": SITE_URL + DEFAULT_OG,
         "{{year}}": str(date.today().year),

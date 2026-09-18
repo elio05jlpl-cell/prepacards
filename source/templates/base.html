@@ -32,20 +32,33 @@
 <a class="saut-contenu" href="#contenu">Aller au contenu</a>
 
 <header class="entete">
-  <div class="conteneur barre">
+
+  <div class="bandeau-haut">
+    <div class="conteneur bandeau-haut-interieur">
+      <div class="reseaux" aria-label="Réseaux sociaux">{{reseaux}}</div>
+      <div class="bandeau-actions">
+        <a class="nav-connexion" href="/connexion/">Se connecter</a>
+        <a class="bouton-nav" href="/telecharger/">Télécharger</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="conteneur entete-marque">
     <a class="marque" href="/">
-      <img src="/img/logo.png" width="30" height="30" alt="" loading="eager">
+      <img src="/img/logo.png" width="34" height="34" alt="" loading="eager">
       <span>Prépa<strong>Cards</strong></span>
     </a>
     <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
+  </div>
+
+  <div class="conteneur entete-nav">
     <nav class="navigation" aria-label="Navigation principale">
         {{nav}}
-      <a class="nav-connexion" href="/connexion/">Se connecter</a>
-      <a class="bouton-nav" href="/telecharger/">Télécharger</a>
     </nav>
   </div>
+
 </header>
 
 <main id="contenu">

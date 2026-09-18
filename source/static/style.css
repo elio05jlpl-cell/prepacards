@@ -201,6 +201,55 @@ strong { color: var(--encre); font-weight: 700; }
 }
 .barre { display: flex; align-items: center; gap: 18px; height: 72px; }
 
+/* --- En-tete a trois rangees -------------------------------------- */
+/*
+   Bandeau sombre (reseaux et actions), puis la marque centree, puis la
+   navigation centree. Le logo gagne la ligne du milieu pour lui seul : en
+   le laissant a gauche d'une barre unique, il se disputait la place avec
+   sept entrees de menu et deux boutons.
+*/
+
+.bandeau-haut { background: #16213e; color: #cfd8e8; }
+.bandeau-haut-interieur {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 18px; min-height: 44px;
+}
+
+.reseaux { display: flex; align-items: center; gap: 4px; }
+.reseaux a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
+  color: #cfd8e8; text-decoration: none;
+  transition: background .18s ease, color .18s ease;
+}
+.reseaux a:hover { background: rgba(255, 255, 255, .12); color: #fff; }
+
+.bandeau-actions { display: flex; align-items: center; gap: 10px; }
+/* Sur fond sombre, le contour clair du bouton « Se connecter » disparait :
+   il prend une bordure translucide et un texte clair. */
+.bandeau-actions .nav-connexion {
+  border-color: rgba(255, 255, 255, .28); color: #eaf0fb; margin-left: 0;
+  padding: 7px 14px;
+}
+.bandeau-actions .nav-connexion:hover {
+  background: rgba(255, 255, 255, .12);
+  border-color: rgba(255, 255, 255, .5); color: #fff;
+}
+
+.entete-marque {
+  display: flex; align-items: center; justify-content: center;
+  position: relative; padding: 16px 0 12px;
+}
+.entete-marque .marque { font-size: 1.5rem; gap: 11px; }
+.entete-marque .marque img { width: 34px; height: 34px; }
+
+.entete-nav { display: flex; justify-content: center; padding-bottom: 6px; }
+
+/* Le bouton du menu mobile se cale a droite de la ligne du logo, qui est
+   la seule a rester visible quand le menu est replie. */
+.entete-marque .burger { position: absolute; right: 0; top: 50%;
+  transform: translateY(-50%); }
+
 .marque {
   display: flex; align-items: center; gap: 9px;
   font-size: 1.15rem; color: var(--encre); font-weight: 500;
@@ -209,7 +258,7 @@ strong { color: var(--encre); font-weight: 700; }
 .marque strong { font-weight: 800; }
 .marque:hover { text-decoration: none; }
 
-.navigation { display: flex; align-items: center; gap: 2px; margin-left: auto; }
+.navigation { display: flex; align-items: center; gap: 2px; }
 /* Les liens de navigation sont styles par .nav-lien, qui gere aussi les
    parents de sous-menu. Cette regle ne couvre plus que le bouton
    « Telecharger », qui a sa propre classe. */
@@ -583,8 +632,17 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
   .article .conteneur-texte { padding: 32px 24px; border-radius: var(--rayon-l); }
   .feuille-texte { padding: 30px 22px; margin: 26px 14px 0; border-radius: var(--rayon-l); }
   .burger { display: block; margin-left: auto; }
-  .navigation {
-    display: none; position: absolute; top: 72px; left: 0; right: 0;
+  /* La navigation occupe deja sa propre rangee : elle se replie sur place
+     plutot que de se poser en absolu sous une barre unique, qui n'existe
+     plus. Le bandeau sombre passe en colonne pour tenir dans la largeur. */
+  .bandeau-haut-interieur { flex-direction: column; align-items: stretch;
+    gap: 8px; padding: 8px 0; }
+  .bandeau-actions { justify-content: flex-end; }
+  .entete-marque { padding: 12px 0 8px; }
+  .entete-marque .marque { font-size: 1.25rem; }
+  .entete-nav { padding: 0; }
+  .entete-nav .navigation {
+    display: none; position: static; left: auto; right: auto;
     background: #fff; border-bottom: 1px solid var(--bord-net);
     flex-direction: column; align-items: stretch; padding: 10px 14px 16px;
     box-shadow: 0 18px 32px rgba(15, 23, 42, .10);
