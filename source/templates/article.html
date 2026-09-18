@@ -112,7 +112,7 @@ document.documentElement.classList.add('js');
   var entete = document.querySelector('.entete');
   if (entete) {
     var majDefile = function () {
-      entete.classList.toggle('defile', window.scrollY > 8);
+      entete.classList.toggle('abaissee', window.scrollY > 8);
     };
     majDefile();
     window.addEventListener('scroll', majDefile, { passive: true });

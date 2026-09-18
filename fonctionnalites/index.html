@@ -22,7 +22,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2208486d" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=fcb36135">
-<link rel="stylesheet" href="/style.css?v=046b284120">
+<link rel="stylesheet" href="/style.css?v=58a7bec456">
 <link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "La reconnaissance vocale fonctionne-t-elle hors ligne ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, après un premier téléchargement. Le modèle de reconnaissance vocale (environ 500 Mo) et celui de suivi du visage sont récupérés au premier usage, puis conservés sur votre ordinateur. Ensuite, tout fonctionne sans connexion. Seule la traduction automatique reste en ligne."}}, {"@type": "Question", "name": "Quelle configuration faut-il ?", "acceptedAnswer": {"@type": "Answer", "text": "Windows 10 ou 11, environ 1,5 Go d'espace disque au total avec les modèles, un micro pour l'oral et une webcam pour la lecture labiale. Aucune carte graphique dédiée n'est nécessaire : tout tourne sur le processeur."}}, {"@type": "Question", "name": "Y a-t-il une synchronisation entre plusieurs ordinateurs ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. C'est la contrepartie directe de l'absence de serveur. Pour transférer votre collection, copiez le fichier vocab.db ou passez par un export CSV."}}, {"@type": "Question", "name": "L'application est-elle open source ?", "acceptedAnswer": {"@type": "Answer", "text": "Pas à ce jour."}}]}</script>
@@ -236,7 +236,7 @@ document.documentElement.classList.add('js');
   var entete = document.querySelector('.entete');
   if (entete) {
     var majDefile = function () {
-      entete.classList.toggle('defile', window.scrollY > 8);
+      entete.classList.toggle('abaissee', window.scrollY > 8);
     };
     majDefile();
     window.addEventListener('scroll', majDefile, { passive: true });

@@ -787,7 +787,11 @@ html.js .a-reveler.vue { opacity: 1; transform: none; }
 /* --- En-tete qui se densifie au defilement -------------------------- */
 
 .entete { transition: box-shadow .3s ease, background .3s ease; }
-.entete.defile {
+/* « defile » etait aussi le nom du carrousel de logos, qui porte
+   overflow: hidden. L'en-tete heritait donc de cette regle des qu'on
+   quittait le haut de page, et rognait le menu deroulant a sa propre
+   hauteur : on n'en voyait plus qu'un liseré blanc. */
+.entete.abaissee {
   box-shadow: 0 6px 24px rgba(15, 23, 42, .07);
   background: rgba(255, 255, 255, .94);
 }
