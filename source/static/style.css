@@ -614,6 +614,89 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 .nav-groupe:hover .nav-fleche,
 .nav-groupe:focus-within .nav-fleche { transform: rotate(180deg); }
 
+/* --- Bouton de connexion ------------------------------------------ */
+
+.nav-connexion {
+  display: inline-flex; align-items: center;
+  padding: 9px 15px; margin-left: 4px;
+  border: 1px solid var(--bord); border-radius: 10px;
+  color: var(--texte); font-size: .95rem; font-weight: 600;
+  text-decoration: none;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.nav-connexion:hover {
+  background: var(--hover); border-color: var(--bleu);
+  color: var(--bleu-fonce); text-decoration: none;
+}
+
+/* --- Menu des matieres, a deux panneaux --------------------------- */
+/*
+   Le panneau de droite de chaque filiere est range DANS son element de
+   gauche : c'est ce qui permet de basculer d'une filiere a l'autre au
+   survol sans une ligne de JavaScript. Un menu qui depend d'un script se
+   refermerait sur un visiteur dont le script n'a pas fini de charger.
+*/
+
+.mega-panneau { min-width: 580px; padding: 10px; display: flex; }
+
+.mega-gauche {
+  list-style: none; margin: 0; padding: 0;
+  width: 258px; flex: 0 0 258px;
+  border-right: 1px solid var(--bord);
+}
+
+.mega-item { position: relative; }
+
+.mega-filiere {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; padding: 10px 12px; margin-right: 8px;
+  border-radius: 10px; color: var(--texte); text-decoration: none;
+  transition: background .18s ease;
+}
+.mega-filiere strong {
+  display: block; font-size: .95rem; font-weight: 600; color: var(--encre);
+}
+.mega-filiere small {
+  display: block; margin-top: 2px;
+  font-size: .78rem; color: var(--gris); font-weight: 400;
+}
+.mega-chevron { color: var(--gris); font-size: 1.1rem; line-height: 1; }
+
+.mega-item:hover > .mega-filiere,
+.mega-item:focus-within > .mega-filiere { background: var(--hover); }
+.mega-item:hover .mega-chevron,
+.mega-item:focus-within .mega-chevron { color: var(--bleu); }
+
+.mega-droite {
+  position: absolute; top: 0; left: 258px;
+  width: 300px; padding: 4px 6px 4px 20px;
+  display: flex; flex-direction: column; gap: 2px;
+  /* Masque par la visibilite, pas par display : le panneau de la premiere
+     filiere doit pouvoir ceder la place sans que la boite ne saute. */
+  opacity: 0; visibility: hidden;
+  transition: opacity .15s ease, visibility .15s;
+}
+.mega-droite a {
+  padding: 8px 10px; border-radius: 8px;
+  color: var(--texte); font-size: .95rem; text-decoration: none;
+  transition: background .18s ease, color .18s ease;
+}
+.mega-droite a:hover {
+  background: var(--hover); color: var(--bleu-fonce); text-decoration: none;
+}
+/* Le dernier lien de chaque panneau est « Tout afficher » : il se detache
+   en bleu, comme sur les menus ou il sert de sortie de secours. */
+.mega-droite a:last-child { color: var(--gris); }
+.mega-droite a:last-child:hover { color: var(--bleu-fonce); }
+
+/* La premiere filiere est ouverte tant qu'aucune autre n'est survolee. */
+.mega-item.ouvert > .mega-droite,
+.mega-item:hover > .mega-droite,
+.mega-item:focus-within > .mega-droite { opacity: 1; visibility: visible; }
+.mega-gauche:hover .mega-item.ouvert:not(:hover) > .mega-droite {
+  opacity: 0; visibility: hidden;
+}
+
 .nav-menu {
   position: absolute; top: calc(100% + 8px); left: 0; z-index: 60;
   min-width: 290px; padding: 8px;
@@ -715,6 +798,21 @@ main a { transition: color .2s ease; }
   }
   .nav-fleche { display: none; }
   .nav-menu span { display: none; }
+
+  /* Le menu des matieres a deux panneaux n'a pas de sens sans survol :
+     il se deplie en une seule colonne, chaque filiere suivie de ses
+     matieres en retrait. Laisse tel quel, le panneau de droite faisait
+     580 px de large et sortait de l'ecran. */
+  .mega-panneau { display: block; min-width: 0; padding: 0 0 0 14px; }
+  .mega-gauche { width: auto; flex: none; border-right: none; }
+  .mega-filiere { margin-right: 0; }
+  .mega-filiere small { display: none; }
+  .mega-chevron { display: none; }
+  .mega-droite {
+    position: static; width: auto; opacity: 1; visibility: visible;
+    padding: 0 0 8px 14px;
+  }
+  .mega-item.ouvert > .mega-droite { opacity: 1; visibility: visible; }
 }
 
 @media (prefers-reduced-motion: reduce) {

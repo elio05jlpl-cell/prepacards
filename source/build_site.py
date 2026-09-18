@@ -223,6 +223,21 @@ def scripts_animes(corps: str) -> str:
     return chr(10).join(morceaux)
 
 
+def ancre_matiere(nom: str) -> str:
+    """Identifiant d'ancre pour une matiere : « Maths approfondies » ->
+    « maths-approfondies ».
+
+    Le menu des matieres pointe vers ces ancres : sans elles, choisir
+    « Espagnol » ouvrirait la page des paquets tout en haut, et il faudrait
+    faire defiler quatre langues pour trouver la sienne.
+    """
+    import unicodedata
+
+    nu = "".join(c for c in unicodedata.normalize("NFD", nom)
+                 if unicodedata.category(c) != "Mn")
+    return re.sub(r"[^a-z0-9]+", "-", nu.lower()).strip("-")
+
+
 def bloc_decks() -> str:
     """La liste des paquets telechargeables, batie sur le manifeste.
 
@@ -260,12 +275,17 @@ def bloc_decks() -> str:
     ]
 
     for matiere in sorted(arbre):
+        premiere_annee = True
         for annee in sorted(arbre[matiere], key=lambda a: int(a or 0)):
+            # L'ancre est posee sur la PREMIERE annee de la matiere : c'est
+            # la que doit arriver quelqu'un qui clique « Espagnol ».
+            ancre = (f' id="{ancre_matiere(matiere)}"' if premiere_annee else "")
+            premiere_annee = False
             morceaux.append(
-                f'<h2 class="decks-annee">{html.escape(matiere)} — '
+                f'<h2 class="decks-annee"{ancre}>{html.escape(matiere)} — '
                 f'{annee}<sup>re</sup> année</h2>'
                 if annee == "1" else
-                f'<h2 class="decks-annee">{html.escape(matiere)} — '
+                f'<h2 class="decks-annee"{ancre}>{html.escape(matiere)} — '
                 f'{annee}<sup>e</sup> année</h2>'
             )
             for groupe in sorted(arbre[matiere][annee]):
@@ -397,6 +417,43 @@ NAV = [
     ("/fonctionnalites/", "Fonctionnalités", None),
     ("/tarifs/", "Tarifs", None),
 ]
+
+# Menu des matieres : a gauche les filieres, a droite ce que le site
+# propose pour celle que l'on survole.
+#
+# Chaque entree mene a une page qui existe : l'audit verifie chaque adresse,
+# et une matiere qui ouvrirait une page vide serait pire que son absence.
+# Les filieres scientifique et litteraire sont donc plus maigres que l'ECG,
+# ou vivent les quatre-vingt-cinq paquets.
+MENU_MATIERES = [
+    ("/prepa-commerciale/", "Prépa commerciale", "ECG et ECT", [
+        ("/decks/#anglais", "Anglais"),
+        ("/decks/#allemand", "Allemand"),
+        ("/decks/#espagnol", "Espagnol"),
+        ("/decks/#italien", "Italien"),
+        ("/decks/#maths-approfondies", "Maths approfondies"),
+        ("/vocabulaire-anglais-prepa-ecg/", "Vocabulaire d'anglais"),
+        ("/decks/", "Tout afficher"),
+    ]),
+    ("/prepa-scientifique/", "Prépa scientifique", "MPSI, PCSI, PTSI, MPI, BCPST", [
+        ("/reviser-prepa-mpsi-pcsi/", "Réviser en MPSI et PCSI"),
+        ("/decks/#maths-approfondies", "Formules de maths"),
+        ("/decks/#anglais", "Anglais"),
+        ("/fiches-de-revision-prepa/", "Fiches de révision"),
+        ("/anki-prepa-mpsi-pcsi/", "Venir d'Anki"),
+        ("/prepa-scientifique/", "Tout afficher"),
+    ]),
+    ("/prepa-litteraire/", "Prépa littéraire", "Khâgnes A/L et B/L", [
+        ("/decks/#anglais", "Anglais"),
+        ("/decks/#allemand", "Allemand"),
+        ("/decks/#espagnol", "Espagnol"),
+        ("/decks/#italien", "Italien"),
+        ("/memoriser-vocabulaire-anglais/", "Mémoriser du vocabulaire"),
+        ("/fiches-de-revision-prepa/", "Fiches de révision"),
+        ("/prepa-litteraire/", "Tout afficher"),
+    ]),
+]
+
 
 # Pied de page : quatre colonnes thematiques plutot qu'une liste unique.
 # Huit liens a la suite se lisaient comme un inventaire ; groupes, ils
@@ -658,6 +715,45 @@ def css_version() -> str:
 SEPARATEUR_NAV = chr(10) + ' ' * 8
 
 
+def render_menu_matieres(current: str) -> str:
+    """Le menu a deux panneaux : filieres a gauche, matieres a droite.
+
+    Sans JavaScript : chaque panneau de droite est range DANS l'element de
+    gauche auquel il appartient, et se montre au survol ou au focus de
+    celui-ci. Un menu qui exige un script se refermerait sur un visiteur
+    dont le script n'a pas encore charge.
+    """
+    adresses = [a for a, _, _, _ in MENU_MATIERES]
+    actif = " actif" if current in adresses else ""
+
+    entrees = []
+    for index, (href, libelle, detail, matieres) in enumerate(MENU_MATIERES):
+        liens = "".join(
+            f'<a href="{a}">{html.escape(l)}</a>' for a, l in matieres)
+        # La premiere filiere est ouverte d'emblee : un panneau de droite
+        # vide a l'ouverture donne l'impression d'un menu casse.
+        premiere = " ouvert" if index == 0 else ""
+        entrees.append(
+            f'<li class="mega-item{premiere}">'
+            f'<a class="mega-filiere" href="{href}">'
+            f'<span><strong>{html.escape(libelle)}</strong>'
+            f'<small>{html.escape(detail)}</small></span>'
+            f'<span class="mega-chevron" aria-hidden="true">›</span></a>'
+            f'<div class="mega-droite">{liens}</div>'
+            f'</li>'
+        )
+
+    return (
+        f'<div class="nav-groupe nav-mega">'
+        f'<a class="nav-lien{actif}" href="/prepa/" aria-haspopup="true" '
+        f'aria-expanded="false">Matières'
+        f'<span class="nav-fleche" aria-hidden="true">&#9662;</span></a>'
+        f'<div class="nav-menu mega-panneau">'
+        f'<ul class="mega-gauche">{"".join(entrees)}</ul>'
+        f'</div></div>'
+    )
+
+
 def render_nav(current: str) -> str:
     """Barre de navigation, avec sous-menus eventuels.
 
@@ -667,6 +763,12 @@ def render_nav(current: str) -> str:
     """
     items = []
     for href, label, sous in NAV:
+        # L'entree des filieres prend la forme d'un menu a deux panneaux :
+        # les trois filieres a gauche, leurs matieres a droite.
+        if href == "/prepa/":
+            items.append(render_menu_matieres(current))
+            continue
+
         adresses = [href] + [a for a, _, _ in (sous or [])]
         actif = " actif" if current in adresses else ""
 
