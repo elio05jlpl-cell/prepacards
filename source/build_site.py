@@ -348,12 +348,15 @@ def logo_ecole(nom: str, fichier: str) -> str:
             # lecteur d'ecran, l'information reste la meme.
             alt = html.escape(nom.replace("&nbsp;", " "))
             # Les PNG sont exportes au double de leur taille d'affichage pour
-            # rester nets sur un ecran a haute densite : on declare donc la
-            # moitie. Sans ces dimensions, la page sauterait au chargement.
+            # rester nets sur un ecran a haute densite. On affichait la
+            # moitie exacte ; le bandeau les rendait trop discrets, ils sont
+            # donc agrandis d'un cinquieme. A 0,6 fois la taille du fichier,
+            # la densite reste de 1,67x : les logos ne perdent pas leur nettete.
             taille = dimensions_png(chemin)
             mesures = ""
             if taille:
-                mesures = f' width="{taille[0] // 2}" height="{taille[1] // 2}"'
+                mesures = (f' width="{round(taille[0] * 0.6)}"'
+                           f' height="{round(taille[1] * 0.6)}"')
             return (f'<li class="logo-ecole">'
                     f'<img src="/{DOSSIER_LOGOS}/{fichier}{extension}"{mesures} '
                     f'alt="{alt}" loading="lazy"></li>')

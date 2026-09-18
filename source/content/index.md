@@ -7,17 +7,12 @@ faq: true
 
 <section class="heros">
   <div class="conteneur-etroit centre">
-    <span class="pastille">
-      <i aria-hidden="true"></i> Réviser plus intelligemment, pas plus longtemps
-    </span>
     <h1>Des flashcards pour la prépa<br>
       qui vous font<br><span class="mot-anime"
         data-mots="réussir|retenir|tenir le rythme|progresser"
         aria-label="réussir"><span class="mot-lettres"></span><span class="mot-curseur" aria-hidden="true"></span></span></h1>
     <p class="chapeau">PrépaCards reprend la répétition espacée qui a fait la
-      réputation d'Anki, et ajoute ce qui manquait vraiment : il
-      <strong>écoute si vous prononcez le mot</strong>, et il transforme
-      <strong>la photo d'une formule en carte de maths</strong>.</p>
+      réputation d'Anki, et ajoute ce qui manquait vraiment.</p>
     <p class="actions">
       <a class="bouton" href="/telecharger/">Télécharger gratuitement</a>
       <a class="bouton-secondaire" href="/fonctionnalites/">Voir les fonctionnalités</a>
@@ -58,10 +53,9 @@ faq: true
           </svg>
         </span>
 
-        <p class="demo-legende" aria-hidden="true"></p>
-        <span class="demo-points" aria-hidden="true"></span>
       </div>
     </div>
+    <p class="demo-legende" aria-hidden="true"></p>
   </div>
 </section>
 
@@ -70,8 +64,6 @@ faq: true
   <div class="defile">
 {{bandeau_ecoles}}
   </div>
-  <p class="bandeau-mention">Noms cités à titre informatif. PrépaCards est une
-    application indépendante, sans affiliation avec ces établissements.</p>
 </section>
 
 <section class="section">

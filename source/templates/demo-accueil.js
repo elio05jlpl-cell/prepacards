@@ -12,8 +12,9 @@
 
   var vues = [].slice.call(bloc.querySelectorAll('.demo-vue'));
   var curseur = bloc.querySelector('.demo-curseur');
-  var legende = bloc.querySelector('.demo-legende');
-  var points = bloc.querySelector('.demo-points');
+  // La legende est passee SOUS le cadre : elle n'est plus un
+  // descendant de #demo-app, d'ou la recherche dans le document.
+  var legende = document.querySelector('.demo-legende');
   var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // vue    : index de la capture affichee
@@ -35,18 +36,11 @@
       texte: 'Temps passé, régularité, réussite : mois par mois' }
   ];
 
-  etapes.forEach(function () {
-    points.appendChild(document.createElement('span'));
-  });
-  var pastilles = [].slice.call(points.children);
 
   function afficher(index) {
     var etape = etapes[index];
     vues.forEach(function (v, i) {
       v.classList.toggle('active', i === etape.vue);
-    });
-    pastilles.forEach(function (p, i) {
-      p.classList.toggle('actif', i === index);
     });
     legende.textContent = etape.texte;
   }

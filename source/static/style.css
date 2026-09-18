@@ -14,7 +14,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(/fonts/manrope-400-latin-ext.woff2?v=3911b66d) format('woff2');
+  src: url(/fonts/manrope-400-latin-ext.woff2) format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
@@ -22,7 +22,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(/fonts/manrope-400-latin.woff2?v=a30ddcd3) format('woff2');
+  src: url(/fonts/manrope-400-latin.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
@@ -30,7 +30,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(/fonts/manrope-500-latin-ext.woff2?v=3911b66d) format('woff2');
+  src: url(/fonts/manrope-500-latin-ext.woff2) format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
@@ -38,7 +38,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(/fonts/manrope-500-latin.woff2?v=a30ddcd3) format('woff2');
+  src: url(/fonts/manrope-500-latin.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
@@ -46,7 +46,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(/fonts/manrope-700-latin-ext.woff2?v=3911b66d) format('woff2');
+  src: url(/fonts/manrope-700-latin-ext.woff2) format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
@@ -54,7 +54,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(/fonts/manrope-700-latin.woff2?v=a30ddcd3) format('woff2');
+  src: url(/fonts/manrope-700-latin.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
@@ -62,7 +62,7 @@
   font-style: normal;
   font-weight: 800;
   font-display: swap;
-  src: url(/fonts/manrope-800-latin-ext.woff2?v=3911b66d) format('woff2');
+  src: url(/fonts/manrope-800-latin-ext.woff2) format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
@@ -70,7 +70,7 @@
   font-style: normal;
   font-weight: 800;
   font-display: swap;
-  src: url(/fonts/manrope-800-latin.woff2?v=a30ddcd3) format('woff2');
+  src: url(/fonts/manrope-800-latin.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -252,7 +252,7 @@ strong { color: var(--encre); font-weight: 700; }
    Les noms sont en typographie, pas en logos : ce sont des marques deposees,
    et les afficher laisserait croire a un partenariat qui n'existe pas. */
 
-.bandeau-ecoles { padding: 8px 0 40px; }
+.bandeau-ecoles { padding: 64px 0 40px; }
 
 .bandeau-titre {
   text-align: center; color: var(--gris);
@@ -289,7 +289,7 @@ strong { color: var(--encre); font-weight: 700; }
 .logo-ecole img {
   /* Les dimensions viennent des attributs width/height du HTML : chaque logo
      a sa hauteur propre, calculee selon sa forme par preparer_logos.py. */
-  height: auto; max-width: 170px;
+  height: auto; max-width: 204px;
   /* En couleur : les logos d'ecole sont reconnus a leur couleur autant
      qu'a leur forme, et un bandeau gris les rendait tous semblables. */
   opacity: .92;
@@ -1131,39 +1131,20 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
 /* --- La legende ---------------------------------------------------- */
 
 .demo-legende {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  margin: 0;
-  padding: 26px 18px 12px;
-  background: linear-gradient(to top, rgba(255, 255, 255, .97) 42%,
-                                      rgba(255, 255, 255, 0));
-  font-family: Nunito, sans-serif;
-  font-size: .9rem;
+  margin: 18px auto 0;
+  max-width: 46ch;
+  font-family: Poppins, sans-serif;
+  font-size: 1.05rem;
   font-weight: 600;
+  line-height: 1.45;
   color: #1e3a8a;
   text-align: center;
-  z-index: 2;
   transition: opacity .3s ease;
 }
 
-.demo-points {
-  position: absolute;
-  left: 0; right: 0; bottom: 8px;
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  z-index: 4;
-}
-.demo-points span {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: rgba(30, 58, 138, .22);
-  transition: background-color .3s ease, width .3s ease;
-}
-.demo-points span.actif { background: var(--bleu); width: 16px; border-radius: 3px; }
 
 @media (max-width: 900px) {
-  .demo-legende { font-size: .82rem; padding: 20px 12px 14px; }
+  .demo-legende { font-size: .95rem; margin-top: 14px; }
   .demo-curseur { width: 18px; height: 18px; }
 }
 
