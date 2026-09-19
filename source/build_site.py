@@ -63,6 +63,7 @@ import shutil
 import struct
 from datetime import date, datetime
 from pathlib import Path
+from urllib.parse import quote
 
 import markdown
 
@@ -429,13 +430,18 @@ NAV = [
 # liste d'attente : un bouton « S'abonner » qui n'ouvre rien coute plus
 # qu'il ne rapporte.
 PAIEMENT = {
-    "mensuel": "",   # https://buy.stripe.com/...
+    "mensuel": "https://buy.stripe.com/aFa6oH6954kbaS467H7Re00",
     "annuel": "",    # https://buy.stripe.com/...
 }
 
 
 def paiement_ouvert() -> bool:
-    return all(PAIEMENT.get(cle, "").strip() for cle in ("mensuel", "annuel"))
+    """Au moins une offre est-elle achetable ?
+
+    Chaque offre est independante de l'autre : attendre d'avoir les deux
+    liens pour ouvrir la vente retarderait la premiere sans rien y gagner.
+    """
+    return any(PAIEMENT.get(cle, "").strip() for cle in ("mensuel", "annuel"))
 
 
 def bouton_abonnement(offre: str, principal: bool) -> str:
@@ -443,7 +449,16 @@ def bouton_abonnement(offre: str, principal: bool) -> str:
     classe = "bouton" if principal else "bouton-secondaire"
     adresse = PAIEMENT.get(offre, "").strip()
     if not adresse:
-        return (f'<a class="{classe}" href="#liste-attente">Être prévenu</a>')
+        # Vers l'adresse e-mail directement, et non vers l'encadre du bas :
+        # celui-ci renvoie a son tour vers ce bouton des qu'une autre offre
+        # est ouverte, et le visiteur tourne en rond.
+        # « mensuel » + « e » donnerait « mensuele » : le feminin est ecrit
+        # en toutes lettres plutot que fabrique par concatenation.
+        libelle = {"mensuel": "mensuelle", "annuel": "annuelle"}.get(offre, offre)
+        sujet = f"Offre {libelle} - me prevenir de l'ouverture"
+        lien = ("mailto:contact@prepacards.fr?subject="
+                + quote(sujet, safe=""))
+        return f'<a class="{classe}" href="{lien}">Être prévenu</a>'
     return (f'<a class="{classe}" href="{adresse}"'
             f' rel="noopener">S\'abonner</a>')
 
@@ -472,7 +487,24 @@ def bloc_paiement() -> str:
         'nos soins.\n'
         '  L\'abonnement se résilie à tout moment depuis le lien reçu par '
         'e-mail.</p>\n'
+        + _reserve_offres() +
         '</div>')
+
+
+def _reserve_offres() -> str:
+    """Signale les formules pas encore ouvertes, quand il en reste.
+
+    Sans cette phrase, une offre mise en avant comme « la plus avantageuse »
+    mais dont le bouton dit « Être prévenu » passe pour un defaut du site.
+    """
+    manquantes = [nom for cle, nom in (("mensuel", "mensuelle"),
+                                       ("annuel", "annuelle"))
+                  if not PAIEMENT.get(cle, "").strip()]
+    if not manquantes:
+        return ""
+    return ('  <p>La formule ' + " et ".join(manquantes)
+            + ' ouvre très bientôt. En attendant, laissez votre adresse par le'
+              ' bouton de cette offre et vous serez prévenu.</p>\n')
 
 
 # Reseaux sociaux de la barre sombre.
