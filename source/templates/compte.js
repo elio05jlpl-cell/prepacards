@@ -64,7 +64,13 @@
     var donnees = {};
     try { donnees = await reponse.json(); } catch (e) { /* corps vide */ }
     if (!reponse.ok) {
-      var erreur = new Error(donnees.erreur || 'Demande refusée.');
+      // Un 404 sur /api ne vient pas du visiteur : c'est le service qui
+      // n'est pas la. Lui repondre « demande refusee » lui ferait relire
+      // son mot de passe pendant des minutes pour rien.
+      var defaut = (reponse.status === 404 || reponse.status === 405)
+        ? 'Le service de comptes n’est pas encore ouvert. Réessayez plus tard.'
+        : 'Demande refusée.';
+      var erreur = new Error(donnees.erreur || defaut);
       erreur.statut = reponse.status;
       throw erreur;
     }
