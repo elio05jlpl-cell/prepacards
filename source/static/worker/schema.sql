@@ -1,0 +1,77 @@
+-- Base des comptes PrepaCards (Cloudflare D1)
+-- ===========================================
+--
+-- Ce que cette base contient, et surtout ce qu'elle NE contient PAS.
+--
+-- Elle stocke une adresse e-mail, une empreinte de mot de passe, l'etat de
+-- l'abonnement et, si l'utilisateur le demande, une sauvegarde CHIFFREE de
+-- ses paquets. Elle ne contient aucune carte lisible : la sauvegarde est
+-- chiffree sur la machine de l'eleve, avec une cle derivee de son mot de
+-- passe, et le serveur ne recoit que des octets qu'il ne peut pas ouvrir.
+--
+-- C'est ce qui permet de continuer a dire que les cartes ne sortent pas de
+-- l'ordinateur : ce qui sort est illisible sans le mot de passe, lequel
+-- n'est jamais transmis en clair et n'est pas conserve.
+--
+-- Application :  npx wrangler d1 execute prepacards --file=worker/schema.sql
+
+CREATE TABLE IF NOT EXISTS comptes (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    -- Toujours en minuscules : « Elio@… » et « elio@… » sont la meme
+    -- personne, et deux comptes pour une seule boite aux lettres rendraient
+    -- l'abonnement introuvable au moment ou on en a besoin.
+    email           TEXT NOT NULL UNIQUE,
+    sel             TEXT NOT NULL,   -- base64
+    empreinte       TEXT NOT NULL,   -- base64, PBKDF2-HMAC-SHA256
+    iterations      INTEGER NOT NULL,
+    cree_le         TEXT NOT NULL,
+
+    -- Abonnement. « statut » suit le vocabulaire de Stripe pour qu'aucune
+    -- traduction ne se perde entre les deux : trialing, active, past_due,
+    -- canceled, ou vide quand la personne n'a jamais payé.
+    statut          TEXT NOT NULL DEFAULT '',
+    offre           TEXT NOT NULL DEFAULT '',   -- mensuel | annuel
+    client_stripe   TEXT,
+    abonnement_stripe TEXT,
+    -- Fin de la periode deja reglee. C'est elle qui fait foi cote
+    -- application : un abonnement resilie reste actif jusqu'a son terme.
+    valide_jusqu_au TEXT,
+    maj_le          TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_comptes_client
+    ON comptes (client_stripe);
+
+-- Jetons de session, remis a l'application et au site apres connexion.
+-- Stockes haches : une fuite de la base ne doit pas donner des sessions
+-- utilisables, exactement comme pour les mots de passe.
+CREATE TABLE IF NOT EXISTS sessions (
+    empreinte_jeton TEXT PRIMARY KEY,
+    compte_id       INTEGER NOT NULL,
+    cree_le         TEXT NOT NULL,
+    expire_le       TEXT NOT NULL,
+    origine         TEXT NOT NULL DEFAULT '',  -- application | site
+    FOREIGN KEY (compte_id) REFERENCES comptes(id) ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS idx_sessions_compte
+    ON sessions (compte_id);
+
+-- Sauvegarde chiffree des paquets. Une seule par compte : ce qu'on veut,
+-- c'est retrouver son travail sur une machine neuve, pas tenir un
+-- historique de versions dont personne ne se sert.
+CREATE TABLE IF NOT EXISTS sauvegardes (
+    compte_id     INTEGER PRIMARY KEY,
+    contenu       BLOB NOT NULL,     -- chiffre cote client, illisible ici
+    octets        INTEGER NOT NULL,
+    cartes        INTEGER NOT NULL DEFAULT 0,   -- pour l'affichage seulement
+    depose_le     TEXT NOT NULL,
+    FOREIGN KEY (compte_id) REFERENCES comptes(id) ON DELETE CASCADE
+);
+
+-- Evenements Stripe deja traites. Stripe peut rejouer un evenement, et
+-- appliquer deux fois une resiliation n'est pas anodin.
+CREATE TABLE IF NOT EXISTS evenements_stripe (
+    id        TEXT PRIMARY KEY,
+    recu_le   TEXT NOT NULL
+);

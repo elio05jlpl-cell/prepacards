@@ -1,0 +1,27 @@
+// Configuration AVEC le service des comptes.
+//
+// A recopier dans static/wrangler.jsonc une fois la base D1 creee et son
+// identifiant connu. Voir worker/INSTALLATION.md.
+{
+  "name": "prepacardsss",
+  "compatibility_date": "2026-09-13",
+
+  // Le Worker ne traite que /api/… ; tout le reste repart vers les fichiers
+  // statiques par le lien ASSETS, donc le site garde sa vitesse.
+  "main": "worker/index.js",
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "prepacards",
+      "database_id": "A-REMPLACER-PAR-L-IDENTIFIANT-DONNE-PAR-WRANGLER"
+    }
+  ],
+
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

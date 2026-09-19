@@ -15,3 +15,8 @@ wrangler.jsonc
 # lisible en ligne, et cela exposerait les articles pas encore parus.
 source
 .github
+
+# Code du service de comptes : deploye, mais jamais servi.
+# Sans cette ligne, /worker/index.js exposerait la logique
+# d'authentification a qui la demande.
+worker

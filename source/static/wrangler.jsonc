@@ -8,11 +8,22 @@
 // Il vit dans static/ et non dans public/ : public/ est entierement vide a
 // chaque construction, le fichier y serait efface. static/ est recopie tel
 // quel dans public/, donc la configuration accompagne toujours le site.
+//
+// SERVICE DES COMPTES : PAS ENCORE ACTIF.
+//
+// Le code vit dans worker/, avec sa configuration prete dans
+// worker/wrangler-comptes.jsonc. Il n'est PAS branche ici tant que la base
+// D1 n'existe pas : un identifiant de base invalide fait echouer
+// « wrangler deploy », et plus rien ne se met en ligne - y compris la
+// publication automatique des articles.
+//
+// Pour l'activer, voir worker/INSTALLATION.md.
 {
   "name": "prepacardsss",
   "compatibility_date": "2026-09-13",
 
   "assets": {
+
     // Le depot pousse vers GitHub EST le dossier public/ : la racine du
     // depot contient donc directement index.html, img/, fonts/, etc.
     "directory": ".",
