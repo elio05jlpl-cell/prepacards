@@ -36,6 +36,8 @@ conditions.
 ## 3. Prix
 
 Le prix de l'abonnement Premium est de **9,99 € par mois** ou de **95,90 € par an**, toutes taxes comprises. La formule annuelle revient à 7,99 € par mois.
+
+Chaque formule s'ouvre sur une **période d'essai gratuite de trente jours**. Aucun montant n'est prélevé pendant cette période, et l'abonnement peut être résilié à tout moment avant son terme sans être facturé.
 Les prix sont indiqués en euros. Le Vendeur se réserve le droit de les
 modifier ; le prix applicable est celui affiché au moment de la commande, et
 tout abonnement en cours reste au tarif souscrit jusqu'à son terme.

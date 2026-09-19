@@ -429,9 +429,16 @@ NAV = [
 # Tant qu'une adresse est vide, la page des tarifs continue d'afficher la
 # liste d'attente : un bouton « S'abonner » qui n'ouvre rien coute plus
 # qu'il ne rapporte.
+# Duree de l'essai gratuit, telle que configuree DANS STRIPE. Releve sur
+# les deux pages de paiement le 19/09/2026. A tenir a jour a la main :
+# rien ici ne peut la deviner, et une page qui promet trente jours quand
+# Stripe n'en accorde plus serait une promesse non tenue au moment du
+# paiement.
+ESSAI_JOURS = 30
+
 PAIEMENT = {
     "mensuel": "https://buy.stripe.com/aFa6oH6954kbaS467H7Re00",
-    "annuel": "",    # https://buy.stripe.com/...
+    "annuel": "https://buy.stripe.com/dRmbJ17d94kbd0c0Nn7Re01",
 }
 
 
@@ -459,6 +466,13 @@ def bouton_abonnement(offre: str, principal: bool) -> str:
         lien = ("mailto:contact@prepacards.fr?subject="
                 + quote(sujet, safe=""))
         return f'<a class="{classe}" href="{lien}">Être prévenu</a>'
+
+    # Le libelle annonce l'essai plutot que l'abonnement : c'est ce que
+    # montre la page de paiement, et promettre moins que ce qui attend le
+    # visiteur fait perdre des essais pour rien.
+    if ESSAI_JOURS:
+        return (f'<a class="{classe}" href="{adresse}" rel="noopener">'
+                f'Essayer {ESSAI_JOURS} jours gratuitement</a>')
     return (f'<a class="{classe}" href="{adresse}"'
             f' rel="noopener">S\'abonner</a>')
 

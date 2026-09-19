@@ -38,7 +38,7 @@ faq: true
       <h3>Mensuel</h3>
       <p class="offre-sous">L'offre complète, sans engagement</p>
       <p class="prix">9,99 €<small>/ mois</small></p>
-      <p class="prix-detail">résiliable à tout moment</p>
+      <p class="prix-detail"><strong>30 jours gratuits</strong>, puis résiliable à tout moment</p>
       <ul class="offre-liste">
         <li><strong>Tout ce que contient l'offre gratuite</strong></li>
         <li>Écoute de la prononciation, dans les cinq langues</li>
@@ -59,7 +59,7 @@ faq: true
       <h3>Annuel</h3>
       <p class="offre-sous">La même chose, 20&nbsp;% moins cher</p>
       <p class="prix">95,90 €<small>/ an</small></p>
-      <p class="prix-detail">soit 7,99 € par mois</p>
+      <p class="prix-detail"><strong>30 jours gratuits</strong> · soit 7,99 € par mois</p>
       <ul class="offre-liste">
         <li><strong>Exactement l'offre mensuelle</strong></li>
         <li>Écoute de la prononciation, dans les cinq langues</li>
