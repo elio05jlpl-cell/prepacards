@@ -13,3 +13,9 @@
 # La page « Pour le droit » a ete retiree : le site s'adresse desormais aux
 # seules classes preparatoires.
 /droit/*  /prepa/  301
+
+# La page « Se connecter » annoncait un acces « en preparation ». Le compte
+# existe depuis le 20 septembre 2026 : /compte/ est la vraie page, avec le
+# formulaire. Deux pages qui se disputent le meme role en laissent forcement
+# une en retard sur les faits.
+/connexion/  /compte/  301
