@@ -9,24 +9,42 @@
 // chaque construction, le fichier y serait efface. static/ est recopie tel
 // quel dans public/, donc la configuration accompagne toujours le site.
 //
-// SERVICE DES COMPTES : PAS ENCORE ACTIF.
-//
-// Le code vit dans worker/, avec sa configuration prete dans
-// worker/wrangler-comptes.jsonc. Il n'est PAS branche ici tant que la base
-// D1 n'existe pas : un identifiant de base invalide fait echouer
-// « wrangler deploy », et plus rien ne se met en ligne - y compris la
-// publication automatique des articles.
-//
-// Pour l'activer, voir worker/INSTALLATION.md.
+// SERVICE DES COMPTES : ACTIF depuis le 19 septembre 2026.
 {
   "name": "prepacardsss",
   "compatibility_date": "2026-09-13",
+
+  // Le Worker ne traite que /api/… ; tout le reste repart vers les fichiers
+  // statiques par le lien ASSETS, donc le site garde sa vitesse. Le code
+  // est exclu des fichiers servis par .assetsignore : il s'execute, il ne
+  // se telecharge pas.
+  "main": "worker/index.js",
+
+  // Base des comptes, creee en region WEUR — l'Union europeenne, comme
+  // l'annonce la page de confidentialite. L'identifiant n'est pas un
+  // secret : il ne donne acces a rien sans les droits du compte. Le seul
+  // secret de ce service, STRIPE_WEBHOOK_SECRET, est depose par
+  // « wrangler secret put » et n'apparait nulle part dans le depot.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "prepacards",
+      "database_id": "b7a894a6-0c11-46b0-97b1-40ae5f066dbc"
+    }
+  ],
 
   "assets": {
 
     // Le depot pousse vers GitHub EST le dossier public/ : la racine du
     // depot contient donc directement index.html, img/, fonts/, etc.
     "directory": ".",
+
+    // Indispensable des lors qu'il y a un « main ». Le Worker ne traite que
+    // /api/… et repasse tout le reste a env.ASSETS.fetch() ; sans ce lien,
+    // env.ASSETS est indefini et CHAQUE page du site tombe en erreur. Sans
+    // « main », Cloudflare sert les fichiers sans passer par le code et
+    // l'oubli ne se voit pas.
+    "binding": "ASSETS",
 
     // « auto-trailing-slash » sert /prepa/index.html quand le visiteur
     // demande /prepa/ ou /prepa. Sans cela, toutes les pages du site
