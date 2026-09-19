@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Confidentialité et données personnelles — PrépaCards</title>
-<meta name="description" content="Quelles données PrépaCards traite et où elles sont stockées. Ni vos cartes ni votre compte ne quittent l&#x27;ordinateur : aucun serveur, aucun traceur, aucune publicité.">
+<meta name="description" content="Quelles données PrépaCards traite et où elles sont stockées. Vos cartes ne quittent jamais votre ordinateur, sauf sauvegarde chiffrée que nous ne pouvons pas lire.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://prepacards.fr/confidentialite/">
 
@@ -12,17 +12,17 @@
 <meta property="og:site_name" content="PrépaCards">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="Confidentialité et données personnelles — PrépaCards">
-<meta property="og:description" content="Quelles données PrépaCards traite et où elles sont stockées. Ni vos cartes ni votre compte ne quittent l&#x27;ordinateur : aucun serveur, aucun traceur, aucune publicité.">
+<meta property="og:description" content="Quelles données PrépaCards traite et où elles sont stockées. Vos cartes ne quittent jamais votre ordinateur, sauf sauvegarde chiffrée que nous ne pouvons pas lire.">
 <meta property="og:url" content="https://prepacards.fr/confidentialite/">
 <meta property="og:image" content="https://prepacards.fr/img/og-prepacards.png?v=de8ad632">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Confidentialité et données personnelles — PrépaCards">
-<meta name="twitter:description" content="Quelles données PrépaCards traite et où elles sont stockées. Ni vos cartes ni votre compte ne quittent l&#x27;ordinateur : aucun serveur, aucun traceur, aucune publicité.">
+<meta name="twitter:description" content="Quelles données PrépaCards traite et où elles sont stockées. Vos cartes ne quittent jamais votre ordinateur, sauf sauvegarde chiffrée que nous ne pouvons pas lire.">
 <meta name="twitter:image" content="https://prepacards.fr/img/og-prepacards.png?v=de8ad632">
 
 <link rel="icon" href="/img/favicon.png?v=2208486d" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=fcb36135">
-<link rel="stylesheet" href="/style.css?v=ac6d017cca">
+<link rel="stylesheet" href="/style.css?v=a1b39475ed">
 <link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Mes enregistrements vocaux sont-ils conservés ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. L'audio est transcrit en mémoire puis abandonné. Aucun fichier audio n'est écrit sur le disque, et rien n'est envoyé sur internet : la reconnaissance vocale fonctionne sur votre processeur."}}, {"@type": "Question", "name": "Les images de ma webcam sont-elles enregistrées ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Les images servent uniquement à mesurer le mouvement de vos lèvres, image par image, en mémoire. L'application n'écrit aucune capture et la caméra se referme quand vous quittez la session."}}, {"@type": "Question", "name": "Faut-il un compte pour utiliser l'application ?", "acceptedAnswer": {"@type": "Answer", "text": "Un compte est créé au premier lancement, mais il est entièrement local : il n'est enregistré nulle part ailleurs que sur votre ordinateur, et aucune vérification d'adresse e-mail n'a lieu. Personne, y compris nous, ne peut le récupérer — ce qui signifie aussi qu'il n'existe pas de procédure de mot de passe oublié."}}, {"@type": "Question", "name": "Ce site utilise-t-il Google Analytics ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Aucun outil de mesure d'audience n'est installé."}}]}</script>
@@ -69,9 +69,10 @@
 <main id="contenu">
 <div class="feuille-texte">
 <h1 id="confidentialite-et-donnees-personnelles">Confidentialité et données personnelles</h1>
-<p class="chapeau">Position tenue par PrépaCards : l'application n'a pas de
-serveur, donc elle n'a rien à collecter. Cette page détaille les trois seuls
-cas où des données quittent votre ordinateur.</p>
+<p class="chapeau">Position tenue par PrépaCards : l'application fonctionne
+sans compte et sans réseau. Un compte en ligne existe pour les abonnés, et il
+ne connaît que l'adresse e-mail et l'état de l'abonnement. Cette page détaille
+chaque cas où une donnée quitte votre ordinateur.</p>
 
 <div class="encart encart-attention">
   <p><strong>À relire avant la mise en ligne</strong>, et à faire vérifier si
@@ -81,10 +82,15 @@ cas où des données quittent votre ordinateur.</p>
 </div>
 
 <h2 id="dans-lapplication">Dans l'application</h2>
-<p><strong>Vos cartes, votre historique de révision et votre compte</strong> sont enregistrés
-dans un fichier local, sur votre ordinateur, à l'emplacement
-<code>%APPDATA%\PrepaCards</code>. Ils ne sont jamais transmis : il n'existe aucun serveur
-PrépaCards.</p>
+<p><strong>Vos cartes, votre historique de révision et votre compte local</strong> sont
+enregistrés dans un fichier, sur votre ordinateur, à l'emplacement
+<code>%APPDATA%\PrepaCards</code>. La répétition espacée, les statistiques et la
+reconnaissance de votre prononciation sont calculées là, sur votre machine.</p>
+<p><strong>Vos cartes ne sont jamais transmises</strong>, à une exception que vous déclenchez
+vous-même : la sauvegarde en ligne. Elle est <strong>chiffrée sur votre ordinateur</strong>
+avant d'être envoyée, avec une clé dérivée de votre mot de passe. Nous
+recevons des octets que nous ne pouvons pas ouvrir, et que vous seul pouvez
+restaurer.</p>
 <p><strong>Le mot de passe</strong> de votre compte local n'est pas conservé en clair. Seule
 une empreinte cryptographique est stockée (PBKDF2-HMAC-SHA256, 200 000
 itérations, avec un sel aléatoire). Ce compte verrouille l'ouverture de
@@ -95,7 +101,7 @@ processeur, puis immédiatement abandonnées. Aucun enregistrement audio ni aucu
 image n'est conservé sur le disque ni transmis.</p>
 <p><strong>Aucune mesure d'audience, aucune télémétrie</strong> n'est intégrée à
 l'application : elle ne signale ni son installation, ni son usage.</p>
-<h2 id="les-trois-cas-ou-une-donnee-sort-de-votre-ordinateur">Les trois cas où une donnée sort de votre ordinateur</h2>
+<h2 id="les-cas-ou-une-donnee-sort-de-votre-ordinateur">Les cas où une donnée sort de votre ordinateur</h2>
 <ol>
 <li><strong>Traduction automatique d'une carte.</strong> Le mot à traduire — et lui seul —
    est envoyé au service MyMemory (Translated srl, Italie). Ni votre adresse
@@ -106,8 +112,29 @@ l'application : elle ne signale ni son installation, ni son usage.</p>
    formules depuis Hugging Face, Google et GitHub. Ces téléchargements
    transmettent ce que transmet toute requête web : votre adresse IP et le
    fichier demandé.</li>
-<li><strong>Consultation de ce site.</strong> Voir ci-dessous.</li>
+<li><strong>Compte en ligne, pour les abonnés.</strong> Voir la section suivante.</li>
+<li><strong>Consultation de ce site.</strong> Voir plus bas.</li>
 </ol>
+<h2 id="le-compte-en-ligne">Le compte en ligne</h2>
+<p>Il est <strong>facultatif</strong>. L'application s'utilise entièrement sans lui : créer
+des cartes, réviser, importer des paquets, consulter ses statistiques ne
+demandent aucun compte et aucun réseau. Le compte sert à deux choses, et deux
+seulement : retrouver son abonnement sur une autre machine, et déposer une
+sauvegarde.</p>
+<p><strong>Ce que le serveur enregistre</strong> : votre adresse e-mail, une empreinte de
+votre mot de passe (PBKDF2-HMAC-SHA256, 200 000 itérations, avec un sel
+aléatoire), l'état de votre abonnement et sa date d'échéance, ainsi que
+l'identifiant client transmis par Stripe.</p>
+<p><strong>Ce qu'il n'enregistre pas</strong> : vos cartes, vos paquets, votre historique de
+révision, vos statistiques, vos enregistrements vocaux, vos photos. Rien de
+tout cela ne lui est transmis.</p>
+<p><strong>La sauvegarde</strong>, si vous la déclenchez, est chiffrée sur votre ordinateur
+avec une clé dérivée de votre mot de passe. Le serveur reçoit un bloc
+d'octets qu'il ne peut pas ouvrir. Conséquence à connaître : <strong>si vous oubliez
+votre mot de passe, la sauvegarde est définitivement illisible</strong>, y compris
+pour nous. C'est le prix de ce chiffrement, et nous préférons ce défaut à la
+possibilité de lire vos cartes.</p>
+<p>Le service est hébergé chez Cloudflare, dans l'Union européenne.</p>
 <h2 id="sur-ce-site">Sur ce site</h2>
 <p>Ce site est statique : il ne dépose <strong>aucun cookie</strong> et n'utilise aucun outil
 de suivi publicitaire. Il n'y a donc pas de bandeau de consentement, faute de

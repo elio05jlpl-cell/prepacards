@@ -196,7 +196,10 @@ def verifier_redirections() -> list:
 
 # Dossiers presents dans public/ mais qui ne sont pas le site : ils
 # figurent dans .assetsignore et ne sont jamais servis.
-HORS_SITE = (".git/", "source/", ".github/")
+# Dossiers presents dans le depot mais jamais servis : ils figurent tous
+# dans .assetsignore. Les auditer reviendrait a se plaindre de fichiers
+# que personne ne peut demander.
+HORS_SITE = (".git/", "source/", ".github/", "worker/")
 
 
 def auditer() -> list:

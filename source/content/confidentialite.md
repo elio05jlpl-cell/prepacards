@@ -1,15 +1,16 @@
 ---
 title: Confidentialité et données personnelles — PrépaCards
-description: Quelles données PrépaCards traite et où elles sont stockées. Ni vos cartes ni votre compte ne quittent l'ordinateur : aucun serveur, aucun traceur, aucune publicité.
+description: Quelles données PrépaCards traite et où elles sont stockées. Vos cartes ne quittent jamais votre ordinateur, sauf sauvegarde chiffrée que nous ne pouvons pas lire.
 slug: confidentialite
 faq: true
 ---
 
 # Confidentialité et données personnelles
 
-<p class="chapeau">Position tenue par PrépaCards : l'application n'a pas de
-serveur, donc elle n'a rien à collecter. Cette page détaille les trois seuls
-cas où des données quittent votre ordinateur.</p>
+<p class="chapeau">Position tenue par PrépaCards : l'application fonctionne
+sans compte et sans réseau. Un compte en ligne existe pour les abonnés, et il
+ne connaît que l'adresse e-mail et l'état de l'abonnement. Cette page détaille
+chaque cas où une donnée quitte votre ordinateur.</p>
 
 <div class="encart encart-attention">
   <p><strong>À relire avant la mise en ligne</strong>, et à faire vérifier si
@@ -20,10 +21,16 @@ cas où des données quittent votre ordinateur.</p>
 
 ## Dans l'application
 
-**Vos cartes, votre historique de révision et votre compte** sont enregistrés
-dans un fichier local, sur votre ordinateur, à l'emplacement
-`%APPDATA%\PrepaCards`. Ils ne sont jamais transmis : il n'existe aucun serveur
-PrépaCards.
+**Vos cartes, votre historique de révision et votre compte local** sont
+enregistrés dans un fichier, sur votre ordinateur, à l'emplacement
+`%APPDATA%\PrepaCards`. La répétition espacée, les statistiques et la
+reconnaissance de votre prononciation sont calculées là, sur votre machine.
+
+**Vos cartes ne sont jamais transmises**, à une exception que vous déclenchez
+vous-même : la sauvegarde en ligne. Elle est **chiffrée sur votre ordinateur**
+avant d'être envoyée, avec une clé dérivée de votre mot de passe. Nous
+recevons des octets que nous ne pouvons pas ouvrir, et que vous seul pouvez
+restaurer.
 
 **Le mot de passe** de votre compte local n'est pas conservé en clair. Seule
 une empreinte cryptographique est stockée (PBKDF2-HMAC-SHA256, 200 000
@@ -38,7 +45,7 @@ image n'est conservé sur le disque ni transmis.
 **Aucune mesure d'audience, aucune télémétrie** n'est intégrée à
 l'application : elle ne signale ni son installation, ni son usage.
 
-## Les trois cas où une donnée sort de votre ordinateur
+## Les cas où une donnée sort de votre ordinateur
 
 1. **Traduction automatique d'une carte.** Le mot à traduire — et lui seul —
    est envoyé au service MyMemory (Translated srl, Italie). Ni votre adresse
@@ -49,7 +56,34 @@ l'application : elle ne signale ni son installation, ni son usage.
    formules depuis Hugging Face, Google et GitHub. Ces téléchargements
    transmettent ce que transmet toute requête web : votre adresse IP et le
    fichier demandé.
-3. **Consultation de ce site.** Voir ci-dessous.
+3. **Compte en ligne, pour les abonnés.** Voir la section suivante.
+4. **Consultation de ce site.** Voir plus bas.
+
+## Le compte en ligne
+
+Il est **facultatif**. L'application s'utilise entièrement sans lui : créer
+des cartes, réviser, importer des paquets, consulter ses statistiques ne
+demandent aucun compte et aucun réseau. Le compte sert à deux choses, et deux
+seulement : retrouver son abonnement sur une autre machine, et déposer une
+sauvegarde.
+
+**Ce que le serveur enregistre** : votre adresse e-mail, une empreinte de
+votre mot de passe (PBKDF2-HMAC-SHA256, 200 000 itérations, avec un sel
+aléatoire), l'état de votre abonnement et sa date d'échéance, ainsi que
+l'identifiant client transmis par Stripe.
+
+**Ce qu'il n'enregistre pas** : vos cartes, vos paquets, votre historique de
+révision, vos statistiques, vos enregistrements vocaux, vos photos. Rien de
+tout cela ne lui est transmis.
+
+**La sauvegarde**, si vous la déclenchez, est chiffrée sur votre ordinateur
+avec une clé dérivée de votre mot de passe. Le serveur reçoit un bloc
+d'octets qu'il ne peut pas ouvrir. Conséquence à connaître : **si vous oubliez
+votre mot de passe, la sauvegarde est définitivement illisible**, y compris
+pour nous. C'est le prix de ce chiffrement, et nous préférons ce défaut à la
+possibilité de lire vos cartes.
+
+Le service est hébergé chez Cloudflare, dans l'Union européenne.
 
 ## Sur ce site
 

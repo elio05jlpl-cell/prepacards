@@ -217,7 +217,8 @@ def scripts_animes(corps: str) -> str:
     for marqueur, fichier in (('class="mot-anime"', "mot-anime.js"),
                               ('id="demo-app"', "demo-accueil.js"),
                               ("data-anim=", "etapes.js"),
-                              ('class="feuille-texte"', "pages-vivantes.js")):
+                              ('class="feuille-texte"', "pages-vivantes.js"),
+                              ('id="compte-app"', "compte.js")):
         chemin = dossier / fichier
         if marqueur in corps and chemin.exists():
             morceaux.append("<script>" + chr(10)

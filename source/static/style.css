@@ -2189,3 +2189,31 @@ html.js .feuille-texte > .vue {
   position: absolute;
   opacity: 0;
 }
+
+/* --- Page du compte ------------------------------------------------ */
+
+.compte-form {
+  display: flex; flex-direction: column; gap: 6px;
+  max-width: 420px; margin-top: 26px;
+}
+.compte-form label {
+  font-size: .88rem; font-weight: 600; color: var(--gris);
+  margin-top: 10px;
+}
+.compte-form input {
+  height: 44px; padding: 0 14px;
+  border: 1px solid var(--bord); border-radius: 12px;
+  background: #fff; font-size: 1rem; font-family: inherit; color: var(--encre);
+}
+.compte-form input:focus {
+  outline: none; border-color: var(--bleu);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, .16);
+}
+.compte-form .bouton { margin-top: 18px; text-align: center; }
+
+.compte-message {
+  margin: 12px 0 0; font-size: .92rem; color: var(--gris);
+}
+.compte-message.erreur { color: #b91c1c; }
+
+.compte-bascule { margin-top: 16px; font-size: .95rem; }

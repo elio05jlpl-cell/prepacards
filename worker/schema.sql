@@ -62,7 +62,15 @@ CREATE INDEX IF NOT EXISTS idx_sessions_compte
 -- historique de versions dont personne ne se sert.
 CREATE TABLE IF NOT EXISTS sauvegardes (
     compte_id     INTEGER PRIMARY KEY,
-    contenu       BLOB NOT NULL,     -- chiffre cote client, illisible ici
+    -- En base64 et non en BLOB. D1 ne rend pas les colonnes binaires sous
+    -- une forme exploitable telle quelle : un essai de bout en bout a
+    -- rendu une sauvegarde VIDE, sans la moindre erreur. Sur des donnees
+    -- irremplacables, la previsibilite vaut mieux que les 33 % d'espace
+    -- economises.
+    contenu       TEXT NOT NULL,     -- chiffre cote client, illisible ici
+    -- Empreinte du contenu d'origine, verifiee a la reprise : une
+    -- sauvegarde corrompue doit se signaler, jamais se rendre en silence.
+    empreinte     TEXT NOT NULL DEFAULT '',
     octets        INTEGER NOT NULL,
     cartes        INTEGER NOT NULL DEFAULT 0,   -- pour l'affichage seulement
     depose_le     TEXT NOT NULL,

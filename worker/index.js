@@ -191,13 +191,20 @@ async function deposerSauvegarde(requete, env) {
   }
   const cartes = Number(requete.headers.get('x-cartes') || 0) || 0;
 
+  // Base64 plutot que BLOB : D1 ne rend pas les colonnes binaires sous une
+  // forme exploitable, et un essai de bout en bout a rendu une sauvegarde
+  // VIDE sans lever la moindre erreur. Sur des donnees irremplacables, la
+  // previsibilite vaut mieux que le tiers d'espace economise.
+  const encode = base64(contenu);
+  const empreinte = base64(await crypto.subtle.digest('SHA-256', contenu));
+
   await env.DB.prepare(
-    'INSERT INTO sauvegardes (compte_id, contenu, octets, cartes, depose_le)'
-    + ' VALUES (?, ?, ?, ?, ?)'
+    'INSERT INTO sauvegardes (compte_id, contenu, empreinte, octets, cartes, depose_le)'
+    + ' VALUES (?, ?, ?, ?, ?, ?)'
     + ' ON CONFLICT(compte_id) DO UPDATE SET contenu = excluded.contenu,'
-    + ' octets = excluded.octets, cartes = excluded.cartes,'
-    + ' depose_le = excluded.depose_le')
-    .bind(compte.id, contenu, contenu.length, cartes, maintenant())
+    + ' empreinte = excluded.empreinte, octets = excluded.octets,'
+    + ' cartes = excluded.cartes, depose_le = excluded.depose_le')
+    .bind(compte.id, encode, empreinte, contenu.length, cartes, maintenant())
     .run();
   return json({ ok: true, octets: contenu.length, cartes });
 }
@@ -206,10 +213,26 @@ async function lireSauvegarde(requete, env) {
   const compte = await compteDeLaRequete(env, requete);
   if (!compte) return erreur('Session expirée.', 401);
   const ligne = await env.DB.prepare(
-    'SELECT contenu, octets, depose_le FROM sauvegardes WHERE compte_id = ?')
+    'SELECT contenu, empreinte, octets, depose_le FROM sauvegardes'
+    + ' WHERE compte_id = ?')
     .bind(compte.id).first();
   if (!ligne) return erreur('Aucune sauvegarde.', 404);
-  return new Response(ligne.contenu, {
+
+  const octets = desBase64(ligne.contenu);
+  // Une sauvegarde abimee doit se SIGNALER. Rendue en silence, elle ferait
+  // croire a une restauration reussie et l'eleve effacerait peut-etre sa
+  // copie locale par-dessus.
+  if (ligne.empreinte) {
+    const verif = base64(await crypto.subtle.digest('SHA-256', octets));
+    if (verif !== ligne.empreinte) {
+      return erreur('Sauvegarde corrompue : ne l’utilisez pas.', 500);
+    }
+  }
+  if (octets.length !== ligne.octets) {
+    return erreur('Sauvegarde incomplète : ne l’utilisez pas.', 500);
+  }
+
+  return new Response(octets, {
     headers: {
       'content-type': 'application/octet-stream',
       'x-depose-le': ligne.depose_le,
