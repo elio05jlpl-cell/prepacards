@@ -21,11 +21,34 @@ export function desBase64(texte) {
   return Uint8Array.from(atob(texte), (c) => c.charCodeAt(0));
 }
 
+// Cloudflare refuse PBKDF2 au-dela de 100 000 iterations par appel :
+// « iteration counts above 100000 are not supported ». On enchaine donc
+// plusieurs tours, la sortie de l'un servant d'entree au suivant, avec le
+// meme sel. Le travail total reste celui d'ITERATIONS, au lieu d'etre
+// divise par deux en se pliant au plafond.
+//
+// Piege a connaitre : ce plafond n'existe QUE sur le vrai reseau.
+// « wrangler dev --local » passe par le crypto de Node, qui accepte
+// 200 000 sans broncher. Un essai en local ne prouve donc rien ici ; il a
+// fallu « --remote » pour voir la panne.
+//
+// En dessous de 100 000, la boucle ne fait qu'un tour et le resultat est
+// exactement celui d'un PBKDF2 ordinaire.
+const PALIER = 100000;
+
 export async function hacherMotDePasse(motDePasse, sel, iterations = ITERATIONS) {
-  const cle = await crypto.subtle.importKey(
-    'raw', encodeur.encode(motDePasse), 'PBKDF2', false, ['deriveBits']);
-  const bits = await crypto.subtle.deriveBits(
-    { name: 'PBKDF2', salt: sel, iterations, hash: 'SHA-256' }, cle, 256);
+  let matiere = encodeur.encode(motDePasse);
+  let restant = Math.max(1, iterations);
+  let bits = null;
+  while (restant > 0) {
+    const tour = Math.min(restant, PALIER);
+    const cle = await crypto.subtle.importKey(
+      'raw', matiere, 'PBKDF2', false, ['deriveBits']);
+    bits = await crypto.subtle.deriveBits(
+      { name: 'PBKDF2', salt: sel, iterations: tour, hash: 'SHA-256' }, cle, 256);
+    matiere = new Uint8Array(bits);
+    restant -= tour;
+  }
   return new Uint8Array(bits);
 }
 

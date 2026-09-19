@@ -1055,7 +1055,10 @@ def copier_source(destination: Path) -> None:
     cible.mkdir(parents=True)
     for nom in ("build_site.py", "audit_site.py"):
         shutil.copy2(ROOT / nom, cible / nom)
-    for nom in ("content", "templates", "static"):
+    # « worker » en fait partie depuis que la construction va y chercher le
+    # code du service : l'action quotidienne reconstruit depuis source/, et
+    # sans ce dossier elle s'arreterait sur une erreur chaque matin.
+    for nom in ("content", "templates", "static", "worker"):
         shutil.copytree(ROOT / nom, cible / nom,
                         ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
     (cible / "requirements.txt").write_text(
@@ -1141,6 +1144,15 @@ def build() -> None:
     # normalisees ; les publier doublerait leur poids sans aucun usage.
     shutil.copytree(STATIC, OUTPUT, dirs_exist_ok=True,
                     ignore=shutil.ignore_patterns("source"))
+
+    # Code du service de comptes. Il etait auparavant recopie a la main dans
+    # static/worker/, soit deux exemplaires du meme fichier : corriger l'un
+    # sans l'autre deployait une version differente de celle qu'on venait
+    # d'eprouver — et c'est le code d'authentification. La construction va
+    # desormais le chercher a sa source unique. Il n'est pas SERVI pour
+    # autant : .assetsignore exclut « worker ».
+    shutil.copytree(ROOT / "worker", OUTPUT / "worker", dirs_exist_ok=True,
+                    ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
 
     urls = []
 
