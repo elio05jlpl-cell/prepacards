@@ -25,6 +25,10 @@ import {
   adresseGoogle, configure as googleConfigure, echangerLeCode, fabriquerEtat,
   lireEtat, verifierJetonIdentite,
 } from './google.js';
+import {
+  disponible as courrielDisponible, envoyer as envoyerCourriel,
+  messageReinitialisation,
+} from './courriel.js';
 
 const JOURS_SESSION = 180;
 
@@ -361,7 +365,8 @@ function temoinDeLaRequete(requete) {
  *  qui ne mene nulle part. La page est statique : elle ne peut pas savoir
  *  seule si Google est configure. */
 function capacites(requete, env) {
-  return json({ google: googleConfigure(env) });
+  return json({ google: googleConfigure(env),
+               courriel: courrielDisponible(env) });
 }
 
 /** Depart vers Google. */
@@ -487,7 +492,118 @@ async function googleEchange(requete, env) {
   });
 }
 
+// --- Mot de passe oublie ---------------------------------------------
+
+const VIE_LIEN_MINUTES = 60;
+const DELAI_ENTRE_DEMANDES_MINUTES = 2;
+
+/** Demande d'un lien de reinitialisation. */
+async function motDePasseDemande(requete, env) {
+  const corps = await corpsJson(requete);
+  const email = normaliserEmail((corps && corps.email) || '');
+  if (!emailPlausible(email)) return erreur('Adresse e-mail invalide.');
+
+  if (!courrielDisponible(env)) {
+    // Le dire franchement plutot que de promettre un e-mail qui
+    // n'arrivera pas : l'eleve attendrait devant sa boite.
+    return erreur('L’envoi d’e-mails n’est pas encore configuré.', 503);
+  }
+
+  const compte = await compteParEmail(env, email);
+
+  // Reponse IDENTIQUE que le compte existe ou non. Une reponse differente
+  // transformerait cette route en annuaire : on saurait qui est inscrit
+  // en essayant des adresses une par une.
+  const reponseNeutre = json({ ok: true });
+  if (!compte) return reponseNeutre;
+
+  // Un envoi toutes les deux minutes au plus. Sans cela, n'importe qui
+  // fait pleuvoir des e-mails sur l'adresse d'un tiers en rechargeant.
+  const recente = await env.DB.prepare(
+    'SELECT cree_le FROM reinitialisations WHERE compte_id = ?'
+    + ' ORDER BY cree_le DESC LIMIT 1').bind(compte.id).first();
+  if (recente && Date.now() - new Date(recente.cree_le).getTime()
+      < DELAI_ENTRE_DEMANDES_MINUTES * 60000) {
+    return reponseNeutre;
+  }
+
+  const jeton = jetonAleatoire();
+  await env.DB.prepare(
+    'INSERT INTO reinitialisations (empreinte, compte_id, cree_le, expire_le)'
+    + ' VALUES (?, ?, ?, ?)')
+    .bind(await empreinteJeton(jeton), compte.id, maintenant(),
+          new Date(Date.now() + VIE_LIEN_MINUTES * 60000).toISOString())
+    .run();
+
+  const lien = `https://prepacards.fr/mot-de-passe/#jeton=${encodeURIComponent(jeton)}`;
+  try {
+    await envoyerCourriel(env, compte.email,
+                          'Réinitialiser votre mot de passe PrépaCards',
+                          messageReinitialisation(lien));
+  } catch (e) {
+    // Meme reponse qu'en cas de succes, et qu'en cas d'adresse inconnue.
+    //
+    // Repondre 502 ici ne se verrait QUE pour une adresse existante : le
+    // 200 des adresses inconnues et le 502 des vraies suffiraient a faire
+    // de cette route l'annuaire qu'elle refuse d'etre. La panne d'envoi
+    // nous incombe, elle se lit dans les journaux, et elle touche tout le
+    // monde de la meme facon.
+    //
+    // Le jeton est retire : sinon le delai de deux minutes interdirait de
+    // reessayer apres un echec dont l'eleve n'est pas responsable.
+    console.error('envoi', e);
+    await env.DB.prepare('DELETE FROM reinitialisations WHERE empreinte = ?')
+      .bind(await empreinteJeton(jeton)).run();
+  }
+  return reponseNeutre;
+}
+
+/** Choix du nouveau mot de passe. */
+async function motDePasseChanger(requete, env) {
+  const corps = await corpsJson(requete);
+  const jeton = String((corps && corps.jeton) || '');
+  const motDePasse = (corps && corps.mot_de_passe) || '';
+  if (!jeton) return erreur('Lien invalide.');
+  if (!motDePassePlausible(motDePasse)) {
+    return erreur('Le mot de passe doit faire au moins 8 caractères.');
+  }
+
+  const empreinte = await empreinteJeton(jeton);
+  const ligne = await env.DB.prepare(
+    'SELECT compte_id, expire_le, utilise_le FROM reinitialisations'
+    + ' WHERE empreinte = ?').bind(empreinte).first();
+  if (!ligne || ligne.utilise_le) {
+    return erreur('Ce lien a déjà servi ou n’est plus valable.', 400);
+  }
+  if (new Date(ligne.expire_le).getTime() < Date.now()) {
+    return erreur('Ce lien a expiré. Demandez-en un nouveau.', 400);
+  }
+
+  const sel = selAleatoire();
+  const empreinteMdp = await hacherMotDePasse(motDePasse, sel);
+  await env.DB.prepare(
+    'UPDATE comptes SET sel = ?, empreinte = ?, iterations = ? WHERE id = ?')
+    .bind(base64(sel), base64(empreinteMdp), ITERATIONS, ligne.compte_id).run();
+  await env.DB.prepare(
+    'UPDATE reinitialisations SET utilise_le = ? WHERE empreinte = ?')
+    .bind(maintenant(), empreinte).run();
+
+  // Toutes les sessions tombent. Si le mot de passe a ete oublie parce que
+  // quelqu'un d'autre s'en servait, le laisser connecte n'aurait aucun
+  // sens ; et les autres liens en attente sont annules pour la meme
+  // raison.
+  await env.DB.prepare('DELETE FROM sessions WHERE compte_id = ?')
+    .bind(ligne.compte_id).run();
+  await env.DB.prepare(
+    'DELETE FROM reinitialisations WHERE compte_id = ? AND utilise_le IS NULL')
+    .bind(ligne.compte_id).run();
+
+  return json({ ok: true });
+}
+
 const ROUTES = {
+  'POST /api/mot-de-passe/demande': motDePasseDemande,
+  'POST /api/mot-de-passe/changer': motDePasseChanger,
   'GET /api/capacites': capacites,
   'GET /api/google': googleDepart,
   'GET /api/google/retour': googleRetour,

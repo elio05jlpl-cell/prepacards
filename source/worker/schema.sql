@@ -79,6 +79,27 @@ CREATE TABLE IF NOT EXISTS codes_connexion (
     FOREIGN KEY (compte_id) REFERENCES comptes(id) ON DELETE CASCADE
 );
 
+-- Liens de reinitialisation du mot de passe.
+--
+-- Meme principe que ci-dessus, et les memes raisons : seule l'empreinte du
+-- jeton est conservee, si bien qu'une fuite de la base ne donne aucun lien
+-- utilisable. Un lien vaut une heure et ne sert qu'une fois.
+--
+-- « demande_le » sert a limiter les envois : sans cela, n'importe qui peut
+-- faire pleuvoir des e-mails sur l'adresse de quelqu'un d'autre en
+-- rechargeant une page.
+CREATE TABLE IF NOT EXISTS reinitialisations (
+    empreinte   TEXT PRIMARY KEY,
+    compte_id   INTEGER NOT NULL,
+    cree_le     TEXT NOT NULL,
+    expire_le   TEXT NOT NULL,
+    utilise_le  TEXT,
+    FOREIGN KEY (compte_id) REFERENCES comptes(id) ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS idx_reinit_compte
+    ON reinitialisations (compte_id, cree_le);
+
 -- Jetons de session, remis a l'application et au site apres connexion.
 -- Stockes haches : une fuite de la base ne doit pas donner des sessions
 -- utilisables, exactement comme pour les mots de passe.

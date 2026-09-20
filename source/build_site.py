@@ -219,6 +219,7 @@ def scripts_animes(corps: str) -> str:
                               ("data-anim=", "etapes.js"),
                               ('class="feuille-texte"', "pages-vivantes.js"),
                               ('id="compte-app"', "compte.js"),
+                              ('id="mdp-app"', "mot-de-passe.js"),
                               # Le marqueur, et non l'adresse Stripe : a ce
                               # stade les boutons sont encore
                               # « {{bouton_mensuel}} », et chercher
