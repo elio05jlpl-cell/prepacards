@@ -23,6 +23,66 @@ refusé. Les comptes d'essai ont été effacés.
 
 ---
 
+## Ce qui reste : l'envoi des e-mails
+
+Sans lui, « mot de passe oublié » ne peut rien envoyer. Le service le dit
+franchement plutôt que de promettre un e-mail qui n'arriverait pas.
+
+### Le piège du SPF, à lire avant de toucher au DNS
+
+Les MX de `prepacards.fr` pointent vers **OVH** : le domaine reçoit déjà du
+courrier. Et son SPF est aujourd'hui :
+
+```
+v=spf1 include:mx.ovh.com -all
+```
+
+Le `-all` signifie **« seul OVH a le droit d'envoyer, refusez tout le
+reste »**. Un e-mail parti de Resend sans modification de cette ligne sera
+rejeté ou classé en indésirable, et cela ne se verra pas de notre côté :
+c'est le destinataire qui refuse.
+
+1. Dans Resend, ajoutez le domaine **`prepacards.fr`**.
+2. Posez l'enregistrement **DKIM** qu'il donne (`resend._domainkey`, TXT).
+   Celui-là ne touche à rien d'existant.
+3. **Modifiez** la ligne SPF existante — n'en ajoutez pas une seconde :
+
+```
+v=spf1 include:mx.ovh.com include:_spf.resend.com -all
+```
+
+> Deux enregistrements SPF sur un même domaine les font échouer **tous les
+> deux**. C'est la façon la plus courante de casser son courrier en croyant
+> l'arranger. Une seule ligne, deux `include`. Et prenez l'`include`
+> exactement tel que Resend l'affiche.
+
+Le domaine n'a **aucun DMARC**. Ce n'est pas bloquant, mais une fois DKIM et
+SPF en place, un `p=none` permet de recevoir des rapports sans rien risquer.
+
+### Déposer les valeurs
+
+```
+npx wrangler secret put RESEND_API_KEY
+npx wrangler secret put COURRIEL_EXPEDITEUR
+npx wrangler secret put COURRIEL_REPONSE
+```
+
+- `COURRIEL_EXPEDITEUR` : `PrépaCards <noreply@prepacards.fr>`
+- `COURRIEL_REPONSE` : `contact@prepacards.fr`
+
+La troisième n'est pas un secret, mais elle voyage avec les deux autres.
+Elle existe parce qu'un message parti de `noreply@` finit toujours par
+recevoir une réponse : sans elle, la question de l'élève se perd.
+
+### Vérifier
+
+Demandez une réinitialisation depuis l'application, puis testez **sur Gmail
+et sur Outlook**. Ce sont eux qui filtrent le plus durement, et un domaine
+qui se met soudain à envoyer depuis un nouveau service est exactement leur
+cas suspect.
+
+---
+
 ## Ce qui reste : le webhook Stripe
 
 Sans lui, un paiement ne débloque rien : le service n'apprend jamais que la

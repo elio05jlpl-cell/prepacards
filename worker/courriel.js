@@ -67,6 +67,11 @@ export async function envoyer(env, destinataire, sujet, corps, recuperer = fetch
       subject: sujet,
       text: corps.texte,
       html: corps.html,
+      // Expedie depuis « noreply@ », mais les reponses doivent arriver
+      // quelque part : il y a toujours quelqu'un pour repondre a un
+      // message automatique, et sa question se perdrait. Sans cette
+      // variable, rien n'est ajoute et le comportement ne change pas.
+      ...(env.COURRIEL_REPONSE ? { reply_to: [env.COURRIEL_REPONSE] } : {}),
     }),
   });
   if (!reponse.ok) {
