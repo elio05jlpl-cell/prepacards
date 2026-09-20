@@ -73,6 +73,18 @@ export function jetonAleatoire() {
     .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
 
+export function referenceAleatoire() {
+  // Identifiant du compte transmis a Stripe dans le lien de paiement.
+  // Stripe n'accepte dans client_reference_id que des lettres, chiffres,
+  // tirets et soulignes : d'ou le base64 en variante « url ».
+  //
+  // Il n'est pas secret — il transite dans une adresse web, donc dans
+  // l'historique du navigateur. Le connaitre permet au mieux d'offrir un
+  // abonnement a ce compte en payant pour lui, jamais d'en prendre un.
+  return 'pc_' + base64(crypto.getRandomValues(new Uint8Array(18)))
+    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
 export async function empreinteJeton(jeton) {
   const somme = await crypto.subtle.digest('SHA-256', encodeur.encode(jeton));
   return base64(somme);

@@ -36,11 +36,25 @@ CREATE TABLE IF NOT EXISTS comptes (
     -- Fin de la periode deja reglee. C'est elle qui fait foi cote
     -- application : un abonnement resilie reste actif jusqu'a son terme.
     valide_jusqu_au TEXT,
-    maj_le          TEXT
+    maj_le          TEXT,
+
+    -- Identifiant opaque transmis a Stripe dans le lien de paiement, et
+    -- rendu tel quel par le webhook (client_reference_id). Il permet de
+    -- payer avec n'importe quelle adresse - celle de la carte, celle des
+    -- parents - sans perdre le lien avec le compte.
+    --
+    -- Il n'est pas secret et n'ouvre rien : le connaitre permet au mieux
+    -- d'OFFRIR un abonnement a ce compte en payant pour lui. Il est
+    -- neanmoins tire au hasard plutot que derive de l'identifiant, qui se
+    -- compte de 1 en 1 et laisserait deviner combien de comptes existent.
+    reference       TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_comptes_client
     ON comptes (client_stripe);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_comptes_reference
+    ON comptes (reference);
 
 -- Jetons de session, remis a l'application et au site apres connexion.
 -- Stockes haches : une fuite de la base ne doit pas donner des sessions

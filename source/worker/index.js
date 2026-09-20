@@ -18,7 +18,8 @@
 import {
   ITERATIONS, base64, desBase64, dansNJours, emailPlausible, empreinteJeton,
   hacherMotDePasse, jetonAleatoire, maintenant, memeSecret, motDePassePlausible,
-  normaliserEmail, selAleatoire, signatureStripeValide,
+  normaliserEmail,
+  referenceAleatoire, selAleatoire, signatureStripeValide,
 } from './securite.js';
 
 const JOURS_SESSION = 180;
@@ -56,6 +57,21 @@ async function corpsJson(requete) {
 async function compteParEmail(env, email) {
   return env.DB.prepare('SELECT * FROM comptes WHERE email = ?')
     .bind(email).first();
+}
+
+/** Reference du compte, creee a la volee pour les comptes anterieurs.
+ *
+ * Les premiers comptes ont ete ouverts avant que cette colonne existe. On
+ * ne les laisse pas sans reference : sinon leur titulaire devrait payer
+ * avec l'adresse exacte de son compte, ce que la nouvelle page ne lui dit
+ * plus.
+ */
+async function referenceDe(env, compte) {
+  if (compte.reference) return compte.reference;
+  const reference = referenceAleatoire();
+  await env.DB.prepare('UPDATE comptes SET reference = ? WHERE id = ?')
+    .bind(reference, compte.id).run();
+  return reference;
 }
 
 /** Etat de l'abonnement tel que l'application doit le comprendre. */
@@ -118,15 +134,18 @@ async function inscription(requete, env) {
 
   const sel = selAleatoire();
   const empreinte = await hacherMotDePasse(motDePasse, sel);
+  const reference = referenceAleatoire();
   const resultat = await env.DB.prepare(
-    'INSERT INTO comptes (email, sel, empreinte, iterations, cree_le)'
-    + ' VALUES (?, ?, ?, ?, ?)')
-    .bind(email, base64(sel), base64(empreinte), ITERATIONS, maintenant())
+    'INSERT INTO comptes (email, sel, empreinte, iterations, cree_le, reference)'
+    + ' VALUES (?, ?, ?, ?, ?, ?)')
+    .bind(email, base64(sel), base64(empreinte), ITERATIONS, maintenant(),
+          reference)
     .run();
 
   const id = resultat.meta.last_row_id;
   const jeton = await ouvrirSession(env, id, corps.origine || 'application');
-  return json({ jeton, email, abonnement: etatAbonnement({ statut: '' }) }, 201);
+  return json({ jeton, email, reference,
+                abonnement: etatAbonnement({ statut: '' }) }, 201);
 }
 
 async function connexion(requete, env) {
@@ -148,7 +167,8 @@ async function connexion(requete, env) {
   }
 
   const jeton = await ouvrirSession(env, compte.id, corps.origine || 'application');
-  return json({ jeton, email, abonnement: etatAbonnement(compte) });
+  return json({ jeton, email, reference: await referenceDe(env, compte),
+                abonnement: etatAbonnement(compte) });
 }
 
 async function deconnexion(requete, env) {
@@ -170,6 +190,7 @@ async function abonnement(requete, env) {
     .bind(compte.id).first();
   return json({
     email: compte.email,
+    reference: await referenceDe(env, compte),
     abonnement: etatAbonnement(compte),
     sauvegarde: sauvegarde || null,
   });
@@ -267,9 +288,23 @@ async function webhookStripe(requete, env) {
     objet.customer_email || objet.customer_details?.email || '');
   const client = objet.customer || null;
 
-  // Sur les evenements d'abonnement, l'adresse n'est pas jointe : on
-  // retrouve le compte par l'identifiant client deja enregistre.
-  let compte = email ? await compteParEmail(env, email) : null;
+  // Trois facons de retrouver le compte, dans cet ordre.
+  //
+  // 1. La reference que le site a glissee dans le lien de paiement. Elle
+  //    prime sur tout : elle designe le compte ou la personne etait
+  //    connectee en payant, ce qui lui permet de payer avec l'adresse
+  //    qu'elle veut — celle de sa carte, celle de ses parents.
+  // 2. L'adresse, quand elle correspond a un compte. C'est le cas de qui
+  //    paie sans etre connecte, puis cree son compte ensuite.
+  // 3. L'identifiant client Stripe, pour les evenements d'abonnement qui
+  //    ne transportent aucune adresse (renouvellement, resiliation).
+  const reference = objet.client_reference_id || '';
+  let compte = null;
+  if (reference) {
+    compte = await env.DB.prepare('SELECT * FROM comptes WHERE reference = ?')
+      .bind(reference).first();
+  }
+  if (!compte && email) compte = await compteParEmail(env, email);
   if (!compte && client) {
     compte = await env.DB.prepare('SELECT * FROM comptes WHERE client_stripe = ?')
       .bind(client).first();

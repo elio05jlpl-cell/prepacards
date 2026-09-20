@@ -218,7 +218,15 @@ def scripts_animes(corps: str) -> str:
                               ('id="demo-app"', "demo-accueil.js"),
                               ("data-anim=", "etapes.js"),
                               ('class="feuille-texte"', "pages-vivantes.js"),
-                              ('id="compte-app"', "compte.js")):
+                              ('id="compte-app"', "compte.js"),
+                              # Le marqueur, et non l'adresse Stripe : a ce
+                              # stade les boutons sont encore
+                              # « {{bouton_mensuel}} », et chercher
+                              # « buy.stripe.com » n'aurait jamais rien
+                              # trouve — ce qui n'aurait casse aucun test,
+                              # la page se construisant tres bien sans le
+                              # script.
+                              ("{{bloc_paiement}}", "paiement.js")):
         chemin = dossier / fichier
         if marqueur in corps and chemin.exists():
             morceaux.append("<script>" + chr(10)
@@ -502,10 +510,15 @@ def bloc_paiement() -> str:
     # apres coup.
     return (
         '<div class="encart" id="liste-attente">\n'
-        '  <p><strong>Payez avec l\'adresse de votre compte PrépaCards.</strong>\n'
-        '  C\'est elle qui relie votre abonnement à l\'application. Si vous '
-        'n\'avez pas\n'
-        '  encore de compte, créez-le ensuite avec cette même adresse.</p>\n'
+        '  <p><strong><a href="/compte/">Connectez-vous</a> avant de payer.'
+        '</strong>\n'
+        '  Votre abonnement rejoindra alors votre compte quelle que soit '
+        'l\'adresse\n'
+        '  utilisée chez Stripe — celle de votre carte, celle de vos parents. '
+        'Sans\n'
+        '  compte ouvert, le rattachement se fait par l\'adresse : payez avec '
+        'celle\n'
+        '  que vous utiliserez dans l\'application.</p>\n'
         '  <p><strong>Le paiement est traité par Stripe.</strong> Vos '
         'coordonnées bancaires\n'
         '  ne transitent jamais par PrépaCards et ne sont pas conservées par '
