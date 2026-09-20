@@ -494,8 +494,18 @@ def bloc_paiement() -> str:
             'subject=Offre%20compl%C3%A8te%20-%20me%20prevenir">Me prévenir '
             'par e-mail</a></p>\n'
             '</div>')
+    # L'adresse est le SEUL lien entre le paiement et le compte : c'est par
+    # elle que le service reconnait l'abonne. Payer avec une autre adresse
+    # que celle de son compte laisse l'abonnement sans destinataire, et
+    # personne ne peut le deviner depuis l'application. Le dire ici, au
+    # moment ou l'adresse se saisit, plutot que sur une page d'aide lue
+    # apres coup.
     return (
         '<div class="encart" id="liste-attente">\n'
+        '  <p><strong>Payez avec l\'adresse de votre compte PrépaCards.</strong>\n'
+        '  C\'est elle qui relie votre abonnement à l\'application. Si vous '
+        'n\'avez pas\n'
+        '  encore de compte, créez-le ensuite avec cette même adresse.</p>\n'
         '  <p><strong>Le paiement est traité par Stripe.</strong> Vos '
         'coordonnées bancaires\n'
         '  ne transitent jamais par PrépaCards et ne sont pas conservées par '
