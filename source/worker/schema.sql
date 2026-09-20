@@ -56,6 +56,29 @@ CREATE INDEX IF NOT EXISTS idx_comptes_client
 CREATE UNIQUE INDEX IF NOT EXISTS idx_comptes_reference
     ON comptes (reference);
 
+-- Identifiant Google stable (« sub »). Conserve pour retrouver le compte
+-- meme si la personne change l'adresse de son compte Google, ce que
+-- l'adresse seule ne permettrait pas.
+ALTER TABLE comptes ADD COLUMN google_sub TEXT;
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_comptes_google
+    ON comptes (google_sub);
+
+-- Codes a usage unique remis au navigateur au retour de Google.
+--
+-- Le jeton de session ne voyage PAS dans l'adresse : une adresse reste
+-- dans l'historique, dans les journaux d'un proxy, dans une capture
+-- d'ecran envoyee a un camarade. Le navigateur recoit donc un code qui ne
+-- sert qu'une fois et ne vaut que quelques minutes, et l'echange contre le
+-- vrai jeton par une requete POST.
+CREATE TABLE IF NOT EXISTS codes_connexion (
+    empreinte  TEXT PRIMARY KEY,   -- SHA-256 du code, jamais le code
+    compte_id  INTEGER NOT NULL,
+    cree_le    TEXT NOT NULL,
+    expire_le  TEXT NOT NULL,
+    FOREIGN KEY (compte_id) REFERENCES comptes(id) ON DELETE CASCADE
+);
+
 -- Jetons de session, remis a l'application et au site apres connexion.
 -- Stockes haches : une fuite de la base ne doit pas donner des sessions
 -- utilisables, exactement comme pour les mots de passe.

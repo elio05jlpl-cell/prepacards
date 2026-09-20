@@ -22,7 +22,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2208486d" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=fcb36135">
-<link rel="stylesheet" href="/style.css?v=a1b39475ed">
+<link rel="stylesheet" href="/style.css?v=18868c420b">
 <link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
 
@@ -75,6 +75,18 @@
     <p class="chapeau">Avec l'adresse utilisée au paiement. Il sert à
       retrouver votre abonnement sur une autre machine — vos cartes, elles,
       restent sur votre ordinateur.</p>
+
+<div hidden="hidden" id="compte-google">
+<a class="bouton-google" href="/api/google?origine=site">
+<svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+<path fill="#4285F4" d="M45 24c0-1.6-.1-2.7-.4-4H24v7.5h12c-.2 2-1.5 5-4.4 7l6.7 5.2C42.2 36.2 45 30.6 45 24z"/>
+<path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.7-5.2c-1.8 1.3-4.3 2.2-7.8 2.2-6 0-11-4-12.8-9.4l-7 5.4C7.8 41 15.3 46 24 46z"/>
+<path fill="#FBBC05" d="M11.2 28.3c-.5-1.4-.7-2.8-.7-4.3s.3-3 .7-4.3l-7-5.4C2.9 17.1 2 20.4 2 24s.9 6.9 2.2 9.7l7-5.4z"/>
+<path fill="#EA4335" d="M24 10.4c3.4 0 5.7 1.5 7 2.7l5.9-5.8C33.3 4 29.3 2 24 2 15.3 2 7.8 7 4.2 14.3l7 5.4C13 14.4 18 10.4 24 10.4z"/>
+</svg>
+Continuer avec Google</a>
+<p class="compte-ou">ou</p>
+</div>
 
     <form id="compte-form" class="compte-form" autocomplete="on">
       <label for="compte-email">Adresse e-mail</label>
@@ -395,7 +407,87 @@ document.documentElement.classList.add('js');
       connexion.hidden = false;
     });
 
-  charger();
+  // --- Retour de Google ----------------------------------------------
+  //
+  // Le service renvoie ici avec un code a usage unique dans le fragment.
+  // Le fragment, et non la requete : il n'est jamais transmis au serveur
+  // ni au site suivant par l'en-tete « referer ». On l'efface de l'adresse
+  // des qu'il est consomme, pour qu'il ne traine pas dans l'historique.
+
+  var EXPLICATIONS = {
+    annule: 'Connexion Google annulée.',
+    etat: 'La connexion a expiré ou a été ouverte depuis un autre '
+      + 'navigateur. Réessayez.',
+    refus: 'Google n’a pas confirmé votre identité. Réessayez, ou '
+      + 'connectez-vous avec un mot de passe.',
+    indisponible: 'La connexion Google n’est pas encore disponible.'
+  };
+
+  function lireFragment() {
+    var brut = (window.location.hash || '').replace(/^#/, '');
+    if (!brut) return null;
+    var champs = {};
+    brut.split('&').forEach(function (paire) {
+      var i = paire.indexOf('=');
+      if (i > 0) {
+        try {
+          champs[paire.slice(0, i)] = decodeURIComponent(paire.slice(i + 1));
+        } catch (e) { /* fragment abime : on l'ignore */ }
+      }
+    });
+    return champs;
+  }
+
+  function nettoyerAdresse() {
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname);
+    } else {
+      window.location.hash = '';
+    }
+  }
+
+  async function retourDeGoogle(champs) {
+    if (champs.google) {
+      nettoyerAdresse();
+      dire(EXPLICATIONS[champs.google] || 'La connexion Google a échoué.', true);
+      return true;
+    }
+    if (!champs.connexion) return false;
+
+    nettoyerAdresse();
+    dire('Connexion en cours…', false);
+    try {
+      var donnees = await api('/google/echange', {
+        corps: { code: champs.connexion, origine: champs.origine || 'site' }
+      });
+      rangerJeton(donnees.jeton);
+      dire('');
+      afficherTableau(donnees);
+    } catch (erreur) {
+      dire(erreur.statut ? erreur.message
+        : 'Serveur injoignable. Réessayez.', true);
+    }
+    return true;
+  }
+
+  // Le bouton Google n'apparait que si le service sait le traiter : la
+  // page est statique et ne peut pas le deviner seule. Mieux vaut pas de
+  // bouton qu'un bouton qui ne mene nulle part.
+  function proposerGoogle() {
+    var bloc = document.getElementById('compte-google');
+    if (!bloc) return;
+    fetch('/api/capacites', { headers: { accept: 'application/json' } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { if (d && d.google) bloc.hidden = false; })
+      .catch(function () { /* on laisse le formulaire seul */ });
+  }
+
+  (async function demarrer() {
+    var champs = lireFragment();
+    if (champs && await retourDeGoogle(champs)) { proposerGoogle(); return; }
+    proposerGoogle();
+    charger();
+  })();
 })();
 </script>
 </body>

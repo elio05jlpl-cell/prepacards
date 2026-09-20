@@ -168,5 +168,85 @@
       connexion.hidden = false;
     });
 
-  charger();
+  // --- Retour de Google ----------------------------------------------
+  //
+  // Le service renvoie ici avec un code a usage unique dans le fragment.
+  // Le fragment, et non la requete : il n'est jamais transmis au serveur
+  // ni au site suivant par l'en-tete « referer ». On l'efface de l'adresse
+  // des qu'il est consomme, pour qu'il ne traine pas dans l'historique.
+
+  var EXPLICATIONS = {
+    annule: 'Connexion Google annulée.',
+    etat: 'La connexion a expiré ou a été ouverte depuis un autre '
+      + 'navigateur. Réessayez.',
+    refus: 'Google n’a pas confirmé votre identité. Réessayez, ou '
+      + 'connectez-vous avec un mot de passe.',
+    indisponible: 'La connexion Google n’est pas encore disponible.'
+  };
+
+  function lireFragment() {
+    var brut = (window.location.hash || '').replace(/^#/, '');
+    if (!brut) return null;
+    var champs = {};
+    brut.split('&').forEach(function (paire) {
+      var i = paire.indexOf('=');
+      if (i > 0) {
+        try {
+          champs[paire.slice(0, i)] = decodeURIComponent(paire.slice(i + 1));
+        } catch (e) { /* fragment abime : on l'ignore */ }
+      }
+    });
+    return champs;
+  }
+
+  function nettoyerAdresse() {
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname);
+    } else {
+      window.location.hash = '';
+    }
+  }
+
+  async function retourDeGoogle(champs) {
+    if (champs.google) {
+      nettoyerAdresse();
+      dire(EXPLICATIONS[champs.google] || 'La connexion Google a échoué.', true);
+      return true;
+    }
+    if (!champs.connexion) return false;
+
+    nettoyerAdresse();
+    dire('Connexion en cours…', false);
+    try {
+      var donnees = await api('/google/echange', {
+        corps: { code: champs.connexion, origine: champs.origine || 'site' }
+      });
+      rangerJeton(donnees.jeton);
+      dire('');
+      afficherTableau(donnees);
+    } catch (erreur) {
+      dire(erreur.statut ? erreur.message
+        : 'Serveur injoignable. Réessayez.', true);
+    }
+    return true;
+  }
+
+  // Le bouton Google n'apparait que si le service sait le traiter : la
+  // page est statique et ne peut pas le deviner seule. Mieux vaut pas de
+  // bouton qu'un bouton qui ne mene nulle part.
+  function proposerGoogle() {
+    var bloc = document.getElementById('compte-google');
+    if (!bloc) return;
+    fetch('/api/capacites', { headers: { accept: 'application/json' } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { if (d && d.google) bloc.hidden = false; })
+      .catch(function () { /* on laisse le formulaire seul */ });
+  }
+
+  (async function demarrer() {
+    var champs = lireFragment();
+    if (champs && await retourDeGoogle(champs)) { proposerGoogle(); return; }
+    proposerGoogle();
+    charger();
+  })();
 })();

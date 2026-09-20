@@ -2217,3 +2217,36 @@ html.js .feuille-texte > .vue {
 .compte-message.erreur { color: #b91c1c; }
 
 .compte-bascule { margin-top: 16px; font-size: .95rem; }
+
+/* Bouton Google. Les regles de Google imposent son logo d'origine sur
+   fond blanc ou gris clair, sans le redessiner ni le recolorer : on garde
+   donc le SVG officiel et on ne touche qu'a l'entourage. */
+#compte-google { max-width: 420px; margin-top: 26px; }
+
+.bouton-google {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  height: 46px; padding: 0 18px;
+  border: 1px solid var(--bord); border-radius: 12px;
+  background: #fff; color: #1f1f1f;
+  font-family: inherit; font-size: 1rem; font-weight: 600;
+  text-decoration: none;
+  transition: background .15s, border-color .15s;
+}
+.bouton-google:hover { background: #f7f8fa; border-color: #c9ced6; }
+.bouton-google:focus-visible {
+  outline: none; border-color: var(--bleu);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, .16);
+}
+.bouton-google svg { flex: 0 0 auto; }
+
+/* Le « ou » posé sur un filet, plutôt qu'une ligne de texte perdue entre
+   deux boutons : l'œil comprend qu'il s'agit de deux chemins vers la même
+   chose, et non d'une étape après l'autre. */
+.compte-ou {
+  display: flex; align-items: center; gap: 12px;
+  margin: 18px 0 0; color: var(--gris); font-size: .9rem;
+}
+.compte-ou::before, .compte-ou::after {
+  content: ""; flex: 1 1 auto; height: 1px; background: var(--bord);
+}
+.compte-form { margin-top: 18px; }

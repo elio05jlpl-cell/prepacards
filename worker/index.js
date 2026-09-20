@@ -21,6 +21,10 @@ import {
   normaliserEmail,
   referenceAleatoire, selAleatoire, signatureStripeValide,
 } from './securite.js';
+import {
+  adresseGoogle, configure as googleConfigure, echangerLeCode, fabriquerEtat,
+  lireEtat, verifierJetonIdentite,
+} from './google.js';
 
 const JOURS_SESSION = 180;
 
@@ -341,7 +345,153 @@ async function webhookStripe(requete, env) {
 
 // --- Routage ---------------------------------------------------------
 
+// --- Connexion par Google --------------------------------------------
+
+const TEMOIN = 'pc_google';
+const VIE_CODE_MINUTES = 5;
+
+function temoinDeLaRequete(requete) {
+  const brut = requete.headers.get('cookie') || '';
+  const trouve = brut.split(';').map((p) => p.trim())
+    .find((p) => p.startsWith(TEMOIN + '='));
+  return trouve ? decodeURIComponent(trouve.slice(TEMOIN.length + 1)) : '';
+}
+
+/** Ce dont le service dispose, pour que la page n'affiche pas un bouton
+ *  qui ne mene nulle part. La page est statique : elle ne peut pas savoir
+ *  seule si Google est configure. */
+function capacites(requete, env) {
+  return json({ google: googleConfigure(env) });
+}
+
+/** Depart vers Google. */
+async function googleDepart(requete, env) {
+  if (!googleConfigure(env)) return retourVersLaPage('google=indisponible');
+  const url = new URL(requete.url);
+  const { etat, graine } = await fabriquerEtat(env, url.searchParams.get('origine'));
+  return new Response(null, {
+    status: 302,
+    headers: {
+      location: adresseGoogle(env, url, etat),
+      // HttpOnly : le temoin ne sert qu'au serveur, aucun script n'a a le
+      // lire. SameSite=Lax et non Strict : Strict n'enverrait pas le
+      // temoin au retour de Google, et la connexion echouerait toujours.
+      'set-cookie': `${TEMOIN}=${encodeURIComponent(graine)}; Path=/api/google;`
+        + ' Max-Age=600; HttpOnly; Secure; SameSite=Lax',
+      'cache-control': 'no-store',
+    },
+  });
+}
+
+function retourVersLaPage(message) {
+  // On revient toujours sur /compte/ : un JSON affiche en pleine page a
+  // la fin d'une connexion ressemble a une panne.
+  return new Response(null, {
+    status: 302,
+    headers: { location: '/compte/#' + message, 'cache-control': 'no-store' },
+  });
+}
+
+/** Retour de Google. */
+async function googleRetour(requete, env) {
+  if (!googleConfigure(env)) return retourVersLaPage('google=indisponible');
+  const url = new URL(requete.url);
+
+  if (url.searchParams.get('error')) return retourVersLaPage('google=annule');
+  const code = url.searchParams.get('code') || '';
+  const charge = await lireEtat(env, url.searchParams.get('state'),
+                                temoinDeLaRequete(requete));
+  if (!code || !charge) return retourVersLaPage('google=etat');
+
+  let identite;
+  try {
+    const jetonIdentite = await echangerLeCode(env, url, code);
+    identite = await verifierJetonIdentite(jetonIdentite, env.GOOGLE_CLIENT_ID);
+  } catch {
+    return retourVersLaPage('google=refus');
+  }
+
+  // Par l'identifiant Google d'abord : il ne change pas, meme si la
+  // personne change l'adresse de son compte Google.
+  let compte = identite.sub ? await env.DB.prepare(
+    'SELECT * FROM comptes WHERE google_sub = ?').bind(identite.sub).first() : null;
+  if (!compte) compte = await compteParEmail(env, identite.email);
+
+  if (!compte) {
+    // Compte ouvert par Google : aucun mot de passe utilisable. On range
+    // une empreinte tiree au hasard plutot qu'un champ vide, pour que la
+    // route « connexion » fasse exactement le meme travail et ne trahisse
+    // pas, par son temps de reponse, quels comptes passent par Google.
+    const sel = selAleatoire();
+    const resultat = await env.DB.prepare(
+      'INSERT INTO comptes (email, sel, empreinte, iterations, cree_le,'
+      + ' reference, google_sub) VALUES (?, ?, ?, ?, ?, ?, ?)')
+      .bind(identite.email, base64(sel), base64(selAleatoire(32)), ITERATIONS,
+            maintenant(), referenceAleatoire(), identite.sub || null)
+      .run();
+    compte = await env.DB.prepare('SELECT * FROM comptes WHERE id = ?')
+      .bind(resultat.meta.last_row_id).first();
+  } else if (identite.sub && !compte.google_sub) {
+    await env.DB.prepare('UPDATE comptes SET google_sub = ? WHERE id = ?')
+      .bind(identite.sub, compte.id).run();
+  }
+
+  // La session n'est PAS ouverte ici. Seul un code a usage unique part
+  // dans l'adresse ; le jeton, qui vaut six mois, ne s'y montre jamais —
+  // une adresse reste dans l'historique, dans les journaux d'un proxy,
+  // dans une capture d'ecran envoyee a un camarade.
+  const codeUnique = jetonAleatoire();
+  await env.DB.prepare(
+    'INSERT INTO codes_connexion (empreinte, compte_id, cree_le, expire_le)'
+    + ' VALUES (?, ?, ?, ?)')
+    .bind(await empreinteJeton(codeUnique), compte.id, maintenant(),
+          new Date(Date.now() + VIE_CODE_MINUTES * 60000).toISOString())
+    .run();
+  const reponse = retourVersLaPage(
+    'connexion=' + encodeURIComponent(codeUnique)
+    + '&origine=' + encodeURIComponent(charge.o || 'site'));
+  reponse.headers.append('set-cookie',
+    `${TEMOIN}=; Path=/api/google; Max-Age=0; HttpOnly; Secure; SameSite=Lax`);
+  return reponse;
+}
+
+/** Le navigateur echange son code contre l'etat du compte. */
+async function googleEchange(requete, env) {
+  const corps = await corpsJson(requete);
+  const code = String((corps && corps.code) || '');
+  if (!code) return erreur('Code de connexion invalide.', 400);
+  const empreinte = await empreinteJeton(code);
+
+  const ligne = await env.DB.prepare(
+    'SELECT compte_id, expire_le FROM codes_connexion WHERE empreinte = ?')
+    .bind(empreinte).first();
+  // Usage unique : consomme des qu'il est presente, valide ou perime. Sans
+  // cela, un code reste dans l'historique du navigateur et rouvrirait une
+  // session des semaines plus tard.
+  await env.DB.prepare('DELETE FROM codes_connexion WHERE empreinte = ?')
+    .bind(empreinte).run();
+  if (!ligne) return erreur('Code de connexion invalide.', 400);
+  if (new Date(ligne.expire_le).getTime() < Date.now()) {
+    return erreur('Code de connexion expiré.', 400);
+  }
+
+  const compte = await env.DB.prepare('SELECT * FROM comptes WHERE id = ?')
+    .bind(ligne.compte_id).first();
+  if (!compte) return erreur('Compte introuvable.', 400);
+  return json({
+    jeton: await ouvrirSession(env, compte.id,
+                               String((corps && corps.origine) || 'site')),
+    email: compte.email,
+    reference: await referenceDe(env, compte),
+    abonnement: etatAbonnement(compte),
+  });
+}
+
 const ROUTES = {
+  'GET /api/capacites': capacites,
+  'GET /api/google': googleDepart,
+  'GET /api/google/retour': googleRetour,
+  'POST /api/google/echange': googleEchange,
   'POST /api/inscription': inscription,
   'POST /api/connexion': connexion,
   'POST /api/deconnexion': deconnexion,
