@@ -1,7 +1,7 @@
 ---
 title: LV2 en prépa : la tenir sans y passer ses soirées | PrépaCards
 description: Espagnol, allemand, italien : la LV2 est la matière qu'on sacrifie en premier et qu'on paie au concours. Comment l'entretenir en dix minutes par jour.
-date: 2026-09-25
+date: 2026-09-23
 slug: lv2-en-prepa
 ---
 

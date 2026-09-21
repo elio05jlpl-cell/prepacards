@@ -1,7 +1,7 @@
 ---
 title: Réviser les maths en ECG : ce qui s'apprend par cœur | PrépaCards
 description: En maths appliquées comme en approfondies, une partie du programme se mémorise et le reste se cherche. Où passe la frontière, et comment travailler chacune.
-date: 2026-09-28
+date: 2026-09-24
 slug: reviser-les-maths-en-ecg
 ---
 

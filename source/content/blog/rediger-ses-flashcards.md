@@ -1,7 +1,7 @@
 ---
 title: Bien rédiger ses flashcards : sept erreurs à éviter | PrépaCards
 description: Une flashcard mal écrite fait réviser pour rien. Les sept erreurs les plus fréquentes en prépa, chacune avec un exemple raté et sa version corrigée.
-date: 2026-10-05
+date: 2026-09-27
 slug: rediger-ses-flashcards
 ---
 

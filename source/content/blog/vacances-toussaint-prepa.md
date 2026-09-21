@@ -1,7 +1,7 @@
 ---
 title: Vacances de la Toussaint en prépa : que faire ? | PrépaCards
 description: Se reposer ou rattraper son retard ? Organiser les vacances de la Toussaint en prépa pour revenir en forme, avec les chapitres de septembre consolidés.
-date: 2026-10-09
+date: 2026-09-29
 slug: vacances-toussaint-prepa
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Vocabulaire allemand en prépa : la méthode qui tient | PrépaCards
 description: Genre, pluriel, mots composés, faux amis : apprendre le vocabulaire allemand en prépa ECG pour qu'il ressorte à l'écrit comme en colle, sans y passer ses soirées.
-date: 2026-10-02
+date: 2026-09-26
 slug: vocabulaire-allemand-prepa
 ---
 
