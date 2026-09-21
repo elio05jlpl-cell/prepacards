@@ -32,6 +32,7 @@ plein problème coûte cinq minutes que vous n'avez pas.
 simuler une loi, remplir une liste, écrire une boucle qui s'arrête à une
 condition. Ces briques se mémorisent comme du vocabulaire, et elles rapportent
 des points faciles.
+[Les règles pour faire des cartes qui tiennent →](/blog/reviser-avec-des-flashcards-en-prepa/)
 
 ## Ce qui ne se mémorise pas
 
@@ -91,6 +92,7 @@ résultat qu'on aurait dû avoir en tête.
 Un signe qui ne trompe pas : si vous passez plus de temps à fabriquer des cartes
 qu'à faire des exercices, vous avez inversé les priorités. Fabriquer donne un
 sentiment de travail sans en être.
+[Ce que le concours blanc de maths mesure vraiment →](/blog/preparer-un-concours-blanc/)
 
 ## En pratique
 
@@ -99,7 +101,7 @@ pouvez poser une **date de DS ou de concours blanc** sur un paquet : aucune
 carte ne passera par-dessus l'échéance.
 
 <div class="encart">
-  <p>Gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/prepa-commerciale/">PrépaCards en ECG et ECT</a></p>
 </div>

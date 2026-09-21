@@ -78,6 +78,7 @@ La deuxième pile est la plus intéressante, et la plus négligée. « Je connai
 ce théorème » ne sert à rien si vous ne l'avez pas reconnu le jour J. La carte à
 faire n'est pas l'énoncé — vous l'avez déjà — mais la situation qui doit le
 déclencher.
+[Transformer ses erreurs en cartes →](/blog/reviser-avec-des-flashcards-en-prepa/)
 
 ## Une mauvaise note n'est pas un verdict
 
@@ -87,6 +88,7 @@ programme que vous n'avez pas fini.
 
 Ce qui compte n'est pas le rang mais l'écart entre deux concours blancs. Un
 élève qui passe de 4 à 9 progresse davantage qu'un élève qui reste à 12.
+[Organiser sa semaine autour des concours blancs →](/blog/organisation-semaine-prepa/)
 
 ## En pratique
 
@@ -96,7 +98,7 @@ pouvez poser une **date de concours blanc** sur vos paquets : aucune carte ne
 passera par-dessus l'échéance.
 
 <div class="encart">
-  <p>Gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/prepa/">Réviser en prépa</a></p>
 </div>

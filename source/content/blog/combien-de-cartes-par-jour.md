@@ -34,6 +34,7 @@ Ordre de grandeur, pour un rythme constant et une bonne réussite :
 Ces chiffres supposent 8 secondes par carte, ce qui est rapide. Sur du
 vocabulaire, c'est réaliste. Sur des définitions d'ESH à réciter, comptez le
 double.
+[Pourquoi une carte revient plusieurs fois →](/blog/repetition-espacee-comment-ca-marche/)
 
 ## Ce qui est tenable en prépa
 
@@ -59,6 +60,7 @@ faire 60.
 Ne le faites pas. La charge que vous créez aujourd'hui ne se manifeste que dans
 trois semaines. Réglez votre limite sur ce que vous pourrez tenir en février, pas
 sur ce qui est confortable en septembre.
+[Bien démarrer avec des flashcards en prépa →](/blog/reviser-avec-des-flashcards-en-prepa/)
 
 ## Si l'arriéré est déjà là
 
@@ -80,6 +82,7 @@ Aucune limite quotidienne ne compense des cartes mal faites. Une carte qui porte
 un paragraphe entier prendra trente secondes et vous ne saurez jamais dire si
 vous la saviez. Une idée par carte, une réponse courte et vérifiable :
 c'est ce qui rend le calcul ci-dessus réaliste.
+[Trouver ce temps dans sa semaine →](/blog/organisation-semaine-prepa/)
 
 ## En pratique
 
@@ -90,7 +93,7 @@ dernière courbe qu'il faut regarder : elle dit, avant que ça n'arrive, ce que
 votre réglage actuel vous prépare.
 
 <div class="encart">
-  <p>Gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/blog/repetition-espacee-comment-ca-marche/">La répétition espacée expliquée</a></p>
 </div>

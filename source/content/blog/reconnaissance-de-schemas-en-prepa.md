@@ -64,6 +64,7 @@ métier de déguiser une structure connue sous un habillage inhabituel.
 La question utile n'est donc jamais « de quoi parle cet exercice ? », mais :
 **qu'est-ce qui, dans cet énoncé, m'a fait choisir cette méthode plutôt qu'une
 autre ?** Cette phrase est le cœur de tout le travail de première année.
+[Ce qu'un concours blanc révèle vraiment →](/blog/preparer-un-concours-blanc/)
 
 ## Trois habitudes à prendre dès septembre
 
@@ -85,6 +86,7 @@ vous l'avez sous les yeux. L'indice. « J'ai manqué que l'énoncé donnait la
 valeur en un point : c'était l'appel au théorème des accroissements finis. »
 C'est cette phrase-là qui se révise, et qui resservira sur un énoncé qui n'aura
 aucun rapport apparent.
+[Mettre ses formules de maths en cartes →](/blog/flashcards-formules-de-maths/)
 
 ## Ce n'est pas réservé aux matières scientifiques
 
@@ -114,6 +116,7 @@ rentables — vous ne passez plus vingt minutes bloqué à l'étape zéro.
 Et une bibliothèque de schémas sans compréhension reste fragile : elle tient sur
 les énoncés proches de ceux déjà vus, et casse dès qu'un concours exigeant
 demande un transfert réel. Reconnaître est nécessaire ; ce n'est pas suffisant.
+[Réviser avec des flashcards sans se tromper de méthode →](/blog/reviser-avec-des-flashcards-en-prepa/)
 
 ## Une chose à retenir
 

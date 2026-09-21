@@ -34,7 +34,7 @@ rien à ranger.
 
 <div class="encart">
   <p><strong>Il vous faut l'application pour les ouvrir.</strong> Elle est
-  gratuite, pour Windows 10 et 11, sans compte en ligne.
+  gratuite, pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger PrépaCards</a></p>
 </div>
 
@@ -118,7 +118,7 @@ prévenu, écrivez à
 <a href="mailto:contact@prepacards.fr">contact@prepacards.fr</a>.
 
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>PrépaCards est gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/prepa-commerciale/">PrépaCards en ECG</a></p>
 </div>

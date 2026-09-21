@@ -113,7 +113,7 @@ PrépaCards est déjà pensé pour des étudiants : le tarif annoncé est le tar
 
 ### La version gratuite est-elle limitée dans le temps ?
 
-Non. Elle est gratuite à vie, sans compte en ligne et sans publicité. Vos
+Non. Elle est gratuite à vie et sans publicité ; seul un compte gratuit est demandé à la première ouverture. Vos
 paquets et vos cartes sont en nombre illimité, et la répétition espacée y est
 complète — réglages, profils, dates cibles et statistiques compris.
 
@@ -143,7 +143,7 @@ proposée à la saisie appelle un service tiers, et uniquement quand vous la
 demandez.
 
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>PrépaCards est gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/fonctionnalites/">Voir les fonctionnalités</a></p>
 </div>

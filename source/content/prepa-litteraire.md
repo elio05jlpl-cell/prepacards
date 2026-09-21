@@ -83,7 +83,7 @@ Comme cartes texte, oui, avec la répétition espacée. La vérification vocale,
 Les mêmes outils que les prépas scientifiques s'appliquent : photographier une formule plutôt que la saisir, et faire porter les cartes sur les déclencheurs de méthode. Voir [la page prépas scientifiques](/prepa-scientifique/).
 
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>PrépaCards est gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/blog/reviser-a-voix-haute/">Pourquoi réviser à voix haute</a></p>
 </div>

@@ -22,10 +22,10 @@
 
 <link rel="icon" href="/img/favicon.png?v=2208486d" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=fcb36135">
-<link rel="stylesheet" href="/style.css?v=bf13394290">
+<link rel="stylesheet" href="/style.css?v=b68aa2f9cb">
 <link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Mes enregistrements vocaux sont-ils conservés ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. L'audio est transcrit en mémoire puis abandonné. Aucun fichier audio n'est écrit sur le disque, et rien n'est envoyé sur internet : la reconnaissance vocale fonctionne sur votre processeur."}}, {"@type": "Question", "name": "Les images de ma webcam sont-elles enregistrées ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Les images servent uniquement à mesurer le mouvement de vos lèvres, image par image, en mémoire. L'application n'écrit aucune capture et la caméra se referme quand vous quittez la session."}}, {"@type": "Question", "name": "Faut-il un compte pour utiliser l'application ?", "acceptedAnswer": {"@type": "Answer", "text": "Un compte est créé au premier lancement, mais il est entièrement local : il n'est enregistré nulle part ailleurs que sur votre ordinateur, et aucune vérification d'adresse e-mail n'a lieu. Personne, y compris nous, ne peut le récupérer — ce qui signifie aussi qu'il n'existe pas de procédure de mot de passe oublié."}}, {"@type": "Question", "name": "Ce site utilise-t-il Google Analytics ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Aucun outil de mesure d'audience n'est installé."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Mes enregistrements vocaux sont-ils conservés ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. L'audio est transcrit en mémoire puis abandonné. Aucun fichier audio n'est écrit sur le disque, et rien n'est envoyé sur internet : la reconnaissance vocale fonctionne sur votre processeur."}}, {"@type": "Question", "name": "Les images de ma webcam sont-elles enregistrées ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Les images servent uniquement à mesurer le mouvement de vos lèvres, image par image, en mémoire. L'application n'écrit aucune capture et la caméra se referme quand vous quittez la session."}}, {"@type": "Question", "name": "Faut-il un compte pour utiliser l'application ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, un compte gratuit, demandé une seule fois à la première ouverture. Il est le même sur l'application, le site et une éventuelle application mobile. Si vous oubliez votre mot de passe, un lien de réinitialisation est envoyé à l'adresse du compte. Vos cartes, elles, restent sur votre ordinateur : le compte vous identifie, il ne les emporte pas."}}, {"@type": "Question", "name": "Ce site utilise-t-il Google Analytics ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Aucun outil de mesure d'audience n'est installé."}}]}</script>
 </head>
 <body>
 
@@ -69,20 +69,25 @@
 <main id="contenu">
 <div class="feuille-texte">
 <h1 id="confidentialite-et-donnees-personnelles">Confidentialité et données personnelles</h1>
-<p class="chapeau">Position tenue par PrépaCards : l'application fonctionne
-sans compte et sans réseau. Un compte en ligne existe pour les abonnés, et il
-ne connaît que l'adresse e-mail et l'état de l'abonnement. Cette page détaille
-chaque cas où une donnée quitte votre ordinateur.</p>
+<p class="chapeau">Position tenue par PrépaCards : un compte gratuit est
+demandé à la première ouverture de l'application, et il ne connaît que votre
+adresse e-mail et l'état de votre abonnement. Vos cartes, elles, restent sur
+votre ordinateur. Cette page détaille chaque cas où une donnée le quitte.</p>
 
 <div class="encart encart-attention">
   <p><strong>À relire avant la mise en ligne</strong>, et à faire vérifier si
   vous vendez des abonnements : la description doit correspondre exactement à
   ce que fait votre site au moment de sa publication, notamment si vous ajoutez
   un outil de mesure d'audience ou un prestataire de paiement.</p>
+  <p><strong>Point à faire vérifier</strong> : Resend est établi aux
+  États-Unis. L'envoi de l'adresse e-mail y constitue un transfert hors de
+  l'Union européenne, qui doit reposer sur un mécanisme reconnu (Data Privacy
+  Framework, clauses contractuelles types). Vérifiez lequel Resend applique
+  et mentionnez-le ici.</p>
 </div>
 
 <h2 id="dans-lapplication">Dans l'application</h2>
-<p><strong>Vos cartes, votre historique de révision et votre compte local</strong> sont
+<p><strong>Vos cartes et votre historique de révision</strong> sont
 enregistrés dans un fichier, sur votre ordinateur, à l'emplacement
 <code>%APPDATA%\PrepaCards</code>. La répétition espacée, les statistiques et la
 reconnaissance de votre prononciation sont calculées là, sur votre machine.</p>
@@ -91,11 +96,13 @@ vous-même : la sauvegarde en ligne. Elle est <strong>chiffrée sur votre ordina
 avant d'être envoyée, avec une clé dérivée de votre mot de passe. Nous
 recevons des octets que nous ne pouvons pas ouvrir, et que vous seul pouvez
 restaurer.</p>
-<p><strong>Le mot de passe</strong> de votre compte local n'est pas conservé en clair. Seule
-une empreinte cryptographique est stockée (PBKDF2-HMAC-SHA256, 200 000
-itérations, avec un sel aléatoire). Ce compte verrouille l'ouverture de
-l'application ; il ne chiffre pas le fichier de cartes, et une personne ayant
-accès à votre ordinateur pourrait lire ce fichier.</p>
+<p><strong>Le fichier de cartes n'est pas chiffré.</strong> Une personne ayant accès à votre
+session Windows pourrait le lire. Le compte sert à vous identifier, pas à
+protéger ce fichier.</p>
+<p><strong>Votre mot de passe ne reste pas sur l'ordinateur.</strong> Il part une seule fois
+au service, à la connexion, qui rend en échange un jeton de session valable
+six mois. C'est ce jeton que l'application conserve : il lui permet de se
+rouvrir ensuite sans rien vous demander, et sans réseau.</p>
 <p><strong>Votre voix et l'image de votre webcam</strong> sont analysées en mémoire, sur votre
 processeur, puis immédiatement abandonnées. Aucun enregistrement audio ni aucune
 image n'est conservé sur le disque ni transmis.</p>
@@ -112,28 +119,45 @@ l'application : elle ne signale ni son installation, ni son usage.</p>
    formules depuis Hugging Face, Google et GitHub. Ces téléchargements
    transmettent ce que transmet toute requête web : votre adresse IP et le
    fichier demandé.</li>
-<li><strong>Compte en ligne, pour les abonnés.</strong> Voir la section suivante.</li>
+<li><strong>Votre compte.</strong> Voir la section suivante.</li>
 <li><strong>Consultation de ce site.</strong> Voir plus bas.</li>
 </ol>
-<h2 id="le-compte-en-ligne">Le compte en ligne</h2>
-<p>Il est <strong>facultatif</strong>. L'application s'utilise entièrement sans lui : créer
-des cartes, réviser, importer des paquets, consulter ses statistiques ne
-demandent aucun compte et aucun réseau. Le compte sert à deux choses, et deux
-seulement : retrouver son abonnement sur une autre machine, et déposer une
-sauvegarde.</p>
+<h2 id="votre-compte">Votre compte</h2>
+<p>Un compte gratuit est demandé <strong>à la première ouverture</strong> de l'application,
+puis plus jamais, sauf si vous vous déconnectez. Il est le même pour
+l'application, le site et une éventuelle application mobile : c'est ce qui
+permet de retrouver son abonnement sur une autre machine.</p>
 <p><strong>Ce que le serveur enregistre</strong> : votre adresse e-mail, une empreinte de
 votre mot de passe (PBKDF2-HMAC-SHA256, 200 000 itérations, avec un sel
-aléatoire), l'état de votre abonnement et sa date d'échéance, ainsi que
-l'identifiant client transmis par Stripe.</p>
+aléatoire), l'état de votre abonnement et sa date d'échéance, l'identifiant
+client transmis par Stripe, et — si vous vous connectez avec Google —
+l'identifiant que Google attribue à votre compte. Les jetons de session et les
+liens de réinitialisation n'y figurent que sous forme d'empreinte : une fuite
+de la base ne donnerait aucun accès utilisable.</p>
+<p><strong>Les services qui interviennent</strong> :</p>
+<ul>
+<li><strong>Cloudflare</strong> héberge le service et la base, dans l'Union européenne.</li>
+<li><strong>Stripe</strong> traite le paiement. Vos coordonnées bancaires ne transitent
+  jamais par PrépaCards.</li>
+<li><strong>Resend</strong> (États-Unis) envoie l'e-mail de réinitialisation du mot de passe,
+  et reçoit pour cela votre adresse e-mail — uniquement si vous en faites la
+  demande.</li>
+<li><strong>Google</strong>, si vous choisissez de vous connecter avec lui. Nous ne recevons
+  que votre adresse e-mail, la confirmation qu'elle est vérifiée et
+  l'identifiant de votre compte Google ; ni votre nom, ni votre photo, ni vos
+  contacts. L'application ne demande à Google aucune autre autorisation.</li>
+</ul>
 <p><strong>Ce qu'il n'enregistre pas</strong> : vos cartes, vos paquets, votre historique de
 révision, vos statistiques, vos enregistrements vocaux, vos photos. Rien de
 tout cela ne lui est transmis.</p>
 <p><strong>La sauvegarde</strong>, si vous la déclenchez, est chiffrée sur votre ordinateur
 avec une clé dérivée de votre mot de passe. Le serveur reçoit un bloc
-d'octets qu'il ne peut pas ouvrir. Conséquence à connaître : <strong>si vous oubliez
-votre mot de passe, la sauvegarde est définitivement illisible</strong>, y compris
-pour nous. C'est le prix de ce chiffrement, et nous préférons ce défaut à la
-possibilité de lire vos cartes.</p>
+d'octets qu'il ne peut pas ouvrir. Conséquence à connaître : <strong>réinitialiser
+votre mot de passe rend la sauvegarde existante définitivement illisible</strong>, y
+compris pour nous — le nouveau mot de passe ne peut pas ouvrir ce que
+l'ancien a chiffré. Vous retrouvez l'accès à votre compte et à votre
+abonnement, pas à cette sauvegarde. C'est le prix de ce chiffrement, et nous
+préférons ce défaut à la possibilité de lire vos cartes.</p>
 <p>Le service est hébergé chez Cloudflare, dans l'Union européenne.</p>
 <h2 id="sur-ce-site">Sur ce site</h2>
 <p>Ce site est statique : il ne dépose <strong>aucun cookie</strong> et n'utilise aucun outil
@@ -155,6 +179,21 @@ conservés le temps de traiter votre demande, puis supprimés.</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Compte (adresse, empreinte du mot de passe)</td>
+<td>Exécution du contrat</td>
+<td>Jusqu'à la suppression du compte</td>
+</tr>
+<tr>
+<td>Abonnement et paiement</td>
+<td>Exécution du contrat ; obligation légale pour les factures</td>
+<td>[durée légale de conservation des pièces comptables]</td>
+</tr>
+<tr>
+<td>E-mail de réinitialisation</td>
+<td>Exécution du contrat</td>
+<td>Le lien vaut une heure ; l'envoi est journalisé par Resend [durée à vérifier]</td>
+</tr>
 <tr>
 <td>Journaux du serveur web</td>
 <td>Intérêt légitime (sécurité)</td>
@@ -196,7 +235,7 @@ démarche : <em>Fichier → Exporter en CSV</em> dans l'application.</p>
   </details>
   <details class="faq-item">
     <summary><span>Faut-il un compte pour utiliser l'application ?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
-    <div class="faq-enveloppe"><div class="faq-reponse"><p>Un compte est créé au premier lancement, mais il est <strong>entièrement local</strong> : il n'est enregistré nulle part ailleurs que sur votre ordinateur, et aucune vérification d'adresse e-mail n'a lieu. Personne, y compris nous, ne peut le récupérer — ce qui signifie aussi qu'il n'existe pas de procédure de mot de passe oublié.</p></div></div>
+    <div class="faq-enveloppe"><div class="faq-reponse"><p>Oui, un compte gratuit, demandé une seule fois à la première ouverture. Il est le même sur l'application, le site et une éventuelle application mobile. Si vous oubliez votre mot de passe, un lien de réinitialisation est envoyé à l'adresse du compte. Vos cartes, elles, restent sur votre ordinateur : le compte vous identifie, il ne les emporte pas.</p></div></div>
   </details>
   <details class="faq-item">
     <summary><span>Ce site utilise-t-il Google Analytics ?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>

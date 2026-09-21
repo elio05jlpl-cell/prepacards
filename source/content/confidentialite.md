@@ -7,21 +7,26 @@ faq: true
 
 # Confidentialité et données personnelles
 
-<p class="chapeau">Position tenue par PrépaCards : l'application fonctionne
-sans compte et sans réseau. Un compte en ligne existe pour les abonnés, et il
-ne connaît que l'adresse e-mail et l'état de l'abonnement. Cette page détaille
-chaque cas où une donnée quitte votre ordinateur.</p>
+<p class="chapeau">Position tenue par PrépaCards : un compte gratuit est
+demandé à la première ouverture de l'application, et il ne connaît que votre
+adresse e-mail et l'état de votre abonnement. Vos cartes, elles, restent sur
+votre ordinateur. Cette page détaille chaque cas où une donnée le quitte.</p>
 
 <div class="encart encart-attention">
   <p><strong>À relire avant la mise en ligne</strong>, et à faire vérifier si
   vous vendez des abonnements : la description doit correspondre exactement à
   ce que fait votre site au moment de sa publication, notamment si vous ajoutez
   un outil de mesure d'audience ou un prestataire de paiement.</p>
+  <p><strong>Point à faire vérifier</strong> : Resend est établi aux
+  États-Unis. L'envoi de l'adresse e-mail y constitue un transfert hors de
+  l'Union européenne, qui doit reposer sur un mécanisme reconnu (Data Privacy
+  Framework, clauses contractuelles types). Vérifiez lequel Resend applique
+  et mentionnez-le ici.</p>
 </div>
 
 ## Dans l'application
 
-**Vos cartes, votre historique de révision et votre compte local** sont
+**Vos cartes et votre historique de révision** sont
 enregistrés dans un fichier, sur votre ordinateur, à l'emplacement
 `%APPDATA%\PrepaCards`. La répétition espacée, les statistiques et la
 reconnaissance de votre prononciation sont calculées là, sur votre machine.
@@ -32,11 +37,14 @@ avant d'être envoyée, avec une clé dérivée de votre mot de passe. Nous
 recevons des octets que nous ne pouvons pas ouvrir, et que vous seul pouvez
 restaurer.
 
-**Le mot de passe** de votre compte local n'est pas conservé en clair. Seule
-une empreinte cryptographique est stockée (PBKDF2-HMAC-SHA256, 200 000
-itérations, avec un sel aléatoire). Ce compte verrouille l'ouverture de
-l'application ; il ne chiffre pas le fichier de cartes, et une personne ayant
-accès à votre ordinateur pourrait lire ce fichier.
+**Le fichier de cartes n'est pas chiffré.** Une personne ayant accès à votre
+session Windows pourrait le lire. Le compte sert à vous identifier, pas à
+protéger ce fichier.
+
+**Votre mot de passe ne reste pas sur l'ordinateur.** Il part une seule fois
+au service, à la connexion, qui rend en échange un jeton de session valable
+six mois. C'est ce jeton que l'application conserve : il lui permet de se
+rouvrir ensuite sans rien vous demander, et sans réseau.
 
 **Votre voix et l'image de votre webcam** sont analysées en mémoire, sur votre
 processeur, puis immédiatement abandonnées. Aucun enregistrement audio ni aucune
@@ -56,21 +64,36 @@ l'application : elle ne signale ni son installation, ni son usage.
    formules depuis Hugging Face, Google et GitHub. Ces téléchargements
    transmettent ce que transmet toute requête web : votre adresse IP et le
    fichier demandé.
-3. **Compte en ligne, pour les abonnés.** Voir la section suivante.
+3. **Votre compte.** Voir la section suivante.
 4. **Consultation de ce site.** Voir plus bas.
 
-## Le compte en ligne
+## Votre compte
 
-Il est **facultatif**. L'application s'utilise entièrement sans lui : créer
-des cartes, réviser, importer des paquets, consulter ses statistiques ne
-demandent aucun compte et aucun réseau. Le compte sert à deux choses, et deux
-seulement : retrouver son abonnement sur une autre machine, et déposer une
-sauvegarde.
+Un compte gratuit est demandé **à la première ouverture** de l'application,
+puis plus jamais, sauf si vous vous déconnectez. Il est le même pour
+l'application, le site et une éventuelle application mobile : c'est ce qui
+permet de retrouver son abonnement sur une autre machine.
 
 **Ce que le serveur enregistre** : votre adresse e-mail, une empreinte de
 votre mot de passe (PBKDF2-HMAC-SHA256, 200 000 itérations, avec un sel
-aléatoire), l'état de votre abonnement et sa date d'échéance, ainsi que
-l'identifiant client transmis par Stripe.
+aléatoire), l'état de votre abonnement et sa date d'échéance, l'identifiant
+client transmis par Stripe, et — si vous vous connectez avec Google —
+l'identifiant que Google attribue à votre compte. Les jetons de session et les
+liens de réinitialisation n'y figurent que sous forme d'empreinte : une fuite
+de la base ne donnerait aucun accès utilisable.
+
+**Les services qui interviennent** :
+
+- **Cloudflare** héberge le service et la base, dans l'Union européenne.
+- **Stripe** traite le paiement. Vos coordonnées bancaires ne transitent
+  jamais par PrépaCards.
+- **Resend** (États-Unis) envoie l'e-mail de réinitialisation du mot de passe,
+  et reçoit pour cela votre adresse e-mail — uniquement si vous en faites la
+  demande.
+- **Google**, si vous choisissez de vous connecter avec lui. Nous ne recevons
+  que votre adresse e-mail, la confirmation qu'elle est vérifiée et
+  l'identifiant de votre compte Google ; ni votre nom, ni votre photo, ni vos
+  contacts. L'application ne demande à Google aucune autre autorisation.
 
 **Ce qu'il n'enregistre pas** : vos cartes, vos paquets, votre historique de
 révision, vos statistiques, vos enregistrements vocaux, vos photos. Rien de
@@ -78,10 +101,12 @@ tout cela ne lui est transmis.
 
 **La sauvegarde**, si vous la déclenchez, est chiffrée sur votre ordinateur
 avec une clé dérivée de votre mot de passe. Le serveur reçoit un bloc
-d'octets qu'il ne peut pas ouvrir. Conséquence à connaître : **si vous oubliez
-votre mot de passe, la sauvegarde est définitivement illisible**, y compris
-pour nous. C'est le prix de ce chiffrement, et nous préférons ce défaut à la
-possibilité de lire vos cartes.
+d'octets qu'il ne peut pas ouvrir. Conséquence à connaître : **réinitialiser
+votre mot de passe rend la sauvegarde existante définitivement illisible**, y
+compris pour nous — le nouveau mot de passe ne peut pas ouvrir ce que
+l'ancien a chiffré. Vous retrouvez l'accès à votre compte et à votre
+abonnement, pas à cette sauvegarde. C'est le prix de ce chiffrement, et nous
+préférons ce défaut à la possibilité de lire vos cartes.
 
 Le service est hébergé chez Cloudflare, dans l'Union européenne.
 
@@ -103,6 +128,9 @@ conservés le temps de traiter votre demande, puis supprimés.
 
 | Traitement | Base légale | Durée |
 |---|---|---|
+| Compte (adresse, empreinte du mot de passe) | Exécution du contrat | Jusqu'à la suppression du compte |
+| Abonnement et paiement | Exécution du contrat ; obligation légale pour les factures | [durée légale de conservation des pièces comptables] |
+| E-mail de réinitialisation | Exécution du contrat | Le lien vaut une heure ; l'envoi est journalisé par Resend [durée à vérifier] |
 | Journaux du serveur web | Intérêt légitime (sécurité) | [durée pratiquée par votre hébergeur] |
 | Réponse à un message | Intérêt légitime | Le temps de l'échange, puis suppression |
 | Liste d'attente Premium ou version Mac | Consentement | Jusqu'au retrait de votre consentement |
@@ -133,7 +161,7 @@ Non. Les images servent uniquement à mesurer le mouvement de vos lèvres, image
 
 ### Faut-il un compte pour utiliser l'application ?
 
-Un compte est créé au premier lancement, mais il est **entièrement local** : il n'est enregistré nulle part ailleurs que sur votre ordinateur, et aucune vérification d'adresse e-mail n'a lieu. Personne, y compris nous, ne peut le récupérer — ce qui signifie aussi qu'il n'existe pas de procédure de mot de passe oublié.
+Oui, un compte gratuit, demandé une seule fois à la première ouverture. Il est le même sur l'application, le site et une éventuelle application mobile. Si vous oubliez votre mot de passe, un lien de réinitialisation est envoyé à l'adresse du compte. Vos cartes, elles, restent sur votre ordinateur : le compte vous identifie, il ne les emporte pas.
 
 ### Ce site utilise-t-il Google Analytics ?
 

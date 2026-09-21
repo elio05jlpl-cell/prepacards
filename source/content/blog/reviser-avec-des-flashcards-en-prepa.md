@@ -59,6 +59,8 @@ Bon — trois cartes distinctes :
 Trois cartes courtes sont plus rapides à réviser, et surtout elles révèlent
 *ce que* vous ne savez pas.
 
+[Le cas particulier des formules de maths →](/blog/flashcards-formules-de-maths/)
+
 ## Étape 3 : fixez une limite de cartes nouvelles, et tenez-la
 
 C'est le point que presque personne n'anticipe. La répétition espacée reporte
@@ -74,6 +76,7 @@ cartes par trimestre.
 La plupart des applications de flashcards, dont PrépaCards, permettent de fixer
 cette limite par paquet. Utilisez-la : c'est un garde-fou contre votre propre
 enthousiasme.
+[Quelle limite choisir selon votre charge →](/blog/combien-de-cartes-par-jour/)
 
 ## Étape 4 : révisez tous les jours, même mal
 
@@ -99,6 +102,7 @@ n'est pas acquise, même si la réponse était « dans votre tête ».
 C'est précisément ce que PrépaCards automatise : il écoute, transcrit ce que
 vous avez dit et note la carte à votre place, ce qui supprime la complaisance.
 Mais la méthode vaut avec n'importe quel outil, y compris des cartes en papier.
+[Pourquoi réciter à voix haute change tout →](/blog/reviser-a-voix-haute/)
 
 ## Ce que les flashcards ne feront pas pour vous
 
@@ -112,6 +116,8 @@ Il faut être clair, parce que la promesse est souvent survendue :
 - elles **ne font pas de miracle en trois semaines**. La répétition espacée est
   rentable sur plusieurs mois. Commencée en mai pour un concours en juin, elle
   n'aura pas le temps de produire son effet.
+
+[La reconnaissance de schémas, que les cartes ne remplacent pas →](/blog/reconnaissance-de-schemas-en-prepa/)
 
 ## En résumé
 

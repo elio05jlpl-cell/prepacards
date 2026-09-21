@@ -28,6 +28,7 @@ maîtriser, indépendamment de notre capacité réelle à la restituer.
 
 Le juge de votre révision, quand vous révisez seul, c'est vous. Et vous êtes un
 juge indulgent.
+[Apprendre son cours sans relire en boucle →](/blog/apprendre-son-cours-par-coeur/)
 
 ## Pourquoi la voix haute dissipe l'illusion
 
@@ -47,6 +48,7 @@ qu'aucune révision mentale n'oblige :
 À cela s'ajoute, pour les langues, un bénéfice direct : la prononciation ne
 s'améliore qu'en prononçant. Un mot d'allemand révisé cent fois en silence
 reste un mot qu'on n'a jamais dit.
+[Se préparer à une khôlle en s'interrogeant à voix haute →](/blog/preparer-une-kholle/)
 
 ## Le problème : on ne s'y tient pas
 
@@ -85,6 +87,7 @@ juge. Une réponse marmonnée ou incomplète ne passe pas, et la carte revient.
 Si vous activez la webcam, l'application observe en plus le mouvement de vos
 lèvres, et la carte n'est validée que si le micro et la bouche concordent — ce
 qui rend difficile de « tricher » en soufflant vaguement dans le micro.
+[Comment la répétition espacée choisit le bon moment →](/blog/repetition-espacee-comment-ca-marche/)
 
 ## Les limites, pour être clair
 

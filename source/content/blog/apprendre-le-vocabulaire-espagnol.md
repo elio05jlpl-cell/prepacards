@@ -27,6 +27,7 @@ pas.
 **L'absence d'espacement.** Un mot vu une fois le dimanche n'est pas revu avant
 le dimanche suivant, si tant est qu'il le soit. La courbe de l'oubli fait son
 travail entre les deux.
+[Pourquoi la LV2 décroche plus vite que la LV1 →](/blog/lv2-en-prepa/)
 
 ## Le sens qui compte : français → espagnol
 
@@ -82,6 +83,7 @@ savoir tombe immédiatement.
 **Utilisez les temps morts.** Dix minutes dans les transports, dix minutes avant
 de dormir. Quatre créneaux de dix minutes par jour font presque cinq heures par
 mois — plus que votre volume de cours.
+[Préparer la khôlle d'espagnol →](/blog/preparer-une-kholle/)
 
 ## L'accentuation, qui coûte des points bêtement
 
@@ -103,7 +105,7 @@ Les paquets fournis ne couvrent que l'anglais ECG : pour l'espagnol, vous créez
 vos cartes, avec une traduction proposée à la saisie pour aller plus vite.
 
 <div class="encart">
-  <p>Gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/blog/lv2-en-prepa/">Tenir sa LV2 en prépa</a></p>
 </div>

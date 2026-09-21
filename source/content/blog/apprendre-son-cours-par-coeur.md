@@ -71,6 +71,7 @@ suite crée un contexte qui souffle les réponses.
 **N'apprenez jamais ce que vous n'avez pas compris.** Une formule mémorisée
 sans son sens ne se réutilise pas, et se déforme en quelques semaines. Si un
 point résiste, c'est une question pour le prof, pas une carte de plus.
+[Fabriquer ses cartes : les cinq règles →](/blog/reviser-avec-des-flashcards-en-prepa/)
 
 ## Ce qui ne s'apprend pas par cœur
 
@@ -95,7 +96,7 @@ remonter les cartes au bon moment sans que vous ayez à y penser, et **écoute s
 vous prononcez la réponse** plutôt que de vous laisser juger vous-même.
 
 <div class="encart">
-  <p>Gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/prepa/">Réviser en prépa</a></p>
 </div>

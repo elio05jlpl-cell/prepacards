@@ -79,6 +79,7 @@ carte ne s'apprend pas : vous ne pourrez jamais dire si vous le saviez.
 **Le vocabulaire de vos propres textes.** Les mots rencontrés dans un article
 travaillé en cours valent plus que ceux d'une liste générique : vous avez déjà
 un contexte pour eux.
+[Une carte, une information →](/blog/reviser-avec-des-flashcards-en-prepa/)
 
 ## Grammaire : peu de cartes, bien choisies
 
@@ -86,6 +87,7 @@ La grammaire ne se mémorise pas comme du lexique, mais quelques points s'y
 prêtent parfaitement — ceux qui sont **ponctuels et sans ambiguïté** :
 concordance des temps, emplois du subjonctif, prépositions imposées. Le reste se
 travaille en écrivant et en se faisant corriger.
+[Combien de mots nouveaux par jour →](/blog/combien-de-cartes-par-jour/)
 
 ## En pratique
 
@@ -99,7 +101,7 @@ vous créez vos cartes, avec une traduction proposée à la saisie pour aller pl
 vite.
 
 <div class="encart">
-  <p>Gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/colle-anglais-prepa/">Préparer une colle de langue</a></p>
 </div>

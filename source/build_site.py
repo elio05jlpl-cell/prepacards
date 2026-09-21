@@ -58,6 +58,7 @@ import hashlib
 import html
 import json
 import re
+import sys
 import os
 import shutil
 import struct
@@ -723,6 +724,48 @@ def parse_front_matter(text: str) -> tuple:
     return meta, body.strip()
 
 
+LIEN_ARTICLE = re.compile(r"\(/blog/([a-z0-9-]+)/?(?:#[^)]*)?\)")
+
+
+def verifier_liens_vers_l_avenir(articles: list, aujourdhui: str) -> None:
+    """Refuse qu'un article cite un article qui ne sera pas encore paru.
+
+    Un article de la file cite volontiers les autres. Si l'un d'eux parait
+    APRES lui, le lien vaut 404 le jour de sa publication — et l'audit, qui
+    refuse les liens morts, arrete alors l'action quotidienne. Plus aucun
+    article ne sort, sans que rien ne le signale ce jour-la.
+
+    Aucun des outils existants ne peut le voir. La construction normale ne
+    batit pas la file, donc ne verifie pas ses liens ; PREPACARDS_TOUT la
+    batit entiere, comme si tout etait paru, et le lien y parait valide.
+    Il faut donc comparer les DATES, ici, a la construction : l'erreur se
+    montre quand on l'ecrit, et non des jours plus tard.
+
+    La regle : un lien de A vers B est valable si B est paru au moment ou A
+    parait, c'est-a-dire si date(B) <= max(date(A), aujourd'hui).
+    """
+    dates = {a["slug"]: a["date"] for a in articles}
+    fautes = []
+    for article in articles:
+        visible_des = max(article["date"], aujourdhui)
+        for cible in set(LIEN_ARTICLE.findall(article.get("raw_body", ""))):
+            if cible not in dates:
+                fautes.append(f"  {article['slug']} -> {cible} : article inexistant")
+            elif dates[cible] > visible_des:
+                jours = (date.fromisoformat(dates[cible])
+                         - date.fromisoformat(visible_des)).days
+                fautes.append(
+                    f"  {article['slug']} (parait le {article['date']}) -> "
+                    f"{cible} (parait le {dates[cible]}) : lien mort "
+                    f"pendant {jours} jour(s)")
+    if fautes:
+        print("Liens vers des articles pas encore parus :")
+        print("\n".join(sorted(fautes)))
+        print("L'action quotidienne s'arreterait le jour de publication. "
+              "Construction interrompue.")
+        sys.exit(1)
+
+
 def load_page(path: Path) -> dict:
     meta, body = parse_front_matter(path.read_text(encoding="utf-8"))
     slug = meta.get("slug", path.stem)
@@ -860,7 +903,14 @@ def css_version() -> str:
     plusieurs jours pour les visiteurs deja venus.
     """
     contenu = (STATIC / "style.css").read_bytes()
-    return hashlib.sha256(contenu).hexdigest()[:10]
+    # Fins de ligne ramenees a LF avant le calcul. Git rend ce fichier en
+    # CRLF sous Windows et en LF sur le serveur de l'action quotidienne :
+    # sur les octets bruts, le meme fichier donnait deux empreintes, et
+    # chaque alternance entre une construction locale et une construction
+    # automatique changeait l'adresse de la feuille de style sur toutes les
+    # pages. Chaque visiteur la retelechargeait alors, sans que rien n'ait
+    # change.
+    return hashlib.sha256(contenu.replace(b"\r\n", b"\n")).hexdigest()[:10]
 
 
 SEPARATEUR_NAV = chr(10) + ' ' * 8
@@ -1150,8 +1200,21 @@ def versionner_ressources() -> int:
                        sorted(empreintes, key=len, reverse=True)) + r")(?![\w.?])"
     )
 
+    # Seuls les fichiers SERVIS recoivent une empreinte. La sortie contient
+    # aussi la copie des sources (source/), dont l'action quotidienne se
+    # sert pour reconstruire le site. Les versionner aussi revenait a
+    # injecter des « ?v= » dans les gabarits d'origine ; et comme le motif
+    # refuse de re-versionner une adresse qui en porte deja un, ces gabarits
+    # gardaient pour toujours l'ANCIENNE empreinte. Une image remplacee
+    # serait restee affichee dans son ancienne version pendant un an — le
+    # defaut meme que cette fonction existe pour empecher.
+    def servi(fichier: Path) -> bool:
+        premier = fichier.relative_to(OUTPUT).parts[0]
+        return premier not in {"source", ".git", ".github", "worker"}
+
     modifies = 0
-    for fichier in list(OUTPUT.rglob("*.html")) + list(OUTPUT.rglob("*.css")):
+    candidats = list(OUTPUT.rglob("*.html")) + list(OUTPUT.rglob("*.css"))
+    for fichier in (f for f in candidats if servi(f)):
         texte = fichier.read_text(encoding="utf-8")
         nouveau = motif.sub(lambda m: f"{m.group(1)}?v={empreintes[m.group(1)]}", texte)
         if nouveau != texte:
@@ -1225,6 +1288,7 @@ def build() -> None:
     # A ne jamais utiliser pour publier : cela sortirait la file entiere
     # d'un coup.
     aujourdhui = "9999-12-31" if os.environ.get("PREPACARDS_TOUT") else date.today().isoformat()
+    verifier_liens_vers_l_avenir(tous, date.today().isoformat())
     en_attente = [a for a in tous if a["date"] > aujourdhui]
     articles = [a for a in tous if a["date"] <= aujourdhui]
     if en_attente:

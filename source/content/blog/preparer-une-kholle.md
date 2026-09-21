@@ -97,6 +97,7 @@ exactement ce que la répétition espacée traite le mieux.
 
 Une carte, une idée. Recopier un paragraphe de cours ne sert à rien : vous ne
 pourrez jamais dire si vous le saviez ou non.
+[Une carte, une idée : les règles pour faire ses cartes →](/blog/reviser-avec-des-flashcards-en-prepa/)
 
 ## Le calendrier d'une semaine de khôlle
 
@@ -129,6 +130,7 @@ automatiquement l'ancien évite l'effondrement de février.
 un professeur, c'est inconfortable pour tout le monde. Ce qui le réduit
 réellement, c'est d'avoir déjà prononcé les réponses à voix haute — plusieurs
 fois, plusieurs jours avant. Le jour J, votre bouche connaît déjà le chemin.
+[Caser les révisions dans une semaine de prépa →](/blog/organisation-semaine-prepa/)
 
 ## En pratique
 
@@ -139,7 +141,7 @@ réponse** au lieu de vous laisser juger vous-même. Vous pouvez aussi poser une
 l'échéance.
 
 <div class="encart">
-  <p>Gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/prepa/">Réviser en prépa</a></p>
 </div>

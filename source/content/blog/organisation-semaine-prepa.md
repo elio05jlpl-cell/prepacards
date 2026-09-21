@@ -51,6 +51,7 @@ durée qu'il faut pour maintenir 2 000 mots de vocabulaire d'anglais.
 Ces créneaux ne conviennent pas aux exercices — trop courts, trop interrompus —
 mais ils conviennent parfaitement à la mémorisation. À condition de ne pas
 avoir à décider quoi réviser : la décision coûte plus cher que la révision.
+[Combien de cartes tiennent dans ces temps morts →](/blog/combien-de-cartes-par-jour/)
 
 ## Quoi sacrifier quand tout ne rentre pas
 
@@ -82,6 +83,8 @@ le vendredi ne le sera pas le samedi, et l'essayer quand même coûte le sommeil
 qui aurait servi au reste.
 [Préparer une khôlle, semaine par semaine →](/blog/preparer-une-kholle/)
 
+[Préparer un concours blanc sans tout réviser la veille →](/blog/preparer-un-concours-blanc/)
+
 ## En pratique
 
 Le poste « mémorisation entretenue » est celui qui s'effondre en premier, parce
@@ -92,7 +95,7 @@ l'échéance. Vous pouvez aussi déclarer vos **jours de repos** — l'applicati
 n'y proposera rien.
 
 <div class="encart">
-  <p>Gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/prepa/">Réviser en prépa</a></p>
 </div>

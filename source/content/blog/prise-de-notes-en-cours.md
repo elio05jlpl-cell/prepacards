@@ -56,6 +56,7 @@ qu'elles veuillent dire quelque chose :
 
 L'intérêt n'est pas la marque : c'est qu'au moment du cours, vous ayez déjà
 trié. Le soir, vous ne relisez pas vingt pages pour retrouver ce qui comptait.
+[De la marque dans la marge à la carte →](/blog/reviser-avec-des-flashcards-en-prepa/)
 
 ## Le quart d'heure du soir
 
@@ -103,7 +104,7 @@ formules il suffit de **photographier la page du cours** plutôt que de les
 saisir.
 
 <div class="encart">
-  <p>Gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/fiches-de-revision-prepa/">Fiches ou flashcards ?</a></p>
 </div>

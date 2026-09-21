@@ -45,6 +45,7 @@ Résultat : vous passez l'essentiel de votre temps sur ce que vous maîtrisez
 mal, et très peu sur ce que vous savez déjà. C'est exactement l'inverse de la
 relecture d'un chapitre, où vous consacrez autant de temps aux pages faciles
 qu'aux difficiles.
+[Combien de cartes nouvelles par jour, concrètement →](/blog/combien-de-cartes-par-jour/)
 
 ## Les trois algorithmes que vous rencontrerez
 
@@ -110,6 +111,8 @@ La répétition espacée n'est pas magique. Elle a des prérequis :
 4. **De la durée.** Les intervalles longs n'existent qu'après plusieurs mois.
    Commencer trois semaines avant un concours ne laisse pas le temps au système
    de produire son effet.
+
+[Appliquer la méthode en prépa, étape par étape →](/blog/reviser-avec-des-flashcards-en-prepa/)
 
 ## Et la mémorisation par compréhension ?
 

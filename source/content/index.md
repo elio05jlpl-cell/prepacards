@@ -17,7 +17,7 @@ faq: true
       <a class="bouton" href="/telecharger/">Télécharger gratuitement</a>
       <a class="bouton-secondaire" href="/fonctionnalites/">Voir les fonctionnalités</a>
     </p>
-    <p class="sous-bouton">Windows 10 et 11 · Gratuit, sans compte en ligne ·
+    <p class="sous-bouton">Windows 10 et 11 · Gratuit ·
       Vos cartes restent sur votre ordinateur</p>
   </div>
 

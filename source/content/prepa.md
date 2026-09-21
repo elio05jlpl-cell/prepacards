@@ -95,7 +95,7 @@ L'application propose dix filières à la première ouverture — ECG, ECT, MPSI
 Oui, le principe est le même : beaucoup de contenu ponctuel à retenir et des oraux. Les paquets fournis, eux, sont spécifiques à l'anglais de prépa ECG.
 
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows 10 et 11, sans compte en ligne.
+  <p>PrépaCards est gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/fonctionnalites/">Voir les fonctionnalités</a></p>
 </div>

@@ -36,6 +36,8 @@ Trois mauvaises solutions circulent :
   carte devient inévaluable : on ne peut pas dire si on « savait » toute une
   page.
 
+[Les règles générales pour réviser avec des flashcards →](/blog/reviser-avec-des-flashcards-en-prepa/)
+
 ## Méthode 1 : apprendre le LaTeX minimal
 
 Si vous faites des maths, apprendre une dizaine de commandes LaTeX est un
@@ -118,6 +120,8 @@ Celles qui ne le méritent pas :
   redémontrer ;
 - les démonstrations complètes. Une démonstration n'est pas une flashcard :
   elle s'entraîne en la refaisant sur une feuille.
+
+[Reconnaître quel théorème appliquer face à un exercice →](/blog/reconnaissance-de-schemas-en-prepa/)
 
 ## En résumé
 
