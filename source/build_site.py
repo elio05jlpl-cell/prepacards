@@ -221,6 +221,7 @@ def scripts_animes(corps: str) -> str:
                               ('class="feuille-texte"', "pages-vivantes.js"),
                               ('id="compte-app"', "compte.js"),
                               ('id="mdp-app"', "mot-de-passe.js"),
+                              ('id="liste-articles"', "blog-filtres.js"),
                               # Le marqueur, et non l'adresse Stripe : a ce
                               # stade les boutons sont encore
                               # « {{bouton_mensuel}} », et chercher
@@ -329,6 +330,31 @@ def bloc_telechargement() -> str:
     if DOWNLOAD_PLACEHOLDER in DOWNLOAD_URL:
         return BLOC_TELECHARGEMENT_ATTENTE
     return BLOC_TELECHARGEMENT_PRET.format(url=DOWNLOAD_URL)
+
+
+# ------------------------------------------------------------------
+# Filtres de la bibliotheque du blog
+# ------------------------------------------------------------------
+
+# (slug, libelle affiche). Le slug est ecrit dans le "filiere:" / "matiere:"
+# du en-tete des articles, separes par une virgule si plusieurs s'appliquent.
+FILIERES = [
+    ("toutes", "Toutes filières"),
+    ("commerciale", "Prépa commerciale (ECG, ECT)"),
+    ("scientifique", "Prépa scientifique"),
+    ("litteraire", "Prépa littéraire"),
+]
+MATIERES = [
+    ("toutes", "Toutes matières"),
+    ("methode", "Méthode de travail"),
+    ("maths", "Mathématiques"),
+    ("geopolitique", "Géopolitique"),
+    ("culture-generale", "Culture générale"),
+    ("langues", "Langues"),
+    ("espagnol", "Espagnol"),
+    ("allemand", "Allemand"),
+    ("italien", "Italien"),
+]
 
 
 # ------------------------------------------------------------------
@@ -831,6 +857,8 @@ def load_page(path: Path) -> dict:
         "body_html": envelopper(html_body),
         "sommaire_html": sommaire_html,
         "raw_body": body,
+        "filiere": [f.strip() for f in meta.get("filiere", "toutes").split(",") if f.strip()],
+        "matiere": [m.strip() for m in meta.get("matiere", "methode").split(",") if m.strip()],
     }
 
 
@@ -1080,6 +1108,90 @@ def render_footer() -> str:
             f'        <ul>\n          {entrees}\n        </ul>\n'
             f'      </div>')
     return "\n      ".join(colonnes)
+
+
+def bibliotheque_blog(articles: list) -> str:
+    """La page /blog/ : recherche, tri, et filtres par filiere et matiere.
+
+    Tout se passe cote client (JavaScript) une fois la page chargee : le
+    site est statique, donc les 20 et quelques articles sont deja tous dans
+    le HTML, simplement affiches ou masques selon les criteres. Les
+    compteurs affiches a cote de chaque filtre, eux, sont calcules ici a la
+    construction, sur l'etat reel de la file publiee.
+    """
+
+    def options(liste: list, cle: str) -> str:
+        lignes = []
+        for slug, libelle in liste:
+            if slug == "toutes":
+                total = len(articles)
+            else:
+                total = sum(1 for a in articles if slug in a[cle])
+            lignes.append(
+                f'<label class="filtre-option">'
+                f'<input type="radio" name="{cle}" value="{slug}"'
+                f'{" checked" if slug == "toutes" else ""}>'
+                f'<span>{html.escape(libelle)}</span>'
+                f'<span class="filtre-compte">{total}</span>'
+                f'</label>'
+            )
+        return "\n          ".join(lignes)
+
+    cartes = []
+    for article in articles:
+        titre = titre_affiche(article["title"])
+        cartes.append(
+            f'<li class="carte-article"'
+            f' data-titre="{html.escape(titre.lower())}"'
+            f' data-date="{article["date"]}"'
+            f' data-filiere="{html.escape(" ".join(article["filiere"]))}"'
+            f' data-matiere="{html.escape(" ".join(article["matiere"]))}">'
+            f'<a href="/blog/{article["slug"]}/">'
+            f'<span class="art-date">{format_date(article["date"])}</span>'
+            f'<strong>{html.escape(titre)}</strong>'
+            f'<span class="art-desc">{html.escape(article["description"])}</span>'
+            f"</a></li>"
+        )
+
+    return f"""<h1 class="conteneur-etroit">Méthodes de révision en prépa</h1>
+<p class="chapeau conteneur-etroit">Méthode de travail, répétition espacée et retours
+concrets sur la préparation des concours.</p>
+<div class="cadre-entete conteneur-etroit">
+  <nav class="fil" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <strong>Blog</strong></nav>
+</div>
+<div class="disposition-bibliotheque conteneur-etroit">
+  <aside class="filtres-barre-laterale">
+    <div class="filtre-groupe">
+      <h2 class="filtre-titre">Filière</h2>
+      {options(FILIERES, "filiere")}
+    </div>
+    <div class="filtre-groupe">
+      <h2 class="filtre-titre">Matière</h2>
+      {options(MATIERES, "matiere")}
+    </div>
+  </aside>
+  <div class="bibliotheque-contenu">
+    <div class="bibliotheque-barre">
+      <div class="bibliotheque-champ">
+        <label for="tri-articles">Trier les résultats</label>
+        <select id="tri-articles">
+          <option value="recent">Plus récents d'abord</option>
+          <option value="ancien">Plus anciens d'abord</option>
+          <option value="az">Titre, A → Z</option>
+          <option value="za">Titre, Z → A</option>
+        </select>
+      </div>
+      <div class="bibliotheque-champ">
+        <label for="recherche-articles">Rechercher</label>
+        <input type="search" id="recherche-articles" placeholder="Chercher un article...">
+      </div>
+    </div>
+    <ul class="liste-articles" id="liste-articles">
+      {"".join(cartes)}
+    </ul>
+    <p class="aucun-resultat" id="aucun-resultat" hidden>Aucun article ne correspond à ces critères.</p>
+  </div>
+</div>"""
 
 
 def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str:
@@ -1354,15 +1466,6 @@ def build() -> None:
         urls.append((url_path, article["date"], "0.6"))
 
     # --- Sommaire du blog ---------------------------------------------
-    cartes = []
-    for article in articles:
-        cartes.append(
-            f'<li><a href="/blog/{article["slug"]}/">'
-            f'<span class="art-date">{format_date(article["date"])}</span>'
-            f'<strong>{html.escape(titre_affiche(article["title"]))}</strong>'
-            f'<span class="art-desc">{html.escape(article["description"])}</span>'
-            f"</a></li>"
-        )
     index = {
         "slug": "blog",
         "title": "Méthodes de révision en prépa : le blog | PrépaCards",
@@ -1372,12 +1475,7 @@ def build() -> None:
             "concrets sur la préparation des concours."
         ),
         "date": "", "hero": "", "nav_label": "", "noindex": False, "faq": "",
-        "body_html": (
-            "<h1>Méthodes de révision en prépa</h1>\n"
-            "<p class=\"chapeau\">Méthode de travail, répétition espacée et "
-            "retours concrets sur la préparation des concours.</p>\n"
-            f'<ul class="liste-articles">{"".join(cartes)}</ul>'
-        ),
+        "body_html": bibliotheque_blog(articles),
         "raw_body": "",
     }
     write("/blog/", render(index, "/blog/", "base.html", []))

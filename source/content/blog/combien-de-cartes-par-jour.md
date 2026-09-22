@@ -3,6 +3,8 @@ title: Combien de cartes par jour ? Le bon calcul | PrépaCards
 description: 20 nouvelles cartes par jour, ce sont 140 révisions quotidiennes six mois plus tard. Le calcul, les seuils tenables en prépa, et comment rattraper un arriéré.
 date: 2026-09-21
 slug: combien-de-cartes-par-jour
+filiere: toutes
+matiere: methode
 ---
 
 # Combien de cartes par jour ? Le calcul que personne ne fait

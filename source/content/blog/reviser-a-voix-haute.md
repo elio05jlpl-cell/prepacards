@@ -3,6 +3,8 @@ title: Réviser à voix haute : pourquoi ça change tout | PrépaCards
 description: L'illusion de savoir est le premier piège de la révision. Pourquoi réciter à voix haute la dissipe, et comment s'y contraindre quand on révise seul.
 date: 2026-08-28
 slug: reviser-a-voix-haute
+filiere: toutes
+matiere: methode
 ---
 
 # Réviser à voix haute : pourquoi ça change tout

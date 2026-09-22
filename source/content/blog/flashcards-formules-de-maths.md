@@ -3,6 +3,8 @@ title: Flashcards de formules de maths : 3 méthodes | PrépaCards
 description: Pourquoi les flashcards de maths sont abandonnées si vite, et trois façons de créer des cartes de formules vite : LaTeX, photo du cours, description.
 date: 2026-09-02
 slug: flashcards-formules-de-maths
+filiere: commerciale, scientifique
+matiere: maths
 ---
 
 # Faire des flashcards de formules de maths sans y passer la nuit

@@ -3,6 +3,8 @@ title: Apprendre le vocabulaire espagnol : la méthode | PrépaCards
 description: Listes oubliées en trois jours, mots reconnus mais jamais produits : pourquoi le vocabulaire espagnol ne rentre pas, et le protocole qui le fait tenir.
 date: 2026-09-25
 slug: apprendre-le-vocabulaire-espagnol
+filiere: toutes
+matiere: espagnol
 ---
 
 # Apprendre le vocabulaire espagnol : la méthode

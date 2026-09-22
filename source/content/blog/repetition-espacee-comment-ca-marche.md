@@ -3,6 +3,8 @@ title: La répétition espacée expliquée simplement | PrépaCards
 description: Comment marche la répétition espacée, pourquoi elle bat la relecture, et ce que changent les algorithmes SM-2 et FSRS derrière Anki et PrépaCards.
 date: 2026-09-05
 slug: repetition-espacee-comment-ca-marche
+filiere: toutes
+matiere: methode
 ---
 
 # La répétition espacée expliquée simplement

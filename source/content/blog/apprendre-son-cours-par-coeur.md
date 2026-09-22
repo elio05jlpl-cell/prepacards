@@ -3,6 +3,8 @@ title: Apprendre son cours par cœur : la méthode qui marche | PrépaCards
 description: Relire ne fait rien apprendre. Les trois mécanismes qui font vraiment tenir un cours en mémoire, et le protocole précis pour les appliquer en prépa.
 date: 2026-09-16
 slug: apprendre-son-cours-par-coeur
+filiere: toutes
+matiere: methode
 ---
 
 # Apprendre son cours par cœur : la méthode qui marche

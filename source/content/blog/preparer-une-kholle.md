@@ -3,6 +3,8 @@ title: Khôlle en prépa : comment s'y préparer vraiment | PrépaCards
 description: Khôlle ou colle ? Ce que c'est, comment ça se passe, et la méthode de préparation matière par matière — maths, anglais, philo, ESH — sans y passer ses soirées.
 date: 2026-09-15
 slug: preparer-une-kholle
+filiere: toutes
+matiere: methode
 ---
 
 # Khôlle en prépa : comment s'y préparer vraiment

@@ -3,6 +3,8 @@ title: Géopolitique en prépa ECG : ce qu'il faut retenir | PrépaCards
 description: En HGGMC, la copie se joue sur les repères : dates, chiffres, auteurs, notions, études de cas. Comment les retenir sur deux ans sans les laisser vieillir.
 date: 2026-09-28
 slug: reviser-la-geopolitique-en-prepa
+filiere: commerciale
+matiere: geopolitique
 ---
 
 # Réviser la géopolitique en prépa ECG : ce qui se retient

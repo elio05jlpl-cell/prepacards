@@ -690,14 +690,67 @@ td strong { color: var(--encre); }
    un selecteur de classe l'emporte sur elle, et les marges laterales etaient
    remises a zero - la liste se collait au bord gauche. */
 .liste-articles {
-  list-style: none; padding: 0; margin: 2em auto 0;
-  max-width: 1040px;
+  list-style: none; padding: 0; margin: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   align-items: start;
 }
 .liste-articles li { margin-bottom: 0; }
+.liste-articles li.masque { display: none; }
+
+/* --- Bibliotheque du blog : recherche, tri, filtres ------------------ */
+
+.disposition-bibliotheque {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 30px;
+  margin-top: 2.2em;
+  align-items: start;
+}
+.filtres-barre-laterale {
+  position: sticky; top: 96px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.filtre-groupe {
+  background: #fff; border: 1px solid var(--bord); border-radius: var(--rayon-l);
+  padding: 18px 20px; box-shadow: var(--ombre-carte);
+}
+.filtre-titre {
+  margin: 0 0 12px; font-size: .98rem; font-family: 'Poppins', sans-serif;
+  font-weight: 800; color: var(--encre);
+  border-bottom: 1px solid var(--bord-net); padding-bottom: 10px;
+}
+.filtre-option {
+  display: flex; align-items: center; gap: 9px;
+  padding: 6px 0; font-size: .9rem; color: var(--texte); cursor: pointer;
+}
+.filtre-option input { accent-color: var(--bleu); flex-shrink: 0; }
+.filtre-option span:first-of-type { flex: 1; }
+.filtre-compte { color: var(--gris-clair); font-size: .8rem; }
+
+.bibliotheque-contenu { min-width: 0; }
+.bibliotheque-barre {
+  display: flex; flex-wrap: wrap; gap: 22px; margin-bottom: 22px;
+  background: #fff; border: 1px solid var(--bord); border-radius: var(--rayon-l);
+  padding: 16px 20px; box-shadow: var(--ombre-carte);
+}
+.bibliotheque-champ {
+  display: flex; flex-direction: column; gap: 5px;
+  font-size: .82rem; color: var(--gris); flex: 1; min-width: 200px;
+}
+.bibliotheque-champ select, .bibliotheque-champ input[type="search"] {
+  padding: 9px 11px; border: 1px solid var(--bord); border-radius: var(--rayon-s);
+  font-family: inherit; font-size: .95rem; color: var(--texte); background: #fff;
+}
+.aucun-resultat { text-align: center; color: var(--gris); padding: 50px 0; }
+
+@media (max-width: 820px) {
+  .disposition-bibliotheque { grid-template-columns: 1fr; }
+  .filtres-barre-laterale { position: static; flex-direction: row; flex-wrap: wrap; }
+  .filtre-groupe { flex: 1; min-width: 240px; }
+  .liste-articles { grid-template-columns: 1fr; }
+}
 .liste-articles a {
   display: block; height: 100%; padding: 26px; border: 1px solid var(--bord);
   border-radius: var(--rayon-l); text-decoration: none; background: #fff;

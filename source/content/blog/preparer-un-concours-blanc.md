@@ -3,6 +3,8 @@ title: Concours blancs : les préparer et en tirer parti | PrépaCards
 description: Un concours blanc ne se prépare pas comme un DS. Comment aborder la semaine, gérer une note catastrophique, et surtout quoi faire de la copie une fois rendue.
 date: 2026-09-18
 slug: preparer-un-concours-blanc
+filiere: toutes
+matiere: methode
 ---
 
 # Concours blancs : les préparer et en tirer quelque chose

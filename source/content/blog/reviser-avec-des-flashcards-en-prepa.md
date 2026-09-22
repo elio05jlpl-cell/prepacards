@@ -3,6 +3,8 @@ title: Réviser en prépa avec des flashcards | PrépaCards
 description: Utiliser des flashcards en prépa sans y perdre son temps : quand les créer, combien par jour, et les erreurs qui font abandonner en trois semaines.
 date: 2026-09-08
 slug: reviser-avec-des-flashcards-en-prepa
+filiere: toutes
+matiere: methode
 ---
 
 # Comment réviser en prépa avec des flashcards : méthode en 5 étapes

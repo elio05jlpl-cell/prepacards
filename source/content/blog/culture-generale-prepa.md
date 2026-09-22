@@ -3,6 +3,8 @@ title: Culture générale en prépa : que retenir, et comment | PrépaCards
 description: Citations, définitions, références, exemples : ce qui se retient par cœur en culture générale en prépa, et comment ne plus citer faux le jour de l'épreuve.
 date: 2026-09-30
 slug: culture-generale-prepa
+filiere: toutes
+matiere: culture-generale
 ---
 
 # Culture générale en prépa : que retenir, et comment

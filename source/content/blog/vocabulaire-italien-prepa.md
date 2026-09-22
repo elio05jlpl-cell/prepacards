@@ -3,6 +3,8 @@ title: Vocabulaire italien en prépa : proche, donc piégeux | PrépaCards
 description: L'italien ressemble au français, et c'est son piège : faux amis, doubles consonnes, accent tonique. La méthode pour apprendre son vocabulaire en prépa.
 date: 2026-10-01
 slug: vocabulaire-italien-prepa
+filiere: toutes
+matiere: italien
 ---
 
 # Vocabulaire italien en prépa : proche, donc piégeux

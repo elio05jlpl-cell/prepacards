@@ -3,6 +3,8 @@ title: Prise de notes en cours : noter pour réviser après | PrépaCards
 description: Recopier le tableau ne sert à rien si les notes sont inexploitables le soir. Quoi noter, quoi ne pas noter, et comment marquer au vol ce qui deviendra une carte.
 date: 2026-09-22
 slug: prise-de-notes-en-cours
+filiere: toutes
+matiere: methode
 ---
 
 # Prise de notes en cours : noter pour pouvoir réviser après

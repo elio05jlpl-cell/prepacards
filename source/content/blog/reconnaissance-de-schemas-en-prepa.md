@@ -3,6 +3,8 @@ title: Entrée en prépa : reconnaître avant de savoir | PrépaCards
 description: En prépa, comprendre le cours ne suffit plus : il faut reconnaître quel outil s'applique. Comment construire cette bibliothèque dès septembre.
 date: 2026-09-13
 slug: reconnaissance-de-schemas-en-prepa
+filiere: commerciale, scientifique
+matiere: methode
 ---
 
 # Entrée en prépa : ce qui change vraiment, c'est la reconnaissance
