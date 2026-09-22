@@ -771,13 +771,22 @@ def sommaire_html_depuis(converter: "markdown.Markdown") -> str:
 
     L'extension 'toc' pose un id sur chaque titre et remplit
     converter.toc_tokens apres convert() : pas besoin d'ecrire [TOC] dans le
-    Markdown ni de reparser le HTML.
+    Markdown ni de reparser le HTML. Attention : toc_tokens est un ARBRE (le
+    H1 porte les H2 dans ses "children"), pas une liste a plat - il faut le
+    parcourir recursivement pour retrouver les H2, sans quoi le sommaire
+    reste silencieusement vide.
     """
-    items = [
-        f'<li><a href="#{tok["id"]}">{html.escape(tok["name"])}</a></li>'
-        for tok in converter.toc_tokens
-        if tok["level"] == 2
-    ]
+    items = []
+
+    def visiter(tokens):
+        for tok in tokens:
+            if tok["level"] == 2:
+                items.append(
+                    f'<li><a href="#{tok["id"]}">{html.escape(tok["name"])}</a></li>'
+                )
+            visiter(tok.get("children", []))
+
+    visiter(converter.toc_tokens)
     return "".join(items)
 
 
