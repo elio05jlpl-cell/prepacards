@@ -1147,7 +1147,7 @@ def bibliotheque_blog(articles: list) -> str:
             f' data-filiere="{html.escape(" ".join(article["filiere"]))}"'
             f' data-matiere="{html.escape(" ".join(article["matiere"]))}">'
             f'<a href="/blog/{article["slug"]}/">'
-            f'<img class="art-visuel" src="/img/blog/{article["slug"]}.svg" alt="" loading="lazy" width="400" height="128">'
+            f'<img class="art-visuel" src="/img/blog/{article["slug"]}.svg" alt="" loading="lazy" width="480" height="200">'
             f'<span class="art-corps">'
             f'<span class="art-date">{format_date(article["date"])}</span>'
             f'<strong>{html.escape(titre)}</strong>'

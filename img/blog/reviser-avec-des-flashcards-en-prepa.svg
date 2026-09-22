@@ -1,17 +1,6 @@
-<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Réviser en prépa avec des flashcards">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#2563eb"/>
-      <stop offset="1" stop-color="#7c3aed"/>
-    </linearGradient>
-  </defs>
-  <rect width="200" height="200" fill="url(#g)"/>
-  <g transform="translate(100 100)">
-
-    <rect x="-52" y="-34" width="80" height="56" rx="9" fill="rgba(255,255,255,.14)" transform="rotate(-9)"/>
-    <rect x="-40" y="-28" width="80" height="56" rx="9" fill="rgba(255,255,255,.94)"/>
-    <line x1="-24" y1="-8" x2="24" y2="-8" stroke="#7c3aed" stroke-width="5"/>
-    <line x1="-24" y1="6" x2="10" y2="6" stroke="#2563eb" stroke-width="5"/>
-
-  </g>
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Réviser en prépa avec des flashcards">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/>
+  </linearGradient></defs><rect width="480" height="200" fill="url(#g)"/>
+  <rect x="162.0" y="88.0" width="96" height="64" rx="7" fill="rgba(255,255,255,.25)" transform="rotate(-8 210 120)"/><rect x="182.0" y="76.0" width="96" height="64" rx="7" fill="rgba(255,255,255,.6)" transform="rotate(3 230 108)"/><rect x="202.0" y="64.0" width="96" height="64" rx="7" fill="#ffffff" transform="rotate(-3 250 96)"/><line x1="216" y1="86" x2="284" y2="86" stroke="#7c3aed" stroke-width="6" stroke-linecap="round"/><line x1="216" y1="104" x2="260" y2="104" stroke="#2563eb" stroke-width="6" stroke-linecap="round"/><polygon points="110.0,52.0 112.1,57.1 117.6,57.5 113.4,61.1 114.7,66.5 110.0,63.6 105.3,66.5 106.6,61.1 102.4,57.5 107.9,57.1" fill="#fde68a"/><polygon points="90.0,124.0 91.6,127.8 95.7,128.1 92.6,130.8 93.5,134.9 90.0,132.7 86.5,134.9 87.4,130.8 84.3,128.1 88.4,127.8" fill="#fff"/>
 </svg>
