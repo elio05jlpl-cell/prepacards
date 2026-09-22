@@ -1188,11 +1188,20 @@ concrets sur la préparation des concours.</p>
         <label for="recherche-articles">Rechercher</label>
         <input type="search" id="recherche-articles" placeholder="Chercher un article...">
       </div>
+      <div class="bibliotheque-champ bibliotheque-champ-taille">
+        <label for="taille-page">Articles par page</label>
+        <select id="taille-page">
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+      </div>
     </div>
     <ul class="liste-articles" id="liste-articles">
       {"".join(cartes)}
     </ul>
     <p class="aucun-resultat" id="aucun-resultat" hidden>Aucun article ne correspond à ces critères.</p>
+    <nav class="pagination-pages" id="pagination-pages" aria-label="Pages de résultats"></nav>
   </div>
 </div>"""
 
