@@ -1,0 +1,16 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LV2 en prépa">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#g)"/>
+  <g transform="translate(100 100)">
+
+    <path d="M -48 -30 h 96 a 10 10 0 0 1 10 10 v 34 a 10 10 0 0 1 -10 10 h -60 l -20 20 v -20 h -16 a 10 10 0 0 1 -10 -10 v -34 a 10 10 0 0 1 10 -10 z" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="-28" y1="-4" x2="28" y2="-4" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="-28" y1="14" x2="6" y2="14" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+
+  </g>
+</svg>
