@@ -691,14 +691,21 @@ td strong { color: var(--encre); }
    remises a zero - la liste se collait au bord gauche. */
 .liste-articles {
   list-style: none; padding: 0; margin: 2em auto 0;
-  max-width: var(--largeur-texte);
+  max-width: 1040px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  align-items: start;
 }
-.liste-articles li { margin-bottom: 16px; }
+.liste-articles li { margin-bottom: 0; }
 .liste-articles a {
-  display: block; padding: 26px; border: 1px solid var(--bord);
+  display: block; height: 100%; padding: 26px; border: 1px solid var(--bord);
   border-radius: var(--rayon-l); text-decoration: none; background: #fff;
   box-shadow: var(--ombre-carte);
   transition: transform .18s, box-shadow .18s;
+}
+@media (max-width: 700px) {
+  .liste-articles { grid-template-columns: 1fr; }
 }
 .liste-articles a:hover {
   transform: translateY(-3px); box-shadow: 0 26px 52px rgba(15, 23, 42, .13);

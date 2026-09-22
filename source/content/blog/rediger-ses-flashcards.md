@@ -7,31 +7,41 @@ slug: rediger-ses-flashcards
 
 # Bien rédiger ses flashcards : sept erreurs à éviter
 
-On parle beaucoup de *quand* réviser ses cartes, et presque jamais de *comment
-les écrire*. C'est pourtant là que tout se joue. Une carte mal rédigée ne se
-contente pas d'être inefficace : elle vous fait croire que vous savez, et vous
-fait perdre du temps à chaque passage. Voici les sept erreurs qui reviennent le
-plus souvent, avec une version corrigée pour chacune.
+On parle beaucoup de *quand* réviser ses cartes, du meilleur moment de la
+journée ou du bon intervalle entre deux passages, et presque jamais de
+*comment les écrire* correctement dès le départ. C'est pourtant précisément
+là que tout se joue en pratique. Une carte mal rédigée ne se contente pas
+d'être un peu moins efficace qu'une bonne carte : elle vous fait activement
+croire que vous savez une chose que vous ne savez pas, et elle vous fait
+perdre du temps à chaque nouveau passage, sans jamais vous alerter du
+problème. Voici les sept erreurs qui reviennent le plus souvent chez les
+élèves de prépa, chacune avec un exemple concret raté et sa version corrigée.
 
 ## Les erreurs de contenu
 
 ### 1. Mettre plusieurs réponses sur une carte
 
-C'est l'erreur la plus répandue, et la plus coûteuse.
+C'est l'erreur la plus répandue de toutes, et aussi la plus coûteuse sur la
+durée, parce qu'elle touche en général les cartes portant sur les notions
+les plus importantes.
 
 > **Recto** : Causes de la Première Guerre mondiale
 > **Verso** : Rivalités impériales, système d'alliances, nationalismes, crise de juillet 1914
 
-Le jour où vous en oubliez une sur quatre, que notez-vous ? « Su » serait faux,
-« oublié » serait injuste. Vous finirez par la noter comme sue, et la cause
-oubliée ne reviendra jamais.
+Le jour où vous en oubliez une sur les quatre attendues, que notez-vous
+honnêtement sur cette carte ? « Su » serait faux, puisqu'il en manque une.
+« Oublié » serait injuste, puisque vous en connaissiez trois sur quatre. Dans
+les faits, vous finirez presque toujours par la noter comme sue par
+confort, et la cause que vous aviez oubliée ne reviendra alors plus jamais
+dans vos révisions.
 
-**Corrigé** : une carte par cause, formulée pour n'appeler qu'une réponse.
-« Quel système, en 1914, transforme un conflit local en guerre générale ? » —
-le système d'alliances.
+**Corrigé** : faites une carte par cause, formulée pour n'appeler qu'une
+seule réponse précise. « Quel système, en 1914, transforme un conflit local
+en guerre générale ? » appelle une réponse unique : le système d'alliances.
 
-La règle est simple : si la réponse contient une virgule, c'est probablement
-plusieurs cartes.
+La règle pratique à retenir est simple : si la réponse attendue contient une
+virgule ou un « et », c'est très probablement que la carte cache en réalité
+plusieurs cartes distinctes.
 [Une carte, une information : la règle expliquée →](/blog/reviser-avec-des-flashcards-en-prepa/){: target="_blank" rel="noopener" }
 
 ### 2. Poser une question qui admet plusieurs bonnes réponses
@@ -39,50 +49,69 @@ plusieurs cartes.
 > **Recto** : Keynes
 > **Verso** : Théorie générale de l'emploi, de l'intérêt et de la monnaie (1936)
 
-Face à « Keynes », vous pouvez répondre le multiplicateur, la demande effective,
-Bretton Woods, ou l'année de sa mort. Toutes ces réponses sont justes, et la
-carte n'en attend qu'une. Vous la raterez en la sachant.
+Face au seul mot « Keynes » écrit sur une carte, vous pouvez légitimement
+répondre le multiplicateur keynésien, la demande effective, les accords de
+Bretton Woods, ou encore l'année de sa mort. Toutes ces réponses sont
+parfaitement justes, et pourtant la carte n'en attend qu'une seule, écrite
+au verso. Vous la raterez presque à coup sûr un jour, tout en la sachant
+parfaitement par ailleurs.
 
-**Corrigé** : la question porte en elle ce qu'elle attend. « Œuvre majeure de
-Keynes, et son année » appelle une seule réponse. Chaque autre idée mérite sa
-propre carte.
+**Corrigé** : la question doit porter en elle-même ce qu'elle attend
+précisément. « Œuvre majeure de Keynes, et son année de publication » n'appelle
+qu'une seule réponse possible. Chaque autre idée associée à Keynes mérite sa
+propre carte distincte, plutôt que d'être regroupée sous un même intitulé
+trop vague.
 
 ### 3. Recopier un paragraphe du cours
 
-Une carte dont le verso fait six lignes n'est pas une carte : c'est une fiche
-qu'on relit. Vous ne pourrez jamais dire honnêtement si vous la saviez, et vous
-aurez tendance à la survoler.
+Une carte dont le verso s'étend sur six lignes n'est plus vraiment une
+carte : c'est une fiche qu'on relit passivement, avec les mêmes défauts que
+n'importe quelle relecture. Vous ne pourrez jamais dire honnêtement si vous
+la saviez dans son ensemble, et vous prendrez inévitablement l'habitude de
+la survoler plutôt que de la travailler sérieusement.
 
-**Corrigé** : ce qui se déroule — un raisonnement, une démonstration — ne se met
-pas en carte. Ce qui s'y met, ce sont ses **points d'appui** : la définition,
-l'hypothèse clé, le résultat. Le raisonnement, lui, se travaille en le refaisant.
+**Corrigé** : ce qui se déroule dans le temps — un raisonnement complet, une
+démonstration entière — ne se met tout simplement pas en carte. Ce qui s'y
+met, en revanche, ce sont ses **points d'appui** isolés : la définition
+précise, l'hypothèse clé, le résultat final. Le raisonnement lui-même, qui
+relie ces points d'appui entre eux, se travaille plutôt en le refaisant
+intégralement sur une feuille, pas en le mémorisant mot pour mot.
 
 ### 6. Écrire une formule sans ses conditions
 
 > **Recto** : Théorème des valeurs intermédiaires
 > **Verso** : f(a) et f(b) de signes contraires ⇒ f s'annule
 
-C'est faux, parce qu'incomplet : sans la continuité de *f* sur [a, b], le
-résultat ne tient pas. Et c'est précisément l'hypothèse que le colleur vous
-demandera.
+Cette carte est fausse, parce qu'incomplète : sans la continuité de *f* sur
+l'intervalle [a, b], le résultat annoncé ne tient tout simplement pas. Et
+c'est précisément cette hypothèse de continuité que le colleur vous
+demandera en premier, sachant que la plupart des élèves l'oublient à l'oral.
 
-**Corrigé** : les hypothèses **d'abord**, la conclusion ensuite. Et une seconde
-carte, à l'envers : « Quelles hypothèses pour appliquer le TVI ? ».
+**Corrigé** : posez toujours les hypothèses **en premier**, avant la
+conclusion elle-même. Ajoutez ensuite une seconde carte, formulée à
+l'envers : « Quelles hypothèses faut-il vérifier pour appliquer le TVI ? »,
+qui isole précisément ce que le colleur cherchera à tester.
 [Mettre ses formules de maths en cartes →](/blog/flashcards-formules-de-maths/){: target="_blank" rel="noopener" }
 
-Le même principe vaut pour toutes les matières quantitatives.
+Le même principe, hypothèses d'abord et conclusion ensuite, vaut d'ailleurs
+pour toutes les matières quantitatives sans exception.
 [Réviser les maths en prépa ECG →](/blog/reviser-les-maths-en-ecg/){: target="_blank" rel="noopener" }
 
 ### 7. Faire des cartes sur ce qu'on n'a pas compris
 
-C'est l'erreur la plus insidieuse, parce qu'elle ressemble à du travail. Mettre
-en carte une notion floue, c'est mémoriser des mots sans leur sens. Vous
-saurez les réciter, et vous serez incapable de vous en servir.
+C'est probablement l'erreur la plus insidieuse de toutes, parce qu'elle
+ressemble en surface à un vrai travail de révision, alors qu'elle n'en est
+pas un. Mettre en carte une notion encore floue revient à mémoriser des mots
+sans en saisir le sens réel. Vous saurez parfaitement les réciter au bon
+moment, et vous serez pourtant totalement incapable de vous en servir face à
+un exercice ou une dissertation.
 
-**Corrigé** : la carte vient **après** la compréhension, jamais à sa place. Si
-vous ne pouvez pas expliquer une notion avec vos propres mots, le problème n'est
-pas de mémoire : il faut d'abord retravailler le cours, refaire l'exercice,
-demander au professeur.
+**Corrigé** : la carte doit toujours venir **après** la compréhension
+réelle de la notion, jamais à sa place pour gagner du temps. Si vous ne
+pouvez pas expliquer une notion avec vos propres mots, sans les relire, le
+problème n'est pas un problème de mémoire : il faut d'abord retravailler le
+cours en profondeur, refaire l'exercice correspondant, ou poser directement
+la question à votre professeur.
 [Ce qui ne s'apprend pas par cœur →](/blog/apprendre-son-cours-par-coeur/){: target="_blank" rel="noopener" }
 
 ## Les erreurs propres aux langues
@@ -92,51 +121,68 @@ demander au professeur.
 > **Recto** : *das Gesetz*
 > **Verso** : la loi
 
-Reconnaître un mot étranger est facile. Le produire, avec son genre, à partir du
-français, ne l'est pas — et c'est ce que le thème, l'essai et la colle
-demandent.
+Reconnaître un mot étranger déjà connu est facile, presque automatique. Le
+produire à partir du français, avec son genre correct, ne l'est pas du tout
+— et c'est précisément ce que le thème, l'essai et la colle vous
+demanderont systématiquement, sans jamais vous laisser le luxe de la simple
+reconnaissance.
 
 **Corrigé** : posez d'abord la carte dans le sens **français → langue
-étrangère**. C'est celui qui sert, et celui qui résiste le plus longtemps —
-la même règle vaut pour toute LV2.
+étrangère**, systématiquement. C'est ce sens de travail qui sert
+réellement à l'épreuve, et c'est aussi celui qui résiste le plus longtemps
+dans le temps une fois acquis — la même règle vaut d'ailleurs pour
+n'importe quelle LV2, pas seulement pour l'allemand.
 [Le vocabulaire allemand, genre et pluriel compris →](/blog/vocabulaire-allemand-prepa/){: target="_blank" rel="noopener" }
 
 ### 5. Isoler le mot de tout contexte
 
-Un mot appris seul flotte. Il revient à l'écran de révision, mais pas au moment
-d'écrire, parce que rien ne le rattache à une phrase ou à un sujet.
+Un mot appris complètement seul, sans phrase ni contexte associé, flotte
+littéralement dans la mémoire. Il revient bien à l'écran de révision au
+moment prévu, mais il ne revient pas au moment d'écrire une copie, parce que
+rien ne le rattache concrètement à une phrase ou à un sujet précis.
 
-**Corrigé** : ajoutez au verso une phrase courte où le mot est employé
-naturellement, si possible une phrase que vous pourriez réutiliser. Elle ne fait
-pas partie de la réponse attendue : elle sert à **fixer** le mot.
+**Corrigé** : ajoutez systématiquement au verso une phrase courte où le mot
+est employé naturellement, si possible une phrase que vous pourriez
+réellement réutiliser telle quelle. Cette phrase ne fait pas partie de la
+réponse attendue à proprement parler : elle sert uniquement à **fixer** le
+mot dans un contexte réel.
 [Le protocole complet pour le vocabulaire →](/blog/apprendre-le-vocabulaire-espagnol/){: target="_blank" rel="noopener" }
 
 ## Le test des dix secondes
 
-Avant de valider une carte, posez-vous une question : **suis-je capable de
-répondre en moins de dix secondes, si je le sais ?**
+Avant de valider définitivement une carte, posez-vous systématiquement une
+question simple : **suis-je capable d'y répondre en moins de dix secondes,
+à condition de le savoir réellement ?**
 
-Si la réponse demande plus longtemps, la carte est trop grosse — découpez-la. Si
-vous hésitez entre deux réponses justes, elle est ambiguë — précisez la
-question. Ce test élimine à lui seul la plupart des erreurs ci-dessus.
+Si la réponse demande objectivement plus de temps que cela, la carte est
+trop grosse — il faut la découper en plusieurs cartes plus petites. Si vous
+hésitez entre deux réponses également justes au moment d'y répondre, la
+carte est ambiguë — il faut préciser la question posée. Ce test à lui seul,
+appliqué systématiquement, élimine déjà la plupart des erreurs décrites
+ci-dessus sans effort supplémentaire.
 
 ## Quand écrire ses cartes
 
-Pas pendant le cours : vous n'y avez pas encore le recul pour savoir ce qui
-mérite une carte. Le bon moment est le soir même, à partir de ce que vous avez
-repéré dans vos notes, pendant que le cours est encore frais.
+Pas pendant le cours lui-même : vous n'avez pas encore, à ce moment précis,
+le recul nécessaire pour savoir ce qui mérite vraiment une carte et ce qui
+n'en mérite pas. Le bon moment reste le soir même, à partir de ce que vous
+avez repéré et marqué dans vos notes pendant que le cours est encore frais
+dans votre mémoire.
 [Prendre des notes qui se transforment en cartes →](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" }
 
-Écrire ses propres cartes a d'ailleurs un effet que les paquets tout faits
-n'ont pas : le fait même de choisir la question et de la formuler est déjà un
-travail de mémorisation.
+Écrire ses propres cartes a d'ailleurs un effet réel que les paquets tout
+faits, même bien conçus, n'ont jamais : le fait même de choisir la question
+et de la formuler soi-même constitue déjà, à part entière, un premier
+travail de mémorisation actif.
 
 ## En pratique
 
-Dans PrépaCards, chaque carte a un recto, un verso, et un champ d'exemple pour
-la phrase de contexte : il ne fait pas partie de la réponse attendue, il est là
-pour fixer. Les formules s'écrivent en notation mathématique et s'affichent
-proprement. Et les paquets de langue gratuits sont déjà posés dans le bon sens.
+Dans PrépaCards, chaque carte dispose d'un recto, d'un verso, et d'un champ
+d'exemple séparé pour la phrase de contexte : ce champ ne fait jamais partie
+de la réponse attendue, il est là uniquement pour fixer le mot ou la notion.
+Les formules s'écrivent en notation mathématique et s'affichent proprement à
+l'écran. Et les paquets de langue gratuits fournis avec l'application sont
+d'ores et déjà posés dans le bon sens de travail.
 [Voir les paquets gratuits →](/decks/)
 
 <div class="encart">
