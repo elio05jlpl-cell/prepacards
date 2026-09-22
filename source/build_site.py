@@ -1156,13 +1156,13 @@ def bibliotheque_blog(articles: list) -> str:
             f"</a></li>"
         )
 
-    return f"""<h1 class="conteneur-etroit">Méthodes de révision en prépa</h1>
-<p class="chapeau conteneur-etroit">Méthode de travail, répétition espacée et retours
+    return f"""<h1 class="conteneur-bibliotheque">Méthodes de révision en prépa</h1>
+<p class="chapeau conteneur-bibliotheque">Méthode de travail, répétition espacée et retours
 concrets sur la préparation des concours.</p>
-<div class="cadre-entete conteneur-etroit">
+<div class="cadre-entete conteneur-bibliotheque">
   <nav class="fil" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <strong>Blog</strong></nav>
 </div>
-<div class="disposition-bibliotheque conteneur-etroit">
+<div class="disposition-bibliotheque conteneur-bibliotheque">
   <aside class="filtres-barre-laterale">
     <div class="filtre-groupe">
       <h2 class="filtre-titre">Filière</h2>

@@ -642,9 +642,16 @@ td strong { color: var(--encre); }
 /* Fil d'Ariane pose dans un encadre simple, au-dessus du titre */
 .cadre-entete {
   border: 1px solid var(--bord-net); border-radius: var(--rayon);
-  padding: 14px 20px; margin: 0 0 1.8em; background: #fff;
+  padding: 14px 20px; margin: 1.6em 0 1.8em; background: #fff;
 }
 .cadre-entete .fil { margin-bottom: 0; }
+
+/* Largeur dediee a la bibliotheque du blog : plus large que la colonne de
+   lecture (.conteneur-etroit), pour que les cartes d'articles cote a cote
+   aient assez de place et ne s'etirent pas verticalement. */
+.conteneur-bibliotheque { max-width: 1320px; margin-left: auto; margin-right: auto; padding: 0 24px; }
+h1.conteneur-bibliotheque { margin-top: 52px; }
+p.chapeau.conteneur-bibliotheque { margin: 14px auto 0; }
 
 /* Amorce de l'article (entre le H1 et le premier H2), dans son encadre */
 .feuille-texte .chapo {
@@ -703,8 +710,8 @@ td strong { color: var(--encre); }
 
 .disposition-bibliotheque {
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
-  gap: 30px;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 26px;
   margin-top: 2.2em;
   align-items: start;
 }
