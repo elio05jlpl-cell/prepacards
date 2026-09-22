@@ -7,93 +7,131 @@ slug: organisation-semaine-prepa
 
 # Organisation en prépa : tenir une semaine sans couler
 
-En prépa, le problème n'est presque jamais la difficulté d'un chapitre. C'est
-que le cours de lundi doit être su pour la colle de jeudi, pendant que le DM de
-vendredi arrive et que le DS de samedi porte sur le chapitre d'avant. Voici
-comment répartir ça sans y passer ses nuits.
+En prépa, le problème réel n'est presque jamais la difficulté intrinsèque
+d'un chapitre donné. C'est plutôt que le cours du lundi doit déjà être su
+pour la khôlle du jeudi, pendant que le DM du vendredi arrive à échéance
+et que le DS du samedi porte, lui, sur le chapitre précédent. Voici
+comment répartir concrètement tout cela sans y passer ses nuits entières.
 
 ## Le calcul que personne ne fait
 
-Une semaine compte 168 heures. Retirez 56 heures de sommeil — sept par nuit, on
-y revient — et environ 35 heures de cours. Reste une centaine d'heures, dont il
-faut soustraire les trajets, les repas et le minimum vital.
+Une semaine complète compte 168 heures au total. Retirez-en 56 heures de
+sommeil — sept heures par nuit, on y revient plus loin — et environ 35
+heures de cours obligatoires. Il reste alors une bonne centaine d'heures,
+dont il faut encore soustraire les trajets quotidiens, les repas et le
+minimum vital incompressible.
 
-Il vous reste, en pratique, **30 à 40 heures de travail personnel**. C'est
-beaucoup. Et c'est fini : vous ne trouverez pas la 41ᵉ en vous levant plus tôt,
-vous la prendrez au sommeil, et vous la rendrez au double en efficacité perdue.
+Il vous reste, en pratique réelle, **30 à 40 heures de travail
+personnel** disponibles par semaine. C'est déjà beaucoup en valeur
+absolue. Et c'est aussi, malheureusement, à peu près tout ce dont vous
+disposerez : vous ne trouverez jamais la 41ᵉ heure en vous levant
+simplement plus tôt le matin, vous la prendrez inévitablement sur votre
+sommeil, et vous la rendrez alors au double en efficacité perdue le
+lendemain.
 
-L'organisation en prépa n'est donc pas un problème de volonté. C'est un
-problème d'allocation.
+L'organisation en prépa n'est donc, fondamentalement, pas un problème de
+volonté ou de motivation personnelle. C'est un pur problème d'allocation
+d'un temps par définition limité et non extensible.
 
 ## Les quatre choses à caser, par ordre de rendement
 
-**1. Le travail du jour (1 h à 1 h 30).** Reprendre les cours du jour le soir
-même, pendant qu'ils sont encore frais. C'est le créneau au meilleur rendement
-de la semaine, et c'est le premier sacrifié quand on est fatigué. C'est une
-erreur : un cours repris le soir même se réapprend en vingt minutes, un cours
-laissé une semaine se réapprend de zéro.
+**1. Le travail du jour (1 h à 1 h 30).** Reprendre les cours du jour même,
+le soir venu, pendant qu'ils sont encore frais dans la mémoire. C'est le
+créneau au meilleur rendement de toute la semaine, et c'est pourtant
+systématiquement le premier sacrifié quand on est fatigué en fin de
+journée. C'est une erreur coûteuse : un cours repris le soir même se
+réapprend en une vingtaine de minutes à peine, alors qu'un cours laissé de
+côté une semaine entière se réapprend intégralement de zéro, comme s'il
+n'avait jamais été vu en classe.
 [Ce qu'il faut noter en cours pour que ce moment serve →](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" }
 
-**2. Les exercices (2 h à 3 h par jour).** Irremplaçables. Aucune méthode de
-mémorisation ne remplace le fait d'avoir cherché.
+**2. Les exercices (2 h à 3 h par jour).** Ce poste reste totalement
+irremplaçable, quelle que soit par ailleurs la qualité de vos révisions.
+Aucune méthode de mémorisation, aussi bien construite soit-elle, ne
+remplace jamais le simple fait d'avoir réellement cherché par soi-même.
 
 **3. La mémorisation entretenue (15 à 20 min).** Définitions, théorèmes,
-vocabulaire, dates. Peu à la fois, tous les jours, sur un mélange d'ancien et
-de récent.
+vocabulaire, dates précises. Un peu à la fois chaque jour, sur un mélange
+volontaire d'ancien contenu et de contenu plus récent, jamais en un seul
+bloc massé.
 
-**4. Les DM.** À étaler, jamais à faire d'un bloc la veille.
+**4. Les DM.** À étaler délibérément sur plusieurs jours, jamais à traiter
+d'un seul bloc compact la veille du rendu, ce qui produit systématiquement
+un travail de moindre qualité.
 
-## Les temps morts valent plus qu'on ne croit
+## Les temps morts, et ce qu'il faut sacrifier
 
-Transports, files d'attente, le quart d'heure avant de dormir : quatre créneaux
-de dix minutes par jour font presque cinq heures par mois. C'est exactement la
-durée qu'il faut pour maintenir 2 000 mots de vocabulaire d'anglais.
+Les transports quotidiens, les files d'attente, le simple quart d'heure
+avant de s'endormir : quatre créneaux de dix minutes répartis dans la
+journée représentent déjà, cumulés sur un mois, près de cinq heures de
+travail effectif. C'est exactement la durée nécessaire pour maintenir
+solidement 2 000 mots de vocabulaire d'anglais sur la durée.
 
-Ces créneaux ne conviennent pas aux exercices — trop courts, trop interrompus —
-mais ils conviennent parfaitement à la mémorisation. À condition de ne pas
-avoir à décider quoi réviser : la décision coûte plus cher que la révision.
-[Combien de cartes tiennent dans ces temps morts →](/blog/combien-de-cartes-par-jour/)
+Ces créneaux courts ne conviennent absolument pas aux exercices de fond —
+trop brefs, trop souvent interrompus par le contexte environnant — mais
+ils conviennent en revanche parfaitement bien à la simple mémorisation
+entretenue. À une condition impérative cependant : ne jamais avoir à
+décider sur place quoi réviser précisément — cette décision elle-même
+coûte en réalité plus cher, en temps et en énergie mentale, que la
+révision proprement dite.
+[Combien de cartes tiennent dans ces temps morts →](/blog/combien-de-cartes-par-jour/){: target="_blank" rel="noopener" }
 
-## Quoi sacrifier quand tout ne rentre pas
+### Quoi sacrifier quand tout ne rentre pas
 
-Certaines semaines, tout ne rentre pas. Il faut alors choisir sciemment plutôt
-que de laisser le hasard choisir pour vous.
+Certaines semaines particulièrement chargées, tout ne rentre
+matériellement pas dans le temps disponible. Il faut alors choisir
+sciemment quoi sacrifier, plutôt que de laisser le simple hasard des
+événements décider à votre place.
 
-- **Sacrifiez d'abord la relecture.** C'est le poste au plus faible rendement.
-  [Pourquoi relire ne fait rien apprendre →](/blog/apprendre-son-cours-par-coeur/)
-- **Puis la mise au propre des fiches.** Une fiche belle n'apprend pas mieux
-  qu'une fiche moche.
-- **Jamais les exercices, jamais le sommeil.**
+- **Sacrifiez en priorité la relecture pure.** C'est, de tous les postes
+  de travail possibles, celui qui offre objectivement le plus faible
+  rendement par heure investie.
+  [Pourquoi relire ne fait rien apprendre →](/blog/apprendre-son-cours-par-coeur/){: target="_blank" rel="noopener" }
+- **Sacrifiez ensuite la mise au propre des fiches.** Une fiche
+  esthétiquement soignée n'apprend jamais mieux à elle seule qu'une fiche
+  visuellement moins soignée mais correctement structurée sur le fond.
+- **Ne sacrifiez en revanche jamais les exercices, ni jamais le sommeil.**
+  Ces deux postes restent, quelle que soit la pression du moment,
+  structurellement non négociables sur la durée.
 
 ## Le sommeil n'est pas du temps perdu
 
-C'est pendant le sommeil que la mémoire consolide ce qui a été travaillé dans
-la journée. Réviser au prix d'une nuit courte, c'est payer deux fois : vous
-perdez en efficacité le lendemain, et vous réduisez ce que la journée
-d'avant-hier a laissé.
+C'est précisément pendant le sommeil que la mémoire consolide durablement
+ce qui a été travaillé activement dans la journée. Réviser au prix d'une
+nuit sensiblement raccourcie revient, dans les faits, à payer deux fois
+le même prix : vous perdez en efficacité de travail dès le lendemain, et
+vous réduisez simultanément ce que la journée d'avant-hier avait
+pourtant réussi à consolider correctement.
 
-Six heures de sommeil et trois heures de révision valent moins que sept heures
-de sommeil et deux heures de révision. Ce n'est pas un conseil de confort,
-c'est le fonctionnement de la consolidation mnésique.
+Six heures de sommeil suivies de trois heures de révision valent, au
+bout du compte, structurellement moins que sept heures de sommeil
+suivies de seulement deux heures de révision. Ce n'est absolument pas un
+simple conseil de confort personnel, c'est directement le fonctionnement
+biologique documenté de la consolidation mnésique pendant le sommeil.
 
-## La semaine de DS ou de concours blancs
+### La semaine de DS ou de concours blancs
 
-Une seule règle : **n'apprenez rien de nouveau la veille**. La veille sert à
-faire remonter ce qui est déjà en place, pas à construire. Ce qui n'est pas su
-le vendredi ne le sera pas le samedi, et l'essayer quand même coûte le sommeil
-qui aurait servi au reste.
-[Préparer une khôlle, semaine par semaine →](/blog/preparer-une-kholle/)
-
-[Préparer un concours blanc sans tout réviser la veille →](/blog/preparer-un-concours-blanc/)
+Une seule règle compte vraiment dans ce contexte précis : **n'apprenez
+strictement rien de nouveau la veille** de l'épreuve. La veille sert
+exclusivement à faire remonter en mémoire ce qui est déjà solidement en
+place, jamais à construire du contenu nouveau dans l'urgence. Ce qui
+n'est pas su le vendredi soir ne le sera de toute façon pas davantage le
+samedi matin, et essayer malgré tout ne fait que coûter le sommeil qui
+aurait autrement servi à consolider le reste du programme déjà révisé.
+[Préparer une khôlle, semaine par semaine →](/blog/preparer-une-kholle/){: target="_blank" rel="noopener" }
+[Préparer un concours blanc sans tout réviser la veille →](/blog/preparer-un-concours-blanc/){: target="_blank" rel="noopener" }
 
 ## En pratique
 
-Le poste « mémorisation entretenue » est celui qui s'effondre en premier, parce
-qu'il demande de décider chaque jour quoi réviser. PrépaCards supprime cette
-décision : les cartes remontent au bon moment, et vous pouvez poser une **date
-de DS ou de khôlle** sur un paquet pour que rien ne passe par-dessus
-l'échéance. Vous pouvez aussi déclarer vos **jours de repos** — l'application
-n'y proposera rien.
+Le poste « mémorisation entretenue » est, de tous les postes de la
+semaine, celui qui s'effondre le plus souvent en premier, précisément
+parce qu'il demande de décider chaque jour, sans exception, quoi réviser
+concrètement. PrépaCards supprime entièrement cette décision quotidienne :
+les cartes remontent seules au bon moment, et vous pouvez poser une
+**date de DS ou de khôlle** directement sur un paquet donné pour que rien
+ne passe jamais par-dessus l'échéance fixée. Vous pouvez également
+déclarer vos propres **jours de repos** dans l'application — elle n'y
+proposera alors strictement aucune révision ce jour-là.
 
 <div class="encart">
   <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
