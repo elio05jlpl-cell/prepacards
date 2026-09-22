@@ -192,14 +192,22 @@ strong { color: var(--encre); font-weight: 700; }
 
 /* --- En-tete ------------------------------------------------------- */
 
-.entete {
+.entete { background: #fff; }
+.barre { display: flex; align-items: center; gap: 18px; height: 72px; }
+
+/* Seule la rangee de liens reste collee en haut au defilement : le logo et
+   le bandeau sombre (reseaux, connexion) defilent normalement avec la
+   page. Elle vit donc hors de <header>, dans son propre conteneur sticky,
+   dont le parent (<body>) offre toute la hauteur de page necessaire au
+   collage - imbriquee dans <header>, elle n'aurait pu se coller que le
+   temps que <header>, haut d'a peine 150 px, reste a l'ecran. */
+.entete-nav-barre {
   position: sticky; top: 0; z-index: 50;
   background: rgba(255, 255, 255, .88);
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid var(--bord-net);
 }
-.barre { display: flex; align-items: center; gap: 18px; height: 72px; }
 
 /* --- En-tete a trois rangees -------------------------------------- */
 /*
@@ -211,25 +219,28 @@ strong { color: var(--encre); font-weight: 700; }
 
 .bandeau-haut { background: #16213e; color: #cfd8e8; }
 .bandeau-haut-interieur {
+  /* Bandeau resserre : gap et hauteur minimale divises par 1,75 par
+     rapport a la version d'origine (18px et 44px), pour un ruban discret
+     plutot qu'une deuxieme barre de navigation a part entiere. */
   display: flex; align-items: center; justify-content: space-between;
-  gap: 18px; min-height: 44px;
+  gap: 10px; min-height: 25px;
 }
 
-.reseaux { display: flex; align-items: center; gap: 4px; }
+.reseaux { display: flex; align-items: center; gap: 2px; }
 .reseaux a {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 32px; height: 32px; border-radius: 8px;
+  width: 26px; height: 26px; border-radius: 7px;
   color: #cfd8e8; text-decoration: none;
   transition: background .18s ease, color .18s ease;
 }
 .reseaux a:hover { background: rgba(255, 255, 255, .12); color: #fff; }
 
-.bandeau-actions { display: flex; align-items: center; gap: 10px; }
+.bandeau-actions { display: flex; align-items: center; gap: 8px; }
 /* Sur fond sombre, le contour clair du bouton « Se connecter » disparait :
    il prend une bordure translucide et un texte clair. */
 .bandeau-actions .nav-connexion {
   border-color: rgba(255, 255, 255, .28); color: #eaf0fb; margin-left: 0;
-  padding: 7px 14px;
+  padding: 4px 10px; line-height: 1.3;
 }
 .bandeau-actions .nav-connexion:hover {
   background: rgba(255, 255, 255, .12);
@@ -265,8 +276,8 @@ strong { color: var(--encre); font-weight: 700; }
 
 .bouton-nav {
   background: var(--degrade); color: #fff !important;
-  padding: 10px 20px !important; border-radius: 10px !important;
-  font-weight: 700 !important; margin-left: 10px;
+  padding: 5px 12px !important; border-radius: 8px !important;
+  font-weight: 700 !important; margin-left: 10px; line-height: 1.3 !important;
   box-shadow: 0 14px 24px rgba(37, 99, 235, .20);
 }
 .bouton-nav:hover { background: var(--degrade); filter: brightness(1.07); }
@@ -923,7 +934,7 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 .nav-lien:hover { background: var(--hover); color: var(--bleu-fonce); text-decoration: none; }
 .nav-lien.actif { color: var(--bleu-fonce); font-weight: 700; }
 
-.nav-fleche { font-size: .7em; transition: transform .2s ease; }
+.nav-fleche { flex-shrink: 0; transition: transform .2s ease; }
 .nav-groupe:hover .nav-fleche,
 .nav-groupe:focus-within .nav-fleche { transform: rotate(180deg); }
 
@@ -981,17 +992,23 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 }
 .mega-filiere strong {
   display: block; font-size: .95rem; font-weight: 600; color: var(--encre);
+  transition: color .18s ease;
 }
 .mega-filiere small {
   display: block; margin-top: 2px;
   font-size: .78rem; color: var(--gris); font-weight: 400;
+  transition: color .18s ease;
 }
-.mega-chevron { color: var(--gris); font-size: 1.1rem; line-height: 1; }
+.mega-chevron { color: var(--gris); font-size: 1.1rem; line-height: 1; transition: color .18s ease; }
 
 .mega-item:hover > .mega-filiere,
-.mega-item:focus-within > .mega-filiere { background: var(--hover); }
+.mega-item:focus-within > .mega-filiere { background: var(--bleu-fonce); }
+.mega-item:hover > .mega-filiere strong,
+.mega-item:hover > .mega-filiere small,
+.mega-item:focus-within > .mega-filiere strong,
+.mega-item:focus-within > .mega-filiere small { color: #fff; }
 .mega-item:hover .mega-chevron,
-.mega-item:focus-within .mega-chevron { color: var(--bleu); }
+.mega-item:focus-within .mega-chevron { color: #fff; }
 
 .mega-droite {
   /* Cale dans la moitie droite de la boite, quelle que soit la filiere
@@ -1030,7 +1047,8 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 .nav-groupe:focus-within .mega-item.ouvert > .mega-droite,
 .mega-item:hover > .mega-droite,
 .mega-item:focus-within > .mega-droite { opacity: 1; visibility: visible; }
-.mega-gauche:hover .mega-item.ouvert:not(:hover) > .mega-droite {
+.mega-gauche:hover .mega-item.ouvert:not(:hover) > .mega-droite,
+.mega-gauche:focus-within .mega-item.ouvert:not(:focus-within) > .mega-droite {
   opacity: 0; visibility: hidden;
 }
 
@@ -1114,12 +1132,12 @@ html.js .a-reveler.vue { opacity: 1; transform: none; }
 
 /* --- En-tete qui se densifie au defilement -------------------------- */
 
-.entete { transition: box-shadow .3s ease, background .3s ease; }
+.entete-nav-barre { transition: box-shadow .3s ease, background .3s ease; }
 /* « defile » etait aussi le nom du carrousel de logos, qui porte
    overflow: hidden. L'en-tete heritait donc de cette regle des qu'on
    quittait le haut de page, et rognait le menu deroulant a sa propre
    hauteur : on n'en voyait plus qu'un liseré blanc. */
-.entete.abaissee {
+.entete-nav-barre.abaissee {
   box-shadow: 0 6px 24px rgba(15, 23, 42, .07);
   background: rgba(255, 255, 255, .94);
 }
@@ -1143,8 +1161,12 @@ main a { transition: color .2s ease; }
   /* Le menu des matieres a deux panneaux n'a pas de sens sans survol :
      il se deplie en une seule colonne, chaque filiere suivie de ses
      matieres en retrait. Laisse tel quel, le panneau de droite faisait
-     580 px de large et sortait de l'ecran. */
-  .mega-panneau { display: block; min-width: 0; padding: 0 0 0 14px; }
+     580 px de large et sortait de l'ecran.
+     Selecteur double a dessein, comme la regle d'origine : ".mega-panneau"
+     seul est MOINS specifique que ".nav-menu.mega-panneau" (deux classes)
+     et perdait donc face a elle malgre son ordre plus tardif dans la
+     feuille - la specificite l'emporte toujours sur l'ordre source. */
+  .nav-menu.mega-panneau { display: block; min-width: 0; padding: 0 0 0 14px; }
   .mega-gauche { width: auto; flex: none; border-right: none; }
   .mega-filiere { margin-right: 0; }
   .mega-filiere small { display: none; }

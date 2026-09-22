@@ -53,13 +53,15 @@
     </button>
   </div>
 
+</header>
+
+<div class="entete-nav-barre">
   <div class="conteneur entete-nav">
     <nav class="navigation" aria-label="Navigation principale">
         {{nav}}
     </nav>
   </div>
-
-</header>
+</div>
 
 <main id="contenu">
 {{content}}
@@ -107,7 +109,7 @@ document.documentElement.classList.add('js');
 
   // En-tete : une ombre apparait des que la page defile, pour la detacher
   // du contenu qui passe dessous.
-  var entete = document.querySelector('.entete');
+  var entete = document.querySelector('.entete-nav-barre');
   if (entete) {
     var majDefile = function () {
       entete.classList.toggle('abaissee', window.scrollY > 8);

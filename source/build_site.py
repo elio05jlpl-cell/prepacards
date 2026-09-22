@@ -1049,7 +1049,7 @@ def render_menu_matieres(current: str) -> str:
         f'<div class="nav-groupe nav-mega">'
         f'<a class="nav-lien{actif}" href="/prepa/" aria-haspopup="true" '
         f'aria-expanded="false">Matières'
-        f'<span class="nav-fleche" aria-hidden="true">&#9662;</span></a>'
+        f'<svg class="nav-fleche" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>'
         f'<div class="nav-menu mega-panneau">'
         f'<ul class="mega-gauche">{"".join(entrees)}</ul>'
         f'</div></div>'
@@ -1088,7 +1088,7 @@ def render_nav(current: str) -> str:
             f'<div class="nav-groupe">'
             f'<a class="nav-lien{actif}" href="{href}" aria-haspopup="true" '
             f'aria-expanded="false">{html.escape(label)}'
-            f'<span class="nav-fleche" aria-hidden="true">&#9662;</span></a>'
+            f'<svg class="nav-fleche" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>'
             f'<div class="nav-menu">{liens}</div>'
             f'</div>'
         )
