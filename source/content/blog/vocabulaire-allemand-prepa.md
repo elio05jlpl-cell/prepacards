@@ -42,9 +42,9 @@ demandera.
 Le thème, l'essai et la colle exigent tous les trois de **produire**. C'est donc
 dans le sens **français → allemand** que vos cartes doivent d'abord être posées.
 Le sens inverse sert à la version, et vient en second.
-[Pourquoi la LV2 décroche plus vite que la LV1 →](/blog/lv2-en-prepa/)
+[Pourquoi la LV2 décroche plus vite que la LV1 →](/blog/lv2-en-prepa/){: target="_blank" rel="noopener" }
 
-## Les mots composés : apprendre les briques, pas les murs
+### Les mots composés : apprendre les briques, pas les murs
 
 L'allemand fabrique ses mots en les emboîtant. **Arbeitslosigkeit** se lit
 *Arbeit* (travail) + *los* (sans) + *-igkeit* (suffixe de nom) : l'état d'être
@@ -59,7 +59,7 @@ une pour *-keit*, une pour *Wahl* : elles vous rapportent des dizaines de mots.
 Le dernier élément du composé donne toujours le genre. *die Stadt* + *der Rat*
 donne **der Stadtrat** (le conseil municipal) : masculin, à cause de *Rat*.
 
-## Les faux amis qui coûtent des points
+## Les pièges : faux amis et prononciation
 
 Le français et l'allemand partagent beaucoup de mots d'origine latine, et
 quelques-uns ont changé de sens en route. Ceux-là méritent chacun une carte,
@@ -74,24 +74,7 @@ Pour ces mots, le verso ne doit pas seulement donner le bon sens : il doit
 **nommer le piège**. « das Gymnasium = le lycée (≠ gymnase) ». C'est la mention
 du faux ami qui empêche l'erreur de revenir.
 
-## Ce qu'il faut mettre sur une carte
-
-Le mot seul s'oublie. Le mot dans une phrase reste, parce qu'il est accroché à
-un sens et à une construction. Au verso, ajoutez une phrase courte et typique
-du sujet — idéalement une phrase que vous pourriez réutiliser dans un essai :
-
-> **die Energiewende** — la transition énergétique.
-> *Die Energiewende ist eines der zentralen Projekte der deutschen Politik.*
-
-Pour les verbes, notez ce qui ne se devine pas : la **particule séparable**
-(*ankommen* → *ich komme an*), la **préposition** et son cas (*sich interessieren
-für* + accusatif), et les formes irrégulières si le verbe est fort.
-
-Une carte, une information à retrouver : le genre, le pluriel et la phrase
-d'exemple sont là pour **fixer** le mot, pas pour être interrogés séparément.
-[Les règles pour faire des cartes qui tiennent →](/blog/reviser-avec-des-flashcards-en-prepa/)
-
-## La prononciation, qu'on néglige à l'écrit
+### La prononciation, qu'on néglige à l'écrit
 
 On se dit que la prononciation ne compte qu'en colle. C'est une erreur : un mot
 qu'on ne sait pas prononcer s'apprend mal, parce qu'on ne peut pas se le
@@ -105,15 +88,34 @@ répéter. Trois points suffisent à éviter l'essentiel des fautes :
 
 Dire le mot à voix haute, au moment de le réviser, fixe à la fois le son et la
 forme écrite.
-[Pourquoi la récitation change tout →](/blog/reviser-a-voix-haute/)
+[Pourquoi la récitation change tout →](/blog/reviser-a-voix-haute/){: target="_blank" rel="noopener" }
 
-## Le rythme, sur une année de prépa
+## Ce qu'il faut mettre sur une carte, et à quel rythme
+
+Le mot seul s'oublie. Le mot dans une phrase reste, parce qu'il est accroché à
+un sens et à une construction. Au verso, ajoutez une phrase courte et typique
+du sujet — idéalement une phrase que vous pourriez réutiliser dans un essai, et
+si possible tirée de vos propres notes de
+[cours plutôt que d'une liste générique](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" } :
+
+> **die Energiewende** — la transition énergétique.
+> *Die Energiewende ist eines der zentralen Projekte der deutschen Politik.*
+
+Pour les verbes, notez ce qui ne se devine pas : la **particule séparable**
+(*ankommen* → *ich komme an*), la **préposition** et son cas (*sich interessieren
+für* + accusatif), et les formes irrégulières si le verbe est fort.
+
+Une carte, une information à retrouver : le genre, le pluriel et la phrase
+d'exemple sont là pour **fixer** le mot, pas pour être interrogés séparément.
+[Les règles pour faire des cartes qui tiennent →](/blog/reviser-avec-des-flashcards-en-prepa/){: target="_blank" rel="noopener" }
+
+### Le rythme, sur une année de prépa
 
 Le vocabulaire se gagne par petites quantités régulières, pas par grandes
 séances. Une dizaine de mots nouveaux par jour, révisés au bon moment, donne
 plus de deux mille mots sur l'année — de quoi couvrir les grands thèmes de
 civilisation qui reviennent aux concours.
-[Combien de cartes nouvelles par jour, concrètement →](/blog/combien-de-cartes-par-jour/)
+[Combien de cartes nouvelles par jour, concrètement →](/blog/combien-de-cartes-par-jour/){: target="_blank" rel="noopener" }
 
 Le piège est de tout concentrer sur le thème de la semaine. Les thèmes anciens
 reviennent en colle comme à l'écrit, et un vocabulaire qu'on ne revoit plus
@@ -121,7 +123,7 @@ disparaît en quelques semaines. C'est précisément ce que la répétition espa
 corrige : elle fait remonter les anciens mots juste avant qu'ils ne s'effacent.
 
 Même méthode, même rythme pour les autres langues : seuls les pièges changent.
-[Le cas de l'espagnol →](/blog/apprendre-le-vocabulaire-espagnol/)
+[Le cas de l'espagnol →](/blog/apprendre-le-vocabulaire-espagnol/){: target="_blank" rel="noopener" }
 
 ## En pratique
 

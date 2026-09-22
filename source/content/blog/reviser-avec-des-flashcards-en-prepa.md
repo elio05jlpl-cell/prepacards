@@ -23,7 +23,8 @@ contexte qu'on a oublié.
 
 L'ordre qui fonctionne :
 
-1. suivre le cours ;
+1. suivre le cours, en notant surtout ce qui n'est écrit nulle part ailleurs
+   ([quoi noter, concrètement →](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" }) ;
 2. faire sa fiche le soir ou le week-end — c'est là qu'on comprend et qu'on
    structure ;
 3. **fabriquer les cartes à partir de la fiche**, une fois le chapitre compris.

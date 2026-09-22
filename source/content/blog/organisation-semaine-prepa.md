@@ -32,6 +32,7 @@ même, pendant qu'ils sont encore frais. C'est le créneau au meilleur rendement
 de la semaine, et c'est le premier sacrifié quand on est fatigué. C'est une
 erreur : un cours repris le soir même se réapprend en vingt minutes, un cours
 laissé une semaine se réapprend de zéro.
+[Ce qu'il faut noter en cours pour que ce moment serve →](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" }
 
 **2. Les exercices (2 h à 3 h par jour).** Irremplaçables. Aucune méthode de
 mémorisation ne remplace le fait d'avoir cherché.

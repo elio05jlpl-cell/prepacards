@@ -32,7 +32,7 @@ au troisième jour. Mieux vaut un ordre simple, tenu souplement.
 **Les premiers jours : se reposer pour de bon.** Pas de culpabilité, pas de
 demi-travail devant un cours ouvert. Le sommeil rattrapé n'est pas du temps
 perdu : c'est pendant le sommeil que la mémoire consolide ce qui a été appris.
-[Le sommeil n'est pas du temps perdu →](/blog/organisation-semaine-prepa/)
+[Le sommeil n'est pas du temps perdu →](/blog/organisation-semaine-prepa/){: target="_blank" rel="noopener" }
 
 **Ensuite : reprendre l'ancien, matière par matière.** Commencez par les
 chapitres les plus anciens, pas par les plus récents. C'est l'inverse de
@@ -42,7 +42,7 @@ l'instinct, et c'est ce qui rapporte le plus.
 surveillé, parfois un concours blanc. Cette préparation-là vient en dernier,
 pour être fraîche au retour.
 
-## Reprendre un chapitre, concrètement
+### Reprendre un chapitre, concrètement
 
 Relire son cours ne suffit pas, et c'est la tentation la plus forte en vacances,
 parce qu'on a enfin le temps. Relire donne l'impression de savoir sans rien
@@ -59,28 +59,29 @@ Pour chaque chapitre ancien, faites plutôt ceci :
    effort.
 
 Ce protocole prend plus de temps qu'une relecture, et il en vaut dix.
-[Apprendre son cours sans relire en boucle →](/blog/apprendre-son-cours-par-coeur/)
+[Apprendre son cours sans relire en boucle →](/blog/apprendre-son-cours-par-coeur/){: target="_blank" rel="noopener" }
 
 Si vos notes de cours sont en désordre, c'est le moment de les remettre à plat —
 non pas en les recopiant au propre, mais en repérant ce qui mérite une carte.
-[Prendre des notes qui servent vraiment →](/blog/prise-de-notes-en-cours/)
+[Prendre des notes qui servent vraiment →](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" }
 
 ## Matière par matière
 
 **Les maths** se reprennent par les exercices. Les énoncés de théorèmes et les
 formules, eux, se révisent en quelques minutes par jour, à part.
-[Réviser les maths en prépa ECG →](/blog/reviser-les-maths-en-ecg/)
+[Réviser les maths en prépa ECG →](/blog/reviser-les-maths-en-ecg/){: target="_blank" rel="noopener" }
 
 **Les langues** ne supportent pas deux semaines d'arrêt complet : le vocabulaire
 récent disparaît vite. Dix minutes par jour suffisent à le garder.
-[Pourquoi la LV2 décroche plus vite →](/blog/lv2-en-prepa/)
-[Le vocabulaire espagnol, méthode et pièges →](/blog/apprendre-le-vocabulaire-espagnol/)
+[Pourquoi la LV2 décroche plus vite →](/blog/lv2-en-prepa/){: target="_blank" rel="noopener" }
+[Le vocabulaire espagnol, méthode et pièges →](/blog/apprendre-le-vocabulaire-espagnol/){: target="_blank" rel="noopener" }
+[Le vocabulaire allemand, genre et pluriel compris →](/blog/vocabulaire-allemand-prepa/){: target="_blank" rel="noopener" }
 
 **Les matières de culture** — géopolitique, culture générale, ESH — se
 reprennent par les repères : dates, auteurs, chiffres, études de cas.
-[Réviser la géopolitique en prépa ECG →](/blog/reviser-la-geopolitique-en-prepa/)
+[Réviser la géopolitique en prépa ECG →](/blog/reviser-la-geopolitique-en-prepa/){: target="_blank" rel="noopener" }
 
-## Ce qu'il vaut mieux ne pas faire
+## Ce qu'il vaut mieux (ne pas) faire
 
 **Prendre de l'avance sur le programme.** Apprendre seul un chapitre qui sera
 traité en classe dans trois semaines est rarement rentable : vous le
@@ -93,9 +94,9 @@ existe précisément pour l'éviter.
 **Arrêter complètement les révisions quotidiennes.** Même en vacances, un quart
 d'heure de cartes par jour maintient tout ce qui est acquis. Les couper deux
 semaines, c'est retrouver à la rentrée une pile de révisions en retard.
-[Combien de cartes par jour, et comment rattraper l'arriéré →](/blog/combien-de-cartes-par-jour/)
+[Combien de cartes par jour, et comment rattraper l'arriéré →](/blog/combien-de-cartes-par-jour/){: target="_blank" rel="noopener" }
 
-## Revenir en forme
+### Revenir en forme
 
 Le but des vacances n'est pas d'avoir travaillé le plus d'heures possible. C'est
 de revenir **reposé**, avec les chapitres de la rentrée **consolidés**. Un élève
@@ -104,7 +105,7 @@ aborde novembre bien mieux qu'un élève qui a passé quatorze jours à relire.
 
 Si un concours blanc suit la rentrée, prévoyez sa préparation dans les derniers
 jours, pas plus tôt.
-[Préparer un concours blanc →](/blog/preparer-un-concours-blanc/)
+[Préparer un concours blanc →](/blog/preparer-un-concours-blanc/){: target="_blank" rel="noopener" }
 
 ## En pratique
 

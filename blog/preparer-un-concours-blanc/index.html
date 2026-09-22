@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2208486d" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=fcb36135">
-<link rel="stylesheet" href="/style.css?v=b68aa2f9cb">
+<link rel="stylesheet" href="/style.css?v=a76c871c21">
 <link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Concours blancs : les préparer et en tirer parti | PrépaCards", "description": "Un concours blanc ne se prépare pas comme un DS. Comment aborder la semaine, gérer une note catastrophique, et surtout quoi faire de la copie une fois rendue.", "datePublished": "2026-09-18", "dateModified": "2026-09-18", "author": {"@type": "Organization", "name": "PrépaCards"}, "publisher": {"@type": "Organization", "name": "PrépaCards"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://prepacards.fr/blog/preparer-un-concours-blanc/"}}</script>
@@ -69,17 +69,35 @@
 
 <main id="contenu">
   <article class="article">
-    <div class="conteneur-texte">
-      <nav class="fil" aria-label="Fil d'Ariane">
-        <a href="/">Accueil</a> › <a href="/blog/">Blog</a>
-      </nav>
-      <p class="art-meta"><time datetime="2026-09-18">18 septembre 2026</time></p>
+    <div class="disposition-article">
+      <aside class="barre-laterale">
+        <nav class="panneau-sommaire" aria-label="Sommaire de l'article">
+          <button type="button" class="sommaire-bouton" aria-expanded="true">
+            <span>Sommaire</span>
+            <svg class="sommaire-fleche" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <ol class="sommaire-liste">
+
+          </ol>
+        </nav>
+      </aside>
+      <div class="conteneur-texte">
+        <div class="cadre-entete">
+          <nav class="fil" aria-label="Fil d'Ariane">
+            <a href="/">Accueil</a> › <a href="/blog/">Blog</a> › <strong>Concours blancs : les préparer et en tirer parti</strong>
+          </nav>
+        </div>
+        <p class="art-meta"><time datetime="2026-09-18">18 septembre 2026</time></p>
 <div class="feuille-texte">
 <h1 id="concours-blancs-les-preparer-et-en-tirer-quelque-chose">Concours blancs : les préparer et en tirer quelque chose</h1>
+<div class="chapo">
 <p>Quatre heures, parfois six, sur un programme entier. Le concours blanc est
 l'exercice qui ressemble le plus aux épreuves de mai, et celui dont les élèves
 tirent le moins — parce qu'ils le préparent comme un DS et qu'ils rangent la
 copie sans la relire.</p>
+</div>
 <h2 id="ce-quun-concours-blanc-mesure-vraiment">Ce qu'un concours blanc mesure vraiment</h2>
 <p>Un DS porte sur un chapitre. Un concours blanc porte sur <strong>tout</strong>, et c'est un
 exercice différent : il n'évalue pas ce que vous venez d'apprendre, il évalue ce
@@ -166,12 +184,13 @@ passera par-dessus l'échéance.</p>
   <a href="/prepa/">Réviser en prépa</a></p>
 </div>
 </div>
-      <aside class="encart-cta">
-        <h2>Essayer PrépaCards</h2>
-        <p>Répétition espacée, vérification de la prononciation à l'oral et
-           formules de maths photographiées. Gratuit, pour Windows.</p>
-        <a class="bouton" href="/telecharger/">Télécharger PrépaCards</a>
-      </aside>
+        <aside class="encart-cta">
+          <h2>Essayer PrépaCards</h2>
+          <p>Répétition espacée, vérification de la prononciation à l'oral et
+             formules de maths photographiées. Gratuit, pour Windows.</p>
+          <a class="bouton" href="/telecharger/">Télécharger PrépaCards</a>
+        </aside>
+      </div>
     </div>
   </article>
 </main>
@@ -269,6 +288,15 @@ document.documentElement.classList.add('js');
   });
 })();
 
+(function () {
+  var bouton = document.querySelector('.sommaire-bouton');
+  if (!bouton) return;
+  bouton.addEventListener('click', function () {
+    var ouvert = bouton.getAttribute('aria-expanded') === 'true';
+    bouton.setAttribute('aria-expanded', ouvert ? 'false' : 'true');
+  });
+})();
+
 </script>
 <script>
 // Ce qui rend une page de contenu vivante : apparition des blocs au
@@ -320,9 +348,19 @@ document.documentElement.classList.add('js');
   document.body.appendChild(barre);
 
   // --- Sommaire lateral ----------------------------------------------
+  //
+  // Les articles de blog posent deja leur propre sommaire, cote serveur,
+  // dans la colonne laterale (.sommaire-liste, dans templates/article.html).
+  // On evite alors d'en construire un second flottant : on reutilise ses
+  // liens tels quels pour l'entree active. Ailleurs (mentions legales,
+  // pages de texte), on garde le sommaire flottant genere ici.
   var titres = [].slice.call(feuille.querySelectorAll('h2'));
   var liens = [];
-  if (titres.length >= 3) {
+  var listeExistante = document.querySelector('.sommaire-liste');
+
+  if (listeExistante) {
+    liens = [].slice.call(listeExistante.querySelectorAll('a'));
+  } else if (titres.length >= 3) {
     var nav = document.createElement('nav');
     nav.className = 'sommaire-page';
     nav.setAttribute('aria-label', 'Sommaire de la page');

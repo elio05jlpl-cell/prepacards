@@ -13,7 +13,9 @@ contente pas d'être inefficace : elle vous fait croire que vous savez, et vous
 fait perdre du temps à chaque passage. Voici les sept erreurs qui reviennent le
 plus souvent, avec une version corrigée pour chacune.
 
-## 1. Mettre plusieurs réponses sur une carte
+## Les erreurs de contenu
+
+### 1. Mettre plusieurs réponses sur une carte
 
 C'est l'erreur la plus répandue, et la plus coûteuse.
 
@@ -30,9 +32,9 @@ le système d'alliances.
 
 La règle est simple : si la réponse contient une virgule, c'est probablement
 plusieurs cartes.
-[Une carte, une information : la règle expliquée →](/blog/reviser-avec-des-flashcards-en-prepa/)
+[Une carte, une information : la règle expliquée →](/blog/reviser-avec-des-flashcards-en-prepa/){: target="_blank" rel="noopener" }
 
-## 2. Poser une question qui admet plusieurs bonnes réponses
+### 2. Poser une question qui admet plusieurs bonnes réponses
 
 > **Recto** : Keynes
 > **Verso** : Théorie générale de l'emploi, de l'intérêt et de la monnaie (1936)
@@ -45,7 +47,7 @@ carte n'en attend qu'une. Vous la raterez en la sachant.
 Keynes, et son année » appelle une seule réponse. Chaque autre idée mérite sa
 propre carte.
 
-## 3. Recopier un paragraphe du cours
+### 3. Recopier un paragraphe du cours
 
 Une carte dont le verso fait six lignes n'est pas une carte : c'est une fiche
 qu'on relit. Vous ne pourrez jamais dire honnêtement si vous la saviez, et vous
@@ -55,29 +57,7 @@ aurez tendance à la survoler.
 pas en carte. Ce qui s'y met, ce sont ses **points d'appui** : la définition,
 l'hypothèse clé, le résultat. Le raisonnement, lui, se travaille en le refaisant.
 
-## 4. N'écrire une carte de langue que dans un sens
-
-> **Recto** : *das Gesetz*
-> **Verso** : la loi
-
-Reconnaître un mot étranger est facile. Le produire, avec son genre, à partir du
-français, ne l'est pas — et c'est ce que le thème, l'essai et la colle
-demandent.
-
-**Corrigé** : posez d'abord la carte dans le sens **français → langue
-étrangère**. C'est celui qui sert, et celui qui résiste le plus longtemps.
-[Le vocabulaire allemand, genre et pluriel compris →](/blog/vocabulaire-allemand-prepa/)
-
-## 5. Isoler le mot de tout contexte
-
-Un mot appris seul flotte. Il revient à l'écran de révision, mais pas au moment
-d'écrire, parce que rien ne le rattache à une phrase ou à un sujet.
-
-**Corrigé** : ajoutez au verso une phrase courte où le mot est employé
-naturellement, si possible une phrase que vous pourriez réutiliser. Elle ne fait
-pas partie de la réponse attendue : elle sert à **fixer** le mot.
-
-## 6. Écrire une formule sans ses conditions
+### 6. Écrire une formule sans ses conditions
 
 > **Recto** : Théorème des valeurs intermédiaires
 > **Verso** : f(a) et f(b) de signes contraires ⇒ f s'annule
@@ -88,12 +68,12 @@ demandera.
 
 **Corrigé** : les hypothèses **d'abord**, la conclusion ensuite. Et une seconde
 carte, à l'envers : « Quelles hypothèses pour appliquer le TVI ? ».
-[Mettre ses formules de maths en cartes →](/blog/flashcards-formules-de-maths/)
+[Mettre ses formules de maths en cartes →](/blog/flashcards-formules-de-maths/){: target="_blank" rel="noopener" }
 
 Le même principe vaut pour toutes les matières quantitatives.
-[Réviser les maths en prépa ECG →](/blog/reviser-les-maths-en-ecg/)
+[Réviser les maths en prépa ECG →](/blog/reviser-les-maths-en-ecg/){: target="_blank" rel="noopener" }
 
-## 7. Faire des cartes sur ce qu'on n'a pas compris
+### 7. Faire des cartes sur ce qu'on n'a pas compris
 
 C'est l'erreur la plus insidieuse, parce qu'elle ressemble à du travail. Mettre
 en carte une notion floue, c'est mémoriser des mots sans leur sens. Vous
@@ -103,7 +83,33 @@ saurez les réciter, et vous serez incapable de vous en servir.
 vous ne pouvez pas expliquer une notion avec vos propres mots, le problème n'est
 pas de mémoire : il faut d'abord retravailler le cours, refaire l'exercice,
 demander au professeur.
-[Ce qui ne s'apprend pas par cœur →](/blog/apprendre-son-cours-par-coeur/)
+[Ce qui ne s'apprend pas par cœur →](/blog/apprendre-son-cours-par-coeur/){: target="_blank" rel="noopener" }
+
+## Les erreurs propres aux langues
+
+### 4. N'écrire une carte de langue que dans un sens
+
+> **Recto** : *das Gesetz*
+> **Verso** : la loi
+
+Reconnaître un mot étranger est facile. Le produire, avec son genre, à partir du
+français, ne l'est pas — et c'est ce que le thème, l'essai et la colle
+demandent.
+
+**Corrigé** : posez d'abord la carte dans le sens **français → langue
+étrangère**. C'est celui qui sert, et celui qui résiste le plus longtemps —
+la même règle vaut pour toute LV2.
+[Le vocabulaire allemand, genre et pluriel compris →](/blog/vocabulaire-allemand-prepa/){: target="_blank" rel="noopener" }
+
+### 5. Isoler le mot de tout contexte
+
+Un mot appris seul flotte. Il revient à l'écran de révision, mais pas au moment
+d'écrire, parce que rien ne le rattache à une phrase ou à un sujet.
+
+**Corrigé** : ajoutez au verso une phrase courte où le mot est employé
+naturellement, si possible une phrase que vous pourriez réutiliser. Elle ne fait
+pas partie de la réponse attendue : elle sert à **fixer** le mot.
+[Le protocole complet pour le vocabulaire →](/blog/apprendre-le-vocabulaire-espagnol/){: target="_blank" rel="noopener" }
 
 ## Le test des dix secondes
 
@@ -119,7 +125,7 @@ question. Ce test élimine à lui seul la plupart des erreurs ci-dessus.
 Pas pendant le cours : vous n'y avez pas encore le recul pour savoir ce qui
 mérite une carte. Le bon moment est le soir même, à partir de ce que vous avez
 repéré dans vos notes, pendant que le cours est encore frais.
-[Prendre des notes qui se transforment en cartes →](/blog/prise-de-notes-en-cours/)
+[Prendre des notes qui se transforment en cartes →](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" }
 
 Écrire ses propres cartes a d'ailleurs un effet que les paquets tout faits
 n'ont pas : le fait même de choisir la question et de la formuler est déjà un

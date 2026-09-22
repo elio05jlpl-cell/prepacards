@@ -12,7 +12,8 @@ préparer : on a lu ou on n'a pas lu, on a des idées ou on n'en a pas. C'est
 vrai pour une partie de l'épreuve. Mais une autre partie se prépare très bien,
 et c'est souvent elle qui fait la différence entre deux copies : la **précision
 des références**. Une citation exacte, une définition nette, un exemple bien
-choisi valent plus qu'un paragraphe d'idées générales.
+choisi valent plus qu'un paragraphe d'idées générales — un peu comme
+[les repères précis qui font la différence en géopolitique](/blog/reviser-la-geopolitique-en-prepa/){: target="_blank" rel="noopener" }.
 
 ## Ce qui se prépare, et ce qui ne se prépare pas
 
@@ -28,7 +29,7 @@ matériau, même un bon raisonnement tourne à vide.
 
 La méthode consiste à séparer nettement les deux : on **construit** la
 dissertation, on **mémorise** ses appuis.
-[Ce qui ne s'apprend pas par cœur →](/blog/apprendre-son-cours-par-coeur/)
+[Ce qui ne s'apprend pas par cœur →](/blog/apprendre-son-cours-par-coeur/){: target="_blank" rel="noopener" }
 
 ## Les citations : exactes, ou pas du tout
 
@@ -52,7 +53,7 @@ Remarquez le sens : le recto donne le **contexte**, le verso demande le **texte
 exact**. C'est ce qui vous servira à l'écrit, où vous savez de quoi vous voulez
 parler et cherchez la formule juste.
 
-## Vérifier ses citations à la source
+### Vérifier ses citations à la source
 
 Internet fourmille de citations attribuées à tort — à Voltaire, à Einstein, à
 Churchill surtout. Une citation trouvée sur un site de citations n'est pas une
@@ -63,7 +64,7 @@ dans une édition sérieuse. Notez l'œuvre au verso : si vous ne pouvez pas dir
 d'où vient une citation, ne l'utilisez pas. Le jour où un correcteur la
 reconnaît comme apocryphe, elle discrédite tout le paragraphe.
 
-## Les définitions : le socle de chaque copie
+## Les définitions et les exemples
 
 Une dissertation de culture générale commence presque toujours par définir les
 termes du sujet. Une définition floue fragilise tout ce qui suit.
@@ -75,9 +76,9 @@ la problématique.
 
 Une carte par notion, formulée pour appeler une seule réponse. Une carte qui
 demande « la liberté » appelle dix définitions possibles et n'en vérifie aucune.
-[Sept erreurs à éviter en rédigeant ses cartes →](/blog/rediger-ses-flashcards/)
+[Sept erreurs à éviter en rédigeant ses cartes →](/blog/rediger-ses-flashcards/){: target="_blank" rel="noopener" }
 
-## Les exemples : ceux qu'on n'a pas en tête le jour J
+### Les exemples : ceux qu'on n'a pas en tête le jour J
 
 Le correcteur se lasse des exemples que tout le monde cite. Un exemple précis et
 moins attendu — une œuvre, un épisode historique, une affaire récente — montre
@@ -88,14 +89,14 @@ voulu. D'où l'intérêt de les mettre en cartes, rangés par grand thème. Au r
 la notion ou le thème, au verso l'exemple réduit à son point d'appui : le fait,
 la date, l'auteur.
 
-## Le thème de l'année
+### Le thème de l'année
 
 Si votre filière travaille un thème annuel, il concentre une part importante des
 références à maîtriser. Les œuvres au programme, leurs auteurs, leurs passages
 clés et leurs citations méritent un paquet à part, révisé tout au long de
 l'année et non dans les dernières semaines.
 
-## Relier plutôt qu'accumuler
+## Relier et réciter
 
 Une réserve de références ne suffit pas : il faut pouvoir les mobiliser sur un
 sujet qu'on n'a jamais vu. Une habitude aide beaucoup.
@@ -107,18 +108,18 @@ ensuite mettre en cartes.
 
 La khôlle joue le même rôle, à l'oral : elle révèle les citations qu'on croyait
 savoir.
-[Préparer une khôlle de philosophie ou de lettres →](/blog/preparer-une-kholle/)
+[Préparer une khôlle de philosophie ou de lettres →](/blog/preparer-une-kholle/){: target="_blank" rel="noopener" }
 
-## Dire les citations à voix haute
+### Dire les citations à voix haute
 
 Une citation qu'on n'a jamais prononcée sort mal, à l'oral comme à l'écrit. La
 réciter à voix haute, en la révisant, fixe la formule exacte — y compris sa
 ponctuation et son rythme, qui en font souvent la force.
-[Pourquoi la récitation change tout →](/blog/reviser-a-voix-haute/)
+[Pourquoi la récitation change tout →](/blog/reviser-a-voix-haute/){: target="_blank" rel="noopener" }
 
 Et le meilleur moment pour repérer une référence à retenir reste le cours
 lui-même.
-[Prendre des notes qui se transforment en cartes →](/blog/prise-de-notes-en-cours/)
+[Prendre des notes qui se transforment en cartes →](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" }
 
 ## En pratique
 

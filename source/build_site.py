@@ -766,12 +766,49 @@ def verifier_liens_vers_l_avenir(articles: list, aujourdhui: str) -> None:
         sys.exit(1)
 
 
+def sommaire_html_depuis(converter: "markdown.Markdown") -> str:
+    """Construit le sommaire des H2 a partir des ancres posees par 'toc'.
+
+    L'extension 'toc' pose un id sur chaque titre et remplit
+    converter.toc_tokens apres convert() : pas besoin d'ecrire [TOC] dans le
+    Markdown ni de reparser le HTML.
+    """
+    items = [
+        f'<li><a href="#{tok["id"]}">{html.escape(tok["name"])}</a></li>'
+        for tok in converter.toc_tokens
+        if tok["level"] == 2
+    ]
+    return "".join(items)
+
+
+def inserer_chapo(html_body: str) -> str:
+    """Isole le ou les paragraphes d'amorce (entre le H1 et le premier H2)
+    dans un encadre '.chapo', sans toucher au reste du Markdown source.
+    """
+    fin_h1 = html_body.find("</h1>")
+    if fin_h1 == -1:
+        return html_body
+    debut = fin_h1 + len("</h1>")
+    fin_chapo = html_body.find("<h2", debut)
+    if fin_chapo == -1:
+        fin_chapo = len(html_body)
+    avant, chapo, apres = html_body[:debut], html_body[debut:fin_chapo].strip(), html_body[fin_chapo:]
+    if not chapo:
+        return html_body
+    return f'{avant}\n<div class="chapo">\n{chapo}\n</div>\n{apres}'
+
+
 def load_page(path: Path) -> dict:
     meta, body = parse_front_matter(path.read_text(encoding="utf-8"))
     slug = meta.get("slug", path.stem)
     converter = markdown.Markdown(
         extensions=["extra", "toc", "attr_list", "sane_lists"]
     )
+    html_body = converter.convert(body)
+    sommaire_html = ""
+    if path.parent.name == "blog":
+        sommaire_html = sommaire_html_depuis(converter)
+        html_body = inserer_chapo(html_body)
     return {
         "path": path,
         "slug": slug,
@@ -782,7 +819,8 @@ def load_page(path: Path) -> dict:
         "nav_label": meta.get("nav_label", ""),
         "noindex": meta.get("noindex", "").lower() == "true",
         "faq": meta.get("faq", ""),
-        "body_html": envelopper(converter.convert(body)),
+        "body_html": envelopper(html_body),
+        "sommaire_html": sommaire_html,
         "raw_body": body,
     }
 
@@ -1067,6 +1105,8 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{bouton_mensuel}}": bouton_abonnement("mensuel", False),
         "{{bouton_annuel}}": bouton_abonnement("annuel", True),
         "{{bandeau_ecoles}}": bandeau_ecoles(),
+        "{{sommaire}}": page.get("sommaire_html", ""),
+        "{{titre_court}}": html.escape(titre_affiche(page["title"])),
     }
     for marker, value in replacements.items():
         base = base.replace(marker, value)

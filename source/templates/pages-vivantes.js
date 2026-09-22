@@ -47,9 +47,19 @@
   document.body.appendChild(barre);
 
   // --- Sommaire lateral ----------------------------------------------
+  //
+  // Les articles de blog posent deja leur propre sommaire, cote serveur,
+  // dans la colonne laterale (.sommaire-liste, dans templates/article.html).
+  // On evite alors d'en construire un second flottant : on reutilise ses
+  // liens tels quels pour l'entree active. Ailleurs (mentions legales,
+  // pages de texte), on garde le sommaire flottant genere ici.
   var titres = [].slice.call(feuille.querySelectorAll('h2'));
   var liens = [];
-  if (titres.length >= 3) {
+  var listeExistante = document.querySelector('.sommaire-liste');
+
+  if (listeExistante) {
+    liens = [].slice.call(listeExistante.querySelectorAll('a'));
+  } else if (titres.length >= 3) {
     var nav = document.createElement('nav');
     nav.className = 'sommaire-page';
     nav.setAttribute('aria-label', 'Sommaire de la page');

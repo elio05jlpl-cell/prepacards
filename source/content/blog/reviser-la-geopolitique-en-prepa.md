@@ -24,9 +24,11 @@ d'un cas précis, daté et chiffré, devient un argument.
 
 Le correcteur ne cherche pas l'accumulation. Il cherche le repère **juste**, au
 bon endroit, qui fait avancer le raisonnement. Mais pour choisir le bon, il faut
-en avoir plusieurs en réserve — et les avoir sous la main sans hésiter.
+en avoir plusieurs en réserve — et les avoir sous la main sans hésiter, ce qui
+commence dès la prise de notes en cours.
+[Repérer un repère au moment où il est donné →](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" }
 
-## Ce qui se met en cartes
+## Ce qui se met en cartes, et ce qui ne s'y met pas
 
 Tout ce qui est **ponctuel, exact et sans ambiguïté** :
 
@@ -41,9 +43,9 @@ Tout ce qui est **ponctuel, exact et sans ambiguïté** :
 
 Ce sont des éléments qu'on sait ou qu'on ne sait pas. C'est exactement le
 terrain où la répétition espacée est la plus efficace.
-[Pourquoi une carte revient au bon moment →](/blog/repetition-espacee-comment-ca-marche/)
+[Pourquoi une carte revient au bon moment →](/blog/repetition-espacee-comment-ca-marche/){: target="_blank" rel="noopener" }
 
-## Ce qui ne se met pas en cartes
+### Ce qui ne se met pas en cartes
 
 La **problématique**, le **plan**, l'**articulation** entre les idées. Ils se
 construisent sur le sujet posé, et un plan appris d'avance s'entend
@@ -56,9 +58,19 @@ le tracé d'une frontière —, pas le croquis lui-même.
 
 Savoir reconnaître quel repère sert quelle idée est un savoir-faire distinct de
 la mémorisation, et il se travaille autrement.
-[Reconnaître avant de savoir →](/blog/reconnaissance-de-schemas-en-prepa/)
+[Reconnaître avant de savoir →](/blog/reconnaissance-de-schemas-en-prepa/){: target="_blank" rel="noopener" }
 
-## Le piège propre à la géopolitique : les chiffres qui vieillissent
+## Bien construire ses cartes de repères
+
+L'erreur classique est la carte « L'Inde, puissance émergente », au verso long
+de dix lignes. Elle ne se révise pas : on la relit, on croit la savoir, et le
+jour de l'épreuve rien ne ressort avec précision.
+
+Découpez. Une carte pour un chiffre, une pour une date, une pour un acteur. Et
+formulez la question pour qu'elle n'appelle qu'une réponse.
+[Sept erreurs de rédaction à éviter →](/blog/rediger-ses-flashcards/){: target="_blank" rel="noopener" }
+
+### Le piège propre à la géopolitique : les chiffres qui vieillissent
 
 Un chiffre de géopolitique a une date de péremption. Une part du commerce
 mondial, un budget de défense, une population, un taux : ce qui était juste en
@@ -73,17 +85,7 @@ Une fois par semestre, repassez sur vos cartes chiffrées et mettez à jour
 celles qui ont vieilli. C'est un travail d'une heure, qui évite de citer un
 chiffre faux avec assurance.
 
-## Une carte par repère, jamais par thème
-
-L'erreur classique est la carte « L'Inde, puissance émergente », au verso long
-de dix lignes. Elle ne se révise pas : on la relit, on croit la savoir, et le
-jour de l'épreuve rien ne ressort avec précision.
-
-Découpez. Une carte pour un chiffre, une pour une date, une pour un acteur. Et
-formulez la question pour qu'elle n'appelle qu'une réponse.
-[Sept erreurs de rédaction à éviter →](/blog/rediger-ses-flashcards/)
-
-## Relier les repères entre eux
+## Relier les repères, sur la durée
 
 Une réserve de repères isolés ne suffit pas : il faut pouvoir les mobiliser par
 thème. Deux habitudes aident beaucoup.
@@ -97,7 +99,7 @@ notez au verso les autres thèmes où elle peut servir.
 un sujet et écrivez un plan détaillé en y plaçant les repères de mémoire. C'est
 là que vous verrez ceux qui manquent, et ceux qui ne sortent pas assez vite.
 
-## Deux ans, pas deux mois
+### Deux ans, pas deux mois
 
 Le programme d'HGGMC s'étale sur les deux années de prépa, et l'écrit porte sur
 l'ensemble. Un repère appris en septembre de première année et jamais revu est
@@ -106,11 +108,11 @@ perdu bien avant le concours.
 C'est l'argument décisif pour une révision espacée plutôt que des relectures
 massées avant chaque devoir : les repères anciens remontent d'eux-mêmes, au
 moment où ils commencent à s'effacer, sans que vous ayez à décider quoi revoir.
-[Combien de cartes nouvelles par jour →](/blog/combien-de-cartes-par-jour/)
+[Combien de cartes nouvelles par jour →](/blog/combien-de-cartes-par-jour/){: target="_blank" rel="noopener" }
 
 Les colles de géopolitique sont un bon test intermédiaire : le colleur attend
 précisément ces repères, et vous saurez vite lesquels tiennent.
-[Préparer une khôlle, matière par matière →](/blog/preparer-une-kholle/)
+[Préparer une khôlle, matière par matière →](/blog/preparer-une-kholle/){: target="_blank" rel="noopener" }
 
 ## En pratique
 
@@ -118,7 +120,7 @@ PrépaCards fait revenir chaque repère au bon moment, sur les deux années, et
 respecte la limite de cartes nouvelles que vous fixez. Vous pouvez poser une
 **date cible** sur un paquet — un concours blanc, par exemple — pour que toutes
 ses cartes soient revues avant.
-[Préparer un concours blanc →](/blog/preparer-un-concours-blanc/)
+[Préparer un concours blanc →](/blog/preparer-un-concours-blanc/){: target="_blank" rel="noopener" }
 
 <div class="encart">
   <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.

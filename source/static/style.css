@@ -581,6 +581,111 @@ td strong { color: var(--encre); }
 .fil { font-size: .88rem; color: var(--gris); margin-bottom: 18px; }
 .art-meta { font-size: .9rem; color: var(--gris); margin-bottom: 1.5em; }
 
+/* --- Disposition de l'article : sommaire lateral + colonne de texte -- */
+
+.disposition-article {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  gap: 30px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 22px;
+  /* align-items: start est necessaire : sans lui, la cellule laterale
+     s'etire en hauteur pour epouser celle de l'article (etirement par
+     defaut de Grid) et le sommaire n'a alors plus aucune marge de
+     manoeuvre pour se coller - sa propre boite occupe deja toute la
+     hauteur disponible. */
+  align-items: start;
+}
+.disposition-article .conteneur-texte { padding-left: 0; padding-right: 0; }
+
+/* 188px degage la hauteur reelle de l'en-tete (bandeau + marque + nav,
+   elle-meme sticky a top:0) : sans cette marge le sommaire se colle
+   derriere elle et reste cache. */
+.barre-laterale { position: sticky; top: 188px; }
+
+.panneau-sommaire {
+  background: #fff; border: 1px solid var(--bord); border-radius: var(--rayon-l);
+  box-shadow: var(--ombre-carte); padding: 18px 20px;
+}
+.sommaire-bouton {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  width: 100%; background: none; border: 0; padding: 0; margin: 0;
+  font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.02rem;
+  color: var(--encre); cursor: pointer;
+}
+.sommaire-fleche { transition: transform .2s ease; flex-shrink: 0; }
+.sommaire-bouton[aria-expanded="false"] .sommaire-fleche { transform: rotate(-90deg); }
+
+.sommaire-liste {
+  list-style: none; counter-reset: sommaire; margin: 14px 0 0; padding: 0;
+  display: flex; flex-direction: column; gap: 11px;
+  max-height: 640px; overflow: hidden;
+  transition: max-height .25s ease, margin .25s ease, opacity .2s ease;
+}
+.sommaire-bouton[aria-expanded="false"] + .sommaire-liste {
+  max-height: 0; margin-top: 0; opacity: 0;
+}
+.sommaire-liste li { counter-increment: sommaire; }
+.sommaire-liste a {
+  display: flex; gap: 9px; align-items: baseline; text-decoration: none;
+  color: var(--texte); font-size: .9rem; line-height: 1.35;
+}
+.sommaire-liste a::before {
+  content: counter(sommaire) "."; flex-shrink: 0; font-weight: 800;
+  color: var(--encre); border-bottom: 3px solid #fbbf24; padding-bottom: 1px;
+}
+.sommaire-liste a:hover { color: var(--bleu); }
+.sommaire-liste a.actif { color: var(--bleu-fonce); }
+.sommaire-liste a.actif::before { border-bottom-color: var(--bleu); }
+
+/* Fil d'Ariane pose dans un encadre simple, au-dessus du titre */
+.cadre-entete {
+  border: 1px solid var(--bord-net); border-radius: var(--rayon);
+  padding: 14px 20px; margin: 0 0 1.8em; background: #fff;
+}
+.cadre-entete .fil { margin-bottom: 0; }
+
+/* Amorce de l'article (entre le H1 et le premier H2), dans son encadre */
+.feuille-texte .chapo {
+  border: 1px solid var(--bord-net); border-radius: var(--rayon-l);
+  padding: 24px 28px; margin: 0 0 2em; background: #fff;
+  font-size: 1.08rem; color: var(--texte); text-align: left;
+}
+.feuille-texte .chapo p { margin: 0; }
+.feuille-texte .chapo p + p { margin-top: 1em; }
+
+@media (max-width: 980px) {
+  .disposition-article { grid-template-columns: 1fr; gap: 20px; }
+  .barre-laterale { position: static; }
+}
+
+/* --- Carte de lien vers un autre article, avec visuel ---------------- */
+
+.carte-liee {
+  display: flex; gap: 0; align-items: stretch; text-decoration: none;
+  border: 1px solid var(--bord); border-radius: var(--rayon-l); overflow: hidden;
+  background: #fff; box-shadow: var(--ombre-carte); margin: 1.8em 0;
+  transition: transform .18s, box-shadow .18s;
+}
+.carte-liee:hover { transform: translateY(-2px); box-shadow: var(--ombre-panneau); text-decoration: none; }
+.carte-liee img {
+  width: 112px; height: 112px; object-fit: cover; flex-shrink: 0;
+  border: 0; border-radius: 0; box-shadow: none; margin: 0;
+}
+.carte-liee-texte {
+  padding: 14px 20px; display: flex; flex-direction: column;
+  justify-content: center; gap: 5px; min-width: 0;
+}
+.carte-liee-etiquette {
+  font-size: .74rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--bleu);
+}
+.carte-liee-titre {
+  font-family: 'Poppins', sans-serif; font-weight: 800; color: var(--encre);
+  font-size: 1rem; line-height: 1.3;
+}
+
 /* Centrage porte par la classe elle-meme, et non par la regle « main > ul » :
    un selecteur de classe l'emporte sur elle, et les marges laterales etaient
    remises a zero - la liste se collait au bord gauche. */

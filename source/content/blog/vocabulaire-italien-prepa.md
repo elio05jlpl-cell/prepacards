@@ -22,12 +22,13 @@ facile ; partir de « chômage » et écrire **la disoccupazione** ne l'est pas.
 
 D'où la même règle que pour toute langue en prépa : apprenez dans le sens
 **français → italien**, celui du thème, de l'essai et de la colle.
-[Pourquoi la LV2 décroche plus vite que la LV1 →](/blog/lv2-en-prepa/)
+[Pourquoi la LV2 décroche plus vite que la LV1 →](/blog/lv2-en-prepa/){: target="_blank" rel="noopener" }
 
-## Les faux amis : là où l'intuition trompe à coup sûr
+## Les pièges à l'écrit et à l'oral
 
-C'est la vraie difficulté de l'italien pour un francophone. Ces mots ressemblent
-à des mots français et veulent dire autre chose. Chacun mérite sa propre carte :
+C'est la vraie difficulté de l'italien pour un francophone : des mots qui
+ressemblent à des mots français et veulent dire autre chose. Chacun mérite sa
+propre carte :
 
 - **la camera** : la chambre, pas la caméra.
 - **il burro** : le beurre, pas le bureau.
@@ -42,7 +43,7 @@ Le verso ne doit pas seulement donner le sens : il doit **nommer le piège**.
 l'erreur de revenir, parce qu'elle vous oblige à voir le faux ami au moment de
 réviser.
 
-## Les doubles consonnes, qui changent le sens
+### Les doubles consonnes, qui changent le sens
 
 En italien, une consonne double n'est pas une coquetterie d'orthographe : elle se
 prononce plus longue, et elle distingue des mots différents.
@@ -54,9 +55,9 @@ prononce plus longue, et elle distingue des mots différents.
 À l'écrit, une double oubliée est une faute ; à l'oral, elle peut changer le mot.
 Notez ces paires sur vos cartes, et **dites-les à voix haute** : c'est en
 entendant la différence qu'on la retient.
-[Pourquoi réciter à voix haute change tout →](/blog/reviser-a-voix-haute/)
+[Pourquoi réciter à voix haute change tout →](/blog/reviser-a-voix-haute/){: target="_blank" rel="noopener" }
 
-## L'accent tonique, que l'écriture ne montre pas
+### L'accent tonique, que l'écriture ne montre pas
 
 L'italien n'écrit l'accent que sur la dernière syllabe (*città*, *università*).
 Ailleurs, il ne se voit pas, et il n'est pas toujours là où le français le
@@ -67,7 +68,7 @@ Pour les mots où l'accent tombe à un endroit inattendu, indiquez-le au verso d
 la carte — soulignez la syllabe, ou notez-la entre crochets. Une prononciation
 fautive s'installe vite et se corrige mal.
 
-## Ce qu'il faut mettre sur une carte
+## Ce qu'il faut mettre sur une carte, et à quel rythme
 
 Pour les **noms**, le genre, qui ne suit pas toujours le français : *il
 problema* est masculin malgré sa terminaison en *-a*, et *la mano* (la main) est
@@ -77,20 +78,22 @@ uomini*.
 Pour les **verbes**, ce qui ne se devine pas : la préposition qui les suit, et
 le participe passé s'il est irrégulier.
 
-Et toujours, au verso, une phrase courte où le mot est employé naturellement.
-Elle ne fait pas partie de la réponse attendue : elle sert à le fixer.
-[Sept erreurs à éviter en rédigeant ses cartes →](/blog/rediger-ses-flashcards/)
+Et toujours, au verso, une phrase courte où le mot est employé naturellement,
+si possible tirée d'un texte étudié en cours plutôt qu'inventée. Elle ne fait
+pas partie de la réponse attendue : elle sert à le fixer.
+[Repérer le vocabulaire utile pendant le cours →](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" }
+[Sept erreurs à éviter en rédigeant ses cartes →](/blog/rediger-ses-flashcards/){: target="_blank" rel="noopener" }
 
-## Le rythme
+### Le rythme
 
 Dix mots nouveaux par jour, révisés au bon moment, valent mieux que cent mots le
 dimanche. Le vocabulaire se consolide par petites doses régulières ; les longues
 séances donnent l'impression de progresser et s'effacent en quelques jours.
-[Combien de cartes nouvelles par jour →](/blog/combien-de-cartes-par-jour/)
+[Combien de cartes nouvelles par jour →](/blog/combien-de-cartes-par-jour/){: target="_blank" rel="noopener" }
 
 La méthode est la même pour les autres langues, seuls les pièges changent.
-[Le vocabulaire espagnol, méthode et pièges →](/blog/apprendre-le-vocabulaire-espagnol/)
-[Le vocabulaire allemand, genre et pluriel compris →](/blog/vocabulaire-allemand-prepa/)
+[Le vocabulaire espagnol, méthode et pièges →](/blog/apprendre-le-vocabulaire-espagnol/){: target="_blank" rel="noopener" }
+[Le vocabulaire allemand, genre et pluriel compris →](/blog/vocabulaire-allemand-prepa/){: target="_blank" rel="noopener" }
 
 ## En pratique
 

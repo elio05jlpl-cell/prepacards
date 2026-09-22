@@ -57,7 +57,9 @@ un vrai blanc.
 
 **Le jour du cours.** Relisez une fois, dans la journée, pour remettre le
 chapitre en ordre pendant qu'il est frais. Une seule fois : c'est le seul
-moment où la relecture sert à quelque chose.
+moment où la relecture sert à quelque chose — encore faut-il que vos notes
+soient exploitables à ce moment-là.
+[Prendre des notes qui se transforment en cartes →](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" }
 
 **Découpez en questions.** Transformez le cours en questions courtes avec une
 réponse nette : une définition, un énoncé, une date, un chiffre. Si vous ne

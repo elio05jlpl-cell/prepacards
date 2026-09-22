@@ -64,18 +64,35 @@
 
 <main id="contenu">
   <article class="article">
-    <div class="conteneur-texte">
-      <nav class="fil" aria-label="Fil d'Ariane">
-        <a href="/">Accueil</a> › <a href="/blog/">Blog</a>
-      </nav>
-      <p class="art-meta"><time datetime="{{date_iso}}">{{date_affichee}}</time></p>
-{{content}}
-      <aside class="encart-cta">
-        <h2>Essayer PrépaCards</h2>
-        <p>Répétition espacée, vérification de la prononciation à l'oral et
-           formules de maths photographiées. Gratuit, pour Windows.</p>
-        <a class="bouton" href="/telecharger/">Télécharger PrépaCards</a>
+    <div class="disposition-article">
+      <aside class="barre-laterale">
+        <nav class="panneau-sommaire" aria-label="Sommaire de l'article">
+          <button type="button" class="sommaire-bouton" aria-expanded="true">
+            <span>Sommaire</span>
+            <svg class="sommaire-fleche" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <ol class="sommaire-liste">
+{{sommaire}}
+          </ol>
+        </nav>
       </aside>
+      <div class="conteneur-texte">
+        <div class="cadre-entete">
+          <nav class="fil" aria-label="Fil d'Ariane">
+            <a href="/">Accueil</a> › <a href="/blog/">Blog</a> › <strong>{{titre_court}}</strong>
+          </nav>
+        </div>
+        <p class="art-meta"><time datetime="{{date_iso}}">{{date_affichee}}</time></p>
+{{content}}
+        <aside class="encart-cta">
+          <h2>Essayer PrépaCards</h2>
+          <p>Répétition espacée, vérification de la prononciation à l'oral et
+             formules de maths photographiées. Gratuit, pour Windows.</p>
+          <a class="bouton" href="/telecharger/">Télécharger PrépaCards</a>
+        </aside>
+      </div>
     </div>
   </article>
 </main>
@@ -139,6 +156,15 @@ document.documentElement.classList.add('js');
   burger.addEventListener('click', function () {
     var ouvert = nav.classList.toggle('ouvert');
     burger.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+  });
+})();
+
+(function () {
+  var bouton = document.querySelector('.sommaire-bouton');
+  if (!bouton) return;
+  bouton.addEventListener('click', function () {
+    var ouvert = bouton.getAttribute('aria-expanded') === 'true';
+    bouton.setAttribute('aria-expanded', ouvert ? 'false' : 'true');
   });
 })();
 

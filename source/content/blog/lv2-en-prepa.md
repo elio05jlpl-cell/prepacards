@@ -29,7 +29,7 @@ chargée les supprime.
 Le résultat est connu : un niveau qui fond doucement de septembre à avril, sans
 qu'aucun moment précis n'ait été identifiable comme un décrochage.
 
-## Dix minutes par jour valent deux heures le dimanche
+### Dix minutes par jour valent deux heures le dimanche
 
 C'est vrai pour toutes les matières, et particulièrement pour une langue. Le
 lexique se maintient par contacts répétés et brefs, pas par sessions longues et
@@ -39,9 +39,9 @@ Dix minutes par jour, ce sont soixante-dix minutes par semaine — plus que votr
 volume de cours — et elles se logent dans les temps morts : transports, file
 d'attente, avant de dormir. Ce sont exactement les créneaux où l'on ne peut pas
 faire d'exercices de maths.
-[Organiser sa semaine de prépa →](/blog/organisation-semaine-prepa/)
+[Organiser sa semaine de prépa →](/blog/organisation-semaine-prepa/){: target="_blank" rel="noopener" }
 
-## Dans quel sens apprendre le vocabulaire
+## Produire, pas seulement reconnaître
 
 C'est la question qui change le plus de choses, et presque personne ne se la
 pose.
@@ -53,7 +53,7 @@ Les épreuves — essai, thème, colle — demandent la production. C'est donc d
 sens qu'il faut travailler, même si c'est plus dur. Un mot que vous ne
 reconnaissez qu'à la lecture ne sortira pas le jour de l'oral.
 
-## Le piège de la reconnaissance passive
+### Le piège de la reconnaissance passive
 
 Vous lisez *desempleo*, « chômage » vous vient, vous cochez « je savais ». Dans
 la quasi-totalité des cas, c'est faux : vous avez reconnu, ce qui est une
@@ -62,7 +62,7 @@ opération mentale bien plus facile que de produire.
 Le remède est simple et inconfortable : **dites la réponse à voix haute avant de
 retourner la carte**. L'hésitation s'entend, le blanc est un vrai blanc, et
 l'illusion tombe.
-[Pourquoi la récitation change tout →](/blog/reviser-a-voix-haute/)
+[Pourquoi la récitation change tout →](/blog/reviser-a-voix-haute/){: target="_blank" rel="noopener" }
 
 ## Quoi mettre sur ses cartes
 
@@ -78,16 +78,17 @@ carte ne s'apprend pas : vous ne pourrez jamais dire si vous le saviez.
 
 **Le vocabulaire de vos propres textes.** Les mots rencontrés dans un article
 travaillé en cours valent plus que ceux d'une liste générique : vous avez déjà
-un contexte pour eux.
-[Une carte, une information →](/blog/reviser-avec-des-flashcards-en-prepa/)
+un contexte pour eux, à condition de l'avoir repéré au bon moment.
+[Repérer ce qui mérite une carte en cours →](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" }
+[Une carte, une information →](/blog/reviser-avec-des-flashcards-en-prepa/){: target="_blank" rel="noopener" }
 
-## Grammaire : peu de cartes, bien choisies
+### Grammaire : peu de cartes, bien choisies
 
 La grammaire ne se mémorise pas comme du lexique, mais quelques points s'y
 prêtent parfaitement — ceux qui sont **ponctuels et sans ambiguïté** :
 concordance des temps, emplois du subjonctif, prépositions imposées. Le reste se
 travaille en écrivant et en se faisant corriger.
-[Combien de mots nouveaux par jour →](/blog/combien-de-cartes-par-jour/)
+[Combien de mots nouveaux par jour →](/blog/combien-de-cartes-par-jour/){: target="_blank" rel="noopener" }
 
 ## En pratique
 

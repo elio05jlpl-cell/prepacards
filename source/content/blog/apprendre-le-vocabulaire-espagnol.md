@@ -27,9 +27,9 @@ pas.
 **L'absence d'espacement.** Un mot vu une fois le dimanche n'est pas revu avant
 le dimanche suivant, si tant est qu'il le soit. La courbe de l'oubli fait son
 travail entre les deux.
-[Pourquoi la LV2 décroche plus vite que la LV1 →](/blog/lv2-en-prepa/)
+[Pourquoi la LV2 décroche plus vite que la LV1 →](/blog/lv2-en-prepa/){: target="_blank" rel="noopener" }
 
-## Le sens qui compte : français → espagnol
+## Le sens qui compte : produire plutôt que reconnaître
 
 C'est la décision la plus importante, et presque personne ne la prend
 consciemment.
@@ -44,7 +44,7 @@ faudra l'écrire.
 Travaillez donc dans le sens difficile. C'est plus lent au début, et c'est le
 seul qui serve.
 
-## Ce qu'il faut mettre sur une carte
+### Ce qu'il faut mettre sur une carte
 
 **Des expressions plutôt que des mots nus.** *Hacer frente a* — faire face à —
 se retient mieux et se réutilise mieux que *frente* isolé, parce qu'elle porte
@@ -63,13 +63,14 @@ sinon la confusion reste.
 
 **Le vocabulaire de vos propres textes.** Les mots rencontrés dans un article
 travaillé en cours valent plus qu'une liste générique : vous avez déjà un
-contexte et une phrase pour eux.
+contexte et une phrase pour eux, à condition de les avoir repérés
+[au bon moment en classe](/blog/prise-de-notes-en-cours/){: target="_blank" rel="noopener" }.
 
 ## Le protocole, concrètement
 
 **Quinze à vingt mots nouveaux par jour, tous les jours.** Pas cinquante le
 dimanche. Une langue se maintient par contacts brefs et répétés.
-[Le calcul complet du nombre de cartes →](/blog/combien-de-cartes-par-jour/)
+[Le calcul complet du nombre de cartes →](/blog/combien-de-cartes-par-jour/){: target="_blank" rel="noopener" }
 
 **Mélangez les thèmes à la révision.** Constituez vos paquets par thème si vous
 voulez, mais révisez-les ensemble : c'est le mélange qui supprime le contexte
@@ -78,14 +79,14 @@ qui souffle.
 **Dites la réponse à voix haute avant de retourner la carte.** C'est
 inconfortable et c'est tout l'intérêt : l'hésitation s'entend, et l'illusion de
 savoir tombe immédiatement.
-[Pourquoi la récitation change tout →](/blog/reviser-a-voix-haute/)
+[Pourquoi la récitation change tout →](/blog/reviser-a-voix-haute/){: target="_blank" rel="noopener" }
 
 **Utilisez les temps morts.** Dix minutes dans les transports, dix minutes avant
 de dormir. Quatre créneaux de dix minutes par jour font presque cinq heures par
 mois — plus que votre volume de cours.
-[Préparer la khôlle d'espagnol →](/blog/preparer-une-kholle/)
+[Préparer la khôlle d'espagnol →](/blog/preparer-une-kholle/){: target="_blank" rel="noopener" }
 
-## L'accentuation, qui coûte des points bêtement
+### L'accentuation, qui coûte des points bêtement
 
 *Está* et *esta*, *él* et *el*, *sí* et *si* : l'accent n'est pas décoratif, il
 change le mot. Si vous écrivez vos cartes sans accents, vous apprendrez une
@@ -107,5 +108,5 @@ vos cartes, avec une traduction proposée à la saisie pour aller plus vite.
 <div class="encart">
   <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
   <a href="/telecharger/">Télécharger</a> ·
-  <a href="/blog/lv2-en-prepa/">Tenir sa LV2 en prépa</a></p>
+  <a href="/blog/lv2-en-prepa/" target="_blank" rel="noopener">Tenir sa LV2 en prépa</a></p>
 </div>
