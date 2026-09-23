@@ -62,9 +62,11 @@ import sys
 import os
 import shutil
 import struct
-from datetime import date, datetime
+from datetime import date, datetime, timezone
+from email.utils import format_datetime
 from pathlib import Path
 from urllib.parse import quote
+from xml.sax.saxutils import escape as xml_escape
 
 import markdown
 
@@ -656,6 +658,7 @@ FOOTER_COLONNES = [
         ("/telecharger/", "Télécharger"),
         ("/blog/", "Le blog"),
         ("/decks/", "Paquets gratuits"),
+        ("/rss.xml", "Flux RSS du blog"),
     ]),
     ("Informations", [
         ("/mentions-legales/", "Mentions légales"),
@@ -1324,6 +1327,43 @@ def format_date(iso: str) -> str:
     return f"{d.day} {mois[d.month - 1]} {d.year}"
 
 
+def rss_feed(articles: list) -> str:
+    """Flux RSS 2.0 du blog, articles deja publies uniquement.
+
+    « articles » est ici la liste deja filtree par l'appelant (memes
+    entrees que le sommaire du blog et le plan du site) : la file
+    d'attente n'y figure jamais, un lecteur RSS n'a pas a etre notifie
+    d'un article qui n'existe pas encore en ligne.
+    """
+    items = []
+    for a in articles[:30]:
+        url = f"{SITE_URL}/blog/{a['slug']}/"
+        titre = titre_affiche(a["title"])
+        pub_date = format_datetime(
+            datetime.strptime(a["date"], "%Y-%m-%d").replace(tzinfo=timezone.utc))
+        items.append(
+            "  <item>\n"
+            f"    <title>{xml_escape(titre)}</title>\n"
+            f"    <link>{xml_escape(url)}</link>\n"
+            f'    <guid isPermaLink="true">{xml_escape(url)}</guid>\n'
+            f"    <pubDate>{pub_date}</pubDate>\n"
+            f"    <description>{xml_escape(a['description'])}</description>\n"
+            "  </item>"
+        )
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0">\n'
+        "<channel>\n"
+        f"  <title>{SITE_NAME} — Blog</title>\n"
+        f"  <link>{SITE_URL}/blog/</link>\n"
+        "  <description>Méthodes de révision pour la prépa : flashcards, "
+        "répétition espacée et préparation des concours.</description>\n"
+        "  <language>fr-fr</language>\n"
+        + "\n".join(items) + "\n"
+        "</channel>\n</rss>\n"
+    )
+
+
 def write(url_path: str, content: str) -> None:
     """Ecrit une page a une URL se terminant par /, donc dans index.html.
 
@@ -1579,6 +1619,9 @@ def build() -> None:
         f"Sitemap: {SITE_URL}/sitemap.xml\n",
         encoding="utf-8",
     )
+
+    # --- Flux RSS du blog -----------------------------------------------
+    (OUTPUT / "rss.xml").write_text(rss_feed(articles), encoding="utf-8")
 
     # En dernier : les pages doivent toutes exister avant qu'on y reecrive
     # les adresses d'images.
