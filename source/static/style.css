@@ -1108,6 +1108,17 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
   opacity: 1; visibility: visible; transform: translateY(0);
 }
 
+/* Fermeture forcee au clavier (Echap) : le script redonne le focus au
+   declencheur pour que le clavier reprenne la ou il en etait, mais ce
+   regain de focus recree a lui seul :focus-within - sans cette classe, le
+   menu se rouvrirait aussitot referme. Meme specificite que les regles
+   d'ouverture ci-dessus : c'est l'ordre dans le fichier qui tranche, donc
+   ce bloc reste APRES elles. */
+.nav-groupe.nav-force-ferme .nav-menu {
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+}
+.nav-groupe.nav-force-ferme .nav-fleche { transform: none; }
+
 /* Pont invisible entre le lien et le menu : sans lui, le menu se referme
    dans l'espace vide que la souris traverse pour l'atteindre. */
 .nav-groupe::after {

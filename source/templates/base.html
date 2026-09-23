@@ -133,6 +133,57 @@ document.documentElement.classList.add('js');
   });
 })();
 
+// Menu "Matieres" et sous-menus : pilotes par CSS (:hover / :focus-within),
+// pour continuer a fonctionner si ce script echoue a charger. Ce bloc se
+// contente de refleter l'etat reel dans aria-expanded, que la construction
+// du site pose a "false" une fois pour toutes - sans lui, un lecteur
+// d'ecran annoncerait un menu ferme alors qu'il est ouvert sous les yeux
+// d'un visiteur voyant.
+(function () {
+  var groupes = [].slice.call(document.querySelectorAll('.nav-groupe'));
+  if (!groupes.length) return;
+
+  function declencheur(groupe) {
+    return groupe.querySelector('.nav-lien[aria-haspopup="true"]');
+  }
+  function ouvertParCss(groupe) {
+    return groupe.matches(':hover') || groupe.matches(':focus-within');
+  }
+  function actualiser(groupe) {
+    var lien = declencheur(groupe);
+    if (!lien) return;
+    var force = groupe.classList.contains('nav-force-ferme');
+    lien.setAttribute('aria-expanded', (!force && ouvertParCss(groupe)) ? 'true' : 'false');
+  }
+
+  groupes.forEach(function (groupe) {
+    groupe.addEventListener('mouseenter', function () {
+      groupe.classList.remove('nav-force-ferme');
+      actualiser(groupe);
+    });
+    groupe.addEventListener('mouseleave', function () { actualiser(groupe); });
+    groupe.addEventListener('focusin', function () { actualiser(groupe); });
+    // Le focus quitte entierement le groupe : la fermeture forcee au
+    // clavier n'a plus de raison de durer au-dela de ce passage.
+    groupe.addEventListener('focusout', function () {
+      groupe.classList.remove('nav-force-ferme');
+      actualiser(groupe);
+    });
+  });
+
+  // Echap ferme le menu ouvert et rend le focus a son declencheur, sans que
+  // ce regain de focus ne le rouvre aussitot via :focus-within.
+  document.addEventListener('keydown', function (evenement) {
+    if (evenement.key !== 'Escape') return;
+    var ouvert = groupes.filter(ouvertParCss)[0];
+    if (!ouvert) return;
+    ouvert.classList.add('nav-force-ferme');
+    var lien = declencheur(ouvert);
+    if (lien) lien.focus();
+    actualiser(ouvert);
+  });
+})();
+
 </script>
 {{script_etapes}}
 </body>
