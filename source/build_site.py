@@ -838,6 +838,65 @@ def inserer_chapo(html_body: str) -> str:
     return f'{avant}\n<div class="chapo">\n{chapo}\n</div>\n{apres}'
 
 
+VITESSE_LECTURE = 200  # mots par minute, ordre de grandeur usuel en lecture silencieuse.
+
+
+def temps_lecture(raw_body: str) -> str:
+    """Estime le temps de lecture d'un article a partir de son Markdown brut.
+
+    Retire les balises HTML (encarts, cartes liees) et les attributs
+    « {: ... } » avant de compter les mots, sinon ils gonflent le total sans
+    correspondre a du texte reellement lu.
+    """
+    texte = re.sub(r"<[^>]+>", " ", raw_body)
+    texte = re.sub(r"\{:[^}]*\}", " ", texte)
+    mots = re.findall(r"[^\W\d_]+(?:['’-][^\W\d_]+)*", texte, flags=re.UNICODE)
+    minutes = max(1, round(len(mots) / VITESSE_LECTURE))
+    return f"{minutes} min"
+
+
+def choisir_articles_similaires(article: dict, tous: list, nombre: int = 3) -> list:
+    """Choisit les articles les plus proches d'un article donne.
+
+    Priorite au recoupement de matiere, puis de filiere, puis a la date la
+    plus recente : deux articles de la meme matiere ont plus a voir entre eux
+    que deux articles qui ne partagent que la filiere « toutes ».
+    """
+    matieres = set(article["matiere"])
+    filieres = set(article["filiere"])
+    candidats = [a for a in tous if a["slug"] != article["slug"]]
+    candidats.sort(
+        key=lambda a: (
+            len(matieres & set(a["matiere"])),
+            len(filieres & set(a["filiere"])),
+            a["date"],
+        ),
+        reverse=True,
+    )
+    return candidats[:nombre]
+
+
+def render_articles_similaires(similaires: list) -> str:
+    if not similaires:
+        return ""
+    cartes = []
+    for a in similaires:
+        titre = titre_affiche(a["title"])
+        cartes.append(
+            f'<a class="carte-similaire" href="/blog/{a["slug"]}/" target="_blank" rel="noopener">'
+            f'<img src="/img/blog/{a["slug"]}.svg" alt="" loading="lazy" width="480" height="200">'
+            f'<span class="carte-similaire-corps">'
+            f'<strong>{html.escape(titre)}</strong>'
+            f'</span></a>'
+        )
+    return (
+        '<section class="articles-similaires">\n'
+        '<h2>Pour aller plus loin</h2>\n'
+        '<div class="similaires-grille">\n' + "\n".join(cartes) + "\n</div>\n"
+        "</section>"
+    )
+
+
 def load_page(path: Path) -> dict:
     meta, body = parse_front_matter(path.read_text(encoding="utf-8"))
     slug = meta.get("slug", path.stem)
@@ -1245,6 +1304,8 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{bandeau_ecoles}}": bandeau_ecoles(),
         "{{sommaire}}": page.get("sommaire_html", ""),
         "{{titre_court}}": html.escape(titre_affiche(page["title"])),
+        "{{temps_lecture}}": page.get("temps_lecture", ""),
+        "{{articles_similaires}}": page.get("articles_similaires_html", ""),
     }
     for marker, value in replacements.items():
         base = base.replace(marker, value)
@@ -1478,6 +1539,9 @@ def build() -> None:
     for article in articles:
         url_path = f"/blog/{article['slug']}/"
         url = SITE_URL + url_path
+        article["temps_lecture"] = temps_lecture(article["raw_body"])
+        article["articles_similaires_html"] = render_articles_similaires(
+            choisir_articles_similaires(article, articles))
         write(url_path, render(article, url_path, "article.html",
                                [article_jsonld(article, url)]))
         urls.append((url_path, article["date"], "0.6"))

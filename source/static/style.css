@@ -704,6 +704,48 @@ p.chapeau.conteneur-bibliotheque { margin: 14px auto 0; }
   font-size: 1rem; line-height: 1.3;
 }
 
+/* --- Articles similaires en fin d'article : triple encadre aligne ---- */
+
+.articles-similaires {
+  margin: 2.6em 0 1.6em; padding-top: 1.8em;
+  border-top: 1px solid var(--bord-net);
+}
+.articles-similaires h2 {
+  font-size: 1.2rem; margin: 0 0 1em;
+}
+.similaires-grille {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  align-items: stretch;
+}
+.carte-similaire {
+  display: flex; flex-direction: column; height: 100%;
+  border: 1px solid var(--bord); border-radius: var(--rayon-l);
+  text-decoration: none; background: #fff; overflow: hidden;
+  box-shadow: var(--ombre-carte);
+  transition: transform .18s, box-shadow .18s;
+}
+.carte-similaire:hover {
+  transform: translateY(-3px); box-shadow: var(--ombre-panneau);
+  text-decoration: none;
+}
+.carte-similaire img {
+  width: 100%; height: 92px; object-fit: cover; display: block;
+  border: 0; border-radius: 0; box-shadow: none; margin: 0;
+}
+.carte-similaire-corps {
+  padding: 12px 14px; display: flex; flex: 1; align-items: center;
+}
+.carte-similaire-corps strong {
+  font-family: 'Poppins', sans-serif; font-weight: 800; color: var(--encre);
+  font-size: .92rem; line-height: 1.3;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .similaires-grille { grid-template-columns: 1fr; }
+}
+
 /* Centrage porte par la classe elle-meme, et non par la regle « main > ul » :
    un selecteur de classe l'emporte sur elle, et les marges laterales etaient
    remises a zero - la liste se collait au bord gauche. */
