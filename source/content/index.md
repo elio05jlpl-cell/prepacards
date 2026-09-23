@@ -63,7 +63,7 @@ faq: true
   <div class="conteneur grille-actus">
 
     <a class="actu-vedette" href="/fonctionnalites/">
-      <img src="/img/demo/3-recto.webp"
+      <img src="/img/demo/3-recto.webp" loading="lazy"
            alt="Écran d'étude de PrépaCards : une carte de vocabulaire, face question">
       <h2>Vérifier sa prononciation, photographier une formule : ce que
         PrépaCards fait de plus</h2>
@@ -72,25 +72,25 @@ faq: true
     <div class="actu-liste">
 
       <a class="actu" href="/alternative-anki/">
-        <img src="/img/demo/1-accueil.webp"
+        <img src="/img/demo/1-accueil.webp" loading="lazy"
              alt="Liste de paquets dans PrépaCards, avec les compteurs de cartes">
         <span>PrépaCards ou Anki : le comparatif, sans détour</span>
       </a>
 
       <a class="actu" href="/alternative-quizlet/">
-        <img src="/img/etude.png"
+        <img src="/img/etude.png" loading="lazy"
              alt="Carte de vocabulaire retournée, avec sa traduction">
         <span>PrépaCards ou Quizlet : lequel tient la distance en prépa ?</span>
       </a>
 
       <a class="actu" href="/blog/repetition-espacee-comment-ca-marche/">
-        <img src="/img/demo/5-statistiques.webp"
+        <img src="/img/demo/5-statistiques.webp" loading="lazy"
              alt="Statistiques de révision de PrépaCards, mois par mois">
         <span>La répétition espacée expliquée simplement</span>
       </a>
 
       <a class="actu" href="/blog/combien-de-cartes-par-jour/">
-        <img src="/img/demo/2-paquet.webp"
+        <img src="/img/demo/2-paquet.webp" loading="lazy"
              alt="Réglages d'un paquet dans PrépaCards, avec la limite de cartes nouvelles par jour">
         <span>Combien de cartes par jour ? Le calcul que personne ne fait</span>
       </a>
