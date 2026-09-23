@@ -1,0 +1,10 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="La semaine des épreuves écrites">
+  <rect width="480" height="200" fill="#fee2e2"/>
+  <rect x="70" y="90" width="46" height="60" rx="4" fill="#ffffff" stroke="#b91c1c" stroke-width="3"/>
+  <rect x="126" y="82" width="46" height="68" rx="4" fill="#ffffff" stroke="#b91c1c" stroke-width="3"/>
+  <rect x="182" y="90" width="46" height="60" rx="4" fill="#ffffff" stroke="#b91c1c" stroke-width="3"/>
+  <rect x="238" y="76" width="46" height="74" rx="4" fill="#ffffff" stroke="#b91c1c" stroke-width="3"/>
+  <rect x="294" y="90" width="46" height="60" rx="4" fill="#fecaca" stroke="#b91c1c" stroke-width="3"/>
+  <line x1="365" y1="60" x2="365" y2="160" stroke="#7f1d1d" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 365 60 h 40 l -12 14 l 12 14 h -40 z" fill="#dc2626"/>
+</svg>

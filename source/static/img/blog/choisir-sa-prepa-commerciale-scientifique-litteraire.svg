@@ -1,0 +1,8 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Choisir sa prépa">
+  <rect width="480" height="200" fill="#f1f5f9"/>
+  <line x1="240" y1="60" x2="240" y2="170" stroke="#334155" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 240 74 h 90 l -14 14 l 14 14 h -90 z" fill="#2563eb"/>
+  <path d="M 240 104 h -100 l 14 14 l -14 14 h 100 z" fill="#16a34a"/>
+  <path d="M 240 134 h 76 l -12 12 l 12 12 h -76 z" fill="#7c3aed"/>
+  <circle cx="240" cy="60" r="10" fill="#334155"/>
+</svg>
