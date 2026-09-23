@@ -1,6 +1,6 @@
 ---
 title: Merci — votre abonnement PrépaCards est actif
-description: Votre abonnement à l'offre complète de PrépaCards est enregistré. Voici comment activer les fonctions réservées dans l'application, et comment résilier.
+description: Votre abonnement à l'offre complète de PrépaCards est actif immédiatement, sans délai ni clé à saisir. Voici comment le vérifier, et comment résilier.
 slug: merci
 robots: noindex, follow
 ---
@@ -10,21 +10,17 @@ robots: noindex, follow
 
 # Merci, c'est enregistré
 
-Votre abonnement à l'offre complète est actif. Stripe vous a envoyé un reçu
-par e-mail, à l'adresse que vous avez indiquée.
+Votre abonnement à l'offre complète est actif **dès maintenant**, sans délai
+ni clé à saisir. Stripe vous a envoyé un reçu par e-mail, à l'adresse que
+vous avez indiquée.
 
 <div class="encart">
-  <p><strong>Vous recevez votre clé d'activation par e-mail</strong>, à la même
-  adresse, sous 24 heures. Elle s'entre dans l'application, une seule fois, et
-  débloque l'écoute de la prononciation, la vérification à la voix, la lecture
-  labiale et la photo de formule.</p>
+  <p><strong>Vérifiez-le tout de suite sur <a href="/compte/">votre compte</a></strong>,
+  avec l'adresse utilisée au paiement : l'offre complète y apparaît dès que la
+  page se charge. L'application se synchronise automatiquement avec le même
+  compte et débloque l'écoute de la prononciation, la vérification à la voix,
+  la lecture labiale et la photo de formule.</p>
 </div>
-
-## En attendant la clé
-
-Rien n'est perdu : l'application reste utilisable comme avant. Vos cartes, vos
-paquets, la répétition espacée et les statistiques n'ont jamais été bridés et
-ne le seront pas.
 
 Si vous n'avez pas encore installé PrépaCards, c'est le moment :
 [télécharger l'application](/telecharger/).
