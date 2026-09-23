@@ -1080,6 +1080,21 @@ def faq_jsonld(body_html: str) -> dict:
 # Rendu
 # ------------------------------------------------------------------
 
+def minifier_css(texte: str) -> str:
+    """Retire commentaires et lignes vides du CSS servi, sans toucher a la
+    source commentee sur le disque.
+
+    Volontairement prudent : ne touche a aucun espace a l'INTERIEUR d'une
+    ligne, la ou une regle trop agressive casserait un calc() ("10px - 2px"
+    devenant "10px-2px" change de sens) ou un contenu entre guillemets
+    ("content: '—'"). Sur ce fichier, les commentaires representent a eux
+    seuls plus d'un quart du poids envoye au navigateur.
+    """
+    sans_commentaires = re.sub(r"/\*.*?\*/", "", texte, flags=re.S)
+    lignes = (ligne.strip() for ligne in sans_commentaires.splitlines())
+    return "\n".join(ligne for ligne in lignes if ligne) + "\n"
+
+
 def css_version() -> str:
     """Empreinte courte du fichier de style, ajoutee a son adresse.
 
@@ -1554,6 +1569,14 @@ def build() -> None:
     # normalisees ; les publier doublerait leur poids sans aucun usage.
     shutil.copytree(STATIC, OUTPUT, dirs_exist_ok=True,
                     ignore=shutil.ignore_patterns("source"))
+
+    # Le CSS servi perd ses commentaires : ils documentent le fichier pour
+    # qui le maintient, pas le navigateur qui le telecharge a chaque premiere
+    # visite. La source dans static/ reste intacte, commentaires compris.
+    (OUTPUT / "style.css").write_text(
+        minifier_css((STATIC / "style.css").read_text(encoding="utf-8")),
+        encoding="utf-8",
+    )
 
     # Code du service de comptes. Il etait auparavant recopie a la main dans
     # static/worker/, soit deux exemplaires du meme fichier : corriger l'un

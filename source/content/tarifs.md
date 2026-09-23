@@ -16,7 +16,7 @@ faq: true
   <div class="conteneur grille-tarifs">
 
     <div class="offre">
-      <h3>Gratuit</h3>
+      <h2>Gratuit</h2>
       <p class="offre-sous">Pour commencer, sans rien donner</p>
       <p class="prix">0 €</p>
       <p class="prix-detail">gratuit à vie</p>
@@ -35,7 +35,7 @@ faq: true
     </div>
 
     <div class="offre">
-      <h3>Mensuel</h3>
+      <h2>Mensuel</h2>
       <p class="offre-sous">L'offre complète, sans engagement</p>
       <p class="prix">9,99 €<small>/ mois</small></p>
       <p class="prix-detail"><strong>30 jours gratuits</strong>, puis résiliable à tout moment</p>
@@ -56,7 +56,7 @@ faq: true
 
     <div class="offre mise-en-avant">
       <span class="offre-badge">Le plus avantageux</span>
-      <h3>Annuel</h3>
+      <h2>Annuel</h2>
       <p class="offre-sous">La même chose, 20&nbsp;% moins cher</p>
       <p class="prix">95,90 €<small>/ an</small></p>
       <p class="prix-detail"><strong>30 jours gratuits</strong> · soit 7,99 € par mois</p>

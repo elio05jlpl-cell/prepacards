@@ -20,7 +20,7 @@ formule en carte.
 <div class="grille-3 revelation" markdown="1">
 
 <div class="carte-filiere" markdown="1">
-### [Prépas scientifiques](/prepa-scientifique/)
+## [Prépas scientifiques](/prepa-scientifique/)
 MPSI · PCSI · PTSI · MPI · BCPST
 
 **Photographiez vos formules** au lieu de taper du LaTeX, et travaillez la
@@ -28,7 +28,7 @@ reconnaissance des méthodes.
 </div>
 
 <div class="carte-filiere" markdown="1">
-### [Prépas commerciales](/prepa-commerciale/)
+## [Prépas commerciales](/prepa-commerciale/)
 ECG · ECT
 
 **2 000 cartes d'anglais fournies**, et la prononciation vérifiée au micro
@@ -36,7 +36,7 @@ pour vos deux langues.
 </div>
 
 <div class="carte-filiere" markdown="1">
-### [Prépas littéraires](/prepa-litteraire/)
+## [Prépas littéraires](/prepa-litteraire/)
 Khâgnes A/L · B/L
 
 **Récitez à voix haute** vos citations, vos dates et vos langues vivantes.
