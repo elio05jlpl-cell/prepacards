@@ -64,6 +64,7 @@ Quinze à trente mots nouveaux par jour, tous les jours, y compris le samedi.
 À trente mots par jour, les 2 000 sont couverts en un peu plus de deux mois ;
 le reste de l'année sert à les consolider et à ajouter le vocabulaire de vos
 propres textes.
+[D'où vient cette fourchette de 15 à 30 →](/blog/combien-de-cartes-par-jour/){: target="_blank" rel="noopener" }
 
 À la première ouverture, PrépaCards crée vos paquets : mathématiques, ESH,
 géopolitique, culture générale, anglais, LV2.

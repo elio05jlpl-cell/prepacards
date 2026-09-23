@@ -17,6 +17,7 @@ célèbre SuperMemo puis Anki. Après chaque carte, vous notez votre réponse su
 quatre niveaux — *Again*, *Hard*, *Good*, *Easy* — et l'intervalle avant la
 prochaine révision s'ajuste. Chaque bouton affiche par avance l'intervalle qu'il
 produira.
+[Le principe de la répétition espacée, expliqué simplement →](/blog/repetition-espacee-comment-ca-marche/){: target="_blank" rel="noopener" }
 
 Les paquets acceptent des sous-paquets imbriqués, avec la même convention
 qu'Anki (`Matière::Chapitre::Sous-partie`). Un paquet parent affiche le cumul

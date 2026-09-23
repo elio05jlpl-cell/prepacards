@@ -44,6 +44,7 @@ contrôle portait sur les suites. En prépa cette étape vous est retirée, et
 comme vous ne l'avez jamais exercée, c'est précisément celle qui vous manque.
 D'où le sentiment très répandu en première année : *je comprends tout, je ne
 sais rien faire*.
+[Ce que change vraiment l'entrée en prépa →](/blog/reconnaissance-de-schemas-en-prepa/){: target="_blank" rel="noopener" }
 
 **Les constantes et ordres de grandeur.** En physique et en chimie : valeurs
 usuelles, unités, conversions. Du pur par cœur, exactement ce que la

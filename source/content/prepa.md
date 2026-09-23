@@ -15,6 +15,7 @@ La répétition espacée répond exactement à ça : chaque notion revient **jus
 avant** que vous ne l'oubliiez. PrépaCards y ajoute les deux choses qui
 manquaient — il écoute si vous prononcez le mot, et il transforme une photo de
 formule en carte.
+[La méthode pour bien démarrer, en cinq étapes →](/blog/reviser-avec-des-flashcards-en-prepa/){: target="_blank" rel="noopener" }
 
 <div class="grille-3 revelation" markdown="1">
 

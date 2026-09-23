@@ -101,7 +101,9 @@ celles qui coûtent réellement à faire tourner et à maintenir :
 
 La répétition espacée, elle, tourne entièrement sur votre ordinateur sans rien
 coûter en fonctionnement. Elle restera gratuite, avec vos cartes en nombre
-illimité.
+illimité — reste à savoir
+[combien en créer chaque jour](/blog/combien-de-cartes-par-jour/){: target="_blank" rel="noopener" }
+pour que ce nombre illimité ne se transforme pas en charge ingérable.
 
 ## Tarif étudiant et établissements
 
