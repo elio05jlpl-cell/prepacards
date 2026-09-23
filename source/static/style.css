@@ -194,14 +194,20 @@ strong { color: var(--encre); font-weight: 700; }
 .entete { background: #fff; }
 .barre { display: flex; align-items: center; gap: 18px; height: 72px; }
 
-/* Seule la rangee de liens reste collee en haut au defilement : le logo et
-   le bandeau sombre (reseaux, connexion) defilent normalement avec la
-   page. Elle vit donc hors de <header>, dans son propre conteneur sticky,
-   dont le parent (<body>) offre toute la hauteur de page necessaire au
-   collage - imbriquee dans <header>, elle n'aurait pu se coller que le
-   temps que <header>, haut d'a peine 150 px, reste a l'ecran. */
+/* Le bandeau sombre et la rangee de liens restent tous deux colles en haut
+   au defilement ; seul le logo, entre les deux, defile normalement avec la
+   page. Chacun vit hors de <header>, dans son propre conteneur sticky, dont
+   le parent (<body>) offre toute la hauteur de page necessaire au collage -
+   imbrique dans <header>, il n'aurait pu se coller que le temps que
+   <header>, haut d'a peine 150 px, reste a l'ecran.
+   Le « top » de la rangee de liens vaut la hauteur du bandeau sombre : sans
+   ce decalage, les deux se disputeraient le meme haut-de-page et l'un
+   passerait sous l'autre au lieu de s'empiler. Mesuree au pixel pres
+   (Playwright), et redonnee pour le telephone, ou le bandeau passe en
+   colonne et triple de hauteur. */
+.bandeau-haut { position: sticky; top: 0; z-index: 51; }
 .entete-nav-barre {
-  position: sticky; top: 0; z-index: 50;
+  position: sticky; top: 33px; z-index: 50;
   background: rgba(255, 255, 255, .88);
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
@@ -954,6 +960,9 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
   .bandeau-haut-interieur { flex-direction: column; align-items: stretch;
     gap: 8px; padding: 8px 0; }
   .bandeau-actions { justify-content: flex-end; }
+  /* Colonne oblige : le bandeau triple de hauteur (32px -> 92px). La rangee
+     de liens colle juste en dessous, pas sous l'ancienne hauteur desktop. */
+  .entete-nav-barre { top: 92px; }
   .entete-marque { padding: 12px 0 8px; }
   .entete-marque .marque { font-size: 1.25rem; }
   .entete-nav { padding: 0; }
