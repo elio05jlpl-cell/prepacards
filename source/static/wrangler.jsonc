@@ -46,6 +46,18 @@
     // l'oubli ne se voit pas.
     "binding": "ASSETS",
 
+    // Sans ce reglage, Cloudflare sert d'abord les fichiers statiques et ne
+    // passe la main au Worker QUE pour une adresse qui ne correspond a
+    // AUCUN fichier ET qu'aucune regle de repli (not_found_handling)
+    // n'intercepte avant lui — /api/google, par exemple, ne correspond a
+    // aucun fichier, tombe donc dans « 404-page » ci-dessous, et le code de
+    // worker/index.js n'est jamais execute. Resultat concret constate en
+    // production : chaque appel a /api/… rendait la page 404 du site au
+    // lieu d'atteindre googleDepart(), connexion(), webhookStripe(), etc.
+    // Restreint a /api/* : le reste du site garde le service directement
+    // par les fichiers, sans passer par le moindre calcul.
+    "run_worker_first": ["/api/*"],
+
     // « auto-trailing-slash » sert /prepa/index.html quand le visiteur
     // demande /prepa/ ou /prepa. Sans cela, toutes les pages du site
     // repondent 404 : seuls les fichiers demandes par leur nom exact
