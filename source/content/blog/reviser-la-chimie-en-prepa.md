@@ -95,7 +95,9 @@ vu tel quel en cours.
 C'est le même principe de découpage que celui qui rend
 [une flashcard de formule de maths](/blog/flashcards-formules-de-maths/){: target="_blank" rel="noopener" }
 efficace : isoler une unité testable, plutôt que mémoriser un ensemble
-trop large pour être vraiment interrogé.
+trop large pour être vraiment interrogé — ce que la psychologie de la
+mémoire appelle
+[le chunking](/blog/techniques-de-memorisation-prepa/){: target="_blank" rel="noopener" }.
 
 ## Photographier plutôt que ressaisir
 

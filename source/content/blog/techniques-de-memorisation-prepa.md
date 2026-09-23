@@ -39,6 +39,13 @@ de passer au suivant, ce qui explique pourquoi un contenu découpé se
 retient objectivement mieux, à volume d'information identique, qu'un
 contenu présenté d'un seul tenant.
 
+Un sigle est d'ailleurs, sans qu'on y pense, une forme de chunking déjà
+toute faite : il compresse une expression longue en quelques lettres, à
+charge pour la mémoire de restituer ensuite le développé complet. C'est
+exactement ce que sollicite
+[le vocabulaire technique d'ESH](/blog/vocabulaire-ses-ecg/){: target="_blank" rel="noopener" } ,
+où chaque sigle mal maîtrisé représente un petit chunk resté incomplet.
+
 Cette technique n'a rien d'exotique : c'est, dans les faits, exactement
 ce que permet
 [une bonne flashcard](/blog/rediger-ses-flashcards/){: target="_blank" rel="noopener" }
@@ -125,7 +132,11 @@ la rend à la fois plus facile à retenir et plus facile à mobiliser dans
 un contexte légèrement différent de celui où elle a été apprise. C'est
 une technique qui ne demande aucun matériel ni aucune préparation
 particulière, et qui s'intègre naturellement à la relecture d'une
-flashcard plutôt que de s'y ajouter comme une étape séparée.
+flashcard plutôt que de s'y ajouter comme une étape séparée. C'est
+d'ailleurs très proche de ce qu'exige, par nature,
+[la philosophie en prépa littéraire](/blog/philosophie-en-prepa-litteraire/){: target="_blank" rel="noopener" } :
+une notion qu'on ne sait pas justifier dans ses propres mots n'est
+jamais réellement acquise, quelle que soit la matière concernée.
 
 ## Choisir selon la matière, pas selon la mode
 

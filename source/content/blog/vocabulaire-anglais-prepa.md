@@ -125,6 +125,19 @@ appris seulement à l'écrit se prononce parfois de travers devant un jury,
 ce qui trahit immédiatement un vocabulaire de lecture jamais mis à
 l'épreuve de la voix.
 
+### La même méthode vaut pour la LV2
+
+Rien de tout cela n'est spécifique à l'anglais : la même logique — mot,
+définition courte, exemple authentique, révision quotidienne courte —
+s'applique telle quelle en
+[allemand](/blog/vocabulaire-allemand-prepa/){: target="_blank" rel="noopener" }
+ou en
+[italien](/blog/vocabulaire-italien-prepa/){: target="_blank" rel="noopener" },
+avec pour seule différence le volume de vocabulaire déjà acquis au
+départ. C'est d'ailleurs souvent en LV2, où ce socle de départ est plus
+mince, que la méthode se révèle le plus clairement : sans lui, aucun mot
+nouveau ne tient plus de quelques jours.
+
 ## Un rythme tenable sur deux ans
 
 Le vocabulaire anglais souffre exactement du même piège que toute autre

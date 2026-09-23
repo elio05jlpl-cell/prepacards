@@ -141,6 +141,14 @@ leurs citations les plus significatives méritent alors un paquet de cartes
 à part entière, révisé régulièrement tout au long de l'année plutôt que
 découvert dans les toutes dernières semaines avant l'épreuve.
 
+C'est aussi la matière qui souffre le plus d'une coupure prolongée dans
+la lecture, puisque le stock de références se construit par petites
+touches répétées plutôt que par gros blocs de révision. Garder un
+article ou un chapitre de côté pendant
+[les vacances de la Toussaint](/blog/vacances-toussaint-prepa/){: target="_blank" rel="noopener" },
+même sans y consacrer beaucoup de temps, évite de perdre le fil d'un
+travail qui n'a de valeur que dans sa continuité.
+
 ## Relier et réciter
 
 Une simple réserve de références bien mémorisées ne suffit jamais par

@@ -128,7 +128,11 @@ alors à quelques formules ou définitions isolées qui reviennent par cœur.
 En langues et en géopolitique, c'est l'inverse : le vocabulaire et les
 repères factuels se prêtent particulièrement bien aux flashcards, tandis
 que la fiche reste utile surtout pour organiser les grandes lignes d'un
-thème avant une dissertation.
+thème avant une dissertation. C'est particulièrement net en
+[culture générale](/blog/culture-generale-prepa/){: target="_blank" rel="noopener" } :
+la fiche construit le plan et les références mobilisables, tandis que
+les flashcards fixent les citations précises et les repères qui
+donneront de la matière concrète à ce plan le jour de l'épreuve.
 
 ### Le cas de la khôlle, où les deux se rencontrent
 

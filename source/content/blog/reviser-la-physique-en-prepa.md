@@ -62,7 +62,11 @@ séparément les lois qui la sous-tendent. Le jour où l'énoncé change
 légèrement de forme, la méthode apprise par cœur ne s'applique plus
 telle quelle, et sans les lois disponibles indépendamment de cette
 méthode, il devient impossible de reconstruire un raisonnement adapté à
-la situation réellement posée.
+la situation réellement posée. C'est exactement le réflexe qui se
+travaille dès
+[l'entrée en prépa](/blog/reconnaissance-de-schemas-en-prepa/){: target="_blank" rel="noopener" } :
+reconnaître à quel type de problème on a affaire avant même de choisir
+quelle loi mobiliser.
 
 La bonne répartition consiste donc à laisser les exercices construire le
 raisonnement, et les flashcards sécuriser tout ce sur quoi ce
