@@ -1,0 +1,13 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Philosophie en prépa littéraire">
+  <rect width="480" height="200" fill="#ede9fe"/>
+  <rect x="100" y="60" width="70" height="90" fill="#7c3aed"/>
+  <rect x="92" y="52" width="86" height="12" rx="3" fill="#5b21b6"/>
+  <rect x="92" y="150" width="86" height="14" rx="3" fill="#5b21b6"/>
+  <line x1="112" y1="64" x2="112" y2="150" stroke="#c4b5fd" stroke-width="4"/>
+  <line x1="135" y1="64" x2="135" y2="150" stroke="#c4b5fd" stroke-width="4"/>
+  <line x1="158" y1="64" x2="158" y2="150" stroke="#c4b5fd" stroke-width="4"/>
+  <circle cx="330" cy="82" r="8" fill="#5b21b6"/>
+  <circle cx="352" cy="70" r="12" fill="#5b21b6"/>
+  <path d="M 340 40 a 36 36 0 1 1 -0.1 0 z" fill="#5b21b6"/>
+  <path d="M 322 46 q 18 -14 36 0" fill="none" stroke="#ede9fe" stroke-width="3" stroke-linecap="round"/>
+</svg>

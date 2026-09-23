@@ -1,175 +1,133 @@
-/* PrepaCards - feuille de style unique
-   ====================================
-   Un seul fichier CSS, sans framework : le site se charge en une requete et
-   s'affiche immediatement. La vitesse d'affichage est un critere de
-   classement reel, contrairement a beaucoup de recettes de referencement.
-
-   Direction artistique : fond degrade tres pale, grands titres serres en
-   Poppins sur un texte en Libre Franklin, blocs blancs largement arrondis poses dessus avec une ombre
-   diffuse, et un unique accent bleu-violet en degrade reserve aux appels
-   a l'action. La couleur ne sert qu'a designer ce sur quoi cliquer. */
-
-/* Polices hebergees par le site : aucune requete vers Google a
-   l'affichage, et rien ne part chez un tiers. Libre Franklin porte le
-   texte courant, Poppins les titres. */
 @font-face {
-  font-family: 'Libre Franklin';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/libre-franklin-400-latin-ext.woff2?v=61216d8e) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+font-family: 'Libre Franklin';
+font-style: normal;
+font-weight: 400;
+font-display: swap;
+src: url(/fonts/libre-franklin-400-latin-ext.woff2?v=61216d8e) format('woff2');
+unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-
 @font-face {
-  font-family: 'Libre Franklin';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/libre-franklin-400-latin.woff2?v=52e60585) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+font-family: 'Libre Franklin';
+font-style: normal;
+font-weight: 400;
+font-display: swap;
+src: url(/fonts/libre-franklin-400-latin.woff2?v=52e60585) format('woff2');
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 @font-face {
-  font-family: 'Libre Franklin';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(/fonts/libre-franklin-500-latin-ext.woff2?v=61216d8e) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+font-family: 'Libre Franklin';
+font-style: normal;
+font-weight: 500;
+font-display: swap;
+src: url(/fonts/libre-franklin-500-latin-ext.woff2?v=61216d8e) format('woff2');
+unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-
 @font-face {
-  font-family: 'Libre Franklin';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(/fonts/libre-franklin-500-latin.woff2?v=52e60585) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+font-family: 'Libre Franklin';
+font-style: normal;
+font-weight: 500;
+font-display: swap;
+src: url(/fonts/libre-franklin-500-latin.woff2?v=52e60585) format('woff2');
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 @font-face {
-  font-family: 'Libre Franklin';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(/fonts/libre-franklin-700-latin-ext.woff2?v=61216d8e) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+font-family: 'Libre Franklin';
+font-style: normal;
+font-weight: 700;
+font-display: swap;
+src: url(/fonts/libre-franklin-700-latin-ext.woff2?v=61216d8e) format('woff2');
+unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-
 @font-face {
-  font-family: 'Libre Franklin';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(/fonts/libre-franklin-700-latin.woff2?v=52e60585) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+font-family: 'Libre Franklin';
+font-style: normal;
+font-weight: 700;
+font-display: swap;
+src: url(/fonts/libre-franklin-700-latin.woff2?v=52e60585) format('woff2');
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 @font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(/fonts/poppins-700-latin-ext.woff2?v=ccfd87f6) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-display: swap;
+src: url(/fonts/poppins-700-latin-ext.woff2?v=ccfd87f6) format('woff2');
+unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-
 @font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(/fonts/poppins-700-latin.woff2?v=9338e65f) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-display: swap;
+src: url(/fonts/poppins-700-latin.woff2?v=9338e65f) format('woff2');
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 @font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url(/fonts/poppins-800-latin-ext.woff2?v=a72eccfa) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 800;
+font-display: swap;
+src: url(/fonts/poppins-800-latin-ext.woff2?v=a72eccfa) format('woff2');
+unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-
 @font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url(/fonts/poppins-800-latin.woff2?v=60bf0aba) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 800;
+font-display: swap;
+src: url(/fonts/poppins-800-latin.woff2?v=60bf0aba) format('woff2');
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 :root {
-  /* Encres */
-  --encre: #0f172a;
-  --texte: #1e293b;
-  --gris: #64748b;
-  --gris-clair: #94a3b8;
-
-  /* Accent */
-  --bleu: #2563eb;
-  --bleu-fonce: #1d4ed8;
-  --violet: #7c3aed;
-  --degrade: linear-gradient(135deg, #2563eb, #7c3aed);
-  --degrade-pale: linear-gradient(135deg, rgba(37, 99, 235, .14), rgba(124, 58, 237, .14));
-  --bleu-pale: #eef4ff;
-
-  /* Surfaces */
-  --fond: #ffffff;
-  --fond-doux: #f8fbff;
-  --bord: rgba(148, 163, 184, .22);
-  --bord-net: #e5e7eb;
-
-  --vert: #15803d;
-  --rouge: #dc2626;
-
-  /* Ombres : diffuses et basses, pour poser les blocs sans les cerner */
-  --ombre-carte: 0 18px 44px rgba(15, 23, 42, .10);
-  --ombre-panneau: 0 32px 60px rgba(15, 23, 42, .11);
-  --ombre-cta: 0 18px 32px rgba(37, 99, 235, .25);
-
-  --rayon-s: 12px;
-  --rayon: 18px;
-  --rayon-l: 24px;
-  --rayon-xl: 28px;
-  --largeur: 1160px;
-  --largeur-texte: 740px;
+--encre: #0f172a;
+--texte: #1e293b;
+--gris: #64748b;
+--bleu: #2563eb;
+--bleu-fonce: #1d4ed8;
+--violet: #7c3aed;
+--degrade: linear-gradient(135deg, #2563eb, #7c3aed);
+--degrade-pale: linear-gradient(135deg, rgba(37, 99, 235, .14), rgba(124, 58, 237, .14));
+--bleu-pale: #eef4ff;
+--fond: #ffffff;
+--fond-doux: #f8fbff;
+--bord: rgba(148, 163, 184, .22);
+--bord-net: #e5e7eb;
+--vert: #15803d;
+--rouge: #dc2626;
+--ombre-carte: 0 18px 44px rgba(15, 23, 42, .10);
+--ombre-panneau: 0 32px 60px rgba(15, 23, 42, .11);
+--ombre-cta: 0 18px 32px rgba(37, 99, 235, .25);
+--rayon-s: 12px;
+--rayon: 18px;
+--rayon-l: 24px;
+--rayon-xl: 28px;
+--largeur: 1160px;
+--largeur-texte: 740px;
 }
-
 * { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; background: #f8fbff; }
-
 body {
-  margin: 0;
-  font-family: 'Libre Franklin', -apple-system, BlinkMacSystemFont,
-               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--texte);
-  /* Le degrade est fixe : il ne defile pas, donc les blocs blancs semblent
-     glisser par-dessus plutot que le fond se repeter. */
-  background: linear-gradient(180deg, #f8fbff 0%, #e6eef8 70%, #dde8f5 100%) fixed;
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+margin: 0;
+font-family: 'Libre Franklin', -apple-system, BlinkMacSystemFont,
+"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+font-size: 17px;
+line-height: 1.7;
+color: var(--texte);
+background: linear-gradient(180deg, #f8fbff 0%, #e6eef8 70%, #dde8f5 100%) fixed;
+min-height: 100vh;
+-webkit-font-smoothing: antialiased;
+text-rendering: optimizeLegibility;
 }
-
 img { max-width: 100%; height: auto; }
-
 a { color: var(--bleu-fonce); text-decoration: none; }
 a:hover { text-decoration: underline; }
-
 h1, h2, h3, h4 {
-  font-family: Poppins, 'Libre Franklin', sans-serif;
-  color: var(--encre);
-  line-height: 1.12;
-  margin: 0 0 .55em;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+font-family: Poppins, 'Libre Franklin', sans-serif;
+color: var(--encre);
+line-height: 1.12;
+margin: 0 0 .55em;
+font-weight: 800;
+letter-spacing: -0.03em;
 }
 h1 { font-size: clamp(2.1rem, 4.4vw, 3.1rem); letter-spacing: -0.04em; }
 h2 { font-size: clamp(1.65rem, 2.9vw, 2.35rem); margin-top: 2em; letter-spacing: -0.025em; }
@@ -177,330 +135,231 @@ h3 { font-size: 1.35rem; margin-top: 1.7em; font-weight: 700; letter-spacing: -0
 h4 { font-size: 1.08rem; margin-top: 1.5em; font-weight: 700; }
 p { margin: 0 0 1.15em; }
 strong { color: var(--encre); font-weight: 700; }
-
 .conteneur { max-width: var(--largeur); margin: 0 auto; padding: 0 22px; }
 .conteneur-texte { max-width: var(--largeur-texte); margin: 0 auto; padding: 0 22px; }
-
 .saut-contenu {
-  position: absolute; left: -9999px; top: 0;
-  background: var(--encre); color: #fff; padding: 10px 16px;
-  border-radius: var(--rayon-s); z-index: 100;
+position: absolute; left: -9999px; top: 0;
+background: var(--encre); color: #fff; padding: 10px 16px;
+border-radius: var(--rayon-s); z-index: 100;
 }
 .saut-contenu:focus { left: 8px; top: 8px; }
-
 :focus-visible { outline: 2px solid var(--bleu); outline-offset: 3px; border-radius: 6px; }
-
-/* --- En-tete ------------------------------------------------------- */
-
 .entete { background: #fff; }
 .barre { display: flex; align-items: center; gap: 18px; height: 72px; }
-
-/* Seule la rangee de liens reste collee en haut au defilement : le logo et
-   le bandeau sombre (reseaux, connexion) defilent normalement avec la
-   page. Elle vit donc hors de <header>, dans son propre conteneur sticky,
-   dont le parent (<body>) offre toute la hauteur de page necessaire au
-   collage - imbriquee dans <header>, elle n'aurait pu se coller que le
-   temps que <header>, haut d'a peine 150 px, reste a l'ecran. */
+.bandeau-haut { position: sticky; top: 0; z-index: 51; }
 .entete-nav-barre {
-  position: sticky; top: 0; z-index: 50;
-  background: rgba(255, 255, 255, .88);
-  backdrop-filter: saturate(180%) blur(14px);
-  -webkit-backdrop-filter: saturate(180%) blur(14px);
-  border-bottom: 1px solid var(--bord-net);
+position: sticky; top: 33px; z-index: 50;
+background: rgba(255, 255, 255, .88);
+backdrop-filter: saturate(180%) blur(14px);
+-webkit-backdrop-filter: saturate(180%) blur(14px);
+border-bottom: 1px solid var(--bord-net);
 }
-
-/* --- En-tete a trois rangees -------------------------------------- */
-/*
-   Bandeau sombre (reseaux et actions), puis la marque centree, puis la
-   navigation centree. Le logo gagne la ligne du milieu pour lui seul : en
-   le laissant a gauche d'une barre unique, il se disputait la place avec
-   sept entrees de menu et deux boutons.
-*/
-
 .bandeau-haut { background: #16213e; color: #cfd8e8; }
 .bandeau-haut-interieur {
-  /* Bandeau resserre : gap et hauteur minimale divises par 1,75 par
-     rapport a la version d'origine (18px et 44px), pour un ruban discret
-     plutot qu'une deuxieme barre de navigation a part entiere. */
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 10px; min-height: 25px;
+display: flex; align-items: center; justify-content: space-between;
+gap: 10px; min-height: 25px;
 }
-
 .reseaux { display: flex; align-items: center; gap: 2px; }
 .reseaux a {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 26px; height: 26px; border-radius: 7px;
-  color: #cfd8e8; text-decoration: none;
-  transition: background .18s ease, color .18s ease;
+display: inline-flex; align-items: center; justify-content: center;
+width: 26px; height: 26px; border-radius: 7px;
+color: #cfd8e8; text-decoration: none;
+transition: background .18s ease, color .18s ease;
 }
 .reseaux a:hover { background: rgba(255, 255, 255, .12); color: #fff; }
-
 .bandeau-actions { display: flex; align-items: center; gap: 8px; }
-/* Sur fond sombre, le contour clair du bouton « Se connecter » disparait :
-   il prend une bordure translucide et un texte clair. */
 .bandeau-actions .nav-connexion {
-  border-color: rgba(255, 255, 255, .28); color: #eaf0fb; margin-left: 0;
-  padding: 4px 10px; line-height: 1.3;
+border-color: rgba(255, 255, 255, .28); color: #eaf0fb; margin-left: 0;
+padding: 4px 10px; line-height: 1.3;
 }
 .bandeau-actions .nav-connexion:hover {
-  background: rgba(255, 255, 255, .12);
-  border-color: rgba(255, 255, 255, .5); color: #fff;
+background: rgba(255, 255, 255, .12);
+border-color: rgba(255, 255, 255, .5); color: #fff;
 }
-
 .entete-marque {
-  display: flex; align-items: center; justify-content: center;
-  position: relative; padding: 16px 0 12px;
+display: flex; align-items: center; justify-content: center;
+position: relative; padding: 16px 0 12px;
 }
 .entete-marque .marque { font-size: 1.5rem; gap: 11px; }
 .entete-marque .marque img { width: 34px; height: 34px; }
-
 .entete-nav { display: flex; justify-content: center; padding-bottom: 6px; }
-
-/* Le bouton du menu mobile se cale a droite de la ligne du logo, qui est
-   la seule a rester visible quand le menu est replie. */
 .entete-marque .burger { position: absolute; right: 0; top: 50%;
-  transform: translateY(-50%); }
-
+transform: translateY(-50%); }
 .marque {
-  display: flex; align-items: center; gap: 9px;
-  font-size: 1.15rem; color: var(--encre); font-weight: 500;
-  letter-spacing: -0.02em; text-decoration: none; flex-shrink: 0;
+display: flex; align-items: center; gap: 9px;
+font-size: 1.15rem; color: var(--encre); font-weight: 500;
+letter-spacing: -0.02em; text-decoration: none; flex-shrink: 0;
 }
 .marque strong { font-weight: 800; }
 .marque:hover { text-decoration: none; }
-
 .navigation { display: flex; align-items: center; gap: 2px; }
-/* Les liens de navigation sont styles par .nav-lien, qui gere aussi les
-   parents de sous-menu. Cette regle ne couvre plus que le bouton
-   « Telecharger », qui a sa propre classe. */
-
 .bouton-nav {
-  background: var(--degrade); color: #fff !important;
-  padding: 5px 12px !important; border-radius: 8px !important;
-  font-weight: 700 !important; margin-left: 10px; line-height: 1.3 !important;
-  box-shadow: 0 14px 24px rgba(37, 99, 235, .20);
+background: var(--degrade); color: #fff !important;
+padding: 5px 12px !important; border-radius: 8px !important;
+font-weight: 700 !important; margin-left: 10px; line-height: 1.3 !important;
+box-shadow: 0 14px 24px rgba(37, 99, 235, .20);
 }
 .bouton-nav:hover { background: var(--degrade); filter: brightness(1.07); }
-
 .burger { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
 .burger span {
-  display: block; width: 22px; height: 2px; background: var(--encre);
-  margin: 4px 0; border-radius: 2px;
+display: block; width: 22px; height: 2px; background: var(--encre);
+margin: 4px 0; border-radius: 2px;
 }
-
-/* --- Boutons ------------------------------------------------------- */
-
 .bouton, .bouton-secondaire {
-  display: inline-block; padding: 15px 30px; border-radius: 14px;
-  font-weight: 800; font-size: 1.02rem; letter-spacing: -0.01em;
-  text-decoration: none; border: 0;
-  transition: transform .12s, box-shadow .18s, filter .15s;
+display: inline-block; padding: 15px 30px; border-radius: 14px;
+font-weight: 800; font-size: 1.02rem; letter-spacing: -0.01em;
+text-decoration: none; border: 0;
+transition: transform .12s, box-shadow .18s, filter .15s;
 }
 .bouton { background: var(--degrade); color: #fff; box-shadow: var(--ombre-cta); }
 .bouton:hover {
-  text-decoration: none; filter: brightness(1.07);
-  transform: translateY(-2px); box-shadow: 0 22px 38px rgba(37, 99, 235, .30);
+text-decoration: none; filter: brightness(1.07);
+transform: translateY(-2px); box-shadow: 0 22px 38px rgba(37, 99, 235, .30);
 }
 .bouton:active { transform: translateY(0); }
 .bouton-secondaire {
-  background: #fff; color: var(--encre);
-  border: 1px solid var(--bord-net); box-shadow: 0 8px 20px rgba(15, 23, 42, .06);
+background: #fff; color: var(--encre);
+border: 1px solid var(--bord-net); box-shadow: 0 8px 20px rgba(15, 23, 42, .06);
 }
 .bouton-secondaire:hover {
-  text-decoration: none; transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(15, 23, 42, .10);
+text-decoration: none; transform: translateY(-2px);
+box-shadow: 0 14px 28px rgba(15, 23, 42, .10);
 }
-
 .sous-bouton { font-size: .88rem; color: var(--gris); margin-top: 16px; }
-
-/* --- Section d'accroche -------------------------------------------- */
-
 .accroche { padding: 72px 0 56px; }
 .accroche .conteneur { display: grid; grid-template-columns: 1.02fr .98fr; gap: 52px; align-items: center; }
 .accroche h1 { margin-bottom: .45em; }
 .accroche .chapeau { font-size: 1.22rem; color: var(--texte); margin-bottom: 1.5em; }
 .accroche .bouton, .accroche .bouton-secondaire { margin: 0 10px 10px 0; }
-
 .etiquette {
-  display: inline-block; background: var(--degrade-pale);
-  color: var(--bleu-fonce); font-size: .92rem; font-weight: 600;
-  padding: 8px 18px; border-radius: 999px; margin-bottom: 22px;
+display: inline-block; background: var(--degrade-pale);
+color: var(--bleu-fonce); font-size: .92rem; font-weight: 600;
+padding: 8px 18px; border-radius: 999px; margin-bottom: 22px;
 }
-
 .capture-accroche {
-  border: 1px solid var(--bord); border-radius: var(--rayon-xl);
-  box-shadow: var(--ombre-panneau); background: #fff;
+border: 1px solid var(--bord); border-radius: var(--rayon-xl);
+box-shadow: var(--ombre-panneau); background: #fff;
 }
-
-/* --- Bandeau defilant des concours -------------------------------- */
-
-/* Deux pistes identiques cote a cote : quand la premiere a defile de sa
-   propre largeur, la seconde occupe exactement sa place, et la boucle est
-   invisible. Aucun JavaScript, donc rien a charger ni a executer.
-
-   Les noms sont en typographie, pas en logos : ce sont des marques deposees,
-   et les afficher laisserait croire a un partenariat qui n'existe pas. */
-
-/* --- Grille « a lire » de l'accueil -------------------------------- */
-/*
-   Un grand article a gauche, quatre entrees empilees a droite. Les
-   vignettes portent un rapport de forme fixe : sans lui, la page saute au
-   chargement des images, ce qui compte reellement dans le classement.
-*/
-
 .actualites { padding-top: 56px; padding-bottom: 8px; }
-
 .grille-actus {
-  display: grid; grid-template-columns: 1.55fr 1fr; gap: 34px;
-  align-items: start;
+display: grid; grid-template-columns: 1.55fr 1fr; gap: 34px;
+align-items: start;
 }
-
 .actu-vedette {
-  display: block; text-decoration: none; color: inherit;
-  background: #fff; border: 1px solid var(--bord);
-  border-radius: var(--rayon-l); overflow: hidden;
-  transition: transform .2s ease, box-shadow .2s ease;
+display: block; text-decoration: none; color: inherit;
+background: #fff; border: 1px solid var(--bord);
+border-radius: var(--rayon-l); overflow: hidden;
+transition: transform .2s ease, box-shadow .2s ease;
 }
 .actu-vedette img {
-  display: block; width: 100%; aspect-ratio: 16 / 10;
-  object-fit: cover; object-position: top center;
+display: block; width: 100%; aspect-ratio: 16 / 10;
+object-fit: cover; object-position: top center;
 }
 .actu-vedette h2 {
-  margin: 0; padding: 22px 26px 26px;
-  font-size: 1.5rem; line-height: 1.25; letter-spacing: -0.02em;
+margin: 0; padding: 22px 26px 26px;
+font-size: 1.5rem; line-height: 1.25; letter-spacing: -0.02em;
 }
 .actu-vedette:hover {
-  transform: translateY(-3px); box-shadow: var(--ombre-panneau);
-  text-decoration: none;
+transform: translateY(-3px); box-shadow: var(--ombre-panneau);
+text-decoration: none;
 }
-
 .actu-liste { display: flex; flex-direction: column; }
-
 .actu {
-  display: grid; grid-template-columns: 148px 1fr; gap: 18px;
-  align-items: center; padding: 18px 0;
-  text-decoration: none; color: inherit;
-  border-bottom: 1px solid var(--bord);
+display: grid; grid-template-columns: 148px 1fr; gap: 18px;
+align-items: center; padding: 18px 0;
+text-decoration: none; color: inherit;
+border-bottom: 1px solid var(--bord);
 }
 .actu:first-child { padding-top: 0; }
 .actu:last-child { border-bottom: none; }
 .actu img {
-  display: block; width: 100%; aspect-ratio: 16 / 10;
-  object-fit: cover; object-position: top center;
-  border-radius: 10px; border: 1px solid var(--bord);
+display: block; width: 100%; aspect-ratio: 16 / 10;
+object-fit: cover; object-position: top center;
+border-radius: 10px; border: 1px solid var(--bord);
 }
 .actu span {
-  font-family: Poppins, 'Libre Franklin', sans-serif;
-  font-size: 1.02rem; font-weight: 600; line-height: 1.3;
-  letter-spacing: -0.01em; color: var(--encre);
+font-family: Poppins, 'Libre Franklin', sans-serif;
+font-size: 1.02rem; font-weight: 600; line-height: 1.3;
+letter-spacing: -0.01em; color: var(--encre);
 }
 .actu:hover { text-decoration: none; }
 .actu:hover span { color: var(--bleu-fonce); }
-
 .bandeau-ecoles { padding: 64px 0 40px; }
-
 .bandeau-titre {
-  text-align: center; color: var(--gris);
-  font-size: .82rem; font-weight: 600;
-  letter-spacing: .08em; text-transform: uppercase;
-  margin: 0 0 22px;
+text-align: center; color: var(--gris);
+font-size: .82rem; font-weight: 600;
+letter-spacing: .08em; text-transform: uppercase;
+margin: 0 0 22px;
 }
-
 .defile {
-  display: flex; gap: 56px; overflow: hidden;
-  /* Les bords s'estompent : le defilement semble venir de l'exterieur de la
-     page plutot que de s'interrompre net sur une arete. */
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+display: flex; gap: 56px; overflow: hidden;
+-webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
 }
-
 .defile-piste {
-  display: flex; gap: 56px; flex-shrink: 0;
-  list-style: none; margin: 0; padding: 0;
-  animation: defiler 42s linear infinite;
+display: flex; gap: 56px; flex-shrink: 0;
+list-style: none; margin: 0; padding: 0;
+animation: defiler 42s linear infinite;
 }
 .defile:hover .defile-piste { animation-play-state: paused; }
-
 .defile-piste li {
-  white-space: nowrap;
-  display: flex; align-items: center;
-  font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em;
-  color: var(--gris);
+white-space: nowrap;
+display: flex; align-items: center;
+font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em;
+color: var(--gris);
 }
-
-/* Les logos, quand ils sont fournis, sont normalises a la meme hauteur et
-   dessatures : une bande de logos aux couleurs d'origine tire l'oeil plus
-   que le bouton de telechargement, qui est ce que la page doit obtenir. */
 .logo-ecole img {
-  /* Les dimensions viennent des attributs width/height du HTML : chaque logo
-     a sa hauteur propre, calculee selon sa forme par preparer_logos.py. */
-  height: auto; max-width: 204px;
-  /* En couleur : les logos d'ecole sont reconnus a leur couleur autant
-     qu'a leur forme, et un bandeau gris les rendait tous semblables. */
-  opacity: .92;
-  transition: opacity .2s;
+height: auto; max-width: 204px;
+opacity: .92;
+transition: opacity .2s;
 }
 .defile:hover .logo-ecole img { opacity: 1; }
-
 @keyframes defiler {
-  from { transform: translateX(0); }
-  to   { transform: translateX(calc(-100% - 56px)); }
+from { transform: translateX(0); }
+to   { transform: translateX(calc(-100% - 56px)); }
 }
-
 .bandeau-mention {
-  text-align: center; color: var(--gris-clair);
-  font-size: .78rem; margin: 24px 0 0;
-  max-width: 560px; margin-left: auto; margin-right: auto;
-  padding: 0 22px;
+text-align: center; color: var(--gris);
+font-size: .78rem; margin: 24px 0 0;
+max-width: 560px; margin-left: auto; margin-right: auto;
+padding: 0 22px;
 }
-
-/* --- Blocs generiques --------------------------------------------- */
-
 .section { padding: 62px 0; }
 .section h2 { margin-top: 0; }
 .centre { text-align: center; }
 .centre .chapeau { max-width: 660px; margin-left: auto; margin-right: auto; margin-bottom: 2em; }
-
 .chapeau { font-size: 1.12rem; color: var(--gris); }
-
-/* Un bloc « doux » n'est plus une bande pleine largeur mais un panneau
-   arrondi pose sur le degrade : c'est ce qui donne le relief. */
 .section-douce { padding: 30px 0; }
 .section-douce > .conteneur {
-  background: rgba(255, 255, 255, .74);
-  border: 1px solid var(--bord);
-  border-radius: var(--rayon-xl);
-  box-shadow: var(--ombre-panneau);
-  padding: 56px 48px;
+background: rgba(255, 255, 255, .74);
+border: 1px solid var(--bord);
+border-radius: var(--rayon-xl);
+box-shadow: var(--ombre-panneau);
+padding: 56px 48px;
 }
-
 .grille-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
 .grille-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; align-items: center; }
 .section-douce .grille-2 { text-align: left; }
-
 .carte {
-  background: #fff; border: 1px solid var(--bord);
-  border-radius: var(--rayon-l); padding: 30px 26px;
-  box-shadow: var(--ombre-carte);
-  transition: transform .18s, box-shadow .18s;
-  text-align: left;
+background: #fff; border: 1px solid var(--bord);
+border-radius: var(--rayon-l); padding: 30px 26px;
+box-shadow: var(--ombre-carte);
+transition: transform .18s, box-shadow .18s;
+text-align: left;
 }
 .carte:hover { transform: translateY(-3px); box-shadow: 0 26px 52px rgba(15, 23, 42, .13); }
 .carte h3 { margin-top: 0; font-size: 1.2rem; }
 .carte p:last-child { margin-bottom: 0; }
 .carte .pictogramme {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 48px; height: 48px; border-radius: 14px;
-  background: var(--degrade-pale); font-size: 1.4rem; line-height: 1;
-  margin-bottom: 16px;
+display: inline-flex; align-items: center; justify-content: center;
+width: 48px; height: 48px; border-radius: 14px;
+background: var(--degrade-pale); font-size: 1.4rem; line-height: 1;
+margin-bottom: 16px;
 }
-
-/* --- Tableau comparatif ------------------------------------------- */
-
 .tableau-enveloppe {
-  overflow-x: auto; margin: 1.8em 0;
-  background: #fff; border: 1px solid var(--bord);
-  border-radius: var(--rayon-l); box-shadow: var(--ombre-carte);
+overflow-x: auto; margin: 1.8em 0;
+background: #fff; border: 1px solid var(--bord);
+border-radius: var(--rayon-l); box-shadow: var(--ombre-carte);
 }
 table { border-collapse: collapse; width: 100%; font-size: .96rem; min-width: 560px; }
 th, td { text-align: left; padding: 15px 18px; border-bottom: 1px solid var(--bord); }
@@ -509,62 +368,48 @@ th { background: var(--fond-doux); font-weight: 800; color: var(--encre); letter
 td strong { color: var(--encre); }
 .oui { color: var(--vert); font-weight: 700; }
 .non { color: var(--rouge); font-weight: 700; }
-
-/* --- Tarifs -------------------------------------------------------- */
-
-/* Trois offres et non deux depuis que le mensuel et l'annuel sont
-   distingues. Pas de bascule mensuel/annuel : elle sert a n'afficher
-   qu'un prix a la fois, ce qui n'a pas de sens quand les deux ont leur
-   propre colonne. */
 .grille-tarifs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1080px;
-  margin: 2.6em auto 0;
-  align-items: start;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 24px;
+max-width: 1080px;
+margin: 2.6em auto 0;
+align-items: start;
 }
 .offre {
-  background: #fff; border: 1px solid var(--bord); border-radius: var(--rayon-xl);
-  padding: 34px 30px; display: flex; flex-direction: column;
-  box-shadow: var(--ombre-carte);
+background: #fff; border: 1px solid var(--bord); border-radius: var(--rayon-xl);
+padding: 34px 30px; display: flex; flex-direction: column;
+box-shadow: var(--ombre-carte);
 }
 .offre.mise-en-avant {
-  border: 1px solid rgba(37, 99, 235, .35);
-  box-shadow: 0 30px 58px rgba(37, 99, 235, .16);
+border: 1px solid rgba(37, 99, 235, .35);
+box-shadow: 0 30px 58px rgba(37, 99, 235, .16);
 }
-.offre h3 { margin-top: 0; font-size: 1.35rem; }
+.offre h2 { margin-top: 0; font-size: 1.35rem; }
 .prix {
-  font-size: 2.6rem; font-weight: 800; color: var(--encre);
-  line-height: 1; letter-spacing: -0.04em; margin: 10px 0 4px;
+font-size: 2.6rem; font-weight: 800; color: var(--encre);
+line-height: 1; letter-spacing: -0.04em; margin: 10px 0 4px;
 }
 .prix small { font-size: .88rem; font-weight: 500; color: var(--gris); letter-spacing: 0; }
 .offre ul { list-style: none; padding: 0; margin: 22px 0 26px; }
 .offre li { padding: 7px 0 7px 28px; position: relative; }
 .offre li::before {
-  content: "✓"; position: absolute; left: 0; color: var(--vert); font-weight: 800;
+content: "✓"; position: absolute; left: 0; color: var(--vert); font-weight: 800;
 }
-.offre li.absent::before { content: "—"; color: var(--gris-clair); }
+.offre li.absent::before { content: "—"; color: var(--gris); }
 .offre .bouton, .offre .bouton-secondaire { margin-top: auto; text-align: center; }
-
-/* --- Encarts ------------------------------------------------------- */
-
 .encart {
-  background: var(--bleu-pale); border: 1px solid rgba(37, 99, 235, .16);
-  padding: 20px 24px; border-radius: var(--rayon); margin: 1.9em 0;
+background: var(--bleu-pale); border: 1px solid rgba(37, 99, 235, .16);
+padding: 20px 24px; border-radius: var(--rayon); margin: 1.9em 0;
 }
 .encart p:last-child { margin-bottom: 0; }
 .encart-attention { background: #fffbeb; border-color: rgba(217, 119, 6, .22); }
-
 .encart-cta {
-  background: #fff; border: 1px solid var(--bord);
-  border-radius: var(--rayon-xl); padding: 38px 32px; margin: 3.2em 0 0;
-  text-align: center; box-shadow: var(--ombre-panneau);
+background: #fff; border: 1px solid var(--bord);
+border-radius: var(--rayon-xl); padding: 38px 32px; margin: 3.2em 0 0;
+text-align: center; box-shadow: var(--ombre-panneau);
 }
 .encart-cta h2 { margin-top: 0; font-size: 1.5rem; }
-
-/* --- Article et blog ---------------------------------------------- */
-
 .article { padding: 44px 0 70px; }
 .article h1 { font-size: clamp(1.9rem, 3.6vw, 2.5rem); }
 .article h2 { font-size: 1.6rem; }
@@ -572,435 +417,375 @@ td strong { color: var(--encre); }
 .article ul, .article ol { padding-left: 24px; }
 .article li { margin-bottom: .5em; }
 .article img {
-  border: 1px solid var(--bord); border-radius: var(--rayon-l);
-  box-shadow: var(--ombre-carte); margin: 1.8em 0;
+border: 1px solid var(--bord); border-radius: var(--rayon-l);
+box-shadow: var(--ombre-carte); margin: 1.8em 0;
 }
 .article blockquote {
-  margin: 1.7em 0; padding: 4px 0 4px 22px;
-  border-left: 3px solid rgba(37, 99, 235, .35); color: var(--gris); font-style: italic;
+margin: 1.7em 0; padding: 4px 0 4px 22px;
+border-left: 3px solid rgba(37, 99, 235, .35); color: var(--gris); font-style: italic;
 }
-
-/* La colonne de lecture est posee sur une feuille blanche : le texte long
-   reste lisible par-dessus le degrade, et la page gagne le meme relief que
-   les panneaux de l'accueil. */
 .article .conteneur-texte {
-  background: #fff; border: 1px solid var(--bord);
-  border-radius: var(--rayon-xl); box-shadow: var(--ombre-panneau);
-  padding: 48px 52px; max-width: calc(var(--largeur-texte) + 104px);
+background: #fff; border: 1px solid var(--bord);
+border-radius: var(--rayon-xl); box-shadow: var(--ombre-panneau);
+padding: 48px 52px; max-width: calc(var(--largeur-texte) + 104px);
 }
-
 .fil { font-size: .88rem; color: var(--gris); margin-bottom: 18px; }
 .art-meta { font-size: .9rem; color: var(--gris); margin-bottom: 1.5em; }
-
-/* --- Disposition de l'article : sommaire lateral + colonne de texte -- */
-
 .disposition-article {
-  display: grid;
-  grid-template-columns: 232px minmax(0, 1fr);
-  gap: 30px;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 22px;
-  /* align-items: start est necessaire : sans lui, la cellule laterale
-     s'etire en hauteur pour epouser celle de l'article (etirement par
-     defaut de Grid) et le sommaire n'a alors plus aucune marge de
-     manoeuvre pour se coller - sa propre boite occupe deja toute la
-     hauteur disponible. */
-  align-items: start;
+display: grid;
+grid-template-columns: 232px minmax(0, 1fr);
+gap: 30px;
+max-width: 1180px;
+margin: 0 auto;
+padding: 0 22px;
+align-items: start;
 }
 .disposition-article .conteneur-texte { padding-left: 0; padding-right: 0; }
-
-/* 188px degage la hauteur reelle de l'en-tete (bandeau + marque + nav,
-   elle-meme sticky a top:0) : sans cette marge le sommaire se colle
-   derriere elle et reste cache. */
 .barre-laterale { position: sticky; top: 188px; }
-
 .panneau-sommaire {
-  background: #fff; border: 1px solid var(--bord); border-radius: var(--rayon-l);
-  box-shadow: var(--ombre-carte); padding: 18px 20px;
+background: #fff; border: 1px solid var(--bord); border-radius: var(--rayon-l);
+box-shadow: var(--ombre-carte); padding: 18px 20px;
 }
 .sommaire-bouton {
-  display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  width: 100%; background: none; border: 0; padding: 0; margin: 0;
-  font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.02rem;
-  color: var(--encre); cursor: pointer;
+display: flex; align-items: center; justify-content: space-between; gap: 10px;
+width: 100%; background: none; border: 0; padding: 0; margin: 0;
+font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.02rem;
+color: var(--encre); cursor: pointer;
 }
 .sommaire-fleche { transition: transform .2s ease; flex-shrink: 0; }
 .sommaire-bouton[aria-expanded="false"] .sommaire-fleche { transform: rotate(-90deg); }
-
 .sommaire-liste {
-  list-style: none; counter-reset: sommaire; margin: 14px 0 0; padding: 0;
-  display: flex; flex-direction: column; gap: 11px;
-  max-height: 640px; overflow: hidden;
-  transition: max-height .25s ease, margin .25s ease, opacity .2s ease;
+list-style: none; counter-reset: sommaire; margin: 14px 0 0; padding: 0;
+display: flex; flex-direction: column; gap: 11px;
+max-height: 640px; overflow: hidden;
+transition: max-height .25s ease, margin .25s ease, opacity .2s ease;
 }
 .sommaire-bouton[aria-expanded="false"] + .sommaire-liste {
-  max-height: 0; margin-top: 0; opacity: 0;
+max-height: 0; margin-top: 0; opacity: 0;
 }
 .sommaire-liste li { counter-increment: sommaire; }
 .sommaire-liste a {
-  display: flex; gap: 9px; align-items: baseline; text-decoration: none;
-  color: var(--texte); font-size: .9rem; line-height: 1.35;
+display: flex; gap: 9px; align-items: baseline; text-decoration: none;
+color: var(--texte); font-size: .9rem; line-height: 1.35;
 }
 .sommaire-liste a::before {
-  content: counter(sommaire) "."; flex-shrink: 0; font-weight: 800;
-  color: var(--encre); border-bottom: 3px solid #fbbf24; padding-bottom: 1px;
+content: counter(sommaire) "."; flex-shrink: 0; font-weight: 800;
+color: var(--encre); border-bottom: 3px solid #fbbf24; padding-bottom: 1px;
 }
 .sommaire-liste a:hover { color: var(--bleu); }
 .sommaire-liste a.actif { color: var(--bleu-fonce); }
 .sommaire-liste a.actif::before { border-bottom-color: var(--bleu); }
-
-/* Fil d'Ariane pose dans un encadre simple, au-dessus du titre */
 .cadre-entete {
-  border: 1px solid var(--bord-net); border-radius: var(--rayon);
-  padding: 14px 20px; margin: 1.6em 0 1.8em; background: #fff;
+border: 1px solid var(--bord-net); border-radius: var(--rayon);
+padding: 14px 20px; margin: 1.6em 0 1.8em; background: #fff;
 }
 .cadre-entete .fil { margin-bottom: 0; }
-
-/* Largeur dediee a la bibliotheque du blog : plus large que la colonne de
-   lecture (.conteneur-etroit), pour que les cartes d'articles cote a cote
-   aient assez de place et ne s'etirent pas verticalement. */
 .conteneur-bibliotheque { max-width: 1320px; margin-left: auto; margin-right: auto; padding: 0 24px; }
 h1.conteneur-bibliotheque { margin-top: 52px; }
 p.chapeau.conteneur-bibliotheque { margin: 14px auto 0; }
-
-/* Amorce de l'article (entre le H1 et le premier H2), dans son encadre */
 .feuille-texte .chapo {
-  border: 1px solid var(--bord-net); border-radius: var(--rayon-l);
-  padding: 24px 28px; margin: 0 0 2em; background: #fff;
-  font-size: 1.08rem; color: var(--texte); text-align: left;
+border: 1px solid var(--bord-net); border-radius: var(--rayon-l);
+padding: 24px 28px; margin: 0 0 2em; background: #fff;
+font-size: 1.08rem; color: var(--texte); text-align: left;
 }
 .feuille-texte .chapo p { margin: 0; }
 .feuille-texte .chapo p + p { margin-top: 1em; }
-
 @media (max-width: 980px) {
-  .disposition-article { grid-template-columns: 1fr; gap: 20px; }
-  .barre-laterale { position: static; }
+.disposition-article { grid-template-columns: 1fr; gap: 20px; }
+.barre-laterale { position: static; }
 }
-
-/* --- Carte de lien vers un autre article, avec visuel ---------------- */
-
 .carte-liee {
-  display: flex; gap: 0; align-items: stretch; text-decoration: none;
-  border: 1px solid var(--bord); border-radius: var(--rayon-l); overflow: hidden;
-  background: #fff; box-shadow: var(--ombre-carte); margin: 1.8em 0;
-  transition: transform .18s, box-shadow .18s;
+display: flex; gap: 0; align-items: stretch; text-decoration: none;
+border: 1px solid var(--bord); border-radius: var(--rayon-l); overflow: hidden;
+background: #fff; box-shadow: var(--ombre-carte); margin: 1.8em 0;
+transition: transform .18s, box-shadow .18s;
 }
 .carte-liee:hover { transform: translateY(-2px); box-shadow: var(--ombre-panneau); text-decoration: none; }
+.actu-vedette:focus-visible,
+.carte-liee:focus-visible,
+.carte-similaire:focus-visible,
+.liste-articles a:focus-visible {
+outline: none; box-shadow: inset 0 0 0 3px var(--bleu);
+}
 .carte-liee img {
-  width: 112px; height: 112px; object-fit: cover; flex-shrink: 0;
-  border: 0; border-radius: 0; box-shadow: none; margin: 0;
+width: 112px; height: 112px; object-fit: cover; flex-shrink: 0;
+border: 0; border-radius: 0; box-shadow: none; margin: 0;
 }
 .carte-liee-texte {
-  padding: 14px 20px; display: flex; flex-direction: column;
-  justify-content: center; gap: 5px; min-width: 0;
+padding: 14px 20px; display: flex; flex-direction: column;
+justify-content: center; gap: 5px; min-width: 0;
 }
 .carte-liee-etiquette {
-  font-size: .74rem; font-weight: 800; text-transform: uppercase;
-  letter-spacing: .05em; color: var(--bleu);
+font-size: .74rem; font-weight: 800; text-transform: uppercase;
+letter-spacing: .05em; color: var(--bleu);
 }
 .carte-liee-titre {
-  font-family: 'Poppins', sans-serif; font-weight: 800; color: var(--encre);
-  font-size: 1rem; line-height: 1.3;
+font-family: 'Poppins', sans-serif; font-weight: 800; color: var(--encre);
+font-size: 1rem; line-height: 1.3;
 }
-
-/* Centrage porte par la classe elle-meme, et non par la regle « main > ul » :
-   un selecteur de classe l'emporte sur elle, et les marges laterales etaient
-   remises a zero - la liste se collait au bord gauche. */
+.articles-similaires {
+margin: 2.6em 0 1.6em; padding-top: 1.8em;
+border-top: 1px solid var(--bord-net);
+}
+.articles-similaires h2 {
+font-size: 1.2rem; margin: 0 0 1em;
+}
+.similaires-grille {
+display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+align-items: stretch;
+}
+.carte-similaire {
+display: flex; flex-direction: column; height: 100%;
+border: 1px solid var(--bord); border-radius: var(--rayon-l);
+text-decoration: none; background: #fff; overflow: hidden;
+box-shadow: var(--ombre-carte);
+transition: transform .18s, box-shadow .18s;
+}
+.carte-similaire:hover {
+transform: translateY(-3px); box-shadow: var(--ombre-panneau);
+text-decoration: none;
+}
+.carte-similaire img {
+width: 100%; height: 92px; object-fit: cover; display: block;
+border: 0; border-radius: 0; box-shadow: none; margin: 0;
+}
+.carte-similaire-corps {
+padding: 12px 14px; display: flex; flex: 1; align-items: center;
+}
+.carte-similaire-corps strong {
+font-family: 'Poppins', sans-serif; font-weight: 800; color: var(--encre);
+font-size: .92rem; line-height: 1.3;
+display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+overflow: hidden;
+}
+@media (max-width: 700px) {
+.similaires-grille { grid-template-columns: 1fr; }
+}
 .liste-articles {
-  list-style: none; padding: 0; margin: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  align-items: start;
+list-style: none; padding: 0; margin: 0;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
+align-items: start;
 }
 .liste-articles li { margin-bottom: 0; }
 .liste-articles li.masque { display: none; }
-
-/* --- Bibliotheque du blog : recherche, tri, filtres ------------------ */
-
 .disposition-bibliotheque {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 26px;
-  margin-top: 2.2em;
-  align-items: start;
+display: grid;
+grid-template-columns: 220px minmax(0, 1fr);
+gap: 26px;
+margin-top: 2.2em;
+align-items: start;
 }
 .filtres-barre-laterale {
-  position: sticky; top: 96px;
-  display: flex; flex-direction: column; gap: 20px;
+position: sticky; top: 96px;
+display: flex; flex-direction: column; gap: 20px;
 }
 .filtre-groupe {
-  background: #fff; border: 1px solid var(--bord); border-radius: var(--rayon-l);
-  padding: 18px 20px; box-shadow: var(--ombre-carte);
+background: #fff; border: 1px solid var(--bord); border-radius: var(--rayon-l);
+padding: 18px 20px; box-shadow: var(--ombre-carte);
 }
 .filtre-titre {
-  margin: 0 0 12px; font-size: .98rem; font-family: 'Poppins', sans-serif;
-  font-weight: 800; color: var(--encre);
-  border-bottom: 1px solid var(--bord-net); padding-bottom: 10px;
+margin: 0 0 12px; font-size: .98rem; font-family: 'Poppins', sans-serif;
+font-weight: 800; color: var(--encre);
+border-bottom: 1px solid var(--bord-net); padding-bottom: 10px;
 }
 .filtre-option {
-  display: flex; align-items: center; gap: 9px;
-  padding: 6px 0; font-size: .9rem; color: var(--texte); cursor: pointer;
+display: flex; align-items: center; gap: 9px;
+padding: 6px 0; font-size: .9rem; color: var(--texte); cursor: pointer;
 }
 .filtre-option input { accent-color: var(--bleu); flex-shrink: 0; }
 .filtre-option span:first-of-type { flex: 1; }
-.filtre-compte { color: var(--gris-clair); font-size: .8rem; }
-
+.filtre-compte { color: var(--gris); font-size: .8rem; }
 .bibliotheque-contenu { min-width: 0; }
 .bibliotheque-barre {
-  display: flex; flex-wrap: wrap; gap: 22px; margin-bottom: 22px;
-  background: #fff; border: 1px solid var(--bord); border-radius: var(--rayon-l);
-  padding: 16px 20px; box-shadow: var(--ombre-carte);
+display: flex; flex-wrap: wrap; gap: 22px; margin-bottom: 22px;
+background: #fff; border: 1px solid var(--bord); border-radius: var(--rayon-l);
+padding: 16px 20px; box-shadow: var(--ombre-carte);
 }
 .bibliotheque-champ {
-  display: flex; flex-direction: column; gap: 5px;
-  font-size: .82rem; color: var(--gris); flex: 1; min-width: 200px;
+display: flex; flex-direction: column; gap: 5px;
+font-size: .82rem; color: var(--gris); flex: 1; min-width: 200px;
 }
 .bibliotheque-champ select, .bibliotheque-champ input[type="search"] {
-  padding: 9px 11px; border: 1px solid var(--bord); border-radius: var(--rayon-s);
-  font-family: inherit; font-size: .95rem; color: var(--texte); background: #fff;
+padding: 9px 11px; border: 1px solid var(--bord); border-radius: var(--rayon-s);
+font-family: inherit; font-size: .95rem; color: var(--texte); background: #fff;
 }
 .bibliotheque-champ-taille { flex: 0 0 150px; min-width: 130px; }
 .aucun-resultat { text-align: center; color: var(--gris); padding: 50px 0; }
-
 .pagination-pages {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
-  margin-top: 28px;
+display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+margin-top: 28px;
 }
 .pagination-page {
-  min-width: 38px; height: 38px; padding: 0 6px;
-  border: 1px solid var(--bord); border-radius: var(--rayon-s);
-  background: #fff; color: var(--texte); font-size: .92rem; font-weight: 600;
-  cursor: pointer; transition: background .15s, color .15s, border-color .15s;
+min-width: 38px; height: 38px; padding: 0 6px;
+border: 1px solid var(--bord); border-radius: var(--rayon-s);
+background: #fff; color: var(--texte); font-size: .92rem; font-weight: 600;
+cursor: pointer; transition: background .15s, color .15s, border-color .15s;
 }
 .pagination-page:hover { border-color: var(--bleu); color: var(--bleu); }
 .pagination-page.actif {
-  background: var(--degrade); border-color: transparent; color: #fff;
+background: var(--degrade); border-color: transparent; color: #fff;
 }
-
 @media (max-width: 820px) {
-  .disposition-bibliotheque { grid-template-columns: 1fr; }
-  .filtres-barre-laterale { position: static; flex-direction: row; flex-wrap: wrap; }
-  .filtre-groupe { flex: 1; min-width: 240px; }
-  .liste-articles { grid-template-columns: 1fr; }
+.disposition-bibliotheque { grid-template-columns: 1fr; }
+.filtres-barre-laterale { position: static; flex-direction: row; flex-wrap: wrap; }
+.filtre-groupe { flex: 1; min-width: 240px; }
+.liste-articles { grid-template-columns: 1fr; }
 }
 .liste-articles a {
-  display: flex; flex-direction: column; height: 100%;
-  border: 1px solid var(--bord); border-radius: var(--rayon-l);
-  text-decoration: none; background: #fff; overflow: hidden;
-  box-shadow: var(--ombre-carte);
-  transition: transform .18s, box-shadow .18s;
+display: flex; flex-direction: column; height: 100%;
+border: 1px solid var(--bord); border-radius: var(--rayon-l);
+text-decoration: none; background: #fff; overflow: hidden;
+box-shadow: var(--ombre-carte);
+transition: transform .18s, box-shadow .18s;
 }
 @media (max-width: 700px) {
-  .liste-articles { grid-template-columns: 1fr; }
+.liste-articles { grid-template-columns: 1fr; }
 }
 .liste-articles a:hover {
-  transform: translateY(-3px); box-shadow: 0 26px 52px rgba(15, 23, 42, .13);
-  text-decoration: none;
+transform: translateY(-3px); box-shadow: 0 26px 52px rgba(15, 23, 42, .13);
+text-decoration: none;
 }
 .art-visuel {
-  width: 100%; height: 150px; object-fit: cover; display: block;
-  border: 0; border-radius: 0; box-shadow: none; margin: 0;
+width: 100%; height: 150px; object-fit: cover; display: block;
+border: 0; border-radius: 0; box-shadow: none; margin: 0;
 }
 .art-corps { padding: 20px 22px; }
 .art-date { display: block; font-size: .82rem; color: var(--gris); margin-bottom: 8px; }
 .liste-articles strong {
-  display: block; color: var(--encre); font-size: 1.2rem;
-  font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px;
+display: block; color: var(--encre); font-size: 1.2rem;
+font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px;
 }
 .art-desc { display: block; color: var(--texte); font-size: .96rem; }
-
-/* Contenu Markdown des pages simples : meme largeur de lecture, pose sur
-   une feuille blanche. Un texte long - mentions legales, CGV - se lit mal
-   directement sur le degrade de fond. */
-
-
-/* Le sommaire du blog n'est pas enveloppe : ses cartes blanches se posent
-   deja d'elles-memes sur le fond. Il garde donc la largeur de lecture. */
 main > h1, main > h2, main > h3, main > p, main > ul, main > ol,
 main > table, main > blockquote, main > .encart, main > .tableau-enveloppe,
 main > .grille-tarifs, main > figure {
-  max-width: var(--largeur-texte);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 22px;
-  padding-right: 22px;
+max-width: var(--largeur-texte);
+margin-left: auto;
+margin-right: auto;
+padding-left: 22px;
+padding-right: 22px;
 }
 main > h1:first-child { margin-top: 52px; }
 main { padding-bottom: 70px; }
-
 figure { margin: 1.9em auto; }
 figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-top: 10px; }
-
-/* --- Pied de page -------------------------------------------------- */
-
 .pied {
-  background: linear-gradient(180deg, #0f172a 0%, #1e293b 65%, #111827 100%);
-  color: #b4c0ce; padding: 68px 0 30px;
-  font-size: .94rem; margin-top: 0;
+background: linear-gradient(180deg, #0f172a 0%, #1e293b 65%, #111827 100%);
+color: #b4c0ce; padding: 68px 0 30px;
+font-size: .94rem; margin-top: 0;
 }
 .pied a { color: #d9e2ec; text-decoration: none; }
 .pied a:hover { color: #fff; text-decoration: underline; }
-
-/* La marque a gauche, puis autant de colonnes qu'il y en a. La premiere
-   piste est plus etroite que les autres : le logo n'a pas besoin de la
-   meme place qu'une liste de liens. */
 .pied-haut {
-  display: grid;
-  grid-template-columns: 0.9fr repeat(4, 1fr);
-  gap: 32px;
-  align-items: start;
+display: grid;
+grid-template-columns: 0.9fr repeat(4, 1fr);
+gap: 32px;
+align-items: start;
 }
-
 .pied-marque { display: flex; flex-direction: column; gap: 14px; }
 .pied-marque img { display: block; width: 72px; height: auto; }
 .pied-marque span {
-  color: #fff; font-size: 1.15rem; letter-spacing: -0.02em;
-  font-family: Poppins, sans-serif; font-weight: 600;
+color: #fff; font-size: 1.15rem; letter-spacing: -0.02em;
+font-family: Poppins, sans-serif; font-weight: 600;
 }
-/* Sans cela « Cards » prend l'encre sombre de la regle generale
-   strong, et disparait sur le fond nuit. */
 .pied-marque strong { color: #60a5fa; font-weight: 700; }
-
 .pied-colonne h2 {
-  /* Le bleu vif de la palette, eclairci pour rester lisible sur le fond
-     nuit : le bleu des boutons y passerait inapercu. */
-  color: #60a5fa;
-  font-family: Poppins, sans-serif;
-  font-size: 1.12rem; font-weight: 700;
-  margin: 0 0 18px; letter-spacing: -0.01em;
+color: #60a5fa;
+font-family: Poppins, sans-serif;
+font-size: 1.12rem; font-weight: 700;
+margin: 0 0 18px; letter-spacing: -0.01em;
 }
 .pied-colonne ul { list-style: none; margin: 0; padding: 0; }
 .pied-colonne li + li { margin-top: 12px; }
 .pied-bas {
-  border-top: 1px solid rgba(148, 163, 184, .22); margin-top: 36px; padding-top: 22px;
-  color: #7d8b9a; font-size: .86rem; margin-bottom: 0;
+border-top: 1px solid rgba(148, 163, 184, .22); margin-top: 36px; padding-top: 22px;
+color: #7d8b9a; font-size: .86rem; margin-bottom: 0;
 }
-
-/* --- Adaptation aux petits ecrans --------------------------------- */
-
 @media (max-width: 900px) {
-  body { font-size: 16.5px; }
-  .accroche { padding: 46px 0 40px; }
-  .accroche .conteneur { grid-template-columns: 1fr; gap: 34px; }
-  .grille-3, .grille-2, .grille-tarifs { grid-template-columns: 1fr; }
-  /* La grille « a lire » s'empile : deux colonnes sur un telephone
-     donneraient des vignettes de soixante pixels. */
-  .grille-actus { grid-template-columns: 1fr; gap: 24px; }
-  .actu-vedette h2 { font-size: 1.25rem; padding: 18px 20px 22px; }
-  .actu { grid-template-columns: 110px 1fr; gap: 14px; }
-  /* Deux colonnes plutot qu'une : empilees, les quatre listes donnaient un
-     pied de page plus long que certaines pages. */
-  .pied-haut { grid-template-columns: 1fr 1fr; gap: 28px; }
-  .pied-marque { grid-column: 1 / -1; }
-  .section-douce > .conteneur { padding: 36px 24px; border-radius: var(--rayon-l); }
-  .article .conteneur-texte { padding: 32px 24px; border-radius: var(--rayon-l); }
-  .feuille-texte { padding: 30px 22px; margin: 26px 14px 0; border-radius: var(--rayon-l); }
-  .burger { display: block; margin-left: auto; }
-  /* La navigation occupe deja sa propre rangee : elle se replie sur place
-     plutot que de se poser en absolu sous une barre unique, qui n'existe
-     plus. Le bandeau sombre passe en colonne pour tenir dans la largeur. */
-  .bandeau-haut-interieur { flex-direction: column; align-items: stretch;
-    gap: 8px; padding: 8px 0; }
-  .bandeau-actions { justify-content: flex-end; }
-  .entete-marque { padding: 12px 0 8px; }
-  .entete-marque .marque { font-size: 1.25rem; }
-  .entete-nav { padding: 0; }
-  .entete-nav .navigation {
-    display: none; position: static; left: auto; right: auto;
-    background: #fff; border-bottom: 1px solid var(--bord-net);
-    flex-direction: column; align-items: stretch; padding: 10px 14px 16px;
-    box-shadow: 0 18px 32px rgba(15, 23, 42, .10);
-  }
-  .navigation.ouvert { display: flex; }
-  .navigation a { padding: 12px; }
-  .bouton-nav { margin: 10px 0 0; text-align: center; }
-  .section { padding: 44px 0; }
-  .bouton, .bouton-secondaire { display: block; text-align: center; }
-  .accroche .bouton, .accroche .bouton-secondaire { margin-right: 0; }
+body { font-size: 16.5px; }
+.accroche { padding: 46px 0 40px; }
+.accroche .conteneur { grid-template-columns: 1fr; gap: 34px; }
+.grille-3, .grille-2, .grille-tarifs { grid-template-columns: 1fr; }
+.grille-actus { grid-template-columns: 1fr; gap: 24px; }
+.actu-vedette h2 { font-size: 1.25rem; padding: 18px 20px 22px; }
+.actu { grid-template-columns: 110px 1fr; gap: 14px; }
+.pied-haut { grid-template-columns: 1fr 1fr; gap: 28px; }
+.pied-marque { grid-column: 1 / -1; }
+.section-douce > .conteneur { padding: 36px 24px; border-radius: var(--rayon-l); }
+.article .conteneur-texte { padding: 32px 24px; border-radius: var(--rayon-l); }
+.feuille-texte { padding: 30px 22px; margin: 26px 14px 0; border-radius: var(--rayon-l); }
+.burger { display: block; margin-left: auto; }
+.bandeau-haut-interieur { flex-direction: column; align-items: stretch;
+gap: 8px; padding: 8px 0; }
+.bandeau-actions { justify-content: flex-end; }
+.entete-nav-barre { top: 92px; }
+.entete-marque { padding: 12px 0 8px; }
+.entete-marque .marque { font-size: 1.25rem; }
+.entete-nav { padding: 0; }
+.entete-nav .navigation {
+display: none; position: static; left: auto; right: auto;
+background: #fff; border-bottom: 1px solid var(--bord-net);
+flex-direction: column; align-items: stretch; padding: 10px 14px 16px;
+box-shadow: 0 18px 32px rgba(15, 23, 42, .10);
 }
-
-/* --- Menu deroulant de navigation ---------------------------------- */
-
+.navigation.ouvert { display: flex; }
+.navigation a { padding: 12px; }
+.bouton-nav { margin: 10px 0 0; text-align: center; }
+.section { padding: 44px 0; }
+.bouton, .bouton-secondaire { display: block; text-align: center; }
+.accroche .bouton, .accroche .bouton-secondaire { margin-right: 0; }
+}
 .nav-groupe { position: relative; display: inline-flex; }
-
 .nav-lien {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 9px 13px; border-radius: 10px; color: var(--texte);
-  font-size: .95rem; font-weight: 500; text-decoration: none;
-  transition: background .2s ease, color .2s ease;
+display: inline-flex; align-items: center; gap: 5px;
+padding: 9px 13px; border-radius: 10px; color: var(--texte);
+font-size: .95rem; font-weight: 500; text-decoration: none;
+transition: background .2s ease, color .2s ease;
 }
 .nav-lien:hover { background: var(--hover); color: var(--bleu-fonce); text-decoration: none; }
 .nav-lien.actif { color: var(--bleu-fonce); font-weight: 700; }
-
 .nav-fleche { flex-shrink: 0; transition: transform .2s ease; }
 .nav-groupe:hover .nav-fleche,
 .nav-groupe:focus-within .nav-fleche { transform: rotate(180deg); }
-
-/* --- Bouton de connexion ------------------------------------------ */
-
 .nav-connexion {
-  display: inline-flex; align-items: center;
-  padding: 9px 15px; margin-left: 4px;
-  border: 1px solid var(--bord); border-radius: 10px;
-  color: var(--texte); font-size: .95rem; font-weight: 600;
-  text-decoration: none;
-  transition: background .2s ease, border-color .2s ease, color .2s ease;
+display: inline-flex; align-items: center;
+padding: 9px 15px; margin-left: 4px;
+border: 1px solid var(--bord); border-radius: 10px;
+color: var(--texte); font-size: .95rem; font-weight: 600;
+text-decoration: none;
+transition: background .2s ease, border-color .2s ease, color .2s ease;
 }
 .nav-connexion:hover {
-  background: var(--hover); border-color: var(--bleu);
-  color: var(--bleu-fonce); text-decoration: none;
+background: var(--hover); border-color: var(--bleu);
+color: var(--bleu-fonce); text-decoration: none;
 }
-
-/* --- Menu des matieres, a deux panneaux --------------------------- */
-/*
-   Le panneau de droite de chaque filiere est range DANS son element de
-   gauche : c'est ce qui permet de basculer d'une filiere a l'autre au
-   survol sans une ligne de JavaScript. Un menu qui depend d'un script se
-   refermerait sur un visiteur dont le script n'a pas fini de charger.
-*/
-
 .nav-menu.mega-panneau {
-  /* Selecteur double a dessein : .nav-menu fixe min-width a 290px
-     plus bas dans le fichier et l'emportait a specificite egale,
-     ce qui laissait le panneau de droite deborder de la boite. */
-  /* Hauteur calee sur la plus longue liste de matieres (sept entrees,
-     296 px) plus le rembourrage et une marge de securite : a la hauteur
-     exacte, l'arrondi au sous-pixel suffisait a faire apparaitre une
-     barre de defilement. Sans cela la boite se dimensionne
-     sur la colonne de gauche, plus courte, et la liste deborde. */
-  min-width: 580px; min-height: 326px; padding: 10px; display: flex;
+min-width: 580px; min-height: 326px; padding: 10px; display: flex;
 }
-
 .mega-gauche {
-  list-style: none; margin: 0; padding: 0;
-  width: 258px; flex: 0 0 258px;
-  border-right: 1px solid var(--bord);
+list-style: none; margin: 0; padding: 0;
+width: 258px; flex: 0 0 258px;
+border-right: 1px solid var(--bord);
 }
-
-/* Pas de position: relative ici. Le panneau de droite doit s'ancrer sur la
-   BOITE du menu, pas sur la filiere survolee : ancre sur l'element, celui de
-   la troisieme filiere commencait 250 px plus bas et debordait par le bas. */
 .mega-item { position: static; }
-
 .mega-filiere {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 10px; padding: 10px 12px; margin-right: 8px;
-  border-radius: 10px; color: var(--texte); text-decoration: none;
-  transition: background .18s ease;
+display: flex; align-items: center; justify-content: space-between;
+gap: 10px; padding: 10px 12px; margin-right: 8px;
+border-radius: 10px; color: var(--texte); text-decoration: none;
+transition: background .18s ease;
 }
 .mega-filiere strong {
-  display: block; font-size: .95rem; font-weight: 600; color: var(--encre);
-  transition: color .18s ease;
+display: block; font-size: .95rem; font-weight: 600; color: var(--encre);
+transition: color .18s ease;
 }
 .mega-filiere small {
-  display: block; margin-top: 2px;
-  font-size: .78rem; color: var(--gris); font-weight: 400;
-  transition: color .18s ease;
+display: block; margin-top: 2px;
+font-size: .78rem; color: var(--gris); font-weight: 400;
+transition: color .18s ease;
 }
 .mega-chevron { color: var(--gris); font-size: 1.1rem; line-height: 1; transition: color .18s ease; }
-
 .mega-item:hover > .mega-filiere,
 .mega-item:focus-within > .mega-filiere { background: var(--bleu-fonce); }
 .mega-item:hover > .mega-filiere strong,
@@ -1009,1218 +794,884 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 .mega-item:focus-within > .mega-filiere small { color: #fff; }
 .mega-item:hover .mega-chevron,
 .mega-item:focus-within .mega-chevron { color: #fff; }
-
 .mega-droite {
-  /* Cale dans la moitie droite de la boite, quelle que soit la filiere
-     survolee. Le conteneur de reference est .nav-menu, deja positionne. */
-  position: absolute; top: 10px; bottom: 10px; left: 268px; right: 10px;
-  padding: 0 6px 0 20px;
-  /* Garde-fou : si une filiere gagne des matieres un jour, la liste defile
-     au lieu de sortir de la boite. */
-  overflow-y: auto;
-  display: flex; flex-direction: column; gap: 2px;
-  /* Masque par la visibilite, pas par display : le panneau de la premiere
-     filiere doit pouvoir ceder la place sans que la boite ne saute. */
-  opacity: 0; visibility: hidden;
-  transition: opacity .15s ease, visibility .15s;
+position: absolute; top: 10px; bottom: 10px; left: 268px; right: 10px;
+padding: 0 6px 0 20px;
+overflow-y: auto;
+display: flex; flex-direction: column; gap: 2px;
+opacity: 0; visibility: hidden;
+transition: opacity .15s ease, visibility .15s;
 }
 .mega-droite a {
-  /* Interligne resserre : celui du corps de page (1,7) est fait pour des
-     paragraphes, et donnait des entrees de menu de 48 px de haut. */
-  padding: 8px 10px; border-radius: 8px; line-height: 1.35;
-  color: var(--texte); font-size: .95rem; text-decoration: none;
-  transition: background .18s ease, color .18s ease;
+padding: 8px 10px; border-radius: 8px; line-height: 1.35;
+color: var(--texte); font-size: .95rem; text-decoration: none;
+transition: background .18s ease, color .18s ease;
 }
 .mega-droite a:hover {
-  background: var(--hover); color: var(--bleu-fonce); text-decoration: none;
+background: var(--hover); color: var(--bleu-fonce); text-decoration: none;
 }
-/* Le dernier lien de chaque panneau est « Tout afficher » : il se detache
-   en bleu, comme sur les menus ou il sert de sortie de secours. */
 .mega-droite a:last-child { color: var(--gris); }
 .mega-droite a:last-child:hover { color: var(--bleu-fonce); }
-
-/* La premiere filiere est ouverte tant qu'aucune autre n'est survolee —
-   mais SEULEMENT quand le menu lui-meme est ouvert. « visibility: visible »
-   sur un descendant annule le « hidden » du parent : sans cette condition,
-   ses matieres restaient peintes par-dessus la page, menu ferme. */
 .nav-groupe:hover .mega-item.ouvert > .mega-droite,
 .nav-groupe:focus-within .mega-item.ouvert > .mega-droite,
 .mega-item:hover > .mega-droite,
 .mega-item:focus-within > .mega-droite { opacity: 1; visibility: visible; }
 .mega-gauche:hover .mega-item.ouvert:not(:hover) > .mega-droite,
 .mega-gauche:focus-within .mega-item.ouvert:not(:focus-within) > .mega-droite {
-  opacity: 0; visibility: hidden;
+opacity: 0; visibility: hidden;
 }
-
 .nav-menu {
-  position: absolute; top: calc(100% + 8px); left: 0; z-index: 60;
-  min-width: 290px; padding: 8px;
-  background: #fff; border: 1px solid var(--bord);
-  border-radius: var(--rayon-l); box-shadow: var(--ombre-panneau);
-  /* Cache par la transparence et non par display:none : une transition ne
-     peut pas partir d'un element absent du rendu. */
-  opacity: 0; visibility: hidden; transform: translateY(-6px);
-  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+position: absolute; top: calc(100% + 8px); left: 0; z-index: 60;
+min-width: 290px; padding: 8px;
+background: #fff; border: 1px solid var(--bord);
+border-radius: var(--rayon-l); box-shadow: var(--ombre-panneau);
+opacity: 0; visibility: hidden; transform: translateY(-6px);
+transition: opacity .2s ease, transform .2s ease, visibility .2s;
 }
 .nav-groupe:hover .nav-menu,
 .nav-groupe:focus-within .nav-menu {
-  opacity: 1; visibility: visible; transform: translateY(0);
+opacity: 1; visibility: visible; transform: translateY(0);
 }
-
-/* Pont invisible entre le lien et le menu : sans lui, le menu se referme
-   dans l'espace vide que la souris traverse pour l'atteindre. */
+.nav-groupe.nav-force-ferme .nav-menu {
+opacity: 0; visibility: hidden; transform: translateY(-6px);
+}
+.nav-groupe.nav-force-ferme .nav-fleche { transform: none; }
 .nav-groupe::after {
-  content: ""; position: absolute; top: 100%; left: 0;
-  width: 100%; height: 10px;
+content: ""; position: absolute; top: 100%; left: 0;
+width: 100%; height: 10px;
 }
-
 .nav-menu a {
-  display: block; padding: 10px 12px; border-radius: 10px;
-  text-decoration: none; transition: background .2s ease;
+display: block; padding: 10px 12px; border-radius: 10px;
+text-decoration: none; transition: background .2s ease;
 }
 .nav-menu a:hover { background: var(--hover); text-decoration: none; }
 .nav-menu strong {
-  display: block; color: var(--encre); font-size: .95rem; font-weight: 700;
+display: block; color: var(--encre); font-size: .95rem; font-weight: 700;
 }
 .nav-menu span {
-  display: block; color: var(--gris); font-size: .8rem; margin-top: 1px;
+display: block; color: var(--gris); font-size: .8rem; margin-top: 1px;
 }
-
-/* --- Cartes de filiere --------------------------------------------- */
-
 .carte-filiere {
-  background: #fff; border: 1px solid var(--bord);
-  border-radius: var(--rayon-l); padding: 26px 24px;
-  box-shadow: var(--ombre-carte);
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+background: #fff; border: 1px solid var(--bord);
+border-radius: var(--rayon-l); padding: 26px 24px;
+box-shadow: var(--ombre-carte);
+transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
 .carte-filiere:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 26px 52px rgba(15, 23, 42, .13);
-  border-color: rgba(37, 99, 235, .35);
+transform: translateY(-4px);
+box-shadow: 0 26px 52px rgba(15, 23, 42, .13);
+border-color: rgba(37, 99, 235, .35);
 }
-.carte-filiere h3 { margin-top: 0; font-size: 1.15rem; }
-.carte-filiere h3 a { color: var(--encre); text-decoration: none; }
-.carte-filiere h3 a::after {
-  content: " →"; color: var(--bleu); display: inline-block;
-  transition: transform .3s ease;
+.carte-filiere h2 { margin-top: 0; font-size: 1.15rem; }
+.carte-filiere h2 a { color: var(--encre); text-decoration: none; }
+.carte-filiere h2 a::after {
+content: " →"; color: var(--bleu); display: inline-block;
+transition: transform .3s ease;
 }
 .carte-filiere:hover h3 a::after { transform: translateX(4px); }
 .carte-filiere p:first-of-type {
-  color: var(--gris); font-size: .85rem; margin-bottom: .8em;
+color: var(--gris); font-size: .85rem; margin-bottom: .8em;
 }
 .carte-filiere p:last-child { margin-bottom: 0; }
-
-/* --- Apparition au defilement -------------------------------------- */
-/*
-   L'element est legerement decale et transparent, puis remis en place quand
-   il entre dans la fenetre. La classe est posee par JavaScript ; si celui-ci
-   ne s'execute pas, la regle « pas de JS » ci-dessous laisse tout visible -
-   un contenu invisible faute de script serait un contenu perdu.
-*/
 html.js .revelation > *,
 html.js .a-reveler {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity .5s ease, transform .5s ease;
+opacity: 0;
+transform: translateY(14px);
+transition: opacity .5s ease, transform .5s ease;
 }
 html.js .revelation > *:nth-child(2) { transition-delay: .08s; }
 html.js .revelation > *:nth-child(3) { transition-delay: .16s; }
-
 html.js .revelation.vue > *,
 html.js .a-reveler.vue { opacity: 1; transform: none; }
-
-/* --- En-tete qui se densifie au defilement -------------------------- */
-
 .entete-nav-barre { transition: box-shadow .3s ease, background .3s ease; }
-/* « defile » etait aussi le nom du carrousel de logos, qui porte
-   overflow: hidden. L'en-tete heritait donc de cette regle des qu'on
-   quittait le haut de page, et rognait le menu deroulant a sa propre
-   hauteur : on n'en voyait plus qu'un liseré blanc. */
 .entete-nav-barre.abaissee {
-  box-shadow: 0 6px 24px rgba(15, 23, 42, .07);
-  background: rgba(255, 255, 255, .94);
+box-shadow: 0 6px 24px rgba(15, 23, 42, .07);
+background: rgba(255, 255, 255, .94);
 }
-
-/* --- Liens et images : les memes durees que le reste ---------------- */
-
 main a { transition: color .2s ease; }
 .liste-articles a img, .capture-accroche { transition: transform .4s ease; }
-
 @media (max-width: 900px) {
-  /* Sur petit ecran il n'y a pas de survol : le sous-menu est deroule en
-     permanence sous son parent, en retrait. */
-  .nav-groupe { display: block; width: 100%; }
-  .nav-menu {
-    position: static; opacity: 1; visibility: visible; transform: none;
-    box-shadow: none; border: none; padding: 0 0 0 14px; min-width: 0;
-  }
-  .nav-fleche { display: none; }
-  .nav-menu span { display: none; }
-
-  /* Le menu des matieres a deux panneaux n'a pas de sens sans survol :
-     il se deplie en une seule colonne, chaque filiere suivie de ses
-     matieres en retrait. Laisse tel quel, le panneau de droite faisait
-     580 px de large et sortait de l'ecran.
-     Selecteur double a dessein, comme la regle d'origine : ".mega-panneau"
-     seul est MOINS specifique que ".nav-menu.mega-panneau" (deux classes)
-     et perdait donc face a elle malgre son ordre plus tardif dans la
-     feuille - la specificite l'emporte toujours sur l'ordre source. */
-  .nav-menu.mega-panneau { display: block; min-width: 0; padding: 0 0 0 14px; }
-  .mega-gauche { width: auto; flex: none; border-right: none; }
-  .mega-filiere { margin-right: 0; }
-  .mega-filiere small { display: none; }
-  .mega-chevron { display: none; }
-  .mega-droite {
-    position: static; width: auto; opacity: 1; visibility: visible;
-    padding: 0 0 8px 14px;
-  }
-  .mega-item.ouvert > .mega-droite { opacity: 1; visibility: visible; }
+.nav-groupe { display: block; width: 100%; }
+.nav-menu {
+position: static; opacity: 1; visibility: visible; transform: none;
+box-shadow: none; border: none; padding: 0 0 0 14px; min-width: 0;
 }
-
+.nav-fleche { display: none; }
+.nav-menu span { display: none; }
+.nav-menu.mega-panneau { display: block; min-width: 0; padding: 0 0 0 14px; }
+.mega-gauche { width: auto; flex: none; border-right: none; }
+.mega-filiere { margin-right: 0; }
+.mega-filiere small { display: none; }
+.mega-chevron { display: none; }
+.mega-droite {
+position: static; width: auto; opacity: 1; visibility: visible;
+padding: 0 0 8px 14px;
+}
+.mega-item.ouvert > .mega-droite { opacity: 1; visibility: visible; }
+}
 @media (prefers-reduced-motion: reduce) {
-  html.js .revelation > *,
-  html.js .a-reveler { opacity: 1; transform: none; transition: none; }
-  .carte-filiere:hover { transform: none; }
+html.js .revelation > *,
+html.js .a-reveler { opacity: 1; transform: none; transition: none; }
+.carte-filiere:hover { transform: none; }
 }
-
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  * { transition: none !important; }
-  .carte:hover, .bouton:hover, .liste-articles a:hover { transform: none; }
-  /* Un defilement continu est penible, voire nauseeux, pour une partie des
-     visiteurs. On le remplace par une liste fixe plutot que de le ralentir. */
-  .defile { display: block; -webkit-mask-image: none; mask-image: none; }
-  .defile-piste { animation: none; flex-wrap: wrap; justify-content: center; gap: 14px 34px; }
-  .defile-piste[aria-hidden="true"] { display: none; }
+html { scroll-behavior: auto; }
+* { transition: none !important; }
+.carte:hover, .bouton:hover, .liste-articles a:hover { transform: none; }
+.defile { display: block; -webkit-mask-image: none; mask-image: none; }
+.defile-piste { animation: none; flex-wrap: wrap; justify-content: center; gap: 14px 34px; }
+.defile-piste[aria-hidden="true"] { display: none; }
 }
-
-/* ==================================================================
-   Comment ca marche : trois etapes, chacune animee
-   ==================================================================
-
-   Les boucles ne demarrent qu'a l'entree dans le champ de vision (classe
-   « anime », posee par l'observateur) et s'arretent en sortant. Une page
-   d'accueil qui fait tourner trois animations en permanence chauffe le
-   processeur d'un portable pour rien.
-
-   Tout ce qui peut boucler seul est en CSS ; le JavaScript ne sert qu'a la
-   frappe lettre par lettre et a l'enchainement des phases. */
-
-/* --- Etape 1 : la voix -------------------------------------------- */
-
 .scene-voix { flex-direction: column; }
-
 .mini-carte {
-  width: 80%;
-  background: linear-gradient(155deg, #1e3a8a 0%, #2563eb 100%);
-  border-radius: 14px;
-  padding: 12px 14px 14px;
-  box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .35);
-  color: #fff;
-  font-family: Nunito, sans-serif;
-  text-align: center;
+width: 80%;
+background: linear-gradient(155deg, #1e3a8a 0%, #2563eb 100%);
+border-radius: 14px;
+padding: 12px 14px 14px;
+box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .35);
+color: #fff;
+font-family: Nunito, sans-serif;
+text-align: center;
 }
-
 .mini-carte .mot {
-  font-family: Poppins, sans-serif;
-  font-weight: 600;
-  font-size: .98rem;
+font-family: Poppins, sans-serif;
+font-weight: 600;
+font-size: .98rem;
 }
-
 .micro {
-  position: relative;
-  width: 32px; height: 32px;
-  margin: 9px auto 7px;
-  display: grid; place-items: center;
+position: relative;
+width: 32px; height: 32px;
+margin: 9px auto 7px;
+display: grid; place-items: center;
 }
-
 .micro svg { width: 16px; height: 16px; fill: #1e3a8a; position: relative; z-index: 2; }
-
 .micro-pastille {
-  position: absolute; inset: 0;
-  border-radius: 50%;
-  background: #fff;
-  z-index: 1;
+position: absolute; inset: 0;
+border-radius: 50%;
+background: #fff;
+z-index: 1;
 }
-
-/* Trois ondes decalees d'un tiers de cycle : l'oeil lit une emission
-   continue plutot que trois pulsations separees. */
 .onde {
-  position: absolute; inset: 0;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, .6);
-  opacity: 0;
+position: absolute; inset: 0;
+border-radius: 50%;
+border: 2px solid rgba(255, 255, 255, .6);
+opacity: 0;
 }
-
 .etape.anime .onde { animation: onde 1.8s ease-out infinite; }
 .etape.anime .onde:nth-of-type(2) { animation-delay: .6s; }
 .etape.anime .onde:nth-of-type(3) { animation-delay: 1.2s; }
-
 @keyframes onde {
-  0%   { transform: scale(1);   opacity: .6; }
-  100% { transform: scale(2.7); opacity: 0; }
+0%   { transform: scale(1);   opacity: .6; }
+100% { transform: scale(2.7); opacity: 0; }
 }
-
 .transcription {
-  min-height: 1.35em;
-  font-size: .9rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, .96);
+min-height: 1.35em;
+font-size: .9rem;
+font-weight: 600;
+color: rgba(255, 255, 255, .96);
 }
-
 .transcription::after {
-  content: '';
-  display: inline-block;
-  width: 2px; height: .95em;
-  background: rgba(255, 255, 255, .85);
-  margin-left: 2px;
-  vertical-align: -.12em;
-  animation: clignote .9s steps(1) infinite;
+content: '';
+display: inline-block;
+width: 2px; height: .95em;
+background: rgba(255, 255, 255, .85);
+margin-left: 2px;
+vertical-align: -.12em;
+animation: clignote .9s steps(1) infinite;
 }
 .transcription.fini::after { display: none; }
-
 @keyframes clignote { 50% { opacity: 0; } }
-
 .coche {
-  position: absolute;
-  bottom: 12px;
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  background: #3b82f6;
-  display: grid; place-items: center;
-  opacity: 0; transform: scale(.6);
-  transition: opacity .25s ease, transform .25s cubic-bezier(.2, 1.4, .4, 1);
+position: absolute;
+bottom: 12px;
+width: 30px; height: 30px;
+border-radius: 50%;
+background: #3b82f6;
+display: grid; place-items: center;
+opacity: 0; transform: scale(.6);
+transition: opacity .25s ease, transform .25s cubic-bezier(.2, 1.4, .4, 1);
 }
 .coche svg { width: 15px; height: 15px; }
 .coche.vue { opacity: 1; transform: scale(1); }
-
-/* --- Etape 2 : le scan -------------------------------------------- */
-
 .scene-scan { gap: 10px; padding: 0 14px; }
-
 .feuille {
-  position: relative;
-  flex: 1 1 0;
-  background: #fff;
-  border-radius: 10px;
-  padding: 10px 9px;
-  box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .12);
-  overflow: hidden;
+position: relative;
+flex: 1 1 0;
+background: #fff;
+border-radius: 10px;
+padding: 10px 9px;
+box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .12);
+overflow: hidden;
 }
-
 .feuille svg { display: block; width: 100%; height: auto; }
-
 .rayon {
-  position: absolute;
-  left: 0; right: 0; top: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-  box-shadow: 0 0 10px 2px rgba(59, 130, 246, .6);
-  opacity: 0;
+position: absolute;
+left: 0; right: 0; top: 0;
+height: 2px;
+background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+box-shadow: 0 0 10px 2px rgba(59, 130, 246, .6);
+opacity: 0;
 }
-
 .etape.anime .rayon { animation: balayer 4s ease-in-out infinite; }
-
 @keyframes balayer {
-  0%        { top: 0;    opacity: 0; }
-  6%        { opacity: 1; }
-  50%       { top: 100%; opacity: 1; }
-  58%, 100% { top: 100%; opacity: 0; }
+0%        { top: 0;    opacity: 0; }
+6%        { opacity: 1; }
+50%       { top: 100%; opacity: 1; }
+58%, 100% { top: 100%; opacity: 0; }
 }
-
 .fleche-scan { color: #94a3b8; font-size: 1.05rem; flex: 0 0 auto; }
-
 .carte-issue {
-  flex: 1 1 0;
-  background: #fff;
-  border: 2px dashed #cbd5e1;
-  border-radius: 12px;
-  padding: 10px 9px;
-  min-height: 92px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 7px;
-  transition: border-color .4s ease, box-shadow .4s ease;
+flex: 1 1 0;
+background: #fff;
+border: 2px dashed #cbd5e1;
+border-radius: 12px;
+padding: 10px 9px;
+min-height: 92px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 7px;
+transition: border-color .4s ease, box-shadow .4s ease;
 }
-
 .carte-issue.complete {
-  border-style: solid;
-  border-color: #1e3a8a;
-  box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .28);
+border-style: solid;
+border-color: #1e3a8a;
+box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .28);
 }
-
 .carte-issue .champ {
-  height: 8px;
-  border-radius: 4px;
-  background: #e2e8f0;
-  width: 0;
-  transition: width .5s ease, background-color .5s ease;
+height: 8px;
+border-radius: 4px;
+background: #e2e8f0;
+width: 0;
+transition: width .5s ease, background-color .5s ease;
 }
 .carte-issue .champ.rempli { background: #93c5fd; }
 .carte-issue .champ.rempli.c1 { width: 78%; background: #1e3a8a; }
 .carte-issue .champ.rempli.c2 { width: 54%; background: #3b82f6; }
 .carte-issue .champ.rempli.c3 { width: 66%; }
-
 .etiquette-carte {
-  font-family: Poppins, sans-serif;
-  font-size: .62rem;
-  font-weight: 600;
-  letter-spacing: .04em;
-  color: #64748b;
-  opacity: 0;
-  transition: opacity .4s ease;
+font-family: Poppins, sans-serif;
+font-size: .62rem;
+font-weight: 600;
+letter-spacing: .04em;
+color: #64748b;
+opacity: 0;
+transition: opacity .4s ease;
 }
 .carte-issue.complete .etiquette-carte { opacity: 1; }
-
-/* --- Responsive ---------------------------------------------------- */
-
 @media (max-width: 900px) {
-  .etapes-grille {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    max-width: 440px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .scene { height: 176px; }
-  .rendu { font-size: 1.1rem; }
+.etapes-grille {
+grid-template-columns: 1fr;
+gap: 20px;
+max-width: 440px;
+margin-left: auto;
+margin-right: auto;
 }
-
+.scene { height: 176px; }
+.rendu { font-size: 1.1rem; }
+}
 @media (prefers-reduced-motion: reduce) {
-  /* Etat final, sans jamais rien animer : ces boucles sont decoratives et
-     ne portent aucune information que le texte a cote ne donne deja. */
-  .etape.anime .onde,
-  .etape.anime .rayon { animation: none; }
-  .onde { opacity: .3; }
-  .rayon { opacity: 0; }
-  .transcription::after { display: none; }
-  .coche { opacity: 1; transform: none; }
-  .carte-issue { border-style: solid; border-color: #1e3a8a; }
-  .carte-issue .champ:nth-of-type(1) { width: 78%; background: #1e3a8a; }
-  .carte-issue .champ:nth-of-type(2) { width: 54%; background: #3b82f6; }
-  .carte-issue .champ:nth-of-type(3) { width: 66%; background: #93c5fd; }
-  .etiquette-carte { opacity: 1; }
-  .rendu { opacity: 1; transform: none; }
+.etape.anime .onde,
+.etape.anime .rayon { animation: none; }
+.onde { opacity: .3; }
+.rayon { opacity: 0; }
+.transcription::after { display: none; }
+.coche { opacity: 1; transform: none; }
+.carte-issue { border-style: solid; border-color: #1e3a8a; }
+.carte-issue .champ:nth-of-type(1) { width: 78%; background: #1e3a8a; }
+.carte-issue .champ:nth-of-type(2) { width: 54%; background: #3b82f6; }
+.carte-issue .champ:nth-of-type(3) { width: 66%; background: #93c5fd; }
+.etiquette-carte { opacity: 1; }
+.rendu { opacity: 1; transform: none; }
 }
-
-/* --- Etape 3 : la photo de formule ---------------------------------- */
-
 .scene-formule { flex-direction: column; gap: 10px; padding: 12px 16px; }
-
-/* Le viseur : la feuille cadree par quatre coins, comme dans
-   l'application au moment ou l'on designe la zone a lire. */
 .viseur {
-  position: relative;
-  width: 100%;
-  background: #fff;
-  border-radius: 10px;
-  padding: 14px 12px;
-  box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .12);
-  transition: transform .5s ease, opacity .5s ease;
+position: relative;
+width: 100%;
+background: #fff;
+border-radius: 10px;
+padding: 14px 12px;
+box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .12);
+transition: transform .5s ease, opacity .5s ease;
 }
-
-/* La feuille photographiee : la meme formule, mais telle qu'elle est
-   dans un cours - a l'encre, sur du papier regle, et de travers comme
-   toute photo prise a la main. C'est le contraste avec la carte obtenue
-   qui doit se lire, pas un gribouillis decoratif. */
 .formule-papier {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 62px;
-  border-radius: 6px;
-  background:
-    repeating-linear-gradient(to bottom,
-      transparent 0, transparent 17px,
-      rgba(148, 163, 184, .32) 17px, rgba(148, 163, 184, .32) 18px);
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 62px;
+border-radius: 6px;
+background:
+repeating-linear-gradient(to bottom,
+transparent 0, transparent 17px,
+rgba(148, 163, 184, .32) 17px, rgba(148, 163, 184, .32) 18px);
 }
-
 .formule-encre {
-  font-family: Cambria, Georgia, "Times New Roman", serif;
-  font-size: 1.12rem;
-  color: #334155;
-  transform: rotate(-1.6deg);
-  white-space: nowrap;
+font-family: Cambria, Georgia, "Times New Roman", serif;
+font-size: 1.12rem;
+color: #334155;
+transform: rotate(-1.6deg);
+white-space: nowrap;
 }
 .formule-encre .racine { display: inline-flex; align-items: stretch; }
 .formule-encre .radical { font-size: 1.12em; line-height: .95; }
 .formule-encre .radicande {
-  border-top: 1.1px solid #334155;
-  padding: .08em .14em 0 .05em;
-  margin-top: .05em;
+border-top: 1.1px solid #334155;
+padding: .08em .14em 0 .05em;
+margin-top: .05em;
 }
 .formule-encre .integrale { font-size: 1.45em; line-height: .75; vertical-align: -.18em; }
 .formule-encre sup { font-size: .6em; vertical-align: .62em; }
 .formule-encre .var { font-style: italic; }
-
 .coin {
-  position: absolute;
-  width: 13px; height: 13px;
-  border: 2px solid #3b82f6;
-  opacity: .9;
+position: absolute;
+width: 13px; height: 13px;
+border: 2px solid #3b82f6;
+opacity: .9;
 }
 .coin.hg { top: 6px;  left: 6px;  border-right: 0; border-bottom: 0; border-radius: 4px 0 0 0; }
 .coin.hd { top: 6px;  right: 6px; border-left: 0;  border-bottom: 0; border-radius: 0 4px 0 0; }
 .coin.bg { bottom: 6px; left: 6px;  border-right: 0; border-top: 0; border-radius: 0 0 0 4px; }
 .coin.bd { bottom: 6px; right: 6px; border-left: 0;  border-top: 0; border-radius: 0 0 4px 0; }
-
-/* Le cadrage se resserre avant le declenchement : c'est ce petit
-   mouvement qui fait lire « on vise », et non « une image est posee la ». */
 .etape.anime .coin { animation: viser 4.6s ease-in-out infinite; }
-
 @keyframes viser {
-  0%, 100% { transform: scale(1);    opacity: .55; }
-  22%      { transform: scale(.94);  opacity: 1; }
-  38%, 96% { transform: scale(.94);  opacity: 1; }
+0%, 100% { transform: scale(1);    opacity: .55; }
+22%      { transform: scale(.94);  opacity: 1; }
+38%, 96% { transform: scale(.94);  opacity: 1; }
 }
-
 .flash {
-  position: absolute; inset: 0;
-  border-radius: 10px;
-  background: #fff;
-  opacity: 0;
-  pointer-events: none;
+position: absolute; inset: 0;
+border-radius: 10px;
+background: #fff;
+opacity: 0;
+pointer-events: none;
 }
 .viseur.declenche .flash { animation: eclair .45s ease-out; }
-
 @keyframes eclair {
-  0%   { opacity: 0; }
-  12%  { opacity: .92; }
-  100% { opacity: 0; }
+0%   { opacity: 0; }
+12%  { opacity: .92; }
+100% { opacity: 0; }
 }
-
 .viseur.parti { opacity: .3; transform: scale(.96); }
-
-/* Le declencheur, entre le viseur et la carte obtenue. */
 .declencheur {
-  position: relative;
-  width: 26px; height: 26px;
-  border-radius: 50%;
-  background: #1e3a8a;
-  flex: 0 0 auto;
-  box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .3);
+position: relative;
+width: 26px; height: 26px;
+border-radius: 50%;
+background: #1e3a8a;
+flex: 0 0 auto;
+box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .3);
 }
 .declencheur::after {
-  content: '';
-  position: absolute; inset: 5px;
-  border-radius: 50%;
-  border: 2px solid #fff;
+content: '';
+position: absolute; inset: 5px;
+border-radius: 50%;
+border: 2px solid #fff;
 }
 .declencheur-anneau {
-  position: absolute; inset: 0;
-  border-radius: 50%;
-  border: 2px solid #3b82f6;
-  opacity: 0;
+position: absolute; inset: 0;
+border-radius: 50%;
+border: 2px solid #3b82f6;
+opacity: 0;
 }
 .etape.anime .declencheur-anneau { animation: declic 4.6s ease-out infinite; }
-
 @keyframes declic {
-  0%, 26%   { opacity: 0; transform: scale(1); }
-  30%       { opacity: .9; transform: scale(1); }
-  48%, 100% { opacity: 0; transform: scale(2.1); }
+0%, 26%   { opacity: 0; transform: scale(1); }
+30%       { opacity: .9; transform: scale(1); }
+48%, 100% { opacity: 0; transform: scale(2.1); }
 }
-
 .rendu {
-  font-family: Cambria, Georgia, "Times New Roman", serif;
-  font-size: 1.2rem;
-  color: #0f172a;
-  background: #fff;
-  border-radius: 10px;
-  padding: 9px 16px;
-  box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .18);
-  opacity: 0;
-  transform: translateY(8px) scale(.96);
-  transition: opacity .5s ease, transform .5s cubic-bezier(.2, 1.2, .4, 1);
-  white-space: nowrap;
+font-family: Cambria, Georgia, "Times New Roman", serif;
+font-size: 1.2rem;
+color: #0f172a;
+background: #fff;
+border-radius: 10px;
+padding: 9px 16px;
+box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .18);
+opacity: 0;
+transform: translateY(8px) scale(.96);
+transition: opacity .5s ease, transform .5s cubic-bezier(.2, 1.2, .4, 1);
+white-space: nowrap;
 }
 .rendu.vu { opacity: 1; transform: none; }
-
-/* La racine carree : le radical, puis une barre posee sur le radicande.
-   Reconstituee a la main - la page ne charge pas un moteur de rendu
-   mathematique pour trois symboles. */
 .rendu .racine { display: inline-flex; align-items: stretch; }
 .rendu .radical { font-size: 1.12em; line-height: .95; }
 .rendu .radicande {
-  border-top: 1.2px solid #0f172a;
-  padding: .08em .14em 0 .05em;
-  margin-top: .05em;
+border-top: 1.2px solid #0f172a;
+padding: .08em .14em 0 .05em;
+margin-top: .05em;
 }
 .rendu .integrale { font-size: 1.5em; line-height: .75; vertical-align: -.18em; }
 .rendu sup { font-size: .6em; vertical-align: .62em; }
 .rendu .var { font-style: italic; }
-
 @media (max-width: 900px) {
-  .rendu { font-size: 1.08rem; }
+.rendu { font-size: 1.08rem; }
 }
-
 @media (prefers-reduced-motion: reduce) {
-  .etape.anime .coin,
-  .etape.anime .declencheur-anneau { animation: none; }
-  .viseur.declenche .flash { animation: none; opacity: 0; }
-  .viseur { opacity: 1; transform: none; }
-  .rendu { opacity: 1; transform: none; }
+.etape.anime .coin,
+.etape.anime .declencheur-anneau { animation: none; }
+.viseur.declenche .flash { animation: none; opacity: 0; }
+.viseur { opacity: 1; transform: none; }
+.rendu { opacity: 1; transform: none; }
 }
-
-/* ==================================================================
-   Demonstration animee de l'en-tete
-   ==================================================================
-
-   Un enchainement de captures de l'APPLICATION REELLE, avec un curseur
-   qui va cliquer ou il faut. Rien n'est redessine : ce que le visiteur
-   voit est ce qu'il aura apres telechargement.
-
-   Les vignettes sont empilees et fondues l'une dans l'autre. Le rapport
-   largeur/hauteur est impose par aspect-ratio plutot que laisse aux
-   images : sans cela le bloc se replierait pendant le chargement et
-   toute la page sauterait. */
-
 .demo-app {
-  position: relative;
-  border: 1px solid var(--bord);
-  border-radius: var(--rayon-xl);
-  box-shadow: var(--ombre-panneau);
-  background: #fff;
-  overflow: hidden;
-  aspect-ratio: 1475 / 1008;
+position: relative;
+border: 1px solid var(--bord);
+border-radius: var(--rayon-xl);
+box-shadow: var(--ombre-panneau);
+background: #fff;
+overflow: hidden;
+aspect-ratio: 1475 / 1008;
 }
-
 .demo-vue {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity .45s ease;
+position: absolute;
+inset: 0;
+display: block;
+width: 100%;
+height: 100%;
+object-fit: cover;
+opacity: 0;
+transition: opacity .45s ease;
 }
-
 .demo-vue img { width: 100%; height: 100%; display: block; object-fit: cover; }
-
 .demo-vue.active { opacity: 1; }
-
-/* Sans JavaScript, ou avant son execution, la premiere vignette reste
-   visible : l'en-tete n'est jamais vide. */
 .demo-vue[data-etape="0"] { opacity: 1; }
 html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
-
-/* --- Le curseur ---------------------------------------------------- */
-
 .demo-curseur {
-  position: absolute;
-  left: 50%; top: 50%;
-  width: 22px; height: 22px;
-  margin: -2px 0 0 -2px;
-  pointer-events: none;
-  opacity: 0;
-  transition: left .85s cubic-bezier(.33, .1, .25, 1),
-              top .85s cubic-bezier(.33, .1, .25, 1),
-              opacity .3s ease;
-  z-index: 3;
+position: absolute;
+left: 50%; top: 50%;
+width: 22px; height: 22px;
+margin: -2px 0 0 -2px;
+pointer-events: none;
+opacity: 0;
+transition: left .85s cubic-bezier(.33, .1, .25, 1),
+top .85s cubic-bezier(.33, .1, .25, 1),
+opacity .3s ease;
+z-index: 3;
 }
 .demo-curseur.visible { opacity: 1; }
-
 .demo-curseur svg {
-  width: 100%; height: 100%;
-  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, .4));
+width: 100%; height: 100%;
+filter: drop-shadow(0 2px 4px rgba(15, 23, 42, .4));
 }
-
-/* L'onde du clic part du bout de la fleche, pas de son centre. */
 .demo-clic {
-  position: absolute;
-  left: 1px; top: 1px;
-  width: 34px; height: 34px;
-  margin: -17px 0 0 -17px;
-  border-radius: 50%;
-  border: 2px solid var(--bleu);
-  opacity: 0;
-  transform: scale(.3);
+position: absolute;
+left: 1px; top: 1px;
+width: 34px; height: 34px;
+margin: -17px 0 0 -17px;
+border-radius: 50%;
+border: 2px solid var(--bleu);
+opacity: 0;
+transform: scale(.3);
 }
 .demo-curseur.clique .demo-clic { animation: demo-clic .5s ease-out; }
-
 @keyframes demo-clic {
-  0%   { opacity: .9; transform: scale(.3); }
-  100% { opacity: 0;  transform: scale(1.6); }
+0%   { opacity: .9; transform: scale(.3); }
+100% { opacity: 0;  transform: scale(1.6); }
 }
-
-/* --- La legende ---------------------------------------------------- */
-
 .demo-legende {
-  margin: 18px auto 0;
-  max-width: 46ch;
-  font-family: Poppins, sans-serif;
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.45;
-  color: #1e3a8a;
-  text-align: center;
-  transition: opacity .3s ease;
+margin: 18px auto 0;
+max-width: 46ch;
+font-family: Poppins, sans-serif;
+font-size: 1.05rem;
+font-weight: 600;
+line-height: 1.45;
+color: #1e3a8a;
+text-align: center;
+transition: opacity .3s ease;
 }
-
-
 @media (max-width: 900px) {
-  .demo-legende { font-size: .95rem; margin-top: 14px; }
-  .demo-curseur { width: 18px; height: 18px; }
+.demo-legende { font-size: .95rem; margin-top: 14px; }
+.demo-curseur { width: 18px; height: 18px; }
 }
-
 @media (prefers-reduced-motion: reduce) {
-  /* On s'en tient a la premiere vue, fixe : un diaporama qui defile tout
-     seul est exactement ce que ce reglage demande d'eviter. */
-  .demo-vue { transition: none; }
-  .demo-curseur { display: none; }
+.demo-vue { transition: none; }
+.demo-curseur { display: none; }
 }
-
-/* ==================================================================
-   Refonte : en-tete centre, blocs alternes, FAQ repliee
-   ================================================================== */
-
 .conteneur-etroit {
-  max-width: 940px;
-  margin: 0 auto;
-  padding: 0 24px;
+max-width: 940px;
+margin: 0 auto;
+padding: 0 24px;
 }
-
-/* --- En-tete ------------------------------------------------------- */
-
 .heros { padding: 64px 0 0; }
-
 .pastille {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  background: #fff;
-  border: 1px solid var(--bord);
-  border-radius: 999px;
-  padding: 8px 18px;
-  font-size: .93rem;
-  font-weight: 600;
-  color: var(--texte);
-  box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .08);
-  margin-bottom: 26px;
+display: inline-flex;
+align-items: center;
+gap: 9px;
+background: #fff;
+border: 1px solid var(--bord);
+border-radius: 999px;
+padding: 8px 18px;
+font-size: .93rem;
+font-weight: 600;
+color: var(--texte);
+box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .08);
+margin-bottom: 26px;
 }
 .pastille i {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, .18);
+width: 8px; height: 8px;
+border-radius: 50%;
+background: #22c55e;
+box-shadow: 0 0 0 3px rgba(34, 197, 94, .18);
 }
-
 .heros h1 {
-  font-size: clamp(2.1rem, 4.8vw, 3.55rem);
-  line-height: 1.1;
-  letter-spacing: -.028em;
-  margin: 0 0 .5em;
+font-size: clamp(2.1rem, 4.8vw, 3.55rem);
+line-height: 1.1;
+letter-spacing: -.028em;
+margin: 0 0 .5em;
 }
-
-/* Le mot anime. Sa largeur change a chaque lettre : sans hauteur de ligne
-   figee et sans reservation verticale, tout le bloc sauterait a chaque
-   frappe et la page entiere avec lui. */
 .mot-anime {
-  display: inline-flex;
-  align-items: baseline;
-  min-height: 1.1em;
+display: inline-flex;
+align-items: baseline;
+min-height: 1.1em;
 }
-
-/* La couleur est posee LETTRE PAR LETTRE en JavaScript, et non par un
-   degrade decoupe sur le texte (background-clip: text).
-   
-   Pourquoi : chaque lettre porte une animation d'apparition qui la
-   translate. Un transform cree un nouveau bloc conteneur, et le fond
-   decoupe du parent ne peint plus a travers - le texte restait
-   transparent, donc invisible sur le fond clair. Colorer chaque lettre
-   supprime la dependance entiere.
-
-   La couleur ci-dessous est celle du repli : c'est ce que voit un
-   visiteur dont le script echoue, et elle doit donc etre lisible. */
 .mot-lettres { color: var(--bleu-fonce); }
-
-/* Chaque lettre arrive avec un leger fondu montant : l'apparition se lit
-   comme une frappe, pas comme un texte qui clignote. */
 .mot-lettres span {
-  display: inline-block;
-  white-space: pre;
-  animation: lettre .28s ease-out both;
+display: inline-block;
+white-space: pre;
+animation: lettre .28s ease-out both;
 }
-
 @keyframes lettre {
-  from { opacity: 0; transform: translateY(.18em); }
-  to   { opacity: 1; transform: none; }
+from { opacity: 0; transform: translateY(.18em); }
+to   { opacity: 1; transform: none; }
 }
-
 .mot-curseur {
-  display: inline-block;
-  width: .055em;
-  min-width: 3px;
-  height: .92em;
-  margin-left: .06em;
-  background: #cbd5e1;
-  border-radius: 2px;
-  animation: clignote 1s steps(1) infinite;
+display: inline-block;
+width: .055em;
+min-width: 3px;
+height: .92em;
+margin-left: .06em;
+background: #cbd5e1;
+border-radius: 2px;
+animation: clignote 1s steps(1) infinite;
 }
-
 .heros .chapeau {
-  font-size: 1.16rem;
-  color: var(--gris);
-  max-width: 660px;
-  margin: 0 auto 2em;
+font-size: 1.16rem;
+color: var(--gris);
+max-width: 660px;
+margin: 0 auto 2em;
 }
-
 .heros .actions { margin-bottom: .9em; }
-.heros .sous-bouton { color: var(--gris-clair); margin-bottom: 0; }
-
-/* --- Le cadre de la demonstration ---------------------------------- */
-
+.heros .sous-bouton { color: var(--gris); margin-bottom: 0; }
 .cadre-demo {
-  margin-top: 56px;
-  padding: 16px 16px 0;
-  border-radius: 26px 26px 0 0;
-  background: linear-gradient(135deg, #2563eb, #7c3aed 55%, #ec4899);
-  box-shadow: 0 -2px 60px rgba(37, 99, 235, .18);
+margin-top: 56px;
+padding: 16px 16px 0;
+border-radius: 26px 26px 0 0;
+background: linear-gradient(135deg, #2563eb, #7c3aed 55%, #ec4899);
+box-shadow: 0 -2px 60px rgba(37, 99, 235, .18);
 }
 .cadre-demo .demo-app {
-  border: 0;
-  border-radius: 18px 18px 0 0;
-  box-shadow: 0 -10px 40px rgba(15, 23, 42, .18);
+border: 0;
+border-radius: 18px 18px 0 0;
+box-shadow: 0 -10px 40px rgba(15, 23, 42, .18);
 }
-
 @media (max-width: 700px) {
-  .cadre-demo { margin-top: 36px; padding: 9px 9px 0; border-radius: 18px 18px 0 0; }
-  .cadre-demo .demo-app { border-radius: 12px 12px 0 0; }
+.cadre-demo { margin-top: 36px; padding: 9px 9px 0; border-radius: 18px 18px 0 0; }
+.cadre-demo .demo-app { border-radius: 12px 12px 0 0; }
 }
-
-/* --- Blocs alternes ------------------------------------------------- */
-
 .eyebrow {
-  display: inline-block;
-  font-size: .82rem;
-  font-weight: 700;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-  color: var(--bleu);
-  margin-bottom: .9em;
+display: inline-block;
+font-size: .82rem;
+font-weight: 700;
+letter-spacing: .09em;
+text-transform: uppercase;
+color: var(--bleu);
+margin-bottom: .9em;
 }
-
 .duos { display: flex; flex-direction: column; gap: 56px; margin-top: 3.2em; }
-
-/* Pas de carte autour d'un bloc : le texte et son animation se posent
-   directement sur le fond de la page. Une bulle blanche sur fond blanc
-   n'ajoutait qu'une ombre et des coins, elle ne separait rien. C'est
-   l'espace entre les blocs qui fait la separation. */
 .duo {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 64px;
-  padding: 28px 0;
+display: grid;
+grid-template-columns: 1fr 1fr;
+align-items: center;
+gap: 64px;
+padding: 28px 0;
 }
-
-/* L'alternance se fait en inversant l'ORDRE des colonnes, pas en
-   reordonnant le balisage : le texte reste avant le visuel dans le
-   document, donc dans l'ordre de lecture d'un lecteur d'ecran. */
 .duo.inverse .duo-texte { order: 2; }
 .duo.inverse .duo-visuel { order: 1; }
-
 .duo-numero {
-  display: grid; place-items: center;
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  background: var(--degrade);
-  color: #fff;
-  font-weight: 700; font-size: .95rem;
-  margin-bottom: 16px;
+display: grid; place-items: center;
+width: 34px; height: 34px;
+border-radius: 50%;
+background: var(--degrade);
+color: #fff;
+font-weight: 700; font-size: .95rem;
+margin-bottom: 16px;
 }
-
 .duo h3 {
-  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
-  line-height: 1.2;
-  letter-spacing: -.015em;
-  margin: 0 0 .5em;
+font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+line-height: 1.2;
+letter-spacing: -.015em;
+margin: 0 0 .5em;
 }
-
 .duo-texte > p { color: var(--gris); margin-bottom: 1.1em; }
-
 .duo-liste { list-style: none; margin: 0 0 1.5em; padding: 0; }
 .duo-liste li {
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: .62em;
-  color: var(--texte);
-  font-size: .97rem;
+position: relative;
+padding-left: 30px;
+margin-bottom: .62em;
+color: var(--texte);
+font-size: .97rem;
 }
 .duo-liste li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: .18em;
-  width: 18px; height: 18px;
-  border-radius: 50%;
-  background: rgba(37, 99, 235, .12);
-  /* La coche est dessinee en fond : pas d'image a charger, et elle suit la
-     couleur du texte si le theme change. */
-  background-image:
-    linear-gradient(to bottom right, transparent 45%, var(--bleu) 45%, var(--bleu) 55%, transparent 55%),
-    linear-gradient(to bottom left, transparent 45%, var(--bleu) 45%, var(--bleu) 55%, transparent 55%);
-  background-size: 9px 2px, 5px 2px;
-  background-position: 7px 8px, 4px 9px;
-  background-repeat: no-repeat;
-  box-shadow: inset 0 0 0 18px rgba(37, 99, 235, .1);
+content: '';
+position: absolute;
+left: 0; top: .18em;
+width: 18px; height: 18px;
+border-radius: 50%;
+background: rgba(37, 99, 235, .12);
+background-image:
+linear-gradient(to bottom right, transparent 45%, var(--bleu) 45%, var(--bleu) 55%, transparent 55%),
+linear-gradient(to bottom left, transparent 45%, var(--bleu) 45%, var(--bleu) 55%, transparent 55%);
+background-size: 9px 2px, 5px 2px;
+background-position: 7px 8px, 4px 9px;
+background-repeat: no-repeat;
+box-shadow: inset 0 0 0 18px rgba(37, 99, 235, .1);
 }
-
 .bouton-fin {
-  display: inline-block;
-  font-weight: 600;
-  color: var(--bleu-fonce);
-  text-decoration: none;
+display: inline-block;
+font-weight: 600;
+color: var(--bleu-fonce);
+text-decoration: none;
 }
 .bouton-fin:hover { text-decoration: underline; }
-
-/* Le visuel : la scene animee, agrandie par rapport a la version en
-   grille, puisqu'elle occupe desormais la moitie d'une rangee. */
-/* La regle de base de .scene avait ete supprimee avec l'ancienne grille
-   « Comment ca marche » : il ne restait que les variantes. Sans display:
-   flex ni overflow: hidden, les elements s'empilaient en blocs et le
-   contenu du scan debordait de 223 px SUR LA SECTION SUIVANTE.
-
-   overflow: hidden n'est pas cosmetique ici : c'est la garantie qu'une
-   animation ne peut jamais deborder sur ce qui l'entoure, quoi qu'il
-   arrive a l'interieur. */
 .duo-visuel .scene {
-  position: relative;
-  height: 268px;
-  margin: 0;
-  border-radius: 18px;
-  background: var(--fond-doux);
-  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, .16);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+position: relative;
+height: 268px;
+margin: 0;
+border-radius: 18px;
+background: var(--fond-doux);
+box-shadow: inset 0 0 0 1px rgba(148, 163, 184, .16);
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
 }
-
 .duo-visuel .scene-voix,
 .duo-visuel .scene-formule { flex-direction: column; }
 .duo-visuel .scene-formule { gap: 10px; padding: 14px 18px; }
 .duo-visuel .scene-scan { flex-direction: row; padding: 0 22px; gap: 16px; }
-
 .duo-visuel .mini-carte { width: 72%; }
-
-/* La feuille est bornee en largeur, donc en hauteur : son SVG garde son
-   rapport 120/86, et sans borne il grandissait avec la colonne jusqu'a
-   depasser la scene. */
 .duo-visuel .feuille { flex: 0 1 236px; max-width: 236px; }
 .duo-visuel .carte-issue { flex: 0 1 200px; }
 .duo-visuel .rendu { font-size: 1.32rem; }
 .duo-visuel .formule-encre { font-size: 1.2rem; }
-
 @media (max-width: 900px) {
-  .duo {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 0;
-  }
-  /* Sur une colonne, le visuel passe sous son texte dans les deux sens :
-     une alternance n'a plus de sens, et l'inversion casserait la lecture. */
-  .duo.inverse .duo-texte { order: 0; }
-  .duo.inverse .duo-visuel { order: 0; }
-  .duo-visuel .scene { height: 210px; }
+.duo {
+grid-template-columns: 1fr;
+gap: 24px;
+padding: 0;
 }
-
-/* --- FAQ repliee ---------------------------------------------------- */
-
+.duo.inverse .duo-texte { order: 0; }
+.duo.inverse .duo-visuel { order: 0; }
+.duo-visuel .scene { height: 210px; }
+}
 .faq {
-  max-width: 840px;
-  margin: 0 auto;
-  padding: 10px 0 0;
-  text-align: center;
+max-width: 840px;
+margin: 0 auto;
+padding: 10px 0 0;
+text-align: center;
 }
-
 .faq-eyebrow {
-  font-size: .82rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--gris);
-  margin: 0 0 .5em;
+font-size: .82rem;
+font-weight: 700;
+letter-spacing: .1em;
+text-transform: uppercase;
+color: var(--gris);
+margin: 0 0 .5em;
 }
-
 .faq h2 {
-  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
-  letter-spacing: -.02em;
-  margin: 0 0 .45em;
+font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+letter-spacing: -.02em;
+margin: 0 0 .45em;
 }
-
 .faq-chapeau { color: var(--gris); margin: 0 auto 2.2em; max-width: 620px; }
-
 .faq-liste { display: flex; flex-direction: column; gap: 12px; text-align: left; }
-
 .faq-item {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .08);
-  transition: box-shadow .25s ease;
+background: #fff;
+border-radius: 16px;
+box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .08);
+transition: box-shadow .25s ease;
 }
 .faq-item[open] { box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .18); }
-
 .faq-item summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 19px 24px;
-  cursor: pointer;
-  font-weight: 600;
-  color: var(--encre);
-  list-style: none;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 18px;
+padding: 19px 24px;
+cursor: pointer;
+font-weight: 600;
+color: var(--encre);
+list-style: none;
 }
-/* Safari et Chrome dessinent chacun leur propre marqueur : on retire les
-   deux, le chevron est le notre. */
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item summary::marker { content: ''; }
-
 .faq-chevron {
-  flex: 0 0 auto;
-  width: 19px; height: 19px;
-  color: var(--gris);
-  transition: transform .25s ease, color .25s ease;
+flex: 0 0 auto;
+width: 19px; height: 19px;
+color: var(--gris);
+transition: transform .25s ease, color .25s ease;
 }
 .faq-item[open] .faq-chevron { transform: rotate(180deg); color: var(--bleu); }
-
-/* Depliage progressif.
-   
-   <details> ouvre et ferme d'un coup : aucune propriete animable ne change
-   entre les deux etats, la hauteur passe de zero a auto. On anime donc une
-   grille dont l'unique rangee va de 0fr a 1fr - une fraction, elle,
-   s'interpole. L'enfant doit porter overflow: hidden, sans quoi le texte
-   deborderait pendant la fermeture au lieu d'etre rogne.
-
-   Ce detour plutot que interpolate-size / calc-size, qui font exactement
-   cela en une ligne mais ne sont pas encore repandus. */
 .faq-enveloppe {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows .32s cubic-bezier(.32, .72, .35, 1);
+display: grid;
+grid-template-rows: 0fr;
+transition: grid-template-rows .32s cubic-bezier(.32, .72, .35, 1);
 }
 .faq-item[open] .faq-enveloppe { grid-template-rows: 1fr; }
-
 .faq-reponse {
-  overflow: hidden;
-  min-height: 0;
-  color: var(--gris);
+overflow: hidden;
+min-height: 0;
+color: var(--gris);
 }
-/* La marge basse vit sur le contenu et non sur l'enveloppe : posee sur
-   l'enveloppe, elle resterait visible une fois repliee. */
 .faq-reponse > :first-child { padding-top: 2px; }
 .faq-reponse > :last-child { padding-bottom: 20px; }
 .faq-reponse p { padding-left: 24px; padding-right: 24px; }
 .faq-reponse p { margin: 0 0 .7em; }
 .faq-reponse p:last-child { margin-bottom: 0; }
 .faq-reponse a { color: var(--bleu-fonce); }
-
 @media (prefers-reduced-motion: reduce) {
-  .mot-lettres span { animation: none; }
-  .mot-curseur { animation: none; }
-  .faq-chevron { transition: none; }
-  .faq-enveloppe { transition: none; }
+.mot-lettres span { animation: none; }
+.mot-curseur { animation: none; }
+.faq-chevron { transition: none; }
+.faq-enveloppe { transition: none; }
 }
-
-/* --- Avis ----------------------------------------------------------- */
-
 .avis-section { padding-top: 10px; }
-
 .avis {
-  position: relative;
-  max-width: 680px;
-  margin: 1.6em auto 0;
-  padding: 40px 38px 32px;
-  background: #fff;
-  border-radius: 22px;
-  box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .18);
+position: relative;
+max-width: 680px;
+margin: 1.6em auto 0;
+padding: 40px 38px 32px;
+background: #fff;
+border-radius: 22px;
+box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .18);
 }
-
 .avis-guillemet {
-  position: absolute;
-  top: -6px; left: 28px;
-  font-family: Georgia, serif;
-  font-size: 5rem;
-  line-height: 1;
-  /* Couleur pleine, et non un degrade decoupe sur le texte : ce dernier
-     rend le texte transparent, et il suffit d'un transform quelque part
-     au-dessus pour qu'il cesse de peindre - la panne est alors totale et
-     silencieuse. Pour un signe decoratif, le risque n'en vaut pas la
-     peine. */
-  color: var(--violet);
-  opacity: .55;
+position: absolute;
+top: -6px; left: 28px;
+font-family: Georgia, serif;
+font-size: 5rem;
+line-height: 1;
+color: var(--violet);
+opacity: .55;
 }
-
 .avis blockquote { margin: 0; }
 .avis blockquote p {
-  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
-  line-height: 1.45;
-  color: var(--encre);
-  font-weight: 500;
-  margin: 0 0 1.1em;
+font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+line-height: 1.45;
+color: var(--encre);
+font-weight: 500;
+margin: 0 0 1.1em;
 }
-
 .avis figcaption {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+display: flex;
+flex-direction: column;
+gap: 2px;
 }
 .avis-nom { font-weight: 700; color: var(--encre); }
 .avis-role { font-size: .93rem; color: var(--gris); }
-
 @media (max-width: 640px) {
-  .avis { padding: 32px 24px 26px; }
-  .avis-guillemet { left: 18px; font-size: 4rem; }
+.avis { padding: 32px 24px 26px; }
+.avis-guillemet { left: 18px; font-size: 4rem; }
 }
-
-/* --- Page des tarifs, suite ------------------------------------------ */
-
 .tarifs-entete h1 {
-  font-size: clamp(2rem, 4.4vw, 3.1rem);
-  line-height: 1.12;
-  letter-spacing: -.024em;
-  margin: 0 0 .5em;
+font-size: clamp(2rem, 4.4vw, 3.1rem);
+line-height: 1.12;
+letter-spacing: -.024em;
+margin: 0 0 .5em;
 }
 .tarifs-entete .chapeau { max-width: 620px; margin: 0 auto; }
-
 .offre { position: relative; }
-
 .offre-sous {
-  color: var(--gris);
-  font-size: .95rem;
-  margin: 0 0 .6em;
-  min-height: 2.6em;
+color: var(--gris);
+font-size: .95rem;
+margin: 0 0 .6em;
+min-height: 2.6em;
 }
-
 .prix-detail {
-  color: var(--gris);
-  font-size: .9rem;
-  margin: 0;
+color: var(--gris);
+font-size: .9rem;
+margin: 0;
 }
-
 .offre-badge {
-  position: absolute;
-  top: -13px; left: 50%;
-  transform: translateX(-50%);
-  background: var(--degrade);
-  color: #fff;
-  font-size: .78rem;
-  font-weight: 700;
-  letter-spacing: .02em;
-  padding: 6px 15px;
-  border-radius: 999px;
-  white-space: nowrap;
-  box-shadow: 0 6px 18px -6px rgba(37, 99, 235, .5);
+position: absolute;
+top: -13px; left: 50%;
+transform: translateX(-50%);
+background: var(--degrade);
+color: #fff;
+font-size: .78rem;
+font-weight: 700;
+letter-spacing: .02em;
+padding: 6px 15px;
+border-radius: 999px;
+white-space: nowrap;
+box-shadow: 0 6px 18px -6px rgba(37, 99, 235, .5);
 }
-
 .offre-liste { list-style: none; padding: 0; margin: 22px 0 26px; }
 .offre-liste li { padding: 7px 0 7px 28px; position: relative; font-size: .96rem; }
 .offre-liste li::before {
-  content: "✓";
-  position: absolute; left: 0;
-  color: var(--vert);
-  font-weight: 800;
+content: "✓";
+position: absolute; left: 0;
+color: var(--vert);
+font-weight: 800;
 }
 .offre-liste li em { color: var(--gris); font-style: normal; font-size: .88em; }
-
 @media (max-width: 980px) {
-  .grille-tarifs { grid-template-columns: 1fr; max-width: 460px; }
-  .offre-sous { min-height: 0; }
+.grille-tarifs { grid-template-columns: 1fr; max-width: 460px; }
+.offre-sous { min-height: 0; }
 }
-
-/* ==================================================================
-   Pages de contenu : sortir de la grosse bulle
-   ==================================================================
-
-   Tout le texte tenait dans une carte blanche unique posee sur un fond
-   blanc : une bordure et une ombre autour de trois mille mots, qui ne
-   separaient rien et donnaient le meme bloc figé a chaque page.
-
-   A la place : le texte respire sur la page, et c'est la TYPOGRAPHIE qui
-   cree le rythme - un en-tete distinct, des titres marques, des reperes
-   qui reagissent au defilement. */
-
 .feuille-texte {
-  max-width: var(--largeur-texte);
-  margin: 0 auto;
-  background: none;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 0 22px;
+max-width: var(--largeur-texte);
+margin: 0 auto;
+background: none;
+border: 0;
+border-radius: 0;
+box-shadow: none;
+padding: 0 22px;
 }
 .feuille-texte > .grille-tarifs,
 .feuille-texte > .grille-3,
 .feuille-texte > .grille-2 { max-width: none; }
-
-/* --- L'en-tete d'une page de contenu -------------------------------- */
-
-/* Le premier titre et le paragraphe qui le suit forment un en-tete : plus
-   grand, centre, detache du corps par un filet. C'est ce qui remplace la
-   bordure de la carte pour dire « le contenu commence ici ». */
 .feuille-texte > h1:first-child,
 .page-entete h1 {
-  font-size: clamp(2rem, 4.2vw, 3rem);
-  line-height: 1.14;
-  letter-spacing: -.025em;
-  text-align: center;
-  margin: 12px auto .5em;
-  max-width: 18ch;
+font-size: clamp(2rem, 4.2vw, 3rem);
+line-height: 1.14;
+letter-spacing: -.025em;
+text-align: center;
+margin: 12px auto .5em;
+max-width: 18ch;
 }
-
 .feuille-texte > h1:first-child + p {
-  text-align: center;
-  font-size: 1.14rem;
-  color: var(--gris);
-  max-width: 62ch;
-  margin: 0 auto 2.4em;
-  padding-bottom: 2.4em;
-  border-bottom: 1px solid var(--bord);
+text-align: center;
+font-size: 1.14rem;
+color: var(--gris);
+max-width: 62ch;
+margin: 0 auto 2.4em;
+padding-bottom: 2.4em;
+border-bottom: 1px solid var(--bord);
 }
-
-/* --- Titres de section ---------------------------------------------- */
-
-/* Un trait court en degrade au-dessus de chaque h2 : il donne un point
-   d'accroche a l'oeil qui parcourt, sans ajouter de boite. */
 .feuille-texte h2 {
-  position: relative;
-  margin-top: 2.4em;
-  padding-top: .85em;
-  letter-spacing: -.018em;
+position: relative;
+margin-top: 2.4em;
+padding-top: .85em;
+letter-spacing: -.018em;
 }
 .feuille-texte h2::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 46px; height: 3px;
-  border-radius: 3px;
-  background: var(--degrade);
+content: '';
+position: absolute;
+top: 0; left: 0;
+width: 46px; height: 3px;
+border-radius: 3px;
+background: var(--degrade);
 }
-
 .feuille-texte h3 { margin-top: 1.8em; }
-
-/* Un paragraphe qui suit immediatement un h2 sert d'amorce : legerement
-   plus grand, il fait entrer dans la section. */
 .feuille-texte h2 + p {
-  font-size: 1.06rem;
-  color: var(--texte);
+font-size: 1.06rem;
+color: var(--texte);
 }
-
-/* --- Tableaux et encadres ------------------------------------------- */
-
 .feuille-texte table {
-  box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .08);
-  border-radius: 14px;
-  overflow: hidden;
+box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .08);
+border-radius: 14px;
+overflow: hidden;
 }
-
-/* --- Apparition au defilement --------------------------------------- */
-
-/* Chaque bloc de contenu monte de quelques pixels en entrant dans le
-   champ de vision. L'effet est volontairement faible : une page de texte
-   qui gesticule est plus penible qu'une page fixe. */
 html.js .feuille-texte > h2,
 html.js .feuille-texte > h3,
 html.js .feuille-texte > p,
@@ -2229,240 +1680,195 @@ html.js .feuille-texte > ol,
 html.js .feuille-texte > table,
 html.js .feuille-texte > .encart,
 html.js .feuille-texte > .tableau-enveloppe {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity .5s ease, transform .5s cubic-bezier(.2, .8, .3, 1);
+opacity: 0;
+transform: translateY(10px);
+transition: opacity .5s ease, transform .5s cubic-bezier(.2, .8, .3, 1);
 }
 html.js .feuille-texte > .vue {
-  opacity: 1;
-  transform: none;
+opacity: 1;
+transform: none;
 }
-
-/* --- Barre de progression de lecture -------------------------------- */
-
-/* Sur un article long, elle dit ou l'on en est. Un seul element, mis a
-   jour par une transformation : aucune mise en page n'est recalculee au
-   defilement, ce qui serait le moyen le plus sur de rendre la page
-   saccadee. */
 .progression-lecture {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--degrade);
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  z-index: 60;
-  pointer-events: none;
+position: fixed;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: var(--degrade);
+transform: scaleX(0);
+transform-origin: 0 50%;
+z-index: 60;
+pointer-events: none;
 }
-
-/* --- Sommaire lateral ----------------------------------------------- */
-
-/* Sur grand ecran, les titres de la page se resument dans une colonne
-   collante, et celui qu'on lit s'allume. Sur petit ecran il disparait :
-   il prendrait la moitie de la hauteur utile. */
 .sommaire-page {
-  position: fixed;
-  top: 50%;
-  right: 26px;
-  transform: translateY(-50%);
-  z-index: 20;
-  max-width: 210px;
-  display: none;
+position: fixed;
+top: 50%;
+right: 26px;
+transform: translateY(-50%);
+z-index: 20;
+max-width: 210px;
+display: none;
 }
-
 @media (min-width: 1320px) {
-  .sommaire-page { display: block; }
+.sommaire-page { display: block; }
 }
-
 .sommaire-page ol {
-  list-style: none;
-  margin: 0; padding: 0;
-  border-left: 2px solid var(--bord);
+list-style: none;
+margin: 0; padding: 0;
+border-left: 2px solid var(--bord);
 }
 .sommaire-page li { margin: 0; }
 .sommaire-page a {
-  display: block;
-  padding: 6px 0 6px 14px;
-  margin-left: -2px;
-  border-left: 2px solid transparent;
-  font-size: .82rem;
-  line-height: 1.3;
-  color: var(--gris-clair);
-  text-decoration: none;
-  transition: color .2s ease, border-color .2s ease;
+display: block;
+padding: 6px 0 6px 14px;
+margin-left: -2px;
+border-left: 2px solid transparent;
+font-size: .82rem;
+line-height: 1.3;
+color: var(--gris);
+text-decoration: none;
+transition: color .2s ease, border-color .2s ease;
 }
 .sommaire-page a:hover { color: var(--texte); }
 .sommaire-page a.actif {
-  color: var(--bleu-fonce);
-  font-weight: 600;
-  border-left-color: var(--bleu);
+color: var(--bleu-fonce);
+font-weight: 600;
+border-left-color: var(--bleu);
 }
-
 @media (prefers-reduced-motion: reduce) {
-  html.js .feuille-texte > h2,
-  html.js .feuille-texte > h3,
-  html.js .feuille-texte > p,
-  html.js .feuille-texte > ul,
-  html.js .feuille-texte > ol,
-  html.js .feuille-texte > table,
-  html.js .feuille-texte > .encart,
-  html.js .feuille-texte > .tableau-enveloppe {
-    opacity: 1; transform: none; transition: none;
-  }
-  .progression-lecture { display: none; }
+html.js .feuille-texte > h2,
+html.js .feuille-texte > h3,
+html.js .feuille-texte > p,
+html.js .feuille-texte > ul,
+html.js .feuille-texte > ol,
+html.js .feuille-texte > table,
+html.js .feuille-texte > .encart,
+html.js .feuille-texte > .tableau-enveloppe {
+opacity: 1; transform: none; transition: none;
 }
-
-/* --- Page des paquets gratuits --------------------------------------- */
-
+.progression-lecture { display: none; }
+}
 .decks-entete h1 {
-  font-size: clamp(2rem, 4.4vw, 3rem);
-  line-height: 1.12;
-  letter-spacing: -.025em;
-  margin: 0 0 .5em;
+font-size: clamp(2rem, 4.4vw, 3rem);
+line-height: 1.12;
+letter-spacing: -.025em;
+margin: 0 0 .5em;
 }
-
 .decks-compte {
-  text-align: center;
-  color: var(--gris);
-  margin: 0 0 2.4em;
+text-align: center;
+color: var(--gris);
+margin: 0 0 2.4em;
 }
 .decks-compte strong { color: var(--encre); }
-
 .decks-annee {
-  margin: 2.2em 0 .2em;
-  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
-  letter-spacing: -.018em;
+margin: 2.2em 0 .2em;
+font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+letter-spacing: -.018em;
 }
 .decks-annee:first-of-type { margin-top: 0; }
-
 .decks-groupe {
-  margin: 1.5em 0 .9em;
-  font-size: .82rem;
-  font-weight: 700;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-  color: var(--bleu);
+margin: 1.5em 0 .9em;
+font-size: .82rem;
+font-weight: 700;
+letter-spacing: .09em;
+text-transform: uppercase;
+color: var(--bleu);
 }
-
 .decks-grille {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
-  gap: 16px;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+gap: 16px;
 }
-
-/* La carte entiere est le lien : sur un bloc de cette taille, obliger a
-   viser un mot souligne est une gene inutile. */
 .deck-carte {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  background: #fff;
-  border: 1px solid var(--bord);
-  border-radius: 16px;
-  padding: 18px 20px;
-  text-decoration: none;
-  color: inherit;
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+display: flex;
+flex-direction: column;
+gap: 7px;
+background: #fff;
+border: 1px solid var(--bord);
+border-radius: 16px;
+padding: 18px 20px;
+text-decoration: none;
+color: inherit;
+transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 .deck-carte:hover {
-  transform: translateY(-3px);
-  border-color: rgba(37, 99, 235, .4);
-  box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .22);
+transform: translateY(-3px);
+border-color: rgba(37, 99, 235, .4);
+box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .22);
 }
-
 .deck-titre {
-  font-weight: 700;
-  color: var(--encre);
-  line-height: 1.3;
+font-weight: 700;
+color: var(--encre);
+line-height: 1.3;
 }
-
 .deck-desc {
-  font-size: .89rem;
-  color: var(--gris);
-  line-height: 1.45;
-  flex: 1 1 auto;
+font-size: .89rem;
+color: var(--gris);
+line-height: 1.45;
+flex: 1 1 auto;
 }
-
 .deck-pied {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 4px;
-  font-size: .82rem;
+display: flex;
+align-items: center;
+gap: 10px;
+margin-top: 4px;
+font-size: .82rem;
 }
 .deck-nombre {
-  background: var(--bleu-pale);
-  color: var(--bleu-fonce);
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 999px;
+background: var(--bleu-pale);
+color: var(--bleu-fonce);
+font-weight: 700;
+padding: 3px 10px;
+border-radius: 999px;
 }
-.deck-poids { color: var(--gris-clair); }
-
-/* La flèche de téléchargement, dessinée en CSS plutôt qu'en image. */
+.deck-poids { color: var(--gris); }
 .deck-carte::after {
-  content: '↓';
-  position: absolute;
-  opacity: 0;
+content: '↓';
+position: absolute;
+opacity: 0;
 }
-
-/* --- Page du compte ------------------------------------------------ */
-
 .compte-form {
-  display: flex; flex-direction: column; gap: 6px;
-  max-width: 420px; margin-top: 26px;
+display: flex; flex-direction: column; gap: 6px;
+max-width: 420px; margin-top: 26px;
 }
 .compte-form label {
-  font-size: .88rem; font-weight: 600; color: var(--gris);
-  margin-top: 10px;
+font-size: .88rem; font-weight: 600; color: var(--gris);
+margin-top: 10px;
 }
 .compte-form input {
-  height: 44px; padding: 0 14px;
-  border: 1px solid var(--bord); border-radius: 12px;
-  background: #fff; font-size: 1rem; font-family: inherit; color: var(--encre);
+height: 44px; padding: 0 14px;
+border: 1px solid var(--bord); border-radius: 12px;
+background: #fff; font-size: 1rem; font-family: inherit; color: var(--encre);
 }
 .compte-form input:focus {
-  outline: none; border-color: var(--bleu);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, .16);
+outline: none; border-color: var(--bleu);
+box-shadow: 0 0 0 3px rgba(59, 130, 246, .16);
 }
 .compte-form .bouton { margin-top: 18px; text-align: center; }
-
 .compte-message {
-  margin: 12px 0 0; font-size: .92rem; color: var(--gris);
+margin: 12px 0 0; font-size: .92rem; color: var(--gris);
 }
 .compte-message.erreur { color: #b91c1c; }
-
 .compte-bascule { margin-top: 16px; font-size: .95rem; }
-
-/* Bouton Google. Les regles de Google imposent son logo d'origine sur
-   fond blanc ou gris clair, sans le redessiner ni le recolorer : on garde
-   donc le SVG officiel et on ne touche qu'a l'entourage. */
 #compte-google { max-width: 420px; margin-top: 26px; }
-
 .bouton-google {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  height: 46px; padding: 0 18px;
-  border: 1px solid var(--bord); border-radius: 12px;
-  background: #fff; color: #1f1f1f;
-  font-family: inherit; font-size: 1rem; font-weight: 600;
-  text-decoration: none;
-  transition: background .15s, border-color .15s;
+display: flex; align-items: center; justify-content: center; gap: 10px;
+height: 46px; padding: 0 18px;
+border: 1px solid var(--bord); border-radius: 12px;
+background: #fff; color: #1f1f1f;
+font-family: inherit; font-size: 1rem; font-weight: 600;
+text-decoration: none;
+transition: background .15s, border-color .15s;
 }
 .bouton-google:hover { background: #f7f8fa; border-color: #c9ced6; }
 .bouton-google:focus-visible {
-  outline: none; border-color: var(--bleu);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, .16);
+outline: none; border-color: var(--bleu);
+box-shadow: 0 0 0 3px rgba(59, 130, 246, .16);
 }
 .bouton-google svg { flex: 0 0 auto; }
-
-/* Le « ou » posé sur un filet, plutôt qu'une ligne de texte perdue entre
-   deux boutons : l'œil comprend qu'il s'agit de deux chemins vers la même
-   chose, et non d'une étape après l'autre. */
 .compte-ou {
-  display: flex; align-items: center; gap: 12px;
-  margin: 18px 0 0; color: var(--gris); font-size: .9rem;
+display: flex; align-items: center; gap: 12px;
+margin: 18px 0 0; color: var(--gris); font-size: .9rem;
 }
 .compte-ou::before, .compte-ou::after {
-  content: ""; flex: 1 1 auto; height: 1px; background: var(--bord);
+content: ""; flex: 1 1 auto; height: 1px; background: var(--bord);
 }
 .compte-form { margin-top: 18px; }

@@ -1,0 +1,8 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Réviser les maths en prépa scientifique">
+  <rect width="480" height="200" fill="#dbeafe"/>
+  <line x1="90" y1="150" x2="90" y2="60" stroke="#1e40af" stroke-width="3"/>
+  <line x1="90" y1="150" x2="200" y2="150" stroke="#1e40af" stroke-width="3"/>
+  <path d="M 90 150 C 120 70 160 70 200 150" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round"/>
+  <rect x="300" y="55" width="90" height="90" rx="10" fill="#1e3a8a"/>
+  <text x="345" y="112" font-family="Georgia, serif" font-size="46" fill="#bfdbfe" text-anchor="middle">&#8747;</text>
+</svg>

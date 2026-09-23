@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>PrépaCards — Blog</title>
+  <link>https://prepacards.fr/blog/</link>
+  <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
+  <language>fr-fr</language>
+  <item>
+    <title>LV2 en prépa : la tenir sans y passer ses soirées</title>
+    <link>https://prepacards.fr/blog/lv2-en-prepa/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/lv2-en-prepa/</guid>
+    <pubDate>Wed, 23 Sep 2026 00:00:00 +0000</pubDate>
+    <description>Espagnol, allemand, italien : la LV2 est la matière qu'on sacrifie en premier et qu'on paie au concours. Comment l'entretenir en dix minutes par jour.</description>
+  </item>
+  <item>
+    <title>Prise de notes en cours : noter pour réviser après</title>
+    <link>https://prepacards.fr/blog/prise-de-notes-en-cours/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/prise-de-notes-en-cours/</guid>
+    <pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
+    <description>Recopier le tableau ne sert à rien si les notes sont inexploitables le soir. Quoi noter, quoi ne pas noter, et comment marquer au vol ce qui deviendra une carte.</description>
+  </item>
+  <item>
+    <title>Combien de cartes par jour ? Le bon calcul</title>
+    <link>https://prepacards.fr/blog/combien-de-cartes-par-jour/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/combien-de-cartes-par-jour/</guid>
+    <pubDate>Mon, 21 Sep 2026 00:00:00 +0000</pubDate>
+    <description>20 nouvelles cartes par jour, ce sont 140 révisions quotidiennes six mois plus tard. Le calcul, les seuils tenables en prépa, et comment rattraper un arriéré.</description>
+  </item>
+  <item>
+    <title>Concours blancs : les préparer et en tirer parti</title>
+    <link>https://prepacards.fr/blog/preparer-un-concours-blanc/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/preparer-un-concours-blanc/</guid>
+    <pubDate>Fri, 18 Sep 2026 00:00:00 +0000</pubDate>
+    <description>Un concours blanc ne se prépare pas comme un DS. Comment aborder la semaine, gérer une note catastrophique, et surtout quoi faire de la copie une fois rendue.</description>
+  </item>
+  <item>
+    <title>Organisation en prépa : tenir sa semaine</title>
+    <link>https://prepacards.fr/blog/organisation-semaine-prepa/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/organisation-semaine-prepa/</guid>
+    <pubDate>Thu, 17 Sep 2026 00:00:00 +0000</pubDate>
+    <description>DS, colles, DM et cours qui s'empilent : comment répartir une semaine de prépa, quoi sacrifier quand tout ne rentre pas, et pourquoi le sommeil n'est pas négociable.</description>
+  </item>
+  <item>
+    <title>Apprendre son cours par cœur : la méthode qui marche</title>
+    <link>https://prepacards.fr/blog/apprendre-son-cours-par-coeur/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/apprendre-son-cours-par-coeur/</guid>
+    <pubDate>Wed, 16 Sep 2026 00:00:00 +0000</pubDate>
+    <description>Relire ne fait rien apprendre. Les trois mécanismes qui font vraiment tenir un cours en mémoire, et le protocole précis pour les appliquer en prépa.</description>
+  </item>
+  <item>
+    <title>Khôlle en prépa : comment s'y préparer vraiment</title>
+    <link>https://prepacards.fr/blog/preparer-une-kholle/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/preparer-une-kholle/</guid>
+    <pubDate>Tue, 15 Sep 2026 00:00:00 +0000</pubDate>
+    <description>Khôlle ou colle ? Ce que c'est, comment ça se passe, et la méthode de préparation matière par matière — maths, anglais, philo, ESH — sans y passer ses soirées.</description>
+  </item>
+  <item>
+    <title>Entrée en prépa : reconnaître avant de savoir</title>
+    <link>https://prepacards.fr/blog/reconnaissance-de-schemas-en-prepa/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/reconnaissance-de-schemas-en-prepa/</guid>
+    <pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+    <description>En prépa, comprendre le cours ne suffit plus : il faut reconnaître quel outil s'applique. Comment construire cette bibliothèque dès septembre.</description>
+  </item>
+  <item>
+    <title>Réviser en prépa avec des flashcards</title>
+    <link>https://prepacards.fr/blog/reviser-avec-des-flashcards-en-prepa/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/reviser-avec-des-flashcards-en-prepa/</guid>
+    <pubDate>Tue, 08 Sep 2026 00:00:00 +0000</pubDate>
+    <description>Utiliser des flashcards en prépa sans y perdre son temps : quand les créer, combien par jour, et les erreurs qui font abandonner en trois semaines.</description>
+  </item>
+  <item>
+    <title>La répétition espacée expliquée simplement</title>
+    <link>https://prepacards.fr/blog/repetition-espacee-comment-ca-marche/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/repetition-espacee-comment-ca-marche/</guid>
+    <pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
+    <description>Comment marche la répétition espacée, pourquoi elle bat la relecture, et ce que changent les algorithmes SM-2 et FSRS derrière Anki et PrépaCards.</description>
+  </item>
+  <item>
+    <title>Flashcards de formules de maths : 3 méthodes</title>
+    <link>https://prepacards.fr/blog/flashcards-formules-de-maths/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/flashcards-formules-de-maths/</guid>
+    <pubDate>Wed, 02 Sep 2026 00:00:00 +0000</pubDate>
+    <description>Pourquoi les flashcards de maths sont abandonnées si vite, et trois façons de créer des cartes de formules vite : LaTeX, photo du cours, description.</description>
+  </item>
+  <item>
+    <title>Réviser à voix haute : pourquoi ça change tout</title>
+    <link>https://prepacards.fr/blog/reviser-a-voix-haute/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/reviser-a-voix-haute/</guid>
+    <pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
+    <description>L'illusion de savoir est le premier piège de la révision. Pourquoi réciter à voix haute la dissipe, et comment s'y contraindre quand on révise seul.</description>
+  </item>
+</channel>
+</rss>

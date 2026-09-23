@@ -1,0 +1,10 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Réviser la physique en prépa">
+  <rect width="480" height="200" fill="#e0e7ff"/>
+  <line x1="150" y1="46" x2="150" y2="60" stroke="#312e81" stroke-width="4"/>
+  <line x1="150" y1="46" x2="96" y2="132" stroke="#312e81" stroke-width="4"/>
+  <circle cx="96" cy="146" r="16" fill="#4338ca"/>
+  <path d="M 150 60 Q 190 100 150 140" fill="none" stroke="#a5b4fc" stroke-width="3" stroke-dasharray="4 5"/>
+  <path d="M 250 110 q 20 -46 40 0 t 40 0 t 40 0" fill="none" stroke="#4338ca" stroke-width="5" stroke-linecap="round"/>
+  <rect x="330" y="58" width="86" height="56" rx="6" fill="#312e81"/>
+  <text x="373" y="94" font-family="Georgia, serif" font-size="26" fill="#c7d2fe" text-anchor="middle">F=ma</text>
+</svg>

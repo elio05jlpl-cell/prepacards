@@ -1,0 +1,12 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Écrire un essay en anglais">
+  <rect width="480" height="200" fill="#fef9c3"/>
+  <rect x="100" y="48" width="120" height="104" rx="6" fill="#ffffff" stroke="#a16207" stroke-width="3"/>
+  <line x1="116" y1="68" x2="204" y2="68" stroke="#eab308" stroke-width="4" stroke-linecap="round"/>
+  <line x1="116" y1="84" x2="204" y2="84" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
+  <line x1="116" y1="100" x2="180" y2="100" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
+  <line x1="116" y1="116" x2="204" y2="116" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
+  <line x1="116" y1="132" x2="160" y2="132" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 330 150 l 8 -30 l 55 -55 l 22 22 l -55 55 z" fill="#ca8a04"/>
+  <path d="M 338 120 l 22 22" stroke="#fef9c3" stroke-width="4"/>
+  <path d="M 338 150 l -8 -8 l 8 -14 l 14 8 z" fill="#713f12"/>
+</svg>

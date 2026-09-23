@@ -1,0 +1,13 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Réviser l'informatique en prépa scientifique">
+  <rect width="480" height="200" fill="#dbeafe"/>
+  <rect x="90" y="60" width="140" height="90" rx="8" fill="#1e3a8a"/>
+  <rect x="102" y="72" width="116" height="66" rx="3" fill="#eff6ff"/>
+  <text x="112" y="98" font-family="monospace" font-size="14" fill="#1e40af">if (n &lt;= 1)</text>
+  <text x="112" y="116" font-family="monospace" font-size="14" fill="#1e40af">  return n;</text>
+  <text x="112" y="134" font-family="monospace" font-size="14" fill="#1e40af">f(n-1)+f(n-2)</text>
+  <circle cx="340" cy="80" r="14" fill="#1e40af"/>
+  <circle cx="310" cy="130" r="14" fill="#2563eb"/>
+  <circle cx="370" cy="130" r="14" fill="#2563eb"/>
+  <line x1="340" y1="80" x2="310" y2="130" stroke="#1e3a8a" stroke-width="3"/>
+  <line x1="340" y1="80" x2="370" y2="130" stroke="#1e3a8a" stroke-width="3"/>
+</svg>

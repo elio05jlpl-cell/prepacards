@@ -1,0 +1,8 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gérer le stress en prépa">
+  <rect width="480" height="200" fill="#ccfbf1"/>
+  <path d="M 70 110 h 40 l 12 -34 l 16 60 l 14 -46 l 10 20 h 30" fill="none" stroke="#0f766e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 200 110 h 150" fill="none" stroke="#5eead4" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="370" cy="100" r="34" fill="#ffffff" stroke="#0f766e" stroke-width="4"/>
+  <line x1="370" y1="100" x2="370" y2="80" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/>
+  <line x1="370" y1="100" x2="384" y2="108" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/>
+</svg>

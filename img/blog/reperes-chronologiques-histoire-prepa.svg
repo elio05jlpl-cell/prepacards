@@ -1,0 +1,12 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Repères chronologiques en histoire">
+  <rect width="480" height="200" fill="#fef2e2"/>
+  <line x1="70" y1="120" x2="410" y2="120" stroke="#92400e" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="130" cy="120" r="8" fill="#b45309"/>
+  <circle cx="230" cy="120" r="8" fill="#b45309"/>
+  <circle cx="330" cy="120" r="8" fill="#b45309"/>
+  <circle cx="230" cy="120" r="14" fill="none" stroke="#dc2626" stroke-width="3"/>
+  <rect x="200" y="56" width="60" height="34" rx="5" fill="#ffffff" stroke="#92400e" stroke-width="3"/>
+  <line x1="230" y1="90" x2="230" y2="106" stroke="#92400e" stroke-width="3"/>
+  <line x1="212" y1="68" x2="248" y2="68" stroke="#b45309" stroke-width="4" stroke-linecap="round"/>
+  <line x1="212" y1="78" x2="236" y2="78" stroke="#fcd34d" stroke-width="4" stroke-linecap="round"/>
+</svg>

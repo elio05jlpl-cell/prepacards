@@ -1,0 +1,13 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Réviser la chimie en prépa">
+  <rect width="480" height="200" fill="#cffafe"/>
+  <path d="M 118 56 h 28 v 34 l 30 56 a 10 10 0 0 1 -9 15 h -70 a 10 10 0 0 1 -9 -15 l 30 -56 z" fill="#ffffff" stroke="#0e7490" stroke-width="4"/>
+  <path d="M 96 132 h 72 l 10 18 a 8 8 0 0 1 -7 12 h -78 a 8 8 0 0 1 -7 -12 z" fill="#22d3ee"/>
+  <circle cx="118" cy="118" r="4" fill="#0e7490"/>
+  <circle cx="140" cy="104" r="3" fill="#0e7490"/>
+  <circle cx="130" cy="130" r="3" fill="#0e7490"/>
+  <circle cx="340" cy="100" r="16" fill="#0e7490"/>
+  <circle cx="380" cy="80" r="12" fill="#22d3ee"/>
+  <circle cx="380" cy="122" r="12" fill="#22d3ee"/>
+  <line x1="340" y1="100" x2="380" y2="80" stroke="#164e63" stroke-width="4"/>
+  <line x1="340" y1="100" x2="380" y2="122" stroke="#164e63" stroke-width="4"/>
+</svg>

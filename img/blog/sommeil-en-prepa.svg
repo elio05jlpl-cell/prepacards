@@ -1,0 +1,11 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sommeil en prépa">
+  <rect width="480" height="200" fill="#dbeafe"/>
+  <path d="M 130 55 a 45 45 0 1 0 45 78 a 34 34 0 0 1 -45 -78 z" fill="#1e3a8a"/>
+  <circle cx="230" cy="55" r="4" fill="#1e40af"/>
+  <circle cx="255" cy="80" r="3" fill="#1e40af"/>
+  <circle cx="210" cy="90" r="2.5" fill="#1e40af"/>
+  <rect x="300" y="120" width="120" height="34" rx="8" fill="#1e3a8a"/>
+  <rect x="292" y="104" width="46" height="30" rx="10" fill="#93c5fd"/>
+  <rect x="300" y="100" width="120" height="16" rx="8" fill="#1e40af"/>
+  <path d="M 300 120 q 60 -14 120 0" fill="none" stroke="#93c5fd" stroke-width="4" stroke-linecap="round"/>
+</svg>

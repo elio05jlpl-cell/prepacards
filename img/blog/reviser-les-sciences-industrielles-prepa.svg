@@ -1,0 +1,12 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Réviser les sciences industrielles">
+  <rect width="480" height="200" fill="#fed7aa"/>
+  <circle cx="150" cy="100" r="42" fill="none" stroke="#9a3412" stroke-width="6"/>
+  <circle cx="150" cy="100" r="12" fill="#9a3412"/>
+  <rect x="144" y="46" width="12" height="18" fill="#9a3412"/>
+  <rect x="144" y="136" width="12" height="18" fill="#9a3412"/>
+  <rect x="96" y="94" width="18" height="12" fill="#9a3412"/>
+  <rect x="186" y="94" width="18" height="12" fill="#9a3412"/>
+  <rect x="290" y="70" width="120" height="18" rx="4" fill="#ffffff" stroke="#9a3412" stroke-width="3"/>
+  <rect x="290" y="98" width="90" height="18" rx="4" fill="#ffffff" stroke="#9a3412" stroke-width="3"/>
+  <rect x="290" y="126" width="70" height="18" rx="4" fill="#ffffff" stroke="#9a3412" stroke-width="3"/>
+</svg>

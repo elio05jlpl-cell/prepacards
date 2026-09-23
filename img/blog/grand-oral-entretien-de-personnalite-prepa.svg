@@ -1,0 +1,9 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Le grand oral et l'entretien de personnalité">
+  <rect width="480" height="200" fill="#f1f5f9"/>
+  <circle cx="140" cy="85" r="22" fill="#334155"/>
+  <path d="M 100 150 q 40 -38 80 0" fill="#334155"/>
+  <rect x="280" y="60" width="16" height="90" rx="4" fill="#475569"/>
+  <rect x="320" y="70" width="16" height="80" rx="4" fill="#334155"/>
+  <rect x="360" y="55" width="16" height="95" rx="4" fill="#475569"/>
+  <line x1="270" y1="150" x2="390" y2="150" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+</svg>
