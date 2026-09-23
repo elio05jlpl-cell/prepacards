@@ -1,0 +1,15 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="La synthèse de documents en ECG">
+  <rect width="480" height="200" fill="#e0f2fe"/>
+  <rect x="90" y="55" width="66" height="90" rx="5" fill="#ffffff" stroke="#0369a1" stroke-width="3"/>
+  <rect x="130" y="70" width="66" height="90" rx="5" fill="#ffffff" stroke="#0369a1" stroke-width="3"/>
+  <line x1="102" y1="72" x2="144" y2="72" stroke="#7dd3fc" stroke-width="3"/>
+  <line x1="102" y1="84" x2="144" y2="84" stroke="#7dd3fc" stroke-width="3"/>
+  <line x1="142" y1="88" x2="184" y2="88" stroke="#7dd3fc" stroke-width="3"/>
+  <line x1="142" y1="100" x2="184" y2="100" stroke="#7dd3fc" stroke-width="3"/>
+  <path d="M 250 100 h 50" stroke="#0369a1" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 292 92 l 12 8 l -12 8 z" fill="#0369a1"/>
+  <rect x="330" y="60" width="70" height="90" rx="5" fill="#0369a1"/>
+  <line x1="344" y1="80" x2="386" y2="80" stroke="#bae6fd" stroke-width="4" stroke-linecap="round"/>
+  <line x1="344" y1="96" x2="386" y2="96" stroke="#bae6fd" stroke-width="4" stroke-linecap="round"/>
+  <line x1="344" y1="112" x2="370" y2="112" stroke="#bae6fd" stroke-width="4" stroke-linecap="round"/>
+</svg>

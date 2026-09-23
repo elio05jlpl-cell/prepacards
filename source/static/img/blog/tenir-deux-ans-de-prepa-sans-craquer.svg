@@ -1,0 +1,8 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tenir deux ans de prépa sans craquer">
+  <rect width="480" height="200" fill="#e0f2fe"/>
+  <path d="M 70 150 Q 130 60 190 130 T 310 100 T 410 60" fill="none" stroke="#0369a1" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="70" cy="150" r="8" fill="#0369a1"/>
+  <circle cx="410" cy="60" r="10" fill="#facc15" stroke="#a16207" stroke-width="3"/>
+  <path d="M 396 46 l -8 -10" stroke="#a16207" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 424 46 l 8 -10" stroke="#a16207" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -356,6 +356,8 @@ MATIERES = [
     ("histoire", "Histoire"),
     ("culture-generale", "Culture générale"),
     ("philosophie", "Philosophie"),
+    ("informatique", "Informatique"),
+    ("sciences-industrielles", "Sciences industrielles"),
     ("langues", "Langues"),
     ("anglais", "Anglais"),
     ("espagnol", "Espagnol"),
