@@ -5,6 +5,7 @@ date: 2026-10-04
 slug: gerer-le-stress-en-prepa
 filiere: toutes
 matiere: methode
+faq: true
 ---
 
 # Gérer le stress avant une khôlle ou un concours
@@ -156,6 +157,20 @@ solides et lesquels méritent encore vingt minutes. Savoir précisément où
 se trouve le risque change la nature du stress — d'une angoisse diffuse,
 il devient une liste de points précis à retravailler, ce qui est
 infiniment plus gérable.
+
+## Questions fréquentes
+
+### Comment calmer le stress juste avant une khôlle ?
+
+En évitant d'ouvrir un nouveau chapitre et en se limitant à une brève repasse des points déjà identifiés comme fragiles. Une respiration lente pendant quelques minutes abaisse aussi réellement le rythme cardiaque et redonne un accès plus clair aux connaissances déjà en mémoire.
+
+### Le trac avant un concours est-il toujours un problème ?
+
+Non : un léger stress améliore la concentration, comme chez les sportifs de haut niveau. Le problème n'est pas le trac lui-même, mais son intensité incontrôlée, qui bloque l'accès à des connaissances par ailleurs solides.
+
+### Faut-il réviser la nuit précédant une khôlle importante ?
+
+Non, mieux vaut privilégier le sommeil. C'est pendant le sommeil que la mémoire consolide les révisions des jours précédents ; sacrifier une heure de sommeil pour relire un chapitre coûte généralement plus en clarté d'esprit le lendemain qu'il ne rapporte.
 
 <div class="encart">
   <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.

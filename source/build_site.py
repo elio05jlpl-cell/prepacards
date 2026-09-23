@@ -997,6 +997,24 @@ def article_jsonld(page: dict, url: str) -> dict:
     }
 
 
+def breadcrumb_jsonld(titre: str, url: str) -> dict:
+    """Fil d'Ariane structure, pour l'affichage enrichi dans les resultats.
+
+    Reprend exactement les trois niveaux du fil visible en haut de chaque
+    article (Accueil > Blog > titre) : les donnees structurees ne doivent
+    jamais annoncer autre chose que ce que la page montre reellement.
+    """
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Accueil", "item": SITE_URL + "/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": SITE_URL + "/blog/"},
+            {"@type": "ListItem", "position": 3, "name": titre, "item": url},
+        ],
+    }
+
+
 def faq_jsonld(body_html: str) -> dict:
     """Construit un FAQPage a partir des paires <h3>question</h3><p>reponse</p>.
 
@@ -1582,8 +1600,15 @@ def build() -> None:
         article["temps_lecture"] = temps_lecture(article["raw_body"])
         article["articles_similaires_html"] = render_articles_similaires(
             choisir_articles_similaires(article, articles))
-        write(url_path, render(article, url_path, "article.html",
-                               [article_jsonld(article, url)]))
+        blocks = [
+            article_jsonld(article, url),
+            breadcrumb_jsonld(titre_affiche(article["title"]), url),
+        ]
+        if article["faq"].lower() == "true":
+            faq = faq_jsonld(article["body_html"])
+            if faq:
+                blocks.append(faq)
+        write(url_path, render(article, url_path, "article.html", blocks))
         urls.append((url_path, article["date"], "0.6"))
 
     # --- Sommaire du blog ---------------------------------------------

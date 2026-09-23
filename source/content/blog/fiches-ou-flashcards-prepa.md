@@ -5,6 +5,7 @@ date: 2026-10-03
 slug: fiches-ou-flashcards-prepa
 filiere: toutes
 matiere: methode
+faq: true
 ---
 
 # Fiches ou flashcards : que choisir en prépa
@@ -172,6 +173,20 @@ que vous alimentez au fil de vos propres fiches papier ou numériques,
 avec des statistiques qui montrent précisément ce qui est déjà solide et
 ce qui doit encore repasser. La fiche organise, l'application fait
 revenir — chacune à sa place.
+
+## Questions fréquentes
+
+### Faut-il choisir entre fiches et flashcards ?
+
+Non, elles servent à des moments différents. La fiche structure un chapitre entier en une session dédiée ; les flashcards, produites à partir de cette fiche, entretiennent la mémorisation en quelques minutes réparties tout au long de la semaine. Les deux se complètent plutôt qu'elles ne s'opposent.
+
+### Quelle proportion de temps consacrer à chacune ?
+
+Environ un tiers du temps de révision pour la fabrication et la relecture des fiches, et deux tiers pour la révision quotidienne des flashcards. La fiche se construit une fois et sert longtemps, tandis que les flashcards demandent un entretien constant pour que la répétition espacée fonctionne.
+
+### Dans quelles matières les flashcards dominent-elles ?
+
+En langues et en géopolitique, où le vocabulaire et les repères factuels se prêtent particulièrement bien aux flashcards. En maths et en sciences, c'est l'inverse : la fiche domine, car ce qui compte est la démonstration et l'enchaînement logique, les flashcards se limitant alors à quelques formules isolées.
 
 <div class="encart">
   <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.

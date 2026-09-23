@@ -89,10 +89,10 @@ faq: true
         <span>La répétition espacée expliquée simplement</span>
       </a>
 
-      <a class="actu" href="/blog/reviser-a-voix-haute/">
-        <img src="/img/retour-camera.png"
-             alt="Retour de la webcam pendant la vérification de la prononciation">
-        <span>Réviser à voix haute : pourquoi ça change tout</span>
+      <a class="actu" href="/blog/combien-de-cartes-par-jour/">
+        <img src="/img/demo/2-paquet.webp"
+             alt="Réglages d'un paquet dans PrépaCards, avec la limite de cartes nouvelles par jour">
+        <span>Combien de cartes par jour ? Le calcul que personne ne fait</span>
       </a>
 
     </div>

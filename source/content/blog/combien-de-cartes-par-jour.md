@@ -5,6 +5,7 @@ date: 2026-09-21
 slug: combien-de-cartes-par-jour
 filiere: toutes
 matiere: methode
+faq: true
 ---
 
 # Combien de cartes par jour ? Le calcul que personne ne fait
@@ -133,6 +134,24 @@ cette dernière courbe de prévision qu'il faut surveiller de près : elle
 indique, avant même que la situation ne se produise concrètement, ce que
 votre réglage actuel est en train de vous préparer silencieusement pour
 les semaines suivantes.
+
+## Questions fréquentes
+
+### Combien de nouvelles cartes par jour en prépa ?
+
+Entre 15 et 30 nouvelles cartes par jour, selon le temps disponible et le nombre de matières concernées. En dessous de 10, l'avancée dans le programme devient trop lente ; au-dessus de 30, les révisions quotidiennes finissent par dépasser ce qu'une journée de prépa peut absorber, généralement autour du mois de février.
+
+### Pourquoi les révisions augmentent-elles autant avec le temps ?
+
+Parce qu'une carte apprise ne disparaît pas : elle revient six à huit fois dans l'année selon l'algorithme de répétition espacée et la qualité des réussites. Vingt cartes ajoutées un jour donné représentent donc une charge permanente, pas un simple total ponctuel.
+
+### Que faire en cas de retard accumulé important ?
+
+Mettre les nouvelles cartes à zéro pendant une à deux semaines, plafonner les révisions quotidiennes à ce qui est réellement gérable, et ne jamais supprimer le contenu déjà créé. Une fois le retard résorbé, reprendre à un rythme légèrement inférieur à celui qui a posé problème la première fois.
+
+### Vaut-il mieux 50 cartes trois fois par semaine ou 15 cartes tous les jours ?
+
+15 cartes tous les jours sans exception, largement. La répétition espacée suppose une présence quotidienne régulière ; les trous dans le rythme font s'empiler les échéances de révision les unes sur les autres, ce qui recrée un retard dès la reprise.
 
 <div class="encart">
   <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
