@@ -983,6 +983,30 @@ def software_jsonld() -> dict:
     }
 
 
+def website_jsonld() -> dict:
+    """Declare le site et sa recherche du blog, pour la barre de recherche
+    que Google peut afficher sous le resultat (sitelinks search box).
+
+    La cible doit repondre reellement a la requete : /blog/?q={terme}
+    pre-remplit et filtre la recherche cote client des le chargement, elle
+    ne se contente pas d'ouvrir la page blog les mains vides.
+    """
+    return {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": SITE_NAME,
+        "url": SITE_URL + "/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": f"{SITE_URL}/blog/?q={{search_term_string}}",
+            },
+            "query-input": "required name=search_term_string",
+        },
+    }
+
+
 def article_jsonld(page: dict, url: str) -> dict:
     return {
         "@context": "https://schema.org",
@@ -1556,6 +1580,7 @@ def build() -> None:
         blocks = []
         if page["slug"] == "index":
             blocks.append(software_jsonld())
+            blocks.append(website_jsonld())
         if page["faq"].lower() == "true":
             blocks.append(faq_jsonld(page["body_html"]))
         write(url_path, render(page, url_path, "base.html", blocks))

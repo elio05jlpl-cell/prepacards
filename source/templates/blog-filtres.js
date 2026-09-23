@@ -103,5 +103,13 @@
 
   champTri.value = 'recent';
   champTaille.value = '10';
+
+  // La donnee structuree SearchAction pointe vers /blog/?q=... : sans cette
+  // lecture, visiter cette adresse ouvrirait la page les mains vides, ce que
+  // Google considere comme une action qui ne fait pas ce qu'elle annonce.
+  var parametres = new URLSearchParams(window.location.search);
+  var recherche = parametres.get('q');
+  if (recherche) champRecherche.value = recherche;
+
   actualiser(true);
 })();
