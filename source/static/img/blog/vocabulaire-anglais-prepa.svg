@@ -1,0 +1,16 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vocabulaire anglais en prépa">
+  <rect width="480" height="200" fill="#dbeafe"/>
+  <path d="M 90 60 h 70 a 8 8 0 0 1 8 8 v 78 a 6 6 0 0 0 -6 -4 h -72 a 6 6 0 0 0 -6 6 v -80 a 8 8 0 0 1 6 -8 z" fill="#1e3a8a"/>
+  <path d="M 260 60 h -70 a 8 8 0 0 0 -8 8 v 78 a 6 6 0 0 1 6 -4 h 72 a 6 6 0 0 1 6 6 v -80 a 8 8 0 0 0 -6 -8 z" fill="#1e3a8a"/>
+  <rect x="94" y="70" width="60" height="4" rx="2" fill="#93c5fd"/>
+  <rect x="94" y="82" width="60" height="4" rx="2" fill="#93c5fd"/>
+  <rect x="94" y="94" width="44" height="4" rx="2" fill="#93c5fd"/>
+  <rect x="196" y="70" width="60" height="4" rx="2" fill="#93c5fd"/>
+  <rect x="196" y="82" width="60" height="4" rx="2" fill="#93c5fd"/>
+  <rect x="196" y="94" width="44" height="4" rx="2" fill="#93c5fd"/>
+  <rect x="330" y="54" width="92" height="60" rx="10" fill="#1e3a8a"/>
+  <path d="M 350 114 l 0 18 l 16 -18 z" fill="#1e3a8a"/>
+  <rect x="342" y="66" width="68" height="7" rx="3" fill="#dc2626"/>
+  <rect x="342" y="82" width="68" height="7" rx="3" fill="#ffffff"/>
+  <rect x="342" y="98" width="44" height="7" rx="3" fill="#dc2626"/>
+</svg>

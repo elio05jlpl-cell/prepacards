@@ -1,0 +1,11 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Techniques de mémorisation en prépa">
+  <rect width="480" height="200" fill="#fce7f3"/>
+  <path d="M 140 60 C 100 60 92 100 116 116 C 100 130 112 156 140 152 C 148 166 176 166 182 150 C 206 154 220 130 204 116 C 220 100 206 68 182 66 C 174 52 148 52 140 60 Z" fill="#be185d"/>
+  <circle cx="330" cy="70" r="10" fill="#db2777"/>
+  <circle cx="370" cy="90" r="10" fill="#db2777"/>
+  <circle cx="330" cy="120" r="10" fill="#db2777"/>
+  <circle cx="378" cy="140" r="10" fill="#db2777"/>
+  <line x1="330" y1="70" x2="370" y2="90" stroke="#831843" stroke-width="3"/>
+  <line x1="370" y1="90" x2="330" y2="120" stroke="#831843" stroke-width="3"/>
+  <line x1="330" y1="120" x2="378" y2="140" stroke="#831843" stroke-width="3"/>
+</svg>
