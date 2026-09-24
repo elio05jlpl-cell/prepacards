@@ -923,7 +923,7 @@ def render_bandeau_titre(article: dict) -> str:
     )
 
 
-def choisir_voir_aussi(article: dict, tous: list, nombre: int = 3) -> list:
+def choisir_recommandations(article: dict, tous: list, nombre: int = 4) -> list:
     """Choisit les articles les plus proches d'un article donne.
 
     Priorite au recoupement de matiere, puis de filiere. La plupart des
@@ -947,23 +947,24 @@ def choisir_voir_aussi(article: dict, tous: list, nombre: int = 3) -> list:
     return candidats[:nombre]
 
 
-def render_voir_aussi(similaires: list) -> str:
+def render_a_lire_egalement(similaires: list) -> str:
     if not similaires:
         return ""
     cartes = []
     for a in similaires:
         titre = titre_affiche(a["title"])
         cartes.append(
-            f'<a class="carte-voir-aussi" href="/blog/{a["slug"]}/">'
-            f'<img src="/img/blog/{a["slug"]}.svg" alt="" loading="lazy" width="200" height="200">'
-            f'<span>{html.escape(titre)}</span>'
+            f'<a class="carte-a-lire" href="/blog/{a["slug"]}/">'
+            f'<img src="/img/blog/{a["slug"]}.svg" alt="" loading="lazy" width="480" height="200">'
+            f'<span class="carte-a-lire-titre">{html.escape(titre)}</span>'
+            f'<span class="carte-a-lire-cta">Lire la suite »</span>'
             f'</a>'
         )
     return (
-        '<div class="voir-aussi">\n'
-        '<p class="voir-aussi-titre">Voir aussi</p>\n'
-        '<div class="voir-aussi-liste">\n' + "\n".join(cartes) + "\n</div>\n"
-        "</div>"
+        '<section class="a-lire-egalement">\n'
+        '<h2 class="a-lire-egalement-titre">À lire également</h2>\n'
+        '<div class="a-lire-egalement-grille">\n' + "\n".join(cartes) + "\n</div>\n"
+        "</section>"
     )
 
 
@@ -1435,7 +1436,7 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{sommaire}}": page.get("sommaire_html", ""),
         "{{titre_court}}": html.escape(titre_affiche(page["title"])),
         "{{temps_lecture}}": page.get("temps_lecture", ""),
-        "{{voir_aussi}}": page.get("voir_aussi_html", ""),
+        "{{a_lire_egalement}}": page.get("a_lire_egalement_html", ""),
         "{{bandeau_titre}}": page.get("bandeau_titre_html", ""),
     }
     for marker, value in replacements.items():
@@ -1718,8 +1719,8 @@ def build() -> None:
         url = SITE_URL + url_path
         article["temps_lecture"] = temps_lecture(article["raw_body"])
         article["bandeau_titre_html"] = render_bandeau_titre(article)
-        article["voir_aussi_html"] = render_voir_aussi(
-            choisir_voir_aussi(article, articles))
+        article["a_lire_egalement_html"] = render_a_lire_egalement(
+            choisir_recommandations(article, articles))
         blocks = [
             article_jsonld(article, url),
             breadcrumb_jsonld(titre_affiche(article["title"]), url),
