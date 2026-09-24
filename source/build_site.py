@@ -57,6 +57,7 @@ entiere d'un coup.
 import hashlib
 import html
 import json
+import random
 import re
 import sys
 import os
@@ -860,45 +861,47 @@ def temps_lecture(raw_body: str) -> str:
     return f"{minutes} min"
 
 
-def choisir_articles_similaires(article: dict, tous: list, nombre: int = 3) -> list:
+def choisir_voir_aussi(article: dict, tous: list, nombre: int = 3) -> list:
     """Choisit les articles les plus proches d'un article donne.
 
-    Priorite au recoupement de matiere, puis de filiere, puis a la date la
-    plus recente : deux articles de la meme matiere ont plus a voir entre eux
-    que deux articles qui ne partagent que la filiere « toutes ».
+    Priorite au recoupement de matiere, puis de filiere. La plupart des
+    articles partagent la matiere par defaut « methode » : sans amortisseur,
+    ils se disputeraient tous les 3 memes candidats les plus recents. Le
+    depart aleatoire, mais stable pour un article donne (seed = son slug),
+    varie l'ordre a l'interieur de chaque groupe a egalite tout en gardant
+    des recommandations reproductibles d'une reconstruction a l'autre.
     """
     matieres = set(article["matiere"])
     filieres = set(article["filiere"])
     candidats = [a for a in tous if a["slug"] != article["slug"]]
+    random.Random(article["slug"]).shuffle(candidats)
     candidats.sort(
         key=lambda a: (
             len(matieres & set(a["matiere"])),
             len(filieres & set(a["filiere"])),
-            a["date"],
         ),
         reverse=True,
     )
     return candidats[:nombre]
 
 
-def render_articles_similaires(similaires: list) -> str:
+def render_voir_aussi(similaires: list) -> str:
     if not similaires:
         return ""
     cartes = []
     for a in similaires:
         titre = titre_affiche(a["title"])
         cartes.append(
-            f'<a class="carte-similaire" href="/blog/{a["slug"]}/" target="_blank" rel="noopener">'
-            f'<img src="/img/blog/{a["slug"]}.svg" alt="" loading="lazy" width="480" height="200">'
-            f'<span class="carte-similaire-corps">'
-            f'<strong>{html.escape(titre)}</strong>'
-            f'</span></a>'
+            f'<a class="carte-voir-aussi" href="/blog/{a["slug"]}/">'
+            f'<img src="/img/blog/{a["slug"]}.svg" alt="" loading="lazy" width="200" height="200">'
+            f'<span>{html.escape(titre)}</span>'
+            f'</a>'
         )
     return (
-        '<section class="articles-similaires">\n'
-        '<h2>Pour aller plus loin</h2>\n'
-        '<div class="similaires-grille">\n' + "\n".join(cartes) + "\n</div>\n"
-        "</section>"
+        '<div class="voir-aussi">\n'
+        '<p class="voir-aussi-titre">Voir aussi</p>\n'
+        '<div class="voir-aussi-liste">\n' + "\n".join(cartes) + "\n</div>\n"
+        "</div>"
     )
 
 
@@ -1367,7 +1370,7 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{sommaire}}": page.get("sommaire_html", ""),
         "{{titre_court}}": html.escape(titre_affiche(page["title"])),
         "{{temps_lecture}}": page.get("temps_lecture", ""),
-        "{{articles_similaires}}": page.get("articles_similaires_html", ""),
+        "{{voir_aussi}}": page.get("voir_aussi_html", ""),
     }
     for marker, value in replacements.items():
         base = base.replace(marker, value)
@@ -1648,8 +1651,8 @@ def build() -> None:
         url_path = f"/blog/{article['slug']}/"
         url = SITE_URL + url_path
         article["temps_lecture"] = temps_lecture(article["raw_body"])
-        article["articles_similaires_html"] = render_articles_similaires(
-            choisir_articles_similaires(article, articles))
+        article["voir_aussi_html"] = render_voir_aussi(
+            choisir_voir_aussi(article, articles))
         blocks = [
             article_jsonld(article, url),
             breadcrumb_jsonld(titre_affiche(article["title"]), url),
