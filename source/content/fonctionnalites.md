@@ -10,6 +10,8 @@ faq: true
 <p class="chapeau">Cette page décrit ce que l'application fait réellement
 aujourd'hui, y compris ses limites. Rien de ce qui suit n'est « à venir ».</p>
 
+{{cube_fonctionnalites}}
+
 ## Répétition espacée
 
 PrépaCards utilise **SM-2**, l'algorithme de répétition espacée que rendu

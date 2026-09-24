@@ -22,6 +22,11 @@
 # Les polices portent leur graisse dans leur nom : elles ne changent jamais.
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Bibliotheques tierces vendues telles quelles, appelees avec un parametre
+# ?v=empreinte comme style.css : un cache long est donc sans risque.
+/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
   Access-Control-Allow-Origin: *
 
 # Les pages HTML doivent etre revalidees, sinon une correction de texte peut
