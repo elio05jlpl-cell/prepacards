@@ -130,10 +130,10 @@
   --ombre-panneau: 0 32px 60px rgba(15, 23, 42, .11);
   --ombre-cta: 0 18px 32px rgba(37, 99, 235, .25);
 
-  --rayon-s: 12px;
-  --rayon: 18px;
-  --rayon-l: 24px;
-  --rayon-xl: 28px;
+  --rayon-s: 0;
+  --rayon: 0;
+  --rayon-l: 0;
+  --rayon-xl: 0;
   --largeur: 1160px;
   --largeur-texte: 740px;
 }
@@ -187,7 +187,7 @@ strong { color: var(--encre); font-weight: 700; }
 }
 .saut-contenu:focus { left: 8px; top: 8px; }
 
-:focus-visible { outline: 2px solid var(--bleu); outline-offset: 3px; border-radius: 6px; }
+:focus-visible { outline: 2px solid var(--bleu); outline-offset: 3px; border-radius: 0; }
 
 /* --- En-tete ------------------------------------------------------- */
 
@@ -234,7 +234,7 @@ strong { color: var(--encre); font-weight: 700; }
 .reseaux { display: flex; align-items: center; gap: 2px; }
 .reseaux a {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 26px; height: 26px; border-radius: 7px;
+  width: 26px; height: 26px; border-radius: 0;
   color: #cfd8e8; text-decoration: none;
   transition: background .18s ease, color .18s ease;
 }
@@ -281,7 +281,7 @@ strong { color: var(--encre); font-weight: 700; }
 
 .bouton-nav {
   background: var(--degrade); color: #fff !important;
-  padding: 5px 12px !important; border-radius: 8px !important;
+  padding: 5px 12px !important; border-radius: 0 !important;
   font-weight: 700 !important; margin-left: 10px; line-height: 1.3 !important;
   box-shadow: 0 14px 24px rgba(37, 99, 235, .20);
 }
@@ -290,13 +290,13 @@ strong { color: var(--encre); font-weight: 700; }
 .burger { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
 .burger span {
   display: block; width: 22px; height: 2px; background: var(--encre);
-  margin: 4px 0; border-radius: 2px;
+  margin: 4px 0; border-radius: 0;
 }
 
 /* --- Boutons ------------------------------------------------------- */
 
 .bouton, .bouton-secondaire {
-  display: inline-block; padding: 15px 30px; border-radius: 14px;
+  display: inline-block; padding: 15px 30px; border-radius: 0;
   font-weight: 800; font-size: 1.02rem; letter-spacing: -0.01em;
   text-decoration: none; border: 0;
   transition: transform .12s, box-shadow .18s, filter .15s;
@@ -392,7 +392,7 @@ strong { color: var(--encre); font-weight: 700; }
 .actu img {
   display: block; width: 100%; aspect-ratio: 16 / 10;
   object-fit: cover; object-position: top center;
-  border-radius: 10px; border: 1px solid var(--bord);
+  border-radius: 0; border: 1px solid var(--bord);
 }
 .actu span {
   font-family: Poppins, 'Libre Franklin', sans-serif;
@@ -495,7 +495,7 @@ strong { color: var(--encre); font-weight: 700; }
 .carte p:last-child { margin-bottom: 0; }
 .carte .pictogramme {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 48px; height: 48px; border-radius: 14px;
+  width: 48px; height: 48px; border-radius: 0;
   background: var(--degrade-pale); font-size: 1.4rem; line-height: 1;
   margin-bottom: 16px;
 }
@@ -585,13 +585,36 @@ td strong { color: var(--encre); }
   border-left: 3px solid rgba(37, 99, 235, .35); color: var(--gris); font-style: italic;
 }
 
-/* La colonne de lecture est posee sur une feuille blanche : le texte long
-   reste lisible par-dessus le degrade, et la page gagne le meme relief que
-   les panneaux de l'accueil. */
+/* Bandeau de titre plein largeur : le negative margin-top annule le
+   padding-top de .article, pour que le degrade touche la barre de
+   navigation sans laisser de liseret blanc au-dessus. */
+.bandeau-titre-article {
+  background: var(--degrade); margin: -44px 0 0; padding: 56px 0;
+}
+.bandeau-titre-article .conteneur { text-align: center; }
+.etiquette-type {
+  display: inline-block; margin: 0 0 16px; padding: 0 2px;
+  background: linear-gradient(180deg, transparent 58%, #fbbf24 58%);
+  color: #fff; font-weight: 800; font-size: .92rem;
+  text-transform: uppercase; letter-spacing: .04em;
+}
+.bandeau-titre-article h1 {
+  color: #fff; margin: 0 auto; max-width: 900px;
+}
+.sous-bandeau-titre {
+  background: #fff; border-bottom: 1px solid var(--bord-net); padding: 18px 0;
+}
+.etiquettes-article {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;
+}
+.etiquette-article {
+  display: inline-block; background: var(--degrade-pale); color: var(--bleu-fonce);
+  font-size: .82rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .03em; padding: 7px 16px; border-radius: 999px;
+}
+
 .article .conteneur-texte {
-  background: #fff; border: 1px solid var(--bord);
-  border-radius: var(--rayon-xl); box-shadow: var(--ombre-panneau);
-  padding: 48px 52px; max-width: calc(var(--largeur-texte) + 104px);
+  max-width: calc(var(--largeur-texte) + 104px);
 }
 
 .fil { font-size: .88rem; color: var(--gris); margin-bottom: 18px; }
@@ -620,10 +643,7 @@ td strong { color: var(--encre); }
    derriere elle et reste cache. */
 .barre-laterale { position: sticky; top: 188px; }
 
-.panneau-sommaire {
-  background: #fff; border: 1px solid var(--bord); border-radius: var(--rayon-l);
-  box-shadow: var(--ombre-carte); padding: 18px 20px;
-}
+.panneau-sommaire { padding: 0; }
 .sommaire-bouton {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
   width: 100%; background: none; border: 0; padding: 0; margin: 0;
@@ -655,9 +675,11 @@ td strong { color: var(--encre); }
 .sommaire-liste a.actif { color: var(--bleu-fonce); }
 .sommaire-liste a.actif::before { border-bottom-color: var(--bleu); }
 
-/* Fil d'Ariane pose dans un encadre simple, au-dessus du titre */
+/* Fil d'Ariane pose dans un encadre simple, au-dessus du titre : bordure
+   plus epaisse en bas et a droite, comme une carte legerement soulevee. */
 .cadre-entete {
-  border: 1px solid var(--bord-net); border-radius: var(--rayon);
+  border-style: solid; border-color: var(--encre);
+  border-width: 1.5px 3px 3px 1.5px; border-radius: var(--rayon);
   padding: 14px 20px; margin: 1.6em 0 1.8em; background: #fff;
 }
 .cadre-entete .fil { margin-bottom: 0; }
@@ -934,7 +956,6 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
   .pied-haut { grid-template-columns: 1fr 1fr; gap: 28px; }
   .pied-marque { grid-column: 1 / -1; }
   .section-douce > .conteneur { padding: 36px 24px; border-radius: var(--rayon-l); }
-  .article .conteneur-texte { padding: 32px 24px; border-radius: var(--rayon-l); }
   .feuille-texte { padding: 30px 22px; margin: 26px 14px 0; border-radius: var(--rayon-l); }
   .burger { display: block; margin-left: auto; }
   /* La navigation occupe deja sa propre rangee : elle se replie sur place
@@ -969,7 +990,7 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 
 .nav-lien {
   display: inline-flex; align-items: center; gap: 5px;
-  padding: 9px 13px; border-radius: 10px; color: var(--texte);
+  padding: 9px 13px; border-radius: 0; color: var(--texte);
   font-size: .95rem; font-weight: 500; text-decoration: none;
   transition: background .2s ease, color .2s ease;
 }
@@ -985,7 +1006,7 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 .nav-connexion {
   display: inline-flex; align-items: center;
   padding: 9px 15px; margin-left: 4px;
-  border: 1px solid var(--bord); border-radius: 10px;
+  border: 1px solid var(--bord); border-radius: 0;
   color: var(--texte); font-size: .95rem; font-weight: 600;
   text-decoration: none;
   transition: background .2s ease, border-color .2s ease, color .2s ease;
@@ -1029,7 +1050,7 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 .mega-filiere {
   display: flex; align-items: center; justify-content: space-between;
   gap: 10px; padding: 10px 12px; margin-right: 8px;
-  border-radius: 10px; color: var(--texte); text-decoration: none;
+  border-radius: 0; color: var(--texte); text-decoration: none;
   transition: background .18s ease;
 }
 .mega-filiere strong {
@@ -1069,7 +1090,7 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 .mega-droite a {
   /* Interligne resserre : celui du corps de page (1,7) est fait pour des
      paragraphes, et donnait des entrees de menu de 48 px de haut. */
-  padding: 8px 10px; border-radius: 8px; line-height: 1.35;
+  padding: 8px 10px; border-radius: 0; line-height: 1.35;
   color: var(--texte); font-size: .95rem; text-decoration: none;
   transition: background .18s ease, color .18s ease;
 }
@@ -1128,7 +1149,7 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 }
 
 .nav-menu a {
-  display: block; padding: 10px 12px; border-radius: 10px;
+  display: block; padding: 10px 12px; border-radius: 0;
   text-decoration: none; transition: background .2s ease;
 }
 .nav-menu a:hover { background: var(--hover); text-decoration: none; }
@@ -1267,7 +1288,7 @@ main a { transition: color .2s ease; }
 .mini-carte {
   width: 80%;
   background: linear-gradient(155deg, #1e3a8a 0%, #2563eb 100%);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 12px 14px 14px;
   box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .35);
   color: #fff;
@@ -1356,7 +1377,7 @@ main a { transition: color .2s ease; }
   position: relative;
   flex: 1 1 0;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 0;
   padding: 10px 9px;
   box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .12);
   overflow: hidden;
@@ -1388,7 +1409,7 @@ main a { transition: color .2s ease; }
   flex: 1 1 0;
   background: #fff;
   border: 2px dashed #cbd5e1;
-  border-radius: 12px;
+  border-radius: 0;
   padding: 10px 9px;
   min-height: 92px;
   display: flex;
@@ -1406,7 +1427,7 @@ main a { transition: color .2s ease; }
 
 .carte-issue .champ {
   height: 8px;
-  border-radius: 4px;
+  border-radius: 0;
   background: #e2e8f0;
   width: 0;
   transition: width .5s ease, background-color .5s ease;
@@ -1468,7 +1489,7 @@ main a { transition: color .2s ease; }
   position: relative;
   width: 100%;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 0;
   padding: 14px 12px;
   box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .12);
   transition: transform .5s ease, opacity .5s ease;
@@ -1483,7 +1504,7 @@ main a { transition: color .2s ease; }
   align-items: center;
   justify-content: center;
   min-height: 62px;
-  border-radius: 6px;
+  border-radius: 0;
   background:
     repeating-linear-gradient(to bottom,
       transparent 0, transparent 17px,
@@ -1514,10 +1535,10 @@ main a { transition: color .2s ease; }
   border: 2px solid #3b82f6;
   opacity: .9;
 }
-.coin.hg { top: 6px;  left: 6px;  border-right: 0; border-bottom: 0; border-radius: 4px 0 0 0; }
-.coin.hd { top: 6px;  right: 6px; border-left: 0;  border-bottom: 0; border-radius: 0 4px 0 0; }
-.coin.bg { bottom: 6px; left: 6px;  border-right: 0; border-top: 0; border-radius: 0 0 0 4px; }
-.coin.bd { bottom: 6px; right: 6px; border-left: 0;  border-top: 0; border-radius: 0 0 4px 0; }
+.coin.hg { top: 6px;  left: 6px;  border-right: 0; border-bottom: 0; border-radius: 0; }
+.coin.hd { top: 6px;  right: 6px; border-left: 0;  border-bottom: 0; border-radius: 0; }
+.coin.bg { bottom: 6px; left: 6px;  border-right: 0; border-top: 0; border-radius: 0; }
+.coin.bd { bottom: 6px; right: 6px; border-left: 0;  border-top: 0; border-radius: 0; }
 
 /* Le cadrage se resserre avant le declenchement : c'est ce petit
    mouvement qui fait lire « on vise », et non « une image est posee la ». */
@@ -1531,7 +1552,7 @@ main a { transition: color .2s ease; }
 
 .flash {
   position: absolute; inset: 0;
-  border-radius: 10px;
+  border-radius: 0;
   background: #fff;
   opacity: 0;
   pointer-events: none;
@@ -1580,7 +1601,7 @@ main a { transition: color .2s ease; }
   font-size: 1.2rem;
   color: #0f172a;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 0;
   padding: 9px 16px;
   box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .18);
   opacity: 0;
@@ -1809,7 +1830,7 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
   height: .92em;
   margin-left: .06em;
   background: #cbd5e1;
-  border-radius: 2px;
+  border-radius: 0;
   animation: clignote 1s steps(1) infinite;
 }
 
@@ -1828,19 +1849,19 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
 .cadre-demo {
   margin-top: 56px;
   padding: 16px 16px 0;
-  border-radius: 26px 26px 0 0;
+  border-radius: 0;
   background: linear-gradient(135deg, #2563eb, #7c3aed 55%, #ec4899);
   box-shadow: 0 -2px 60px rgba(37, 99, 235, .18);
 }
 .cadre-demo .demo-app {
   border: 0;
-  border-radius: 18px 18px 0 0;
+  border-radius: 0;
   box-shadow: 0 -10px 40px rgba(15, 23, 42, .18);
 }
 
 @media (max-width: 700px) {
-  .cadre-demo { margin-top: 36px; padding: 9px 9px 0; border-radius: 18px 18px 0 0; }
-  .cadre-demo .demo-app { border-radius: 12px 12px 0 0; }
+  .cadre-demo { margin-top: 36px; padding: 9px 9px 0; border-radius: 0; }
+  .cadre-demo .demo-app { border-radius: 0; }
 }
 
 /* --- Blocs alternes ------------------------------------------------- */
@@ -1942,7 +1963,7 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
   position: relative;
   height: 268px;
   margin: 0;
-  border-radius: 18px;
+  border-radius: 0;
   background: var(--fond-doux);
   box-shadow: inset 0 0 0 1px rgba(148, 163, 184, .16);
   display: flex;
@@ -2009,7 +2030,7 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
 
 .faq-item {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 0;
   box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .08);
   transition: box-shadow .25s ease;
 }
@@ -2087,7 +2108,7 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
   margin: 1.6em auto 0;
   padding: 40px 38px 32px;
   background: #fff;
-  border-radius: 22px;
+  border-radius: 0;
   box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .18);
 }
 
@@ -2248,7 +2269,7 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
   position: absolute;
   top: 0; left: 0;
   width: 46px; height: 3px;
-  border-radius: 3px;
+  border-radius: 0;
   background: var(--degrade);
 }
 
@@ -2265,7 +2286,7 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
 
 .feuille-texte table {
   box-shadow: 0 4px 14px -4px rgba(15, 23, 42, .08);
-  border-radius: 14px;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -2411,7 +2432,7 @@ html.js .feuille-texte > .vue {
   gap: 7px;
   background: #fff;
   border: 1px solid var(--bord);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 18px 20px;
   text-decoration: none;
   color: inherit;
@@ -2471,7 +2492,7 @@ html.js .feuille-texte > .vue {
 }
 .compte-form input {
   height: 44px; padding: 0 14px;
-  border: 1px solid var(--bord); border-radius: 12px;
+  border: 1px solid var(--bord); border-radius: 0;
   background: #fff; font-size: 1rem; font-family: inherit; color: var(--encre);
 }
 .compte-form input:focus {
@@ -2495,7 +2516,7 @@ html.js .feuille-texte > .vue {
 .bouton-google {
   display: flex; align-items: center; justify-content: center; gap: 10px;
   height: 46px; padding: 0 18px;
-  border: 1px solid var(--bord); border-radius: 12px;
+  border: 1px solid var(--bord); border-radius: 0;
   background: #fff; color: #1f1f1f;
   font-family: inherit; font-size: 1rem; font-weight: 600;
   text-decoration: none;

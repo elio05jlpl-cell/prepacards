@@ -844,6 +844,17 @@ def inserer_chapo(html_body: str) -> str:
     return f'{avant}\n<div class="chapo">\n{chapo}\n</div>\n{apres}'
 
 
+def extraire_titre_h1(html_body: str) -> tuple:
+    """Retire le H1 du corps et le renvoie a part, pour le bandeau de titre
+    plein largeur. Appelee apres sommaire_html_depuis() et inserer_chapo(),
+    qui ont deja besoin du H1 en place dans le corps.
+    """
+    m = re.search(r"<h1[^>]*>.*?</h1>\s*", html_body, re.DOTALL)
+    if not m:
+        return html_body, ""
+    return html_body[:m.start()] + html_body[m.end():], m.group(0).rstrip()
+
+
 VITESSE_LECTURE = 200  # mots par minute, ordre de grandeur usuel en lecture silencieuse.
 
 
@@ -859,6 +870,57 @@ def temps_lecture(raw_body: str) -> str:
     mots = re.findall(r"[^\W\d_]+(?:['’-][^\W\d_]+)*", texte, flags=re.UNICODE)
     minutes = max(1, round(len(mots) / VITESSE_LECTURE))
     return f"{minutes} min"
+
+
+FILIERE_LABELS = {
+    "toutes": "Toutes filières",
+    "commerciale": "Prépa commerciale",
+    "scientifique": "Prépa scientifique",
+    "litteraire": "Prépa littéraire",
+}
+
+MATIERE_LABELS = {
+    "methode": "Méthode",
+    "maths": "Mathématiques",
+    "langues": "Langues",
+    "anglais": "Anglais",
+    "espagnol": "Espagnol",
+    "allemand": "Allemand",
+    "italien": "Italien",
+    "culture-generale": "Culture générale",
+    "philosophie": "Philosophie",
+    "histoire": "Histoire",
+    "geopolitique": "Géopolitique",
+    "chimie": "Chimie",
+    "physique": "Physique",
+    "sciences-industrielles": "Sciences industrielles",
+    "informatique": "Informatique",
+}
+
+
+def render_bandeau_titre(article: dict) -> str:
+    """Bandeau plein largeur en tete d'article : titre centre sur fond bleu,
+    puis les etiquettes filiere/matiere juste en dessous."""
+    if not article.get("titre_html"):
+        return ""
+    type_contenu = MATIERE_LABELS.get(article["matiere"][0], article["matiere"][0].capitalize()) if article["matiere"] else ""
+    etiquettes = (
+        [FILIERE_LABELS.get(f, f.capitalize()) for f in article["filiere"]]
+        + [MATIERE_LABELS.get(m, m.capitalize()) for m in article["matiere"][1:]]
+    )
+    puces = "".join(
+        f'<span class="etiquette-article">{html.escape(e)}</span>' for e in etiquettes
+    )
+    return (
+        '<header class="bandeau-titre-article">\n'
+        f'<div class="conteneur">\n'
+        f'<p class="etiquette-type">{html.escape(type_contenu)}</p>\n'
+        f'{article["titre_html"]}\n</div>\n'
+        '</header>\n'
+        '<div class="sous-bandeau-titre">\n'
+        f'<div class="conteneur etiquettes-article">{puces}</div>\n'
+        '</div>'
+    )
 
 
 def choisir_voir_aussi(article: dict, tous: list, nombre: int = 3) -> list:
@@ -913,9 +975,11 @@ def load_page(path: Path) -> dict:
     )
     html_body = converter.convert(body)
     sommaire_html = ""
+    titre_html = ""
     if path.parent.name == "blog":
         sommaire_html = sommaire_html_depuis(converter)
         html_body = inserer_chapo(html_body)
+        html_body, titre_html = extraire_titre_h1(html_body)
     return {
         "path": path,
         "slug": slug,
@@ -928,6 +992,7 @@ def load_page(path: Path) -> dict:
         "faq": meta.get("faq", ""),
         "body_html": envelopper(html_body),
         "sommaire_html": sommaire_html,
+        "titre_html": titre_html,
         "raw_body": body,
         "filiere": [f.strip() for f in meta.get("filiere", "toutes").split(",") if f.strip()],
         "matiere": [m.strip() for m in meta.get("matiere", "methode").split(",") if m.strip()],
@@ -1371,6 +1436,7 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{titre_court}}": html.escape(titre_affiche(page["title"])),
         "{{temps_lecture}}": page.get("temps_lecture", ""),
         "{{voir_aussi}}": page.get("voir_aussi_html", ""),
+        "{{bandeau_titre}}": page.get("bandeau_titre_html", ""),
     }
     for marker, value in replacements.items():
         base = base.replace(marker, value)
@@ -1651,6 +1717,7 @@ def build() -> None:
         url_path = f"/blog/{article['slug']}/"
         url = SITE_URL + url_path
         article["temps_lecture"] = temps_lecture(article["raw_body"])
+        article["bandeau_titre_html"] = render_bandeau_titre(article)
         article["voir_aussi_html"] = render_voir_aussi(
             choisir_voir_aussi(article, articles))
         blocks = [
