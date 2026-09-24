@@ -157,7 +157,7 @@ border-bottom: 1px solid var(--bord-net);
 .bandeau-haut { background: #16213e; color: #cfd8e8; }
 .bandeau-haut-interieur {
 display: flex; align-items: center; justify-content: space-between;
-gap: 10px; min-height: 25px;
+gap: 10px; min-height: 40px;
 }
 .reseaux { display: flex; align-items: center; gap: 2px; }
 .reseaux a {
