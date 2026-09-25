@@ -2118,11 +2118,15 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
 
 .avis-section { padding-top: 10px; }
 
+.avis-grille {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  max-width: var(--largeur); margin: 1.6em auto 0; text-align: left;
+}
+
 .avis {
   position: relative;
-  max-width: 680px;
-  margin: 1.6em auto 0;
-  padding: 40px 38px 32px;
+  height: 100%;
+  padding: 36px 28px 26px;
   background: #fff;
   border-radius: 0;
   box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .18);
@@ -2145,7 +2149,7 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
 
 .avis blockquote { margin: 0; }
 .avis blockquote p {
-  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-size: 1.05rem;
   line-height: 1.45;
   color: var(--encre);
   font-weight: 500;
@@ -2160,6 +2164,9 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
 .avis-nom { font-weight: 700; color: var(--encre); }
 .avis-role { font-size: .93rem; color: var(--gris); }
 
+@media (max-width: 900px) {
+  .avis-grille { grid-template-columns: 1fr; max-width: 460px; }
+}
 @media (max-width: 640px) {
   .avis { padding: 32px 24px 26px; }
   .avis-guillemet { left: 18px; font-size: 4rem; }

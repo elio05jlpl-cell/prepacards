@@ -259,17 +259,41 @@ faq: true
 <section class="section avis-section">
   <div class="conteneur centre">
     <span class="eyebrow">Ils l'utilisent</span>
-    <figure class="avis">
-      <span class="avis-guillemet" aria-hidden="true">“</span>
-      <blockquote>
-        <p>Super app, comble la difficulté d'appréhension d'Anki et permet de
-          mettre les maths en flashcard.</p>
-      </blockquote>
-      <figcaption>
-        <span class="avis-nom">Jean</span>
-        <span class="avis-role">Étudiant à HEC Paris · 20 à Maths I</span>
-      </figcaption>
-    </figure>
+    <div class="avis-grille">
+      <figure class="avis">
+        <span class="avis-guillemet" aria-hidden="true">“</span>
+        <blockquote>
+          <p>Super app, comble la difficulté d'appréhension d'Anki et permet de
+            mettre les maths en flashcard.</p>
+        </blockquote>
+        <figcaption>
+          <span class="avis-nom">Jean</span>
+          <span class="avis-role">Étudiant à HEC Paris · 20 à Maths I</span>
+        </figcaption>
+      </figure>
+      <figure class="avis">
+        <span class="avis-guillemet" aria-hidden="true">“</span>
+        <blockquote>
+          <p>Interface hyper simple à prendre en main, toute la plateforme est
+            agréable à utiliser. Il reste de la marge en anglais et en LV2.</p>
+        </blockquote>
+        <figcaption>
+          <span class="avis-nom">Andrea</span>
+          <span class="avis-role">Étudiante à HEC Paris</span>
+        </figcaption>
+      </figure>
+      <figure class="avis">
+        <span class="avis-guillemet" aria-hidden="true">“</span>
+        <blockquote>
+          <p>La prise en main est immédiate, on sent que la plateforme est bien
+            pensée. Il manque encore un peu de contenu en anglais et en LV2.</p>
+        </blockquote>
+        <figcaption>
+          <span class="avis-nom">Alexandre</span>
+          <span class="avis-role">Étudiant à l'ESCP</span>
+        </figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
