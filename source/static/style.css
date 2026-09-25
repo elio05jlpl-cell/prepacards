@@ -1000,13 +1000,20 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
   .burger { display: block; margin-left: auto; }
   /* La navigation occupe deja sa propre rangee : elle se replie sur place
      plutot que de se poser en absolu sous une barre unique, qui n'existe
-     plus. Le bandeau sombre passe en colonne pour tenir dans la largeur. */
-  .bandeau-haut-interieur { flex-direction: column; align-items: stretch;
-    gap: 8px; padding-top: 8px; padding-bottom: 8px; }
-  .bandeau-actions { justify-content: flex-end; }
-  /* Colonne oblige : le bandeau triple de hauteur (32px -> 92px). La rangee
-     de liens colle juste en dessous, pas sous l'ancienne hauteur desktop. */
-  .entete-nav-barre { top: 92px; }
+     plus. */
+  /* Une seule rangee, comme sur ordinateur : les icones et les boutons
+     restent alignes, quitte a resserrer les boutons pour tenir a cote
+     d'elles plutot que de repasser en colonne. */
+  .bandeau-haut-interieur { gap: 6px; padding-top: 7px; padding-bottom: 7px;
+    min-height: 0; }
+  .reseaux { gap: 0; }
+  .reseaux a { width: 22px; height: 22px; }
+  .bandeau-actions { gap: 6px; }
+  .bandeau-actions .nav-connexion { padding: 5px 8px; font-size: .78rem; }
+  .bouton-nav { padding: 5px 8px !important; font-size: .78rem; margin-left: 0; }
+  /* Bandeau plus bas qu'a l'origine (boutons resserres) : la rangee de
+     liens doit coller a cette nouvelle hauteur, mesuree au pixel pres. */
+  .entete-nav-barre { top: 42px; }
   .entete-marque { padding: 12px 0 8px; }
   .entete-marque .marque { font-size: 1.25rem; }
   .entete-nav { padding: 0; }
