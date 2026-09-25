@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2208486d" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=fcb36135">
-<link rel="stylesheet" href="/style.css?v=821ddbfd4e">
+<link rel="stylesheet" href="/style.css?v=0fd26cc3e8">
 <link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "La reconnaissance vocale fonctionne-t-elle hors ligne ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, après un premier téléchargement. Le modèle de reconnaissance vocale (environ 500 Mo) et celui de suivi du visage sont récupérés au premier usage, puis conservés sur votre ordinateur. Ensuite, tout fonctionne sans connexion. Seule la traduction automatique reste en ligne."}}, {"@type": "Question", "name": "Quelle configuration faut-il ?", "acceptedAnswer": {"@type": "Answer", "text": "Windows 10 ou 11, environ 1,5 Go d'espace disque au total avec les modèles, un micro pour l'oral et une webcam pour la lecture labiale. Aucune carte graphique dédiée n'est nécessaire : tout tourne sur le processeur."}}, {"@type": "Question", "name": "Y a-t-il une synchronisation entre plusieurs ordinateurs ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. C'est la contrepartie directe de l'absence de serveur. Pour transférer votre collection, copiez le fichier vocab.db ou passez par un export CSV."}}, {"@type": "Question", "name": "L'application est-elle open source ?", "acceptedAnswer": {"@type": "Answer", "text": "Pas à ce jour."}}]}</script>
@@ -75,12 +75,6 @@
 <p class="chapeau">Cette page décrit ce que l'application fait réellement
 aujourd'hui, y compris ses limites. Rien de ce qui suit n'est « à venir ».</p>
 
-<div class="cube-fonctionnalites" id="cube-fonctionnalites">
-<div class="cube3d-scene">
-<canvas class="cube3d-canvas" aria-hidden="true"></canvas>
-<div class="cube3d-etiquettes"><button type="button" class="cube3d-etiquette" data-index="0" aria-pressed="true"><span>Répétition espacée</span><span class="cube3d-corps">L&#x27;algorithme SM-2 ajuste l&#x27;intervalle de chaque carte selon votre réponse : Again, Hard, Good ou Easy.</span></button><button type="button" class="cube3d-etiquette" data-index="1" aria-pressed="false"><span>Prononciation à l&#x27;oral</span><span class="cube3d-corps">Le micro écoute votre réponse ; la reconnaissance vocale, exécutée sur votre ordinateur, note la carte.</span></button><button type="button" class="cube3d-etiquette" data-index="2" aria-pressed="false"><span>Lecture labiale</span><span class="cube3d-corps">La webcam suit le mouvement des lèvres et ne valide la carte que si le micro et la bouche sont d&#x27;accord.</span></button><button type="button" class="cube3d-etiquette" data-index="3" aria-pressed="false"><span>Formules en photo</span><span class="cube3d-corps">Une image de formule est convertie en LaTeX modifiable, avec son rendu affiché en dessous.</span></button><button type="button" class="cube3d-etiquette" data-index="4" aria-pressed="false"><span>Traduction automatique</span><span class="cube3d-corps">Un bouton traduit le mot dans l&#x27;une des cinq langues gérées et détecte sa langue d&#x27;origine.</span></button><button type="button" class="cube3d-etiquette" data-index="5" aria-pressed="false"><span>Données en local</span><span class="cube3d-corps">Aucun serveur PrépaCards : vos cartes et votre historique restent dans un fichier sur votre disque.</span></button></div>
-</div>
-</div>
 <h2 id="repetition-espacee">Répétition espacée</h2>
 <p>PrépaCards utilise <strong>SM-2</strong>, l'algorithme de répétition espacée que rendu
 célèbre SuperMemo puis Anki. Après chaque carte, vous notez votre réponse sur
@@ -453,170 +447,6 @@ document.documentElement.classList.add('js');
   window.addEventListener('scroll', demander, { passive: true });
   window.addEventListener('resize', demander, { passive: true });
   majEtat();
-})();
-</script>
-<script type="importmap">{"imports": {"three": "/vendor/three.module.min.js?v=3e690ac7"}}</script>
-<script type="module">
-// Pile 3D des fonctionnalites (Three.js) : six plaques metalliques
-// empilees, une etiquette cliquable par plaque. Rendu WebGL, chargement et
-// boucle d'animation ne demarrent que si ce bloc est visible a l'ecran et
-// que le visiteur n'a pas demande un mouvement reduit - une pile immobile
-// consommerait le GPU pour rien pendant que l'article se lit plus bas.
-import * as THREE from 'three';
-import { RoomEnvironment } from '/vendor/three-room-environment.js?v=e21f41b7';
-
-(function () {
-  var bloc = document.getElementById('cube-fonctionnalites');
-  if (!bloc) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!window.WebGLRenderingContext) return;
-
-  var scene3d = bloc.querySelector('.cube3d-scene');
-  var canevas = bloc.querySelector('.cube3d-canvas');
-  var etiquettes = Array.prototype.slice.call(bloc.querySelectorAll('.cube3d-etiquette'));
-  if (!canevas || !etiquettes.length) return;
-
-  var demarre = false;
-
-  function demarrer() {
-    if (demarre) return;
-    demarre = true;
-
-    var renderer;
-    try {
-      renderer = new THREE.WebGLRenderer({ canvas: canevas, antialias: true, alpha: true });
-    } catch (e) {
-      return; // Contexte WebGL indisponible : le repli HTML/CSS suffit.
-    }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.05;
-
-    var scene = new THREE.Scene();
-    var pmrem = new THREE.PMREMGenerator(renderer);
-    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-
-    var camera = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
-    camera.position.set(2.7, 2.3, 3.3);
-    camera.lookAt(0, 0.15, 0);
-
-    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-    var cle = new THREE.DirectionalLight(0xffffff, 1.6);
-    cle.position.set(3, 5, 2);
-    scene.add(cle);
-    var contre = new THREE.DirectionalLight(0x9fc4ff, 0.5);
-    contre.position.set(-3, 1, -2);
-    scene.add(contre);
-
-    var groupe = new THREE.Group();
-    scene.add(groupe);
-
-    var cotes = 1.9;
-    var epaisseur = 0.055;
-    var geometrie = new THREE.BoxGeometry(cotes, epaisseur, cotes);
-    var nombre = etiquettes.length;
-    var plaques = etiquettes.map(function (etiquette, i) {
-      var materiau = new THREE.MeshPhysicalMaterial({
-        color: 0xe8ecf2, metalness: 1, roughness: 0.3,
-        clearcoat: 0.5, clearcoatRoughness: 0.25
-      });
-      var plaque = new THREE.Mesh(geometrie, materiau);
-      // La premiere etiquette doit correspondre a la plaque du dessus : les
-      // suivantes descendent (y decroissant) et reculent legerement, comme
-      // une pile eventail vue de trois quarts.
-      plaque.userData.y = -i * 0.16;
-      plaque.userData.x = i * 0.055;
-      plaque.userData.z = -i * 0.04;
-      plaque.position.set(plaque.userData.x, plaque.userData.y, plaque.userData.z);
-      groupe.add(plaque);
-      return plaque;
-    });
-
-    var indiceActif = 0;
-
-    function activer(indice, deplaceFocus) {
-      if (indice === indiceActif) return;
-      etiquettes[indiceActif].setAttribute('aria-pressed', 'false');
-      indiceActif = indice;
-      etiquettes[indiceActif].setAttribute('aria-pressed', 'true');
-      if (deplaceFocus) etiquettes[indiceActif].focus();
-    }
-
-    etiquettes.forEach(function (etiquette, i) {
-      etiquette.addEventListener('click', function () {
-        activer(i, false);
-        reprogrammerCycle();
-      });
-    });
-
-    // Cycle automatique : avance seul tant que le visiteur ne choisit pas
-    // lui-meme un onglet, et se remet a zero des qu'il le fait - inutile de
-    // reprendre le defilement automatique la ou l'utilisateur vient d'agir.
-    var minuteurCycle = null;
-    function reprogrammerCycle() {
-      window.clearTimeout(minuteurCycle);
-      minuteurCycle = window.setTimeout(function () {
-        activer((indiceActif + 1) % nombre, false);
-        reprogrammerCycle();
-      }, 4200);
-    }
-    reprogrammerCycle();
-    scene3d.addEventListener('pointerenter', function () { window.clearTimeout(minuteurCycle); });
-    scene3d.addEventListener('pointerleave', reprogrammerCycle);
-
-    bloc.setAttribute('data-anime', 'pret');
-
-    function redimensionner() {
-      var rect = canevas.getBoundingClientRect();
-      if (rect.width < 1 || rect.height < 1) return;
-      camera.aspect = rect.width / rect.height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(rect.width, rect.height, false);
-    }
-    redimensionner();
-    window.addEventListener('resize', redimensionner);
-
-    var visible = true;
-    var observateur = new IntersectionObserver(function (entrees) {
-      visible = entrees[0].isIntersecting;
-      if (visible) boucle();
-    }, { threshold: 0.05 });
-    observateur.observe(bloc);
-
-    var enCours = false;
-    function boucle() {
-      if (enCours || !visible) return;
-      enCours = true;
-
-      function image() {
-        if (!visible) { enCours = false; return; }
-
-        groupe.rotation.y += 0.0022;
-
-        plaques.forEach(function (plaque, i) {
-          // La plaque active se souleve un peu et avance vers la camera ;
-          // les autres reprennent leur place dans la pile.
-          var cibleY = plaque.userData.y + (i === indiceActif ? 0.22 : 0);
-          var cibleZ = plaque.userData.z + (i === indiceActif ? 0.35 : 0);
-          plaque.position.y += (cibleY - plaque.position.y) * 0.08;
-          plaque.position.z += (cibleZ - plaque.position.z) * 0.08;
-        });
-
-        renderer.render(scene, camera);
-        window.requestAnimationFrame(image);
-      }
-      image();
-    }
-    boucle();
-  }
-
-  var declencheur = new IntersectionObserver(function (entrees) {
-    if (entrees[0].isIntersecting) {
-      demarrer();
-      declencheur.disconnect();
-    }
-  }, { threshold: 0.1 });
-  declencheur.observe(bloc);
 })();
 </script>
 </body>

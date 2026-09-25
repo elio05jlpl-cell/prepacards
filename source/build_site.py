@@ -121,8 +121,7 @@ BLOC_TELECHARGEMENT_ATTENTE = """<div class="encart encart-attention">
 # ligne : ils ne doivent jamais rester enfermes dans un <p>.
 MARQUEURS_DE_BLOC = ("{{bloc_telechargement}}", "{{bandeau_ecoles}}",
                      "{{bloc_decks}}", "{{bloc_paiement}}",
-                     "{{bouton_mensuel}}", "{{bouton_annuel}}",
-                     "{{cube_fonctionnalites}}")
+                     "{{bouton_mensuel}}", "{{bouton_annuel}}")
 
 
 def transformer_faq(corps: str) -> str:
@@ -233,25 +232,10 @@ def scripts_animes(corps: str) -> str:
                               # trouve — ce qui n'aurait casse aucun test,
                               # la page se construisant tres bien sans le
                               # script.
-                              ("{{bloc_paiement}}", "paiement.js"),
-                              ("{{cube_fonctionnalites}}", "cube-fonctionnalites.js")):
+                              ("{{bloc_paiement}}", "paiement.js")):
         chemin = dossier / fichier
         if marqueur in corps and chemin.exists():
-            if fichier == "cube-fonctionnalites.js":
-                # Importe Three.js par son nom nu ("from 'three'") : la
-                # carte d'imports fait le lien vers le fichier vendu, sans
-                # quoi seule une adresse relative fonctionnerait. Le type
-                # "module" qu'elle impose (mode strict, portee isolee) est
-                # sans consequence pour ce script, deja ecrit comme tel.
-                morceaux.append(
-                    '<script type="importmap">'
-                    '{"imports": {"three": "/vendor/three.module.min.js"}}'
-                    '</script>'
-                )
-                balise = '<script type="module">'
-            else:
-                balise = "<script>"
-            morceaux.append(balise + chr(10)
+            morceaux.append("<script>" + chr(10)
                             + chemin.read_text(encoding="utf-8") + "</script>")
     return chr(10).join(morceaux)
 
@@ -461,57 +445,6 @@ def bandeau_ecoles() -> str:
         cache = "" if index == 0 else ' aria-hidden="true"'
         pistes.append(f'    <ul class="defile-piste"{cache}>\n      {items}\n    </ul>')
     return "\n".join(pistes)
-
-
-# Les six fonctionnalites de la page /fonctionnalites/, dans l'ordre de
-# leurs sections : six plaques d'une meme pile.
-CUBE_FONCTIONNALITES = [
-    ("Répétition espacée",
-     "L'algorithme SM-2 ajuste l'intervalle de chaque carte selon votre "
-     "réponse : Again, Hard, Good ou Easy."),
-    ("Prononciation à l'oral",
-     "Le micro écoute votre réponse ; la reconnaissance vocale, exécutée "
-     "sur votre ordinateur, note la carte."),
-    ("Lecture labiale",
-     "La webcam suit le mouvement des lèvres et ne valide la carte que si "
-     "le micro et la bouche sont d'accord."),
-    ("Formules en photo",
-     "Une image de formule est convertie en LaTeX modifiable, avec son "
-     "rendu affiché en dessous."),
-    ("Traduction automatique",
-     "Un bouton traduit le mot dans l'une des cinq langues gérées et "
-     "détecte sa langue d'origine."),
-    ("Données en local",
-     "Aucun serveur PrépaCards : vos cartes et votre historique restent "
-     "dans un fichier sur votre disque."),
-]
-
-
-def cube_fonctionnalites_html() -> str:
-    """Bloc decoratif : une pile de plaques en 3D (Three.js), une par
-    fonctionnalite, avec une etiquette cliquable par plaque a gauche.
-
-    Sans JavaScript ou sans WebGL, cube-fonctionnalites.js ne s'execute
-    jamais (return anticipe) : ce HTML de base - une simple liste de
-    fonctionnalites, chacune suivie de sa description - reste alors seul
-    affiche, et parfaitement lisible sans canevas ni pile 3D.
-    """
-    etiquettes = "".join(
-        f'<button type="button" class="cube3d-etiquette" data-index="{i}"'
-        f' aria-pressed="{"true" if i == 0 else "false"}">'
-        f'<span>{html.escape(nom)}</span>'
-        f'<span class="cube3d-corps">{html.escape(texte)}</span>'
-        f'</button>'
-        for i, (nom, texte) in enumerate(CUBE_FONCTIONNALITES)
-    )
-    return (
-        '<div class="cube-fonctionnalites" id="cube-fonctionnalites">\n'
-        '<div class="cube3d-scene">\n'
-        '<canvas class="cube3d-canvas" aria-hidden="true"></canvas>\n'
-        f'<div class="cube3d-etiquettes">{etiquettes}</div>\n'
-        '</div>\n'
-        '</div>'
-    )
 
 
 # Barre de navigation. L'ordre compte : les pages les plus utiles d'abord,
@@ -1500,7 +1433,6 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{bouton_mensuel}}": bouton_abonnement("mensuel", False),
         "{{bouton_annuel}}": bouton_abonnement("annuel", True),
         "{{bandeau_ecoles}}": bandeau_ecoles(),
-        "{{cube_fonctionnalites}}": cube_fonctionnalites_html(),
         "{{sommaire}}": page.get("sommaire_html", ""),
         "{{titre_court}}": html.escape(titre_affiche(page["title"])),
         "{{temps_lecture}}": page.get("temps_lecture", ""),
@@ -1656,7 +1588,7 @@ def versionner_ressources() -> int:
     requete.
     """
     empreintes = {}
-    for dossier in ("img", "fonts", "vendor"):
+    for dossier in ("img", "fonts"):
         racine = OUTPUT / dossier
         if not racine.is_dir():
             continue
