@@ -1018,7 +1018,6 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
   }
   .navigation.ouvert { display: flex; }
   .navigation a { padding: 12px; }
-  .bouton-nav { margin: 10px 0 0; text-align: center; }
   .section { padding: 44px 0; }
   .bouton, .bouton-secondaire { display: block; text-align: center; margin-bottom: 12px; }
   .accroche .bouton, .accroche .bouton-secondaire { margin-right: 0; }
