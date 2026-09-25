@@ -958,6 +958,7 @@ html.js .a-reveler { opacity: 1; transform: none; transition: none; }
 html { scroll-behavior: auto; }
 * { transition: none !important; }
 .carte:hover, .bouton:hover, .liste-articles a:hover { transform: none; }
+.avis:hover { transform: none !important; }
 .defile { display: block; -webkit-mask-image: none; mask-image: none; }
 .defile-piste { animation: none; flex-wrap: wrap; justify-content: center; gap: 14px 34px; }
 .defile-piste[aria-hidden="true"] { display: none; }
@@ -1587,6 +1588,17 @@ padding: 36px 28px 26px;
 background: #fff;
 border-radius: 0;
 box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .18);
+}
+html.js .avis-grille .avis {
+transition: opacity .5s ease, transform .18s ease, box-shadow .18s ease;
+}
+html.js .avis-grille .avis:nth-child(2) { transition-delay: .08s, 0s, 0s; }
+html.js .avis-grille .avis:nth-child(3) { transition-delay: .16s, 0s, 0s; }
+.avis:hover {
+box-shadow: 0 20px 44px -10px rgba(30, 58, 138, .28);
+}
+html.js .avis-grille .avis:hover {
+transform: translateY(-4px);
 }
 .avis-guillemet {
 position: absolute;

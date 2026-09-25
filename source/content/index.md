@@ -259,7 +259,7 @@ faq: true
 <section class="section avis-section">
   <div class="conteneur centre">
     <span class="eyebrow">Ils l'utilisent</span>
-    <div class="avis-grille">
+    <div class="avis-grille revelation">
       <figure class="avis">
         <span class="avis-guillemet" aria-hidden="true">“</span>
         <blockquote>
