@@ -24,7 +24,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2208486d" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=fcb36135">
-<link rel="stylesheet" href="/style.css?v=1a8a7eb626">
+<link rel="stylesheet" href="/style.css?v=34b2804d97">
 <link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Combien de cartes par jour ? Le bon calcul | PrépaCards", "description": "20 nouvelles cartes par jour, ce sont 140 révisions quotidiennes six mois plus tard. Le calcul, les seuils tenables en prépa, et comment rattraper un arriéré.", "datePublished": "2026-09-21", "dateModified": "2026-09-21", "author": {"@type": "Organization", "name": "PrépaCards"}, "publisher": {"@type": "Organization", "name": "PrépaCards"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://prepacards.fr/blog/combien-de-cartes-par-jour/"}}</script>
@@ -128,6 +128,7 @@ toutes celles des semaines précédentes qui reviennent en parallèle au même
 moment.</p>
 <p>Voici un ordre de grandeur concret, pour un rythme constant et un taux de
 réussite correct dans la durée :</p>
+<div class="tableau-enveloppe">
 <table>
 <thead>
 <tr>
@@ -159,6 +160,7 @@ réussite correct dans la durée :</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Ces chiffres supposent environ 8 secondes par carte en moyenne, ce qui
 reste un rythme rapide. Sur du simple vocabulaire de langue, c'est un
 rythme parfaitement réaliste en pratique. Sur des définitions d'ESH à
@@ -428,6 +430,36 @@ document.documentElement.classList.add('js');
     var lien = declencheur(ouvert);
     if (lien) lien.focus();
     actualiser(ouvert);
+  });
+})();
+
+// Accordeon mobile : sans survol possible au doigt, un premier appui sur un
+// lien qui a des enfants les deplie au lieu de naviguer tout de suite ; le
+// lien reste un lien normal et un second appui, une fois deplie, navigue.
+(function () {
+  function mobile() {
+    return window.matchMedia('(max-width: 900px)').matches;
+  }
+
+  document.querySelectorAll('.nav-groupe > .nav-lien[aria-haspopup="true"]').forEach(function (lien) {
+    lien.addEventListener('click', function (evenement) {
+      if (!mobile()) return;
+      var groupe = lien.closest('.nav-groupe');
+      if (groupe.classList.contains('ouvert')) return;
+      evenement.preventDefault();
+      groupe.classList.add('ouvert');
+      lien.setAttribute('aria-expanded', 'true');
+    });
+  });
+
+  document.querySelectorAll('.mega-filiere').forEach(function (lien) {
+    lien.addEventListener('click', function (evenement) {
+      if (!mobile()) return;
+      var item = lien.closest('.mega-item');
+      if (item.classList.contains('ouvert')) return;
+      evenement.preventDefault();
+      item.classList.add('ouvert');
+    });
   });
 })();
 

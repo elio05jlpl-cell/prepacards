@@ -66,6 +66,8 @@ dans vos études supérieures.
 
 Le strict nécessaire à connaître tient en huit lignes :
 
+<div class="tableau-enveloppe" markdown="1">
+
 | Ce que vous voulez | Ce que vous tapez |
 |---|---|
 | Fraction | `\frac{a}{b}` |
@@ -76,6 +78,8 @@ Le strict nécessaire à connaître tient en huit lignes :
 | Limite | `\lim_{x \to 0}` |
 | Lettres grecques | `\alpha`, `\pi`, `\varepsilon` |
 | Infini, appartient | `\infty`, `\in` |
+
+</div>
 
 Avec ces huit lignes apprises une bonne fois pour toutes, on écrit
 directement plus de 90 % des formules d'un programme de prépa sans
@@ -175,11 +179,15 @@ principalement :
 
 ## En résumé
 
+<div class="tableau-enveloppe" markdown="1">
+
 | Méthode | Temps par formule | Quand la choisir |
 |---|---|---|
 | LaTeX à la main | 1 à 2 min | Peu de formules, ou vous savez déjà le LaTeX |
 | Photo convertie | 15 à 30 s | Beaucoup de formules depuis un cours ou un PDF |
 | Description en mots | 20 s | La réponse est courte (une valeur, une condition) |
+
+</div>
 
 Ces trois méthodes ne s'excluent d'ailleurs pas mutuellement : la plupart
 des élèves finissent par les combiner selon le type de formule rencontrée,

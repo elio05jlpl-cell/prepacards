@@ -584,6 +584,20 @@ td strong { color: var(--encre); }
   margin: 1.7em 0; padding: 4px 0 4px 22px;
   border-left: 3px solid rgba(37, 99, 235, .35); color: var(--gris); font-style: italic;
 }
+.article code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: .9em; background: var(--fond-doux); color: var(--encre);
+  padding: .15em .4em; border-radius: var(--rayon-s);
+}
+/* overflow-x: auto laisse la ligne la plus longue defiler dans son propre
+   cadre plutot que forcer toute la page a deborder a l'horizontale. */
+.article pre {
+  margin: 1.7em 0; padding: 18px 20px; overflow-x: auto;
+  background: var(--encre); border-radius: var(--rayon-l);
+}
+.article pre code {
+  background: none; padding: 0; color: #e5e7eb; font-size: .88rem; line-height: 1.6;
+}
 
 /* Bandeau de titre plein largeur : le negative margin-top annule le
    padding-top de .article, pour que le degrade touche la barre de
@@ -636,7 +650,17 @@ td strong { color: var(--encre); }
      hauteur disponible. */
   align-items: start;
 }
-.disposition-article .conteneur-texte { padding-left: 0; padding-right: 0; }
+/* Sans ce reset, les marges automatiques de .conteneur-texte (margin: 0
+   auto - pensees pour le centrer sur une page simple) font qu'une grille
+   CSS le dimensionne sur son contenu (« fit-content ») au lieu de la
+   colonne qui lui est reservee : une table large suffit alors a faire
+   deborder toute la page a l'horizontale. */
+.disposition-article .conteneur-texte { padding-left: 0; padding-right: 0; margin-left: 0; margin-right: 0; }
+/* Une cellule de grille garde par defaut la largeur minimale de son contenu
+   (min-width: auto), meme quand sa piste est deja bornee par minmax(0, ...) :
+   sans ce min-width: 0 explicite sur les deux cellules, un sommaire ou une
+   grille de cartes trop larges pour l'ecran continuent de deborder. */
+.disposition-article > * { min-width: 0; }
 
 /* 188px degage la hauteur reelle de l'en-tete (bandeau + marque + nav,
    elle-meme sticky a top:0) : sans cette marge le sommaire se colle
@@ -701,7 +725,7 @@ p.chapeau.conteneur-bibliotheque { margin: 14px auto 0; }
 .feuille-texte .chapo p + p { margin-top: 1em; }
 
 @media (max-width: 980px) {
-  .disposition-article { grid-template-columns: 1fr; gap: 20px; }
+  .disposition-article { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .barre-laterale { position: static; }
 }
 
@@ -751,11 +775,11 @@ h2.a-lire-egalement-titre {
 }
 .a-lire-egalement-titre::after { content: ""; flex: 1; height: 1px; background: var(--bord-net); }
 .a-lire-egalement-grille {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px;
   align-items: stretch;
 }
 .carte-a-lire {
-  display: flex; flex-direction: column; height: 100%;
+  display: flex; flex-direction: column; height: 100%; min-width: 0;
   border: 1px solid var(--bord); text-decoration: none; background: #fff;
   transition: transform .18s, box-shadow .18s;
 }
@@ -775,10 +799,10 @@ h2.a-lire-egalement-titre {
 }
 .carte-a-lire:hover .carte-a-lire-titre { color: var(--bleu); }
 @media (max-width: 700px) {
-  .a-lire-egalement-grille { grid-template-columns: repeat(2, 1fr); }
+  .a-lire-egalement-grille { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 480px) {
-  .a-lire-egalement-grille { grid-template-columns: 1fr; }
+  .a-lire-egalement-grille { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* Centrage porte par la classe elle-meme, et non par la regle « main > ul » :
@@ -978,7 +1002,7 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
      plutot que de se poser en absolu sous une barre unique, qui n'existe
      plus. Le bandeau sombre passe en colonne pour tenir dans la largeur. */
   .bandeau-haut-interieur { flex-direction: column; align-items: stretch;
-    gap: 8px; padding: 8px 0; }
+    gap: 8px; padding-top: 8px; padding-bottom: 8px; }
   .bandeau-actions { justify-content: flex-end; }
   /* Colonne oblige : le bandeau triple de hauteur (32px -> 92px). La rangee
      de liens colle juste en dessous, pas sous l'ancienne hauteur desktop. */
@@ -996,7 +1020,7 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
   .navigation a { padding: 12px; }
   .bouton-nav { margin: 10px 0 0; text-align: center; }
   .section { padding: 44px 0; }
-  .bouton, .bouton-secondaire { display: block; text-align: center; }
+  .bouton, .bouton-secondaire { display: block; text-align: center; margin-bottom: 12px; }
   .accroche .bouton, .accroche .bouton-secondaire { margin-right: 0; }
 }
 
@@ -1238,15 +1262,25 @@ main a { transition: color .2s ease; }
 .liste-articles a img, .capture-accroche { transition: transform .4s ease; }
 
 @media (max-width: 900px) {
-  /* Sur petit ecran il n'y a pas de survol : le sous-menu est deroule en
-     permanence sous son parent, en retrait. */
+  /* Sur petit ecran il n'y a pas de survol : un premier appui sur un lien
+     qui a des enfants les deplie (classe "ouvert", posee par le script en
+     bas de page) au lieu de naviguer tout de suite - repli sans script :
+     le lien reste un lien normal, et .mega-item.ouvert (pose une fois pour
+     toutes par le gabarit pour la premiere filiere) garde au moins un
+     panneau ouvert d'emblee. */
   .nav-groupe { display: block; width: 100%; }
   .nav-menu {
     position: static; opacity: 1; visibility: visible; transform: none;
     box-shadow: none; border: none; padding: 0 0 0 14px; min-width: 0;
+    display: none;
   }
-  .nav-fleche { display: none; }
-  .nav-menu span { display: none; }
+  .nav-groupe.ouvert > .nav-menu { display: block; }
+  .nav-fleche { transition: transform .2s ease; }
+  .nav-groupe.ouvert > .nav-lien .nav-fleche { transform: rotate(180deg); }
+  /* Pas .mega-panneau : ce panneau a ses propres span (etiquette de la
+     filiere, chevron) qui doivent rester visibles - seuls les sous-titres
+     des menus simples doivent disparaitre ici. */
+  .nav-menu:not(.mega-panneau) span { display: none; }
 
   /* Le menu des matieres a deux panneaux n'a pas de sens sans survol :
      il se deplie en une seule colonne, chaque filiere suivie de ses
@@ -1256,16 +1290,18 @@ main a { transition: color .2s ease; }
      seul est MOINS specifique que ".nav-menu.mega-panneau" (deux classes)
      et perdait donc face a elle malgre son ordre plus tardif dans la
      feuille - la specificite l'emporte toujours sur l'ordre source. */
-  .nav-menu.mega-panneau { display: block; min-width: 0; padding: 0 0 0 14px; }
+  .nav-menu.mega-panneau { min-width: 0; padding: 0 0 0 14px; display: none; }
+  .nav-groupe.ouvert > .nav-menu.mega-panneau { display: flex; }
   .mega-gauche { width: auto; flex: none; border-right: none; }
   .mega-filiere { margin-right: 0; }
   .mega-filiere small { display: none; }
-  .mega-chevron { display: none; }
+  .mega-chevron { display: inline-block; transition: transform .2s ease; }
+  .mega-item.ouvert .mega-chevron { transform: rotate(90deg); }
   .mega-droite {
     position: static; width: auto; opacity: 1; visibility: visible;
-    padding: 0 0 8px 14px;
+    padding: 0 0 8px 14px; display: none;
   }
-  .mega-item.ouvert > .mega-droite { opacity: 1; visibility: visible; }
+  .mega-item.ouvert > .mega-droite { display: flex; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2119,13 +2155,14 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
 .avis-section { padding-top: 10px; }
 
 .avis-grille {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
   max-width: var(--largeur); margin: 1.6em auto 0; text-align: left;
 }
 
 .avis {
   position: relative;
   height: 100%;
+  min-width: 0;
   padding: 36px 28px 26px;
   background: #fff;
   border-radius: 0;
@@ -2165,7 +2202,7 @@ html.js .demo-vue[data-etape="0"]:not(.active) { opacity: 0; }
 .avis-role { font-size: .93rem; color: var(--gris); }
 
 @media (max-width: 900px) {
-  .avis-grille { grid-template-columns: 1fr; max-width: 460px; }
+  .avis-grille { grid-template-columns: minmax(0, 1fr); max-width: 460px; }
 }
 @media (max-width: 640px) {
   .avis { padding: 32px 24px 26px; }

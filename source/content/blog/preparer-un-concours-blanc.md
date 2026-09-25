@@ -102,11 +102,15 @@ rangée dans un tiroir n'apprend structurellement rien à personne.
 Le lendemain de la correction, reprenez votre copie et **triez
 systématiquement vos erreurs en trois piles distinctes** :
 
+<div class="tableau-enveloppe" markdown="1">
+
 | Type d'erreur | Ce qu'il faut en faire concrètement |
 |---|---|
 | Je ne savais tout simplement pas | Une carte, créée immédiatement |
 | Je savais mais je n'y ai pas pensé sur le moment | Une carte sur le **déclencheur** manqué |
 | Erreur de calcul ou simple étourderie | Rien à mémoriser ici : c'est une question de temps et de calme |
+
+</div>
 
 La deuxième pile est, de loin, la plus intéressante à analyser, et
 pourtant la plus systématiquement négligée par les élèves. « Je

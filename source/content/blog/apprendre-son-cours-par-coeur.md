@@ -114,11 +114,15 @@ Tout le contenu d'un cours n'est heureusement pas à mémoriser par cœur, et
 vouloir absolument tout mémoriser sans distinction est même la meilleure
 façon de saturer rapidement sa charge de révision quotidienne.
 
+<div class="tableau-enveloppe" markdown="1">
+
 | Par cœur | À comprendre et refaire |
 |---|---|
 | Définitions, énoncés de théorèmes, hypothèses | Démonstrations |
 | Dates, chiffres, auteurs | Plans de dissertation |
 | Vocabulaire, citations | Méthodes d'exercice |
+
+</div>
 
 Pour toute la seconde colonne de ce tableau, ce qui se mémorise réellement
 utilement n'est jamais le contenu détaillé en lui-même, mais bien le

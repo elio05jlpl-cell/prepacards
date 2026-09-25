@@ -36,12 +36,16 @@ moment.
 Voici un ordre de grandeur concret, pour un rythme constant et un taux de
 réussite correct dans la durée :
 
+<div class="tableau-enveloppe" markdown="1">
+
 | Nouvelles / jour | Révisions quotidiennes après 6 mois | Temps estimé |
 |---|---|---|
 | 10 | 60 à 80 | 10 à 15 min |
 | 20 | 120 à 160 | 20 à 30 min |
 | 30 | 180 à 240 | 35 à 45 min |
 | 50 | 300 à 400 | plus d'une heure |
+
+</div>
 
 Ces chiffres supposent environ 8 secondes par carte en moyenne, ce qui
 reste un rythme rapide. Sur du simple vocabulaire de langue, c'est un

@@ -160,6 +160,8 @@ flashcards est souvent largement survendue en ligne :
 
 ## En résumé
 
+<div class="tableau-enveloppe" markdown="1">
+
 | Étape | À faire | À éviter |
 |---|---|---|
 | Création | Après avoir compris, depuis vos fiches | Pendant le cours |
@@ -167,6 +169,8 @@ flashcards est souvent largement survendue en ligne :
 | Rythme | 20-30 nouvelles par jour, limite fixée | Cent cartes d'un coup |
 | Régularité | 15 min par jour | Deux heures le dimanche |
 | Restitution | À voix haute | Dans sa tête |
+
+</div>
 
 <div class="encart">
   <p>PrépaCards applique cette méthode : limites quotidiennes par paquet,

@@ -184,6 +184,36 @@ document.documentElement.classList.add('js');
   });
 })();
 
+// Accordeon mobile : sans survol possible au doigt, un premier appui sur un
+// lien qui a des enfants les deplie au lieu de naviguer tout de suite ; le
+// lien reste un lien normal et un second appui, une fois deplie, navigue.
+(function () {
+  function mobile() {
+    return window.matchMedia('(max-width: 900px)').matches;
+  }
+
+  document.querySelectorAll('.nav-groupe > .nav-lien[aria-haspopup="true"]').forEach(function (lien) {
+    lien.addEventListener('click', function (evenement) {
+      if (!mobile()) return;
+      var groupe = lien.closest('.nav-groupe');
+      if (groupe.classList.contains('ouvert')) return;
+      evenement.preventDefault();
+      groupe.classList.add('ouvert');
+      lien.setAttribute('aria-expanded', 'true');
+    });
+  });
+
+  document.querySelectorAll('.mega-filiere').forEach(function (lien) {
+    lien.addEventListener('click', function (evenement) {
+      if (!mobile()) return;
+      var item = lien.closest('.mega-item');
+      if (item.classList.contains('ouvert')) return;
+      evenement.preventDefault();
+      item.classList.add('ouvert');
+    });
+  });
+})();
+
 </script>
 {{script_etapes}}
 </body>

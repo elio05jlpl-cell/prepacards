@@ -31,11 +31,15 @@ nom qu'on ne sait pas véritablement utiliser, même si l'on en connaît le sens
 La carte correcte porte donc les trois informations d'un seul coup, jamais
 séparément :
 
+<div class="tableau-enveloppe" markdown="1">
+
 | Recto | Verso |
 |---|---|
 | la loi | **das Gesetz, -e** |
 | le chômage | **die Arbeitslosigkeit** (sans pluriel) |
 | l'élection | **die Wahl, -en** |
+
+</div>
 
 Le genre, en allemand, ne se devine qu'en partie à partir de la forme du mot.
 Quelques suffixes sont heureusement fiables — *-ung*, *-heit*, *-keit*,

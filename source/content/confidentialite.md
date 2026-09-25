@@ -126,6 +126,8 @@ conservés le temps de traiter votre demande, puis supprimés.
 
 ## Base légale et durées
 
+<div class="tableau-enveloppe" markdown="1">
+
 | Traitement | Base légale | Durée |
 |---|---|---|
 | Compte (adresse, empreinte du mot de passe) | Exécution du contrat | Jusqu'à la suppression du compte |
@@ -134,6 +136,8 @@ conservés le temps de traiter votre demande, puis supprimés.
 | Journaux du serveur web | Intérêt légitime (sécurité) | [durée pratiquée par votre hébergeur] |
 | Réponse à un message | Intérêt légitime | Le temps de l'échange, puis suppression |
 | Liste d'attente Premium ou version Mac | Consentement | Jusqu'au retrait de votre consentement |
+
+</div>
 
 ## Vos droits
 

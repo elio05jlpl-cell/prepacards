@@ -24,7 +24,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2208486d" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=fcb36135">
-<link rel="stylesheet" href="/style.css?v=1a8a7eb626">
+<link rel="stylesheet" href="/style.css?v=34b2804d97">
 <link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Concours blancs : les préparer et en tirer parti | PrépaCards", "description": "Un concours blanc ne se prépare pas comme un DS. Comment aborder la semaine, gérer une note catastrophique, et surtout quoi faire de la copie une fois rendue.", "datePublished": "2026-09-18", "dateModified": "2026-09-18", "author": {"@type": "Organization", "name": "PrépaCards"}, "publisher": {"@type": "Organization", "name": "PrépaCards"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://prepacards.fr/blog/preparer-un-concours-blanc/"}}</script>
@@ -182,6 +182,7 @@ sérieusement le travail nécessaire. Une copie rendue et immédiatement
 rangée dans un tiroir n'apprend structurellement rien à personne.</p>
 <p>Le lendemain de la correction, reprenez votre copie et <strong>triez
 systématiquement vos erreurs en trois piles distinctes</strong> :</p>
+<div class="tableau-enveloppe">
 <table>
 <thead>
 <tr>
@@ -204,6 +205,7 @@ systématiquement vos erreurs en trois piles distinctes</strong> :</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p>La deuxième pile est, de loin, la plus intéressante à analyser, et
 pourtant la plus systématiquement négligée par les élèves. « Je
 connaissais parfaitement ce théorème » ne sert littéralement à rien si
@@ -399,6 +401,36 @@ document.documentElement.classList.add('js');
     var lien = declencheur(ouvert);
     if (lien) lien.focus();
     actualiser(ouvert);
+  });
+})();
+
+// Accordeon mobile : sans survol possible au doigt, un premier appui sur un
+// lien qui a des enfants les deplie au lieu de naviguer tout de suite ; le
+// lien reste un lien normal et un second appui, une fois deplie, navigue.
+(function () {
+  function mobile() {
+    return window.matchMedia('(max-width: 900px)').matches;
+  }
+
+  document.querySelectorAll('.nav-groupe > .nav-lien[aria-haspopup="true"]').forEach(function (lien) {
+    lien.addEventListener('click', function (evenement) {
+      if (!mobile()) return;
+      var groupe = lien.closest('.nav-groupe');
+      if (groupe.classList.contains('ouvert')) return;
+      evenement.preventDefault();
+      groupe.classList.add('ouvert');
+      lien.setAttribute('aria-expanded', 'true');
+    });
+  });
+
+  document.querySelectorAll('.mega-filiere').forEach(function (lien) {
+    lien.addEventListener('click', function (evenement) {
+      if (!mobile()) return;
+      var item = lien.closest('.mega-item');
+      if (item.classList.contains('ouvert')) return;
+      evenement.preventDefault();
+      item.classList.add('ouvert');
+    });
   });
 })();
 

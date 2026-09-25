@@ -80,11 +80,15 @@ train d'être dite. Deux ou trois **marques dans la marge** suffisent
 largement, à condition qu'elles veuillent dire quelque chose de précis et
 qu'elles soient toujours les mêmes d'un cours à l'autre :
 
+<div class="tableau-enveloppe" markdown="1">
+
 | Marque | Sens | Ce que j'en fais le soir |
 |---|---|---|
 | `?` | pas compris | je rouvre le cours, ou je demande |
 | `→` | à retenir par cœur | j'en fais une carte |
 | `!` | piège signalé par le prof | j'en fais une carte, sur le piège |
+
+</div>
 
 L'intérêt n'est pas la marque elle-même : c'est qu'au moment du cours, vous
 ayez déjà trié ce qui compte de ce qui ne compte pas. Le soir, vous ne relisez

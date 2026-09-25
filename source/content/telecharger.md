@@ -37,6 +37,8 @@ le dossier d'installation — vos cartes sont conservées.
 
 ## Configuration requise
 
+<div class="tableau-enveloppe" markdown="1">
+
 | | |
 |---|---|
 | Système | Windows 10 ou 11, 64 bits |
@@ -45,6 +47,8 @@ le dossier d'installation — vos cartes sont conservées.
 | Micro | Nécessaire pour la vérification à l'oral |
 | Webcam | Optionnelle, pour la lecture labiale |
 | Internet | Au premier lancement seulement, pour télécharger les modèles |
+
+</div>
 
 ## Premier lancement : ce qui se télécharge
 

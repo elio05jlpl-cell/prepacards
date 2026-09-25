@@ -143,11 +143,15 @@ au soir. Vous retenez alors le contenu pour vingt-quatre heures à peine,
 et vous aurez déjà tout oublié à la khôlle suivante qui portera sur le
 même chapitre quelques semaines plus tard.
 
+<div class="tableau-enveloppe" markdown="1">
+
 | Quand | Quoi faire concrètement |
 |---|---|
 | J−6 à J−2 | Dix à quinze minutes par jour sur le chapitre concerné, en s'interrogeant activement |
 | J−1 | Une passe rapide de révision, **sans rien apprendre de véritablement nouveau** |
 | Jour J | Rien du tout. Relire trente minutes juste avant ne fait qu'entretenir inutilement le stress |
+
+</div>
 
 Quinze minutes par jour pendant cinq jours d'affilée battent très
 largement trois heures concentrées la veille au soir, et ce n'est
