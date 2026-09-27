@@ -78,7 +78,7 @@ faq: true
       </a>
 
       <a class="actu" href="/alternative-quizlet/">
-        <img src="/img/etude.png" loading="lazy"
+        <img src="/img/etude.webp" loading="lazy"
              alt="Carte de vocabulaire retournée, avec sa traduction">
         <span>PrépaCards ou Quizlet : lequel tient la distance en prépa ?</span>
       </a>
@@ -249,7 +249,7 @@ faq: true
       <p><a href="/fonctionnalites/">Comment fonctionne la vérification à l'oral →</a></p>
     </div>
     <div>
-      <img src="/img/etude.png" width="1125" height="775"
+      <img src="/img/etude.webp" width="1125" height="775"
            alt="Écran d'étude de PrépaCards avec le bouton Vérifier ma prononciation et les quatre boutons de notation"
            loading="lazy">
     </div>
@@ -300,7 +300,7 @@ faq: true
 <section class="section">
   <div class="conteneur grille-2">
     <div>
-      <img src="/img/carte-maths.png" width="1225" height="950"
+      <img src="/img/carte-maths.webp" width="1225" height="950"
            alt="Carte de maths dans PrépaCards affichant la somme des inverses des carrés en formule rendue"
            loading="lazy">
     </div>

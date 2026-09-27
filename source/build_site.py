@@ -402,6 +402,32 @@ def dimensions_png(chemin: Path):
     return struct.unpack(">II", entete[16:24])
 
 
+def dimensions_webp(chemin: Path):
+    """Largeur et hauteur d'un WebP, lues dans son en-tete RIFF.
+
+    Les trois variantes du format (VP8 avec perte, VP8L sans perte, VP8X
+    etendu) rangent les dimensions a des endroits differents - celles
+    produites par une conversion sans perte (Pillow, lossless=True) sont
+    en VP8L.
+    """
+    entete = chemin.read_bytes()[:30]
+    if len(entete) < 20 or entete[:4] != b"RIFF" or entete[8:12] != b"WEBP":
+        return None
+    format_ = entete[12:16]
+    if format_ == b"VP8L" and len(entete) >= 25:
+        bits = struct.unpack("<I", entete[21:25])[0]
+        return (bits & 0x3FFF) + 1, ((bits >> 14) & 0x3FFF) + 1
+    if format_ == b"VP8X" and len(entete) >= 30:
+        largeur = int.from_bytes(entete[24:27], "little") + 1
+        hauteur = int.from_bytes(entete[27:30], "little") + 1
+        return largeur, hauteur
+    if format_ == b"VP8 " and len(entete) >= 30 and entete[23:26] == bytes((0x9d, 0x01, 0x2a)):
+        largeur = struct.unpack("<H", entete[26:28])[0] & 0x3FFF
+        hauteur = struct.unpack("<H", entete[28:30])[0] & 0x3FFF
+        return largeur, hauteur
+    return None
+
+
 def logo_ecole(nom: str, fichier: str) -> str:
     """Le logo si le fichier est present, sinon le nom en typographie.
 
@@ -421,7 +447,9 @@ def logo_ecole(nom: str, fichier: str) -> str:
             # moitie exacte ; le bandeau les rendait trop discrets, ils sont
             # donc agrandis d'un cinquieme. A 0,6 fois la taille du fichier,
             # la densite reste de 1,67x : les logos ne perdent pas leur nettete.
-            taille = dimensions_png(chemin)
+            taille = (dimensions_png(chemin) if extension == ".png"
+                      else dimensions_webp(chemin) if extension == ".webp"
+                      else None)
             mesures = ""
             if taille:
                 mesures = (f' width="{round(taille[0] * 0.6)}"'

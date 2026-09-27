@@ -54,7 +54,7 @@ vos lèvres, le convertit en suite de formes de bouche et le compare à celle
 attendue pour le mot.
 
 <figure>
-  <img src="/img/retour-camera.png" width="320" height="240"
+  <img src="/img/retour-camera.webp" width="320" height="240"
        alt="Retour vidéo de PrépaCards : maillage discret du visage, contour des lèvres en bleu et jauges d'ouverture, arrondi et étirement"
        loading="lazy">
   <figcaption>Le retour vidéo montre ce que l'application mesure réellement :

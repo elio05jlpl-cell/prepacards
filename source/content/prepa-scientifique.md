@@ -24,7 +24,7 @@ désignez et la convertit en LaTeX. Le code reste modifiable, avec l'aperçu
 rendu juste en dessous, donc vous n'apprenez jamais une formule fausse.
 
 <figure>
-  <img src="/img/import-formule.png" width="1175" height="1055"
+  <img src="/img/import-formule.webp" width="1175" height="1055"
        alt="Fenêtre d'import de PrépaCards : une page de cours découpée en vignettes, avec le code LaTeX reconnu et son aperçu"
        loading="lazy">
   <figcaption>On choisit la formule, on relit le LaTeX, on enregistre.</figcaption>
