@@ -23,39 +23,72 @@ faq: true
 
   <div class="conteneur">
     <div class="cadre-demo">
-      <div class="demo-app" id="demo-app"
-           role="img"
-           aria-label="Démonstration de PrépaCards : ouverture d'un paquet, révision d'une carte de vocabulaire, notation, puis statistiques.">
-        <picture class="demo-vue" data-etape="0">
-          <source srcset="/img/demo/1-accueil.webp" type="image/webp">
-          <img src="/img/demo/1-accueil.png" width="1475" height="1008"
-               alt="Écran d'accueil de PrépaCards : liste de paquets avec les compteurs de cartes nouvelles, en cours et à réviser"
-               loading="eager" decoding="async">
-        </picture>
-        <img class="demo-vue" data-etape="1" src="/img/demo/2-paquet.webp"
-             width="1475" height="1008" alt="" aria-hidden="true"
-             loading="lazy" decoding="async">
-        <img class="demo-vue" data-etape="2" src="/img/demo/3-recto.webp"
-             width="1475" height="1008" alt="" aria-hidden="true"
-             loading="lazy" decoding="async">
-        <img class="demo-vue" data-etape="3" src="/img/demo/4-verso.webp"
-             width="1475" height="1008" alt="" aria-hidden="true"
-             loading="lazy" decoding="async">
-        <img class="demo-vue" data-etape="4" src="/img/demo/5-statistiques.webp"
-             width="1475" height="1008" alt="" aria-hidden="true"
-             loading="lazy" decoding="async">
+      <div class="demo-app" id="demo-app" role="group"
+           aria-label="Démonstration jouable de PrépaCards : cliquez pour avancer dans une révision, comme dans l'application">
 
-        <span class="demo-curseur" aria-hidden="true">
-          <span class="demo-clic"></span>
-          <svg viewBox="0 0 24 24" fill="#fff" stroke="#0f172a"
-               stroke-width="1.4" stroke-linejoin="round">
-            <path d="M5 2.5 19 12.4l-6.1.5-3.1 5.6z"/>
-          </svg>
-        </span>
+        <div class="demo-vue" data-etape="accueil">
+          <picture>
+            <source srcset="/img/demo/1-accueil.webp" type="image/webp">
+            <img src="/img/demo/1-accueil.png" width="1475" height="1008"
+                 alt="Écran d'accueil de PrépaCards : liste de paquets avec les compteurs de cartes nouvelles, en cours et à réviser"
+                 loading="eager" decoding="async">
+          </picture>
+          <button type="button" class="demo-point" data-cible="paquet"
+                  style="left:20%;top:25%;width:60%;height:6.5%"
+                  aria-label="Ouvrir le paquet Économie">
+            <span class="demo-point-repere"></span></button>
+        </div>
+
+        <div class="demo-vue" data-etape="paquet">
+          <img src="/img/demo/2-paquet.webp" width="1475" height="1008"
+               alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <button type="button" class="demo-point" data-cible="recto"
+                  style="left:39%;top:55%;width:22%;height:5.6%"
+                  aria-label="Étudier maintenant"></button>
+        </div>
+
+        <div class="demo-vue" data-etape="recto">
+          <img src="/img/demo/3-recto.webp" width="1475" height="1008"
+               alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <button type="button" class="demo-point" data-cible="verso"
+                  style="left:.8%;top:87.7%;width:98.3%;height:5.4%"
+                  aria-label="Voir la réponse"></button>
+        </div>
+
+        <div class="demo-vue" data-etape="verso">
+          <img src="/img/demo/4-verso.webp" width="1475" height="1008"
+               alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <button type="button" class="demo-point" data-cible="stats"
+                  style="left:1.1%;top:90.9%;width:23.9%;height:6.9%"
+                  aria-label="Marquer la carte : Raté"></button>
+          <button type="button" class="demo-point" data-cible="stats"
+                  style="left:26%;top:90.9%;width:23.5%;height:6.9%"
+                  aria-label="Marquer la carte : Difficile"></button>
+          <button type="button" class="demo-point" data-cible="stats"
+                  style="left:50.6%;top:90.9%;width:23.3%;height:6.9%"
+                  aria-label="Marquer la carte : Su"></button>
+          <button type="button" class="demo-point" data-cible="stats"
+                  style="left:75.1%;top:90.9%;width:23.4%;height:6.9%"
+                  aria-label="Marquer la carte : Facile"></button>
+        </div>
+
+        <div class="demo-vue" data-etape="stats">
+          <img src="/img/demo/5-statistiques.webp" width="1475" height="1008"
+               alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <button type="button" class="demo-point demo-rejouer" data-cible="accueil">
+            ↻ Rejouer</button>
+        </div>
 
       </div>
     </div>
-    <p class="demo-legende" aria-hidden="true"></p>
+    <p class="demo-legende" aria-live="polite"></p>
+  </div>
+</section>
+
+<section class="bandeau-ecoles" aria-label="Concours préparés avec PrépaCards">
+  <p class="bandeau-titre">Conçu pour préparer les concours d'entrée à</p>
+  <div class="defile">
+{{bandeau_ecoles}}
   </div>
 </section>
 
@@ -96,13 +129,6 @@ faq: true
       </a>
 
     </div>
-  </div>
-</section>
-
-<section class="bandeau-ecoles" aria-label="Concours préparés avec PrépaCards">
-  <p class="bandeau-titre">Conçu pour préparer les concours d'entrée à</p>
-  <div class="defile">
-{{bandeau_ecoles}}
   </div>
 </section>
 

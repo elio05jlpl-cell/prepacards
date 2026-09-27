@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2208486d" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=fcb36135">
-<link rel="stylesheet" href="/style.css?v=8af1c63037">
+<link rel="stylesheet" href="/style.css?v=e35dc05528">
 <link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "PrépaCards", "applicationCategory": "EducationalApplication", "operatingSystem": "Windows 10, Windows 11", "url": "https://prepacards.fr", "description": "Application de flashcards à répétition espacée pour les prépas et les classes préparatoires, avec vérification de la prononciation à l'oral et reconnaissance de formules mathématiques en photo.", "offers": [{"@type": "Offer", "name": "PrépaCards Gratuit", "price": "0", "priceCurrency": "EUR"}, {"@type": "Offer", "name": "PrépaCards Premium", "price": "29.00", "priceCurrency": "EUR"}]}</script>
@@ -91,39 +91,104 @@
 
   <div class="conteneur">
     <div class="cadre-demo">
-      <div class="demo-app" id="demo-app"
-           role="img"
-           aria-label="Démonstration de PrépaCards : ouverture d'un paquet, révision d'une carte de vocabulaire, notation, puis statistiques.">
-        <picture class="demo-vue" data-etape="0">
-          <source srcset="/img/demo/1-accueil.webp?v=96955ff8" type="image/webp">
-          <img src="/img/demo/1-accueil.png?v=2deee07c" width="1475" height="1008"
-               alt="Écran d'accueil de PrépaCards : liste de paquets avec les compteurs de cartes nouvelles, en cours et à réviser"
-               loading="eager" decoding="async">
-        </picture>
-        <img class="demo-vue" data-etape="1" src="/img/demo/2-paquet.webp?v=8e7b28c6"
-             width="1475" height="1008" alt="" aria-hidden="true"
-             loading="lazy" decoding="async">
-        <img class="demo-vue" data-etape="2" src="/img/demo/3-recto.webp?v=b60c1dc3"
-             width="1475" height="1008" alt="" aria-hidden="true"
-             loading="lazy" decoding="async">
-        <img class="demo-vue" data-etape="3" src="/img/demo/4-verso.webp?v=46ffeea9"
-             width="1475" height="1008" alt="" aria-hidden="true"
-             loading="lazy" decoding="async">
-        <img class="demo-vue" data-etape="4" src="/img/demo/5-statistiques.webp?v=f92db66b"
-             width="1475" height="1008" alt="" aria-hidden="true"
-             loading="lazy" decoding="async">
+      <div class="demo-app" id="demo-app" role="group"
+           aria-label="Démonstration jouable de PrépaCards : cliquez pour avancer dans une révision, comme dans l'application">
 
-        <span class="demo-curseur" aria-hidden="true">
-          <span class="demo-clic"></span>
-          <svg viewBox="0 0 24 24" fill="#fff" stroke="#0f172a"
-               stroke-width="1.4" stroke-linejoin="round">
-            <path d="M5 2.5 19 12.4l-6.1.5-3.1 5.6z"/>
-          </svg>
-        </span>
+        <div class="demo-vue" data-etape="accueil">
+          <picture>
+            <source srcset="/img/demo/1-accueil.webp?v=96955ff8" type="image/webp">
+            <img src="/img/demo/1-accueil.png?v=2deee07c" width="1475" height="1008"
+                 alt="Écran d'accueil de PrépaCards : liste de paquets avec les compteurs de cartes nouvelles, en cours et à réviser"
+                 loading="eager" decoding="async">
+          </picture>
+          <button type="button" class="demo-point" data-cible="paquet"
+                  style="left:20%;top:25%;width:60%;height:6.5%"
+                  aria-label="Ouvrir le paquet Économie">
+            <span class="demo-point-repere"></span></button>
+        </div>
+
+        <div class="demo-vue" data-etape="paquet">
+          <img src="/img/demo/2-paquet.webp?v=8e7b28c6" width="1475" height="1008"
+               alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <button type="button" class="demo-point" data-cible="recto"
+                  style="left:39%;top:55%;width:22%;height:5.6%"
+                  aria-label="Étudier maintenant"></button>
+        </div>
+
+        <div class="demo-vue" data-etape="recto">
+          <img src="/img/demo/3-recto.webp?v=b60c1dc3" width="1475" height="1008"
+               alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <button type="button" class="demo-point" data-cible="verso"
+                  style="left:.8%;top:87.7%;width:98.3%;height:5.4%"
+                  aria-label="Voir la réponse"></button>
+        </div>
+
+        <div class="demo-vue" data-etape="verso">
+          <img src="/img/demo/4-verso.webp?v=46ffeea9" width="1475" height="1008"
+               alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <button type="button" class="demo-point" data-cible="stats"
+                  style="left:1.1%;top:90.9%;width:23.9%;height:6.9%"
+                  aria-label="Marquer la carte : Raté"></button>
+          <button type="button" class="demo-point" data-cible="stats"
+                  style="left:26%;top:90.9%;width:23.5%;height:6.9%"
+                  aria-label="Marquer la carte : Difficile"></button>
+          <button type="button" class="demo-point" data-cible="stats"
+                  style="left:50.6%;top:90.9%;width:23.3%;height:6.9%"
+                  aria-label="Marquer la carte : Su"></button>
+          <button type="button" class="demo-point" data-cible="stats"
+                  style="left:75.1%;top:90.9%;width:23.4%;height:6.9%"
+                  aria-label="Marquer la carte : Facile"></button>
+        </div>
+
+        <div class="demo-vue" data-etape="stats">
+          <img src="/img/demo/5-statistiques.webp?v=f92db66b" width="1475" height="1008"
+               alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <button type="button" class="demo-point demo-rejouer" data-cible="accueil">
+            ↻ Rejouer</button>
+        </div>
 
       </div>
     </div>
-    <p class="demo-legende" aria-hidden="true"></p>
+    <p class="demo-legende" aria-live="polite"></p>
+  </div>
+</section>
+
+<section class="bandeau-ecoles" aria-label="Concours préparés avec PrépaCards">
+  <p class="bandeau-titre">Conçu pour préparer les concours d'entrée à</p>
+  <div class="defile">
+    <ul class="defile-piste">
+      <li class="logo-ecole"><img src="/img/ecoles/hec.webp?v=7a71302e" width="122" height="55" alt="HEC Paris" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/essec.webp?v=92b5d97c" width="122" height="54" alt="ESSEC" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/escp.webp?v=563befc4" width="157" height="46" alt="ESCP" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/em-lyon.webp?v=19bb130f" width="66" height="66" alt="EM Lyon" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/edhec.webp?v=c8d74492" width="182" height="46" alt="EDHEC" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/polytechnique.webp?v=fd28440c" width="140" height="46" alt="Polytechnique" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/centrale.webp?v=8d41b15b" width="111" height="58" alt="CentraleSupélec" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/mines.webp?v=d3c594da" width="93" height="63" alt="Mines Paris" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/ens.webp?v=5853b987" width="59" height="66" alt="ENS" loading="lazy"></li>
+    </ul>
+    <ul class="defile-piste" aria-hidden="true">
+      <li class="logo-ecole"><img src="/img/ecoles/hec.webp?v=7a71302e" width="122" height="55" alt="HEC Paris" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/essec.webp?v=92b5d97c" width="122" height="54" alt="ESSEC" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/escp.webp?v=563befc4" width="157" height="46" alt="ESCP" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/em-lyon.webp?v=19bb130f" width="66" height="66" alt="EM Lyon" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/edhec.webp?v=c8d74492" width="182" height="46" alt="EDHEC" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/polytechnique.webp?v=fd28440c" width="140" height="46" alt="Polytechnique" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/centrale.webp?v=8d41b15b" width="111" height="58" alt="CentraleSupélec" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/mines.webp?v=d3c594da" width="93" height="63" alt="Mines Paris" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/ens.webp?v=5853b987" width="59" height="66" alt="ENS" loading="lazy"></li>
+    </ul>
+    <ul class="defile-piste" aria-hidden="true">
+      <li class="logo-ecole"><img src="/img/ecoles/hec.webp?v=7a71302e" width="122" height="55" alt="HEC Paris" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/essec.webp?v=92b5d97c" width="122" height="54" alt="ESSEC" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/escp.webp?v=563befc4" width="157" height="46" alt="ESCP" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/em-lyon.webp?v=19bb130f" width="66" height="66" alt="EM Lyon" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/edhec.webp?v=c8d74492" width="182" height="46" alt="EDHEC" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/polytechnique.webp?v=fd28440c" width="140" height="46" alt="Polytechnique" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/centrale.webp?v=8d41b15b" width="111" height="58" alt="CentraleSupélec" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/mines.webp?v=d3c594da" width="93" height="63" alt="Mines Paris" loading="lazy"></li>
+      <li class="logo-ecole"><img src="/img/ecoles/ens.webp?v=5853b987" width="59" height="66" alt="ENS" loading="lazy"></li>
+    </ul>
   </div>
 </section>
 
@@ -164,45 +229,6 @@
       </a>
 
     </div>
-  </div>
-</section>
-
-<section class="bandeau-ecoles" aria-label="Concours préparés avec PrépaCards">
-  <p class="bandeau-titre">Conçu pour préparer les concours d'entrée à</p>
-  <div class="defile">
-    <ul class="defile-piste">
-      <li class="logo-ecole"><img src="/img/ecoles/hec.webp?v=7a71302e" width="122" height="55" alt="HEC Paris" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/essec.webp?v=92b5d97c" width="122" height="54" alt="ESSEC" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/escp.webp?v=563befc4" width="157" height="46" alt="ESCP" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/em-lyon.webp?v=19bb130f" width="66" height="66" alt="EM Lyon" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/edhec.webp?v=c8d74492" width="182" height="46" alt="EDHEC" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/polytechnique.webp?v=fd28440c" width="140" height="46" alt="Polytechnique" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/centrale.webp?v=8d41b15b" width="111" height="58" alt="CentraleSupélec" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/mines.webp?v=d3c594da" width="93" height="63" alt="Mines Paris" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/ens.webp?v=5853b987" width="59" height="66" alt="ENS" loading="lazy"></li>
-    </ul>
-    <ul class="defile-piste" aria-hidden="true">
-      <li class="logo-ecole"><img src="/img/ecoles/hec.webp?v=7a71302e" width="122" height="55" alt="HEC Paris" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/essec.webp?v=92b5d97c" width="122" height="54" alt="ESSEC" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/escp.webp?v=563befc4" width="157" height="46" alt="ESCP" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/em-lyon.webp?v=19bb130f" width="66" height="66" alt="EM Lyon" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/edhec.webp?v=c8d74492" width="182" height="46" alt="EDHEC" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/polytechnique.webp?v=fd28440c" width="140" height="46" alt="Polytechnique" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/centrale.webp?v=8d41b15b" width="111" height="58" alt="CentraleSupélec" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/mines.webp?v=d3c594da" width="93" height="63" alt="Mines Paris" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/ens.webp?v=5853b987" width="59" height="66" alt="ENS" loading="lazy"></li>
-    </ul>
-    <ul class="defile-piste" aria-hidden="true">
-      <li class="logo-ecole"><img src="/img/ecoles/hec.webp?v=7a71302e" width="122" height="55" alt="HEC Paris" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/essec.webp?v=92b5d97c" width="122" height="54" alt="ESSEC" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/escp.webp?v=563befc4" width="157" height="46" alt="ESCP" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/em-lyon.webp?v=19bb130f" width="66" height="66" alt="EM Lyon" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/edhec.webp?v=c8d74492" width="182" height="46" alt="EDHEC" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/polytechnique.webp?v=fd28440c" width="140" height="46" alt="Polytechnique" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/centrale.webp?v=8d41b15b" width="111" height="58" alt="CentraleSupélec" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/mines.webp?v=d3c594da" width="93" height="63" alt="Mines Paris" loading="lazy"></li>
-      <li class="logo-ecole"><img src="/img/ecoles/ens.webp?v=5853b987" width="59" height="66" alt="ENS" loading="lazy"></li>
-    </ul>
   </div>
 </section>
 
@@ -773,131 +799,42 @@ document.documentElement.classList.add('js');
 })();
 </script>
 <script>
-// Demonstration animee de l'en-tete.
+// Demonstration jouable de l'en-tete.
 //
-// Un enchainement de captures de l'application reelle, avec un curseur qui
-// va cliquer ou il faut avant chaque changement d'ecran. Les positions sont
-// en pourcentage de l'image, donc justes quelle que soit la taille affichee.
-//
-// La boucle ne tourne que pendant que le bloc est visible, comme celles de
-// la section « Comment ca marche ».
+// Chaque etape est une vraie capture de l'application, avec un ou
+// plusieurs boutons invisibles poses exactement sur le bouton reel de
+// la capture. Le visiteur avance lui-meme, comme dans l'application.
 (function () {
   var bloc = document.getElementById('demo-app');
   if (!bloc) return;
 
   var vues = [].slice.call(bloc.querySelectorAll('.demo-vue'));
-  var curseur = bloc.querySelector('.demo-curseur');
   // La legende est passee SOUS le cadre : elle n'est plus un
   // descendant de #demo-app, d'ou la recherche dans le document.
   var legende = document.querySelector('.demo-legende');
-  var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // vue    : index de la capture affichee
-  // cible  : ou le curseur va cliquer, en % de l'image ; null = pas de clic
-  // texte  : ce que dit la legende
-  // duree  : temps passe sur cette etape, en millisecondes
-  var etapes = [
-    { vue: 0, cible: [28, 19.5], duree: 2600,
-      texte: 'Vos paquets, et ce qu’il reste à réviser aujourd’hui' },
-    { vue: 1, cible: [50, 57.5], duree: 2400,
-      texte: 'Un paquet : ce qui vous attend, puis c’est parti' },
-    { vue: 2, cible: [50, 90.5], duree: 2600,
-      texte: 'La question. Vous répondez de tête — ou à voix haute' },
-    { vue: 3, cible: [62.5, 94], duree: 3000,
-      texte: 'La réponse, et quatre boutons qui disent quand la carte revient' },
-    { vue: 0, cible: [62, 3.7], duree: 2200,
-      texte: 'Tout est mesuré, sans rien avoir à noter' },
-    { vue: 4, cible: null, duree: 3400,
-      texte: 'Temps passé, régularité, réussite : mois par mois' }
-  ];
+  var LEGENDES = {
+    accueil: 'Cliquez sur un paquet pour commencer à réviser',
+    paquet: 'Cliquez sur « Étudier maintenant »',
+    recto: 'Une carte de vocabulaire. Cliquez pour voir la réponse',
+    verso: 'Dites si vous saviez : la carte revient au bon moment',
+    stats: 'Tout est mesuré automatiquement, sans rien noter'
+  };
 
-
-  function afficher(index) {
-    var etape = etapes[index];
-    vues.forEach(function (v, i) {
-      v.classList.toggle('active', i === etape.vue);
+  function afficher(etape) {
+    vues.forEach(function (v) {
+      v.classList.toggle('active', v.dataset.etape === etape);
     });
-    legende.textContent = etape.texte;
+    if (legende) legende.textContent = LEGENDES[etape] || '';
   }
 
-  if (doux) {
-    // Mouvement reduit : on s'en tient a la premiere vue, sans diaporama.
-    afficher(0);
-    curseur.classList.remove('visible');
-    return;
-  }
+  bloc.addEventListener('click', function (evenement) {
+    var bouton = evenement.target.closest('.demo-point');
+    if (!bouton) return;
+    afficher(bouton.dataset.cible);
+  });
 
-  // La premiere vue est posee TOUT DE SUITE, avant tout observateur : le
-  // CSS masque les vignettes des que JavaScript est actif, si bien qu'un
-  // en-tete pas encore entre dans le champ de vision serait entierement
-  // vide. C'est le cas sur mobile, ou la demonstration passe sous le pli.
-  afficher(0);
-
-  var minuteurs = [];
-  var index = 0;
-  var actif = false;
-
-  function plus_tard(delai, action) {
-    minuteurs.push(window.setTimeout(action, delai));
-  }
-
-  function vider() {
-    minuteurs.forEach(window.clearTimeout);
-    minuteurs = [];
-  }
-
-  function jouer() {
-    if (!actif) return;
-    var etape = etapes[index];
-    afficher(index);
-
-    if (etape.cible) {
-      curseur.classList.add('visible');
-      // Le deplacement est laisse a la transition CSS ; le clic part une
-      // fois le curseur arrive, sinon l'onde se declencherait dans le vide.
-      curseur.style.left = etape.cible[0] + '%';
-      curseur.style.top = etape.cible[1] + '%';
-      plus_tard(Math.max(0, etape.duree - 750), function () {
-        curseur.classList.remove('clique');
-        // Forcer un reflow relance l'animation meme si la classe vient
-        // d'etre retiree dans le meme tour de boucle.
-        void curseur.offsetWidth;
-        curseur.classList.add('clique');
-      });
-    } else {
-      curseur.classList.remove('visible');
-    }
-
-    plus_tard(etape.duree, function () {
-      index = (index + 1) % etapes.length;
-      jouer();
-    });
-  }
-
-  function demarrer() {
-    if (actif) return;
-    actif = true;
-    jouer();
-  }
-
-  function arreter() {
-    actif = false;
-    vider();
-    curseur.classList.remove('visible', 'clique');
-  }
-
-  if (!('IntersectionObserver' in window)) {
-    demarrer();
-    return;
-  }
-
-  var observateur = new IntersectionObserver(function (entrees) {
-    entrees.forEach(function (entree) {
-      if (entree.isIntersecting) demarrer();
-      else arreter();
-    });
-  }, { threshold: 0.01 });
-  observateur.observe(bloc);
+  afficher('accueil');
 })();
 </script>
 <script>
