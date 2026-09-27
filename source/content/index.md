@@ -20,15 +20,6 @@ faq: true
     <p class="sous-bouton">Windows 10 et 11 · Gratuit ·
       Vos cartes restent sur votre ordinateur</p>
   </div>
-
-  <div class="conteneur">
-    <div class="cadre-demo">
-      <div class="demo-app demo-3d" id="demo-verre" aria-hidden="true">
-        <canvas class="demo-3d-canvas"></canvas>
-        <div class="demo-3d-repli"></div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section class="bandeau-ecoles" aria-label="Concours préparés avec PrépaCards">
@@ -203,28 +194,6 @@ faq: true
       </div>
     </div>
 
-  </div>
-</section>
-
-<section class="section section-douce">
-  <div class="conteneur grille-2">
-    <div>
-      <h2>Il vous entend vraiment prononcer</h2>
-      <p>Appuyez sur <strong>R</strong>, dites le mot. L'enregistrement s'arrête
-        de lui-même dès que vous vous taisez — un mot court prend un peu plus
-        d'une seconde. La reconnaissance vocale tourne
-        <strong>sur votre ordinateur</strong>, pas sur un serveur.</p>
-      <p>Si vous activez la webcam, PrépaCards suit en plus le mouvement de vos
-        lèvres et le compare à celui attendu pour le mot. La carte n'est validée
-        que si le micro et la bouche sont d'accord ; en cas de désaccord, rien
-        n'est enregistré et c'est vous qui tranchez.</p>
-      <p><a href="/fonctionnalites/">Comment fonctionne la vérification à l'oral →</a></p>
-    </div>
-    <div>
-      <img src="/img/etude.webp" width="1125" height="775"
-           alt="Écran d'étude de PrépaCards avec le bouton Vérifier ma prononciation et les quatre boutons de notation"
-           loading="lazy">
-    </div>
   </div>
 </section>
 
