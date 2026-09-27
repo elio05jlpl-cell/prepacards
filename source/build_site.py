@@ -1087,8 +1087,31 @@ def article_jsonld(page: dict, url: str) -> dict:
         "datePublished": page["date"],
         "dateModified": page["date"],
         "author": {"@type": "Organization", "name": SITE_NAME},
-        "publisher": {"@type": "Organization", "name": SITE_NAME},
+        # Google exige un logo sur l'editeur pour l'affichage enrichi d'un
+        # article ; sans lui, le balisage reste valide mais l'extrait perd
+        # son icone dans les resultats de recherche.
+        "publisher": {
+            "@type": "Organization", "name": SITE_NAME,
+            "logo": {"@type": "ImageObject", "url": f"{SITE_URL}/img/icone-180.png"},
+        },
         "mainEntityOfPage": {"@type": "WebPage", "@id": url},
+    }
+
+
+def organization_jsonld() -> dict:
+    """Decrit la marque elle-meme : logo et comptes reseaux, pour
+    l'eligibilite au panneau de connaissance Google.
+
+    Les sameAs ne reprennent que des comptes reellement lies dans l'en-tete
+    du site (RESEAUX) - jamais un compte invente ou inactif.
+    """
+    return {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": SITE_NAME,
+        "url": SITE_URL + "/",
+        "logo": f"{SITE_URL}/img/icone-180.png",
+        "sameAs": [url for _, url, _ in RESEAUX],
     }
 
 
@@ -1676,6 +1699,7 @@ def build() -> None:
         if page["slug"] == "index":
             blocks.append(software_jsonld())
             blocks.append(website_jsonld())
+            blocks.append(organization_jsonld())
         if page["faq"].lower() == "true":
             blocks.append(faq_jsonld(page["body_html"]))
         write(url_path, render(page, url_path, "base.html", blocks))
