@@ -103,9 +103,10 @@ restaurer.</p>
 session Windows pourrait le lire. Le compte sert à vous identifier, pas à
 protéger ce fichier.</p>
 <p><strong>Votre mot de passe ne reste pas sur l'ordinateur.</strong> Il part une seule fois
-au service, à la connexion, qui rend en échange un jeton de session valable
-six mois. C'est ce jeton que l'application conserve : il lui permet de se
-rouvrir ensuite sans rien vous demander, et sans réseau.</p>
+au service, à la connexion, qui rend en échange un jeton de session,
+renouvelé automatiquement par notre prestataire d'authentification tant que
+vous restez actif. C'est ce jeton que l'application conserve : il lui
+permet de se rouvrir ensuite sans rien vous demander, et sans réseau.</p>
 <p><strong>Votre voix et l'image de votre webcam</strong> sont analysées en mémoire, sur votre
 processeur, puis immédiatement abandonnées. Aucun enregistrement audio ni aucune
 image n'est conservé sur le disque ni transmis.</p>
@@ -131,15 +132,17 @@ puis plus jamais, sauf si vous vous déconnectez. Il est le même pour
 l'application, le site et une éventuelle application mobile : c'est ce qui
 permet de retrouver son abonnement sur une autre machine.</p>
 <p><strong>Ce que le serveur enregistre</strong> : votre adresse e-mail, une empreinte de
-votre mot de passe (PBKDF2-HMAC-SHA256, 200 000 itérations, avec un sel
-aléatoire), l'état de votre abonnement et sa date d'échéance, l'identifiant
-client transmis par Stripe, et — si vous vous connectez avec Google —
-l'identifiant que Google attribue à votre compte. Les jetons de session et les
-liens de réinitialisation n'y figurent que sous forme d'empreinte : une fuite
-de la base ne donnerait aucun accès utilisable.</p>
+votre mot de passe (calculée et vérifiée par Supabase, notre prestataire
+d'authentification — nous ne voyons jamais le mot de passe lui-même),
+l'état de votre abonnement et sa date d'échéance, l'identifiant client
+transmis par Stripe, et — si vous vous connectez avec Google — l'identifiant
+que Google attribue à votre compte. Les jetons de session et les liens de
+réinitialisation ne sont jamais stockés en clair.</p>
 <p><strong>Les services qui interviennent</strong> :</p>
 <ul>
-<li><strong>Cloudflare</strong> héberge le service et la base, dans l'Union européenne.</li>
+<li><strong>Supabase</strong> héberge le compte, l'authentification et la sauvegarde
+  chiffrée, dans l'Union européenne.</li>
+<li><strong>Cloudflare</strong> héberge le site et reçoit les paiements Stripe.</li>
 <li><strong>Stripe</strong> traite le paiement. Vos coordonnées bancaires ne transitent
   jamais par PrépaCards.</li>
 <li><strong>Resend</strong> (États-Unis) envoie l'e-mail de réinitialisation du mot de passe,
@@ -161,7 +164,6 @@ compris pour nous — le nouveau mot de passe ne peut pas ouvrir ce que
 l'ancien a chiffré. Vous retrouvez l'accès à votre compte et à votre
 abonnement, pas à cette sauvegarde. C'est le prix de ce chiffrement, et nous
 préférons ce défaut à la possibilité de lire vos cartes.</p>
-<p>Le service est hébergé chez Cloudflare, dans l'Union européenne.</p>
 <h2 id="sur-ce-site">Sur ce site</h2>
 <p>Ce site est statique : il ne dépose <strong>aucun cookie</strong> et n'utilise aucun outil
 de suivi publicitaire. Il n'y a donc pas de bandeau de consentement, faute de

@@ -218,22 +218,30 @@ def scripts_animes(corps: str) -> str:
     """
     dossier = Path(__file__).parent / "templates"
     morceaux = []
-    for marqueur, fichier in (('class="mot-anime"', "mot-anime.js"),
-                              ("data-anim=", "etapes.js"),
-                              ('class="feuille-texte"', "pages-vivantes.js"),
-                              ('id="compte-app"', "compte.js"),
-                              ('id="mdp-app"', "mot-de-passe.js"),
-                              ('id="liste-articles"', "blog-filtres.js"),
-                              # Le marqueur, et non l'adresse Stripe : a ce
-                              # stade les boutons sont encore
-                              # « {{bouton_mensuel}} », et chercher
-                              # « buy.stripe.com » n'aurait jamais rien
-                              # trouve — ce qui n'aurait casse aucun test,
-                              # la page se construisant tres bien sans le
-                              # script.
-                              ("{{bloc_paiement}}", "paiement.js")):
+    for entree in (('class="mot-anime"', "mot-anime.js"),
+                   ("data-anim=", "etapes.js"),
+                   ('class="feuille-texte"', "pages-vivantes.js"),
+                   # Quatrieme valeur : bibliotheque vendue a charger AVANT
+                   # le script, en balise <script src> classique - ces deux
+                   # pages parlent a Supabase directement, sans passer par
+                   # le Worker.
+                   ('id="compte-app"', "compte.js", None, "/vendor/supabase.js"),
+                   ('id="mdp-app"', "mot-de-passe.js", None, "/vendor/supabase.js"),
+                   ('id="liste-articles"', "blog-filtres.js"),
+                   # Le marqueur, et non l'adresse Stripe : a ce
+                   # stade les boutons sont encore
+                   # « {{bouton_mensuel}} », et chercher
+                   # « buy.stripe.com » n'aurait jamais rien
+                   # trouve — ce qui n'aurait casse aucun test,
+                   # la page se construisant tres bien sans le
+                   # script.
+                   ("{{bloc_paiement}}", "paiement.js")):
+        marqueur, fichier = entree[0], entree[1]
+        externe = entree[3] if len(entree) > 3 else None
         chemin = dossier / fichier
         if marqueur in corps and chemin.exists():
+            if externe:
+                morceaux.append(f'<script src="{externe}"></script>')
             morceaux.append("<script>" + chr(10)
                             + chemin.read_text(encoding="utf-8") + "</script>")
     return chr(10).join(morceaux)
@@ -1638,7 +1646,7 @@ def versionner_ressources() -> int:
     requete.
     """
     empreintes = {}
-    for dossier in ("img", "fonts"):
+    for dossier in ("img", "fonts", "vendor"):
         racine = OUTPUT / dossier
         if not racine.is_dir():
             continue

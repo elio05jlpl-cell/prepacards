@@ -9,7 +9,11 @@
 // chaque construction, le fichier y serait efface. static/ est recopie tel
 // quel dans public/, donc la configuration accompagne toujours le site.
 //
-// SERVICE DES COMPTES : ACTIF depuis le 19 septembre 2026.
+// SERVICE DES COMPTES : sur Supabase depuis le passage a Postgres. Le
+// Worker ne traite plus que le webhook Stripe ; inscription, connexion,
+// connexion Google et sauvegarde parlent directement a Supabase depuis le
+// navigateur et l'application, proteges par les regles RLS de
+// worker/schema.sql.
 {
   "name": "prepacardsss",
   "compatibility_date": "2026-09-13",
@@ -20,18 +24,14 @@
   // se telecharge pas.
   "main": "worker/index.js",
 
-  // Base des comptes, creee en region WEUR — l'Union europeenne, comme
-  // l'annonce la page de confidentialite. L'identifiant n'est pas un
-  // secret : il ne donne acces a rien sans les droits du compte. Le seul
-  // secret de ce service, STRIPE_WEBHOOK_SECRET, est depose par
-  // « wrangler secret put » et n'apparait nulle part dans le depot.
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "prepacards",
-      "database_id": "b7a894a6-0c11-46b0-97b1-40ae5f066dbc"
-    }
-  ],
+  // URL du projet Supabase : pas un secret, elle voyage deja cote client
+  // (compte.js, mot-de-passe.js) puisque c'est la que vivent le nouveau
+  // compte et la connexion. Seule la cle SUPABASE_SERVICE_ROLE_KEY, qui
+  // contourne les regles RLS, est un secret — deposee par
+  // « wrangler secret put », comme STRIPE_WEBHOOK_SECRET, jamais ici.
+  "vars": {
+    "SUPABASE_URL": "https://ojnntqfafinxrousdvbn.supabase.co"
+  },
 
   "assets": {
 

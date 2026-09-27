@@ -1,143 +1,191 @@
--- Base des comptes PrepaCards (Cloudflare D1)
--- ===========================================
+-- Base des comptes PrepaCards (Supabase / Postgres)
+-- ====================================================
 --
--- Ce que cette base contient, et surtout ce qu'elle NE contient PAS.
+-- Remplace l'ancien schema D1. L'authentification elle-meme (mots de
+-- passe, jetons de session, connexion Google) est geree par Supabase Auth
+-- (table interne auth.users, jamais touchee ici) : ce fichier ne cree que
+-- les donnees PROPRES a PrepaCards, rattachees a chaque utilisateur.
 --
--- Elle stocke une adresse e-mail, une empreinte de mot de passe, l'etat de
--- l'abonnement et, si l'utilisateur le demande, une sauvegarde CHIFFREE de
--- ses paquets. Elle ne contient aucune carte lisible : la sauvegarde est
--- chiffree sur la machine de l'eleve, avec une cle derivee de son mot de
--- passe, et le serveur ne recoit que des octets qu'il ne peut pas ouvrir.
+-- Ce que la base contient, et surtout ce qu'elle NE contient PAS : une
+-- adresse e-mail (dans auth.users), l'etat de l'abonnement, et si
+-- l'eleve le demande, une sauvegarde CHIFFREE de ses paquets. Aucune
+-- carte lisible : la sauvegarde est chiffree sur sa machine, avec une cle
+-- derivee de son mot de passe, et le serveur ne recoit que des octets
+-- qu'il ne peut pas ouvrir.
 --
--- C'est ce qui permet de continuer a dire que les cartes ne sortent pas de
--- l'ordinateur : ce qui sort est illisible sans le mot de passe, lequel
--- n'est jamais transmis en clair et n'est pas conserve.
---
--- Application :  npx wrangler d1 execute prepacards --file=worker/schema.sql
+-- A executer une fois, dans Supabase : SQL Editor -> coller -> Run.
 
-CREATE TABLE IF NOT EXISTS comptes (
-    id              INTEGER PRIMARY KEY AUTOINCREMENT,
-    -- Toujours en minuscules : « Elio@… » et « elio@… » sont la meme
-    -- personne, et deux comptes pour une seule boite aux lettres rendraient
-    -- l'abonnement introuvable au moment ou on en a besoin.
-    email           TEXT NOT NULL UNIQUE,
-    sel             TEXT NOT NULL,   -- base64
-    empreinte       TEXT NOT NULL,   -- base64, PBKDF2-HMAC-SHA256
-    iterations      INTEGER NOT NULL,
-    cree_le         TEXT NOT NULL,
+create extension if not exists pgcrypto;
+
+-- --- Profils -----------------------------------------------------------
+--
+-- Un profil par utilisateur Supabase Auth, cree automatiquement a
+-- l'inscription (voir le declencheur plus bas) : jamais de compte sans
+-- profil, jamais l'inverse.
+
+create table public.profiles (
+    id                 uuid primary key references auth.users(id) on delete cascade,
+
+    -- Identifiant transmis a Stripe dans le lien de paiement, rendu tel
+    -- quel au webhook (client_reference_id). Permet de payer avec
+    -- n'importe quelle adresse - celle de la carte, celle des parents -
+    -- sans perdre le lien avec le compte. Pas secret : au pire, le
+    -- connaitre permet d'OFFRIR un abonnement en payant pour ce compte.
+    reference          text unique not null
+                       default ('pc_' || replace(encode(gen_random_bytes(18), 'base64'), '/', '_')),
 
     -- Abonnement. « statut » suit le vocabulaire de Stripe pour qu'aucune
     -- traduction ne se perde entre les deux : trialing, active, past_due,
-    -- canceled, ou vide quand la personne n'a jamais payé.
-    statut          TEXT NOT NULL DEFAULT '',
-    offre           TEXT NOT NULL DEFAULT '',   -- mensuel | annuel
-    client_stripe   TEXT,
-    abonnement_stripe TEXT,
-    -- Fin de la periode deja reglee. C'est elle qui fait foi cote
-    -- application : un abonnement resilie reste actif jusqu'a son terme.
-    valide_jusqu_au TEXT,
-    maj_le          TEXT,
+    -- canceled, ou vide quand la personne n'a jamais paye.
+    statut             text not null default '',
+    offre              text not null default '',   -- mensuel | annuel
+    client_stripe      text,
+    abonnement_stripe  text,
+    -- Fin de la periode deja reglee : un abonnement resilie reste actif
+    -- jusqu'a son terme, c'est elle qui fait foi cote application.
+    valide_jusqu_au    timestamptz,
+    maj_le             timestamptz,
 
-    -- Identifiant opaque transmis a Stripe dans le lien de paiement, et
-    -- rendu tel quel par le webhook (client_reference_id). Il permet de
-    -- payer avec n'importe quelle adresse - celle de la carte, celle des
-    -- parents - sans perdre le lien avec le compte.
-    --
-    -- Il n'est pas secret et n'ouvre rien : le connaitre permet au mieux
-    -- d'OFFRIR un abonnement a ce compte en payant pour lui. Il est
-    -- neanmoins tire au hasard plutot que derive de l'identifiant, qui se
-    -- compte de 1 en 1 et laisserait deviner combien de comptes existent.
-    reference       TEXT
+    cree_le            timestamptz not null default now()
 );
 
-CREATE INDEX IF NOT EXISTS idx_comptes_client
-    ON comptes (client_stripe);
+create unique index idx_profiles_client_stripe on public.profiles (client_stripe);
 
-CREATE UNIQUE INDEX IF NOT EXISTS idx_comptes_reference
-    ON comptes (reference);
+alter table public.profiles enable row level security;
 
--- Identifiant Google stable (« sub »). Conserve pour retrouver le compte
--- meme si la personne change l'adresse de son compte Google, ce que
--- l'adresse seule ne permettrait pas.
-ALTER TABLE comptes ADD COLUMN google_sub TEXT;
+-- Chacun lit son propre profil, et seulement le sien.
+create policy "profil_lecture_personnelle"
+    on public.profiles for select
+    using (auth.uid() = id);
 
-CREATE UNIQUE INDEX IF NOT EXISTS idx_comptes_google
-    ON comptes (google_sub);
+-- Aucune policy d'ecriture pour les utilisateurs : le statut d'abonnement
+-- ne doit changer que par le webhook Stripe, qui passe par la cle
+-- service_role (laquelle contourne RLS). Un utilisateur qui pourrait
+-- s'ecrire "active" s'offrirait l'abonnement gratuitement.
 
--- Codes a usage unique remis au navigateur au retour de Google.
+-- Creation automatique du profil des l'inscription (mot de passe ou
+-- Google, Supabase Auth traite les deux de la meme facon en amont).
+create function public.gerer_nouvel_utilisateur()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+    insert into public.profiles (id) values (new.id);
+    return new;
+end;
+$$;
+
+create trigger apres_inscription
+    after insert on auth.users
+    for each row execute function public.gerer_nouvel_utilisateur();
+
+-- --- Sauvegarde chiffree -------------------------------------------------
 --
--- Le jeton de session ne voyage PAS dans l'adresse : une adresse reste
--- dans l'historique, dans les journaux d'un proxy, dans une capture
--- d'ecran envoyee a un camarade. Le navigateur recoit donc un code qui ne
--- sert qu'une fois et ne vaut que quelques minutes, et l'echange contre le
--- vrai jeton par une requete POST.
-CREATE TABLE IF NOT EXISTS codes_connexion (
-    empreinte  TEXT PRIMARY KEY,   -- SHA-256 du code, jamais le code
-    compte_id  INTEGER NOT NULL,
-    cree_le    TEXT NOT NULL,
-    expire_le  TEXT NOT NULL,
-    FOREIGN KEY (compte_id) REFERENCES comptes(id) ON DELETE CASCADE
-);
+-- Une seule par compte : ce qu'on veut, c'est retrouver son travail sur
+-- une machine neuve, pas tenir un historique de versions dont personne ne
+-- se sert.
 
--- Liens de reinitialisation du mot de passe.
---
--- Meme principe que ci-dessus, et les memes raisons : seule l'empreinte du
--- jeton est conservee, si bien qu'une fuite de la base ne donne aucun lien
--- utilisable. Un lien vaut une heure et ne sert qu'une fois.
---
--- « demande_le » sert a limiter les envois : sans cela, n'importe qui peut
--- faire pleuvoir des e-mails sur l'adresse de quelqu'un d'autre en
--- rechargeant une page.
-CREATE TABLE IF NOT EXISTS reinitialisations (
-    empreinte   TEXT PRIMARY KEY,
-    compte_id   INTEGER NOT NULL,
-    cree_le     TEXT NOT NULL,
-    expire_le   TEXT NOT NULL,
-    utilise_le  TEXT,
-    FOREIGN KEY (compte_id) REFERENCES comptes(id) ON DELETE CASCADE
-);
-
-CREATE INDEX IF NOT EXISTS idx_reinit_compte
-    ON reinitialisations (compte_id, cree_le);
-
--- Jetons de session, remis a l'application et au site apres connexion.
--- Stockes haches : une fuite de la base ne doit pas donner des sessions
--- utilisables, exactement comme pour les mots de passe.
-CREATE TABLE IF NOT EXISTS sessions (
-    empreinte_jeton TEXT PRIMARY KEY,
-    compte_id       INTEGER NOT NULL,
-    cree_le         TEXT NOT NULL,
-    expire_le       TEXT NOT NULL,
-    origine         TEXT NOT NULL DEFAULT '',  -- application | site
-    FOREIGN KEY (compte_id) REFERENCES comptes(id) ON DELETE CASCADE
-);
-
-CREATE INDEX IF NOT EXISTS idx_sessions_compte
-    ON sessions (compte_id);
-
--- Sauvegarde chiffree des paquets. Une seule par compte : ce qu'on veut,
--- c'est retrouver son travail sur une machine neuve, pas tenir un
--- historique de versions dont personne ne se sert.
-CREATE TABLE IF NOT EXISTS sauvegardes (
-    compte_id     INTEGER PRIMARY KEY,
-    -- En base64 et non en BLOB. D1 ne rend pas les colonnes binaires sous
-    -- une forme exploitable telle quelle : un essai de bout en bout a
-    -- rendu une sauvegarde VIDE, sans la moindre erreur. Sur des donnees
-    -- irremplacables, la previsibilite vaut mieux que les 33 % d'espace
-    -- economises.
-    contenu       TEXT NOT NULL,     -- chiffre cote client, illisible ici
+create table public.sauvegardes (
+    compte_id   uuid primary key references public.profiles(id) on delete cascade,
+    -- Chiffre cote client, illisible ici. En texte (base64) plutot qu'en
+    -- bytea : c'est le format que l'application envoie deja, et cela evite
+    -- toute surprise de representation cote PostgREST.
+    contenu     text not null,
     -- Empreinte du contenu d'origine, verifiee a la reprise : une
     -- sauvegarde corrompue doit se signaler, jamais se rendre en silence.
-    empreinte     TEXT NOT NULL DEFAULT '',
-    octets        INTEGER NOT NULL,
-    cartes        INTEGER NOT NULL DEFAULT 0,   -- pour l'affichage seulement
-    depose_le     TEXT NOT NULL,
-    FOREIGN KEY (compte_id) REFERENCES comptes(id) ON DELETE CASCADE
+    empreinte   text not null default '',
+    octets      integer not null,
+    cartes      integer not null default 0,   -- pour l'affichage seulement
+    depose_le   timestamptz not null default now()
 );
 
--- Evenements Stripe deja traites. Stripe peut rejouer un evenement, et
+alter table public.sauvegardes enable row level security;
+
+-- Chacun gere sa propre sauvegarde (lecture, depot, remplacement) : ce
+-- n'est plus le Worker qui s'en charge, l'application et le site parlent
+-- directement a Supabase avec le jeton de l'utilisateur connecte.
+create policy "sauvegarde_personnelle"
+    on public.sauvegardes for all
+    using (auth.uid() = compte_id)
+    with check (auth.uid() = compte_id);
+
+-- --- Evenements Stripe deja traites --------------------------------------
+--
+-- Stripe peut rejouer un evenement en cas de doute sur la livraison :
 -- appliquer deux fois une resiliation n'est pas anodin.
-CREATE TABLE IF NOT EXISTS evenements_stripe (
-    id        TEXT PRIMARY KEY,
-    recu_le   TEXT NOT NULL
+
+create table public.evenements_stripe (
+    id        text primary key,
+    recu_le   timestamptz not null default now()
 );
+
+alter table public.evenements_stripe enable row level security;
+-- Aucune policy : seule la cle service_role (Worker, webhook Stripe) y
+-- touche, et elle contourne RLS.
+
+-- --- Fonctions pour le webhook Stripe -------------------------------------
+--
+-- Le Worker n'ecrit jamais une ligne de profils au nom de Stripe : il
+-- appelle ces deux fonctions avec la cle service_role. La logique de
+-- rattachement (par reference, par adresse, par identifiant client) vit
+-- ici, en SQL, plutot que dans le Worker : plus facile a relire et a
+-- tester d'un bloc, exactement comme avant dans l'ancien Worker D1.
+--
+-- Le EXECUTE est retire a anon/authenticated juste apres leur creation :
+-- un utilisateur qui pourrait s'auto-crediter un abonnement en appelant
+-- directement la fonction annulerait toute la protection de RLS.
+
+create function public.trouver_compte_stripe(
+    p_reference text, p_email text, p_client_stripe text
+) returns uuid
+language plpgsql
+security definer
+set search_path = public, auth
+as $$
+declare
+    v_id uuid;
+begin
+    if p_reference is not null and p_reference <> '' then
+        select id into v_id from public.profiles where reference = p_reference;
+        if v_id is not null then return v_id; end if;
+    end if;
+    if p_email is not null and p_email <> '' then
+        select id into v_id from auth.users where lower(email) = lower(p_email);
+        if v_id is not null then return v_id; end if;
+    end if;
+    if p_client_stripe is not null and p_client_stripe <> '' then
+        select id into v_id from public.profiles where client_stripe = p_client_stripe;
+        if v_id is not null then return v_id; end if;
+    end if;
+    return null;
+end;
+$$;
+
+create function public.appliquer_maj_stripe(
+    p_id uuid, p_statut text, p_offre text, p_client_stripe text,
+    p_abonnement_stripe text, p_valide_jusqu_au timestamptz
+) returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+    update public.profiles set
+        statut = coalesce(p_statut, statut),
+        offre = coalesce(p_offre, offre),
+        client_stripe = coalesce(p_client_stripe, client_stripe),
+        abonnement_stripe = coalesce(p_abonnement_stripe, abonnement_stripe),
+        valide_jusqu_au = coalesce(p_valide_jusqu_au, valide_jusqu_au),
+        maj_le = now()
+    where id = p_id;
+end;
+$$;
+
+revoke execute on function public.trouver_compte_stripe(text, text, text)
+    from public, anon, authenticated;
+revoke execute on function public.appliquer_maj_stripe(uuid, text, text, text, text, timestamptz)
+    from public, anon, authenticated;
+grant execute on function public.trouver_compte_stripe(text, text, text) to service_role;
+grant execute on function public.appliquer_maj_stripe(uuid, text, text, text, text, timestamptz) to service_role;

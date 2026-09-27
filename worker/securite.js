@@ -1,126 +1,40 @@
 // Briques de securite du Worker
 // ==============================
 //
-// Isolees du routeur parce que ce sont elles qu'il faut pouvoir relire
-// seules : une faute ici ne se voit pas a l'usage, elle se voit le jour de
-// la fuite.
-//
-// Le hachage reprend exactement les parametres de l'application locale
-// (PBKDF2-HMAC-SHA256, 200 000 iterations) : meme force des deux cotes, et
-// rien a reapprendre quand on lit un fichier apres l'autre.
-
-export const ITERATIONS = 200000;
+// Ce qui reste ici, depuis le passage a Supabase Auth : plus rien sur les
+// mots de passe, les jetons de session ou Google — Supabase s'en charge,
+// avec sa propre securite, testee a bien plus grande echelle que ce que ce
+// projet pourrait maintenir seul. Il ne reste que ce que Supabase ne peut
+// pas savoir a notre place : verifier qu'un evenement vient vraiment de
+// Stripe.
 
 const encodeur = new TextEncoder();
 
-export function base64(octets) {
-  return btoa(String.fromCharCode(...new Uint8Array(octets)));
-}
-
-export function desBase64(texte) {
-  return Uint8Array.from(atob(texte), (c) => c.charCodeAt(0));
-}
-
-// Cloudflare refuse PBKDF2 au-dela de 100 000 iterations par appel :
-// « iteration counts above 100000 are not supported ». On enchaine donc
-// plusieurs tours, la sortie de l'un servant d'entree au suivant, avec le
-// meme sel. Le travail total reste celui d'ITERATIONS, au lieu d'etre
-// divise par deux en se pliant au plafond.
-//
-// Piege a connaitre : ce plafond n'existe QUE sur le vrai reseau.
-// « wrangler dev --local » passe par le crypto de Node, qui accepte
-// 200 000 sans broncher. Un essai en local ne prouve donc rien ici ; il a
-// fallu « --remote » pour voir la panne.
-//
-// En dessous de 100 000, la boucle ne fait qu'un tour et le resultat est
-// exactement celui d'un PBKDF2 ordinaire.
-const PALIER = 100000;
-
-export async function hacherMotDePasse(motDePasse, sel, iterations = ITERATIONS) {
-  let matiere = encodeur.encode(motDePasse);
-  let restant = Math.max(1, iterations);
-  let bits = null;
-  while (restant > 0) {
-    const tour = Math.min(restant, PALIER);
-    const cle = await crypto.subtle.importKey(
-      'raw', matiere, 'PBKDF2', false, ['deriveBits']);
-    bits = await crypto.subtle.deriveBits(
-      { name: 'PBKDF2', salt: sel, iterations: tour, hash: 'SHA-256' }, cle, 256);
-    matiere = new Uint8Array(bits);
-    restant -= tour;
-  }
-  return new Uint8Array(bits);
+export function maintenant() {
+  return new Date().toISOString();
 }
 
 // Comparaison a duree constante. Une comparaison naive revele la longueur
-// du prefixe correct par le temps qu'elle met a echouer, ce qui suffit a
-// reconstruire une empreinte octet par octet.
-export function memeSecret(a, b) {
+// du prefixe correct par le temps qu'elle met a echouer.
+function memeSecret(a, b) {
   if (a.length !== b.length) return false;
   let difference = 0;
   for (let i = 0; i < a.length; i += 1) difference |= a[i] ^ b[i];
   return difference === 0;
 }
 
-export function selAleatoire(octets = 16) {
-  return crypto.getRandomValues(new Uint8Array(octets));
-}
-
-export function jetonAleatoire() {
-  // 32 octets : assez pour qu'un jeton ne se devine pas, meme en essayant
-  // pendant des annees.
-  return base64(crypto.getRandomValues(new Uint8Array(32)))
-    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
-
-export function referenceAleatoire() {
-  // Identifiant du compte transmis a Stripe dans le lien de paiement.
-  // Stripe n'accepte dans client_reference_id que des lettres, chiffres,
-  // tirets et soulignes : d'ou le base64 en variante « url ».
-  //
-  // Il n'est pas secret — il transite dans une adresse web, donc dans
-  // l'historique du navigateur. Le connaitre permet au mieux d'offrir un
-  // abonnement a ce compte en payant pour lui, jamais d'en prendre un.
-  return 'pc_' + base64(crypto.getRandomValues(new Uint8Array(18)))
-    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
-
-export async function empreinteJeton(jeton) {
-  const somme = await crypto.subtle.digest('SHA-256', encodeur.encode(jeton));
-  return base64(somme);
-}
-
-// L'adresse sert de cle unique : on la normalise avant tout, sinon deux
-// comptes coexistent pour une seule boite aux lettres.
+// L'adresse sert de cle de rattachement pour Stripe : on la normalise
+// avant toute comparaison, sinon deux graphies coexistent pour une seule
+// boite aux lettres.
 export function normaliserEmail(email) {
   return String(email || '').trim().toLowerCase();
-}
-
-export function emailPlausible(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) && email.length <= 254;
-}
-
-// Le mot de passe doit etre verifie ici AUSSI, et pas seulement dans
-// l'application : le serveur ne peut pas supposer que la requete vient de
-// notre propre client.
-export function motDePassePlausible(motDePasse) {
-  return typeof motDePasse === 'string'
-    && motDePasse.length >= 8 && motDePasse.length <= 200;
-}
-
-export function maintenant() {
-  return new Date().toISOString();
-}
-
-export function dansNJours(n) {
-  return new Date(Date.now() + n * 86400000).toISOString();
 }
 
 // Verification de la signature d'un evenement Stripe.
 //
 // Sans elle, n'importe qui pouvant deviner l'adresse du webhook s'offrirait
 // un abonnement a vie en envoyant un faux evenement. C'est le point le plus
-// sensible de tout le service.
+// sensible de tout ce qui reste dans ce Worker.
 export async function signatureStripeValide(corps, entete, secret) {
   if (!entete || !secret) return false;
   const champs = Object.fromEntries(

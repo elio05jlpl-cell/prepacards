@@ -42,9 +42,10 @@ session Windows pourrait le lire. Le compte sert à vous identifier, pas à
 protéger ce fichier.
 
 **Votre mot de passe ne reste pas sur l'ordinateur.** Il part une seule fois
-au service, à la connexion, qui rend en échange un jeton de session valable
-six mois. C'est ce jeton que l'application conserve : il lui permet de se
-rouvrir ensuite sans rien vous demander, et sans réseau.
+au service, à la connexion, qui rend en échange un jeton de session,
+renouvelé automatiquement par notre prestataire d'authentification tant que
+vous restez actif. C'est ce jeton que l'application conserve : il lui
+permet de se rouvrir ensuite sans rien vous demander, et sans réseau.
 
 **Votre voix et l'image de votre webcam** sont analysées en mémoire, sur votre
 processeur, puis immédiatement abandonnées. Aucun enregistrement audio ni aucune
@@ -75,16 +76,18 @@ l'application, le site et une éventuelle application mobile : c'est ce qui
 permet de retrouver son abonnement sur une autre machine.
 
 **Ce que le serveur enregistre** : votre adresse e-mail, une empreinte de
-votre mot de passe (PBKDF2-HMAC-SHA256, 200 000 itérations, avec un sel
-aléatoire), l'état de votre abonnement et sa date d'échéance, l'identifiant
-client transmis par Stripe, et — si vous vous connectez avec Google —
-l'identifiant que Google attribue à votre compte. Les jetons de session et les
-liens de réinitialisation n'y figurent que sous forme d'empreinte : une fuite
-de la base ne donnerait aucun accès utilisable.
+votre mot de passe (calculée et vérifiée par Supabase, notre prestataire
+d'authentification — nous ne voyons jamais le mot de passe lui-même),
+l'état de votre abonnement et sa date d'échéance, l'identifiant client
+transmis par Stripe, et — si vous vous connectez avec Google — l'identifiant
+que Google attribue à votre compte. Les jetons de session et les liens de
+réinitialisation ne sont jamais stockés en clair.
 
 **Les services qui interviennent** :
 
-- **Cloudflare** héberge le service et la base, dans l'Union européenne.
+- **Supabase** héberge le compte, l'authentification et la sauvegarde
+  chiffrée, dans l'Union européenne.
+- **Cloudflare** héberge le site et reçoit les paiements Stripe.
 - **Stripe** traite le paiement. Vos coordonnées bancaires ne transitent
   jamais par PrépaCards.
 - **Resend** (États-Unis) envoie l'e-mail de réinitialisation du mot de passe,
@@ -107,8 +110,6 @@ compris pour nous — le nouveau mot de passe ne peut pas ouvrir ce que
 l'ancien a chiffré. Vous retrouvez l'accès à votre compte et à votre
 abonnement, pas à cette sauvegarde. C'est le prix de ce chiffrement, et nous
 préférons ce défaut à la possibilité de lire vos cartes.
-
-Le service est hébergé chez Cloudflare, dans l'Union européenne.
 
 ## Sur ce site
 

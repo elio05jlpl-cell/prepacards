@@ -1,92 +1,77 @@
-# Mettre en service la base des comptes
+# Mettre en service la base des comptes (Supabase)
 
-**Le service est en ligne depuis le 20 septembre 2026.** Il reste un seul
-geste, le seul qui produise un secret : le webhook Stripe.
+Le service est passé de D1 + authentification maison à **Supabase**
+(Auth + Postgres) : l'inscription, la connexion, la connexion Google, la
+réinitialisation du mot de passe et la sauvegarde chiffrée parlent
+désormais directement à Supabase depuis le navigateur (et depuis
+l'application), protégées par les règles RLS de `schema.sql`. Il ne reste
+dans ce Worker que ce qu'un secret protège : le webhook Stripe.
 
----
-
-## Ce qui est fait
-
-1. **Base D1 créée** — `prepacards`, région **WEUR** (Union européenne,
-   comme l'annonce la page de confidentialité).
-   Identifiant : `b7a894a6-0c11-46b0-97b1-40ae5f066dbc`. Ce n'est pas un
-   secret : il n'ouvre rien sans les droits du compte Cloudflare.
-2. **Tables créées** — `comptes`, `sessions`, `sauvegardes`,
-   `evenements_stripe`.
-3. **Worker branché** — `static/wrangler.jsonc` porte désormais `main` et
-   `d1_databases`.
-
-Éprouvé contre la vraie base, pas seulement en local : inscription,
-reconnexion, mot de passe faux refusé, doublon refusé, jeton révoqué,
-sauvegarde de 120 ko rendue octet pour octet, événement Stripe non signé
-refusé. Les comptes d'essai ont été effacés.
+Quatre étapes, une seule produit un secret à déposer avec `wrangler`.
 
 ---
 
-## Ce qui reste : l'envoi des e-mails
+## 1. Créer les tables
 
-Sans lui, « mot de passe oublié » ne peut rien envoyer. Le service le dit
-franchement plutôt que de promettre un e-mail qui n'arriverait pas.
+Dans le tableau de bord Supabase du projet : **SQL Editor → New query**,
+coller le contenu de `schema.sql`, **Run**. Il crée `public.profiles`,
+`public.sauvegardes`, `public.evenements_stripe`, leurs règles RLS, et les
+deux fonctions appelées par le webhook Stripe.
 
-### Le piège du SPF, à lire avant de toucher au DNS
+À exécuter une seule fois. Le réexécuter sur une base déjà en place
+échouera sur les tables déjà créées — sans rien endommager.
 
-Les MX de `prepacards.fr` pointent vers **OVH** : le domaine reçoit déjà du
-courrier. Et son SPF est aujourd'hui :
+---
 
-```
-v=spf1 include:mx.ovh.com -all
-```
+## 2. Connexion Google
 
-Le `-all` signifie **« seul OVH a le droit d'envoyer, refusez tout le
-reste »**. Un e-mail parti de Resend sans modification de cette ligne sera
-rejeté ou classé en indésirable, et cela ne se verra pas de notre côté :
-c'est le destinataire qui refuse.
+Le Client ID et le Client Secret Google existants (déjà utilisés par
+l'ancien service) sont réutilisés tels quels : Google n'a pas besoin d'en
+savoir plus qu'avant, seule l'adresse de retour change.
 
-1. Dans Resend, ajoutez le domaine **`prepacards.fr`**.
-2. Posez l'enregistrement **DKIM** qu'il donne (`resend._domainkey`, TXT).
-   Celui-là ne touche à rien d'existant.
-3. **Modifiez** la ligne SPF existante — n'en ajoutez pas une seconde :
+1. Dans **Google Cloud Console** (le même projet qu'avant) → identifiants
+   OAuth → ajouter aux **URI de redirection autorisés** :
+   ```
+   https://ojnntqfafinxrousdvbn.supabase.co/auth/v1/callback
+   ```
+2. Dans **Supabase → Authentication → Providers → Google** : activer, coller
+   le même Client ID et le même Client Secret.
+3. Dans **Supabase → Authentication → URL Configuration → Redirect URLs**,
+   ajouter :
+   ```
+   https://prepacards.fr/compte/
+   https://prepacards.fr/mot-de-passe/
+   ```
 
-```
-v=spf1 include:mx.ovh.com include:_spf.resend.com -all
-```
+---
 
-> Deux enregistrements SPF sur un même domaine les font échouer **tous les
-> deux**. C'est la façon la plus courante de casser son courrier en croyant
-> l'arranger. Une seule ligne, deux `include`. Et prenez l'`include`
-> exactement tel que Resend l'affiche.
+## 3. E-mails (mot de passe oublié)
 
-Le domaine n'a **aucun DMARC**. Ce n'est pas bloquant, mais une fois DKIM et
-SPF en place, un `p=none` permet de recevoir des rapports sans rien risquer.
+Supabase peut envoyer ces e-mails lui-même, mais son expéditeur par défaut
+est limité et non fiable pour un vrai service. On lui fait utiliser Resend,
+déjà en place pour ce domaine (SPF et DKIM déjà posés lors du service D1).
 
-### Déposer les valeurs
+Dans **Supabase → Project Settings → Authentication → SMTP Settings** :
 
-```
-npx wrangler secret put RESEND_API_KEY
-npx wrangler secret put COURRIEL_EXPEDITEUR
-npx wrangler secret put COURRIEL_REPONSE
-```
+- Hôte : `smtp.resend.com`
+- Port : `465`
+- Utilisateur : `resend`
+- Mot de passe : la clé API Resend existante (`RESEND_API_KEY`)
+- Expéditeur : `PrépaCards <noreply@prepacards.fr>`
 
-- `COURRIEL_EXPEDITEUR` : `PrépaCards <noreply@prepacards.fr>`
-- `COURRIEL_REPONSE` : `contact@prepacards.fr`
-
-La troisième n'est pas un secret, mais elle voyage avec les deux autres.
-Elle existe parce qu'un message parti de `noreply@` finit toujours par
-recevoir une réponse : sans elle, la question de l'élève se perd.
+Et dans **Authentication → Policies** : longueur minimale du mot de passe
+à **8** (pour rester cohérent avec ce que l'application a toujours exigé).
 
 ### Vérifier
 
-Demandez une réinitialisation depuis l'application, puis testez **sur Gmail
-et sur Outlook**. Ce sont eux qui filtrent le plus durement, et un domaine
-qui se met soudain à envoyer depuis un nouveau service est exactement leur
-cas suspect.
+Demander une réinitialisation depuis `/compte/`, tester sur **Gmail et
+Outlook**.
 
 ---
 
-## Ce qui reste : le webhook Stripe
+## 4. Le webhook Stripe
 
-Sans lui, un paiement ne débloque rien : le service n'apprend jamais que la
-personne a payé.
+Sans lui, un paiement ne débloque rien.
 
 Dans Stripe : **Développeurs → Webhooks → Ajouter un point de terminaison**.
 
@@ -95,47 +80,42 @@ Dans Stripe : **Développeurs → Webhooks → Ajouter un point de terminaison**
   `customer.subscription.created`, `customer.subscription.updated`,
   `customer.subscription.deleted`
 
-Stripe affiche alors une **clé de signature** (`whsec_…`). Déposez-la
-directement dans Cloudflare, depuis ce dossier :
+Stripe affiche alors une **clé de signature** (`whsec_…`) :
 
 ```
 npx wrangler secret put STRIPE_WEBHOOK_SECRET
 ```
 
-La commande la demande sans l'afficher. **Ne me l'envoyez pas, ne la mettez
-pas dans le dépôt.** Qui la détient peut fabriquer de faux événements de
-paiement et s'offrir un abonnement à vie.
+Puis la clé `service_role` du projet Supabase (**Project Settings → API**),
+qui permet au Worker d'écrire l'abonnement en contournant RLS :
+
+```
+npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+```
+
+Les deux commandes demandent la valeur sans l'afficher. **Ne me les
+envoyez pas, ne les mettez pas dans le dépôt.** Qui détient l'une ou
+l'autre peut s'offrir un abonnement à vie ou lire/modifier n'importe quel
+compte.
 
 En attendant, le service **échoue fermé** : faute de secret,
 `signatureStripeValide` refuse tout événement au lieu de l'accepter sans
-vérifier. Personne ne peut s'offrir un abonnement en forgeant une requête.
+vérifier.
 
 ### Vérifier
 
-Dans Stripe, **Webhooks → Envoyer un événement de test** : le tableau de
-bord doit afficher une réponse **200**. Puis payez une fois pour de bon avec
-votre propre carte, et regardez si le compte passe abonné — un test signé ne
-prouve pas que Stripe envoie les champs attendus.
+Dans Stripe, **Webhooks → Envoyer un événement de test** : réponse
+**200** attendue. Puis payer une fois pour de bon et regarder si le
+compte passe abonné.
 
 ---
 
-## Deux pièges rencontrés, à ne pas réintroduire
-
-**Cloudflare plafonne PBKDF2 à 100 000 itérations par appel.** Au-delà :
-`NotSupportedError`. Le hachage enchaîne donc deux tours de 100 000. Piège :
-ce plafond n'existe **que sur le vrai réseau** — `wrangler dev --local`
-passe par le crypto de Node et accepte 200 000 sans broncher. Un essai en
-local ne prouve rien ici ; il faut `--remote`.
-
-**D1 ne rend pas les colonnes BLOB exploitables.** La sauvegarde revenait
-vide, sans erreur. Elle est rangée en base64 avec une empreinte SHA-256
-vérifiée à la reprise.
-
 ## Ce que la base contient
 
-Une adresse e-mail, une empreinte de mot de passe, l'état de l'abonnement,
-et — si l'utilisateur le demande — une sauvegarde **chiffrée sur sa
-machine** que le serveur ne peut pas ouvrir.
+Une entrée `auth.users` (gérée par Supabase, jamais lue directement par ce
+Worker), un profil (référence, état d'abonnement), et — si l'utilisateur
+le demande — une sauvegarde **chiffrée sur sa machine** que le serveur ne
+peut pas ouvrir.
 
-Aucune carte lisible. C'est ce qui permet de continuer à dire que les cartes
-ne sortent pas de l'ordinateur.
+Aucune carte lisible, aucun mot de passe vu par ce code : Supabase s'en
+charge, avec sa propre sécurité.

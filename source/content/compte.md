@@ -17,8 +17,8 @@ robots: noindex, follow
       retrouver votre abonnement sur une autre machine — vos cartes, elles,
       restent sur votre ordinateur.</p>
 
-<div id="compte-google" hidden>
-<a class="bouton-google" href="/api/google?origine=site">
+<div id="compte-google">
+<a class="bouton-google" href="#" id="compte-google-lien">
 <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
 <path fill="#4285F4" d="M45 24c0-1.6-.1-2.7-.4-4H24v7.5h12c-.2 2-1.5 5-4.4 7l6.7 5.2C42.2 36.2 45 30.6 45 24z"/>
 <path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.7-5.2c-1.8 1.3-4.3 2.2-7.8 2.2-6 0-11-4-12.8-9.4l-7 5.4C7.8 41 15.3 46 24 46z"/>
@@ -43,6 +43,7 @@ Continuer avec Google</a>
       <button class="bouton" type="submit" id="compte-valider">Se connecter</button>
       <p class="compte-bascule">
         <a href="#" id="compte-basculer">Créer un compte</a>
+        · <a href="#" id="compte-oublie">Mot de passe oublié ?</a>
       </p>
     </form>
   </div>

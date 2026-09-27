@@ -24,6 +24,11 @@
   Cache-Control: public, max-age=31536000, immutable
   Access-Control-Allow-Origin: *
 
+# Bibliotheque tierce vendue localement (client Supabase), appelee avec le
+# meme parametre ?v=empreinte que style.css.
+/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+
 # Les pages HTML doivent etre revalidees, sinon une correction de texte peut
 # rester invisible plusieurs jours pour vos visiteurs.
 /*.html
