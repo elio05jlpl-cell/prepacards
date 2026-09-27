@@ -806,22 +806,25 @@ width: 258px; flex: 0 0 258px;
 border-right: 1px solid var(--bord);
 }
 .mega-item { position: static; }
-.mega-filiere {
+.mega-panneau .mega-filiere {
 display: flex; align-items: center; justify-content: space-between;
 gap: 10px; padding: 10px 12px; margin-right: 8px;
 border-radius: 0; color: var(--texte); text-decoration: none;
 transition: background .18s ease;
 }
-.mega-filiere strong {
+.mega-panneau .mega-filiere strong {
 display: block; font-size: .95rem; font-weight: 600; color: var(--encre);
 transition: color .18s ease;
 }
-.mega-filiere small {
+.mega-panneau .mega-filiere small {
 display: block; margin-top: 2px;
 font-size: .78rem; color: var(--gris); font-weight: 400;
 transition: color .18s ease;
 }
-.mega-chevron { color: var(--gris); font-size: 1.1rem; line-height: 1; transition: color .18s ease; }
+.mega-panneau .mega-chevron {
+color: var(--gris); font-size: 1.3rem; line-height: 1;
+transition: color .18s ease, transform .18s ease;
+}
 .mega-item:hover > .mega-filiere,
 .mega-item:focus-within > .mega-filiere { background: var(--bleu-fonce); }
 .mega-item:hover > .mega-filiere strong,
@@ -829,7 +832,7 @@ transition: color .18s ease;
 .mega-item:focus-within > .mega-filiere strong,
 .mega-item:focus-within > .mega-filiere small { color: #fff; }
 .mega-item:hover .mega-chevron,
-.mega-item:focus-within .mega-chevron { color: #fff; }
+.mega-item:focus-within .mega-chevron { color: #fff; transform: translateX(3px); }
 .mega-droite {
 position: absolute; top: 10px; bottom: 10px; left: 268px; right: 10px;
 padding: 0 6px 0 20px;
@@ -838,22 +841,40 @@ display: flex; flex-direction: column; gap: 2px;
 opacity: 0; visibility: hidden;
 transition: opacity .15s ease, visibility .15s;
 }
-.mega-droite a {
+.mega-panneau .mega-droite a {
 padding: 8px 10px; border-radius: 0; line-height: 1.35;
 color: var(--texte); font-size: .95rem; text-decoration: none;
 transition: background .18s ease, color .18s ease;
 }
-.mega-droite a:hover {
+.mega-panneau .mega-droite a:hover {
 background: var(--hover); color: var(--bleu-fonce); text-decoration: none;
 }
-.mega-droite a:last-child { color: var(--gris); }
-.mega-droite a:last-child:hover { color: var(--bleu-fonce); }
+.mega-panneau .mega-droite a:last-child { color: var(--gris); }
+.mega-panneau .mega-droite a:last-child:hover { color: var(--bleu-fonce); }
+.mega-droite-titre {
+margin: 0 0 4px; padding: 0 10px;
+font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+text-transform: uppercase; color: var(--gris);
+}
 .nav-groupe:hover .mega-item.ouvert > .mega-droite,
 .nav-groupe:focus-within .mega-item.ouvert > .mega-droite,
 .mega-item:hover > .mega-droite,
 .mega-item:focus-within > .mega-droite { opacity: 1; visibility: visible; }
 .mega-gauche:hover .mega-item.ouvert:not(:hover) > .mega-droite,
 .mega-gauche:focus-within .mega-item.ouvert:not(:focus-within) > .mega-droite {
+opacity: 0; visibility: hidden;
+}
+.nav-scrim {
+position: fixed; inset: 0; z-index: 55;
+background: rgba(15, 23, 42, .38);
+opacity: 0; visibility: hidden; pointer-events: none;
+transition: opacity .2s ease, visibility .2s;
+}
+body:has(.nav-groupe.nav-mega:hover) .nav-scrim,
+body:has(.nav-groupe.nav-mega:focus-within) .nav-scrim {
+opacity: 1; visibility: visible;
+}
+body:has(.nav-groupe.nav-mega.nav-force-ferme) .nav-scrim {
 opacity: 0; visibility: hidden;
 }
 .nav-menu {
@@ -940,15 +961,17 @@ display: none;
 .nav-menu.mega-panneau { min-width: 0; padding: 0 0 0 14px; display: none; }
 .nav-groupe.ouvert > .nav-menu.mega-panneau { display: flex; }
 .mega-gauche { width: auto; flex: none; border-right: none; }
-.mega-filiere { margin-right: 0; }
-.mega-filiere small { display: none; }
-.mega-chevron { display: inline-block; transition: transform .2s ease; }
+.mega-panneau .mega-filiere { margin-right: 0; }
+.mega-panneau .mega-filiere small { display: none; }
+.mega-panneau .mega-chevron { display: inline-block; transition: transform .2s ease; }
 .mega-item.ouvert .mega-chevron { transform: rotate(90deg); }
 .mega-droite {
 position: static; width: auto; opacity: 1; visibility: visible;
 padding: 0 0 8px 14px; display: none;
 }
 .mega-item.ouvert > .mega-droite { display: flex; }
+.mega-droite-titre { display: none; }
+.nav-scrim { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
 html.js .revelation > *,

@@ -1094,22 +1094,29 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
    la troisieme filiere commencait 250 px plus bas et debordait par le bas. */
 .mega-item { position: static; }
 
-.mega-filiere {
+/* Prefixees par .mega-panneau : a specificite egale, « .nav-menu a/strong/
+   span » (pensees pour l'AUTRE forme de sous-menu, plus simple) l'emportait
+   sur les regles ci-dessous et cassait le display:flex — le chevron se
+   retrouvait sous le texte, minuscule, au lieu d'aligne a droite. */
+.mega-panneau .mega-filiere {
   display: flex; align-items: center; justify-content: space-between;
   gap: 10px; padding: 10px 12px; margin-right: 8px;
   border-radius: 0; color: var(--texte); text-decoration: none;
   transition: background .18s ease;
 }
-.mega-filiere strong {
+.mega-panneau .mega-filiere strong {
   display: block; font-size: .95rem; font-weight: 600; color: var(--encre);
   transition: color .18s ease;
 }
-.mega-filiere small {
+.mega-panneau .mega-filiere small {
   display: block; margin-top: 2px;
   font-size: .78rem; color: var(--gris); font-weight: 400;
   transition: color .18s ease;
 }
-.mega-chevron { color: var(--gris); font-size: 1.1rem; line-height: 1; transition: color .18s ease; }
+.mega-panneau .mega-chevron {
+  color: var(--gris); font-size: 1.3rem; line-height: 1;
+  transition: color .18s ease, transform .18s ease;
+}
 
 .mega-item:hover > .mega-filiere,
 .mega-item:focus-within > .mega-filiere { background: var(--bleu-fonce); }
@@ -1117,8 +1124,10 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 .mega-item:hover > .mega-filiere small,
 .mega-item:focus-within > .mega-filiere strong,
 .mega-item:focus-within > .mega-filiere small { color: #fff; }
+/* Le chevron avance legerement en plus de blanchir : un signe de plus que
+   la carte entiere est cliquable, pas seulement decorative. */
 .mega-item:hover .mega-chevron,
-.mega-item:focus-within .mega-chevron { color: #fff; }
+.mega-item:focus-within .mega-chevron { color: #fff; transform: translateX(3px); }
 
 .mega-droite {
   /* Cale dans la moitie droite de la boite, quelle que soit la filiere
@@ -1134,20 +1143,31 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
   opacity: 0; visibility: hidden;
   transition: opacity .15s ease, visibility .15s;
 }
-.mega-droite a {
-  /* Interligne resserre : celui du corps de page (1,7) est fait pour des
-     paragraphes, et donnait des entrees de menu de 48 px de haut. */
+/* Meme remarque que plus haut : prefixe par .mega-panneau pour rester plus
+   specifique que « .nav-menu a », sinon son padding de 10px 12px revenait
+   par-dessus celui-ci et redonnait aux lignes la hauteur qu'on voulait
+   justement resserrer. */
+.mega-panneau .mega-droite a {
   padding: 8px 10px; border-radius: 0; line-height: 1.35;
   color: var(--texte); font-size: .95rem; text-decoration: none;
   transition: background .18s ease, color .18s ease;
 }
-.mega-droite a:hover {
+.mega-panneau .mega-droite a:hover {
   background: var(--hover); color: var(--bleu-fonce); text-decoration: none;
 }
 /* Le dernier lien de chaque panneau est « Tout afficher » : il se detache
    en bleu, comme sur les menus ou il sert de sortie de secours. */
-.mega-droite a:last-child { color: var(--gris); }
-.mega-droite a:last-child:hover { color: var(--bleu-fonce); }
+.mega-panneau .mega-droite a:last-child { color: var(--gris); }
+.mega-panneau .mega-droite a:last-child:hover { color: var(--bleu-fonce); }
+
+/* Rappelle la filiere en tete du panneau de droite : au survol rapide,
+   l'œil n'a pas toujours le temps de remarquer quelle carte de gauche
+   vient de passer en bleu. */
+.mega-droite-titre {
+  margin: 0 0 4px; padding: 0 10px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--gris);
+}
 
 /* La premiere filiere est ouverte tant qu'aucune autre n'est survolee —
    mais SEULEMENT quand le menu lui-meme est ouvert. « visibility: visible »
@@ -1159,6 +1179,37 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
 .mega-item:focus-within > .mega-droite { opacity: 1; visibility: visible; }
 .mega-gauche:hover .mega-item.ouvert:not(:hover) > .mega-droite,
 .mega-gauche:focus-within .mega-item.ouvert:not(:focus-within) > .mega-droite {
+  opacity: 0; visibility: hidden;
+}
+
+/* Voile derriere le panneau du menu des matieres : sans lui, le fond de
+   page (le grand titre de l'accueil, entre autres) reste aussi net que le
+   panneau et brouille l'œil au lieu de le guider vers lui.
+   Place hors de l'en-tete dans le gabarit (juste apres le lien d'evitement),
+   pas comme descendant du menu : l'en-tete a un backdrop-filter, qui cree
+   pour ses descendants un nouveau repere de positionnement — un voile
+   "fixed" pose dedans se serait retrouve confine a la hauteur de la barre
+   au lieu de couvrir toute la page, exactement ce qui s'est produit au
+   premier essai.
+   Etant hors du menu, il ne peut plus se piloter par un simple selecteur
+   de descendance : :has() regarde l'etat du menu ailleurs dans la page.
+   Au-dessus de l'en-tete (z-index 50-51) : celui-ci est volontairement
+   translucide (fond blanc a 88% + flou), et le voile se serait sinon vu
+   au travers en le teintant de gris plutot que de rester derriere lui.
+   Sous .nav-menu (60), qui doit rester au-dessus. Traverse par la souris
+   (pointer-events: none) : fermer le menu doit rester un simple survol
+   qui s'acheve, pas un clic qui bloquerait la page. */
+.nav-scrim {
+  position: fixed; inset: 0; z-index: 55;
+  background: rgba(15, 23, 42, .38);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .2s ease, visibility .2s;
+}
+body:has(.nav-groupe.nav-mega:hover) .nav-scrim,
+body:has(.nav-groupe.nav-mega:focus-within) .nav-scrim {
+  opacity: 1; visibility: visible;
+}
+body:has(.nav-groupe.nav-mega.nav-force-ferme) .nav-scrim {
   opacity: 0; visibility: hidden;
 }
 
@@ -1300,15 +1351,24 @@ main a { transition: color .2s ease; }
   .nav-menu.mega-panneau { min-width: 0; padding: 0 0 0 14px; display: none; }
   .nav-groupe.ouvert > .nav-menu.mega-panneau { display: flex; }
   .mega-gauche { width: auto; flex: none; border-right: none; }
-  .mega-filiere { margin-right: 0; }
-  .mega-filiere small { display: none; }
-  .mega-chevron { display: inline-block; transition: transform .2s ease; }
+  /* Memes prefixes qu'en desktop (specificite egale) : sinon les regles
+     desktop, elles aussi actives ici puisqu'elles ne sont pas conditionnees
+     par une media query, l'auraient emporte malgre leur ordre plus tot dans
+     le fichier. */
+  .mega-panneau .mega-filiere { margin-right: 0; }
+  .mega-panneau .mega-filiere small { display: none; }
+  .mega-panneau .mega-chevron { display: inline-block; transition: transform .2s ease; }
   .mega-item.ouvert .mega-chevron { transform: rotate(90deg); }
   .mega-droite {
     position: static; width: auto; opacity: 1; visibility: visible;
     padding: 0 0 8px 14px; display: none;
   }
   .mega-item.ouvert > .mega-droite { display: flex; }
+  .mega-droite-titre { display: none; }
+  /* Le panneau ne flotte plus au-dessus de la page ici, il pousse le
+     contenu : le voile n'a plus de sens et resterait fixe a l'ecran
+     pendant le defilement du menu deplie. */
+  .nav-scrim { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

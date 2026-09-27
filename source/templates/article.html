@@ -33,6 +33,12 @@
 
 <a class="saut-contenu" href="#contenu">Aller au contenu</a>
 
+<!-- Voile du menu des matieres : hors de l'en-tete expres, car son flou
+     d'arriere-plan (backdrop-filter) cree pour lui seul un nouveau repere
+     de positionnement, et un voile "fixed" pose dedans se serait retrouve
+     confine a la hauteur de la barre au lieu de couvrir la page. -->
+<div class="nav-scrim" aria-hidden="true"></div>
+
 <div class="bandeau-haut">
   <div class="conteneur bandeau-haut-interieur">
     <div class="reseaux" aria-label="Réseaux sociaux">{{reseaux}}</div>

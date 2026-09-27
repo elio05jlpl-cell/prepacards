@@ -655,7 +655,7 @@ MENU_MATIERES = [
         ("/decks/#espagnol", "Espagnol"),
         ("/decks/#italien", "Italien"),
         ("/decks/#maths-approfondies", "Maths approfondies"),
-        ("/vocabulaire-anglais-prepa-ecg/", "Vocabulaire d'anglais"),
+        ("/vocabulaire-anglais-prepa-ecg/", "Le vocabulaire à apprendre"),
         ("/decks/", "Tout afficher"),
     ]),
     ("/prepa-scientifique/", "Prépa scientifique", "MPSI, PCSI, PTSI, MPI, BCPST", [
@@ -1294,7 +1294,12 @@ def render_menu_matieres(current: str) -> str:
             f'<span><strong>{html.escape(libelle)}</strong>'
             f'<small>{html.escape(detail)}</small></span>'
             f'<span class="mega-chevron" aria-hidden="true">›</span></a>'
-            f'<div class="mega-droite">{liens}</div>'
+            # Le titre est repete en tete du panneau de droite : au survol
+            # rapide, l'œil n'a pas le temps de remarquer QUELLE carte de
+            # gauche vient de passer en bleu.
+            f'<div class="mega-droite">'
+            f'<p class="mega-droite-titre">{html.escape(libelle)}</p>'
+            f'{liens}</div>'
             f'</li>'
         )
 
