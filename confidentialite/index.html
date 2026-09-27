@@ -23,10 +23,10 @@
 
 <link rel="icon" href="/img/favicon.png?v=2208486d" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=fcb36135">
-<link rel="stylesheet" href="/style.css?v=108b10b479">
+<link rel="stylesheet" href="/style.css?v=bd1696fa18">
 <link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Mes enregistrements vocaux sont-ils conservés ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. L'audio est transcrit en mémoire puis abandonné. Aucun fichier audio n'est écrit sur le disque, et rien n'est envoyé sur internet : la reconnaissance vocale fonctionne sur votre processeur."}}, {"@type": "Question", "name": "Les images de ma webcam sont-elles enregistrées ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Les images servent uniquement à mesurer le mouvement de vos lèvres, image par image, en mémoire. L'application n'écrit aucune capture et la caméra se referme quand vous quittez la session."}}, {"@type": "Question", "name": "Faut-il un compte pour utiliser l'application ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, un compte gratuit, demandé une seule fois à la première ouverture. Il est le même sur l'application, le site et une éventuelle application mobile. Si vous oubliez votre mot de passe, un lien de réinitialisation est envoyé à l'adresse du compte. Vos cartes, elles, restent sur votre ordinateur : le compte vous identifie, il ne les emporte pas."}}, {"@type": "Question", "name": "Ce site utilise-t-il Google Analytics ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Aucun outil de mesure d'audience n'est installé."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Mes enregistrements vocaux sont-ils conservés ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. L'audio est transcrit en mémoire puis abandonné. Aucun fichier audio n'est écrit sur le disque, et rien n'est envoyé sur internet : la reconnaissance vocale fonctionne sur votre processeur."}}, {"@type": "Question", "name": "Les images de ma webcam sont-elles enregistrées ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Les images servent uniquement à mesurer le mouvement de vos lèvres, image par image, en mémoire. L'application n'écrit aucune capture et la caméra se referme quand vous quittez la session."}}, {"@type": "Question", "name": "Faut-il un compte pour utiliser l'application ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, un compte gratuit, demandé une seule fois à la première ouverture. Il est le même sur l'application, le site et une éventuelle application mobile. Si vous oubliez votre mot de passe, un lien de réinitialisation est envoyé à l'adresse du compte. Vos cartes, elles, restent sur votre ordinateur : le compte vous identifie, il ne les emporte pas."}}, {"@type": "Question", "name": "Puis-je supprimer mon compte ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, vous-même et immédiatement, depuis votre espace compte — aucune demande à nous envoyer. La suppression efface votre profil et votre sauvegarde chiffrée. Si un abonnement est actif, résiliez-le d'abord depuis le lien reçu par e-mail lors du paiement : supprimer le compte n'arrête pas les prélèvements Stripe."}}, {"@type": "Question", "name": "Ce site utilise-t-il Google Analytics ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Aucun outil de mesure d'audience n'est installé."}}]}</script>
 </head>
 <body>
 
@@ -245,6 +245,10 @@ démarche : <em>Fichier → Exporter en CSV</em> dans l'application.</p>
     <div class="faq-enveloppe"><div class="faq-reponse"><p>Oui, un compte gratuit, demandé une seule fois à la première ouverture. Il est le même sur l'application, le site et une éventuelle application mobile. Si vous oubliez votre mot de passe, un lien de réinitialisation est envoyé à l'adresse du compte. Vos cartes, elles, restent sur votre ordinateur : le compte vous identifie, il ne les emporte pas.</p></div></div>
   </details>
   <details class="faq-item">
+    <summary><span>Puis-je supprimer mon compte ?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="faq-enveloppe"><div class="faq-reponse"><p>Oui, vous-même et immédiatement, depuis <a href="/compte/">votre espace compte</a> — aucune demande à nous envoyer. La suppression efface votre profil et votre sauvegarde chiffrée. Si un abonnement est actif, résiliez-le d'abord depuis le lien reçu par e-mail lors du paiement : supprimer le compte n'arrête pas les prélèvements Stripe.</p></div></div>
+  </details>
+  <details class="faq-item">
     <summary><span>Ce site utilise-t-il Google Analytics ?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
     <div class="faq-enveloppe"><div class="faq-reponse"><p>Non. Aucun outil de mesure d'audience n'est installé.</p>
 <p style="color:var(--gris);font-size:.9rem">Dernière mise à jour :
@@ -307,6 +311,20 @@ démarche : <em>Fichier → Exporter en CSV</em> dans l'application.</p>
 // ne s'appliquent qu'a ce moment-la. Sans ce drapeau, un visiteur dont le
 // script echoue verrait une page vide de contenu masque.
 document.documentElement.classList.add('js');
+
+// Signale la connexion dans l'en-tete, sur toutes les pages : sans cela,
+// rien n'indique qu'on est connecte tant qu'on n'a pas rouvert /compte/.
+// Lecture directe du sessionStorage plutot que de charger le client
+// Supabase ici : ce serait 218 ko pour changer un mot dans un lien.
+(function () {
+  var lien = document.querySelector('.nav-connexion');
+  if (!lien) return;
+  try {
+    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
+    var session = brut && JSON.parse(brut);
+    if (session && session.refresh_token) lien.textContent = 'Mon compte';
+  } catch (e) { /* stockage indisponible : on garde "Se connecter" */ }
+})();
 
 (function () {
   var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -88,6 +88,20 @@
 // script echoue verrait une page vide de contenu masque.
 document.documentElement.classList.add('js');
 
+// Signale la connexion dans l'en-tete, sur toutes les pages : sans cela,
+// rien n'indique qu'on est connecte tant qu'on n'a pas rouvert /compte/.
+// Lecture directe du sessionStorage plutot que de charger le client
+// Supabase ici : ce serait 218 ko pour changer un mot dans un lien.
+(function () {
+  var lien = document.querySelector('.nav-connexion');
+  if (!lien) return;
+  try {
+    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
+    var session = brut && JSON.parse(brut);
+    if (session && session.refresh_token) lien.textContent = 'Mon compte';
+  } catch (e) { /* stockage indisponible : on garde "Se connecter" */ }
+})();
+
 (function () {
   var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cibles = document.querySelectorAll('.revelation, .a-reveler');

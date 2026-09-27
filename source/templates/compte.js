@@ -37,12 +37,24 @@
   var googleLien = document.getElementById('compte-google-lien');
   var oublieLien = document.getElementById('compte-oublie');
   var deconnexionLien = document.getElementById('compte-deconnexion');
+  var identitesMessage = document.getElementById('compte-identites-message');
+  var googleAssocierBtn = document.getElementById('compte-google-associer');
+  var googleDissocierBtn = document.getElementById('compte-google-dissocier');
+  var mdpForm = document.getElementById('compte-mdp-form');
+  var supprimerBtn = document.getElementById('compte-supprimer');
   var creation = false;
+  var identitesActuelles = [];
 
   function dire(texte, estErreur) {
     message.textContent = texte || '';
     message.hidden = !texte;
     message.className = 'compte-message' + (estErreur ? ' erreur' : '');
+  }
+
+  function direIdentites(texte, estErreur) {
+    identitesMessage.textContent = texte || '';
+    identitesMessage.hidden = !texte;
+    identitesMessage.className = 'compte-message' + (estErreur ? ' erreur' : '');
   }
 
   function dateCourte(iso) {
@@ -69,6 +81,9 @@
     if (/password should be at least/i.test(m)) return 'Le mot de passe doit faire au moins 8 caractères.';
     if (/rate limit/i.test(m)) return 'Trop de tentatives. Réessayez dans quelques minutes.';
     if (/email not confirmed/i.test(m)) return 'Confirmez d’abord votre adresse depuis l’e-mail reçu à l’inscription.';
+    if (/manual linking is disabled/i.test(m)) return 'La liaison de comptes n’est pas encore activée côté serveur.';
+    if (/(only identity|last identity|only remaining)/i.test(m)) return 'Impossible de dissocier : gardez au moins une méthode de connexion.';
+    if (/identity is already linked/i.test(m)) return 'Ce compte Google est déjà associé à un autre compte PrépaCards.';
     return m || 'Demande refusée.';
   }
 
@@ -109,6 +124,33 @@
       : 'Aucune sauvegarde déposée pour l’instant.';
   }
 
+  // Decrit les methodes de connexion actives, et n'affiche « Dissocier »
+  // que s'il en reste une autre ensuite : se retrouver hors de son propre
+  // compte parce qu'on a retire sa seule methode serait irrattrapable.
+  async function chargerIdentites() {
+    try {
+      var reponse = await client.auth.getUserIdentities();
+      var identites = (reponse.data && reponse.data.identities) || [];
+      identitesActuelles = identites;
+
+      var aGoogle = identites.some(function (i) { return i.provider === 'google'; });
+      var aMotDePasse = identites.some(function (i) { return i.provider === 'email'; });
+
+      var methodes = [];
+      if (aMotDePasse) methodes.push('mot de passe');
+      if (aGoogle) methodes.push('Google');
+      document.getElementById('compte-identites').textContent =
+        'Connexion possible avec : ' + (methodes.length ? methodes.join(' et ') : '—') + '.';
+
+      googleAssocierBtn.hidden = aGoogle;
+      googleDissocierBtn.hidden = !aGoogle || !aMotDePasse;
+      document.getElementById('compte-mdp-valider').textContent =
+        aMotDePasse ? 'Changer le mot de passe' : 'Définir un mot de passe';
+    } catch (e) {
+      document.getElementById('compte-identites').textContent = '';
+    }
+  }
+
   async function chargerCompte() {
     var reponseUtilisateur = await client.auth.getUser();
     var utilisateur = reponseUtilisateur.data && reponseUtilisateur.data.user;
@@ -119,6 +161,7 @@
       .select('octets,cartes,depose_le').eq('compte_id', utilisateur.id).maybeSingle();
 
     afficherTableau(utilisateur.email, profilReponse.data, sauvegardeReponse.data);
+    chargerIdentites();
   }
 
   basculer.addEventListener('click', function (e) {
@@ -197,6 +240,99 @@
         provider: 'google',
         options: { redirectTo: window.location.origin + '/compte/' },
       });
+    });
+  }
+
+  if (googleAssocierBtn) {
+    googleAssocierBtn.addEventListener('click', function () {
+      client.auth.linkIdentity({
+        provider: 'google',
+        options: { redirectTo: window.location.origin + '/compte/' },
+      });
+    });
+  }
+
+  if (googleDissocierBtn) {
+    googleDissocierBtn.addEventListener('click', async function () {
+      var identite = identitesActuelles.filter(function (i) { return i.provider === 'google'; })[0];
+      if (!identite) return;
+      googleDissocierBtn.disabled = true;
+      try {
+        var resultat = await client.auth.unlinkIdentity(identite);
+        if (resultat.error) throw resultat.error;
+        direIdentites('Compte Google dissocié.', false);
+        await chargerIdentites();
+      } catch (erreur) {
+        direIdentites(traduireErreur(erreur), true);
+      } finally {
+        googleDissocierBtn.disabled = false;
+      }
+    });
+  }
+
+  if (mdpForm) {
+    mdpForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var champ = document.getElementById('compte-nouveau-mdp');
+      var nouveau = champ.value;
+      if (nouveau.length < 8) { direIdentites('Le mot de passe doit faire au moins 8 caractères.', true); return; }
+
+      var bouton = document.getElementById('compte-mdp-valider');
+      var libelle = bouton.textContent;
+      bouton.disabled = true;
+      bouton.textContent = 'Un instant…';
+      try {
+        var resultat = await client.auth.updateUser({ password: nouveau });
+        if (resultat.error) throw resultat.error;
+        champ.value = '';
+        direIdentites('Mot de passe mis à jour.', false);
+        await chargerIdentites();
+      } catch (erreur) {
+        direIdentites(traduireErreur(erreur), true);
+      } finally {
+        bouton.disabled = false;
+        bouton.textContent = libelle;
+      }
+    });
+  }
+
+  if (supprimerBtn) {
+    supprimerBtn.addEventListener('click', async function () {
+      if (!window.confirm(
+        'Cette action est définitive : votre compte et votre sauvegarde '
+        + 'seront supprimés. Continuer ?')) return;
+
+      var suppressionMessage = document.getElementById('compte-suppression-message');
+      function direSuppression(texte, estErreur) {
+        suppressionMessage.textContent = texte || '';
+        suppressionMessage.hidden = !texte;
+        suppressionMessage.className = 'compte-message' + (estErreur ? ' erreur' : '');
+      }
+
+      supprimerBtn.disabled = true;
+      direSuppression('Suppression en cours…', false);
+      try {
+        var sessionReponse = await client.auth.getSession();
+        var session = sessionReponse.data && sessionReponse.data.session;
+        if (!session) throw new Error('Session expirée, reconnectez-vous.');
+
+        var reponse = await fetch('/api/compte/supprimer', {
+          method: 'POST',
+          headers: { authorization: 'Bearer ' + session.access_token },
+        });
+        var corps = await reponse.json().catch(function () { return {}; });
+        if (!reponse.ok) throw new Error(corps.erreur || 'La suppression a échoué.');
+
+        // Le compte n'existe plus cote serveur : rien a revoquer, on nettoie
+        // seulement le navigateur.
+        try { await client.auth.signOut(); } catch (e) { /* deja invalide */ }
+        tableauEl.hidden = true;
+        connexionEl.hidden = false;
+        dire('Votre compte a bien été supprimé.', false);
+      } catch (erreur) {
+        direSuppression(erreur.message || 'La suppression a échoué.', true);
+        supprimerBtn.disabled = false;
+      }
     });
   }
 

@@ -5,7 +5,9 @@ Le service est passé de D1 + authentification maison à **Supabase**
 réinitialisation du mot de passe et la sauvegarde chiffrée parlent
 désormais directement à Supabase depuis le navigateur (et depuis
 l'application), protégées par les règles RLS de `schema.sql`. Il ne reste
-dans ce Worker que ce qu'un secret protège : le webhook Stripe.
+dans ce Worker que ce qu'un secret protège : le webhook Stripe, et la
+suppression d'un compte (qui exige la clé `service_role`, la seule
+capable de retirer une ligne `auth.users`).
 
 Quatre étapes, une seule produit un secret à déposer avec `wrangler`.
 
@@ -42,6 +44,21 @@ savoir plus qu'avant, seule l'adresse de retour change.
    https://prepacards.fr/compte/
    https://prepacards.fr/mot-de-passe/
    ```
+4. Dans **Supabase → Authentication → Providers**, activez **Allow manual
+   linking** (parfois affiché comme un réglage global des providers plutôt
+   que propre à Google). Sans lui, le bouton « Associer Google » de la page
+   `/compte/` — proposé à qui s'est inscrit par mot de passe et veut
+   ajouter Google ensuite — échoue avec « Manual linking is disabled ».
+
+### Vérifier
+
+Depuis `/compte/`, une fois connecté : le bandeau change et affiche « Mon
+compte » sur n'importe quelle page du site, pas seulement sur celle-ci.
+Dans la section « Mot de passe et connexion » : associer/dissocier Google
+et changer le mot de passe fonctionnent sans recharger la page. La
+suppression de compte (section « Zone dangereuse ») demande une
+confirmation puis déconnecte — vérifiez qu'un compte de test disparaît
+bien de **Authentication → Users** après coup.
 
 ---
 

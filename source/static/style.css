@@ -560,6 +560,7 @@ td strong { color: var(--encre); }
 }
 .encart p:last-child { margin-bottom: 0; }
 .encart-attention { background: #fffbeb; border-color: rgba(217, 119, 6, .22); }
+.encart-danger { background: #fef2f2; border-color: rgba(220, 38, 38, .22); }
 
 .encart-cta {
   background: #fff; border: 1px solid var(--bord);
@@ -2472,6 +2473,19 @@ html.js .feuille-texte > .vue {
 .compte-message.erreur { color: #b91c1c; }
 
 .compte-bascule { margin-top: 16px; font-size: .95rem; }
+
+.compte-actions-identite { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0 0; }
+.compte-actions-identite .bouton-secondaire {
+  padding: 10px 18px; font-size: .9rem; box-shadow: none;
+}
+
+.bouton-danger {
+  display: inline-block; padding: 12px 22px; border-radius: 0;
+  font-weight: 700; font-size: .95rem;
+  background: #fff; color: var(--rouge); border: 1px solid var(--rouge);
+  cursor: pointer; transition: background .15s, color .15s;
+}
+.bouton-danger:hover { background: var(--rouge); color: #fff; }
 
 /* Bouton Google. Les regles de Google imposent son logo d'origine sur
    fond blanc ou gris clair, sans le redessiner ni le recolorer : on garde

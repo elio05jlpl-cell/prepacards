@@ -33,8 +33,8 @@ faq: true
   <div class="conteneur grille-actus">
 
     <a class="actu-vedette" href="/fonctionnalites/">
-      <img src="/img/demo/3-recto.webp" loading="lazy"
-           alt="Écran d'étude de PrépaCards : une carte de vocabulaire, face question">
+      <img src="/img/demo/4-verso.webp" loading="lazy"
+           alt="Écran d'étude de PrépaCards : une carte de vocabulaire retournée, avec sa traduction et les boutons Vérifier ma prononciation et Vérifier aussi avec la webcam">
       <h2>Vérifier sa prononciation, photographier une formule : ce que
         PrépaCards fait de plus</h2>
     </a>

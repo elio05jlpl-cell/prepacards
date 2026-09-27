@@ -168,6 +168,10 @@ Non. Les images servent uniquement à mesurer le mouvement de vos lèvres, image
 
 Oui, un compte gratuit, demandé une seule fois à la première ouverture. Il est le même sur l'application, le site et une éventuelle application mobile. Si vous oubliez votre mot de passe, un lien de réinitialisation est envoyé à l'adresse du compte. Vos cartes, elles, restent sur votre ordinateur : le compte vous identifie, il ne les emporte pas.
 
+### Puis-je supprimer mon compte ?
+
+Oui, vous-même et immédiatement, depuis [votre espace compte](/compte/) — aucune demande à nous envoyer. La suppression efface votre profil et votre sauvegarde chiffrée. Si un abonnement est actif, résiliez-le d'abord depuis le lien reçu par e-mail lors du paiement : supprimer le compte n'arrête pas les prélèvements Stripe.
+
 ### Ce site utilise-t-il Google Analytics ?
 
 Non. Aucun outil de mesure d'audience n'est installé.

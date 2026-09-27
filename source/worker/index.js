@@ -10,8 +10,10 @@
 // le navigateur et l'application parlent directement a Supabase (Auth et
 // REST), proteges par les regles RLS posees dans schema.sql. Il ne reste
 // ici que ce qui EXIGE un secret que le navigateur ne doit jamais voir :
-// verifier la signature Stripe, et ecrire l'abonnement avec la cle
-// service_role, qui contourne RLS.
+// verifier la signature Stripe, ecrire l'abonnement avec la cle
+// service_role (qui contourne RLS), et supprimer un compte a la demande de
+// son titulaire — la clef anon ne permet pas de retirer une ligne
+// auth.users, seule service_role le peut.
 
 import { maintenant, normaliserEmail, signatureStripeValide } from './securite.js';
 
@@ -38,6 +40,51 @@ async function supabase(env, chemin, options = {}) {
       ...(options.headers || {}),
     },
   });
+}
+
+// --- Compte ------------------------------------------------------------
+
+/** Verifie le jeton d'acces envoye par le navigateur et renvoie
+ *  l'utilisateur Supabase correspondant, ou null. On ne fait JAMAIS
+ *  confiance a un identifiant fourni par le client : c'est ce jeton, verifie
+ *  par Supabase lui-meme, qui dit qui fait la demande. */
+async function verifierUtilisateur(requete, env) {
+  const entete = requete.headers.get('authorization') || '';
+  const jeton = entete.replace(/^Bearer\s+/i, '').trim();
+  if (!jeton) return null;
+  const reponse = await supabase(env, '/auth/v1/user', {
+    headers: { authorization: `Bearer ${jeton}` },
+  });
+  if (!reponse.ok) return null;
+  const utilisateur = await reponse.json().catch(() => null);
+  return utilisateur && utilisateur.id ? utilisateur : null;
+}
+
+const STATUTS_ACTIFS = new Set(['trialing', 'active', 'past_due']);
+
+async function supprimerCompte(requete, env) {
+  const utilisateur = await verifierUtilisateur(requete, env);
+  if (!utilisateur) return erreur('Session invalide.', 401);
+
+  // Un compte encore abonne qu'on supprime laisserait Stripe prelever dans
+  // le vide : on demande d'abord la resiliation, plutot que de creer un
+  // abonnement fantome que plus personne ne peut retrouver ni annuler.
+  const profilReponse = await supabase(env,
+    `/rest/v1/profiles?id=eq.${utilisateur.id}&select=statut,valide_jusqu_au`);
+  const profils = await profilReponse.json().catch(() => []);
+  const profil = Array.isArray(profils) ? profils[0] : null;
+  const encoreValide = profil && profil.valide_jusqu_au
+    && new Date(profil.valide_jusqu_au).getTime() > Date.now();
+  if (profil && STATUTS_ACTIFS.has(profil.statut) && encoreValide) {
+    return erreur(
+      'Résiliez d’abord votre abonnement depuis le lien reçu par e-mail lors '
+      + 'du paiement, puis supprimez votre compte.', 409);
+  }
+
+  // Supprime la ligne auth.users : profiles et sauvegardes suivent par
+  // cascade (ON DELETE CASCADE dans schema.sql), rien d'autre a nettoyer.
+  await supabase(env, `/auth/v1/admin/users/${utilisateur.id}`, { method: 'DELETE' });
+  return json({ ok: true });
 }
 
 // --- Stripe ----------------------------------------------------------
@@ -117,6 +164,7 @@ async function webhookStripe(requete, env) {
 
 const ROUTES = {
   'POST /api/stripe': webhookStripe,
+  'POST /api/compte/supprimer': supprimerCompte,
 };
 
 export default {

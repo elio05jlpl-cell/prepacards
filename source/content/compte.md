@@ -70,10 +70,36 @@ Continuer avec Google</a>
       lors du paiement : changer de carte, récupérer une facture, résilier.
       L'abonnement reste actif jusqu'au terme déjà réglé.</p>
 
+    <h2>Mot de passe et connexion</h2>
+    <p id="compte-identites">Chargement…</p>
+    <p id="compte-identites-message" class="compte-message" hidden></p>
+    <p class="compte-actions-identite">
+      <button type="button" class="bouton-secondaire" id="compte-google-associer" hidden>Associer Google</button>
+      <button type="button" class="bouton-secondaire" id="compte-google-dissocier" hidden>Dissocier Google</button>
+    </p>
+    <form id="compte-mdp-form" class="compte-form">
+      <label for="compte-nouveau-mdp">Nouveau mot de passe</label>
+      <input id="compte-nouveau-mdp" name="nouveau_mot_de_passe" type="password"
+             autocomplete="new-password" placeholder="8 caractères minimum">
+      <button class="bouton-secondaire" type="submit" id="compte-mdp-valider">Changer le mot de passe</button>
+    </form>
+
     <h2>Vos paquets gratuits</h2>
     <p>Les 85 paquets d'anglais, d'allemand, d'espagnol, d'italien et les
       formules de maths sont accessibles sans compte, à tout moment.</p>
     <p><a class="bouton-secondaire" href="/decks/">Voir les paquets</a></p>
+
+    <h2>Zone dangereuse</h2>
+    <aside class="encart encart-danger">
+      <p>Supprime définitivement votre compte et votre sauvegarde chiffrée.
+        Si un abonnement est actif, résiliez-le d'abord depuis le lien reçu
+        par e-mail lors du paiement — sinon Stripe continuerait à vous
+        prélever sans qu'aucun compte n'existe plus pour le récupérer. Vos
+        cartes, elles, restent sur votre ordinateur : cette suppression n'y
+        touche pas.</p>
+      <p id="compte-suppression-message" class="compte-message" hidden></p>
+      <button type="button" class="bouton-danger" id="compte-supprimer">Supprimer mon compte</button>
+    </aside>
 
     <p class="compte-bascule"><a href="#" id="compte-deconnexion">Se déconnecter</a></p>
   </div>
