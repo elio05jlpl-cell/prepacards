@@ -218,24 +218,35 @@ def scripts_animes(corps: str) -> str:
     """
     dossier = Path(__file__).parent / "templates"
     morceaux = []
-    for marqueur, fichier in (('class="mot-anime"', "mot-anime.js"),
-                              ('id="demo-app"', "demo-accueil.js"),
-                              ("data-anim=", "etapes.js"),
-                              ('class="feuille-texte"', "pages-vivantes.js"),
-                              ('id="compte-app"', "compte.js"),
-                              ('id="mdp-app"', "mot-de-passe.js"),
-                              ('id="liste-articles"', "blog-filtres.js"),
-                              # Le marqueur, et non l'adresse Stripe : a ce
-                              # stade les boutons sont encore
-                              # « {{bouton_mensuel}} », et chercher
-                              # « buy.stripe.com » n'aurait jamais rien
-                              # trouve — ce qui n'aurait casse aucun test,
-                              # la page se construisant tres bien sans le
-                              # script.
-                              ("{{bloc_paiement}}", "paiement.js")):
+    for entree in (('class="mot-anime"', "mot-anime.js"),
+                   # Troisieme valeur : script module ES, seul cas ou la
+                   # scene 3D de l'en-tete importe Three.js par son nom nu
+                   # ("three"), que la table d'imports ci-dessous resout.
+                   ('id="demo-verre"', "demo-verre.js", True),
+                   ("data-anim=", "etapes.js"),
+                   ('class="feuille-texte"', "pages-vivantes.js"),
+                   ('id="compte-app"', "compte.js"),
+                   ('id="mdp-app"', "mot-de-passe.js"),
+                   ('id="liste-articles"', "blog-filtres.js"),
+                   # Le marqueur, et non l'adresse Stripe : a ce
+                   # stade les boutons sont encore
+                   # « {{bouton_mensuel}} », et chercher
+                   # « buy.stripe.com » n'aurait jamais rien
+                   # trouve — ce qui n'aurait casse aucun test,
+                   # la page se construisant tres bien sans le
+                   # script.
+                   ("{{bloc_paiement}}", "paiement.js")):
+        marqueur, fichier = entree[0], entree[1]
+        module = entree[2] if len(entree) > 2 else False
         chemin = dossier / fichier
         if marqueur in corps and chemin.exists():
-            morceaux.append("<script>" + chr(10)
+            if module:
+                morceaux.append(
+                    '<script type="importmap">'
+                    '{"imports": {"three": "/vendor/three.module.min.js"}}'
+                    '</script>')
+            balise = '<script type="module">' if module else '<script>'
+            morceaux.append(balise + chr(10)
                             + chemin.read_text(encoding="utf-8") + "</script>")
     return chr(10).join(morceaux)
 
@@ -1639,7 +1650,7 @@ def versionner_ressources() -> int:
     requete.
     """
     empreintes = {}
-    for dossier in ("img", "fonts"):
+    for dossier in ("img", "fonts", "vendor"):
         racine = OUTPUT / dossier
         if not racine.is_dir():
             continue
