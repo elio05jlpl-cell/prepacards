@@ -1,0 +1,27 @@
+<!--
+  Modele Supabase : Authentication -> Emails -> Confirm signup.
+  Sujet a coller dans le meme ecran : Confirmez votre adresse PrépaCards
+
+  Variable Supabase utilisee : {{ .ConfirmationURL }} (lien complet, deja
+  signe). Ne pas la modifier : c'est Supabase qui la remplace a l'envoi.
+-->
+<!doctype html>
+<html lang="fr">
+<body style="margin:0;padding:0;background:#f4f6fb">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6fb;padding:32px 16px">
+<tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:16px;padding:32px;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#0f172a">
+<tr><td>
+<p style="margin:0 0 18px;font-size:19px;font-weight:700">Confirmez votre adresse</p>
+<p style="margin:0 0 22px;font-size:15px;line-height:1.55;color:#334155">
+Plus qu'une étape pour activer votre compte PrépaCards.</p>
+<p style="margin:0 0 26px">
+<a href="{{ .ConfirmationURL }}" style="display:inline-block;background:#1e3a8a;color:#ffffff;text-decoration:none;font-weight:600;font-size:15px;padding:13px 22px;border-radius:12px">Confirmer mon adresse</a></p>
+<p style="margin:0 0 18px;font-size:13.5px;line-height:1.55;color:#64748b">
+Si le bouton ne s'ouvre pas, copiez cette adresse :<br>
+<span style="word-break:break-all;color:#334155">{{ .ConfirmationURL }}</span></p>
+<p style="margin:0;font-size:13.5px;line-height:1.55;color:#64748b">
+Si vous n'êtes pas à l'origine de cette inscription, ignorez ce message :
+aucun compte ne sera créé.</p>
+</td></tr></table>
+</td></tr></table></body></html>

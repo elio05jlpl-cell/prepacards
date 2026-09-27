@@ -11,11 +11,13 @@
 // REST), proteges par les regles RLS posees dans schema.sql. Il ne reste
 // ici que ce qui EXIGE un secret que le navigateur ne doit jamais voir :
 // verifier la signature Stripe, ecrire l'abonnement avec la cle
-// service_role (qui contourne RLS), et supprimer un compte a la demande de
-// son titulaire — la clef anon ne permet pas de retirer une ligne
-// auth.users, seule service_role le peut.
+// service_role (qui contourne RLS), supprimer un compte a la demande de
+// son titulaire, et envoyer les deux e-mails que Supabase ne peut pas
+// declencher lui-meme (bienvenue, resiliation) - voir courriel.js.
 
 import { maintenant, normaliserEmail, signatureStripeValide } from './securite.js';
+import { disponible as courrielDisponible, envoyer as envoyerCourriel,
+         messageBienvenue, messageResiliation } from './courriel.js';
 
 function json(donnees, statut = 200) {
   return new Response(JSON.stringify(donnees), {
@@ -87,6 +89,57 @@ async function supprimerCompte(requete, env) {
   return json({ ok: true });
 }
 
+// Appele par un Database Webhook Supabase sur public.profiles (INSERT et
+// UPDATE) : le declencheur SQL de schema.sql pose confirme_le exactement
+// une fois, a l'inscription (Google) ou a la confirmation du lien reçu par
+// e-mail (mot de passe). C'est ce changement precis qu'on guette ici, pas
+// les mises a jour de profiles par ailleurs (Stripe, etc.) qui ne touchent
+// jamais cette colonne.
+async function gererWebhookProfil(requete, env) {
+  if (requete.headers.get('x-webhook-secret') !== env.WEBHOOK_SECRET) {
+    return erreur('Non autorisé.', 401);
+  }
+
+  const corps = await requete.json().catch(() => null);
+  const record = corps?.record;
+  const ancien = corps?.old_record;
+  if (!record?.id || !record.confirme_le || ancien?.confirme_le) {
+    // Rien a faire : profil pas encore confirme, ou deja confirme avant
+    // cette mise a jour (un changement Stripe, par exemple).
+    return json({ ok: true, ignore: true });
+  }
+
+  // Garde d'idempotence : cette mise a jour ne reussit (et ne renvoie une
+  // ligne) qu'une fois par compte, meme si Supabase rejoue la livraison du
+  // webhook. Sans elle, une livraison rejouee enverrait un deuxieme e-mail.
+  const marquage = await supabase(env,
+    `/rest/v1/profiles?id=eq.${record.id}&accueil_envoye=is.false`,
+    { method: 'PATCH', headers: { prefer: 'return=representation' },
+      body: JSON.stringify({ accueil_envoye: true }) });
+  const marques = await marquage.json().catch(() => []);
+  if (!Array.isArray(marques) || !marques.length) {
+    return json({ ok: true, deja_envoye: true });
+  }
+
+  if (courrielDisponible(env)) {
+    // profiles ne contient pas l'adresse (elle vit dans auth.users) : il
+    // faut l'API admin, la seule a pouvoir la lire depuis ce Worker.
+    const utilisateurReponse = await supabase(env, `/auth/v1/admin/users/${record.id}`);
+    const utilisateur = await utilisateurReponse.json().catch(() => null);
+    if (utilisateur?.email) {
+      try {
+        await envoyerCourriel(env, utilisateur.email, 'Bienvenue sur PrépaCards', messageBienvenue());
+      } catch (e) {
+        // Un e-mail de bienvenue manque, jamais un compte : on journalise
+        // sans faire echouer la reponse au webhook.
+        console.error('courriel bienvenue', e);
+      }
+    }
+  }
+
+  return json({ ok: true });
+}
+
 // --- Stripe ----------------------------------------------------------
 
 const STATUTS_STRIPE = new Set([
@@ -147,6 +200,23 @@ async function webhookStripe(requete, env) {
         p_valide_jusqu_au: fin,
       }),
     });
+
+    // .deleted marque la fin REELLE de l'abonnement (pas une simple mise a
+    // jour intermediaire, par ex. cancel_at_period_end pose a l'avance) :
+    // c'est le seul moment sur precis pour prevenir la personne.
+    if (evenement.type === 'customer.subscription.deleted' && courrielDisponible(env)) {
+      const utilisateurReponse = await supabase(env, `/auth/v1/admin/users/${compteId}`);
+      const utilisateur = await utilisateurReponse.json().catch(() => null);
+      if (utilisateur?.email) {
+        try {
+          await envoyerCourriel(env, utilisateur.email,
+            'Votre abonnement PrépaCards a été résilié',
+            messageResiliation(fin ? new Date(fin) : null));
+        } catch (e) {
+          console.error('courriel resiliation', e);
+        }
+      }
+    }
   }
 
   await supabase(env, '/rest/v1/evenements_stripe', {
@@ -165,6 +235,7 @@ async function webhookStripe(requete, env) {
 const ROUTES = {
   'POST /api/stripe': webhookStripe,
   'POST /api/compte/supprimer': supprimerCompte,
+  'POST /api/webhooks/profil': gererWebhookProfil,
 };
 
 export default {

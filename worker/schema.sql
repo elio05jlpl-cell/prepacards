@@ -46,6 +46,15 @@ create table public.profiles (
     valide_jusqu_au    timestamptz,
     maj_le             timestamptz,
 
+    -- Rempli des l'inscription si Google avait deja verifie l'adresse, ou
+    -- par le declencheur plus bas des que le lien de confirmation est
+    -- suivi. Sert de repere au webhook de bienvenue : voir plus bas.
+    confirme_le        timestamptz,
+    -- Empeche un deuxieme envoi si Supabase rejoue la livraison du
+    -- webhook de bienvenue - la mise a jour qui le pose a vrai ne reussit
+    -- qu'une fois, voir gererWebhookProfil() cote Worker.
+    accueil_envoye     boolean not null default false,
+
     cree_le            timestamptz not null default now()
 );
 
@@ -65,6 +74,10 @@ create policy "profil_lecture_personnelle"
 
 -- Creation automatique du profil des l'inscription (mot de passe ou
 -- Google, Supabase Auth traite les deux de la meme facon en amont).
+-- email_confirmed_at est deja rempli a cet instant pour un compte Google
+-- (l'adresse est verifiee par Google avant meme d'atteindre Supabase) ;
+-- il reste null pour une inscription par mot de passe, jusqu'au lien de
+-- confirmation - voir le second declencheur juste apres.
 create function public.gerer_nouvel_utilisateur()
 returns trigger
 language plpgsql
@@ -72,7 +85,7 @@ security definer
 set search_path = public
 as $$
 begin
-    insert into public.profiles (id) values (new.id);
+    insert into public.profiles (id, confirme_le) values (new.id, new.email_confirmed_at);
     return new;
 end;
 $$;
@@ -80,6 +93,28 @@ $$;
 create trigger apres_inscription
     after insert on auth.users
     for each row execute function public.gerer_nouvel_utilisateur();
+
+-- Rattrape le cas d'une inscription par mot de passe : email_confirmed_at
+-- passe de null a une date quand le lien recu par e-mail est suivi. La
+-- condition WHEN ne se declenche qu'a ce changement precis, jamais sur les
+-- innombrables autres mises a jour d'auth.users (derniere connexion, etc.).
+create function public.gerer_confirmation_email()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+    update public.profiles set confirme_le = new.email_confirmed_at where id = new.id;
+    return new;
+end;
+$$;
+
+create trigger apres_confirmation
+    after update on auth.users
+    for each row
+    when (old.email_confirmed_at is null and new.email_confirmed_at is not null)
+    execute function public.gerer_confirmation_email();
 
 -- --- Sauvegarde chiffree -------------------------------------------------
 --

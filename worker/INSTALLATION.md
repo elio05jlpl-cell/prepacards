@@ -9,7 +9,7 @@ dans ce Worker que ce qu'un secret protège : le webhook Stripe, et la
 suppression d'un compte (qui exige la clé `service_role`, la seule
 capable de retirer une ligne `auth.users`).
 
-Quatre étapes, une seule produit un secret à déposer avec `wrangler`.
+Cinq étapes ; les étapes 4 et 5 déposent des secrets avec `wrangler`.
 
 ---
 
@@ -79,6 +79,19 @@ Dans **Supabase → Project Settings → Authentication → SMTP Settings** :
 Et dans **Authentication → Policies** : longueur minimale du mot de passe
 à **8** (pour rester cohérent avec ce que l'application a toujours exigé).
 
+### Mise en forme des e-mails
+
+Par défaut, Supabase envoie ces e-mails avec son propre gabarit, sans le
+style ni le ton de PrépaCards. Dans **Authentication → Emails → Templates**,
+remplacez le contenu de deux gabarits (sujet **et** corps HTML) :
+
+- **Confirm signup** ← `courriels/confirmation-inscription.html`
+- **Reset Password** ← `courriels/reinitialisation-mot-de-passe.html`
+
+Chaque fichier commence par un commentaire donnant le sujet à coller et la
+variable Supabase utilisée. Ne touchez à rien d'autre (Magic Link, Invite
+User, Change Email Address) : ces flux ne sont pas utilisés ici.
+
 ### Vérifier
 
 Demander une réinitialisation depuis `/compte/`, tester sur **Gmail et
@@ -124,6 +137,97 @@ vérifier.
 Dans Stripe, **Webhooks → Envoyer un événement de test** : réponse
 **200** attendue. Puis payer une fois pour de bon et regarder si le
 compte passe abonné.
+
+---
+
+## 5. Bienvenue et résiliation par e-mail
+
+Deux e-mails supplémentaires, envoyés directement par ce Worker (pas par
+Supabase) : un mot de bienvenue à la confirmation du compte, et une
+confirmation quand un abonnement prend réellement fin. Le détail de leur
+contenu est dans `courriel.js` ; cette étape ne fait que les brancher.
+
+### a. Si `schema.sql` a déjà été exécuté avant cette mise à jour
+
+Les nouvelles colonnes et le nouveau déclencheur ne sont pas dans une base
+déjà en place — `schema.sql` ne se rejoue pas (voir étape 1). Collez et
+exécutez ceci une fois, dans **SQL Editor** :
+
+```sql
+alter table public.profiles add column confirme_le timestamptz;
+alter table public.profiles add column accueil_envoye boolean not null default false;
+
+create function public.gerer_confirmation_email()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+    update public.profiles set confirme_le = new.email_confirmed_at where id = new.id;
+    return new;
+end;
+$$;
+
+create trigger apres_confirmation
+    after update on auth.users
+    for each row
+    when (old.email_confirmed_at is null and new.email_confirmed_at is not null)
+    execute function public.gerer_confirmation_email();
+```
+
+Les comptes déjà confirmés avant ce jour n'ont pas de `confirme_le` et ne
+recevront donc pas de bienvenue rétroactive — c'est volontaire, pour ne
+pas surprendre les utilisateurs existants.
+
+### b. Déposer les secrets d'envoi
+
+```
+npx wrangler secret put RESEND_API_KEY
+npx wrangler secret put COURRIEL_EXPEDITEUR
+npx wrangler secret put COURRIEL_REPONSE
+npx wrangler secret put WEBHOOK_SECRET
+```
+
+- `RESEND_API_KEY` : la même clé Resend que celle collée en SMTP à l'étape
+  3 (Resend l'accepte pour les deux usages).
+- `COURRIEL_EXPEDITEUR` : `PrépaCards <noreply@prepacards.fr>`
+- `COURRIEL_REPONSE` : `contact@prepacards.fr` — sans elle, une réponse à
+  un e-mail parti de `noreply@` se perd.
+- `WEBHOOK_SECRET` : une valeur inventée par vous (par ex.
+  `openssl rand -hex 32` dans un terminal), à recopier telle quelle à
+  l'étape suivante. Sans elle, n'importe qui connaissant l'adresse de la
+  route pourrait déclencher un envoi de bienvenue à volonté.
+
+Tant que `RESEND_API_KEY` ou `COURRIEL_EXPEDITEUR` manquent, `disponible()`
+rend faux : les deux e-mails sont silencieusement ignorés (journalisés,
+pas bloquants) plutôt que de faire échouer tout le webhook qui les
+déclenche.
+
+### c. Créer le Database Webhook (bienvenue)
+
+Dans **Supabase → Database → Webhooks → Create a new hook** :
+
+- Table : `public.profiles`
+- Events : **Insert** et **Update**
+- Type : **HTTP Request**, méthode **POST**
+- URL : `https://prepacards.fr/api/webhooks/profil`
+- HTTP Headers : ajoutez `x-webhook-secret` avec la **même valeur** que
+  `WEBHOOK_SECRET` déposée juste avant.
+
+La résiliation n'a rien de plus à configurer : elle s'appuie sur le
+webhook Stripe déjà en place à l'étape 4.
+
+### Vérifier
+
+Créez un compte de test par mot de passe, confirmez-le depuis le lien
+reçu : l'e-mail de bienvenue doit arriver dans la minute. Rejouez la
+livraison depuis **Database → Webhooks → (le hook) → Logs** : la deuxième
+livraison ne doit **pas** renvoyer un second e-mail (`deja_envoye: true`
+dans la réponse). Pour la résiliation, résiliez l'abonnement de test et
+attendez la fin de la période réglée (ou testez directement avec
+**Webhooks → Envoyer un événement de test** sur `customer.subscription.deleted`
+côté Stripe).
 
 ---
 

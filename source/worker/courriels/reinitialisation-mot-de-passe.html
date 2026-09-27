@@ -1,0 +1,33 @@
+<!--
+  Modele Supabase : Authentication -> Emails -> Reset Password.
+  Sujet a coller dans le meme ecran : Réinitialiser votre mot de passe PrépaCards
+
+  Variable Supabase utilisee : {{ .ConfirmationURL }} (lien complet, deja
+  signe). Reprend le texte et la mise en forme de l'ancien worker/courriel.js,
+  d'avant le passage a Supabase Auth.
+
+  « Valable une heure » suppose l'expiration par defaut de Supabase
+  (3600 s). Si Authentication -> Providers -> Email -> OTP Expiry a ete
+  change, ajuster cette phrase en consequence.
+-->
+<!doctype html>
+<html lang="fr">
+<body style="margin:0;padding:0;background:#f4f6fb">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6fb;padding:32px 16px">
+<tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:16px;padding:32px;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#0f172a">
+<tr><td>
+<p style="margin:0 0 18px;font-size:19px;font-weight:700">Réinitialiser votre mot de passe</p>
+<p style="margin:0 0 22px;font-size:15px;line-height:1.55;color:#334155">
+Vous avez demandé à choisir un nouveau mot de passe pour votre compte PrépaCards.</p>
+<p style="margin:0 0 26px">
+<a href="{{ .ConfirmationURL }}" style="display:inline-block;background:#1e3a8a;color:#ffffff;text-decoration:none;font-weight:600;font-size:15px;padding:13px 22px;border-radius:12px">Choisir un nouveau mot de passe</a></p>
+<p style="margin:0 0 18px;font-size:13.5px;line-height:1.55;color:#64748b">
+Ce lien est valable <strong>une heure</strong> et ne fonctionne qu'une fois.
+Si le bouton ne s'ouvre pas, copiez cette adresse :<br>
+<span style="word-break:break-all;color:#334155">{{ .ConfirmationURL }}</span></p>
+<p style="margin:0;font-size:13.5px;line-height:1.55;color:#64748b">
+Si vous n'êtes pas à l'origine de cette demande, ignorez ce message :
+votre mot de passe reste inchangé.</p>
+</td></tr></table>
+</td></tr></table></body></html>
