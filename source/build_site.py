@@ -62,9 +62,11 @@ import re
 import sys
 import os
 import shutil
+import subprocess
 import struct
 from datetime import date, datetime, timezone
 from email.utils import format_datetime
+from functools import lru_cache
 from pathlib import Path
 from urllib.parse import quote
 from xml.sax.saxutils import escape as xml_escape
@@ -768,9 +770,41 @@ def derniere_modification(page: dict) -> str:
     if page.get("date"):
         return page["date"]
     chemin = page.get("path")
-    if chemin is not None:
-        return date.fromtimestamp(Path(chemin).stat().st_mtime).isoformat()
-    return date.today().isoformat()
+    if chemin is None:
+        return date.today().isoformat()
+
+    # La date du dernier commit, et non celle du fichier sur le disque.
+    #
+    # La date de fichier est celle ou LA MACHINE a recupere le depot, pas
+    # celle ou la page a change : le poste local annoncait le 15 septembre
+    # et le serveur le 23, pour un texte identique. Deux consequences, l'une
+    # pour Google qui lit ce « lastmod », l'autre pour le travail a deux -
+    # chaque construction reecrivait le plan du site, donc entrait en
+    # conflit avec celle de l'autre.
+    #
+    # L'historique Git, lui, dit la meme chose partout.
+    git = _date_du_dernier_commit(Path(chemin))
+    if git:
+        return git
+    return date.fromtimestamp(Path(chemin).stat().st_mtime).isoformat()
+
+
+@lru_cache(maxsize=None)
+def _date_du_dernier_commit(chemin: Path):
+    """Date du dernier commit touchant ce fichier, ou None si indisponible.
+
+    None quand le fichier n'est pas encore suivi - un article tout juste
+    ecrit, par exemple. L'appelant retombe alors sur la date du fichier,
+    qui est la bonne reponse dans ce cas precis.
+    """
+    try:
+        resultat = subprocess.run(
+            ["git", "log", "-1", "--format=%cs", "--", chemin.name],
+            cwd=str(chemin.parent), capture_output=True, text=True, timeout=15)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    sortie = resultat.stdout.strip()
+    return sortie if resultat.returncode == 0 and sortie else None
 
 
 
@@ -1623,7 +1657,10 @@ def copier_source(destination: Path) -> None:
         "markdown\n", encoding="utf-8")
 
 
-PRESERVES = {".git", ".gitignore", "source", ".github"}
+# .gitattributes impose LF a toutes les copies de travail : sans lui,
+# une construction Windows et une construction Linux ne produisent pas
+# les memes octets, donc pas les memes empreintes de cache.
+PRESERVES = {".git", ".gitignore", ".gitattributes", "source", ".github"}
 
 
 def vider(dossier: Path) -> None:
@@ -1671,8 +1708,26 @@ def versionner_ressources() -> int:
         for fichier in racine.rglob("*"):
             if fichier.is_file():
                 chemin = "/" + fichier.relative_to(OUTPUT).as_posix()
-                empreintes[chemin] = hashlib.sha256(
-                    fichier.read_bytes()).hexdigest()[:8]
+                # Fins de ligne ramenees a LF avant le calcul, comme pour la
+                # feuille de style. Les visuels d'articles sont des SVG,
+                # donc du TEXTE : Git les rend en CRLF sous Windows et en LF
+                # sur Linux. Git compare en LF et ne voit donc aucune
+                # difference, mais la construction lit les octets du disque.
+                # Resultat : deux machines produisaient deux empreintes pour
+                # le meme fichier, et chaque alternance entre le poste local
+                # et le cloud reecrivait une vingtaine de pages - assez pour
+                # provoquer un conflit a chaque fois que les deux publient.
+                #
+                # Uniquement pour les fichiers TEXTE. Git ne convertit jamais
+                # les binaires : une police ou une image ont deja les memes
+                # octets partout, et les normaliser changerait leur empreinte
+                # sans aucune raison - donc ferait retelecharger a chaque
+                # visiteur des fichiers qui n'ont pas bouge.
+                octets = fichier.read_bytes()
+                if fichier.suffix.lower() in (".svg", ".css", ".js", ".json",
+                                              ".txt", ".xml"):
+                    octets = octets.replace(b"\r\n", b"\n")
+                empreintes[chemin] = hashlib.sha256(octets).hexdigest()[:8]
 
     if not empreintes:
         return 0

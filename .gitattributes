@@ -1,0 +1,20 @@
+# Fins de ligne : LF partout, y compris dans les copies de travail Windows.
+#
+# Sans cette regle, Git rend les fichiers texte en CRLF sous Windows et en
+# LF sur Linux. Git compare en LF, donc « git status » ne voit rien ; mais
+# la construction, elle, lit les octets du disque. Les empreintes de cache
+# (?v=...) des images et de la feuille de style differaient donc selon la
+# machine qui construisait, et chaque alternance entre le poste local et le
+# cloud reecrivait des dizaines de pages pour rien - avec, a la cle, des
+# conflits a chaque fois que les deux poussent.
+#
+# La consequence pratique : deux machines produisent desormais le meme site,
+# octet pour octet, a partir des memes sources.
+* text=auto eol=lf
+
+# Binaires : jamais convertis, jamais compares ligne a ligne.
+*.png binary
+*.jpg binary
+*.woff2 binary
+*.ico binary
+*.pcards binary
