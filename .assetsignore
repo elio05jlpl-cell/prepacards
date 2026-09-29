@@ -20,3 +20,7 @@ source
 # Sans cette ligne, /worker/index.js exposerait la logique
 # d'authentification a qui la demande.
 worker
+
+# Consignes de travail pour les agents. Deployees avec le depot,
+# mais sans aucune raison d'etre lisibles en ligne.
+CLAUDE.md

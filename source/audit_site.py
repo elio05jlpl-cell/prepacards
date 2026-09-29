@@ -194,12 +194,31 @@ def verifier_redirections() -> list:
     return problemes
 
 
-# Dossiers presents dans public/ mais qui ne sont pas le site : ils
-# figurent dans .assetsignore et ne sont jamais servis.
-# Dossiers presents dans le depot mais jamais servis : ils figurent tous
-# dans .assetsignore. Les auditer reviendrait a se plaindre de fichiers
-# que personne ne peut demander.
-HORS_SITE = (".git/", "source/", ".github/", "worker/")
+# Ce qui est present dans le depot mais JAMAIS servi. S'en plaindre
+# reviendrait a signaler des fichiers que personne ne peut demander.
+#
+# La liste n'est plus ecrite ici : elle est lue dans .assetsignore, qui est
+# la seule autorite en la matiere - c'est lui que Cloudflare applique. Deux
+# listes a tenir d'accord finissent toujours par diverger, et l'audit se
+# serait alors plaint de fichiers correctement exclus, ou pire, aurait
+# laisse passer un fichier reellement publie.
+def _hors_site() -> tuple:
+    connu = (".git/", ".github/", "source/", "worker/")
+    fichier = PUBLIC / ".assetsignore"
+    if not fichier.exists():
+        return connu
+    entrees = []
+    for ligne in fichier.read_text(encoding="utf-8").splitlines():
+        ligne = ligne.strip()
+        if not ligne or ligne.startswith("#"):
+            continue
+        # Un dossier se reconnait a ce qu'il en est un sur le disque ; le
+        # reste est un fichier, compare tel quel.
+        entrees.append(ligne + "/" if (PUBLIC / ligne).is_dir() else ligne)
+    return tuple(sorted(set(entrees) | set(connu)))
+
+
+HORS_SITE = _hors_site()
 
 
 def auditer() -> list:

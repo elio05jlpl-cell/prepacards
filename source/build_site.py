@@ -1660,7 +1660,8 @@ def copier_source(destination: Path) -> None:
 # .gitattributes impose LF a toutes les copies de travail : sans lui,
 # une construction Windows et une construction Linux ne produisent pas
 # les memes octets, donc pas les memes empreintes de cache.
-PRESERVES = {".git", ".gitignore", ".gitattributes", "source", ".github"}
+PRESERVES = {".git", ".gitignore", ".gitattributes", "CLAUDE.md",
+             "source", ".github"}
 
 
 def vider(dossier: Path) -> None:
