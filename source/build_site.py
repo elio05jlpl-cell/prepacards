@@ -711,6 +711,7 @@ FOOTER_COLONNES = [
     ]),
     ("Informations", [
         ("/mentions-legales/", "Mentions légales"),
+        ("/cgu/", "CGU"),
         ("/cgv/", "CGV"),
         ("/confidentialite/", "Confidentialité"),
     ]),
@@ -751,6 +752,7 @@ PRIORITES = {
     "mentions-legales": "0.3",
     "confidentialite": "0.3",
     "cgv": "0.3",
+    "cgu": "0.3",
 }
 PRIORITE_DEFAUT = "0.6"
 
