@@ -227,6 +227,17 @@ def scripts_animes(corps: str) -> str:
                    # le Worker.
                    ('id="compte-app"', "compte.js", None, "/vendor/supabase.js"),
                    ('id="mdp-app"', "mot-de-passe.js", None, "/vendor/supabase.js"),
+                   ('id="obtenir-app"', "decks-obtenir.js", None, "/vendor/supabase.js"),
+                   # Le marqueur est le placeholder brut, comme pour
+                   # {{bloc_paiement}} juste en dessous : a ce stade
+                   # {{bloc_decks}} n'a pas encore ete remplace par les
+                   # cartes, chercher "deck-carte" ne trouverait donc jamais
+                   # rien - la page se construirait tres bien sans le script,
+                   # silencieusement.
+                   # Verification legere du sessionStorage, sans le client
+                   # Supabase : /decks/ n'a pas besoin des 218 ko de la
+                   # bibliotheque pour decider qui rediriger.
+                   ("{{bloc_decks}}", "decks.js"),
                    ('id="liste-articles"', "blog-filtres.js"),
                    # Le marqueur, et non l'adresse Stripe : a ce
                    # stade les boutons sont encore
@@ -294,7 +305,7 @@ def bloc_decks() -> str:
     morceaux = [
         '<p class="decks-compte">'
         f'<strong>{len(fiches)} paquets</strong> · '
-        f'<strong>{total_cartes:,} cartes</strong> · gratuits et sans compte'
+        f'<strong>{total_cartes:,} cartes</strong> · gratuits · compte gratuit requis'
         '</p>'.replace(",", " ")
     ]
 

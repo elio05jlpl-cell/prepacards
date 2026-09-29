@@ -79,8 +79,8 @@ Votre compte est prêt. De quoi commencer tout de suite :</p>
 <a href="https://prepacards.fr/telecharger/" style="display:inline-block;background:#1e3a8a;color:#ffffff;text-decoration:none;font-weight:600;font-size:15px;padding:13px 22px;border-radius:12px">Télécharger l'application</a></p>
 <p style="margin:0 0 26px;font-size:14px;line-height:1.6;color:#334155">
 Ou parcourez d'abord les <a href="https://prepacards.fr/decks/" style="color:#1e3a8a">85 paquets gratuits</a>
-(anglais, allemand, espagnol, italien, formules de maths) — aucune inscription
-supplémentaire, ils s'ouvrent directement dans l'application.</p>
+(anglais, allemand, espagnol, italien, formules de maths) — déjà inclus avec
+ce compte, ils s'ouvrent directement dans l'application.</p>
 <p style="margin:0;font-size:13.5px;line-height:1.55;color:#64748b">
 Vos cartes restent sur votre ordinateur ; ce compte ne sert qu'à retrouver
 votre abonnement sur une autre machine.</p>

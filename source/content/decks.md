@@ -14,7 +14,7 @@ faq: true
       le vocabulaire d'anglais, d'allemand, d'espagnol et d'italien, et toutes
       les formules de maths approfondies de première année. Je les mets à
       disposition tels quels.</p>
-    <p class="sous-bouton">Gratuits · Sans compte · Un fichier, un double-clic</p>
+    <p class="sous-bouton">Gratuits · Compte gratuit requis · Un fichier, un double-clic</p>
   </div>
 </section>
 
@@ -88,9 +88,10 @@ révision, pas un cours — elles supposent que vous avez déjà compris la noti
 
 ### Ces paquets sont-ils vraiment gratuits ?
 
-Oui, entièrement, et sans compte à créer. Vous téléchargez un fichier et vous
-l'ouvrez. Ils resteront gratuits : ce sont les fonctions de l'application qui
-coûtent à faire tourner, pas des listes de vocabulaire.
+Oui, entièrement. Un compte gratuit est demandé au moment du téléchargement —
+le même qui sert à ouvrir l'application — puis vous téléchargez le fichier et
+vous l'ouvrez. Ils resteront gratuits : ce sont les fonctions de l'application
+qui coûtent à faire tourner, pas des listes de vocabulaire.
 
 ### Combien de cartes par jour pour en venir à bout ?
 
