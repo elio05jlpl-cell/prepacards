@@ -77,7 +77,7 @@ texte a effectivement tenu la promesse posée au départ.
   <img src="/img/blog/vocabulaire-anglais-prepa.svg" width="112" height="112" alt="" loading="lazy">
   <span class="carte-liee-texte">
     <span class="carte-liee-etiquette">À lire aussi</span>
-    <span class="carte-liee-titre">Vocabulaire anglais en prépa : la méthode qui tient</span>
+    <span class="carte-liee-titre">Vocabulaire anglais en prépa : tout retenir</span>
   </span>
 </a>
 

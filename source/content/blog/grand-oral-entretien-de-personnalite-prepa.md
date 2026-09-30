@@ -1,5 +1,5 @@
 ---
-title: Le grand oral et l'entretien de personnalité | PrépaCards
+title: Entretien de personnalité : pourquoi il intimide | PrépaCards
 description: Parler de soi devant un jury ne s'improvise pas plus qu'une khôlle. Ce qui se prépare à l'avance, et pourquoi la sincérité rapporte plus que le discours appris.
 date: 2026-10-28
 slug: grand-oral-entretien-de-personnalite-prepa

@@ -1,5 +1,5 @@
 ---
-title: Réviser la chimie en prépa avec des flashcards | PrépaCards
+title: Chimie en prépa : le par cœur qui débloque tout | PrépaCards
 description: Nomenclature, constantes, mécanismes : la chimie exige un par cœur dense avant tout raisonnement. Ce qu'il faut mémoriser, et comment s'y tenir chaque semaine.
 date: 2026-10-11
 slug: reviser-la-chimie-en-prepa
@@ -76,7 +76,7 @@ littéral de la molécule.
   <img src="/img/blog/reviser-la-physique-en-prepa.svg" width="112" height="112" alt="" loading="lazy">
   <span class="carte-liee-texte">
     <span class="carte-liee-etiquette">À lire aussi</span>
-    <span class="carte-liee-titre">Réviser la physique en prépa avec des flashcards</span>
+    <span class="carte-liee-titre">Physique en prépa : le savoir avant l'exercice</span>
   </span>
 </a>
 

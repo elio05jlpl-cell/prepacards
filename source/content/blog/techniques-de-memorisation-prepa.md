@@ -1,5 +1,5 @@
 ---
-title: Techniques de mémorisation utiles en prépa | PrépaCards
+title: Mémorisation : ce que font les champions | PrépaCards
 description: Chunking, méthode des loci, association d'images : certaines techniques tiennent sur un programme de prépa, d'autres coûtent plus de temps qu'elles n'en font gagner.
 date: 2026-10-10
 slug: techniques-de-memorisation-prepa

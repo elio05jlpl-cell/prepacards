@@ -1,5 +1,5 @@
 ---
-title: Réviser les sciences industrielles en prépa | PrépaCards
+title: Sciences industrielles en prépa : schémas, pas texte | PrépaCards
 description: Schémas normalisés, chaînes fonctionnelles, vocabulaire technique : la SI exige un par cœur visuel que les flashcards classiques couvrent mal sans méthode.
 date: 2026-10-30
 slug: reviser-les-sciences-industrielles-prepa
@@ -59,7 +59,7 @@ que de s'y substituer.
   <img src="/img/blog/reviser-linformatique-en-prepa-scientifique.svg" width="112" height="112" alt="" loading="lazy">
   <span class="carte-liee-texte">
     <span class="carte-liee-etiquette">À lire aussi</span>
-    <span class="carte-liee-titre">Réviser l'informatique en prépa scientifique</span>
+    <span class="carte-liee-titre">Informatique en prépa scientifique : pas que coder</span>
   </span>
 </a>
 

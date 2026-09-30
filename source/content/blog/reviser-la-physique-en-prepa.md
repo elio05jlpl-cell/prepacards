@@ -1,5 +1,5 @@
 ---
-title: Réviser la physique en prépa avec des flashcards | PrépaCards
+title: Physique en prépa : le savoir avant l'exercice | PrépaCards
 description: Lois, unités, ordres de grandeur : la physique demande un par cœur solide avant de poser une équation. Ce qui mérite une flashcard, et ce qui s'apprend en exercice.
 date: 2026-10-05
 slug: reviser-la-physique-en-prepa

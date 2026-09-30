@@ -1,5 +1,5 @@
 ---
-title: Alternative à Anki en français : comparatif | PrépaCards
+title: Anki en français, avec la vérification à l'oral | PrépaCards
 description: Anki ou PrépaCards ? Comparatif franc : algorithme, plateformes, prise en main, vérification à l'oral et formules de maths. Avec les limites de chacun, sans détour.
 slug: alternative-anki
 faq: true

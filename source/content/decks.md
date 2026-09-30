@@ -1,5 +1,5 @@
 ---
-title: Paquets de flashcards gratuits pour la prépa ECG | PrépaCards
+title: 85 paquets de flashcards gratuits pour la prépa ECG | PrépaCards
 description: Flashcards gratuites pour la prépa ECG : vocabulaire d'anglais, d'allemand, d'espagnol et d'italien par chapitre, et les formules de maths approfondies.
 slug: decks
 faq: true

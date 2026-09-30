@@ -1,5 +1,5 @@
 ---
-title: Tarifs : gratuit, mensuel ou annuel | PrépaCards
+title: Tarifs : gratuit à vie ou 30 jours d'essai offerts | PrépaCards
 description: PrépaCards est gratuit pour la répétition espacée et vos cartes en nombre illimité. L'offre complète ajoute l'audio, la voix, la webcam et la photo.
 slug: tarifs
 faq: true

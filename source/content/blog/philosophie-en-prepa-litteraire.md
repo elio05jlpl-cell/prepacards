@@ -1,5 +1,5 @@
 ---
-title: Philosophie en prépa littéraire : la méthode | PrépaCards
+title: Philosophie en prépa littéraire : elle déroute tant | PrépaCards
 description: Apprendre un cours de philosophie par cœur ne suffit jamais à le restituer en dissertation. Ce qui se mémorise, et comment relier définitions, auteurs et exemples.
 date: 2026-10-07
 slug: philosophie-en-prepa-litteraire

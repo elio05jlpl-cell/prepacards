@@ -81,7 +81,7 @@ exactement le même exercice retombe un jour.
   <img src="/img/blog/reviser-la-physique-en-prepa.svg" width="112" height="112" alt="" loading="lazy">
   <span class="carte-liee-texte">
     <span class="carte-liee-etiquette">À lire aussi</span>
-    <span class="carte-liee-titre">Réviser la physique en prépa avec des flashcards</span>
+    <span class="carte-liee-titre">Physique en prépa : le savoir avant l'exercice</span>
   </span>
 </a>
 

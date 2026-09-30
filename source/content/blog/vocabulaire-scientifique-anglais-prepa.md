@@ -1,5 +1,5 @@
 ---
-title: Vocabulaire scientifique anglais en prépa | PrépaCards
+title: Vocabulaire scientifique anglais : vu au lycée ? | PrépaCards
 description: L'anglais de prépa scientifique a son propre lexique technique, rarement enseigné au lycée. Ce qui revient vraiment, et comment le mémoriser sans s'y perdre.
 date: 2026-10-25
 slug: vocabulaire-scientifique-anglais-prepa
@@ -55,7 +55,7 @@ renforce la compréhension du concept en plus du seul mot.
   <img src="/img/blog/vocabulaire-anglais-prepa.svg" width="112" height="112" alt="" loading="lazy">
   <span class="carte-liee-texte">
     <span class="carte-liee-etiquette">À lire aussi</span>
-    <span class="carte-liee-titre">Vocabulaire anglais en prépa : la méthode qui tient</span>
+    <span class="carte-liee-titre">Vocabulaire anglais en prépa : tout retenir</span>
   </span>
 </a>
 

@@ -1,5 +1,5 @@
 ---
-title: Réviser l'informatique en prépa scientifique | PrépaCards
+title: Informatique en prépa scientifique : pas que coder | PrépaCards
 description: Complexité, structures de données, algorithmes classiques : l'option informatique a son propre par cœur, distinct de la programmation elle-même.
 date: 2026-10-29
 slug: reviser-linformatique-en-prepa-scientifique

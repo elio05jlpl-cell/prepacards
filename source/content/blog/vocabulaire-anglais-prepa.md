@@ -1,5 +1,5 @@
 ---
-title: Vocabulaire anglais en prépa : la méthode qui tient | PrépaCards
+title: Vocabulaire anglais en prépa : tout retenir | PrépaCards
 description: L'anglais reste la LV1 la plus décisive aux concours, mais deux mille mots ne s'apprennent pas la veille. La méthode pour les mémoriser sans y sacrifier ses soirées.
 date: 2026-10-02
 slug: vocabulaire-anglais-prepa
