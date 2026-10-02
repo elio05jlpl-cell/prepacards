@@ -1,5 +1,5 @@
 ---
-title: Importer ses paquets Anki et Quizlet | PrépaCards
+title: Importer ses paquets Anki ou Quizlet en 2 minutes | PrépaCards
 description: Convertir un paquet Anki .apkg ou un jeu Quizlet en cartes PrépaCards, en gardant les sous-paquets et les textes à trous. Guide pas à pas, sans tableur.
 slug: importer-anki-quizlet
 nav_label: Importer

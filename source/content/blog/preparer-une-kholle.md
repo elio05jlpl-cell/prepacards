@@ -1,13 +1,20 @@
 ---
-title: Khôlle en prépa : comment s'y préparer vraiment | PrépaCards
-description: Khôlle ou colle ? Ce que c'est, comment ça se passe, et la méthode de préparation matière par matière — maths, anglais, philo, ESH — sans y passer ses soirées.
+title: Khôlle et khôlleur : définition, déroulé, méthode | PrépaCards
+description: Khôlle, colle, khôlleur : la définition, le déroulé des vingt minutes et la méthode de préparation matière par matière, sans y passer ses soirées.
 date: 2026-09-15
 slug: preparer-une-kholle
+faq: true
 filiere: toutes
 matiere: methode
 ---
 
-# Khôlle en prépa : comment s'y préparer vraiment
+# Khôlle et khôlleur : définition, déroulé et méthode
+
+**Une khôlle** (aussi écrite *colle*) est une interrogation orale
+individuelle d'une vingtaine de minutes, passée chaque semaine devant un
+examinateur, en petit groupe de deux ou trois élèves. **Le khôlleur**, ou
+colleur, est cet examinateur : le plus souvent un professeur de prépa, un
+enseignant du supérieur ou un ancien élève des grandes écoles.
 
 Une khôlle, c'est vingt minutes passées seul face à un professeur, sans
 filet ni corrigé à portée de main. C'est aussi l'exercice qui révèle le
@@ -193,6 +200,38 @@ si vous prononcez la réponse** au lieu de vous laisser seul juge de votre
 propre réussite. Vous pouvez également poser une **date de khôlle**
 précise sur un paquet donné : aucune carte concernée ne passera alors
 par-dessus cette échéance fixée.
+
+## Questions fréquentes
+
+### Qu'est-ce qu'un khôlleur ?
+
+Le khôlleur — ou colleur — est l'examinateur qui fait passer la khôlle. Il
+s'agit le plus souvent d'un professeur de la prépa, d'un enseignant du
+supérieur ou d'un ancien élève de grande école. Il choisit la question,
+écoute, interrompt parfois pour vérifier que ce qui est dit est compris, et
+note sur 20.
+
+### Comment se déroule une khôlle ?
+
+Elle dure une vingtaine de minutes, en petit groupe de deux ou trois élèves
+convoqués ensemble. Chacun reçoit une question ou un exercice, prépare
+quelques minutes au tableau, puis expose devant le khôlleur qui le relance.
+La note porte autant sur la façon de raisonner à voix haute que sur le
+résultat trouvé.
+
+### Combien de khôlles par semaine ?
+
+En général une par semaine et par matière concernée, selon un roulement
+propre à chaque filière. En prépa scientifique comme en ECG, cela
+représente le plus souvent deux à trois khôlles hebdomadaires une fois le
+calendrier lancé.
+
+### Khôlle ou colle : quelle orthographe ?
+
+Les deux sont admises. *Colle* est la graphie officielle ; *khôlle* est une
+orthographe de tradition taupinale, forgée par plaisanterie savante sur le
+grec ancien. Les variantes *khôle* et *kholle* circulent aussi, et vous les
+verrez coexister sur les tableaux d'affichage d'un même lycée.
 
 <div class="encart">
   <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
