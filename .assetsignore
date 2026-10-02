@@ -24,3 +24,7 @@ worker
 # Consignes de travail pour les agents. Deployees avec le depot,
 # mais sans aucune raison d'etre lisibles en ligne.
 CLAUDE.md
+
+# Presentation du depot sur GitHub. Servie telle quelle, elle
+# ferait une page maigre qui double le site sans rien lui apporter.
+README.md

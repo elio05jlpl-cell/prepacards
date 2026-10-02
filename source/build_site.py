@@ -1661,7 +1661,7 @@ def copier_source(destination: Path) -> None:
 # une construction Windows et une construction Linux ne produisent pas
 # les memes octets, donc pas les memes empreintes de cache.
 PRESERVES = {".git", ".gitignore", ".gitattributes", "CLAUDE.md",
-             "source", ".github"}
+             "README.md", "source", ".github"}
 
 
 def vider(dossier: Path) -> None:
