@@ -1,0 +1,4 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Compréhension orale">
+  <rect width="480" height="200" fill="#ede9fe"/>
+  <circle cx="150" cy="100" r="46" fill="#7c3aed"/><circle cx="150" cy="100" r="18" fill="#ede9fe"/><path d="M 230 68 a 44 44 0 0 1 0 64" stroke="#8b5cf6" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M 272 50 a 72 72 0 0 1 0 100" stroke="#a78bfa" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M 314 32 a 100 100 0 0 1 0 136" stroke="#c4b5fd" stroke-width="10" fill="none" stroke-linecap="round"/>
+</svg>
