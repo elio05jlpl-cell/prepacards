@@ -26,6 +26,9 @@
 // se fera par l'adresse, comme avant.
 
 (function () {
+  var SUPABASE_URL = 'https://ojnntqfafinxrousdvbn.supabase.co';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9qbm50cWZhZmlueHJvdXNkdmJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1MzY4MTQsImV4cCI6MjEwNjExMjgxNH0.HFLJDmu8UwU8bz6WbE91HmVb8uljIGI-G1rVEZ3YIeY';
+
   var liens = Array.prototype.slice.call(
     document.querySelectorAll('a[href*="buy.stripe.com"]'));
   if (!liens.length) return;
@@ -72,21 +75,60 @@
     } catch (e) { return ''; }
   }
 
-  var jeton = '';
-  try { jeton = sessionStorage.getItem('prepacards_jeton') || ''; } catch (e) { }
+  // --- La session ouverte dans ce navigateur -------------------------
+  //
+  // Supabase range sa session dans sessionStorage, sous une cle qui porte
+  // l'identifiant du projet (« sb-<projet>-auth-token »). On la cherche par
+  // sa FORME plutot que par son nom exact : la bibliotheque a deja change
+  // de convention d'une version majeure a l'autre, et une cle en dur
+  // casserait en silence — c'est exactement ce qui vient d'arriver.
+  //
+  // La version precedente lisait « prepacards_jeton », une cle de l'epoque
+  // ou les comptes vivaient sur Cloudflare D1. Plus rien ne l'ecrivait
+  // depuis le passage a Supabase : la condition echouait toujours, et un
+  // eleve connecte SUR LE SITE payait sans que son abonnement rejoigne son
+  // compte.
+  function sessionSupabase() {
+    try {
+      for (var i = 0; i < sessionStorage.length; i++) {
+        var cle = sessionStorage.key(i);
+        if (!/^sb-.+-auth-token$/.test(cle)) continue;
+        var brut = JSON.parse(sessionStorage.getItem(cle));
+        if (brut && brut.access_token && brut.user && brut.user.id) return brut;
+      }
+    } catch (e) { /* navigation privee, ou stockage refuse */ }
+    return null;
+  }
 
-  if (!jeton) { marquer(referenceDeLAdresse(), ''); return; }
+  var session = sessionSupabase();
+  if (!session) { marquer(referenceDeLAdresse(), ''); return; }
 
-  fetch('/api/abonnement', {
-    headers: { accept: 'application/json', authorization: 'Bearer ' + jeton },
+  // La reference est lue directement dans la table des profils. Passer par
+  // le worker demanderait d'y rouvrir une route, alors qu'il ne porte plus
+  // que le webhook Stripe et la suppression de compte : la politique RLS de
+  // Supabase fait deja le travail, chacun ne voyant que sa propre ligne.
+  var adresse = SUPABASE_URL + '/rest/v1/profiles'
+    + '?id=eq.' + encodeURIComponent(session.user.id)
+    + '&select=reference';
+
+  fetch(adresse, {
+    headers: {
+      accept: 'application/json',
+      apikey: SUPABASE_ANON_KEY,
+      authorization: 'Bearer ' + session.access_token,
+    },
   }).then(function (r) {
     return r.ok ? r.json() : null;
-  }).then(function (donnees) {
-    if (donnees && donnees.reference) marquer(donnees.reference, donnees.email);
-    else marquer(referenceDeLAdresse(), '');
+  }).then(function (lignes) {
+    var profil = lignes && lignes.length ? lignes[0] : null;
+    if (profil && profil.reference) {
+      marquer(profil.reference, session.user.email || '');
+    } else {
+      marquer(referenceDeLAdresse(), '');
+    }
   }).catch(function () {
-    // Service muet : on retombe sur l'adresse, et sinon on laisse les liens
-    // intacts plutot que d'empecher de payer.
+    // Service muet ou jeton perime : on retombe sur l'adresse, et sinon on
+    // laisse les liens intacts plutot que d'empecher de payer.
     marquer(referenceDeLAdresse(), '');
   });
 })();
