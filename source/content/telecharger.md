@@ -1,14 +1,14 @@
 ---
 title: Télécharger gratuitement pour Windows | PrépaCards
-description: Télécharger PrépaCards pour Windows 10 et 11 : installation en deux minutes, sans droits administrateur ni compte en ligne. Vos cartes restent sur votre ordinateur.
+description: Télécharger PrépaCards pour Windows 10 et 11 : installation en deux minutes, sans droits administrateur. Vos cartes restent sur votre ordinateur.
 slug: telecharger
 faq: true
 ---
 
 # Télécharger PrépaCards
 
-<p class="chapeau">Gratuit, pour Windows 10 et 11. Aucun compte en ligne à
-créer, aucun droit administrateur nécessaire.</p>
+<p class="chapeau">Gratuit, pour Windows 10 et 11. Aucun droit
+administrateur nécessaire. Vos cartes restent sur votre ordinateur.</p>
 
 {{bloc_telechargement}}
 
@@ -28,8 +28,11 @@ créer, aucun droit administrateur nécessaire.</p>
 3. L'application se copie dans votre profil utilisateur, avec un raccourci sur
    le Bureau et une entrée dans le menu Démarrer.
 4. Lancez-la depuis le raccourci. Au premier démarrage, créez votre compte
-   local (e-mail + mot de passe) : il ne sert qu'à verrouiller l'ouverture de
-   l'application sur votre machine.
+   PrépaCards (e-mail + mot de passe), ou connectez-vous si vous en avez
+   déjà un. Il porte votre abonnement et vous suivra sur vos autres
+   appareils ; vos cartes, elles, restent sur cet ordinateur. La connexion
+   n'est demandée qu'une fois : les lancements suivants l'ouvrent
+   directement, même sans réseau.
 
 L'installation ne demande pas de droits administrateur : tout se fait dans
 votre dossier utilisateur. Pour désinstaller, lancez `Desinstaller.ps1` depuis
@@ -46,7 +49,7 @@ le dossier d'installation — vos cartes sont conservées.
 | Mémoire | 4 Go suffisent |
 | Micro | Nécessaire pour la vérification à l'oral |
 | Webcam | Optionnelle, pour la lecture labiale |
-| Internet | Au premier lancement seulement, pour télécharger les modèles |
+| Internet | Au premier lancement, pour le compte et les modèles. Ensuite, facultatif |
 
 </div>
 

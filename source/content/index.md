@@ -325,7 +325,7 @@ Anki est plus riche, plus configurable et disponible sur toutes les plateformes 
 <section class="section section-douce">
   <div class="conteneur centre">
     <h2>Commencez ce soir</h2>
-    <p class="chapeau">Installation en deux minutes, aucun compte en ligne à créer.</p>
+    <p class="chapeau">Installation en deux minutes, sans droits administrateur.</p>
     <p><a class="bouton" href="/telecharger/">Télécharger PrépaCards pour Windows</a></p>
   </div>
 </section>
