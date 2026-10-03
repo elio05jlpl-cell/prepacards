@@ -92,6 +92,31 @@ DEFAULT_OG = "/img/og-prepacards.png"
 # de PrepaCards en fait environ 260. Il faut donc l'heberger ailleurs - une
 # "release" GitHub est gratuite et accepte jusqu'a 2 Go par fichier.
 # A remplacer par l'adresse reelle avant la mise en ligne.
+# Mesure d'audience : jeton de Cloudflare Web Analytics.
+#
+# Cloudflare plutot que Google Analytics pour une raison precise : il ne
+# depose AUCUN cookie et ne conserve aucune donnee personnelle. Le site peut
+# donc continuer de se passer de bandeau de consentement, ce qu'il annonce
+# dans sa page de confidentialite - et un bandeau sur un site qui n'en avait
+# pas serait une regression pour le visiteur comme pour la mesure.
+#
+# Le jeton n'est pas un secret : il est lisible dans la source de chaque
+# page. Il se recupere dans le tableau de bord Cloudflare, Analytics & Logs
+# puis Web Analytics.
+#
+# Tant qu'il est vide, AUCUN script n'est injecte : le site reste
+# exactement ce qu'il est aujourd'hui.
+JETON_MESURE = ""
+
+
+def balise_mesure() -> str:
+    """Le script de mesure, ou rien du tout s'il n'y a pas de jeton."""
+    if not JETON_MESURE:
+        return ""
+    return ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js"'
+            f' data-cf-beacon=\'{{"token": "{JETON_MESURE}"}}\'></script>')
+
+
 DOWNLOAD_URL = (
     "https://github.com/elio05jlpl-cell/prepacards/releases/latest/download/"
     "PrepaCards-installateur.zip"
@@ -1532,6 +1557,7 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{footer_links}}": render_footer(),
         "{{og_image}}": SITE_URL + DEFAULT_OG,
         "{{year}}": str(date.today().year),
+        "{{mesure}}": balise_mesure(),
         "{{robots}}": "noindex, follow" if page["noindex"] else "index, follow",
         "{{date_affichee}}": format_date(page["date"]),
         "{{date_iso}}": page["date"],

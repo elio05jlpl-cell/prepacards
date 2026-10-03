@@ -113,9 +113,18 @@ préférons ce défaut à la possibilité de lire vos cartes.
 
 ## Sur ce site
 
-Ce site est statique : il ne dépose **aucun cookie** et n'utilise aucun outil
-de suivi publicitaire. Il n'y a donc pas de bandeau de consentement, faute de
-quoi consentir.
+Ce site ne dépose **aucun cookie** et n'utilise aucun outil de suivi
+publicitaire. Il n'y a donc pas de bandeau de consentement, faute de quoi
+consentir.
+
+Une mesure d'audience y est en revanche installée : **Cloudflare Web
+Analytics**. Elle compte les pages vues et les sites qui nous envoient des
+visiteurs. Elle ne pose pas de cookie, ne vous attribue pas d'identifiant, ne
+vous suit pas d'un site à l'autre, et ne transmet rien à un annonceur. Nous ne
+voyons que des totaux, jamais une visite individuelle.
+
+Nous l'avons choisie précisément pour cela : savoir si une page sert à quelque
+chose ne nécessite pas de savoir qui l'a lue.
 
 L'hébergeur conserve des journaux de connexion techniques (adresse IP, page
 demandée, date), pour la sécurité et la mesure de charge, pendant une durée
@@ -174,7 +183,9 @@ Oui, vous-même et immédiatement, depuis [votre espace compte](/compte/) — au
 
 ### Ce site utilise-t-il Google Analytics ?
 
-Non. Aucun outil de mesure d'audience n'est installé.
+Non. La mesure d'audience passe par Cloudflare Web Analytics, qui ne dépose
+aucun cookie et ne construit aucun profil : elle compte des pages vues, pas
+des personnes. Aucune donnée n'est transmise à Google ni à un annonceur.
 
 <p style="color:var(--gris);font-size:.9rem">Dernière mise à jour :
 [date de mise en ligne]</p>
