@@ -106,15 +106,16 @@ DEFAULT_OG = "/img/og-prepacards.png"
 #
 # Tant qu'il est vide, AUCUN script n'est injecte : le site reste
 # exactement ce qu'il est aujourd'hui.
-JETON_MESURE = ""
+JETON_MESURE = "570f41119b974bfda2ebca8dfff29bbf"
 
 
 def balise_mesure() -> str:
     """Le script de mesure, ou rien du tout s'il n'y a pas de jeton."""
     if not JETON_MESURE:
         return ""
-    return ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js"'
-            f' data-cf-beacon=\'{{"token": "{JETON_MESURE}"}}\'></script>')
+    return ('<script type="module" '
+            'src="https://static.cloudflareinsights.com/beacon.min.js" '
+            f'data-cf-beacon=\'{{"token": "{JETON_MESURE}"}}\'></script>')
 
 
 DOWNLOAD_URL = (
