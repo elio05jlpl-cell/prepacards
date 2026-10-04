@@ -39,6 +39,15 @@ jobs:
     steps:
       - name: Récupérer le dépôt
         uses: actions/checkout@v4
+        with:
+          # Tout l'historique, pas le seul dernier commit (c'est le défaut).
+          # Le plan du site date chaque page par son dernier commit : dans un
+          # clone à un seul commit, git log rend la date de CE commit pour
+          # tous les fichiers. Chaque publication écrasait alors le lastmod de
+          # toutes les pages avec la même date, puis un build local avec
+          # l'historique complet rétablissait les vraies : Google voyait tout
+          # le site « modifié » à chaque passage.
+          fetch-depth: 0
 
       - name: Installer Python
         uses: actions/setup-python@v5

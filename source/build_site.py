@@ -793,9 +793,21 @@ def derniere_modification(page: dict) -> str:
     annonce a Google que tout le site change quotidiennement : il apprend a
     ne plus s'y fier, et cesse de revenir vite sur ce qui a vraiment bouge.
     """
-    if page.get("date"):
-        return page["date"]
     chemin = page.get("path")
+    if page.get("date"):
+        # Cette date est celle de PUBLICATION : un plancher, jamais un
+        # plafond. Un article modifie apres sa parution doit le dire, sinon
+        # Google n'a aucune raison de revenir le lire - c'est ainsi que la
+        # reecriture de l'article sur les kholles, le 3 octobre, annoncait
+        # toujours le 15 septembre.
+        publication = page["date"]
+        if chemin is None:
+            return publication
+        modification = _date_du_dernier_commit(Path(chemin))
+        # max() et non la seule date Git : un article en file d'attente est
+        # committe AVANT sa parution, et son lastmod ne doit pas preceder le
+        # jour ou il devient visible.
+        return max(publication, modification) if modification else publication
     if chemin is None:
         return date.today().isoformat()
 
@@ -1193,7 +1205,10 @@ def article_jsonld(page: dict, url: str) -> dict:
         "headline": page["title"],
         "description": page["description"],
         "datePublished": page["date"],
-        "dateModified": page["date"],
+        # Meme regle que le plan du site : la date de publication est un
+        # plancher. Annoncer partout la meme date pour « publie » et
+        # « modifie » dit a Google que l'article n'a jamais bouge.
+        "dateModified": derniere_modification(page),
         "author": {"@type": "Organization", "name": SITE_NAME},
         # Google exige un logo sur l'editeur pour l'affichage enrichi d'un
         # article ; sans lui, le balisage reste valide mais l'extrait perd
@@ -1890,7 +1905,7 @@ def build() -> None:
             if faq:
                 blocks.append(faq)
         write(url_path, render(article, url_path, "article.html", blocks))
-        urls.append((url_path, article["date"], "0.6"))
+        urls.append((url_path, derniere_modification(article), "0.6"))
 
     # --- Sommaire du blog ---------------------------------------------
     index = {
