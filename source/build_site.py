@@ -1921,7 +1921,15 @@ def build() -> None:
         "raw_body": "",
     }
     write("/blog/", render(index, "/blog/", "base.html", []))
-    urls.append(("/blog/", date.today().isoformat(), "0.7"))
+    # Le sommaire change quand un article paraît ou est modifié : sa date est
+    # celle du plus récent d'entre eux. Elle valait la date du JOUR, donc elle
+    # bougeait à chaque construction - même sans nouvel article - et rendait
+    # le plan du site différent d'un jour à l'autre, ce que la règle « jamais
+    # l'horloge » du CLAUDE.md interdit. L'horloge ne sert plus que si le blog
+    # est vide, cas où aucune autre date n'existe.
+    derniere_parution = max(
+        (derniere_modification(a) for a in articles), default=None)
+    urls.append(("/blog/", derniere_parution or date.today().isoformat(), "0.7"))
 
     # --- Plan du site et robots ---------------------------------------
     entries = "\n".join(
