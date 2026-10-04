@@ -140,9 +140,10 @@ cessent d'être disponibles.
 ### Mes données sont-elles envoyées quelque part ?
 
 Vos cartes restent sur votre ordinateur. La transcription vocale et la lecture
-labiale tournent localement, hors ligne. Seule la traduction automatique
-proposée à la saisie appelle un service tiers, et uniquement quand vous la
-demandez.
+labiale tournent localement, hors ligne. Deux fonctions appellent un
+service tiers, et uniquement quand vous les utilisez : la traduction
+automatique proposée à la saisie, et la lecture en ligne d'une feuille
+photographiée, que vous pouvez décocher pour tout garder en local.
 
 <div class="encart">
   <p>PrépaCards est gratuit pour Windows 10 et 11, avec un compte gratuit.
