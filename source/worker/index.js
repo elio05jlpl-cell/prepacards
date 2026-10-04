@@ -16,6 +16,7 @@
 // declencher lui-meme (bienvenue, resiliation) - voir courriel.js.
 
 import { maintenant, normaliserEmail, signatureStripeValide } from './securite.js';
+import { lireFeuille } from './scan.js';
 import { disponible as courrielDisponible, envoyer as envoyerCourriel,
          messageBienvenue, messageResiliation } from './courriel.js';
 
@@ -236,6 +237,11 @@ const ROUTES = {
   'POST /api/stripe': webhookStripe,
   'POST /api/compte/supprimer': supprimerCompte,
   'POST /api/webhooks/profil': gererWebhookProfil,
+  // Lecture d'une feuille photographiee. Cote serveur parce que la cle
+  // d'API ne peut pas vivre dans un binaire distribue - et parce que
+  // c'est ici, et nulle part dans l'application, que l'abonnement peut
+  // etre verifie pour de bon.
+  'POST /api/scan': lireFeuille,
 };
 
 export default {

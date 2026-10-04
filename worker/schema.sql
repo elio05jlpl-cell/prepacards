@@ -224,3 +224,60 @@ revoke execute on function public.appliquer_maj_stripe(uuid, text, text, text, t
     from public, anon, authenticated;
 grant execute on function public.trouver_compte_stripe(text, text, text) to service_role;
 grant execute on function public.appliquer_maj_stripe(uuid, text, text, text, text, timestamptz) to service_role;
+
+
+-- ---------------------------------------------------------------------------
+-- Quota de lecture de feuilles photographiees
+-- ---------------------------------------------------------------------------
+--
+-- Chaque lecture appelle un modele de vision, qui se facture. Le plafond
+-- protege contre l'abus : sans lui, un seul compte peut consommer en une
+-- soiree ce que rapportent plusieurs abonnements.
+--
+-- Le compteur vit cote serveur et non dans l'application : l'application
+-- est sur la machine de l'eleve, et tout ce qu'elle compte est modifiable.
+
+create table if not exists public.usages_scan (
+    compte_id uuid not null references public.profiles(id) on delete cascade,
+    mois      text not null,              -- 'AAAA-MM', en UTC
+    nombre    integer not null default 0,
+    primary key (compte_id, mois)
+);
+
+alter table public.usages_scan enable row level security;
+-- Aucune policy : seule la cle service_role (le Worker) y touche.
+
+-- Incremente et renvoie ce qui RESTE, ou -1 si le plafond est atteint.
+--
+-- Tout tient dans une seule instruction, et c'est le point important : un
+-- « lire puis ecrire » depuis le Worker laisserait deux scans lances en
+-- meme temps ne consommer qu'un credit. Le « where » de la clause de
+-- conflit fait echouer la mise a jour au plafond, ce qui ne renvoie aucune
+-- ligne - d'ou le nombre nul teste ensuite.
+create or replace function public.consommer_scan(
+    p_compte uuid, p_mois text, p_plafond integer)
+returns integer
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+    v_nombre integer;
+begin
+    insert into public.usages_scan (compte_id, mois, nombre)
+    values (p_compte, p_mois, 1)
+    on conflict (compte_id, mois) do update
+        set nombre = public.usages_scan.nombre + 1
+        where public.usages_scan.nombre < p_plafond
+    returning nombre into v_nombre;
+
+    if v_nombre is null then
+        return -1;
+    end if;
+    return p_plafond - v_nombre;
+end;
+$$;
+
+revoke execute on function public.consommer_scan(uuid, text, integer)
+    from public, anon, authenticated;
+grant execute on function public.consommer_scan(uuid, text, integer) to service_role;
