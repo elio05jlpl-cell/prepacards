@@ -65,8 +65,17 @@ l'application : elle ne signale ni son installation, ni son usage.
    formules depuis Hugging Face, Google et GitHub. Ces téléchargements
    transmettent ce que transmet toute requête web : votre adresse IP et le
    fichier demandé.
-3. **Votre compte.** Voir la section suivante.
-4. **Consultation de ce site.** Voir plus bas.
+3. **Lecture en ligne d'une feuille photographiée** (offre complète,
+   optionnelle). Tant que la case « Lecture en ligne » reste cochée, la
+   photo est réduite puis envoyée à notre serveur, hébergé par
+   Cloudflare, qui la transmet à Anthropic (États-Unis), éditeur du modèle
+   qui la lit. Anthropic la traite selon ses propres conditions
+   d'utilisation. PrépaCards n'en conserve aucune copie : seul est
+   enregistré le nombre de feuilles lues dans le mois, pour appliquer une
+   limite mensuelle. Décochez la case et la photo reste sur votre
+   ordinateur : la lecture se fait alors localement.
+4. **Votre compte.** Voir la section suivante.
+5. **Consultation de ce site.** Voir plus bas.
 
 ## Votre compte
 
@@ -99,8 +108,9 @@ réinitialisation ne sont jamais stockés en clair.
   contacts. L'application ne demande à Google aucune autre autorisation.
 
 **Ce qu'il n'enregistre pas** : vos cartes, vos paquets, votre historique de
-révision, vos statistiques, vos enregistrements vocaux, vos photos. Rien de
-tout cela ne lui est transmis.
+révision, vos statistiques, vos enregistrements vocaux. Rien de tout cela
+ne lui est transmis. Les photos de feuilles, si vous choisissez la lecture
+en ligne, ne vont pas chez lui : voir le cas 3 plus haut.
 
 **La sauvegarde**, si vous la déclenchez, est chiffrée sur votre ordinateur
 avec une clé dérivée de votre mot de passe. Le serveur reçoit un bloc
