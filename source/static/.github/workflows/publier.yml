@@ -74,6 +74,19 @@ jobs:
           PREPACARDS_SORTIE: ${{ github.workspace }}
         run: python source/audit_site.py
 
+      - name: Contrôler la sortie avant de publier
+        # Liste ce qui va partir, et s'arrête si une page référence un fichier
+        # qui n'existe pas - un script, une feuille de style, une icône : ce que
+        # l'audit laisse passer.
+        #
+        # Ce n'est PAS la vérification complète de source/verifier.py, qui
+        # comparerait la sortie au dernier commit. Un matin de parution elle en
+        # diffère par construction (la nouvelle page, mais aussi les blocs « À
+        # lire également » d'une vingtaine d'articles, le sitemap, le sommaire) :
+        # elle bloquerait la publication précisément les jours où elle doit avoir
+        # lieu. Cette vérification-là se lance à la main, avant un push.
+        run: python source/verifier.py --publication
+
       - name: Publier s'il y a du nouveau
         run: |
           git config user.name "Publication automatique"

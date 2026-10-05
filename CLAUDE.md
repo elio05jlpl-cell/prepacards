@@ -89,6 +89,13 @@ reconstruit après, il change donc de date, et le script signale l'écart :
 reconstruire après le commit, puis commiter le résultat. Un article daté du
 jour ou d'un jour futur, le cas ordinaire, n'est pas concerné.
 
+L'action, elle, lance `python source/verifier.py --publication` entre l'audit et
+la publication : il liste ce qui va partir et s'arrête si une page référence un
+fichier inexistant (un script, une feuille de style : ce que l'audit laisse
+passer). Il ne compare **pas** au dernier commit, et c'est voulu : un matin de
+parution la sortie en diffère par construction (26 fichiers le 5 octobre), et la
+vérification complète bloquerait la publication les jours où elle doit avoir lieu.
+
 Pourquoi : **un build local n'est pas celui de l'action.** Le 2 et le 4
 octobre 2026, un `index.html` construit en local référençait des `.png` non
 suivis par Git (le build essaie `.png` avant `.webp`) : neuf logos en 404 en

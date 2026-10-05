@@ -36,6 +36,32 @@ Ce qu'il ne contrôle pas : le dossier de travail (commitez d'abord), le site
 en ligne, le déploiement chez Cloudflare.
 
 Codes de sortie : 0 identique, 1 écart ou audit en échec, 2 erreur d'exécution.
+
+Deuxième mode : ``--publication``
+---------------------------------
+
+    python source/verifier.py --publication
+
+Pour l'ACTION, pas pour un poste. Il contrôle la sortie DÉJÀ construite dans le
+dossier du dépôt, sans cloner ni reconstruire, et ne compare rien au commit.
+
+Le mode complet ne peut pas tourner là, et ce n'est pas un détail. L'action sert
+à publier ce qui diffère du dernier commit ; un matin de parution elle diffère
+par construction. Mesuré sur le dépôt au commit d'avant la parution du 5 octobre :
+26 fichiers « différents » - la nouvelle page, mais aussi les blocs « À lire
+également » d'une vingtaine d'articles, le sitemap, le sommaire. Le mode complet
+conclurait à un écart et bloquerait la publication précisément les jours où elle
+doit avoir lieu.
+
+Ce mode-ci fait deux choses :
+
+1. il liste ce qui va être publié (pages nouvelles, modifiées, supprimées), pour
+   que le journal de l'action dise ce qu'un push a réellement emporté ;
+2. il échoue si une page référence un fichier local qui n'existe pas. L'audit
+   couvre déjà les liens internes, les images et le sitemap ; ce contrôle ajoute
+   ce qu'il laisse passer, comme un ``<script src>``.
+
+Code de sortie : 0 publiable, 1 référence cassée.
 """
 
 import argparse
@@ -195,9 +221,31 @@ def ecarts(clone: Path):
     return modifies, nouveaux, supprimes
 
 
+def existe_avec_la_casse(racine: Path, relatif: str, cache: dict) -> bool:
+    """Le fichier existe-t-il avec EXACTEMENT cette casse ?
+
+    Windows et macOS ne distinguent pas Logo.webp de logo.webp ; Linux, ou
+    tourne l'action, et Cloudflare, qui sert le site, si. Une reference a la
+    mauvaise casse passe donc sur un poste et renvoie 404 en production - ou
+    fait echouer l'etape de l'action sans qu'on l'ait vu venir.
+    """
+    courant = racine
+    for morceau in Path(relatif).parts:
+        if courant not in cache:
+            try:
+                cache[courant] = set(os.listdir(courant))
+            except OSError:
+                return False
+        if morceau not in cache[courant]:
+            return False
+        courant = courant / morceau
+    return True
+
+
 def references_cassees(clone: Path) -> dict:
     """Références locales vers un fichier qui n'existe pas dans la sortie."""
     cassees = {}
+    cache = {}
     for dossier, sous_dossiers, fichiers in os.walk(clone):
         if Path(dossier) == clone:
             sous_dossiers[:] = [d for d in sous_dossiers if d not in IGNORES]
@@ -207,7 +255,7 @@ def references_cassees(clone: Path) -> dict:
             page = Path(dossier) / nom
             texte = page.read_text(encoding="utf-8", errors="replace")
             for reference in set(REFERENCE.findall(texte)):
-                if not (clone / reference.lstrip("/")).exists():
+                if not existe_avec_la_casse(clone, reference.lstrip("/"), cache):
                     cassees.setdefault(reference, []).append(
                         page.relative_to(clone).as_posix())
     return cassees
@@ -218,6 +266,41 @@ def lister(chemins, limite=12):
         print(f"      {chemin}")
     if len(chemins) > limite:
         print(f"      … et {len(chemins) - limite} autre(s)")
+
+
+def controler_publication(dossier: Path) -> int:
+    """Contrôles de la sortie déjà construite. Voir « --publication »."""
+    modifies, nouveaux, supprimes = ecarts(dossier)
+
+    print(f"Contrôle avant publication — {dossier.name}")
+    print()
+    if not (modifies or nouveaux or supprimes):
+        print("  Rien à publier : la construction rend exactement le dernier "
+              "commit.")
+    else:
+        print("  Ce qui sera publié :")
+        print(f"    {len(nouveaux)} fichier(s) nouveau(x), "
+              f"{len(modifies)} modifié(s), {len(supprimes)} supprimé(s)")
+        pages = [c for c in nouveaux if re.fullmatch(r"blog/[^/]+/index\.html", c)]
+        if pages:
+            print("    articles qui paraissent :")
+            lister(pages)
+        elif nouveaux:
+            print("    nouveaux :")
+            lister(nouveaux)
+        if supprimes:
+            print("    supprimés :")
+            lister(supprimes)
+
+    print()
+    cassees = references_cassees(dossier)
+    if cassees:
+        print(f"  Références : {len(cassees)} fichier(s) référencé(s) mais "
+              "absent(s) — rien ne sera publié :")
+        lister([f"{ref}  <- {pages[0]}" for ref, pages in cassees.items()])
+        return 1
+    print("  Références : tous les fichiers référencés existent.")
+    return 0
 
 
 # --- Programme --------------------------------------------------------------
@@ -235,6 +318,10 @@ def analyser(argv):
     parseur.add_argument(
         "--sans-audit", action="store_true",
         help="ne pas lancer audit_site.py")
+    parseur.add_argument(
+        "--publication", action="store_true",
+        help="contrôler la sortie déjà construite, sans cloner ni comparer au "
+             "commit : le mode de l'action")
     return parseur.parse_args(argv)
 
 
@@ -244,6 +331,8 @@ def main(argv=None) -> int:
     clone = None
     try:
         depot = racine_du_depot(Path(arguments.depot).resolve())
+        if arguments.publication:
+            return controler_publication(depot)
         sommet = git(["log", "-1", "--format=%h %s"], depot).stdout.strip()
         print(f"Vérification de {depot.name} — {sommet}")
         for note in avertissements_du_poste(depot):
