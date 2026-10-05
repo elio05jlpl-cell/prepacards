@@ -36,6 +36,10 @@ La racine est **entièrement régénérée** à chaque construction : n'y modifi
 aucun fichier à la main, il serait effacé. Seuls `.git`, `.gitignore`,
 `.gitattributes`, `source/` et `.github/` survivent.
 
+**Piège :** le workflow `publier.yml` existe en deux exemplaires. Le build
+recopie `source/static/` à la racine, ce qui écrase `.github/workflows/`.
+La source de vérité est `source/static/.github/workflows/publier.yml`.
+
 ---
 
 ## 3. Construire et vérifier
@@ -63,6 +67,33 @@ et celle de tous les articles qui attendent derrière.
 
 `PREPACARDS_TOUT` ne sert **jamais** à publier : cela sortirait la file
 entière d'un coup.
+
+### Avant de pousser des fichiers générés
+
+Commiter d'abord, puis :
+
+```
+python source/verifier.py
+```
+
+Le script clone le **dernier commit** dans un dossier temporaire, y reconstruit
+le site avec le script du commit, lance l'audit, et compare à ce qui est
+commité : c'est exactement ce que fera l'action. Il échoue sur un fichier
+généré dont le contenu diffère, une page produite mais jamais ajoutée au
+commit, ou une page qui référence un fichier inexistant. Il ne regarde pas le
+dossier de travail, d'où le « commiter d'abord ».
+
+Une nuance : un article daté **avant** son commit prend la date du commit comme
+`lastmod` (voir `derniere_modification`). Construit avant d'être commité puis
+reconstruit après, il change donc de date, et le script signale l'écart :
+reconstruire après le commit, puis commiter le résultat. Un article daté du
+jour ou d'un jour futur, le cas ordinaire, n'est pas concerné.
+
+Pourquoi : **un build local n'est pas celui de l'action.** Le 2 et le 4
+octobre 2026, un `index.html` construit en local référençait des `.png` non
+suivis par Git (le build essaie `.png` avant `.webp`) : neuf logos en 404 en
+production, environ vingt heures. Ne laissez aucun fichier non suivi dans
+`source/static/`.
 
 ---
 
