@@ -1302,6 +1302,24 @@ html.js .revelation > *:nth-child(3) { transition-delay: .16s; }
 html.js .revelation.vue > *,
 html.js .a-reveler.vue { opacity: 1; transform: none; }
 
+/* Variante « fondu » : l'element apparait sur place, sans glisser. Reservee
+   aux grands blocs de la page d'accueil, ou un decalage vertical de plusieurs
+   elements en cascade donnerait l'impression que la page saute. Les enfants
+   se suivent a 0,12 s d'ecart : titre, puis texte, puis visuel. */
+html.js .revelation.fondu > * {
+  transform: none;
+  transition: opacity .9s ease;
+}
+html.js .revelation.fondu > *:nth-child(2) { transition-delay: .12s; }
+html.js .revelation.fondu > *:nth-child(3) { transition-delay: .24s; }
+html.js .revelation.fondu > *:nth-child(n+4) { transition-delay: .32s; }
+
+/* A l'impression, tout est visible : personne n'a defile la page. */
+@media print {
+  html.js .revelation > *,
+  html.js .a-reveler { opacity: 1; transform: none; transition: none; }
+}
+
 /* --- En-tete qui se densifie au defilement -------------------------- */
 
 .entete-nav-barre { transition: box-shadow .3s ease, background .3s ease; }
@@ -1374,6 +1392,7 @@ main a { transition: color .2s ease; }
 @media (prefers-reduced-motion: reduce) {
   html.js .revelation > *,
   html.js .a-reveler { opacity: 1; transform: none; transition: none; }
+  html.js .revelation.fondu > * { transition: none; }
   .carte-filiere:hover { transform: none; }
 }
 

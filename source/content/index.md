@@ -30,7 +30,7 @@ faq: true
 </section>
 
 <section class="section actualites" aria-label="À lire sur PrépaCards">
-  <div class="conteneur grille-actus">
+  <div class="conteneur grille-actus revelation fondu">
 
     <a class="actu-vedette" href="/fonctionnalites/">
       <img src="/img/demo/4-verso.webp" loading="lazy"
@@ -70,7 +70,7 @@ faq: true
 </section>
 
 <section class="section">
-  <div class="conteneur centre">
+  <div class="conteneur centre revelation fondu">
     <span class="eyebrow">Trois manques que rien ne comblait</span>
     <h2>PrépaCards n'est pas un clone d'Anki</h2>
     <p class="chapeau">Il existe parce que trois choses précises nous
@@ -79,7 +79,7 @@ faq: true
 
   <div class="conteneur duos">
 
-    <div class="duo etape" data-anim="voix">
+    <div class="duo etape revelation fondu" data-anim="voix">
       <div class="duo-texte">
         <span class="duo-numero" aria-hidden="true">1</span>
         <h3>Personne ne vous fait réviser à l'oral</h3>
@@ -117,7 +117,7 @@ faq: true
       </div>
     </div>
 
-    <div class="duo inverse etape" data-anim="formule">
+    <div class="duo inverse etape revelation fondu" data-anim="formule">
       <div class="duo-texte">
         <span class="duo-numero" aria-hidden="true">2</span>
         <h3>Les formules de maths étaient ingérables</h3>
@@ -149,7 +149,7 @@ faq: true
       </div>
     </div>
 
-    <div class="duo etape" data-anim="scan">
+    <div class="duo etape revelation fondu" data-anim="scan">
       <div class="duo-texte">
         <span class="duo-numero" aria-hidden="true">3</span>
         <h3>Recopier une liste de vocabulaire prend une heure</h3>
@@ -239,7 +239,7 @@ faq: true
 </section>
 
 <section class="section">
-  <div class="conteneur grille-2">
+  <div class="conteneur grille-2 revelation fondu">
     <div>
       <img src="/img/carte-maths.webp" width="1225" height="950"
            alt="Carte de maths dans PrépaCards affichant la somme des inverses des carrés en formule rendue"
@@ -261,12 +261,12 @@ faq: true
 </section>
 
 <section class="section section-douce">
-  <div class="conteneur centre">
+  <div class="conteneur centre revelation fondu">
     <h2>Configuré pour votre filière dès l'ouverture</h2>
     <p class="chapeau">À la première ouverture, PrépaCards vous demande votre
       filière et crée vos paquets par matière. Vous commencez à réviser, pas
       à ranger.</p>
-    <div class="grille-2" style="max-width:820px;margin:2em auto 0;text-align:left">
+    <div class="grille-2 revelation fondu" style="max-width:820px;margin:2em auto 0;text-align:left">
       <div class="carte">
         <h3>Voie commerciale — ECG et ECT</h3>
         <p><strong>2 000 cartes de vocabulaire d'anglais ECG sont fournies
@@ -323,7 +323,7 @@ Anki est plus riche, plus configurable et disponible sur toutes les plateformes 
 </section>
 
 <section class="section section-douce">
-  <div class="conteneur centre">
+  <div class="conteneur centre revelation fondu">
     <h2>Commencez ce soir</h2>
     <p class="chapeau">Installation en deux minutes, sans droits administrateur.</p>
     <p><a class="bouton" href="/telecharger/">Télécharger PrépaCards pour Windows</a></p>

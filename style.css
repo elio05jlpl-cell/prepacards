@@ -940,6 +940,17 @@ html.js .revelation > *:nth-child(2) { transition-delay: .08s; }
 html.js .revelation > *:nth-child(3) { transition-delay: .16s; }
 html.js .revelation.vue > *,
 html.js .a-reveler.vue { opacity: 1; transform: none; }
+html.js .revelation.fondu > * {
+transform: none;
+transition: opacity .9s ease;
+}
+html.js .revelation.fondu > *:nth-child(2) { transition-delay: .12s; }
+html.js .revelation.fondu > *:nth-child(3) { transition-delay: .24s; }
+html.js .revelation.fondu > *:nth-child(n+4) { transition-delay: .32s; }
+@media print {
+html.js .revelation > *,
+html.js .a-reveler { opacity: 1; transform: none; transition: none; }
+}
 .entete-nav-barre { transition: box-shadow .3s ease, background .3s ease; }
 .entete-nav-barre.abaissee {
 box-shadow: 0 6px 24px rgba(15, 23, 42, .07);
@@ -976,6 +987,7 @@ padding: 0 0 8px 14px; display: none;
 @media (prefers-reduced-motion: reduce) {
 html.js .revelation > *,
 html.js .a-reveler { opacity: 1; transform: none; transition: none; }
+html.js .revelation.fondu > * { transition: none; }
 .carte-filiere:hover { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
