@@ -114,7 +114,11 @@
         // telechargement exactement comme une connexion directe.
         ? await client.auth.signUp({
             email: email, password: mdp,
-            options: { emailRedirectTo: window.location.href },
+            options: {
+              emailRedirectTo: window.location.href,
+              // D'ou vient l'inscription (visible dans Supabase).
+              data: { provenance: 'site-paquets' },
+            },
           })
         : await client.auth.signInWithPassword({ email: email, password: mdp });
       if (resultat.error) throw resultat.error;

@@ -189,7 +189,13 @@
     dire('');
     try {
       var resultat = creation
-        ? await client.auth.signUp({ email: email, password: mdp })
+        // provenance : d'ou vient l'inscription, visible dans Supabase
+        // (Authentication > Users > raw_user_meta_data). Aucune donnee
+        // personnelle : un simple mot.
+        ? await client.auth.signUp({
+            email: email, password: mdp,
+            options: { data: { provenance: 'site-compte' } },
+          })
         : await client.auth.signInWithPassword({ email: email, password: mdp });
       if (resultat.error) throw resultat.error;
       document.getElementById('compte-mdp').value = '';
