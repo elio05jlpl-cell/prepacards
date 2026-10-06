@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
-<link rel="stylesheet" href="/style.css?v=670cc1c603">
+<link rel="stylesheet" href="/style.css?v=5082ac1c9b">
 <script>
 // Pose le drapeau avant le premier affichage : les blocs qui apparaissent au
 // defilement sont masques par « html.js ... ». Pose en bas de page seulement,
@@ -84,98 +84,108 @@ document.documentElement.classList.add('js');
 <main id="contenu">
 <section class="section">
 <div class="conteneur-texte">
+<script>
+// Avant le premier affichage : la page de connexion se montre seule, sans
+// en-tete ni pied de page. Si une session existe (ou si l'on revient de
+// Google), on attend de savoir laquelle plutot que de montrer le formulaire
+// une fraction de seconde.
+(function () {
+  var racine = document.documentElement, session = false;
+  try { session = !!sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token'); } catch (e) { }
+  if (/access_token|[?&]code=/.test(location.hash + location.search)) session = true;
+  racine.classList.add(session ? 'compte-attente' : 'compte-nu');
+})();
+</script>
 <div class="compte-zone" id="compte-app">
-<h1 id="votre-compte">Votre compte</h1>
-<div id="compte-connexion">
-    <p class="chapeau">Avec l'adresse utilisée au paiement. Il sert à
-      retrouver votre abonnement sur une autre machine — vos cartes, elles,
-      restent sur votre ordinateur.</p>
-
-<div id="compte-google">
-<a class="bouton-google" href="#" id="compte-google-lien">
-<svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+<div class="connexion-page" id="compte-connexion">
+<div class="connexion-carte">
+<a class="connexion-logo" href="/" aria-label="PrépaCards, accueil"><img src="/img/logo.webp?v=ba64e35e" width="52" height="52" alt=""></a>
+<h1 class="connexion-titre" id="commencons-a-reviser">Commençons à réviser</h1>
+<p class="connexion-sous" id="connexion-sous">Connectez-vous ou inscrivez-vous ci-dessous</p>
+<form autocomplete="on" class="connexion-form" id="compte-form" novalidate="novalidate">
+<div class="connexion-ligne">
+<label for="compte-email">Email</label>
+<a href="#" id="compte-oublie" class="connexion-lien">Mot de passe oublié ?</a>
+</div>
+<input id="compte-email" class="connexion-champ" name="email" type="email" required
+autocomplete="email" inputmode="email" placeholder="vous@exemple.fr">
+<div class="connexion-etape" hidden="hidden" id="compte-etape-mdp">
+<div class="connexion-ligne">
+<label for="compte-mdp" id="compte-mdp-libelle">Mot de passe</label>
+<a href="#" id="compte-modifier" class="connexion-lien">Modifier l'adresse</a>
+</div>
+<input id="compte-mdp" class="connexion-champ" name="mot_de_passe" type="password"
+autocomplete="current-password" placeholder="8 caractères minimum">
+</div>
+<p class="compte-message" hidden="hidden" id="compte-message"></p>
+<div class="connexion-actions">
+<a href="#" id="compte-basculer" class="connexion-lien" hidden>Créer un compte</a>
+<button class="connexion-continuer" type="submit" id="compte-valider" hidden>Continuer</button>
+</div>
+</form>
+<a class="connexion-google" href="#" id="compte-google-lien">
+<svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
 <path fill="#4285F4" d="M45 24c0-1.6-.1-2.7-.4-4H24v7.5h12c-.2 2-1.5 5-4.4 7l6.7 5.2C42.2 36.2 45 30.6 45 24z"/>
 <path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.7-5.2c-1.8 1.3-4.3 2.2-7.8 2.2-6 0-11-4-12.8-9.4l-7 5.4C7.8 41 15.3 46 24 46z"/>
 <path fill="#FBBC05" d="M11.2 28.3c-.5-1.4-.7-2.8-.7-4.3s.3-3 .7-4.3l-7-5.4C2.9 17.1 2 20.4 2 24s.9 6.9 2.2 9.7l7-5.4z"/>
 <path fill="#EA4335" d="M24 10.4c3.4 0 5.7 1.5 7 2.7l5.9-5.8C33.3 4 29.3 2 24 2 15.3 2 7.8 7 4.2 14.3l7 5.4C13 14.4 18 10.4 24 10.4z"/>
 </svg>
-Continuer avec Google</a>
-<p class="compte-ou">ou</p>
+<span>Continuer avec Google</span>
+</a>
 </div>
-
-    <form id="compte-form" class="compte-form" autocomplete="on">
-      <label for="compte-email">Adresse e-mail</label>
-      <input id="compte-email" name="email" type="email" required
-             autocomplete="email" placeholder="vous@exemple.fr">
-
-      <label for="compte-mdp">Mot de passe</label>
-      <input id="compte-mdp" name="mot_de_passe" type="password" required
-             autocomplete="current-password" placeholder="8 caractères minimum">
-
-      <p id="compte-message" class="compte-message" hidden></p>
-
-      <button class="bouton" type="submit" id="compte-valider">Se connecter</button>
-      <p class="compte-bascule">
-        <a href="#" id="compte-basculer">Créer un compte</a>
-        · <a href="#" id="compte-oublie">Mot de passe oublié ?</a>
-      </p>
-    </form>
-  </div>
+<p class="connexion-pied">
+<a href="/cgu/">Conditions d'utilisation</a>
+<a href="/confidentialite/">Politique de confidentialité</a>
+</p>
+</div>
 <div hidden="hidden" id="compte-tableau">
-    <p class="chapeau" id="compte-adresse"></p>
-
-    <div class="encart" id="compte-etat"></div>
-
-    <h2>Réactiver sur une autre machine</h2>
-    <p>Installez PrépaCards, puis <strong>Outils → Compte et abonnement</strong>
-      et connectez-vous avec cette même adresse. L'abonnement suit le compte,
-      pas la machine.</p>
-    <p><a class="bouton-secondaire" href="/telecharger/">Télécharger l'application</a></p>
-
-    <h2>Votre sauvegarde</h2>
-    <p id="compte-sauvegarde">Aucune sauvegarde déposée.</p>
-    <p>La sauvegarde est <strong>chiffrée sur votre ordinateur</strong> avant
-      d'être envoyée. Nous ne pouvons pas l'ouvrir, et elle ne se restaure
-      que depuis l'application, avec votre mot de passe.</p>
-
-    <h2>Facturation et résiliation</h2>
-    <p>Tout se fait depuis le lien présent dans l'e-mail envoyé par Stripe
-      lors du paiement : changer de carte, récupérer une facture, résilier.
-      L'abonnement reste actif jusqu'au terme déjà réglé.</p>
-
-    <h2>Mot de passe et connexion</h2>
-    <p id="compte-identites">Chargement…</p>
-    <p id="compte-identites-message" class="compte-message" hidden></p>
-    <p class="compte-actions-identite">
-      <button type="button" class="bouton-secondaire" id="compte-google-associer" hidden>Associer Google</button>
-      <button type="button" class="bouton-secondaire" id="compte-google-dissocier" hidden>Dissocier Google</button>
-    </p>
-    <form id="compte-mdp-form" class="compte-form">
-      <label for="compte-nouveau-mdp">Nouveau mot de passe</label>
-      <input id="compte-nouveau-mdp" name="nouveau_mot_de_passe" type="password"
-             autocomplete="new-password" placeholder="8 caractères minimum">
-      <button class="bouton-secondaire" type="submit" id="compte-mdp-valider">Changer le mot de passe</button>
-    </form>
-
-    <h2>Vos paquets gratuits</h2>
-    <p>Les 85 paquets d'anglais, d'allemand, d'espagnol, d'italien et les
-      formules de maths sont inclus avec votre compte, à tout moment.</p>
-    <p><a class="bouton-secondaire" href="/decks/">Voir les paquets</a></p>
-
-    <h2>Zone dangereuse</h2>
-    <aside class="encart encart-danger">
-      <p>Supprime définitivement votre compte et votre sauvegarde chiffrée.
-        Si un abonnement est actif, résiliez-le d'abord depuis le lien reçu
-        par e-mail lors du paiement — sinon Stripe continuerait à vous
-        prélever sans qu'aucun compte n'existe plus pour le récupérer. Vos
-        cartes, elles, restent sur votre ordinateur : cette suppression n'y
-        touche pas.</p>
-      <p id="compte-suppression-message" class="compte-message" hidden></p>
-      <button type="button" class="bouton-danger" id="compte-supprimer">Supprimer mon compte</button>
-    </aside>
-
-    <p class="compte-bascule"><a href="#" id="compte-deconnexion">Se déconnecter</a></p>
-  </div>
+<p class="compte-titre">Votre compte</p>
+<p class="chapeau" id="compte-adresse"></p>
+<div class="encart" id="compte-etat"></div>
+<h2 id="reactiver-sur-une-autre-machine">Réactiver sur une autre machine</h2>
+<p>Installez PrépaCards, puis <strong>Outils → Compte et abonnement</strong>
+et connectez-vous avec cette même adresse. L'abonnement suit le compte,
+pas la machine.</p>
+<p><a class="bouton-secondaire" href="/telecharger/">Télécharger l'application</a></p>
+<h2 id="votre-sauvegarde">Votre sauvegarde</h2>
+<p id="compte-sauvegarde">Aucune sauvegarde déposée.</p>
+<p>La sauvegarde est <strong>chiffrée sur votre ordinateur</strong> avant
+d'être envoyée. Nous ne pouvons pas l'ouvrir, et elle ne se restaure
+que depuis l'application, avec votre mot de passe.</p>
+<h2 id="facturation-et-resiliation">Facturation et résiliation</h2>
+<p>Tout se fait depuis le lien présent dans l'e-mail envoyé par Stripe
+lors du paiement : changer de carte, récupérer une facture, résilier.
+L'abonnement reste actif jusqu'au terme déjà réglé.</p>
+<h2 id="mot-de-passe-et-connexion">Mot de passe et connexion</h2>
+<p id="compte-identites">Chargement…</p>
+<p class="compte-message" hidden="hidden" id="compte-identites-message"></p>
+<p class="compte-actions-identite">
+<button type="button" class="bouton-secondaire" id="compte-google-associer" hidden>Associer Google</button>
+<button type="button" class="bouton-secondaire" id="compte-google-dissocier" hidden>Dissocier Google</button>
+</p>
+<form class="compte-form" id="compte-mdp-form">
+<label for="compte-nouveau-mdp">Nouveau mot de passe</label>
+<input id="compte-nouveau-mdp" name="nouveau_mot_de_passe" type="password"
+autocomplete="new-password" placeholder="8 caractères minimum">
+<button class="bouton-secondaire" type="submit" id="compte-mdp-valider">Changer le mot de passe</button>
+</form>
+<h2 id="vos-paquets-gratuits">Vos paquets gratuits</h2>
+<p>Les 85 paquets d'anglais, d'allemand, d'espagnol, d'italien et les
+formules de maths sont inclus avec votre compte, à tout moment.</p>
+<p><a class="bouton-secondaire" href="/decks/">Voir les paquets</a></p>
+<h2 id="zone-dangereuse">Zone dangereuse</h2>
+<aside class="encart encart-danger">
+<p>Supprime définitivement votre compte et votre sauvegarde chiffrée.
+Si un abonnement est actif, résiliez-le d'abord depuis le lien reçu
+par e-mail lors du paiement — sinon Stripe continuerait à vous
+prélever sans qu'aucun compte n'existe plus pour le récupérer. Vos
+cartes, elles, restent sur votre ordinateur : cette suppression n'y
+touche pas.</p>
+<p class="compte-message" hidden="hidden" id="compte-suppression-message"></p>
+<button type="button" class="bouton-danger" id="compte-supprimer">Supprimer mon compte</button>
+</aside>
+<p class="compte-bascule"><a href="#" id="compte-deconnexion">Se déconnecter</a></p>
+</div>
 </div>
 </div>
 </section>
@@ -424,6 +434,36 @@ document.documentElement.classList.add('js');
   var creation = false;
   var identitesActuelles = [];
 
+  // Page de connexion en deux temps : l'adresse, puis ce que son compte
+  // demande (le mot de passe s'il existe, le choix d'un mot de passe sinon).
+  var emailChamp = document.getElementById('compte-email');
+  var mdpChamp = document.getElementById('compte-mdp');
+  var etapeMdp = document.getElementById('compte-etape-mdp');
+  var modifierLien = document.getElementById('compte-modifier');
+  var mdpLibelle = document.getElementById('compte-mdp-libelle');
+  var sousTitre = document.getElementById('connexion-sous');
+  var SOUS_TITRE = sousTitre ? sousTitre.textContent : '';
+  var etape = 'email';      // 'email' puis 'mdp'
+  var secours = false;      // vrai si le service d'existence ne repond pas
+
+  // Montre la page de connexion, seule et sans en-tete, ou le tableau de bord
+  // avec le site autour. Un seul endroit decide, pour que les deux ne se
+  // retrouvent jamais affiches ensemble.
+  function montrerConnexion(oui) {
+    var racine = document.documentElement;
+    racine.classList.remove('compte-attente');
+    racine.classList.toggle('compte-nu', oui);
+    connexionEl.hidden = !oui;
+    tableauEl.hidden = oui;
+    if (oui && !window.matchMedia('(pointer: coarse)').matches) {
+      try { emailChamp.focus({ preventScroll: true }); } catch (e) { /* ancien navigateur */ }
+    }
+  }
+
+  function emailPlausible(valeur) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(valeur);
+  }
+
   function dire(texte, estErreur) {
     message.textContent = texte || '';
     message.hidden = !texte;
@@ -475,8 +515,7 @@ document.documentElement.classList.add('js');
   }
 
   function afficherTableau(email, profil, sauvegarde) {
-    connexionEl.hidden = true;
-    tableauEl.hidden = false;
+    montrerConnexion(false);
 
     document.getElementById('compte-adresse').textContent = email || '';
 
@@ -533,7 +572,7 @@ document.documentElement.classList.add('js');
   async function chargerCompte() {
     var reponseUtilisateur = await client.auth.getUser();
     var utilisateur = reponseUtilisateur.data && reponseUtilisateur.data.user;
-    if (!utilisateur) return;
+    if (!utilisateur) { montrerConnexion(true); return; }
 
     var profilReponse = await client.from('profiles').select('*').eq('id', utilisateur.id).single();
     var sauvegardeReponse = await client.from('sauvegardes')
@@ -543,21 +582,90 @@ document.documentElement.classList.add('js');
     chargerIdentites();
   }
 
-  basculer.addEventListener('click', function (e) {
-    e.preventDefault();
-    creation = !creation;
-    valider.textContent = creation ? 'Créer le compte' : 'Se connecter';
-    basculer.textContent = creation ? 'J’ai déjà un compte' : 'Créer un compte';
-    document.getElementById('compte-mdp').setAttribute(
-      'autocomplete', creation ? 'new-password' : 'current-password');
-    dire('');
-  });
+  function majBouton() {
+    // « Continuer » n'apparait qu'une fois l'adresse saisie : tant qu'elle
+    // n'a pas la forme d'une adresse, il n'y a rien a valider.
+    valider.hidden = !(etape === 'mdp' || emailPlausible(emailChamp.value.trim()));
+  }
 
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    var email = document.getElementById('compte-email').value.trim();
-    var mdp = document.getElementById('compte-mdp').value;
-    if (!email || !mdp) { dire('Renseignez votre adresse et votre mot de passe.', true); return; }
+  function revenirEmail() {
+    etape = 'email';
+    creation = false;
+    etapeMdp.hidden = true;
+    mdpChamp.value = '';
+    basculer.hidden = true;
+    sousTitre.textContent = SOUS_TITRE;
+    valider.textContent = 'Continuer';
+    googleLien.classList.remove('mis-en-avant');
+    dire('');
+    majBouton();
+  }
+
+  function passerAuMotDePasse(mode, texte) {
+    etape = 'mdp';
+    creation = mode === 'creation';
+    etapeMdp.hidden = false;
+    mdpLibelle.textContent = creation ? 'Choisissez un mot de passe' : 'Mot de passe';
+    mdpChamp.setAttribute('autocomplete', creation ? 'new-password' : 'current-password');
+    mdpChamp.setAttribute('placeholder', creation ? '8 caractères minimum' : 'Votre mot de passe');
+    valider.textContent = creation ? 'Créer mon compte' : 'Se connecter';
+    valider.hidden = false;
+    sousTitre.textContent = texte;
+    // Le lien de bascule ne sert que si le serveur n'a pas pu dire de quel
+    // cas il s'agit : on laisse alors la personne choisir.
+    basculer.hidden = !secours;
+    basculer.textContent = creation ? 'J’ai déjà un compte' : 'Créer un compte';
+    dire('');
+    mdpChamp.focus();
+  }
+
+  async function existence(email) {
+    var reponse = await fetch('/api/compte/existe', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email: email }),
+    });
+    if (reponse.status === 429) throw new Error('rate limit');
+    if (!reponse.ok) return null;
+    return reponse.json();
+  }
+
+  async function etapeAdresse(email) {
+    valider.disabled = true;
+    var libelle = valider.textContent;
+    valider.textContent = 'Un instant…';
+    dire('');
+    try {
+      var lecture = null;
+      try { lecture = await existence(email); }
+      catch (erreur) {
+        if (/rate limit/i.test(erreur.message)) throw erreur;
+        lecture = null;     // reseau ou service indisponible : mode de secours
+      }
+      secours = lecture === null;
+      if (secours) {
+        passerAuMotDePasse('connexion', 'Entrez votre mot de passe, ou créez un compte.');
+      } else if (lecture.existe && lecture.mot_de_passe) {
+        passerAuMotDePasse('connexion', 'Content de vous revoir. Entrez votre mot de passe.');
+      } else if (lecture.existe) {
+        // Compte ouvert avec Google, sans mot de passe : lui en demander un ici
+        // le laisserait croire qu'il peut en definir un en le tapant.
+        dire('Cette adresse est liée à un compte Google. Continuez avec Google ci-dessous.', false);
+        googleLien.classList.add('mis-en-avant');
+      } else {
+        passerAuMotDePasse('creation', 'Aucun compte avec cette adresse : créons-le. Choisissez un mot de passe.');
+      }
+    } catch (erreur) {
+      dire(traduireErreur(erreur), true);
+    } finally {
+      valider.disabled = false;
+      if (etape === 'email') valider.textContent = libelle;
+    }
+  }
+
+  async function etapeMotDePasse(email) {
+    var mdp = mdpChamp.value;
+    if (!mdp) { dire('Entrez votre mot de passe.', true); return; }
     if (creation && mdp.length < 8) {
       dire('Le mot de passe doit faire au moins 8 caractères.', true); return;
     }
@@ -577,7 +685,7 @@ document.documentElement.classList.add('js');
           })
         : await client.auth.signInWithPassword({ email: email, password: mdp });
       if (resultat.error) throw resultat.error;
-      document.getElementById('compte-mdp').value = '';
+      mdpChamp.value = '';
 
       if (creation && !resultat.data.session) {
         // La confirmation par e-mail est activee cote Supabase : pas de
@@ -592,13 +700,46 @@ document.documentElement.classList.add('js');
       valider.disabled = false;
       valider.textContent = libelle;
     }
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var email = emailChamp.value.trim();
+    if (!emailPlausible(email)) { dire('Entrez une adresse e-mail valide.', true); return; }
+    if (etape === 'email') await etapeAdresse(email);
+    else await etapeMotDePasse(email);
+  });
+
+  // Modifier l'adresse en cours de route ramene a la premiere etape : le mot
+  // de passe demande ne correspondrait plus au compte.
+  emailChamp.addEventListener('input', function () {
+    if (etape === 'mdp') revenirEmail();
+    googleLien.classList.remove('mis-en-avant');
+    majBouton();
+  });
+
+  modifierLien.addEventListener('click', function (e) {
+    e.preventDefault();
+    revenirEmail();
+    emailChamp.focus();
+    emailChamp.select();
+  });
+
+  basculer.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (creation) passerAuMotDePasse('connexion', 'Entrez votre mot de passe, ou créez un compte.');
+    else passerAuMotDePasse('creation', 'Choisissez un mot de passe pour créer votre compte.');
   });
 
   if (oublieLien) {
     oublieLien.addEventListener('click', async function (e) {
       e.preventDefault();
-      var email = document.getElementById('compte-email').value.trim();
-      if (!email) { dire('Renseignez votre adresse pour recevoir un lien.', true); return; }
+      var email = emailChamp.value.trim();
+      if (!emailPlausible(email)) {
+        dire('Entrez d’abord votre adresse e-mail pour recevoir un lien.', true);
+        emailChamp.focus();
+        return;
+      }
       dire('Envoi en cours…', false);
       try {
         await client.auth.resetPasswordForEmail(email, {
@@ -614,8 +755,8 @@ document.documentElement.classList.add('js');
   deconnexionLien.addEventListener('click', async function (e) {
     e.preventDefault();
     await client.auth.signOut();
-    tableauEl.hidden = true;
-    connexionEl.hidden = false;
+    revenirEmail();
+    montrerConnexion(true);
   });
 
   if (googleLien) {
@@ -711,8 +852,8 @@ document.documentElement.classList.add('js');
         // Le compte n'existe plus cote serveur : rien a revoquer, on nettoie
         // seulement le navigateur.
         try { await client.auth.signOut(); } catch (e) { /* deja invalide */ }
-        tableauEl.hidden = true;
-        connexionEl.hidden = false;
+        revenirEmail();
+        montrerConnexion(true);
         dire('Votre compte a bien été supprimé.', false);
       } catch (erreur) {
         direSuppression(erreur.message || 'La suppression a échoué.', true);
@@ -723,7 +864,7 @@ document.documentElement.classList.add('js');
 
   client.auth.onAuthStateChange(function (evenement) {
     if (evenement === 'SIGNED_IN') chargerCompte();
-    if (evenement === 'SIGNED_OUT') { tableauEl.hidden = true; connexionEl.hidden = false; }
+    if (evenement === 'SIGNED_OUT') montrerConnexion(true);
   });
 
   chargerCompte();

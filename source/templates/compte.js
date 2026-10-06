@@ -45,6 +45,36 @@
   var creation = false;
   var identitesActuelles = [];
 
+  // Page de connexion en deux temps : l'adresse, puis ce que son compte
+  // demande (le mot de passe s'il existe, le choix d'un mot de passe sinon).
+  var emailChamp = document.getElementById('compte-email');
+  var mdpChamp = document.getElementById('compte-mdp');
+  var etapeMdp = document.getElementById('compte-etape-mdp');
+  var modifierLien = document.getElementById('compte-modifier');
+  var mdpLibelle = document.getElementById('compte-mdp-libelle');
+  var sousTitre = document.getElementById('connexion-sous');
+  var SOUS_TITRE = sousTitre ? sousTitre.textContent : '';
+  var etape = 'email';      // 'email' puis 'mdp'
+  var secours = false;      // vrai si le service d'existence ne repond pas
+
+  // Montre la page de connexion, seule et sans en-tete, ou le tableau de bord
+  // avec le site autour. Un seul endroit decide, pour que les deux ne se
+  // retrouvent jamais affiches ensemble.
+  function montrerConnexion(oui) {
+    var racine = document.documentElement;
+    racine.classList.remove('compte-attente');
+    racine.classList.toggle('compte-nu', oui);
+    connexionEl.hidden = !oui;
+    tableauEl.hidden = oui;
+    if (oui && !window.matchMedia('(pointer: coarse)').matches) {
+      try { emailChamp.focus({ preventScroll: true }); } catch (e) { /* ancien navigateur */ }
+    }
+  }
+
+  function emailPlausible(valeur) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(valeur);
+  }
+
   function dire(texte, estErreur) {
     message.textContent = texte || '';
     message.hidden = !texte;
@@ -96,8 +126,7 @@
   }
 
   function afficherTableau(email, profil, sauvegarde) {
-    connexionEl.hidden = true;
-    tableauEl.hidden = false;
+    montrerConnexion(false);
 
     document.getElementById('compte-adresse').textContent = email || '';
 
@@ -154,7 +183,7 @@
   async function chargerCompte() {
     var reponseUtilisateur = await client.auth.getUser();
     var utilisateur = reponseUtilisateur.data && reponseUtilisateur.data.user;
-    if (!utilisateur) return;
+    if (!utilisateur) { montrerConnexion(true); return; }
 
     var profilReponse = await client.from('profiles').select('*').eq('id', utilisateur.id).single();
     var sauvegardeReponse = await client.from('sauvegardes')
@@ -164,21 +193,90 @@
     chargerIdentites();
   }
 
-  basculer.addEventListener('click', function (e) {
-    e.preventDefault();
-    creation = !creation;
-    valider.textContent = creation ? 'Créer le compte' : 'Se connecter';
-    basculer.textContent = creation ? 'J’ai déjà un compte' : 'Créer un compte';
-    document.getElementById('compte-mdp').setAttribute(
-      'autocomplete', creation ? 'new-password' : 'current-password');
-    dire('');
-  });
+  function majBouton() {
+    // « Continuer » n'apparait qu'une fois l'adresse saisie : tant qu'elle
+    // n'a pas la forme d'une adresse, il n'y a rien a valider.
+    valider.hidden = !(etape === 'mdp' || emailPlausible(emailChamp.value.trim()));
+  }
 
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    var email = document.getElementById('compte-email').value.trim();
-    var mdp = document.getElementById('compte-mdp').value;
-    if (!email || !mdp) { dire('Renseignez votre adresse et votre mot de passe.', true); return; }
+  function revenirEmail() {
+    etape = 'email';
+    creation = false;
+    etapeMdp.hidden = true;
+    mdpChamp.value = '';
+    basculer.hidden = true;
+    sousTitre.textContent = SOUS_TITRE;
+    valider.textContent = 'Continuer';
+    googleLien.classList.remove('mis-en-avant');
+    dire('');
+    majBouton();
+  }
+
+  function passerAuMotDePasse(mode, texte) {
+    etape = 'mdp';
+    creation = mode === 'creation';
+    etapeMdp.hidden = false;
+    mdpLibelle.textContent = creation ? 'Choisissez un mot de passe' : 'Mot de passe';
+    mdpChamp.setAttribute('autocomplete', creation ? 'new-password' : 'current-password');
+    mdpChamp.setAttribute('placeholder', creation ? '8 caractères minimum' : 'Votre mot de passe');
+    valider.textContent = creation ? 'Créer mon compte' : 'Se connecter';
+    valider.hidden = false;
+    sousTitre.textContent = texte;
+    // Le lien de bascule ne sert que si le serveur n'a pas pu dire de quel
+    // cas il s'agit : on laisse alors la personne choisir.
+    basculer.hidden = !secours;
+    basculer.textContent = creation ? 'J’ai déjà un compte' : 'Créer un compte';
+    dire('');
+    mdpChamp.focus();
+  }
+
+  async function existence(email) {
+    var reponse = await fetch('/api/compte/existe', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email: email }),
+    });
+    if (reponse.status === 429) throw new Error('rate limit');
+    if (!reponse.ok) return null;
+    return reponse.json();
+  }
+
+  async function etapeAdresse(email) {
+    valider.disabled = true;
+    var libelle = valider.textContent;
+    valider.textContent = 'Un instant…';
+    dire('');
+    try {
+      var lecture = null;
+      try { lecture = await existence(email); }
+      catch (erreur) {
+        if (/rate limit/i.test(erreur.message)) throw erreur;
+        lecture = null;     // reseau ou service indisponible : mode de secours
+      }
+      secours = lecture === null;
+      if (secours) {
+        passerAuMotDePasse('connexion', 'Entrez votre mot de passe, ou créez un compte.');
+      } else if (lecture.existe && lecture.mot_de_passe) {
+        passerAuMotDePasse('connexion', 'Content de vous revoir. Entrez votre mot de passe.');
+      } else if (lecture.existe) {
+        // Compte ouvert avec Google, sans mot de passe : lui en demander un ici
+        // le laisserait croire qu'il peut en definir un en le tapant.
+        dire('Cette adresse est liée à un compte Google. Continuez avec Google ci-dessous.', false);
+        googleLien.classList.add('mis-en-avant');
+      } else {
+        passerAuMotDePasse('creation', 'Aucun compte avec cette adresse : créons-le. Choisissez un mot de passe.');
+      }
+    } catch (erreur) {
+      dire(traduireErreur(erreur), true);
+    } finally {
+      valider.disabled = false;
+      if (etape === 'email') valider.textContent = libelle;
+    }
+  }
+
+  async function etapeMotDePasse(email) {
+    var mdp = mdpChamp.value;
+    if (!mdp) { dire('Entrez votre mot de passe.', true); return; }
     if (creation && mdp.length < 8) {
       dire('Le mot de passe doit faire au moins 8 caractères.', true); return;
     }
@@ -198,7 +296,7 @@
           })
         : await client.auth.signInWithPassword({ email: email, password: mdp });
       if (resultat.error) throw resultat.error;
-      document.getElementById('compte-mdp').value = '';
+      mdpChamp.value = '';
 
       if (creation && !resultat.data.session) {
         // La confirmation par e-mail est activee cote Supabase : pas de
@@ -213,13 +311,46 @@
       valider.disabled = false;
       valider.textContent = libelle;
     }
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var email = emailChamp.value.trim();
+    if (!emailPlausible(email)) { dire('Entrez une adresse e-mail valide.', true); return; }
+    if (etape === 'email') await etapeAdresse(email);
+    else await etapeMotDePasse(email);
+  });
+
+  // Modifier l'adresse en cours de route ramene a la premiere etape : le mot
+  // de passe demande ne correspondrait plus au compte.
+  emailChamp.addEventListener('input', function () {
+    if (etape === 'mdp') revenirEmail();
+    googleLien.classList.remove('mis-en-avant');
+    majBouton();
+  });
+
+  modifierLien.addEventListener('click', function (e) {
+    e.preventDefault();
+    revenirEmail();
+    emailChamp.focus();
+    emailChamp.select();
+  });
+
+  basculer.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (creation) passerAuMotDePasse('connexion', 'Entrez votre mot de passe, ou créez un compte.');
+    else passerAuMotDePasse('creation', 'Choisissez un mot de passe pour créer votre compte.');
   });
 
   if (oublieLien) {
     oublieLien.addEventListener('click', async function (e) {
       e.preventDefault();
-      var email = document.getElementById('compte-email').value.trim();
-      if (!email) { dire('Renseignez votre adresse pour recevoir un lien.', true); return; }
+      var email = emailChamp.value.trim();
+      if (!emailPlausible(email)) {
+        dire('Entrez d’abord votre adresse e-mail pour recevoir un lien.', true);
+        emailChamp.focus();
+        return;
+      }
       dire('Envoi en cours…', false);
       try {
         await client.auth.resetPasswordForEmail(email, {
@@ -235,8 +366,8 @@
   deconnexionLien.addEventListener('click', async function (e) {
     e.preventDefault();
     await client.auth.signOut();
-    tableauEl.hidden = true;
-    connexionEl.hidden = false;
+    revenirEmail();
+    montrerConnexion(true);
   });
 
   if (googleLien) {
@@ -332,8 +463,8 @@
         // Le compte n'existe plus cote serveur : rien a revoquer, on nettoie
         // seulement le navigateur.
         try { await client.auth.signOut(); } catch (e) { /* deja invalide */ }
-        tableauEl.hidden = true;
-        connexionEl.hidden = false;
+        revenirEmail();
+        montrerConnexion(true);
         dire('Votre compte a bien été supprimé.', false);
       } catch (erreur) {
         direSuppression(erreur.message || 'La suppression a échoué.', true);
@@ -344,7 +475,7 @@
 
   client.auth.onAuthStateChange(function (evenement) {
     if (evenement === 'SIGNED_IN') chargerCompte();
-    if (evenement === 'SIGNED_OUT') { tableauEl.hidden = true; connexionEl.hidden = false; }
+    if (evenement === 'SIGNED_OUT') montrerConnexion(true);
   });
 
   chargerCompte();

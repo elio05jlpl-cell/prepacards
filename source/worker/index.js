@@ -17,6 +17,7 @@
 
 import { maintenant, normaliserEmail, signatureStripeValide } from './securite.js';
 import { lireFeuille } from './scan.js';
+import { compteExiste } from './existence.js';
 import { disponible as courrielDisponible, envoyer as envoyerCourriel,
          messageBienvenue, messageResiliation } from './courriel.js';
 
@@ -242,6 +243,9 @@ const ROUTES = {
   // c'est ici, et nulle part dans l'application, que l'abonnement peut
   // etre verifie pour de bon.
   'POST /api/scan': lireFeuille,
+  // La page de connexion demande si l'adresse saisie a deja un compte, pour
+  // savoir s'il faut demander le mot de passe ou en faire choisir un.
+  'POST /api/compte/existe': compteExiste,
 };
 
 export default {

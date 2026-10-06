@@ -281,3 +281,33 @@ $$;
 revoke execute on function public.consommer_scan(uuid, text, integer)
     from public, anon, authenticated;
 grant execute on function public.consommer_scan(uuid, text, integer) to service_role;
+
+-- --------------------------------------------------------------------------
+-- Un compte existe-t-il pour cette adresse ?
+--
+-- Appelee par le Worker (POST /api/compte/existe) avec la cle service_role,
+-- jamais par le navigateur : la table auth.users ne doit pas etre lisible
+-- depuis l'exterieur. Ne rend que trois booleens.
+-- --------------------------------------------------------------------------
+create or replace function public.compte_existe(p_email text)
+returns jsonb
+language sql
+security definer
+set search_path = public, auth
+stable
+as $$
+    select coalesce(
+        (select jsonb_build_object(
+                    'existe', true,
+                    'mot_de_passe', coalesce(bool_or(i.provider = 'email'), false),
+                    'google', coalesce(bool_or(i.provider = 'google'), false))
+           from auth.users u
+           left join auth.identities i on i.user_id = u.id
+          where lower(u.email) = lower(p_email)
+          group by u.id
+          limit 1),
+        jsonb_build_object('existe', false, 'mot_de_passe', false, 'google', false));
+$$;
+
+revoke execute on function public.compte_existe(text) from public, anon, authenticated;
+grant execute on function public.compte_existe(text) to service_role;
