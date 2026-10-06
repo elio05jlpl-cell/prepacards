@@ -46,6 +46,23 @@
   // un par rangee et par cote monte, l'autre descend.
   var PENTES_GAUCHE = [[-190, 40], [-120, 130], [-70, 190], [-30, 160]];
   var PENTES_DROITE = [[-150, 70], [-100, 150], [-60, 210], [-20, 170]];
+  // Disposition de depart, relevee sur une composition choisie a la main :
+  // position (x, y) en px de chaque etiquette, dans l'ordre du HTML, pour une
+  // zone de 1160 x 380. Elle est mise a l'echelle de la zone reelle, puis
+  // les etiquettes qui se toucheraient sont ecartees.
+  //
+  // Les fils, eux, sont construits sur la disposition en rangees : leur
+  // longueur au repos est celle des rangees, donc dans cette composition
+  // certains sont detendus et font un pli, c'est voulu.
+  var REF_W = 1160, REF_H = 380;
+  var DISPOSITION = [
+    [167, 8], [494, 16], [806, 35],      // rangee 1
+    [231, 116], [509, 108], [667, 202],  // rangee 2
+    [66, 111], [344, 218], [771, 117],   // rangee 3
+    [117, 262], [511, 299], [748, 293]   // rangee 4
+  ];
+  var LARGEUR_MIN_DISPOSITION = 900;     // en dessous, on garde les rangees
+
   var ECART = 8;            // espace minimal entre deux etiquettes
   var etat = [];            // {el, x, y, w, h} par etiquette
   var fils = [];            // {a, pa, b, pb | fixe, repos, chemin, oscille}
@@ -75,7 +92,54 @@
     }
     svg.setAttribute('viewBox', '0 0 ' + largeur + ' ' + hauteur);
     construireFils();
+    if (!tactile && largeur >= LARGEUR_MIN_DISPOSITION
+        && DISPOSITION.length === etat.length) {
+      disposer();
+    }
     dessiner();
+  }
+
+  // Place les etiquettes selon DISPOSITION, a l'echelle de la zone, sans
+  // toucher aux fils : ils gardent la longueur qu'ils ont dans les rangees.
+  function disposer() {
+    var ex = largeur / REF_W;
+    var ey = hauteur / REF_H;
+    etat.forEach(function (s, i) {
+      s.x = Math.max(0, Math.min(largeur - s.w, DISPOSITION[i][0] * ex));
+      s.y = Math.max(0, Math.min(hauteur - s.h, DISPOSITION[i][1] * ey));
+    });
+    separer();
+    etat.forEach(poser);
+  }
+
+  // Ecarte les etiquettes qui se chevaucheraient apres la mise a l'echelle
+  // (police plus grande, zone plus etroite) : on les repousse de moitie
+  // chacune, selon l'axe ou le recouvrement est le plus petit.
+  function separer() {
+    for (var passe = 0; passe < 40; passe++) {
+      var bouge = false;
+      for (var i = 0; i < etat.length; i++) {
+        for (var j = i + 1; j < etat.length; j++) {
+          var a = etat[i], b = etat[j];
+          var ox = Math.min(a.x + a.w + ECART - b.x, b.x + b.w + ECART - a.x);
+          var oy = Math.min(a.y + a.h + ECART - b.y, b.y + b.h + ECART - a.y);
+          if (ox <= 0 || oy <= 0) continue;
+          bouge = true;
+          if (ox < oy) {
+            var dx = ox / 2 + 0.5, sens = a.x < b.x ? -1 : 1;
+            a.x += sens * dx; b.x -= sens * dx;
+          } else {
+            var dy = oy / 2 + 0.5, sensy = a.y < b.y ? -1 : 1;
+            a.y += sensy * dy; b.y -= sensy * dy;
+          }
+          a.x = Math.max(0, Math.min(largeur - a.w, a.x));
+          b.x = Math.max(0, Math.min(largeur - b.w, b.x));
+          a.y = Math.max(0, Math.min(hauteur - a.h, a.y));
+          b.y = Math.max(0, Math.min(hauteur - b.h, b.y));
+        }
+      }
+      if (!bouge) break;
+    }
   }
 
   function poser(s) {
