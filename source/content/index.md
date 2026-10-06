@@ -299,7 +299,7 @@ faq: true
   </div>
 </section>
 
-<section class="section section-douce">
+<section class="section section-douce sans-cadre">
   <div class="conteneur centre revelation fondu">
     <h2>Configuré pour votre filière dès l'ouverture</h2>
     <p class="chapeau">À la première ouverture, PrépaCards vous demande votre

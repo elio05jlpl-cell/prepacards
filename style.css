@@ -340,6 +340,13 @@ padding: 56px 48px;
 .grille-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
 .grille-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; align-items: center; }
 .section-douce .grille-2 { text-align: left; }
+.section-douce.sans-cadre > .conteneur {
+background: none;
+border: 0;
+box-shadow: none;
+border-radius: 0;
+padding: 24px 0;
+}
 .carte {
 background: #fff; border: 1px solid var(--bord);
 border-radius: var(--rayon-l); padding: 30px 26px;
