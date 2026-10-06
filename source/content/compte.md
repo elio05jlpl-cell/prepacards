@@ -23,7 +23,15 @@ robots: noindex, follow
 
 <div id="compte-app" class="compte-zone">
 <div id="compte-connexion" class="connexion-page">
+<span class="connexion-impulsion v" aria-hidden="true" style="--x:-720px;--duree:14s;--delai:-2s;--sens:normal"></span>
+<span class="connexion-impulsion v" aria-hidden="true" style="--x:-240px;--duree:11s;--delai:-6s;--sens:reverse"></span>
+<span class="connexion-impulsion v" aria-hidden="true" style="--x:240px;--duree:12s;--delai:-9s;--sens:normal"></span>
+<span class="connexion-impulsion v" aria-hidden="true" style="--x:720px;--duree:15s;--delai:-4s;--sens:reverse"></span>
+<span class="connexion-impulsion v" aria-hidden="true" style="--x:-240px;--duree:17s;--delai:-13s;--sens:normal"></span>
+<span class="connexion-impulsion v" aria-hidden="true" style="--x:240px;--duree:16s;--delai:-1s;--sens:reverse"></span>
 <div class="connexion-carte">
+<span class="connexion-impulsion h haut" aria-hidden="true" style="--duree:18s;--delai:-5s;--sens:normal"></span>
+<span class="connexion-impulsion h bas" aria-hidden="true" style="--duree:20s;--delai:-12s;--sens:reverse"></span>
 <a class="connexion-logo" href="/" aria-label="PrépaCards, accueil"><img src="/img/logo.webp" width="52" height="52" alt=""></a>
 <h1 class="connexion-titre">Commençons à réviser</h1>
 <p class="connexion-sous" id="connexion-sous">Connectez-vous ou inscrivez-vous ci-dessous</p>

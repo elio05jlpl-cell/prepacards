@@ -1971,7 +1971,7 @@ background-position: calc(50% - 240px) 0, calc(50% + 240px) 0,
 calc(50% - 720px) 0, calc(50% + 720px) 0;
 }
 .connexion-carte {
-position: relative;
+position: relative; z-index: 1;
 width: min(480px, 100%);
 padding: 44px 48px 48px;
 background: #fff;
@@ -2051,6 +2051,46 @@ outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, .35);
 }
 .connexion-google.mis-en-avant { box-shadow: 0 0 0 2px var(--bleu); }
 .connexion-google svg { flex: 0 0 auto; width: 17px; height: 17px; }
+.connexion-impulsion {
+position: absolute; z-index: 0; pointer-events: none;
+opacity: 0;
+background: var(--lueur);
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+animation-duration: var(--duree);
+animation-delay: var(--delai);
+animation-direction: var(--sens);
+}
+.connexion-page { --lueur: linear-gradient(var(--lueur-axe, 180deg), transparent,
+rgba(59, 130, 246, .75), transparent); }
+.connexion-impulsion.v {
+top: 0; left: calc(50% + var(--x)); width: 1px; height: 110px;
+margin-left: -.5px;
+--lueur-axe: 180deg;
+animation-name: impulsion-v;
+filter: drop-shadow(0 0 4px rgba(59, 130, 246, .55));
+}
+.connexion-impulsion.h {
+left: 50%; width: 130px; height: 1px;
+background: linear-gradient(90deg, transparent, rgba(59, 130, 246, .75), transparent);
+animation-name: impulsion-h;
+filter: drop-shadow(0 0 4px rgba(59, 130, 246, .55));
+}
+.connexion-impulsion.h.haut { top: 0; }
+.connexion-impulsion.h.bas { bottom: 0; }
+@keyframes impulsion-v {
+0% { transform: translateY(-120px); opacity: 0; }
+10%, 90% { opacity: 1; }
+100% { transform: translateY(calc(100vh + 10px)); opacity: 0; }
+}
+@keyframes impulsion-h {
+0% { transform: translateX(-70vw); opacity: 0; }
+10%, 90% { opacity: 1; }
+100% { transform: translateX(70vw); opacity: 0; }
+}
+@media (max-width: 640px), (prefers-reduced-motion: reduce) {
+.connexion-impulsion { display: none; }
+}
 .connexion-pied {
 position: absolute; left: 0; right: 0; bottom: 22px;
 display: flex; justify-content: center; gap: 18px;
