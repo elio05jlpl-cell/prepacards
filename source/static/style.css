@@ -252,6 +252,12 @@ strong { color: var(--encre); font-weight: 700; }
   border-color: rgba(255, 255, 255, .5); color: #fff;
 }
 
+/* « Se connecter » et « Telecharger » : rectangles aux angles arrondis, comme
+   les boutons d'une application, alors que le reste du site garde des angles
+   droits. !important : .bouton-nav impose des angles droits au meme titre. */
+.bandeau-actions .nav-connexion,
+.bandeau-actions .bouton-nav { border-radius: 8px !important; }
+
 .entete-marque {
   display: flex; align-items: center; justify-content: center;
   position: relative; padding: 16px 0 12px;

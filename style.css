@@ -176,6 +176,8 @@ padding: 4px 10px; line-height: 1.3;
 background: rgba(255, 255, 255, .12);
 border-color: rgba(255, 255, 255, .5); color: #fff;
 }
+.bandeau-actions .nav-connexion,
+.bandeau-actions .bouton-nav { border-radius: 8px !important; }
 .entete-marque {
 display: flex; align-items: center; justify-content: center;
 position: relative; padding: 16px 0 12px;
