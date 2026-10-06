@@ -2139,12 +2139,10 @@ main a { transition: color .2s ease; }
 html.js .ficelles-titre.on .ficelles-select,
 html:not(.js) .ficelles-select { background-size: 100% 100%; color: #fff; }
 
-.ficelles-aide { color: var(--gris); margin: .9em 0 0; }
-
 .ficelles-zone {
   position: relative;
   max-width: var(--largeur);
-  margin: 2.4em auto 0;
+  margin: 2.8em auto 0;
   padding: 8px 0;
 }
 
@@ -2163,19 +2161,19 @@ html:not(.js) .ficelles-select { background-size: 100% 100%; color: #fff; }
 .ficelles-rang {
   list-style: none; margin: 0; padding: 0;
   display: flex; flex-wrap: wrap; justify-content: center;
-  gap: 0 56px;
-  margin-bottom: 36px;
+  gap: 0 64px;
+  margin-bottom: 30px;
 }
 
 .ficelle {
   position: relative;
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 16px 24px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 17px;
   margin: 0 0 12px;
   background: #fff;
   border: 1px solid var(--bord);
   color: var(--gris);
-  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  font-size: clamp(.82rem, 1.15vw, .98rem);
   font-weight: 500;
   white-space: nowrap;
   user-select: none; -webkit-user-select: none;
@@ -2186,15 +2184,15 @@ html:not(.js) .ficelles-select { background-size: 100% 100%; color: #fff; }
 .ficelle::before, .ficelle::after {
   content: "";
   position: absolute; top: 50%;
-  width: 5px; height: 5px;
-  margin-top: -2.5px;
+  width: 4px; height: 4px;
+  margin-top: -2px;
   background: var(--encre);
 }
-.ficelle::before { left: -3px; }
-.ficelle::after { right: -3px; }
+.ficelle::before { left: -2px; }
+.ficelle::after { right: -2px; }
 
 .ficelle.allumee { color: var(--encre); font-weight: 600; }
-.ficelle.allumee svg { color: var(--bleu); flex: none; }
+.ficelle.allumee svg { color: var(--bleu); flex: none; width: 15px; height: 15px; }
 
 /* Une fois en mode libre (JS), chaque etiquette se place en absolu, et la
    zone garde la hauteur qu'avaient les rangees. */
@@ -2220,7 +2218,7 @@ html:not(.js) .ficelles-select { background-size: 100% 100%; color: #fff; }
 @media (max-width: 760px) {
   .ficelles { padding: 28px 0 48px; }
   .ficelles-rang { gap: 0 28px; margin-bottom: 20px; }
-  .ficelle { padding: 12px 16px; font-size: .98rem; }
+  .ficelle { padding: 9px 13px; font-size: .84rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

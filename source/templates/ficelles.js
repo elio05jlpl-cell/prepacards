@@ -97,9 +97,9 @@
     def.oscille = null;
     var depart = extremite(def, 0);
     var arrivee = extremite(def, 1);
-    // Un fil est un peu plus long que la distance de depart : il pend
-    // legerement au repos, et se tend quand on tire.
-    def.repos = distance(depart, arrivee) * 1.1 + 8;
+    // Un fil est a peine plus long que la distance de depart : droit au
+    // repos, il ne fait un pli que si on rapproche ses extremites.
+    def.repos = distance(depart, arrivee) * 1.01 + 2;
     fils.push(def);
   }
 
@@ -129,17 +129,25 @@
       }
       // Vers les bords de la zone : la premiere et la derniere sont tenues.
       var premiere = ligne[0], derniere = ligne[ligne.length - 1];
-      var yg = port(premiere, 'l').y + (r % 2 ? -34 : 30);
-      var yd = port(derniere, 'r').y + (r % 2 ? 30 : -34);
+      var yg = port(premiere, 'l').y + (r % 2 ? -120 : 90);
+      var yd = port(derniere, 'r').y + (r % 2 ? 100 : -130);
       // Les fils filent jusqu'aux bords de la PAGE, pas seulement de la zone :
       // la section les rogne, ils paraissent venir de plus loin.
       ajouterFil({ a: premiere, pa: 'l', fixe: { x: -gauche, y: yg } });
       ajouterFil({ a: derniere, pa: 'r', fixe: { x: largeur + droite, y: yd } });
-      // Vers la rangee du dessous : bas d'une etiquette, haut de la voisine.
+      // Vers la rangee du dessous, en diagonale : du point d'attache droit
+      // d'une etiquette au point gauche d'une voisine du dessous, ou
+      // l'inverse une fois sur deux. Les fils se croisent, comme des cordes
+      // tendues entre des planches.
       if (r + 1 < indices.length) {
         var suivante = indices[r + 1];
+        var m = suivante.length;
         ligne.forEach(function (i, k) {
-          ajouterFil({ a: i, pa: 'b', b: suivante[Math.min(k, suivante.length - 1)], pb: 't' });
+          if (k % 2 === 0) {
+            ajouterFil({ a: i, pa: 'r', b: suivante[(k + 1) % m], pb: 'l' });
+          } else {
+            ajouterFil({ a: i, pa: 'l', b: suivante[(k + m - 1) % m], pb: 'r' });
+          }
         });
       }
     });
@@ -154,7 +162,7 @@
       var p = extremite(f, 0), q = extremite(f, 1);
       var d = distance(p, q);
       // Le pli : proportionnel au mou, borne pour ne pas faire de boucle.
-      var pli = Math.max(0, Math.min((f.repos - d) * 0.75, 70));
+      var pli = Math.max(0, Math.min((f.repos - d) * 0.4, 36));
       if (f.oscille) {
         var t = (maintenant - f.oscille.debut) / 1000;
         var reste = f.oscille.amplitude * Math.exp(-t * 4.5) * Math.cos(t * 16);
@@ -162,10 +170,9 @@
         else pli += reste;
       }
       var mx = (p.x + q.x) / 2, my = (p.y + q.y) / 2;
-      // Les fils verticaux pendent de cote, les autres vers le bas.
-      var vertical = Math.abs(p.x - q.x) < Math.abs(p.y - q.y);
-      var cx = vertical ? mx + pli : mx;
-      var cy = vertical ? my : my + pli * 2;
+      // Le pli retombe vers le bas.
+      var cx = mx;
+      var cy = my + pli * 2;
       f.chemin.setAttribute('d', 'M' + p.x.toFixed(1) + ' ' + p.y.toFixed(1)
         + ' Q' + cx.toFixed(1) + ' ' + cy.toFixed(1)
         + ' ' + q.x.toFixed(1) + ' ' + q.y.toFixed(1));

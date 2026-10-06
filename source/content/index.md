@@ -32,7 +32,6 @@ faq: true
 <section class="section ficelles" aria-labelledby="ficelles-titre">
   <div class="conteneur centre">
     <h2 id="ficelles-titre" class="ficelles-titre"><span class="ficelles-select">Te</span>nez les ficelles de vos révisions</h2>
-    <p class="ficelles-aide">Attrapez une étiquette et tirez : tout se tient.</p>
     <div class="ficelles-zone revelation fondu">
       <svg class="ficelles-fils" aria-hidden="true" focusable="false"></svg>
     <ul class="ficelles-rang">
