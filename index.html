@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
-<link rel="stylesheet" href="/style.css?v=97a307c965">
+<link rel="stylesheet" href="/style.css?v=d463b800d3">
 <script>
 // Pose le drapeau avant le premier affichage : les blocs qui apparaissent au
 // defilement sont masques par « html.js ... ». Pose en bas de page seulement,
@@ -312,6 +312,7 @@ document.documentElement.classList.add('js');
 <section class="section avis-section">
   <div class="conteneur centre">
     <span class="eyebrow">Ils l'utilisent</span>
+    <h2>Ce qu'en disent ses premiers utilisateurs</h2>
     <div class="avis-grille revelation">
       <figure class="avis">
         <span class="avis-guillemet" aria-hidden="true">“</span>
@@ -320,8 +321,11 @@ document.documentElement.classList.add('js');
             mettre les maths en flashcard.</p>
         </blockquote>
         <figcaption>
-          <span class="avis-nom">Jean</span>
-          <span class="avis-role">Étudiant à HEC Paris · 20 à Maths I</span>
+          <span class="avis-avatar" aria-hidden="true">J</span>
+          <span class="avis-identite">
+            <span class="avis-nom">Jean</span>
+            <span class="avis-role">Étudiant à HEC Paris · 20 à Maths I</span>
+          </span>
         </figcaption>
       </figure>
       <figure class="avis">
@@ -331,8 +335,11 @@ document.documentElement.classList.add('js');
             agréable à utiliser. Il reste de la marge en anglais et en LV2.</p>
         </blockquote>
         <figcaption>
-          <span class="avis-nom">Andrea</span>
-          <span class="avis-role">Étudiante à HEC Paris</span>
+          <span class="avis-avatar" aria-hidden="true">A</span>
+          <span class="avis-identite">
+            <span class="avis-nom">Andrea</span>
+            <span class="avis-role">Étudiante à HEC Paris</span>
+          </span>
         </figcaption>
       </figure>
       <figure class="avis">
@@ -342,8 +349,11 @@ document.documentElement.classList.add('js');
             pensée. Il manque encore un peu de contenu en anglais et en LV2.</p>
         </blockquote>
         <figcaption>
-          <span class="avis-nom">Alexandre</span>
-          <span class="avis-role">Étudiant à l'ESCP</span>
+          <span class="avis-avatar" aria-hidden="true">A</span>
+          <span class="avis-identite">
+            <span class="avis-nom">Alexandre</span>
+            <span class="avis-role">Étudiant à l'ESCP</span>
+          </span>
         </figcaption>
       </figure>
     </div>
@@ -921,6 +931,70 @@ document.documentElement.classList.add('js');
   }, { threshold: 0.01 });
 
   sequenceurs.forEach(function (s) { observateur.observe(s.element); });
+})();
+</script>
+<script>
+// Mise en avant tournante des avis.
+//
+// Une carte a la fois est soulevee et soulignee, toutes les 4,5 s, pour que
+// l'oeil aille de l'une a l'autre au lieu de survoler trois blocs identiques.
+// C'est purement visuel : le texte ne bouge pas, rien n'est masque.
+//
+// Elle s'arrete des que la souris est sur une carte (la carte survolee prend
+// la main), quand la section sort de l'ecran, et quand l'onglet n'est plus
+// affiche. Avec « mouvement reduit », elle ne demarre jamais : seul le survol
+// agit alors.
+(function () {
+  var grille = document.querySelector('.avis-grille');
+  if (!grille) return;
+  var cartes = [].slice.call(grille.querySelectorAll('.avis'));
+  if (cartes.length < 2) return;
+
+  var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (doux || !('IntersectionObserver' in window)) return;
+
+  var courant = -1;
+  var minuteur = null;
+  var survol = false;
+  var visible = false;
+
+  function activer(rang) {
+    cartes.forEach(function (carte, k) {
+      carte.classList.toggle('actif', k === rang);
+    });
+    courant = rang;
+  }
+
+  function suivant() {
+    if (survol || !visible) return;
+    activer((courant + 1) % cartes.length);
+  }
+
+  function demarrer() {
+    if (minuteur) return;
+    if (courant < 0) activer(0);
+    minuteur = window.setInterval(suivant, 4500);
+  }
+
+  function arreter() {
+    window.clearInterval(minuteur);
+    minuteur = null;
+  }
+
+  new IntersectionObserver(function (entrees) {
+    visible = entrees[0].isIntersecting;
+    if (visible) demarrer(); else arreter();
+  }, { threshold: 0.35 }).observe(grille);
+
+  cartes.forEach(function (carte, k) {
+    carte.addEventListener('mouseenter', function () { survol = true; activer(k); });
+    carte.addEventListener('mouseleave', function () { survol = false; });
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) arreter();
+    else if (visible) demarrer();
+  });
 })();
 </script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "570f41119b974bfda2ebca8dfff29bbf"}'></script>

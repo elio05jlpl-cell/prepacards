@@ -200,6 +200,7 @@ faq: true
 <section class="section avis-section">
   <div class="conteneur centre">
     <span class="eyebrow">Ils l'utilisent</span>
+    <h2>Ce qu'en disent ses premiers utilisateurs</h2>
     <div class="avis-grille revelation">
       <figure class="avis">
         <span class="avis-guillemet" aria-hidden="true">“</span>
@@ -208,8 +209,11 @@ faq: true
             mettre les maths en flashcard.</p>
         </blockquote>
         <figcaption>
-          <span class="avis-nom">Jean</span>
-          <span class="avis-role">Étudiant à HEC Paris · 20 à Maths I</span>
+          <span class="avis-avatar" aria-hidden="true">J</span>
+          <span class="avis-identite">
+            <span class="avis-nom">Jean</span>
+            <span class="avis-role">Étudiant à HEC Paris · 20 à Maths I</span>
+          </span>
         </figcaption>
       </figure>
       <figure class="avis">
@@ -219,8 +223,11 @@ faq: true
             agréable à utiliser. Il reste de la marge en anglais et en LV2.</p>
         </blockquote>
         <figcaption>
-          <span class="avis-nom">Andrea</span>
-          <span class="avis-role">Étudiante à HEC Paris</span>
+          <span class="avis-avatar" aria-hidden="true">A</span>
+          <span class="avis-identite">
+            <span class="avis-nom">Andrea</span>
+            <span class="avis-role">Étudiante à HEC Paris</span>
+          </span>
         </figcaption>
       </figure>
       <figure class="avis">
@@ -230,8 +237,11 @@ faq: true
             pensée. Il manque encore un peu de contenu en anglais et en LV2.</p>
         </blockquote>
         <figcaption>
-          <span class="avis-nom">Alexandre</span>
-          <span class="avis-role">Étudiant à l'ESCP</span>
+          <span class="avis-avatar" aria-hidden="true">A</span>
+          <span class="avis-identite">
+            <span class="avis-nom">Alexandre</span>
+            <span class="avis-role">Étudiant à l'ESCP</span>
+          </span>
         </figcaption>
       </figure>
     </div>

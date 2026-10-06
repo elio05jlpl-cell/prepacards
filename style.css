@@ -1522,29 +1522,43 @@ color: var(--gris);
 .faq-enveloppe { transition: none; }
 }
 .avis-section { padding-top: 10px; }
+.avis-section h2 {
+font-size: clamp(1.5rem, 3vw, 2rem);
+margin: .35em auto 0;
+}
 .avis-grille {
 display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
-max-width: var(--largeur); margin: 1.6em auto 0; text-align: left;
+max-width: var(--largeur); margin: 2em auto 0; text-align: left;
 }
 .avis {
 position: relative;
 height: 100%;
 min-width: 0;
-padding: 36px 28px 26px;
-background: #fff;
+padding: 40px 28px 26px;
+display: flex; flex-direction: column;
+background: linear-gradient(180deg, #fff 55%, var(--fond-doux));
 border-radius: 0;
 box-shadow: 0 8px 24px -8px rgba(30, 58, 138, .18);
 }
+.avis::before {
+content: "";
+position: absolute; left: 0; top: 0;
+height: 3px; width: 0;
+background: var(--degrade);
+transition: width .6s ease;
+}
+.avis.actif::before, .avis:hover::before { width: 100%; }
 html.js .avis-grille .avis {
-transition: opacity .5s ease, transform .18s ease, box-shadow .18s ease;
+transition: opacity .5s ease, transform .35s ease, box-shadow .35s ease;
 }
 html.js .avis-grille .avis:nth-child(2) { transition-delay: .08s, 0s, 0s; }
 html.js .avis-grille .avis:nth-child(3) { transition-delay: .16s, 0s, 0s; }
-.avis:hover {
-box-shadow: 0 20px 44px -10px rgba(30, 58, 138, .28);
+.avis:hover, .avis.actif {
+box-shadow: 0 22px 46px -10px rgba(30, 58, 138, .30);
 }
-html.js .avis-grille .avis:hover {
-transform: translateY(-4px);
+html.js .avis-grille .avis:hover,
+html.js .avis-grille .avis.actif {
+transform: translateY(-8px);
 }
 .avis-guillemet {
 position: absolute;
@@ -1553,28 +1567,46 @@ font-family: Georgia, serif;
 font-size: 5rem;
 line-height: 1;
 color: var(--violet);
-opacity: .55;
+opacity: .45;
+transition: opacity .35s ease;
 }
-.avis blockquote { margin: 0; }
+.avis.actif .avis-guillemet, .avis:hover .avis-guillemet { opacity: .9; }
+.avis blockquote { margin: 0; flex: 1; }
 .avis blockquote p {
-font-size: 1.05rem;
-line-height: 1.45;
+font-size: 1.07rem;
+line-height: 1.5;
 color: var(--encre);
 font-weight: 500;
-margin: 0 0 1.1em;
+margin: 0 0 1.3em;
 }
 .avis figcaption {
 display: flex;
-flex-direction: column;
-gap: 2px;
+align-items: center;
+gap: 14px;
+padding-top: 16px;
+border-top: 1px solid var(--bord);
+}
+.avis-avatar {
+flex: none;
+display: grid; place-items: center;
+width: 44px; height: 44px;
+background: var(--degrade);
+color: #fff;
+font-weight: 700; font-size: 1.1rem;
+}
+.avis-identite {
+display: flex; flex-direction: column; align-items: flex-start;
+gap: 2px; min-width: 0; text-align: left;
 }
 .avis-nom { font-weight: 700; color: var(--encre); }
-.avis-role { font-size: .93rem; color: var(--gris); }
+.avis-role { font-size: .9rem; line-height: 1.35; color: var(--gris); }
 @media (max-width: 900px) {
 .avis-grille { grid-template-columns: minmax(0, 1fr); max-width: 460px; }
+html.js .avis-grille .avis:hover,
+html.js .avis-grille .avis.actif { transform: none; }
 }
 @media (max-width: 640px) {
-.avis { padding: 32px 24px 26px; }
+.avis { padding: 34px 24px 24px; }
 .avis-guillemet { left: 18px; font-size: 4rem; }
 }
 .tarifs-entete h1 {
