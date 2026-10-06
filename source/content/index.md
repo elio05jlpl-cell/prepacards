@@ -299,36 +299,6 @@ faq: true
   </div>
 </section>
 
-<section class="section section-douce sans-cadre">
-  <div class="conteneur centre revelation fondu">
-    <h2>Configuré pour votre filière dès l'ouverture</h2>
-    <p class="chapeau">À la première ouverture, PrépaCards vous demande votre
-      filière et crée vos paquets par matière. Vous commencez à réviser, pas
-      à ranger.</p>
-    <div class="grille-2 revelation fondu" style="max-width:820px;margin:2em auto 0;text-align:left">
-      <div class="carte">
-        <h3>Voie commerciale — ECG et ECT</h3>
-        <p><strong>2 000 cartes de vocabulaire d'anglais ECG sont fournies
-          avec l'application</strong>, en 20 thèmes de 100 mots : économie,
-          environnement, migrations, santé… Ajoutez celles qui vous servent
-          en deux clics, et complétez avec vos propres cartes.</p>
-        <p>Les paquets ESH, géopolitique et culture générale sont créés
-          d'office, prêts à recevoir vos définitions, vos dates et vos
-          auteurs.</p>
-        <p><a href="/prepa/">Les 20 thèmes d'anglais ECG →</a></p>
-      </div>
-      <div class="carte">
-        <h3>Voies scientifiques et littéraires</h3>
-        <p>MPSI, PCSI, PTSI, MPI, BCPST, khâgnes A/L et B/L : chaque filière
-          arrive avec ses matières déjà créées. Les formules se photographient
-          depuis le cours plutôt que de se saisir en LaTeX, et le vocabulaire
-          de langue se récite à voix haute.</p>
-        <p><a href="/prepa/">Comment ça marche en prépa →</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section" markdown="1">
 <div class="conteneur-texte" markdown="1">
 
