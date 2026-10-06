@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
-<link rel="stylesheet" href="/style.css?v=75ed0d0a15">
+<link rel="stylesheet" href="/style.css?v=b94d54f535">
 <script>
 // Pose le drapeau avant le premier affichage : les blocs qui apparaissent au
 // defilement sont masques par « html.js ... ». Pose en bas de page seulement,
@@ -143,7 +143,7 @@ document.documentElement.classList.add('js');
 
 <section class="section ficelles" aria-labelledby="ficelles-titre">
   <div class="conteneur centre">
-    <h2 id="ficelles-titre" class="ficelles-titre"><span class="ficelles-select">Te</span>nez les ficelles de vos révisions</h2>
+    <h2 id="ficelles-titre" class="ficelles-titre">Tenez les ficelles de vos révisions</h2>
     <div class="ficelles-zone revelation fondu">
       <svg class="ficelles-fils" aria-hidden="true" focusable="false"></svg>
     <ul class="ficelles-rang">
@@ -1048,24 +1048,8 @@ document.documentElement.classList.add('js');
   var zone = document.querySelector('.ficelles-zone');
   if (!zone) return;
 
-  var titre = document.querySelector('.ficelles-titre');
   var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var tactile = window.matchMedia('(pointer: coarse)').matches;
-
-  // Le surlignage du debut du titre se deploie a l'arrivee de la section.
-  if (titre) {
-    if (doux || !('IntersectionObserver' in window)) {
-      titre.classList.add('on');
-    } else {
-      var vigie = new IntersectionObserver(function (entrees) {
-        if (entrees[0].isIntersecting) {
-          titre.classList.add('on');
-          vigie.disconnect();
-        }
-      }, { threshold: 0.6 });
-      vigie.observe(titre);
-    }
-  }
 
   var NS = 'http://www.w3.org/2000/svg';
   var svg = zone.querySelector('.ficelles-fils');

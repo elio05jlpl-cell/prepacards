@@ -19,24 +19,8 @@
   var zone = document.querySelector('.ficelles-zone');
   if (!zone) return;
 
-  var titre = document.querySelector('.ficelles-titre');
   var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var tactile = window.matchMedia('(pointer: coarse)').matches;
-
-  // Le surlignage du debut du titre se deploie a l'arrivee de la section.
-  if (titre) {
-    if (doux || !('IntersectionObserver' in window)) {
-      titre.classList.add('on');
-    } else {
-      var vigie = new IntersectionObserver(function (entrees) {
-        if (entrees[0].isIntersecting) {
-          titre.classList.add('on');
-          vigie.disconnect();
-        }
-      }, { threshold: 0.6 });
-      vigie.observe(titre);
-    }
-  }
 
   var NS = 'http://www.w3.org/2000/svg';
   var svg = zone.querySelector('.ficelles-fils');

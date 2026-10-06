@@ -2128,17 +2128,6 @@ main a { transition: color .2s ease; }
   max-width: 20ch;
   text-wrap: balance;
 }
-/* Le debut du titre apparait « selectionne », comme du texte surligne : le
-   bloc se deploie quand la section arrive a l'ecran. */
-.ficelles-select {
-  background: linear-gradient(var(--bleu), var(--bleu)) no-repeat left center / 0% 100%;
-  color: inherit;
-  padding: 0 .04em;
-  transition: background-size .7s ease .25s, color .3s ease .55s;
-}
-html.js .ficelles-titre.on .ficelles-select,
-html:not(.js) .ficelles-select { background-size: 100% 100%; color: #fff; }
-
 .ficelles-zone {
   position: relative;
   max-width: var(--largeur);
@@ -2219,10 +2208,6 @@ html:not(.js) .ficelles-select { background-size: 100% 100%; color: #fff; }
   .ficelles { padding: 28px 0 48px; }
   .ficelles-rang { gap: 0 28px; margin-bottom: 20px; }
   .ficelle { padding: 9px 13px; font-size: .84rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ficelles-select { transition: none; }
 }
 
 /* --- Avis ----------------------------------------------------------- */
