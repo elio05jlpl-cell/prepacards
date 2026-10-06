@@ -2112,6 +2112,121 @@ main a { transition: color .2s ease; }
   .faq-enveloppe { transition: none; }
 }
 
+/* --- Les ficelles ----------------------------------------------------- */
+/*
+   Etiquettes reliees par des fils, qu'on peut attraper et tirer (ficelles.js).
+   Sans JavaScript, ou sur ecran tactile, elles restent en rangees, les fils
+   dessines : la section reste lisible et jolie, simplement immobile.
+*/
+
+.ficelles { padding: 48px 0 72px; overflow: hidden; }
+
+.ficelles-titre {
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  line-height: 1.1;
+  margin: 0 auto;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+/* Le debut du titre apparait « selectionne », comme du texte surligne : le
+   bloc se deploie quand la section arrive a l'ecran. */
+.ficelles-select {
+  background: linear-gradient(var(--bleu), var(--bleu)) no-repeat left center / 0% 100%;
+  color: inherit;
+  padding: 0 .04em;
+  transition: background-size .7s ease .25s, color .3s ease .55s;
+}
+html.js .ficelles-titre.on .ficelles-select,
+html:not(.js) .ficelles-select { background-size: 100% 100%; color: #fff; }
+
+.ficelles-aide { color: var(--gris); margin: .9em 0 0; }
+
+.ficelles-zone {
+  position: relative;
+  max-width: var(--largeur);
+  margin: 2.4em auto 0;
+  padding: 8px 0;
+}
+
+.ficelles-fils {
+  position: absolute; left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.ficelles-fils path {
+  fill: none;
+  stroke: #aebbd3;
+  stroke-width: 1;
+}
+
+.ficelles-rang {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 0 56px;
+  margin-bottom: 36px;
+}
+
+.ficelle {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 24px;
+  margin: 0 0 12px;
+  background: #fff;
+  border: 1px solid var(--bord);
+  color: var(--gris);
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  font-weight: 500;
+  white-space: nowrap;
+  user-select: none; -webkit-user-select: none;
+  outline: none;
+}
+/* Les deux petits carres noirs d'ou partent les fils, comme des points
+   d'attache. */
+.ficelle::before, .ficelle::after {
+  content: "";
+  position: absolute; top: 50%;
+  width: 5px; height: 5px;
+  margin-top: -2.5px;
+  background: var(--encre);
+}
+.ficelle::before { left: -3px; }
+.ficelle::after { right: -3px; }
+
+.ficelle.allumee { color: var(--encre); font-weight: 600; }
+.ficelle.allumee svg { color: var(--bleu); flex: none; }
+
+/* Une fois en mode libre (JS), chaque etiquette se place en absolu, et la
+   zone garde la hauteur qu'avaient les rangees. */
+.ficelles-zone.libre .ficelle {
+  position: absolute; left: 0; top: 0;
+  margin: 0;
+  cursor: grab;
+  touch-action: none;
+  will-change: transform;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.ficelles-zone.libre .ficelle:hover { border-color: #c2d1ee; }
+.ficelles-zone.libre .ficelle:focus-visible {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--bleu);
+}
+.ficelles-zone.libre .ficelle.saisie {
+  cursor: grabbing;
+  z-index: 3;
+  border-color: var(--bleu);
+  box-shadow: 0 18px 36px -10px rgba(30, 58, 138, .35);
+}
+
+@media (max-width: 760px) {
+  .ficelles { padding: 28px 0 48px; }
+  .ficelles-rang { gap: 0 28px; margin-bottom: 20px; }
+  .ficelle { padding: 12px 16px; font-size: .98rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ficelles-select { transition: none; }
+}
+
 /* --- Avis ----------------------------------------------------------- */
 
 .avis-section { padding-top: 10px; }
