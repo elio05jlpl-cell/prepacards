@@ -45,13 +45,13 @@ faq: true
       <li class="ficelle" tabindex="0"><span>Lecture labiale</span></li>
     </ul>
     <ul class="ficelles-rang">
-      <li class="ficelle allumee" tabindex="0"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 5H7l6 7-6 7h11"/></svg><span>Photo de formule</span></li>
+      <li class="ficelle" tabindex="0"><span>Filières</span></li>
       <li class="ficelle allumee" tabindex="0"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4M4 12h16"/></svg><span>Scan de feuille</span></li>
       <li class="ficelle" tabindex="0"><span>Import Anki et Quizlet</span></li>
     </ul>
     <ul class="ficelles-rang">
       <li class="ficelle" tabindex="0"><span>Jours de repos</span></li>
-      <li class="ficelle allumee" tabindex="0"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 8l9 5 9-5-9-5zM3 13l9 5 9-5"/></svg><span>Filières</span></li>
+      <li class="ficelle allumee" tabindex="0"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 5H7l6 7-6 7h11"/></svg><span>Photo de formule</span></li>
       <li class="ficelle" tabindex="0"><span>Statistiques</span></li>
     </ul>
     </div>

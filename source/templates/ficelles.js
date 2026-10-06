@@ -42,6 +42,10 @@
   var svg = zone.querySelector('.ficelles-fils');
   var rangs = [].slice.call(zone.querySelectorAll('.ficelles-rang'));
   var tags = [].slice.call(zone.querySelectorAll('.ficelle'));
+  // Ecart vertical, au bord de la page, des fils qui arrivent a une etiquette :
+  // un par rangee et par cote monte, l'autre descend.
+  var PENTES_GAUCHE = [[-190, 40], [-120, 130], [-70, 190], [-30, 160]];
+  var PENTES_DROITE = [[-150, 70], [-100, 150], [-60, 210], [-20, 170]];
   var ECART = 8;            // espace minimal entre deux etiquettes
   var etat = [];            // {el, x, y, w, h} par etiquette
   var fils = [];            // {a, pa, b, pb | fixe, repos, chemin, oscille}
@@ -127,29 +131,19 @@
       for (var k = 0; k + 1 < ligne.length; k++) {
         ajouterFil({ a: ligne[k], pa: 'r', b: ligne[k + 1], pb: 'l' });
       }
-      // Vers les bords de la zone : la premiere et la derniere sont tenues.
+      // Des fils viennent des bords de la PAGE vers la premiere et la derniere
+      // etiquette de chaque rangee, comme chez l'inspiration de cette
+      // section : deux par cote, l'un d'en haut, l'autre d'en bas. Ils ne se
+      // croisent qu'a l'exterieur, ou les pentes se rejoignent, jamais entre
+      // les etiquettes.
       var premiere = ligne[0], derniere = ligne[ligne.length - 1];
-      var yg = port(premiere, 'l').y + (r % 2 ? -120 : 90);
-      var yd = port(derniere, 'r').y + (r % 2 ? 100 : -130);
-      // Les fils filent jusqu'aux bords de la PAGE, pas seulement de la zone :
-      // la section les rogne, ils paraissent venir de plus loin.
-      ajouterFil({ a: premiere, pa: 'l', fixe: { x: -gauche, y: yg } });
-      ajouterFil({ a: derniere, pa: 'r', fixe: { x: largeur + droite, y: yd } });
-      // Vers la rangee du dessous, en diagonale : du point d'attache droit
-      // d'une etiquette au point gauche d'une voisine du dessous, ou
-      // l'inverse une fois sur deux. Les fils se croisent, comme des cordes
-      // tendues entre des planches.
-      if (r + 1 < indices.length) {
-        var suivante = indices[r + 1];
-        var m = suivante.length;
-        ligne.forEach(function (i, k) {
-          if (k % 2 === 0) {
-            ajouterFil({ a: i, pa: 'r', b: suivante[(k + 1) % m], pb: 'l' });
-          } else {
-            ajouterFil({ a: i, pa: 'l', b: suivante[(k + m - 1) % m], pb: 'r' });
-          }
-        });
-      }
+      var pg = port(premiere, 'l'), pd = port(derniere, 'r');
+      PENTES_GAUCHE[r % PENTES_GAUCHE.length].forEach(function (dy) {
+        ajouterFil({ a: premiere, pa: 'l', fixe: { x: -gauche, y: pg.y + dy } });
+      });
+      PENTES_DROITE[r % PENTES_DROITE.length].forEach(function (dy) {
+        ajouterFil({ a: derniere, pa: 'r', fixe: { x: largeur + droite, y: pd.y + dy } });
+      });
     });
   }
 
