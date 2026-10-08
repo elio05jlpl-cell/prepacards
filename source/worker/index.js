@@ -18,6 +18,7 @@
 import { maintenant, normaliserEmail, signatureStripeValide } from './securite.js';
 import { lireFeuille } from './scan.js';
 import { compteExiste } from './existence.js';
+import { sInscrire as sInscrireAttente } from './attente.js';
 import { disponible as courrielDisponible, envoyer as envoyerCourriel,
          messageBienvenue, messageResiliation } from './courriel.js';
 
@@ -246,6 +247,8 @@ const ROUTES = {
   // La page de connexion demande si l'adresse saisie a deja un compte, pour
   // savoir s'il faut demander le mot de passe ou en faire choisir un.
   'POST /api/compte/existe': compteExiste,
+  // Liste d'attente pour Mac, iPhone et Android (page Telecharger).
+  'POST /api/attente': sInscrireAttente,
 };
 
 export default {

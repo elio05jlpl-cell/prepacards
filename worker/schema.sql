@@ -311,3 +311,20 @@ $$;
 
 revoke execute on function public.compte_existe(text) from public, anon, authenticated;
 grant execute on function public.compte_existe(text) to service_role;
+
+-- --------------------------------------------------------------------------
+-- Liste d'attente : Mac, iPhone, Android
+--
+-- Alimentee par le Worker (POST /api/attente) avec la cle service_role.
+-- Aucune policy : ni le navigateur ni l'application ne peuvent la lire ou
+-- l'ecrire. Une adresse, une fois : une seconde inscription est ignoree.
+-- Elle sert a decider de l'ordre des portages, puis a prevenir une fois.
+-- --------------------------------------------------------------------------
+create table if not exists public.liste_attente (
+    id          bigint generated always as identity primary key,
+    email       text not null unique,
+    plateformes text[] not null default '{}',
+    cree_le     timestamptz not null default now()
+);
+
+alter table public.liste_attente enable row level security;

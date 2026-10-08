@@ -251,6 +251,7 @@ def scripts_animes(corps: str) -> str:
                    ('class="feuille-texte"', "pages-vivantes.js"),
                    ('class="avis-grille', "avis.js"),
                    ('class="ficelles-zone', "ficelles.js"),
+                   ('id="attente-app"', "attente.js"),
                    # Quatrieme valeur : bibliotheque vendue a charger AVANT
                    # le script, en balise <script src> classique - ces deux
                    # pages parlent a Supabase directement, sans passer par

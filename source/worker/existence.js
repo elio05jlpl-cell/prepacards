@@ -25,33 +25,14 @@
 // sur /api/compte/existe).
 
 import { normaliserEmail } from './securite.js';
+import { creerLimiteur } from './limiteur.js';
 
-const FENETRE_MS = 10 * 60 * 1000;
-const MAX_PAR_FENETRE = 20;
-const passages = new Map();
+const limiteur = creerLimiteur(20, 10 * 60 * 1000);
 
 /** Vrai si cette IP a depasse son quota pour la fenetre en cours. */
-export function tropDeDemandes(ip, maintenant = Date.now()) {
-  const cle = ip || 'inconnue';
-  const recents = (passages.get(cle) || []).filter((t) => maintenant - t < FENETRE_MS);
-  if (recents.length >= MAX_PAR_FENETRE) {
-    passages.set(cle, recents);
-    return true;
-  }
-  recents.push(maintenant);
-  passages.set(cle, recents);
-  // On n'accumule pas indefiniment des adresses vues une fois.
-  if (passages.size > 5000) {
-    for (const [k, v] of passages) {
-      if (!v.some((t) => maintenant - t < FENETRE_MS)) passages.delete(k);
-    }
-  }
-  return false;
-}
+export const tropDeDemandes = (ip, maintenant) => limiteur.tropDeDemandes(ip, maintenant);
 
-export function oublierPassages() {
-  passages.clear();
-}
+export const oublierPassages = () => limiteur.oublier();
 
 export function emailValide(email) {
   return /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/.test(email) && email.length <= 254;

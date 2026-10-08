@@ -144,6 +144,15 @@ web.
 Si vous nous écrivez, votre adresse e-mail et le contenu de votre message sont
 conservés le temps de traiter votre demande, puis supprimés.
 
+**La liste d'attente** (page [Télécharger](/telecharger/#autres-systemes)) : si
+vous demandez une version Mac, iPhone ou Android, nous enregistrons **votre
+adresse e-mail et les systèmes que vous avez cochés**, rien d'autre — ni date de
+visite, ni identifiant. Elle sert à décider de l'ordre des portages, puis à
+vous écrire **une fois**, à la sortie de la version attendue. Elle est stockée
+chez Supabase, comme le compte, et n'est transmise à personne. Pour être
+retiré de la liste, écrivez à [contact@prepacards.fr](mailto:contact@prepacards.fr) ;
+la liste est de toute façon supprimée une fois les versions annoncées.
+
 ## Base légale et durées
 
 <div class="tableau-enveloppe" markdown="1">
@@ -155,7 +164,7 @@ conservés le temps de traiter votre demande, puis supprimés.
 | E-mail de réinitialisation | Exécution du contrat | Le lien vaut une heure ; l'envoi est journalisé par Resend [durée à vérifier] |
 | Journaux du serveur web | Intérêt légitime (sécurité) | [durée pratiquée par votre hébergeur] |
 | Réponse à un message | Intérêt légitime | Le temps de l'échange, puis suppression |
-| Liste d'attente Premium ou version Mac | Consentement | Jusqu'au retrait de votre consentement |
+| Liste d'attente (Mac, iPhone, Android) | Consentement | Jusqu'au retrait de votre consentement, ou à l'annonce de la version attendue |
 
 </div>
 

@@ -74,10 +74,29 @@ laisser croire le contraire. La vérification de la prononciation et la lecture
 labiale s'appuient sur des bibliothèques installées localement, ce qui rend le
 portage long — particulièrement sur mobile.
 
-Si vous êtes sur Mac ou si une version mobile vous serait utile, dites-le :
-c'est le nombre de demandes qui décidera de l'ordre des priorités.
+Si une version Mac ou mobile vous serait utile, dites-le : c'est le nombre de
+demandes qui décidera de l'ordre des priorités, et nous vous écrirons **une
+seule fois**, le jour où la version que vous attendez existe.
 
-<p><a class="bouton-secondaire" href="mailto:contact@prepacards.fr?subject=Version%20Mac%20ou%20mobile">Demander une version Mac ou mobile</a></p>
+<div id="attente-app" class="attente-zone">
+<form id="attente-form" class="attente-form" novalidate>
+<fieldset class="attente-choix">
+<legend>Je voudrais PrépaCards sur</legend>
+<label><input type="checkbox" name="plateformes" value="mac"> Mac</label>
+<label><input type="checkbox" name="plateformes" value="iphone"> iPhone et iPad</label>
+<label><input type="checkbox" name="plateformes" value="android"> Android</label>
+</fieldset>
+<label for="attente-email" class="attente-etiquette">Adresse e-mail</label>
+<input id="attente-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="vous@exemple.fr" required>
+<div class="attente-piege" aria-hidden="true"><label>Ne pas remplir<input id="attente-piege" name="site_web" type="text" tabindex="-1" autocomplete="off"></label></div>
+<p id="attente-message" class="compte-message" hidden></p>
+<button class="bouton" type="submit" id="attente-valider">Me prévenir</button>
+<p class="attente-note">Votre adresse ne sert qu'à vous prévenir de cette sortie, jamais à
+autre chose, et n'est transmise à personne. Pour la faire retirer, écrivez à
+<a href="mailto:contact@prepacards.fr">contact@prepacards.fr</a>. Voir la
+<a href="/confidentialite/">politique de confidentialité</a>.</p>
+</form>
+</div>
 
 ## Questions fréquentes
 

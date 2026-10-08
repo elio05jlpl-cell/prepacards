@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
-<link rel="stylesheet" href="/style.css?v=862f2eb1be">
+<link rel="stylesheet" href="/style.css?v=681ab32345">
 <script>
 // Pose le drapeau avant le premier affichage : les blocs qui apparaissent au
 // defilement sont masques par « html.js ... ». Pose en bas de page seulement,
@@ -172,9 +172,28 @@ premier usage de la fonction concernée, puis conservés :</p>
 laisser croire le contraire. La vérification de la prononciation et la lecture
 labiale s'appuient sur des bibliothèques installées localement, ce qui rend le
 portage long — particulièrement sur mobile.</p>
-<p>Si vous êtes sur Mac ou si une version mobile vous serait utile, dites-le :
-c'est le nombre de demandes qui décidera de l'ordre des priorités.</p>
-<p><a class="bouton-secondaire" href="mailto:contact@prepacards.fr?subject=Version%20Mac%20ou%20mobile">Demander une version Mac ou mobile</a></p>
+<p>Si une version Mac ou mobile vous serait utile, dites-le : c'est le nombre de
+demandes qui décidera de l'ordre des priorités, et nous vous écrirons <strong>une
+seule fois</strong>, le jour où la version que vous attendez existe.</p>
+<div id="attente-app" class="attente-zone">
+<form id="attente-form" class="attente-form" novalidate>
+<fieldset class="attente-choix">
+<legend>Je voudrais PrépaCards sur</legend>
+<label><input type="checkbox" name="plateformes" value="mac"> Mac</label>
+<label><input type="checkbox" name="plateformes" value="iphone"> iPhone et iPad</label>
+<label><input type="checkbox" name="plateformes" value="android"> Android</label>
+</fieldset>
+<label for="attente-email" class="attente-etiquette">Adresse e-mail</label>
+<input id="attente-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="vous@exemple.fr" required>
+<div class="attente-piege" aria-hidden="true"><label>Ne pas remplir<input id="attente-piege" name="site_web" type="text" tabindex="-1" autocomplete="off"></label></div>
+<p id="attente-message" class="compte-message" hidden></p>
+<button class="bouton" type="submit" id="attente-valider">Me prévenir</button>
+<p class="attente-note">Votre adresse ne sert qu'à vous prévenir de cette sortie, jamais à
+autre chose, et n'est transmise à personne. Pour la faire retirer, écrivez à
+<a href="mailto:contact@prepacards.fr">contact@prepacards.fr</a>. Voir la
+<a href="/confidentialite/">politique de confidentialité</a>.</p>
+</form>
+</div>
 
 <section class="faq">
   <p class="faq-eyebrow">FAQ</p>
@@ -517,6 +536,69 @@ document.documentElement.classList.add('js');
   window.addEventListener('scroll', demander, { passive: true });
   window.addEventListener('resize', demander, { passive: true });
   majEtat();
+})();
+</script>
+<script>
+// Liste d'attente : Mac, iPhone, Android
+// ======================================
+//
+// Envoie l'adresse et les systemes coches au Worker (POST /api/attente).
+// La reponse est la meme que l'adresse soit nouvelle ou deja inscrite : la
+// page ne doit pas permettre de savoir qui est dans la liste.
+
+(function () {
+  var zone = document.getElementById('attente-app');
+  if (!zone) return;
+
+  var form = document.getElementById('attente-form');
+  var email = document.getElementById('attente-email');
+  var piege = document.getElementById('attente-piege');
+  var message = document.getElementById('attente-message');
+  var bouton = document.getElementById('attente-valider');
+
+  function dire(texte, erreur) {
+    message.textContent = texte || '';
+    message.hidden = !texte;
+    message.className = 'compte-message' + (erreur ? ' erreur' : '');
+  }
+
+  function plateformes() {
+    return [].slice.call(form.querySelectorAll('input[name="plateformes"]:checked'))
+      .map(function (c) { return c.value; });
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var adresse = email.value.trim();
+    var choix = plateformes();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(adresse)) {
+      dire('Entrez une adresse e-mail valide.', true);
+      email.focus();
+      return;
+    }
+    if (!choix.length) { dire('Cochez au moins un système.', true); return; }
+
+    bouton.disabled = true;
+    var libelle = bouton.textContent;
+    bouton.textContent = 'Un instant…';
+    dire('');
+    try {
+      var reponse = await fetch('/api/attente', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email: adresse, plateformes: choix, site_web: piege.value }),
+      });
+      var corps = await reponse.json().catch(function () { return {}; });
+      if (!reponse.ok) throw new Error(corps.erreur || 'Inscription impossible.');
+      form.reset();
+      dire('C’est noté. Nous vous écrirons une seule fois, à la sortie de la version attendue.', false);
+    } catch (erreur) {
+      dire(erreur.message || 'Inscription impossible. Réessayez dans un instant.', true);
+    } finally {
+      bouton.disabled = false;
+      bouton.textContent = libelle;
+    }
+  });
 })();
 </script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "570f41119b974bfda2ebca8dfff29bbf"}'></script>
