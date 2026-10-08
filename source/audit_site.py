@@ -167,6 +167,41 @@ def verifier_plan_du_site(pages: list) -> list:
 
 
 
+def verifier_consignes_robots() -> list:
+    """La consigne « robots » ecrite dans un fichier source est-elle celle de la
+    page produite ?
+
+    Quatre pages utilitaires (compte, merci, mot de passe, « obtenir un
+    paquet ») demandaient « robots: noindex » et sortaient pourtant en
+    « index, follow », dans le plan du site : le build ne lisait qu'une autre
+    ecriture. Rien ne le signalait, puisque la page existait bien.
+    """
+    problemes = []
+    dossier = Path(__file__).parent / "content"
+    for source in sorted(dossier.glob("**/*.md")):
+        texte = source.read_text(encoding="utf-8")
+        entete = re.match(r"---\n(.*?)\n---", texte, re.S)
+        if not entete:
+            continue
+        cles = dict(re.findall(r"^([a-z_]+):\s*(.*)$", entete.group(1), re.M))
+        voulue = cles.get("robots", "").strip().lower()
+        if not voulue:
+            continue
+        slug = cles.get("slug", source.stem).strip()
+        page = PUBLIC / ("index.html" if slug == "index" else f"{slug}/index.html")
+        if not page.exists():
+            continue
+        produite = (re.search(r'name="robots" content="([^"]*)"',
+                              page.read_text(encoding="utf-8")) or [None, ""])[1]
+        demandees = {v.strip() for v in voulue.split(",")}
+        obtenues = {v.strip() for v in produite.split(",")}
+        if not demandees <= obtenues:
+            problemes.append(
+                f"/{slug}/ : « robots: {voulue} » demande dans {source.name}, "
+                f"mais la page sort en « {produite} »")
+    return problemes
+
+
 def verifier_redirections() -> list:
     """Le fichier _redirects ne doit contenir que des adresses relatives.
 
@@ -349,6 +384,7 @@ def auditer() -> list:
 
     problemes += verifier_plan_du_site(pages)
     problemes += verifier_redirections()
+    problemes += verifier_consignes_robots()
 
     # Taille des fichiers et nature de ce qui part en ligne
     for fichier in PUBLIC.rglob("*"):

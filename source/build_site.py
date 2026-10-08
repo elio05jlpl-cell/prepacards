@@ -289,6 +289,31 @@ def scripts_animes(corps: str) -> str:
     return chr(10).join(morceaux)
 
 
+DIRECTIVES_ROBOTS = {"index", "noindex", "follow", "nofollow"}
+
+
+def directive_robots(meta: dict) -> str:
+    """La balise « robots » d'une page, d'apres son en-tete.
+
+    « robots: noindex, follow » est repris tel quel (les directives inconnues
+    sont ecartees : une faute de frappe ne doit pas produire une balise que les
+    moteurs ignorent en silence). « noindex: true » reste accepte. A defaut :
+    « index, follow ».
+    """
+    brut = (meta.get("robots") or "").strip().lower()
+    if brut:
+        valeurs = [v.strip() for v in brut.split(",") if v.strip() in DIRECTIVES_ROBOTS]
+        if valeurs:
+            if not any(v in ("index", "noindex") for v in valeurs):
+                valeurs.insert(0, "index")
+            if not any(v in ("follow", "nofollow") for v in valeurs):
+                valeurs.append("follow")
+            return ", ".join(valeurs)
+    if meta.get("noindex", "").strip().lower() == "true":
+        return "noindex, follow"
+    return "index, follow"
+
+
 def ancre_matiere(nom: str) -> str:
     """Identifiant d'ancre pour une matiere : « Maths approfondies » ->
     « maths-approfondies ».
@@ -1112,7 +1137,12 @@ def load_page(path: Path) -> dict:
         "date": meta.get("date", ""),
         "hero": meta.get("hero", ""),
         "nav_label": meta.get("nav_label", ""),
-        "noindex": meta.get("noindex", "").lower() == "true",
+        # Deux ecritures : « noindex: true » (ancienne) et « robots: noindex,
+        # follow » (celle des pages utilitaires). La seconde etait IGNOREE : les
+        # pages compte, merci, mot de passe et « obtenir un paquet » sortaient en
+        # « index, follow » et figuraient dans le plan du site.
+        "robots": directive_robots(meta),
+        "noindex": "noindex" in directive_robots(meta),
         "faq": meta.get("faq", ""),
         "body_html": envelopper(html_body),
         "sommaire_html": sommaire_html,
@@ -1577,7 +1607,7 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{og_image}}": SITE_URL + DEFAULT_OG,
         "{{year}}": str(date.today().year),
         "{{mesure}}": balise_mesure(),
-        "{{robots}}": "noindex, follow" if page["noindex"] else "index, follow",
+        "{{robots}}": page["robots"],
         "{{date_affichee}}": format_date(page["date"]),
         "{{date_iso}}": page["date"],
         "{{lien_telechargement}}": DOWNLOAD_URL,
@@ -1919,7 +1949,8 @@ def build() -> None:
             "espacée, récitation à l'oral et formules de maths. Des retours "
             "concrets sur la préparation des concours."
         ),
-        "date": "", "hero": "", "nav_label": "", "noindex": False, "faq": "",
+        "date": "", "hero": "", "nav_label": "", "noindex": False,
+        "robots": "index, follow", "faq": "",
         "body_html": bibliotheque_blog(articles),
         "raw_body": "",
     }
