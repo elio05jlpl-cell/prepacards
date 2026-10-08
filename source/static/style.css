@@ -2216,6 +2216,26 @@ main a { transition: color .2s ease; }
   .ficelle { padding: 9px 13px; font-size: .84rem; }
 }
 
+/* --- Guides d'une filiere et « pour aller plus loin » --------------------- */
+
+.guides-filiere { margin: 2.4em 0 1.6em; }
+.guides-liste { list-style: none; margin: 1em 0 0; padding: 0; }
+.guides-liste li {
+  padding: 14px 0; border-top: 1px solid var(--bord);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.guides-liste li:last-child { border-bottom: 1px solid var(--bord); }
+.guides-liste a { font-weight: 700; font-size: 1.05rem; }
+.guides-liste span { color: var(--gris); font-size: .95rem; line-height: 1.45; }
+
+.pour-aller-plus-loin {
+  margin: 2.2em 0 0; padding: 20px 24px;
+  background: var(--bleu-pale); border-left: 3px solid var(--bleu);
+}
+.pour-aller-plus-loin h2 { margin: 0 0 .5em; font-size: 1.1rem; }
+.pour-aller-plus-loin ul { margin: 0; padding-left: 1.1em; }
+.pour-aller-plus-loin li { margin: .3em 0; }
+
 /* --- Avis ----------------------------------------------------------- */
 
 .avis-section { padding-top: 10px; }

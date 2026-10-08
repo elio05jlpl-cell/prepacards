@@ -64,6 +64,8 @@ lettres, philosophie, histoire, langue vivante, langues anciennes pour l'A/L ;
 mathématiques, lettres, philosophie, histoire, sciences sociales et anglais
 pour la B/L.
 
+{{articles_filiere}}
+
 ## Questions fréquentes
 
 ### Les flashcards sont-elles adaptées aux matières littéraires ?

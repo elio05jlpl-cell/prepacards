@@ -77,6 +77,8 @@ clic.
    produisent un arriéré décourageant. Quinze minutes tous les jours valent
    mieux que deux heures le dimanche.
 
+{{articles_filiere}}
+
 ## Questions fréquentes
 
 ### Faut-il abandonner les fiches papier ?

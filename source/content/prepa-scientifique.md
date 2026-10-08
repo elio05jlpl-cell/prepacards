@@ -80,6 +80,8 @@ moment.
 mathématiques, physique, informatique ou chimie, sciences de l'ingénieur,
 anglais, français-philosophie.
 
+{{articles_filiere}}
+
 ## Questions fréquentes
 
 ### Les flashcards sont-elles utiles en prépa scientifique ?

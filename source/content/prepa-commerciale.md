@@ -69,6 +69,8 @@ propres textes.
 À la première ouverture, PrépaCards crée vos paquets : mathématiques, ESH,
 géopolitique, culture générale, anglais, LV2.
 
+{{articles_filiere}}
+
 ## Questions fréquentes
 
 ### Combien de mots de vocabulaire faut-il en prépa ECG ?

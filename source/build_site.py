@@ -148,6 +148,7 @@ BLOC_TELECHARGEMENT_ATTENTE = """<div class="encart encart-attention">
 # Marqueurs dont la valeur est un bloc HTML, et non du texte en
 # ligne : ils ne doivent jamais rester enfermes dans un <p>.
 MARQUEURS_DE_BLOC = ("{{bloc_telechargement}}", "{{bandeau_ecoles}}",
+                     "{{articles_filiere}}",
                      "{{bloc_decks}}", "{{bloc_paiement}}",
                      "{{bouton_mensuel}}", "{{bouton_annuel}}")
 
@@ -1095,6 +1096,216 @@ def choisir_recommandations(article: dict, tous: list, nombre: int = 4) -> list:
     return candidats[:nombre]
 
 
+# ------------------------------------------------------------------
+# Maillage interne : des pages pivots vers les articles, et retour
+# ------------------------------------------------------------------
+#
+# Le bloc « A lire egalement » relie les articles entre eux, au hasard. Il
+# n'envoyait RIEN vers les pages qui visent de vraies requetes (guides, pages
+# filiere, comparatifs) : /anki-prepa-ecg/ ne recevait aucun lien depuis le
+# contenu, les quatre pages filiere en renvoyaient deux chacune vers le blog.
+# Deux blocs corrigent cela, tous deux calcules (rien a maintenir a la main) :
+#
+#   - sur chaque page filiere, la liste des articles qui la concernent ;
+#   - sur chaque article, trois pages utiles choisies par matiere et filiere.
+
+#: Articles publies, connus AVANT le rendu des pages (les pages filiere les
+#: listent). Rempli au debut de la construction.
+ARTICLES_PUBLIES = []
+
+#: Page filiere -> filiere des articles qu'elle liste (None : toutes).
+HUBS_FILIERE = {
+    "prepa": None,
+    "prepa-commerciale": "commerciale",
+    "prepa-scientifique": "scientifique",
+    "prepa-litteraire": "litteraire",
+}
+TITRES_HUBS = {
+    "prepa": "Nos guides pour bien réviser en prépa",
+    "prepa-commerciale": "Nos guides pour la prépa commerciale",
+    "prepa-scientifique": "Nos guides pour la prépa scientifique",
+    "prepa-litteraire": "Nos guides pour la khâgne",
+}
+#: Matieres qu'une filiere travaille : un article « pour toutes les filieres »
+#: n'est propose qu'a celles que sa matiere concerne.
+MATIERES_DE_FILIERE = {
+    "commerciale": {"anglais", "langues", "allemand", "espagnol", "italien",
+                    "geopolitique", "culture-generale", "methode", "maths"},
+    "scientifique": {"maths", "physique", "chimie", "informatique",
+                     "sciences-industrielles", "methode", "anglais", "langues"},
+    "litteraire": {"philosophie", "histoire", "culture-generale", "langues",
+                   "anglais", "allemand", "espagnol", "italien", "methode"},
+}
+NOMBRE_GUIDES_HUB = 10
+
+
+def articles_pour_hub(slug: str) -> list:
+    """Les articles a lister sur une page filiere, du plus pertinent au moins."""
+    filiere = HUBS_FILIERE.get(slug)
+    if filiere is None:
+        return list(ARTICLES_PUBLIES)[:NOMBRE_GUIDES_HUB + 2]
+    matieres = MATIERES_DE_FILIERE.get(filiere, set())
+    propres, autres = [], []
+    for a in ARTICLES_PUBLIES:                      # deja du plus recent au plus ancien
+        if filiere in a["filiere"]:
+            propres.append(a)
+        elif "toutes" in a["filiere"] and matieres & set(a["matiere"]):
+            autres.append(a)
+    return (propres + autres)[:NOMBRE_GUIDES_HUB]
+
+
+def bloc_articles_filiere(page: dict) -> str:
+    slug = page.get("slug", "")
+    if slug not in HUBS_FILIERE:
+        return ""
+    articles = articles_pour_hub(slug)
+    if not articles:
+        return ""
+    lignes = []
+    for a in articles:
+        lignes.append(
+            f'<li><a href="/blog/{a["slug"]}/">{html.escape(titre_affiche(a["title"]))}</a>'
+            f'<span>{html.escape(a["description"])}</span></li>')
+    return (
+        '<section class="guides-filiere">\n'
+        f'<h2>{html.escape(TITRES_HUBS[slug])}</h2>\n'
+        '<ul class="guides-liste">\n' + "\n".join(lignes) + "\n</ul>\n"
+        '<p><a href="/blog/">Tous les articles du blog »</a></p>\n'
+        "</section>")
+
+
+#: Pages vers lesquelles un article peut renvoyer. « generique » : utile a
+#: n'importe quel article de methode ; les autres le sont par leur matiere ou
+#: leur filiere.
+PAGES_PIVOTS = [
+    {"url": "/vocabulaire-anglais-prepa-ecg/", "label": "Les 20 thèmes de vocabulaire d'anglais pour l'ECG",
+     "matieres": {"anglais", "langues"}, "filieres": {"commerciale"},
+     "mots": {"vocabulaire", "anglais"}},
+    {"url": "/colle-anglais-prepa/", "label": "Préparer une colle d'anglais",
+     "matieres": {"anglais", "langues"}, "filieres": set(), "mots_suffisent": True,
+     "mots": {"kholle", "colle", "khôlle"}},
+    {"url": "/memoriser-vocabulaire-anglais/", "label": "Mémoriser le vocabulaire anglais durablement",
+     "matieres": {"anglais", "langues"}, "filieres": set(),
+     "mots": {"vocabulaire", "memoriser", "mémoriser"}},
+    {"url": "/anki-prepa-ecg/", "label": "Anki en prépa ECG : faut-il s'y mettre ?",
+     "matieres": set(), "filieres": {"commerciale"}, "generique": True,
+     "mots": {"anki", "flashcards", "repetition", "répétition"}},
+    {"url": "/anki-prepa-mpsi-pcsi/", "label": "Anki en MPSI et PCSI : que mettre dessus",
+     "matieres": {"maths", "physique", "chimie", "informatique", "sciences-industrielles"},
+     "filieres": {"scientifique"}, "generique": True,
+     "mots": {"anki", "flashcards"}},
+    {"url": "/reviser-prepa-mpsi-pcsi/", "label": "Réviser en MPSI et PCSI : l'organisation",
+     "matieres": {"maths", "physique", "chimie", "informatique", "sciences-industrielles"},
+     "filieres": {"scientifique"}, "mots": {"organisation", "semaine", "reviser", "réviser"}},
+    {"url": "/fiches-de-revision-prepa/", "label": "Fiches de révision en prépa : sont-elles utiles ?",
+     "matieres": {"methode"}, "filieres": set(), "generique": True,
+     "mots": {"fiches", "fiche", "notes", "cours"}},
+    {"url": "/alternative-anki/", "label": "PrépaCards, l'alternative à Anki en français",
+     "matieres": {"methode"}, "filieres": set(), "mots_requis": True,
+     "mots": {"anki"}},
+    {"url": "/alternative-quizlet/", "label": "Une alternative à Quizlet, gratuite et sans pub",
+     "matieres": {"methode"}, "filieres": set(), "mots_requis": True,
+     "mots": {"quizlet"}},
+    {"url": "/importer-anki-quizlet/", "label": "Importer ses paquets Anki ou Quizlet",
+     "matieres": {"methode"}, "filieres": set(), "mots_requis": True,
+     "mots": {"importer", "anki", "quizlet"}},
+    {"url": "/fonctionnalites/", "label": "Vérification à l'oral et formules en photo",
+     "matieres": {"langues", "anglais", "allemand", "espagnol", "italien", "maths"},
+     "filieres": set(), "generique": True,
+     "mots": {"voix", "oral", "prononcer", "formules", "photo"}},
+    {"url": "/decks/", "label": "Les 85 paquets de flashcards gratuits",
+     "matieres": {"anglais", "langues", "allemand", "espagnol", "italien", "maths"}, "filieres": set(),
+     "mots": {"vocabulaire", "paquets", "liste"}},
+    {"url": "/prepa-commerciale/", "label": "PrépaCards pour la prépa commerciale (ECG, ECT)",
+     "matieres": set(), "filieres": {"commerciale"}, "hub": True, "mots": {"ecg", "ect", "commerciale"}},
+    {"url": "/prepa-scientifique/", "label": "PrépaCards pour la prépa scientifique",
+     "matieres": set(), "filieres": {"scientifique"}, "hub": True, "mots": {"mpsi", "pcsi", "scientifique"}},
+    {"url": "/prepa-litteraire/", "label": "PrépaCards pour la khâgne",
+     "matieres": set(), "filieres": {"litteraire"}, "hub": True, "mots": {"khagne", "khâgne", "litteraire", "littéraire"}},
+]
+NOMBRE_PIVOTS = 4
+MINIMUM_PIVOTS = 2
+
+
+def _sans_accent(texte: str) -> str:
+    import unicodedata
+
+    return "".join(c for c in unicodedata.normalize("NFD", texte)
+                   if unicodedata.category(c) != "Mn").lower()
+
+
+def choisir_pivots(article: dict, nombre: int = NOMBRE_PIVOTS) -> list:
+    """Les pages les plus utiles a la suite d'un article.
+
+    Une page qui vise une matiere (vocabulaire d'anglais, MPSI...) n'est proposee
+    que si la matiere de l'article correspond : sans cette regle, un article de
+    maths en ECG renvoyait vers le vocabulaire d'anglais parce que les deux
+    sont « commerciale ». Score : matiere en commun, puis filiere, puis mots du
+    titre ou de la description. Les pages generiques (outils, comparatifs)
+    completent quand il y a moins de deux choix pertinents ; leur ordre varie
+    d'un article a l'autre (graine = son slug) pour que chacune recoive des
+    liens, sans que le resultat change d'une construction a l'autre.
+    """
+    matieres, filieres = set(article["matiere"]), set(article["filiere"])
+    # Les MOTS de l'article, entiers : « colle » ne doit pas se reconnaitre dans
+    # « collecter », ni « oral » dans « choral ».
+    mots_article = set(re.findall(r"[a-z0-9]+", _sans_accent(" ".join(
+        [article["slug"].replace("-", " "), article["title"], article["description"]]))))
+    candidats = list(PAGES_PIVOTS)
+    random.Random(article["slug"]).shuffle(candidats)
+
+    def score(p):
+        # Une page reservee a une filiere ne se propose pas a un article d'une autre.
+        if p["filieres"] and "toutes" not in filieres and not (filieres & p["filieres"]):
+            return -1
+        # Un article « pour toutes les filieres » n'est pas pour autant celui des
+        # scientifiques : une page de filiere ne lui est proposee que si son
+        # texte y renvoie (matiere, mot-cle) - jamais comme simple complement.
+        if (p["filieres"] and "toutes" in filieres and not (filieres & p["filieres"])
+                and not (matieres & p["matieres"])
+                and not any(_sans_accent(m) in mots_article for m in p.get("mots", ()))):
+            return -1
+        recoupe_matiere = bool(matieres & p["matieres"])
+        mot_trouve = any(_sans_accent(m) in mots_article for m in p.get("mots", ()))
+        # Une page produit ou comparatif n'est proposee que si l'article parle
+        # de son sujet : « une alternative a Quizlet » sous un article sur les
+        # vacances de la Toussaint ne sert ni le lecteur ni la page.
+        if p.get("mots_requis") and not mot_trouve:
+            return -1
+        # Une page qui vise une matiere exige cette matiere, sauf page generique,
+        # page de filiere, ou page dont les mots du titre suffisent (la colle
+        # d'anglais convient a tout article sur la kholle).
+        if (p["matieres"] and not recoupe_matiere and not p.get("generique")
+                and not p.get("hub") and not (p.get("mots_suffisent") and mot_trouve)):
+            return -1
+        s = 3 * len(matieres & p["matieres"])
+        s += 2 * len(filieres & p["filieres"])
+        s += 4 * mot_trouve
+        return s
+
+    notes = [(score(p), p) for p in candidats]
+    retenus = [p for s, p in sorted(notes, key=lambda x: -x[0]) if s > 0][:nombre]
+    if len(retenus) < MINIMUM_PIVOTS:
+        # Un article tres specialise (philosophie, histoire) n'a pas de guide a
+        # lui : on complete par les pages generiques, utiles a toute la prepa.
+        for p in candidats:
+            if p.get("generique") and p not in retenus and score(p) >= 0                     and not (p["filieres"] and not (filieres & p["filieres"])):
+                retenus.append(p)
+            if len(retenus) >= MINIMUM_PIVOTS:
+                break
+    return retenus
+
+
+def render_pour_aller_plus_loin(article: dict) -> str:
+    pivots = choisir_pivots(article)
+    if not pivots:
+        return ""
+    lignes = "\n".join(
+        f'<li><a href="{p["url"]}">{html.escape(p["label"])}</a></li>' for p in pivots)
+    return ('<aside class="pour-aller-plus-loin">\n<h2>Pour aller plus loin</h2>\n'
+            f"<ul>\n{lignes}\n</ul>\n</aside>")
+
+
 def render_a_lire_egalement(similaires: list) -> str:
     if not similaires:
         return ""
@@ -1237,6 +1448,10 @@ def article_jsonld(page: dict, url: str) -> dict:
         "@type": "Article",
         "headline": page["title"],
         "description": page["description"],
+        # Une image est attendue pour l'affichage enrichi d'un article. Les
+        # visuels propres a chaque article sont des SVG, que Google n'accepte
+        # pas ici : on donne l'image de partage, un PNG.
+        "image": [SITE_URL + DEFAULT_OG],
         "datePublished": page["date"],
         # Meme regle que le plan du site : la date de publication est un
         # plancher. Annoncer partout la meme date pour « publie » et
@@ -1622,6 +1837,8 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{titre_court}}": html.escape(titre_affiche(page["title"])),
         "{{temps_lecture}}": page.get("temps_lecture", ""),
         "{{a_lire_egalement}}": page.get("a_lire_egalement_html", ""),
+        "{{pour_aller_plus_loin}}": page.get("pour_aller_plus_loin_html", ""),
+        "{{articles_filiere}}": bloc_articles_filiere(page),
         "{{bandeau_titre}}": page.get("bandeau_titre_html", ""),
     }
     for marker, value in replacements.items():
@@ -1866,6 +2083,15 @@ def build() -> None:
 
     urls = []
 
+    # Les articles sont connus AVANT les pages : les pages filiere listent les
+    # leurs. Meme filtre que plus bas (file d'attente, PREPACARDS_TOUT).
+    limite_publication = ("9999-12-31" if os.environ.get("PREPACARDS_TOUT")
+                          else date.today().isoformat())
+    ARTICLES_PUBLIES[:] = sorted(
+        (a for a in (load_page(p) for p in CONTENT.glob("blog/*.md"))
+         if a["date"] <= limite_publication),
+        key=lambda a: a["date"], reverse=True)
+
     # --- Pages ---------------------------------------------------------
     for path in sorted(CONTENT.glob("*.md")):
         page = load_page(path)
@@ -1929,6 +2155,7 @@ def build() -> None:
         article["bandeau_titre_html"] = render_bandeau_titre(article)
         article["a_lire_egalement_html"] = render_a_lire_egalement(
             choisir_recommandations(article, articles))
+        article["pour_aller_plus_loin_html"] = render_pour_aller_plus_loin(article)
         blocks = [
             article_jsonld(article, url),
             breadcrumb_jsonld(titre_affiche(article["title"]), url),
