@@ -96,9 +96,8 @@ DEFAULT_OG = "/img/og-prepacards.png"
 #
 # Cloudflare plutot que Google Analytics pour une raison precise : il ne
 # depose AUCUN cookie et ne conserve aucune donnee personnelle. Le site peut
-# donc continuer de se passer de bandeau de consentement, ce qu'il annonce
-# dans sa page de confidentialite - et un bandeau sur un site qui n'en avait
-# pas serait une regression pour le visiteur comme pour la mesure.
+# donc rester leger en traceurs. Un bandeau (consentement.js) laisse malgre
+# tout le visiteur decider : la balise n'est chargee qu'apres son accord.
 #
 # Le jeton n'est pas un secret : il est lisible dans la source de chaque
 # page. Il se recupere dans le tableau de bord Cloudflare, Analytics & Logs
@@ -110,12 +109,15 @@ JETON_MESURE = "570f41119b974bfda2ebca8dfff29bbf"
 
 
 def balise_mesure() -> str:
-    """Le script de mesure, ou rien du tout s'il n'y a pas de jeton."""
-    if not JETON_MESURE:
-        return ""
-    return ('<script type="module" '
-            'src="https://static.cloudflareinsights.com/beacon.min.js" '
-            f'data-cf-beacon=\'{{"token": "{JETON_MESURE}"}}\'></script>')
+    """Le script de consentement, qui charge la mesure seulement si acceptee.
+
+    La balise Cloudflare n'est plus posee en dur dans la page : elle est
+    chargee par consentement.js apres accord du visiteur. Sans jeton, le
+    bandeau reste (il garde le choix), mais aucune mesure n'est possible.
+    """
+    chemin = Path(__file__).parent / "templates" / "consentement.js"
+    code = chemin.read_text(encoding="utf-8").replace("__JETON__", JETON_MESURE)
+    return "<script>" + chr(10) + code + "</script>"
 
 
 DOWNLOAD_URL = (

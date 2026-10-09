@@ -123,15 +123,16 @@ préférons ce défaut à la possibilité de lire vos cartes.
 
 ## Sur ce site
 
-Ce site ne dépose **aucun cookie** et n'utilise aucun outil de suivi
+Ce site dépose **un seul cookie**, `pc_consent`, qui retient votre choix
+sur les cookies pendant six mois, et n'utilise aucun outil de suivi
 publicitaire. Si vous vous connectez, votre session est rangée dans le
 stockage de session de votre navigateur, où elle s'efface à la fermeture de
-l'onglet ; elle est nécessaire au service, donc sans consentement. Il n'y a
-pas de bandeau, faute de quoi consentir. Le détail est dans la page
+l'onglet. Ces deux éléments sont nécessaires au service, donc sans
+consentement. Le détail, et le moyen de changer d'avis, sont dans la page
 [Cookies et stockage local](/cookies/).
 
-Une mesure d'audience y est en revanche installée : **Cloudflare Web
-Analytics**. Elle compte les pages vues et les sites qui nous envoient des
+Une mesure d'audience facultative est proposée : **Cloudflare Web
+Analytics**, chargée **seulement si vous l'acceptez** dans le bandeau. Elle compte les pages vues et les sites qui nous envoient des
 visiteurs. Elle ne pose pas de cookie, ne vous attribue pas d'identifiant, ne
 vous suit pas d'un site à l'autre, et ne transmet rien à un annonceur. Nous ne
 voyons que des totaux, jamais une visite individuelle.
@@ -205,15 +206,15 @@ Oui, vous-même et immédiatement, depuis [votre espace compte](/compte/) — au
 
 ### Ce site utilise-t-il Google Analytics ?
 
-Non. La mesure d'audience passe par Cloudflare Web Analytics, qui ne dépose
-aucun cookie et ne construit aucun profil : elle compte des pages vues, pas
+Non. La mesure d'audience, si vous l'acceptez, passe par Cloudflare Web
+Analytics, qui ne dépose aucun cookie et ne construit aucun profil : elle compte des pages vues, pas
 des personnes. Aucune donnée n'est transmise à Google ni à un annonceur.
 
-### Pourquoi n'y a-t-il pas de bandeau de cookies ?
+### Comment changer mon choix sur les cookies ?
 
-Parce que le site ne dépose aucun cookie ni traceur soumis au consentement.
-Les raisons, et ce qui est stocké si vous vous connectez, sont expliqués dans
-la page [Cookies et stockage local](/cookies/).
+Avec le lien « Gérer mes choix sur les cookies » en pied de page, ou sur la
+page [Cookies et stockage local](/cookies/). Refuser est aussi simple
+qu'accepter.
 
 <p style="color:var(--gris);font-size:.9rem">Dernière mise à jour :
 [date de mise en ligne]</p>

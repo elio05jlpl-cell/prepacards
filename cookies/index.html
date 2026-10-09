@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
-<link rel="stylesheet" href="/style.css?v=6a87f6678b">
+<link rel="stylesheet" href="/style.css?v=cb222ccd41">
 <script>
 // Pose le drapeau avant le premier affichage : les blocs qui apparaissent au
 // defilement sont masques par « html.js ... ». Pose en bas de page seulement,
@@ -84,10 +84,12 @@ document.documentElement.classList.add('js');
 <main id="contenu">
 <div class="feuille-texte">
 <h1 id="cookies-et-stockage-local">Cookies et stockage local</h1>
-<p class="chapeau">Ce site ne dépose aucun cookie. Il écrit une seule chose dans
-votre navigateur, et seulement si vous vous connectez : votre session, qui
-disparaît quand vous fermez l'onglet. Cette page détaille ce qui est stocké,
-ce qui ne l'est pas, et pourquoi il n'y a pas de bandeau de consentement.</p>
+<p class="chapeau">Ce site dépose un seul cookie : celui qui retient votre choix
+sur les cookies. La mesure d'audience, facultative, ne se charge que si vous
+l'acceptez. Cette page détaille ce qui est stocké, pourquoi, et comment changer
+d'avis à tout moment.</p>
+
+<p><button type="button" class="bouton" data-pc-cookies>Gérer mes choix</button></p>
 
 <h2 id="en-bref">En bref</h2>
 <div class="tableau-enveloppe">
@@ -95,70 +97,70 @@ ce qui ne l'est pas, et pourquoi il n'y a pas de bandeau de consentement.</p>
 <thead>
 <tr>
 <th>Élément</th>
-<th>Où</th>
+<th>Type</th>
 <th>Quand</th>
 <th>Durée</th>
 <th>Pourquoi</th>
+<th>Consentement</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Cookies</td>
-<td>—</td>
-<td>Jamais</td>
-<td>—</td>
-<td>Le site n'en dépose aucun</td>
+<td><code>pc_consent</code></td>
+<td>Cookie</td>
+<td>Dès que vous faites un choix</td>
+<td>6 mois</td>
+<td>Retenir votre choix, pour ne pas le redemander à chaque page</td>
+<td>Non, nécessaire</td>
 </tr>
 <tr>
 <td>Session de connexion (<code>sb-…-auth-token</code>)</td>
-<td>Stockage de session du navigateur</td>
+<td>Stockage de session</td>
 <td>Seulement si vous vous connectez</td>
 <td>Jusqu'à la fermeture de l'onglet</td>
 <td>Vous reconnaître d'une page à l'autre</td>
+<td>Non, nécessaire</td>
 </tr>
 <tr>
-<td>Mesure d'audience Cloudflare</td>
-<td>Rien n'est écrit chez vous</td>
-<td>À chaque page vue</td>
+<td>Cloudflare Web Analytics</td>
+<td>Aucun stockage chez vous</td>
+<td>À chaque page vue, si vous l'acceptez</td>
 <td>—</td>
 <td>Compter les pages vues</td>
+<td>Oui</td>
 </tr>
 </tbody>
 </table>
 </div>
-<h2 id="ce-que-le-site-ecrit-dans-votre-navigateur">Ce que le site écrit dans votre navigateur</h2>
-<p><strong>Rien, tant que vous ne vous connectez pas.</strong> Lire le blog, consulter les
-comparatifs ou télécharger l'application ne dépose ni cookie ni donnée dans
-votre navigateur.</p>
-<p><strong>Si vous vous connectez</strong> (page <a href="/compte/">Compte</a>, ou pour obtenir un paquet
-gratuit), notre prestataire d'authentification, Supabase, range un jeton de
-session dans le <strong>stockage de session</strong> de votre navigateur. Ce n'est pas un
-cookie : il reste attaché à l'onglet, n'est envoyé à aucun site tiers, et
-<strong>s'efface dès que vous le fermez</strong>. Il sert uniquement à vous éviter de
-retaper votre mot de passe à chaque page. Il ne contient pas votre mot de
-passe.</p>
-<p>Ce stockage est strictement nécessaire au service que vous demandez en vous
-connectant. À ce titre, il ne requiert pas votre consentement.</p>
-<h2 id="la-mesure-daudience">La mesure d'audience</h2>
-<p>Le site utilise <strong>Cloudflare Web Analytics</strong> pour compter les pages vues et
-repérer les sites qui nous envoient des visiteurs. Son script ne dépose aucun
-cookie et n'écrit rien dans le stockage de votre navigateur : nous avons vérifié
-son code, qui n'en contient aucun usage. Il ne vous attribue pas d'identifiant
-et ne permet pas de vous suivre d'un site à l'autre. Nous ne voyons que des
-totaux.</p>
-<p>Comme pour toute requête web, votre adresse IP est vue par le serveur au moment
-du chargement ; ce traitement est décrit dans la page
+<p>Il n'y a ni cookie publicitaire, ni outil de suivi entre sites, ni cookie de
+préférences : le site n'a aucune préférence à mémoriser.</p>
+<h2 id="votre-choix">Votre choix</h2>
+<p>À votre première visite, un bandeau vous propose <strong>Tout refuser</strong>, <strong>Tout
+accepter</strong> ou <strong>Personnaliser</strong>, avec le même poids : refuser est aussi simple
+qu'accepter. Tant que vous n'avez pas répondu, aucune mesure d'audience n'est
+chargée. Vous pouvez changer d'avis à tout moment avec le bouton « Gérer mes
+choix » ci-dessus ou en pied de page. Le choix est redemandé au bout de six mois.</p>
+<h2 id="cookies-necessaires">Cookies nécessaires</h2>
+<p><strong><code>pc_consent</code></strong> contient seulement <code>v1.m0</code> (mesure refusée) ou <code>v1.m1</code>
+(acceptée). Il ne vous identifie pas et n'est envoyé à aucun tiers. Sans lui, le
+bandeau reviendrait à chaque page.</p>
+<p><strong>La session de connexion</strong> : si vous vous connectez (page <a href="/compte/">Compte</a>,
+ou pour obtenir un paquet gratuit), notre prestataire d'authentification,
+Supabase, range un jeton dans le <strong>stockage de session</strong> de votre navigateur.
+Ce n'est pas un cookie : il reste attaché à l'onglet et <strong>s'efface dès que vous
+le fermez</strong>. Il ne contient pas votre mot de passe.</p>
+<p>Ces deux éléments sont strictement nécessaires au service demandé : ils ne
+requièrent pas votre consentement.</p>
+<h2 id="la-mesure-daudience-facultative">La mesure d'audience (facultative)</h2>
+<p>Si vous l'acceptez, le site charge <strong>Cloudflare Web Analytics</strong> pour compter les
+pages vues et repérer les sites qui nous envoient des visiteurs. Son script
+n'écrit ni cookie ni donnée dans votre navigateur (nous avons vérifié son
+code), ne vous attribue pas d'identifiant et ne permet pas de vous suivre d'un
+site à l'autre. Nous ne voyons que des totaux, pas des personnes. Il ne permet
+donc pas de reconnaître un visiteur qui revient.</p>
+<p>Si vous refusez, rien n'est chargé. Comme pour toute requête web, votre adresse
+IP est vue par le serveur au moment du chargement de la page : voir
 <a href="/confidentialite/#sur-ce-site">Confidentialité</a>.</p>
-<h2 id="pourquoi-il-ny-a-pas-de-bandeau">Pourquoi il n'y a pas de bandeau</h2>
-<p>Un bandeau de consentement est exigé quand un site dépose ou lit des traceurs
-non indispensables au service : cookies publicitaires, identifiants de suivi,
-mesure d'audience qui garde une trace chez le visiteur. Ce n'est pas le cas ici.
-Le seul élément écrit, la session de connexion, est nécessaire au service ; la
-mesure d'audience n'écrit rien chez vous.</p>
-<p>Ajouter un bandeau « par précaution » vous demanderait un clic sans rien
-protéger, et ne reflèterait pas ce que fait le site. Si cela change, par
-exemple si nous ajoutions un outil qui dépose un cookie, nous mettrions à jour
-cette page et demanderions votre accord <strong>avant</strong> toute activation.</p>
 <h2 id="les-sites-que-vous-quittez">Les sites que vous quittez</h2>
 <p>Certains liens vous emmènent vers un autre site, qui applique ses propres
 règles et peut déposer ses propres cookies dès que vous y arrivez :</p>
@@ -177,12 +179,12 @@ page <a href="/confidentialite/">Confidentialité</a>.</p>
 <h2 id="verifier-par-vous-meme">Vérifier par vous-même</h2>
 <p>Ouvrez les outils de développement de votre navigateur (touche F12), onglet
 <em>Application</em> (Chrome, Edge) ou <em>Stockage</em> (Firefox) : la rubrique <em>Cookies</em>
-est vide pour prepacards.fr, et la rubrique <em>Stockage de session</em> ne contient une
-entrée que si vous êtes connecté. Pour effacer cette entrée sans fermer
+ne contient que <code>pc_consent</code> pour prepacards.fr, et la rubrique <em>Stockage de
+session</em> ne contient une entrée que si vous êtes connecté. Pour effacer cette entrée sans fermer
 l'onglet, déconnectez-vous depuis la page <a href="/compte/">Compte</a>.</p>
 <h2 id="une-question">Une question</h2>
 <p>Écrivez à <a href="mailto:contact@prepacards.fr">contact@prepacards.fr</a>.</p>
-<p style="color:var(--gris);font-size:.9rem">Dernière vérification : 9 octobre
+<p style="color:var(--gris);font-size:.9rem">Dernière mise à jour : 9 octobre
 2026.</p>
 </div>
 </main>
@@ -232,6 +234,7 @@ l'onglet, déconnectez-vous depuis la page <a href="/compte/">Compte</a>.</p>
     </nav>
     <p class="pied-bas">© 2026 PrépaCards — Application indépendante,
        sans lien avec Anki ni Quizlet.</p>
+    <p class="pied-bas"><a href="/cookies/" data-pc-cookies>Gérer mes choix sur les cookies</a></p>
   </div>
 </footer>
 
@@ -505,6 +508,107 @@ document.documentElement.classList.add('js');
   majEtat();
 })();
 </script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "570f41119b974bfda2ebca8dfff29bbf"}'></script>
+<script>
+// Consentement aux cookies et a la mesure d'audience
+// ===================================================
+//
+// Le seul cookie du site est celui-ci : « pc_consent », qui garde le choix du
+// visiteur six mois. Il est necessaire au bandeau lui-meme (sans lui, on
+// redemanderait a chaque page), donc exempte de consentement.
+//
+// Valeur : « v1.m1 » (mesure acceptee) ou « v1.m0 » (refusee). La mesure
+// d'audience Cloudflare n'est chargee QUE si elle est acceptee. Refuser est
+// aussi simple qu'accepter : deux boutons de meme poids, sur le premier ecran.
+(function () {
+  var NOM = 'pc_consent';
+  var DUREE = 60 * 60 * 24 * 183;   // six mois, en secondes
+  var JETON = '570f41119b974bfda2ebca8dfff29bbf';
+
+  function lire() {
+    var m = document.cookie.match(new RegExp('(?:^|; )' + NOM + '=v1\.m([01])'));
+    return m ? m[1] === '1' : null;
+  }
+  function ecrire(mesure) {
+    var securise = location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = NOM + '=v1.m' + (mesure ? 1 : 0) + '; Max-Age=' + DUREE +
+      '; Path=/; SameSite=Lax' + securise;
+  }
+  function charger_mesure() {
+    if (!JETON || document.getElementById('pc-mesure')) return;
+    var s = document.createElement('script');
+    s.id = 'pc-mesure';
+    s.type = 'module';
+    s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    s.setAttribute('data-cf-beacon', JSON.stringify({ token: JETON }));
+    document.head.appendChild(s);
+  }
+
+  var boite = null;
+  function fermer() { if (boite) { boite.remove(); boite = null; } }
+
+  function choisir(mesure) {
+    var avant = lire();
+    ecrire(mesure);
+    fermer();
+    if (mesure) charger_mesure();
+    // Retirer son accord apres coup : la balise deja chargee ne se decharge
+    // pas, on recharge la page pour qu'elle disparaisse vraiment.
+    if (!mesure && avant === true) location.reload();
+  }
+
+  function ouvrir(detail) {
+    fermer();
+    var actuel = lire();
+    boite = document.createElement('div');
+    boite.className = 'pc-cookies';
+    boite.setAttribute('role', 'dialog');
+    boite.setAttribute('aria-label', 'Choix sur les cookies');
+    boite.innerHTML =
+      '<p class="pc-titre">Vos choix sur les cookies</p>' +
+      '<p>PrépaCards dépose un seul cookie nécessaire : le souvenir de ce choix. ' +
+      'La mesure d\u2019audience, facultative, compte les pages vues sans vous identifier. ' +
+      '<a href="/cookies/">En savoir plus</a></p>' +
+      '<div class="pc-detail"' + (detail ? '' : ' hidden') + '>' +
+      '<label class="pc-ligne"><input type="checkbox" checked disabled> ' +
+      '<span><strong>Nécessaires</strong> : mémoriser ce choix. Toujours actifs.</span></label>' +
+      '<label class="pc-ligne"><input type="checkbox" id="pc-mesure-case"' +
+      (actuel ? ' checked' : '') + '> ' +
+      '<span><strong>Mesure d\u2019audience</strong> : Cloudflare Web Analytics, ' +
+      'sans cookie ni identifiant.</span></label>' +
+      '</div>' +
+      '<div class="pc-actions">' +
+      '<button type="button" class="pc-btn" data-pc="non">Tout refuser</button>' +
+      '<button type="button" class="pc-btn" data-pc="oui">Tout accepter</button>' +
+      '<button type="button" class="pc-btn" data-pc="perso">' +
+      (detail ? 'Enregistrer mon choix' : 'Personnaliser') + '</button>' +
+      '</div>';
+    document.body.appendChild(boite);
+    boite.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-pc]');
+      if (!b) return;
+      var a = b.getAttribute('data-pc');
+      if (a === 'non') choisir(false);
+      else if (a === 'oui') choisir(true);
+      else if (boite.querySelector('.pc-detail').hidden) {
+        boite.querySelector('.pc-detail').hidden = false;
+        b.textContent = 'Enregistrer mon choix';
+      } else choisir(boite.querySelector('#pc-mesure-case').checked);
+    });
+    var premier = boite.querySelector('[data-pc="non"]');
+    if (premier) premier.focus();
+  }
+
+  document.addEventListener('click', function (e) {
+    var l = e.target.closest('[data-pc-cookies]');
+    if (!l) return;
+    e.preventDefault();
+    ouvrir(true);
+  });
+
+  var choix = lire();
+  if (choix === true) charger_mesure();
+  else if (choix === null) ouvrir(false);
+})();
+</script>
 </body>
 </html>

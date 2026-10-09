@@ -6,65 +6,63 @@ slug: cookies
 
 # Cookies et stockage local
 
-<p class="chapeau">Ce site ne dépose aucun cookie. Il écrit une seule chose dans
-votre navigateur, et seulement si vous vous connectez : votre session, qui
-disparaît quand vous fermez l'onglet. Cette page détaille ce qui est stocké,
-ce qui ne l'est pas, et pourquoi il n'y a pas de bandeau de consentement.</p>
+<p class="chapeau">Ce site dépose un seul cookie : celui qui retient votre choix
+sur les cookies. La mesure d'audience, facultative, ne se charge que si vous
+l'acceptez. Cette page détaille ce qui est stocké, pourquoi, et comment changer
+d'avis à tout moment.</p>
+
+<p><button type="button" class="bouton" data-pc-cookies>Gérer mes choix</button></p>
 
 ## En bref
 
 <div class="tableau-enveloppe" markdown="1">
 
-| Élément | Où | Quand | Durée | Pourquoi |
-|---|---|---|---|---|
-| Cookies | — | Jamais | — | Le site n'en dépose aucun |
-| Session de connexion (`sb-…-auth-token`) | Stockage de session du navigateur | Seulement si vous vous connectez | Jusqu'à la fermeture de l'onglet | Vous reconnaître d'une page à l'autre |
-| Mesure d'audience Cloudflare | Rien n'est écrit chez vous | À chaque page vue | — | Compter les pages vues |
+| Élément | Type | Quand | Durée | Pourquoi | Consentement |
+|---|---|---|---|---|---|
+| `pc_consent` | Cookie | Dès que vous faites un choix | 6 mois | Retenir votre choix, pour ne pas le redemander à chaque page | Non, nécessaire |
+| Session de connexion (`sb-…-auth-token`) | Stockage de session | Seulement si vous vous connectez | Jusqu'à la fermeture de l'onglet | Vous reconnaître d'une page à l'autre | Non, nécessaire |
+| Cloudflare Web Analytics | Aucun stockage chez vous | À chaque page vue, si vous l'acceptez | — | Compter les pages vues | Oui |
 
 </div>
 
-## Ce que le site écrit dans votre navigateur
+Il n'y a ni cookie publicitaire, ni outil de suivi entre sites, ni cookie de
+préférences : le site n'a aucune préférence à mémoriser.
 
-**Rien, tant que vous ne vous connectez pas.** Lire le blog, consulter les
-comparatifs ou télécharger l'application ne dépose ni cookie ni donnée dans
-votre navigateur.
+## Votre choix
 
-**Si vous vous connectez** (page [Compte](/compte/), ou pour obtenir un paquet
-gratuit), notre prestataire d'authentification, Supabase, range un jeton de
-session dans le **stockage de session** de votre navigateur. Ce n'est pas un
-cookie : il reste attaché à l'onglet, n'est envoyé à aucun site tiers, et
-**s'efface dès que vous le fermez**. Il sert uniquement à vous éviter de
-retaper votre mot de passe à chaque page. Il ne contient pas votre mot de
-passe.
+À votre première visite, un bandeau vous propose **Tout refuser**, **Tout
+accepter** ou **Personnaliser**, avec le même poids : refuser est aussi simple
+qu'accepter. Tant que vous n'avez pas répondu, aucune mesure d'audience n'est
+chargée. Vous pouvez changer d'avis à tout moment avec le bouton « Gérer mes
+choix » ci-dessus ou en pied de page. Le choix est redemandé au bout de six mois.
 
-Ce stockage est strictement nécessaire au service que vous demandez en vous
-connectant. À ce titre, il ne requiert pas votre consentement.
+## Cookies nécessaires
 
-## La mesure d'audience
+**`pc_consent`** contient seulement `v1.m0` (mesure refusée) ou `v1.m1`
+(acceptée). Il ne vous identifie pas et n'est envoyé à aucun tiers. Sans lui, le
+bandeau reviendrait à chaque page.
 
-Le site utilise **Cloudflare Web Analytics** pour compter les pages vues et
-repérer les sites qui nous envoient des visiteurs. Son script ne dépose aucun
-cookie et n'écrit rien dans le stockage de votre navigateur : nous avons vérifié
-son code, qui n'en contient aucun usage. Il ne vous attribue pas d'identifiant
-et ne permet pas de vous suivre d'un site à l'autre. Nous ne voyons que des
-totaux.
+**La session de connexion** : si vous vous connectez (page [Compte](/compte/),
+ou pour obtenir un paquet gratuit), notre prestataire d'authentification,
+Supabase, range un jeton dans le **stockage de session** de votre navigateur.
+Ce n'est pas un cookie : il reste attaché à l'onglet et **s'efface dès que vous
+le fermez**. Il ne contient pas votre mot de passe.
 
-Comme pour toute requête web, votre adresse IP est vue par le serveur au moment
-du chargement ; ce traitement est décrit dans la page
+Ces deux éléments sont strictement nécessaires au service demandé : ils ne
+requièrent pas votre consentement.
+
+## La mesure d'audience (facultative)
+
+Si vous l'acceptez, le site charge **Cloudflare Web Analytics** pour compter les
+pages vues et repérer les sites qui nous envoient des visiteurs. Son script
+n'écrit ni cookie ni donnée dans votre navigateur (nous avons vérifié son
+code), ne vous attribue pas d'identifiant et ne permet pas de vous suivre d'un
+site à l'autre. Nous ne voyons que des totaux, pas des personnes. Il ne permet
+donc pas de reconnaître un visiteur qui revient.
+
+Si vous refusez, rien n'est chargé. Comme pour toute requête web, votre adresse
+IP est vue par le serveur au moment du chargement de la page : voir
 [Confidentialité](/confidentialite/#sur-ce-site).
-
-## Pourquoi il n'y a pas de bandeau
-
-Un bandeau de consentement est exigé quand un site dépose ou lit des traceurs
-non indispensables au service : cookies publicitaires, identifiants de suivi,
-mesure d'audience qui garde une trace chez le visiteur. Ce n'est pas le cas ici.
-Le seul élément écrit, la session de connexion, est nécessaire au service ; la
-mesure d'audience n'écrit rien chez vous.
-
-Ajouter un bandeau « par précaution » vous demanderait un clic sans rien
-protéger, et ne reflèterait pas ce que fait le site. Si cela change, par
-exemple si nous ajoutions un outil qui dépose un cookie, nous mettrions à jour
-cette page et demanderions votre accord **avant** toute activation.
 
 ## Les sites que vous quittez
 
@@ -89,13 +87,13 @@ page [Confidentialité](/confidentialite/).
 
 Ouvrez les outils de développement de votre navigateur (touche F12), onglet
 *Application* (Chrome, Edge) ou *Stockage* (Firefox) : la rubrique *Cookies*
-est vide pour prepacards.fr, et la rubrique *Stockage de session* ne contient une
-entrée que si vous êtes connecté. Pour effacer cette entrée sans fermer
+ne contient que `pc_consent` pour prepacards.fr, et la rubrique *Stockage de
+session* ne contient une entrée que si vous êtes connecté. Pour effacer cette entrée sans fermer
 l'onglet, déconnectez-vous depuis la page [Compte](/compte/).
 
 ## Une question
 
 Écrivez à [contact@prepacards.fr](mailto:contact@prepacards.fr).
 
-<p style="color:var(--gris);font-size:.9rem">Dernière vérification : 9 octobre
+<p style="color:var(--gris);font-size:.9rem">Dernière mise à jour : 9 octobre
 2026.</p>
