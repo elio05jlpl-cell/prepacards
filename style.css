@@ -519,6 +519,7 @@ padding: 14px 20px; margin: 1.6em 0 1.8em; background: #fff;
 .conteneur-bibliotheque { max-width: 1320px; margin-left: auto; margin-right: auto; padding: 0 24px; }
 h1.conteneur-bibliotheque { margin-top: 52px; }
 p.chapeau.conteneur-bibliotheque { margin: 14px auto 0; }
+.cadre-entete.conteneur-bibliotheque { padding: 14px 24px; margin: 1.6em auto 1.8em; }
 .feuille-texte .chapo {
 border: 1px solid var(--bord-net); border-radius: var(--rayon-l);
 padding: 24px 28px; margin: 0 0 2em; background: #fff;

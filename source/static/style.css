@@ -721,6 +721,9 @@ td strong { color: var(--encre); }
 .conteneur-bibliotheque { max-width: 1320px; margin-left: auto; margin-right: auto; padding: 0 24px; }
 h1.conteneur-bibliotheque { margin-top: 52px; }
 p.chapeau.conteneur-bibliotheque { margin: 14px auto 0; }
+/* Le fil d'Ariane encadre garde son espacement : .conteneur-bibliotheque, plus bas
+   dans la feuille, le ramenait a zero et collait le texte a la bordure. */
+.cadre-entete.conteneur-bibliotheque { padding: 14px 24px; margin: 1.6em auto 1.8em; }
 
 /* Amorce de l'article (entre le H1 et le premier H2), dans son encadre */
 .feuille-texte .chapo {
