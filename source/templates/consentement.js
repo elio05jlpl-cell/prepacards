@@ -96,9 +96,11 @@
     boite.setAttribute('aria-label', 'Choix sur les cookies');
     boite.innerHTML =
       '<p class="pc-titre">Vos choix sur les cookies</p>' +
-      '<p>PrépaCards dépose un seul cookie nécessaire : le souvenir de ce choix. ' +
+      '<p class="pc-texte"><span class="pc-court">Un seul cookie nécessaire ; préférences et ' +
+      'mesure d’audience facultatives.</span>' +
+      '<span class="pc-long">PrépaCards dépose un seul cookie nécessaire : le souvenir de ce choix. ' +
       'Les préférences (votre filière, vos filtres, votre dernière lecture) et la mesure ' +
-      'd’audience sont facultatives. <a href="/cookies/">En savoir plus</a></p>' +
+      'd’audience sont facultatives.</span> <a href="/cookies/">En savoir plus</a></p>' +
       '<div class="pc-detail"' + (detail ? '' : ' hidden') + '>' +
       '<label class="pc-ligne"><input type="checkbox" checked disabled> ' +
       '<span><strong>Nécessaires</strong> : mémoriser ce choix. Toujours actifs.</span></label>' +

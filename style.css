@@ -2273,3 +2273,14 @@ margin: 0 0 14px; padding: 10px 14px; border-radius: 10px;
 background: var(--bleu-pale); font-size: .95rem;
 }
 .reprendre a { font-weight: 700; }
+.pc-court { display: none; }
+@media (max-width: 600px) {
+.pc-cookies { left: 8px; right: 8px; bottom: 8px; padding: 12px 14px;
+font-size: .85rem; max-height: 85vh; overflow-y: auto; }
+.pc-cookies .pc-titre { font-size: .95rem; margin-bottom: 4px; }
+.pc-cookies p { margin-bottom: 8px; }
+.pc-long { display: none; }
+.pc-court { display: inline; }
+.pc-actions { flex-wrap: nowrap; gap: 6px; }
+.pc-btn { flex: 1 1 0; min-width: 0; padding: 9px 4px; font-size: .8rem; }
+}
