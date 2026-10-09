@@ -32,16 +32,16 @@ civilisation, et le lexique de chacun est stable d'une année sur l'autre.
 | 08 | Migrations et immigration | 100 |
 | 09 | Inégalités et pauvreté | 100 |
 | 10 | Santé et système de soins | 100 |
-| 11 | Sciences et technologies | 100 |
-| 12 | Justice et sécurité | 100 |
-| 13 | Culture et société | 100 |
+| 11 | Technologies et intelligence artificielle | 100 |
+| 12 | Justice, criminalité et police | 100 |
+| 13 | Relations internationales et géopolitique | 100 |
 | 14 | Démographie et famille | 100 |
-| 15 | Villes et territoires | 100 |
-| 16 | Énergie et ressources | 100 |
+| 15 | Ville, logement et transports | 100 |
+| 16 | Culture et divertissement | 100 |
 | 17 | Agriculture et alimentation | 100 |
-| 18 | Travail et syndicalisme | 100 |
-| 19 | Relations internationales | 100 |
-| 20 | Débats de société | 100 |
+| 18 | Sciences et recherche | 100 |
+| 19 | Société, religions et débats | 100 |
+| 20 | Sport et loisirs | 100 |
 
 </div>
 

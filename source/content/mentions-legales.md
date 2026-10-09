@@ -57,7 +57,9 @@ L'éditeur s'efforce d'assurer l'exactitude des informations publiées, mais ne
 peut garantir qu'elles soient exemptes d'erreurs. L'utilisation de
 l'application relève de la seule responsabilité de l'utilisateur, en
 particulier s'agissant de la sauvegarde de ses propres données : PrépaCards
-enregistre vos cartes sur votre ordinateur et n'en conserve aucune copie.
+enregistre vos cartes sur votre ordinateur et n'en conserve aucune copie, hormis
+la sauvegarde en ligne chiffrée que vous déclenchez vous-même et que PrépaCards
+ne peut pas lire.
 
 ## Signalement d'un contenu
 

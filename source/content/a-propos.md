@@ -85,8 +85,8 @@ et crée vos paquets par matière. Vous commencez à réviser, pas à ranger.
   <div class="grille-2" style="max-width:860px;margin:0 auto;text-align:left">
   <div class="carte">
   <h3>Vos données restent chez vous</h3>
-  <p>Aucun compte en ligne, aucune synchronisation obligatoire. Vos cartes
-  sont un fichier sur votre ordinateur. La transcription vocale et la
+  <p>Un compte gratuit identifie votre abonnement, sans synchronisation
+  obligatoire. Vos cartes sont un fichier sur votre ordinateur. La transcription vocale et la
   lecture labiale tournent localement, hors ligne — y compris dans le
   train.</p>
   </div>

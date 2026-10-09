@@ -312,7 +312,7 @@ Oui. La version gratuite comprend les paquets et les cartes en nombre illimité,
 
 ### Mes cartes partent-elles sur un serveur ?
 
-Non. Vos cartes, votre compte et votre historique de révision sont enregistrés dans un fichier sur votre ordinateur. Il n'y a aucun serveur PrépaCards. La reconnaissance vocale fonctionne également hors ligne. Seules la traduction automatique et le premier téléchargement des modèles nécessitent internet.
+Non. Vos cartes et votre historique de révision sont enregistrés dans un fichier sur votre ordinateur, sur aucun serveur PrépaCards. Seul votre compte gratuit (adresse e-mail et abonnement) est conservé en ligne. La reconnaissance vocale fonctionne également hors ligne. Seules la traduction automatique, le premier téléchargement des modèles et la création du compte nécessitent internet.
 
 ### L'application contient-elle déjà des cartes ?
 

@@ -65,7 +65,7 @@ premier usage de la fonction concernée, puis conservés :
 - **reconnaissance de formules** : environ 170 Mo, à votre premier import de
   formule, et seulement après votre accord explicite.
 
-Ensuite, l'application fonctionne hors ligne.
+Ensuite, l'application fonctionne hors ligne, hormis la traduction automatique.
 
 <h2 id="autres-systemes">Mac, iPhone, Android</h2>
 

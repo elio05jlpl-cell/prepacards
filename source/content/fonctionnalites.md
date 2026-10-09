@@ -96,9 +96,10 @@ collection.
 
 ## Vos données restent chez vous
 
-Il n'y a **aucun serveur PrépaCards**. Vos cartes, votre historique de
-révision et votre compte sont dans un fichier sur votre disque
-(`%APPDATA%\PrepaCards`). Le compte demandé au premier lancement verrouille
+Vos cartes et votre historique de révision ne sont sur **aucun serveur
+PrépaCards** : ils sont dans un fichier sur votre disque
+(`%APPDATA%\PrepaCards`). Le compte gratuit demandé au premier lancement (votre adresse e-mail et
+votre abonnement, hébergés chez Supabase) verrouille
 l'ouverture de l'application ; il ne chiffre pas le fichier, et nous le disons
 plutôt que de laisser croire le contraire.
 
