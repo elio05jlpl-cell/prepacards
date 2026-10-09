@@ -124,8 +124,11 @@ préférons ce défaut à la possibilité de lire vos cartes.
 ## Sur ce site
 
 Ce site ne dépose **aucun cookie** et n'utilise aucun outil de suivi
-publicitaire. Il n'y a donc pas de bandeau de consentement, faute de quoi
-consentir.
+publicitaire. Si vous vous connectez, votre session est rangée dans le
+stockage de session de votre navigateur, où elle s'efface à la fermeture de
+l'onglet ; elle est nécessaire au service, donc sans consentement. Il n'y a
+pas de bandeau, faute de quoi consentir. Le détail est dans la page
+[Cookies et stockage local](/cookies/).
 
 Une mesure d'audience y est en revanche installée : **Cloudflare Web
 Analytics**. Elle compte les pages vues et les sites qui nous envoient des
@@ -205,6 +208,12 @@ Oui, vous-même et immédiatement, depuis [votre espace compte](/compte/) — au
 Non. La mesure d'audience passe par Cloudflare Web Analytics, qui ne dépose
 aucun cookie et ne construit aucun profil : elle compte des pages vues, pas
 des personnes. Aucune donnée n'est transmise à Google ni à un annonceur.
+
+### Pourquoi n'y a-t-il pas de bandeau de cookies ?
+
+Parce que le site ne dépose aucun cookie ni traceur soumis au consentement.
+Les raisons, et ce qui est stocké si vous vous connectez, sont expliqués dans
+la page [Cookies et stockage local](/cookies/).
 
 <p style="color:var(--gris);font-size:.9rem">Dernière mise à jour :
 [date de mise en ligne]</p>

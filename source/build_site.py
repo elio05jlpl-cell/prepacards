@@ -771,6 +771,7 @@ FOOTER_COLONNES = [
         ("/cgu/", "CGU"),
         ("/cgv/", "CGV"),
         ("/confidentialite/", "Confidentialité"),
+        ("/cookies/", "Cookies"),
     ]),
 ]
 
@@ -808,6 +809,7 @@ PRIORITES = {
     "tarifs": "0.7",
     "mentions-legales": "0.3",
     "confidentialite": "0.3",
+    "cookies": "0.3",
     "cgv": "0.3",
     "cgu": "0.3",
 }
