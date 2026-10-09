@@ -519,7 +519,8 @@ padding: 14px 20px; margin: 1.6em 0 1.8em; background: #fff;
 .conteneur-bibliotheque { max-width: 1320px; margin-left: auto; margin-right: auto; padding: 0 24px; }
 h1.conteneur-bibliotheque { margin-top: 52px; }
 p.chapeau.conteneur-bibliotheque { margin: 14px auto 0; }
-.cadre-entete.conteneur-bibliotheque { padding: 14px 24px; margin: 1.6em auto 1.8em; }
+.cadre-entete.conteneur-bibliotheque { padding: 14px 24px; margin: 1.6em auto 1.8em;
+box-sizing: border-box; width: calc(100% - 48px); max-width: 1272px; }
 .feuille-texte .chapo {
 border: 1px solid var(--bord-net); border-radius: var(--rayon-l);
 padding: 24px 28px; margin: 0 0 2em; background: #fff;
@@ -753,14 +754,16 @@ body { font-size: 16.5px; }
 .section-douce > .conteneur { padding: 36px 24px; border-radius: var(--rayon-l); }
 .feuille-texte { padding: 30px 22px; margin: 26px 14px 0; border-radius: var(--rayon-l); }
 .burger { display: block; margin-left: auto; }
-.bandeau-haut-interieur { gap: 6px; padding-top: 7px; padding-bottom: 7px;
+.bandeau-haut-interieur { gap: 6px; padding-top: 5px; padding-bottom: 5px;
 min-height: 0; }
 .reseaux { gap: 0; }
-.reseaux a { width: 22px; height: 22px; }
+.reseaux a { width: 30px; height: 30px; }
 .bandeau-actions { gap: 6px; }
-.bandeau-actions .nav-connexion { padding: 5px 8px; font-size: .78rem; }
-.bouton-nav { padding: 5px 8px !important; font-size: .78rem; margin-left: 0; }
-.entete-nav-barre { top: 42px; }
+.bandeau-actions .nav-connexion { padding: 5px 10px; font-size: .78rem;
+min-height: 34px; display: inline-flex; align-items: center; }
+.bouton-nav { padding: 5px 10px !important; font-size: .78rem; margin-left: 0;
+min-height: 34px; display: inline-flex; align-items: center; }
+.entete-nav-barre { top: 44px; }
 .entete-marque { padding: 12px 0 8px; }
 .entete-marque .marque { font-size: 1.25rem; }
 .entete-nav { padding: 0; }

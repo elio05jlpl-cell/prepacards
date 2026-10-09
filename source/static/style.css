@@ -723,7 +723,8 @@ h1.conteneur-bibliotheque { margin-top: 52px; }
 p.chapeau.conteneur-bibliotheque { margin: 14px auto 0; }
 /* Le fil d'Ariane encadre garde son espacement : .conteneur-bibliotheque, plus bas
    dans la feuille, le ramenait a zero et collait le texte a la bordure. */
-.cadre-entete.conteneur-bibliotheque { padding: 14px 24px; margin: 1.6em auto 1.8em; }
+.cadre-entete.conteneur-bibliotheque { padding: 14px 24px; margin: 1.6em auto 1.8em;
+  box-sizing: border-box; width: calc(100% - 48px); max-width: 1272px; }
 
 /* Amorce de l'article (entre le H1 et le premier H2), dans son encadre */
 .feuille-texte .chapo {
@@ -1014,16 +1015,20 @@ figcaption { font-size: .88rem; color: var(--gris); text-align: center; margin-t
   /* Une seule rangee, comme sur ordinateur : les icones et les boutons
      restent alignes, quitte a resserrer les boutons pour tenir a cote
      d'elles plutot que de repasser en colonne. */
-  .bandeau-haut-interieur { gap: 6px; padding-top: 7px; padding-bottom: 7px;
+  .bandeau-haut-interieur { gap: 6px; padding-top: 5px; padding-bottom: 5px;
     min-height: 0; }
   .reseaux { gap: 0; }
-  .reseaux a { width: 22px; height: 22px; }
+  /* Cibles tactiles : 30 px pour les icones, 34 px pour les boutons (22 et
+     26 px auparavant, trop petits pour un doigt). */
+  .reseaux a { width: 30px; height: 30px; }
   .bandeau-actions { gap: 6px; }
-  .bandeau-actions .nav-connexion { padding: 5px 8px; font-size: .78rem; }
-  .bouton-nav { padding: 5px 8px !important; font-size: .78rem; margin-left: 0; }
+  .bandeau-actions .nav-connexion { padding: 5px 10px; font-size: .78rem;
+    min-height: 34px; display: inline-flex; align-items: center; }
+  .bouton-nav { padding: 5px 10px !important; font-size: .78rem; margin-left: 0;
+    min-height: 34px; display: inline-flex; align-items: center; }
   /* Bandeau plus bas qu'a l'origine (boutons resserres) : la rangee de
      liens doit coller a cette nouvelle hauteur, mesuree au pixel pres. */
-  .entete-nav-barre { top: 42px; }
+  .entete-nav-barre { top: 44px; }
   .entete-marque { padding: 12px 0 8px; }
   .entete-marque .marque { font-size: 1.25rem; }
   .entete-nav { padding: 0; }
