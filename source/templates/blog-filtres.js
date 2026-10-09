@@ -98,11 +98,41 @@
   champTri.addEventListener('change', function () { actualiser(true); });
   champTaille.addEventListener('change', function () { actualiser(true); });
   radiosFiliere.concat(radiosMatiere).forEach(function (r) {
-    r.addEventListener('change', function () { actualiser(true); });
+    r.addEventListener('change', function () { actualiser(true); memoriser(); });
   });
+  champTri.addEventListener('change', function () { memoriser(); });
+  champTaille.addEventListener('change', function () { memoriser(); });
+
+  // Filtres retenus d'une visite a l'autre (si le visiteur a accepte les
+  // preferences ; sinon, le temps de l'onglet). Sans choix enregistre, la
+  // filiere indiquee sur l'accueil sert de point de depart.
+  function memoriser() {
+    if (!window.pcPrefs) return;
+    window.pcPrefs.set('blog', {
+      f: valeurCochee(radiosFiliere), m: valeurCochee(radiosMatiere),
+      t: champTri.value, n: champTaille.value,
+    });
+  }
+  function cocher(radios, valeur) {
+    radios.forEach(function (r) { r.checked = r.value === valeur; });
+    if (!radios.some(function (r) { return r.checked; })) {
+      radios.forEach(function (r) { r.checked = r.value === 'toutes'; });
+    }
+  }
 
   champTri.value = 'recent';
   champTaille.value = '10';
+  if (window.pcPrefs && !new URLSearchParams(window.location.search).get('q')) {
+    var gardes = window.pcPrefs.get('blog');
+    if (gardes) {
+      cocher(radiosFiliere, gardes.f);
+      cocher(radiosMatiere, gardes.m);
+      if (/^(recent|ancien|az|za)$/.test(gardes.t)) champTri.value = gardes.t;
+      if (/^(10|25|50)$/.test(gardes.n)) champTaille.value = gardes.n;
+    } else if (window.pcPrefs.get('filiere')) {
+      cocher(radiosFiliere, window.pcPrefs.get('filiere'));
+    }
+  }
 
   // La donnee structuree SearchAction pointe vers /blog/?q=... : sans cette
   // lecture, visiter cette adresse ouvrirait la page les mains vides, ce que

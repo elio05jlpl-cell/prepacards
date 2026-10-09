@@ -3041,3 +3041,21 @@ html.compte-attente #compte-connexion { display: none; }
   display: flex; align-items: center; gap: 8px; margin-top: 12px;
   font-size: .9rem; color: var(--gris); cursor: pointer;
 }
+
+/* Preferences : « Votre filiere » et « Reprendre ». */
+.pour-vous[hidden], .pour-vous [hidden], .reprendre[hidden] { display: none !important; }
+.pour-vous { padding-top: 40px; padding-bottom: 8px; }
+.pour-vous-titre { margin: 0 0 6px; }
+.pour-vous-invite { color: var(--gris); margin: 0 0 14px; }
+.pour-vous-choix { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.pour-vous-chip {
+  padding: 9px 16px; border-radius: 999px; cursor: pointer; font: inherit; font-weight: 600;
+  color: var(--texte); background: var(--fond); border: 1.5px solid var(--bord-net);
+}
+.pour-vous-chip:hover { border-color: var(--bleu); }
+.pour-vous-chip.actif { background: var(--bleu); border-color: var(--bleu); color: #fff; }
+.reprendre {
+  margin: 0 0 14px; padding: 10px 14px; border-radius: 10px;
+  background: var(--bleu-pale); font-size: .95rem;
+}
+.reprendre a { font-weight: 700; }

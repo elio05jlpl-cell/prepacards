@@ -7,9 +7,9 @@ slug: cookies
 # Cookies et stockage local
 
 <p class="chapeau">Ce site dépose un seul cookie : celui qui retient votre choix
-sur les cookies. La mesure d'audience, facultative, ne se charge que si vous
-l'acceptez. Cette page détaille ce qui est stocké, pourquoi, et comment changer
-d'avis à tout moment.</p>
+sur les cookies. Les préférences et la mesure d'audience, facultatives, ne
+s'activent que si vous les acceptez. Cette page détaille ce qui est stocké,
+pourquoi, et comment changer d'avis à tout moment.</p>
 
 <p><button type="button" class="bouton" data-pc-cookies>Gérer mes choix</button></p>
 
@@ -22,19 +22,19 @@ d'avis à tout moment.</p>
 | `pc_consent` | Cookie | Dès que vous faites un choix | 6 mois | Retenir votre choix, pour ne pas le redemander à chaque page | Non, nécessaire |
 | Session de connexion (`sb-…-auth-token`) | Stockage de session | Seulement si vous vous connectez | Jusqu'à la fermeture de l'onglet | Vous reconnaître d'une page à l'autre | Non, nécessaire |
 | Session « rester connecté » (même clé) | Stockage local | Seulement si vous cochez la case | Jusqu'à votre déconnexion | Vous éviter de vous reconnecter | Non, demandé par vous |
+| Préférences (`pc-prefs`) | Stockage local | Quand vous choisissez une filière, un filtre, ou lisez un article | Jusqu'à ce que vous retiriez votre accord | Retenir votre filière, vos filtres du blog, le dernier article lu | Oui |
 | Cloudflare Web Analytics | Aucun stockage chez vous | À chaque page vue, si vous l'acceptez | — | Compter les pages vues | Oui |
 
 </div>
 
-Il n'y a ni cookie publicitaire, ni outil de suivi entre sites, ni cookie de
-préférences : le site n'a aucune préférence à mémoriser.
+Il n'y a ni cookie publicitaire, ni outil de suivi entre sites.
 
 ## Votre choix
 
 À votre première visite, un bandeau vous propose **Tout refuser**, **Tout
 accepter** ou **Personnaliser**, avec le même poids : refuser est aussi simple
 qu'accepter. Tant que vous n'avez pas répondu, aucune mesure d'audience n'est
-chargée. Vous pouvez changer d'avis à tout moment avec le bouton « Gérer mes
+chargée et rien n'est conservé au-delà de l'onglet. Vous pouvez changer d'avis à tout moment avec le bouton « Gérer mes
 choix » ci-dessus ou en pied de page. Le choix est redemandé au bout de six mois.
 
 ## Cookies nécessaires
@@ -58,6 +58,21 @@ l'onglet en cours.
 
 Ces deux éléments sont strictement nécessaires au service demandé : ils ne
 requièrent pas votre consentement.
+
+## Les préférences (facultatives)
+
+Si vous les acceptez, le site retient, **sur votre appareil seulement** :
+
+- **votre filière** (ECG, MPSI/PCSI, khâgne), choisie sur la page d'accueil, pour
+  mettre en avant les guides qui vous concernent ;
+- **vos filtres du blog** (filière, matière, tri, nombre d'articles par page),
+  retrouvés à votre retour ;
+- **le dernier article lu**, pour vous proposer de reprendre votre lecture.
+
+Ces données ne quittent jamais votre navigateur : elles ne sont envoyées à
+personne, pas même à nous. Si vous refusez, ces fonctions marchent quand même
+pendant la visite, mais rien n'est conservé quand vous fermez l'onglet. Retirer
+votre accord efface ces données.
 
 ## La mesure d'audience (facultative)
 

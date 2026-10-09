@@ -58,6 +58,8 @@ faq: true
   </div>
 </section>
 
+{{pour_vous}}
+
 <section class="section actualites" aria-label="À lire sur PrépaCards">
   <div class="conteneur grille-actus revelation fondu">
 

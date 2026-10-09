@@ -150,7 +150,7 @@ BLOC_TELECHARGEMENT_ATTENTE = """<div class="encart encart-attention">
 # Marqueurs dont la valeur est un bloc HTML, et non du texte en
 # ligne : ils ne doivent jamais rester enfermes dans un <p>.
 MARQUEURS_DE_BLOC = ("{{bloc_telechargement}}", "{{bandeau_ecoles}}",
-                     "{{articles_filiere}}",
+                     "{{articles_filiere}}", "{{pour_vous}}",
                      "{{bloc_decks}}", "{{bloc_paiement}}",
                      "{{bouton_mensuel}}", "{{bouton_annuel}}")
 
@@ -1178,6 +1178,45 @@ def bloc_articles_filiere(page: dict) -> str:
         "</section>")
 
 
+CHOIX_FILIERES = [
+    ("commerciale", "prepa-commerciale", "Prépa commerciale (ECG)"),
+    ("scientifique", "prepa-scientifique", "Prépa scientifique (MPSI, PCSI…)"),
+    ("litteraire", "prepa-litteraire", "Khâgne (prépa littéraire)"),
+]
+
+
+def bloc_pour_vous() -> str:
+    """Le bloc « Votre filiere » de l'accueil.
+
+    Cache sans JavaScript. consentement.js le montre, affiche la liste de la
+    filiere retenue et rend le choix a l'utilisateur. Les trois listes sont
+    deja dans la page : choisir ne demande aucun chargement.
+    """
+    boutons, listes = [], []
+    for cle, slug, libelle in CHOIX_FILIERES:
+        boutons.append(f'<button type="button" class="pour-vous-chip" '
+                       f'data-filiere="{cle}" aria-pressed="false">'
+                       f'{html.escape(libelle)}</button>')
+        lignes = "".join(
+            f'<li><a href="/blog/{a["slug"]}/">{html.escape(titre_affiche(a["title"]))}</a>'
+            f'<span>{html.escape(a["description"])}</span></li>'
+            for a in articles_pour_hub(slug)[:3])
+        listes.append(
+            f'<div data-filiere-bloc="{cle}" hidden>'
+            f'<ul class="guides-liste">{lignes}</ul>'
+            f'<p><a href="/{slug}/">Tout pour cette filière »</a> · '
+            f'<a href="/blog/">Tous les articles</a></p></div>')
+    return (
+        '<section class="section pour-vous" id="pour-vous" aria-label="Votre filière" hidden>\n'
+        '<div class="conteneur">\n'
+        '<p class="reprendre" hidden></p>\n'
+        '<h2 class="pour-vous-titre">Votre filière</h2>\n'
+        '<p class="pour-vous-invite" id="pour-vous-invite">Indiquez-la une fois : nous vous '
+        'montrons les guides qui vous concernent, ici et dans le blog.</p>\n'
+        '<div class="pour-vous-choix" role="group" aria-label="Choisir ma filière">'
+        + "".join(boutons) + '</div>\n' + "\n".join(listes) + '\n</div>\n</section>')
+
+
 #: Pages vers lesquelles un article peut renvoyer. « generique » : utile a
 #: n'importe quel article de methode ; les autres le sont par leur matiere ou
 #: leur filiere.
@@ -1754,7 +1793,8 @@ def bibliotheque_blog(articles: list) -> str:
             f"</a></li>"
         )
 
-    return f"""<h1 class="conteneur-bibliotheque">Méthodes de révision en prépa</h1>
+    return f"""<p class="reprendre conteneur-bibliotheque" hidden></p>
+<h1 class="conteneur-bibliotheque">Méthodes de révision en prépa</h1>
 <p class="chapeau conteneur-bibliotheque">Méthode de travail, répétition espacée et retours
 concrets sur la préparation des concours.</p>
 <div class="cadre-entete conteneur-bibliotheque">
@@ -1843,6 +1883,7 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{a_lire_egalement}}": page.get("a_lire_egalement_html", ""),
         "{{pour_aller_plus_loin}}": page.get("pour_aller_plus_loin_html", ""),
         "{{articles_filiere}}": bloc_articles_filiere(page),
+        "{{pour_vous}}": bloc_pour_vous(),
         "{{bandeau_titre}}": page.get("bandeau_titre_html", ""),
     }
     for marker, value in replacements.items():

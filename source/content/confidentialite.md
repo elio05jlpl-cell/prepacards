@@ -125,7 +125,8 @@ préférons ce défaut à la possibilité de lire vos cartes.
 
 Ce site dépose **un seul cookie**, `pc_consent`, qui retient votre choix
 sur les cookies pendant six mois, et n'utilise aucun outil de suivi
-publicitaire. Si vous vous connectez, votre session est rangée dans le
+publicitaire. Avec votre accord, il retient aussi, **dans votre navigateur
+seulement**, votre filière, vos filtres du blog et le dernier article lu. Si vous vous connectez, votre session est rangée dans le
 stockage de session de votre navigateur, où elle s'efface à la fermeture de
 l'onglet, sauf si vous cochez « Rester connecté » : elle reste alors dans le
 stockage local jusqu'à votre déconnexion. Ces deux éléments sont nécessaires au service, donc sans
