@@ -12,7 +12,7 @@
 (function () {
   function connecte() {
     try {
-      var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
+      var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token') || localStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
       var session = brut && JSON.parse(brut);
       return Boolean(session && session.refresh_token);
     } catch (e) {

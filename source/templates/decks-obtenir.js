@@ -24,11 +24,33 @@
       + ' », un paquet fait pour préparer HEC.';
   }
 
+  // Par defaut la session vit en sessionStorage (elle s'efface a la fermeture
+  // de l'onglet). Si l'utilisateur a coche « Rester connecte », elle est rangee
+  // en localStorage, sous la meme cle. Le drapeau est efface a la deconnexion :
+  // la case n'est jamais cochee d'avance, par egard pour les postes partages.
+  var RESTER = 'pc-rester';
+  function resteConnecte() { try { return localStorage.getItem(RESTER) === '1'; } catch (e) { return false; } }
   var stockageSession = {
-    getItem: function (cle) { try { return sessionStorage.getItem(cle); } catch (e) { return null; } },
-    setItem: function (cle, valeur) { try { sessionStorage.setItem(cle, valeur); } catch (e) { /* navigation privee */ } },
-    removeItem: function (cle) { try { sessionStorage.removeItem(cle); } catch (e) { } },
+    getItem: function (cle) {
+      try { return sessionStorage.getItem(cle) || localStorage.getItem(cle); } catch (e) { return null; }
+    },
+    setItem: function (cle, valeur) {
+      try {
+        if (resteConnecte()) { localStorage.setItem(cle, valeur); sessionStorage.removeItem(cle); }
+        else { sessionStorage.setItem(cle, valeur); localStorage.removeItem(cle); }
+      } catch (e) { /* navigation privee */ }
+    },
+    removeItem: function (cle) {
+      try {
+        sessionStorage.removeItem(cle); localStorage.removeItem(cle);
+        if (/-auth-token$/.test(cle)) localStorage.removeItem(RESTER);
+      } catch (e) { }
+    },
   };
+  function retenirChoix(id) {
+    var c = document.getElementById(id);
+    try { localStorage.setItem(RESTER, c && c.checked ? '1' : '0'); } catch (e) { }
+  }
 
   var client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
     auth: { storage: stockageSession, persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
@@ -120,7 +142,7 @@
               data: { provenance: 'site-paquets' },
             },
           })
-        : await client.auth.signInWithPassword({ email: email, password: mdp });
+        : (retenirChoix('obtenir-rester'), await client.auth.signInWithPassword({ email: email, password: mdp }));
       if (resultat.error) throw resultat.error;
 
       if (creation && !resultat.data.session) {

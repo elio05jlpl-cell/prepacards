@@ -24,7 +24,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
-<link rel="stylesheet" href="/style.css?v=cb222ccd41">
+<link rel="stylesheet" href="/style.css?v=beb6ccc08a">
 <link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Flashcards de formules de maths : 3 méthodes | PrépaCards", "description": "Pourquoi les flashcards de maths sont abandonnées si vite, et trois façons de créer des cartes de formules vite : LaTeX, photo du cours, description.", "image": ["https://prepacards.fr/img/og-prepacards.png?v=de8ad632"], "datePublished": "2026-09-02", "dateModified": "2026-09-25", "author": {"@type": "Organization", "name": "PrépaCards"}, "publisher": {"@type": "Organization", "name": "PrépaCards", "logo": {"@type": "ImageObject", "url": "https://prepacards.fr/img/icone-180.png?v=355bf7c4"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://prepacards.fr/blog/flashcards-formules-de-maths/"}}</script>
@@ -418,7 +418,7 @@ document.documentElement.classList.add('js');
   var lien = document.querySelector('.nav-connexion');
   if (!lien) return;
   try {
-    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
+    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token') || localStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
     var session = brut && JSON.parse(brut);
     if (session && session.refresh_token) lien.textContent = 'Mon compte';
   } catch (e) { /* stockage indisponible : on garde "Se connecter" */ }

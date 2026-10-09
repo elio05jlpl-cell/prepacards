@@ -37,6 +37,8 @@ robots: noindex, follow
       <input id="obtenir-mdp" name="mot_de_passe" type="password" required
              autocomplete="current-password" placeholder="8 caractères minimum">
 
+      <label class="connexion-rester"><input type="checkbox" id="obtenir-rester"> Rester connecté sur cet appareil</label>
+
       <p id="obtenir-message" class="compte-message" hidden></p>
 
       <button class="bouton" type="submit" id="obtenir-valider">Se connecter et télécharger</button>

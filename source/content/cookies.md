@@ -21,6 +21,7 @@ d'avis à tout moment.</p>
 |---|---|---|---|---|---|
 | `pc_consent` | Cookie | Dès que vous faites un choix | 6 mois | Retenir votre choix, pour ne pas le redemander à chaque page | Non, nécessaire |
 | Session de connexion (`sb-…-auth-token`) | Stockage de session | Seulement si vous vous connectez | Jusqu'à la fermeture de l'onglet | Vous reconnaître d'une page à l'autre | Non, nécessaire |
+| Session « rester connecté » (même clé) | Stockage local | Seulement si vous cochez la case | Jusqu'à votre déconnexion | Vous éviter de vous reconnecter | Non, demandé par vous |
 | Cloudflare Web Analytics | Aucun stockage chez vous | À chaque page vue, si vous l'acceptez | — | Compter les pages vues | Oui |
 
 </div>
@@ -47,6 +48,13 @@ ou pour obtenir un paquet gratuit), notre prestataire d'authentification,
 Supabase, range un jeton dans le **stockage de session** de votre navigateur.
 Ce n'est pas un cookie : il reste attaché à l'onglet et **s'efface dès que vous
 le fermez**. Il ne contient pas votre mot de passe.
+
+**Si vous cochez « Rester connecté sur cet appareil »** (connexion par adresse
+et mot de passe), le même jeton est rangé dans le **stockage local** du
+navigateur : il survit à la fermeture de l'onglet et s'efface **quand vous vous
+déconnectez**. La case n'est jamais cochée d'avance ; ne l'utilisez pas sur un
+ordinateur partagé. La connexion avec Google ne garde la session que pour
+l'onglet en cours.
 
 Ces deux éléments sont strictement nécessaires au service demandé : ils ne
 requièrent pas votre consentement.

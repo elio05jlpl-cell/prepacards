@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
-<link rel="stylesheet" href="/style.css?v=cb222ccd41">
+<link rel="stylesheet" href="/style.css?v=beb6ccc08a">
 <script>
 // Pose le drapeau avant le premier affichage : les blocs qui apparaissent au
 // defilement sont masques par « html.js ... ». Pose en bas de page seulement,
@@ -373,7 +373,7 @@ document.documentElement.classList.add('js');
   var lien = document.querySelector('.nav-connexion');
   if (!lien) return;
   try {
-    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
+    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token') || localStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
     var session = brut && JSON.parse(brut);
     if (session && session.refresh_token) lien.textContent = 'Mon compte';
   } catch (e) { /* stockage indisponible : on garde "Se connecter" */ }

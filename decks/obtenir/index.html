@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
-<link rel="stylesheet" href="/style.css?v=cb222ccd41">
+<link rel="stylesheet" href="/style.css?v=beb6ccc08a">
 <script>
 // Pose le drapeau avant le premier affichage : les blocs qui apparaissent au
 // defilement sont masques par « html.js ... ». Pose en bas de page seulement,
@@ -111,6 +111,8 @@ document.documentElement.classList.add('js');
       <input id="obtenir-mdp" name="mot_de_passe" type="password" required
              autocomplete="current-password" placeholder="8 caractères minimum">
 
+      <label class="connexion-rester"><input type="checkbox" id="obtenir-rester"> Rester connecté sur cet appareil</label>
+
       <p id="obtenir-message" class="compte-message" hidden></p>
 
       <button class="bouton" type="submit" id="obtenir-valider">Se connecter et télécharger</button>
@@ -191,7 +193,7 @@ document.documentElement.classList.add('js');
   var lien = document.querySelector('.nav-connexion');
   if (!lien) return;
   try {
-    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
+    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token') || localStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
     var session = brut && JSON.parse(brut);
     if (session && session.refresh_token) lien.textContent = 'Mon compte';
   } catch (e) { /* stockage indisponible : on garde "Se connecter" */ }
@@ -352,11 +354,33 @@ document.documentElement.classList.add('js');
       + ' », un paquet fait pour préparer HEC.';
   }
 
+  // Par defaut la session vit en sessionStorage (elle s'efface a la fermeture
+  // de l'onglet). Si l'utilisateur a coche « Rester connecte », elle est rangee
+  // en localStorage, sous la meme cle. Le drapeau est efface a la deconnexion :
+  // la case n'est jamais cochee d'avance, par egard pour les postes partages.
+  var RESTER = 'pc-rester';
+  function resteConnecte() { try { return localStorage.getItem(RESTER) === '1'; } catch (e) { return false; } }
   var stockageSession = {
-    getItem: function (cle) { try { return sessionStorage.getItem(cle); } catch (e) { return null; } },
-    setItem: function (cle, valeur) { try { sessionStorage.setItem(cle, valeur); } catch (e) { /* navigation privee */ } },
-    removeItem: function (cle) { try { sessionStorage.removeItem(cle); } catch (e) { } },
+    getItem: function (cle) {
+      try { return sessionStorage.getItem(cle) || localStorage.getItem(cle); } catch (e) { return null; }
+    },
+    setItem: function (cle, valeur) {
+      try {
+        if (resteConnecte()) { localStorage.setItem(cle, valeur); sessionStorage.removeItem(cle); }
+        else { sessionStorage.setItem(cle, valeur); localStorage.removeItem(cle); }
+      } catch (e) { /* navigation privee */ }
+    },
+    removeItem: function (cle) {
+      try {
+        sessionStorage.removeItem(cle); localStorage.removeItem(cle);
+        if (/-auth-token$/.test(cle)) localStorage.removeItem(RESTER);
+      } catch (e) { }
+    },
   };
+  function retenirChoix(id) {
+    var c = document.getElementById(id);
+    try { localStorage.setItem(RESTER, c && c.checked ? '1' : '0'); } catch (e) { }
+  }
 
   var client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
     auth: { storage: stockageSession, persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
@@ -448,7 +472,7 @@ document.documentElement.classList.add('js');
               data: { provenance: 'site-paquets' },
             },
           })
-        : await client.auth.signInWithPassword({ email: email, password: mdp });
+        : (retenirChoix('obtenir-rester'), await client.auth.signInWithPassword({ email: email, password: mdp }));
       if (resultat.error) throw resultat.error;
 
       if (creation && !resultat.data.session) {

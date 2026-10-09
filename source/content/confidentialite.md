@@ -127,7 +127,8 @@ Ce site dépose **un seul cookie**, `pc_consent`, qui retient votre choix
 sur les cookies pendant six mois, et n'utilise aucun outil de suivi
 publicitaire. Si vous vous connectez, votre session est rangée dans le
 stockage de session de votre navigateur, où elle s'efface à la fermeture de
-l'onglet. Ces deux éléments sont nécessaires au service, donc sans
+l'onglet, sauf si vous cochez « Rester connecté » : elle reste alors dans le
+stockage local jusqu'à votre déconnexion. Ces deux éléments sont nécessaires au service, donc sans
 consentement. Le détail, et le moyen de changer d'avis, sont dans la page
 [Cookies et stockage local](/cookies/).
 

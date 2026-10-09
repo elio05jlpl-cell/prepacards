@@ -49,6 +49,7 @@ autocomplete="email" inputmode="email" placeholder="vous@exemple.fr">
 </div>
 <input id="compte-mdp" class="connexion-champ" name="mot_de_passe" type="password"
 autocomplete="current-password" placeholder="8 caractères minimum">
+<label class="connexion-rester"><input type="checkbox" id="compte-rester"> Rester connecté sur cet appareil</label>
 </div>
 <p id="compte-message" class="compte-message" hidden></p>
 <div class="connexion-actions">

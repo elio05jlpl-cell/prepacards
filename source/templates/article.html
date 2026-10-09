@@ -137,7 +137,7 @@ document.documentElement.classList.add('js');
   var lien = document.querySelector('.nav-connexion');
   if (!lien) return;
   try {
-    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
+    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token') || localStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
     var session = brut && JSON.parse(brut);
     if (session && session.refresh_token) lien.textContent = 'Mon compte';
   } catch (e) { /* stockage indisponible : on garde "Se connecter" */ }

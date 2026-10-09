@@ -7,9 +7,10 @@
 // garde que ce qu'aucune clef publique ne doit faire : ecrire l'abonnement
 // depuis le webhook Stripe.
 //
-// La session est rangee en sessionStorage et non en localStorage : elle
-// disparait a la fermeture de l'onglet, ce qui vaut mieux sur un poste
-// partage — et une salle informatique de lycee en est un.
+// La session est rangee en sessionStorage par defaut : elle disparait a la
+// fermeture de l'onglet, ce qui vaut mieux sur un poste partage — et une salle
+// informatique de lycee en est un. Seule la case « Rester connecte », cochee
+// par l'utilisateur, la range en localStorage.
 
 (function () {
   var zone = document.getElementById('compte-app');
@@ -18,11 +19,33 @@
   var SUPABASE_URL = 'https://ojnntqfafinxrousdvbn.supabase.co';
   var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9qbm50cWZhZmlueHJvdXNkdmJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1MzY4MTQsImV4cCI6MjEwNjExMjgxNH0.HFLJDmu8UwU8bz6WbE91HmVb8uljIGI-G1rVEZ3YIeY';
 
+  // Par defaut la session vit en sessionStorage (elle s'efface a la fermeture
+  // de l'onglet). Si l'utilisateur a coche « Rester connecte », elle est rangee
+  // en localStorage, sous la meme cle. Le drapeau est efface a la deconnexion :
+  // la case n'est jamais cochee d'avance, par egard pour les postes partages.
+  var RESTER = 'pc-rester';
+  function resteConnecte() { try { return localStorage.getItem(RESTER) === '1'; } catch (e) { return false; } }
   var stockageSession = {
-    getItem: function (cle) { try { return sessionStorage.getItem(cle); } catch (e) { return null; } },
-    setItem: function (cle, valeur) { try { sessionStorage.setItem(cle, valeur); } catch (e) { /* navigation privee */ } },
-    removeItem: function (cle) { try { sessionStorage.removeItem(cle); } catch (e) { } },
+    getItem: function (cle) {
+      try { return sessionStorage.getItem(cle) || localStorage.getItem(cle); } catch (e) { return null; }
+    },
+    setItem: function (cle, valeur) {
+      try {
+        if (resteConnecte()) { localStorage.setItem(cle, valeur); sessionStorage.removeItem(cle); }
+        else { sessionStorage.setItem(cle, valeur); localStorage.removeItem(cle); }
+      } catch (e) { /* navigation privee */ }
+    },
+    removeItem: function (cle) {
+      try {
+        sessionStorage.removeItem(cle); localStorage.removeItem(cle);
+        if (/-auth-token$/.test(cle)) localStorage.removeItem(RESTER);
+      } catch (e) { }
+    },
   };
+  function retenirChoix(id) {
+    var c = document.getElementById(id);
+    try { localStorage.setItem(RESTER, c && c.checked ? '1' : '0'); } catch (e) { }
+  }
 
   var client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
     auth: { storage: stockageSession, persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
@@ -294,7 +317,7 @@
             email: email, password: mdp,
             options: { data: { provenance: 'site-compte' } },
           })
-        : await client.auth.signInWithPassword({ email: email, password: mdp });
+        : (retenirChoix('compte-rester'), await client.auth.signInWithPassword({ email: email, password: mdp }));
       if (resultat.error) throw resultat.error;
       mdpChamp.value = '';
 

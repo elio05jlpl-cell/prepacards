@@ -90,11 +90,14 @@
   // compte.
   function sessionSupabase() {
     try {
-      for (var i = 0; i < sessionStorage.length; i++) {
-        var cle = sessionStorage.key(i);
-        if (!/^sb-.+-auth-token$/.test(cle)) continue;
-        var brut = JSON.parse(sessionStorage.getItem(cle));
-        if (brut && brut.access_token && brut.user && brut.user.id) return brut;
+      var depots = [sessionStorage, localStorage];
+      for (var d = 0; d < depots.length; d++) {
+        for (var i = 0; i < depots[d].length; i++) {
+          var cle = depots[d].key(i);
+          if (!/^sb-.+-auth-token$/.test(cle)) continue;
+          var brut = JSON.parse(depots[d].getItem(cle));
+          if (brut && brut.access_token && brut.user && brut.user.id) return brut;
+        }
       }
     } catch (e) { /* navigation privee, ou stockage refuse */ }
     return null;

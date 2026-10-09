@@ -2249,3 +2249,7 @@ background: var(--fond); border: 1.5px solid var(--bleu);
 @media (prefers-color-scheme: dark) {
 .pc-cookies { box-shadow: 0 10px 40px rgba(0, 0, 0, .5); }
 }
+.connexion-rester {
+display: flex; align-items: center; gap: 8px; margin-top: 12px;
+font-size: .9rem; color: var(--gris); cursor: pointer;
+}

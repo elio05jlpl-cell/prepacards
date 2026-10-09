@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
-<link rel="stylesheet" href="/style.css?v=cb222ccd41">
+<link rel="stylesheet" href="/style.css?v=beb6ccc08a">
 <script>
 // Pose le drapeau avant le premier affichage : les blocs qui apparaissent au
 // defilement sont masques par « html.js ... ». Pose en bas de page seulement,
@@ -122,6 +122,14 @@ d'avis à tout moment.</p>
 <td>Non, nécessaire</td>
 </tr>
 <tr>
+<td>Session « rester connecté » (même clé)</td>
+<td>Stockage local</td>
+<td>Seulement si vous cochez la case</td>
+<td>Jusqu'à votre déconnexion</td>
+<td>Vous éviter de vous reconnecter</td>
+<td>Non, demandé par vous</td>
+</tr>
+<tr>
 <td>Cloudflare Web Analytics</td>
 <td>Aucun stockage chez vous</td>
 <td>À chaque page vue, si vous l'acceptez</td>
@@ -149,6 +157,12 @@ ou pour obtenir un paquet gratuit), notre prestataire d'authentification,
 Supabase, range un jeton dans le <strong>stockage de session</strong> de votre navigateur.
 Ce n'est pas un cookie : il reste attaché à l'onglet et <strong>s'efface dès que vous
 le fermez</strong>. Il ne contient pas votre mot de passe.</p>
+<p><strong>Si vous cochez « Rester connecté sur cet appareil »</strong> (connexion par adresse
+et mot de passe), le même jeton est rangé dans le <strong>stockage local</strong> du
+navigateur : il survit à la fermeture de l'onglet et s'efface <strong>quand vous vous
+déconnectez</strong>. La case n'est jamais cochée d'avance ; ne l'utilisez pas sur un
+ordinateur partagé. La connexion avec Google ne garde la session que pour
+l'onglet en cours.</p>
 <p>Ces deux éléments sont strictement nécessaires au service demandé : ils ne
 requièrent pas votre consentement.</p>
 <h2 id="la-mesure-daudience-facultative">La mesure d'audience (facultative)</h2>
@@ -252,7 +266,7 @@ document.documentElement.classList.add('js');
   var lien = document.querySelector('.nav-connexion');
   if (!lien) return;
   try {
-    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
+    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token') || localStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
     var session = brut && JSON.parse(brut);
     if (session && session.refresh_token) lien.textContent = 'Mon compte';
   } catch (e) { /* stockage indisponible : on garde "Se connecter" */ }
