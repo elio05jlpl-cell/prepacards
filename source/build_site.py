@@ -122,7 +122,7 @@ def balise_mesure() -> str:
 
 DOWNLOAD_URL = (
     "https://github.com/elio05jlpl-cell/prepacards/releases/latest/download/"
-    "PrepaCards-installateur.exe"
+    "PrepaCards-installateur.zip"
 )
 
 # Marqueur laisse dans DOWNLOAD_URL tant que l'archive n'est pas hebergee.
@@ -146,9 +146,9 @@ BLOC_TELECHARGEMENT_PRET = """<div id="telechargement-bloc" data-url="{url}">
   </div>
   <div class="telechargement-pret" hidden>
     <p>
-      <a class="bouton" href="{url}">Télécharger pour Windows (194 Mo)</a>
+      <a class="bouton" href="{url}">Télécharger pour Windows (273 Mo)</a>
     </p>
-    <p class="sous-bouton">Version 1.3.1 · Windows 10 et 11 (64 bits) ·
+    <p class="sous-bouton">Version 1.3 · Windows 10 et 11 (64 bits) ·
        Prévoir environ 1,5 Go d'espace disque une fois les modèles installés</p>
   </div>
 </div>"""
@@ -159,7 +159,7 @@ BLOC_TELECHARGEMENT_ATTENTE = """<div class="encart encart-attention">
   votre adresse et vous serez prévenu dès qu'elle est disponible.</p>
   <p><a class="bouton" href="mailto:contact@prepacards.fr?subject=Me%20pr%C3%A9venir%20du%20lancement">Me prévenir du lancement</a></p>
 </div>
-<p class="sous-bouton">Version 1.3.1 · Windows 10 et 11 (64 bits) ·
+<p class="sous-bouton">Version 1.3 · Windows 10 et 11 (64 bits) ·
    Prévoir environ 1,5 Go d'espace disque une fois les modèles installés</p>"""
 
 
