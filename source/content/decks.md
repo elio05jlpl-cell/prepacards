@@ -6,15 +6,44 @@ faq: true
 ---
 
 <section class="section decks-entete">
-  <div class="conteneur centre">
+  <div class="conteneur">
     <span class="eyebrow">Paquets gratuits</span>
-    <h1>Les paquets qui m'ont fait entrer à HEC</h1>
-    <p class="chapeau">Ce sont mes propres paquets, construits chapitre par
-      chapitre pendant mes deux ans de prépa ECG et révisés jusqu'aux oraux :
-      le vocabulaire d'anglais, d'allemand, d'espagnol et d'italien, et le
-      cours de maths en formules, en approfondies comme en appliquées, de la
-      première à la deuxième année. Je les mets à disposition tels quels.</p>
-    <p class="sous-bouton">Gratuits · Compte gratuit requis · Un fichier, un double-clic</p>
+    <h1>{{nb_paquets}} paquets pour réviser la prépa ECG, gratuitement</h1>
+    <p class="chapeau">Mes propres paquets, construits chapitre par chapitre
+      pendant mes deux ans de prépa et révisés jusqu'aux oraux : le vocabulaire
+      d'anglais, d'allemand, d'espagnol et d'italien, et le cours de maths en
+      formules, en approfondies comme en appliquées. Un fichier par chapitre,
+      un double-clic pour l'ouvrir.</p>
+  </div>
+</section>
+
+<section class="section section-douce decks-catalogue" markdown="1">
+<div class="conteneur" markdown="1">
+
+{{bloc_decks}}
+
+</div>
+</section>
+
+<section class="section decks-etapes-zone">
+  <div class="conteneur">
+    <ol class="decks-etapes">
+      <li>
+        <span class="decks-etape-num">1</span>
+        <strong>Téléchargez le fichier</strong>
+        <span>Un fichier .pcards par paquet, quelques ko seulement.</span>
+      </li>
+      <li>
+        <span class="decks-etape-num">2</span>
+        <strong>Double-cliquez dessus</strong>
+        <span>Ou passez par Importer dans l'application.</span>
+      </li>
+      <li>
+        <span class="decks-etape-num">3</span>
+        <strong>Révisez dès aujourd'hui</strong>
+        <span>Les cartes sont rangées par matière et dues dès le premier jour.</span>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -29,8 +58,8 @@ choisissez le fichier — ou double-cliquez simplement dessus si vous avez
 associé l'extension à l'installation.
 
 Les cartes arrivent dans l'arborescence `Langue › Catégorie › Chapitre` ou
-`Maths approfondies › Année › Chapitre`, et sont dues dès le premier jour. Vous n'avez
-rien à ranger.
+`Maths approfondies › Année › Chapitre`, et sont dues dès le premier jour. Vous
+n'avez rien à ranger.
 
 <div class="encart">
   <p><strong>Il vous faut l'application pour les ouvrir.</strong> Elle est
@@ -71,14 +100,6 @@ année : **maths approfondies** (19 chapitres) et **maths appliquées**
 propres à cette option). Les énoncés y sont réduits à leur écriture symbolique :
 ce sont des cartes de révision, pas un cours — elles supposent que vous avez
 déjà compris la notion.
-
-</div>
-</section>
-
-<section class="section section-douce" markdown="1">
-<div class="conteneur" markdown="1">
-
-{{bloc_decks}}
 
 </div>
 </section>

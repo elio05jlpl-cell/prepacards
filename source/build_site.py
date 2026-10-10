@@ -273,6 +273,7 @@ def scripts_animes(corps: str) -> str:
                    # bibliotheque pour decider qui rediriger.
                    ("{{bloc_decks}}", "decks.js"),
                    ('id="liste-articles"', "blog-filtres.js"),
+                   ('id="import-onglets"', "importer.js"),
                    # Le marqueur, et non l'adresse Stripe : a ce
                    # stade les boutons sont encore
                    # « {{bouton_mensuel}} », et chercher
@@ -332,6 +333,28 @@ def ancre_matiere(nom: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", nu.lower()).strip("-")
 
 
+# Ordre d'affichage des matieres de la page des paquets : les langues d'abord,
+# puis les deux options de maths. Une matiere absente de cette liste est
+# ajoutee apres, par ordre alphabetique, plutot que perdue.
+ORDRE_MATIERES = ("Anglais", "Allemand", "Espagnol", "Italien",
+                  "Maths approfondies", "Maths appliquées")
+LANGUE_DE_MATIERE = {"Anglais": "l'anglais", "Allemand": "l'allemand",
+                     "Espagnol": "l'espagnol", "Italien": "l'italien"}
+
+
+def fiches_decks() -> list:
+    """Les fiches du manifeste des paquets, ou une liste vide."""
+    manifeste = STATIC / "decks" / "decks.json"
+    if not manifeste.exists():
+        return []
+    return json.loads(manifeste.read_text(encoding="utf-8"))
+
+
+def milliers(n: int) -> str:
+    """12117 -> « 12 117 », avec une espace insecable."""
+    return f"{n:,}".replace(",", "\u00a0")
+
+
 def bloc_decks() -> str:
     """La liste des paquets telechargeables, batie sur le manifeste.
 
@@ -339,69 +362,121 @@ def bloc_decks() -> str:
     depuis les listes de vocabulaire. Rien n'est saisi deux fois : ajouter
     un paquet, c'est ajouter un fichier source et relancer le generateur.
 
+    Une section par matiere, avec ses themes (ou ses annees, en maths) puis
+    ses paquets. La recherche et les puces sont servies par decks.js ; sans
+    lui, la page reste une liste complete et lisible.
+
     Si le manifeste est absent, la page affiche une attente plutot qu'une
     liste vide - un tableau de zero ligne ressemble a une panne.
     """
-    manifeste = STATIC / "decks" / "decks.json"
-    if not manifeste.exists():
-        return ('<div class="encart encart-attention"><p>Les paquets sont en '
-                'cours de préparation.</p></div>')
-
-    fiches = json.loads(manifeste.read_text(encoding="utf-8"))
+    fiches = fiches_decks()
     if not fiches:
         return ('<div class="encart encart-attention"><p>Les paquets sont en '
                 'cours de préparation.</p></div>')
 
-    # Regroupement : matiere, puis annee, puis groupe. L'ordre des annees
-    # est numerique et non alphabetique - « 10 » viendrait avant « 2 ».
+    # matiere -> groupe -> fiches. Les groupes gardent l'ordre alphabetique ;
+    # en maths ils s'appellent « Programme de premiere annee » et « ... de
+    # deuxieme annee », ce qui donne l'ordre voulu.
     arbre = {}
     for fiche in fiches:
-        annee = arbre.setdefault(fiche["matiere"], {}).setdefault(
-            str(fiche["annee"]), {})
-        annee.setdefault(fiche["groupe"], []).append(fiche)
+        arbre.setdefault(fiche["matiere"], {}).setdefault(
+            fiche["groupe"], []).append(fiche)
 
+    matieres = [m for m in ORDRE_MATIERES if m in arbre]
+    matieres += sorted(m for m in arbre if m not in ORDRE_MATIERES)
+
+    def rang_annee(f):
+        return (int(f["annee"] or 0), f["titre"])
+
+    def carte(f):
+        poids = f'{f["octets"] / 1024:.0f} ko'
+        annee = ""
+        if f.get("type") != "formules" and f.get("annee"):
+            annee = ('<span class="deck-annee">'
+                     + ("1re" if str(f["annee"]) == "1" else f'{f["annee"]}e')
+                     + " année</span>")
+        return (
+            '<a class="deck-carte" '
+            f'href="/decks/{html.escape(f["fichier"])}" download>'
+            f'<span class="deck-titre">{html.escape(f["titre"])}</span>'
+            f'<span class="deck-desc">{html.escape(f["description"])}</span>'
+            '<span class="deck-pied">'
+            f'<span class="deck-nombre">{f["cartes"]} cartes</span>'
+            f'{annee}'
+            f'<span class="deck-poids">{poids}</span>'
+            '<svg class="deck-fleche" width="18" height="18" viewBox="0 0 24 24" '
+            'fill="none" stroke="currentColor" stroke-width="2.3" '
+            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+            '<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>'
+            '</span></a>'
+        )
+
+    total_paquets = len(fiches)
     total_cartes = sum(f["cartes"] for f in fiches)
+
     morceaux = [
-        '<p class="decks-compte">'
-        f'<strong>{len(fiches)} paquets</strong> · '
-        f'<strong>{total_cartes:,} cartes</strong> · gratuits · compte gratuit requis'
-        '</p>'.replace(",", " ")
+        '<div class="decks-outils">'
+        '<div class="decks-recherche">'
+        '<label class="decks-recherche-label" for="decks-recherche">'
+        'Chercher un paquet</label>'
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" '
+        'stroke="currentColor" stroke-width="2.2" stroke-linecap="round" '
+        'aria-hidden="true"><circle cx="11" cy="11" r="7"/>'
+        '<path d="M20 20l-4-4"/></svg>'
+        '<input id="decks-recherche" type="search" autocomplete="off" '
+        'placeholder="Chercher un thème : Brexit, matrices, migration…">'
+        '</div>'
+        '<p class="decks-compte" id="decks-compte" '
+        f'data-total="{total_paquets}">'
+        f'<strong>{total_paquets} paquets</strong> · '
+        f'<strong>{milliers(total_cartes)} cartes</strong> · gratuits · '
+        'compte gratuit requis</p>'
+        '</div>'
     ]
 
-    for matiere in sorted(arbre):
-        premiere_annee = True
-        for annee in sorted(arbre[matiere], key=lambda a: int(a or 0)):
-            # L'ancre est posee sur la PREMIERE annee de la matiere : c'est
-            # la que doit arriver quelqu'un qui clique « Espagnol ».
-            ancre = (f' id="{ancre_matiere(matiere)}"' if premiere_annee else "")
-            premiere_annee = False
-            morceaux.append(
-                f'<h2 class="decks-annee"{ancre}>{html.escape(matiere)} — '
-                f'{annee}<sup>re</sup> année</h2>'
-                if annee == "1" else
-                f'<h2 class="decks-annee"{ancre}>{html.escape(matiere)} — '
-                f'{annee}<sup>e</sup> année</h2>'
-            )
-            for groupe in sorted(arbre[matiere][annee]):
-                morceaux.append(
-                    f'<h3 class="decks-groupe">{html.escape(groupe)}</h3>')
-                morceaux.append('<div class="decks-grille">')
-                for fiche in sorted(arbre[matiere][annee][groupe],
-                                    key=lambda f: f["titre"]):
-                    poids = f'{fiche["octets"] / 1024:.0f} ko'
-                    morceaux.append(
-                        '<a class="deck-carte" '
-                        f'href="/decks/{html.escape(fiche["fichier"])}" '
-                        f'download>'
-                        f'<span class="deck-titre">{html.escape(fiche["titre"])}</span>'
-                        f'<span class="deck-desc">{html.escape(fiche["description"])}</span>'
-                        f'<span class="deck-pied">'
-                        f'<span class="deck-nombre">{fiche["cartes"]} cartes</span>'
-                        f'<span class="deck-poids">{poids}</span></span>'
-                        '</a>'
-                    )
-                morceaux.append('</div>')
+    puces = ['<nav class="decks-puces" aria-label="Matières">']
+    for matiere in matieres:
+        nombre = sum(len(v) for v in arbre[matiere].values())
+        puces.append(
+            f'<a class="decks-puce" href="#{ancre_matiere(matiere)}">'
+            f'{html.escape(matiere)} <span>{nombre}</span></a>')
+    puces.append("</nav>")
+    morceaux.append("".join(puces))
 
+    for matiere in matieres:
+        groupes = arbre[matiere]
+        nombre = sum(len(v) for v in groupes.values())
+        cartes = sum(f["cartes"] for v in groupes.values() for f in v)
+        formules = all(f.get("type") == "formules"
+                       for v in groupes.values() for f in v)
+        if formules:
+            nature = "une formule par carte, rendue en image"
+        else:
+            langue = LANGUE_DE_MATIERE.get(matiere, "la langue étrangère")
+            nature = f"du français vers {langue}"
+            if matiere != "Anglais":
+                nature += ", avec une phrase d'exemple"
+
+        morceaux.append(
+            f'<section class="decks-matiere" id="{ancre_matiere(matiere)}">'
+            '<header class="decks-matiere-tete">'
+            f'<h2>{html.escape(matiere)}</h2>'
+            f'<p>{nombre} paquets · {milliers(cartes)} cartes · '
+            f'{html.escape(nature)}</p>'
+            '</header>')
+        for groupe in sorted(groupes):
+            morceaux.append(
+                f'<h3 class="decks-groupe">{html.escape(groupe)}</h3>'
+                '<div class="decks-grille">')
+            for fiche in sorted(groupes[groupe], key=rang_annee):
+                morceaux.append(carte(fiche))
+            morceaux.append("</div>")
+        morceaux.append("</section>")
+
+    morceaux.append(
+        '<p class="decks-vide" id="decks-vide" hidden>Aucun paquet ne '
+        'correspond à cette recherche. Essayez un mot plus court, ou '
+        'effacez la recherche pour revoir tous les paquets.</p>')
     return "\n".join(morceaux)
 
 
@@ -1874,6 +1949,8 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{version_css}}": css_version(),
         "{{bloc_telechargement}}": bloc_telechargement(),
         "{{bloc_decks}}": bloc_decks(),
+        "{{nb_paquets}}": str(len(fiches_decks())),
+        "{{nb_cartes}}": milliers(sum(f["cartes"] for f in fiches_decks())),
         "{{bloc_paiement}}": bloc_paiement(),
         "{{bouton_mensuel}}": bouton_abonnement("mensuel", False),
         "{{bouton_annuel}}": bouton_abonnement("annuel", True),

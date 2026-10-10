@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
-<link rel="stylesheet" href="/style.css?v=4df181fdeb">
+<link rel="stylesheet" href="/style.css?v=56ae211c72">
 <script>
 // Pose le drapeau avant le premier affichage : les blocs qui apparaissent au
 // defilement sont masques par « html.js ... ». Pose en bas de page seulement,
@@ -82,29 +82,123 @@ document.documentElement.classList.add('js');
 </div>
 
 <main id="contenu">
-<div class="feuille-texte">
-<h1 id="importer-ses-paquets-anki-et-quizlet">Importer ses paquets Anki et Quizlet</h1>
-<p>Changer d'outil de révision en milieu d'année n'a d'intérêt que si l'on ne
-recommence pas ses cartes de zéro. PrépaCards lit directement les paquets
-d'Anki et les jeux Quizlet — sans passer par un tableur.</p>
-<div class="encart">
-  <p>Tout se fait depuis le bouton <strong>Importer</strong> de l'écran
-  d'accueil, ou par <em>Fichier → Importer depuis Anki ou Quizlet</em>
-  (Ctrl+Maj+I).</p>
-</div>
+<section class="import-bandeau">
+  <div class="conteneur centre">
+    <span class="eyebrow">Importer</span>
+    <h1>Vous ne recommencez pas vos cartes à zéro</h1>
+    <p class="chapeau">Anki et Quizlet s'importent directement : vos sous-paquets et vos textes à trous suivent, et rien ne quitte votre ordinateur.</p>
+  </div>
+</section>
 
-<h2 id="depuis-anki">Depuis Anki</h2>
-<ol>
-<li>Dans Anki, clic droit sur le paquet → <strong>Exporter</strong>, ou <em>Fichier → Exporter</em>.</li>
-<li>Choisissez le format <strong>Paquet Anki (.apkg)</strong>. Laissez les médias cochés ou
-   non, cela ne change rien pour l'import.</li>
-<li>Dans PrépaCards : <strong>Importer</strong> → <em>Depuis Anki (.apkg) ou Quizlet</em> →
-   <strong>Choisir un fichier</strong>.</li>
-</ol>
-<p>L'écran affiche alors le nombre de cartes, les paquets détectés, un aperçu des
-premières, et la liste de ce qui ne sera pas repris. Rien n'est écrit tant que
-vous n'avez pas cliqué sur <strong>Importer</strong>.</p>
-<h3 id="ce-qui-est-conserve">Ce qui est conservé</h3>
+<section class="section import-corps" id="import-onglets">
+  <div class="conteneur">
+    <h2 class="import-titre">Importer vos paquets en deux minutes</h2>
+    <p class="import-intro">Choisissez d'où vous venez : les étapes s'adaptent. L'écran de PrépaCards vous montre exactement ce qui sera importé avant d'écrire quoi que ce soit.</p>
+    <div class="import-onglets" role="tablist" aria-label="D'où venez-vous ?">
+      <button type="button" role="tab" id="onglet-anki" aria-controls="panneau-anki" aria-selected="true">Depuis Anki</button>
+      <button type="button" role="tab" id="onglet-quizlet" aria-controls="panneau-quizlet" aria-selected="false">Depuis Quizlet</button>
+    </div>
+
+    <div class="import-panneau" id="panneau-anki" role="tabpanel" aria-labelledby="onglet-anki">
+      <div class="import-colonnes">
+        <ol class="import-etapes">
+          <li>
+            <h3>Exportez le paquet dans Anki</h3>
+            <p>Clic droit sur le paquet, <strong>Exporter</strong>, ou <em>Fichier → Exporter</em>. Choisissez le format <em>Paquet Anki (.apkg)</em>. Les médias cochés ou non, cela ne change rien pour l'import.</p>
+            <p class="import-note">Si un message parle d'une <strong>version récente d'Anki</strong>, refaites l'export en cochant <em>Prendre en charge les anciennes versions d'Anki</em> : depuis la version 2.1.50, Anki compresse ses exports.</p>
+          </li>
+          <li>
+            <h3>Ouvrez l'import dans PrépaCards</h3>
+            <p>Bouton <strong>Importer</strong> de l'écran d'accueil, puis <em>Depuis Anki (.apkg) ou Quizlet</em> → <strong>Choisir un fichier</strong>. Ou <em>Fichier → Importer depuis Anki ou Quizlet</em> : <strong>Ctrl + Maj + I</strong>.</p>
+          </li>
+          <li>
+            <h3>Relisez l'aperçu, puis importez</h3>
+            <p>L'écran affiche le nombre de cartes, les paquets détectés, un aperçu des premières et la liste de ce qui ne sera pas repris. Rien n'est écrit tant que vous n'avez pas cliqué sur <strong>Importer</strong>.</p>
+          </li>
+          <li class="import-fin">
+            <h3>Révisez dès aujourd'hui</h3>
+            <p>Les cartes arrivent comme neuves : les intervalles d'Anki ne se transposent pas. Comptez trois semaines pour retrouver le bon rythme.</p>
+          </li>
+        </ol>
+        <aside class="import-maquette" aria-label="Maquette de l'écran d'import">
+          <div class="import-fenetre">
+            <div class="import-fenetre-barre"><span class="import-fenetre-carre"></span>Importer depuis Anki</div>
+            <div class="import-fenetre-corps">
+              <div class="import-fenetre-titre">Paquet Anki détecté</div>
+              <div class="import-fenetre-fichier">anglais-prepa.apkg</div>
+              <div class="import-chiffres">
+                <div><strong>1 248</strong><span>cartes</span></div>
+                <div><strong>14</strong><span>paquets</span></div>
+                <div class="import-chiffre-attention"><strong>23</strong><span>avec image</span></div>
+              </div>
+              <ul class="import-arbre">
+                <li><span>Anglais::Vocabulaire::Économie</span><span>96</span></li>
+                <li><span>Anglais::Civilisation::Brexit</span><span>84</span></li>
+                <li><span>Géopolitique::Chine</span><span>61</span></li>
+              </ul>
+              <div class="import-fenetre-pied"><span class="import-faux-bouton">Importer 1 248 cartes</span><span>Rien n'est écrit avant ce clic</span></div>
+            </div>
+          </div>
+          <p class="import-legende">Maquette de l'écran d'import de l'application Windows ; les chiffres sont un exemple.</p>
+        </aside>
+      </div>
+    </div>
+
+    <div class="import-panneau" id="panneau-quizlet" role="tabpanel" aria-labelledby="onglet-quizlet">
+      <div class="import-colonnes">
+        <ol class="import-etapes">
+          <li>
+            <h3>Exportez le jeu dans Quizlet</h3>
+            <p>Quizlet ne produit pas de fichier : il affiche votre jeu sous forme de texte à copier. Ouvrez le jeu, menu <strong>⋯</strong> → <strong>Exporter</strong>.</p>
+          </li>
+          <li>
+            <h3>Copiez le texte proposé</h3>
+            <p>Sélectionnez tout le texte de la fenêtre d'export et copiez-le : <strong>Ctrl + C</strong>.</p>
+            <p class="import-note">Si votre jeu vient d'un ancien export enregistré en fichier <code>.txt</code>, passez plutôt par <strong>Choisir un fichier</strong> : le résultat est le même.</p>
+          </li>
+          <li>
+            <h3>Collez-le dans PrépaCards</h3>
+            <p>Bouton <strong>Importer</strong> → <em>Depuis Anki (.apkg) ou Quizlet</em>, puis collez dans la zone de texte : <strong>Ctrl + V</strong>. Vous n'avez pas à toucher aux réglages de séparateurs : l'application les détecte en regardant lequel découpe le plus de lignes en deux colonnes — tabulation, tiret, point-virgule ou barre verticale. Une virgule dans une définition ne la trompe pas.</p>
+          </li>
+          <li class="import-fin">
+            <h3>Choisissez où arrivent les cartes, puis importez</h3>
+            <p>Un jeu Quizlet n'a qu'un seul niveau : <strong>tout mettre dans un seul paquet</strong> est le plus simple. Vérifiez l'aperçu, puis cliquez sur <strong>Importer</strong>.</p>
+          </li>
+        </ol>
+        <aside class="import-maquette" aria-label="Maquette de l'écran d'import">
+          <div class="import-fenetre">
+            <div class="import-fenetre-barre"><span class="import-fenetre-carre"></span>Importer depuis Quizlet</div>
+            <div class="import-fenetre-corps">
+              <div class="import-fenetre-titre">Texte collé</div>
+              <div class="import-fenetre-fichier">Séparateur détecté : tabulation</div>
+              <pre class="import-texte">to curb enrayer
+a loophole  une faille
+the turnout le taux de participation
+to ban  interdire</pre>
+              <div class="import-chiffres">
+                <div><strong>36</strong><span>cartes</span></div>
+                <div><strong>1</strong><span>paquet</span></div>
+                <div><strong>0</strong><span>à vérifier</span></div>
+              </div>
+              <div class="import-fenetre-pied"><span class="import-faux-bouton">Importer 36 cartes</span><span>Rien n'est écrit avant ce clic</span></div>
+            </div>
+          </div>
+          <p class="import-legende">Maquette de l'écran d'import de l'application Windows ; les chiffres sont un exemple.</p>
+        </aside>
+      </div>
+    </div>
+
+    <div class="import-garanties">
+      <div><strong>Hors ligne</strong><span>La conversion se fait sur votre ordinateur. Vos cartes ne quittent pas votre machine.</span></div>
+      <div><strong>Rien n'est écrasé</strong><span>Un import ajoute des cartes sans toucher à celles qui s'y trouvent déjà. Les doublons exacts sont écartés.</span></div>
+      <div><strong>Un fichier à la fois</strong><span>Importez plusieurs paquets l'un après l'autre : ils s'ajoutent dans leur arborescence.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+<div class="conteneur-texte">
+<h2 id="ce-qui-est-conserve">Ce qui est conservé</h2>
 <ul>
 <li><strong>Vos sous-paquets</strong>, à l'identique. <em>Anglais::Vocabulaire::Économie</em> reste
   rangé de la même façon.</li>
@@ -117,7 +211,7 @@ vous n'avez pas cliqué sur <strong>Importer</strong>.</p>
 <li><strong>Les cartes en cours de révision</strong>, y compris celles qui se trouvaient dans
   un paquet filtré : elles retournent dans leur paquet d'origine.</li>
 </ul>
-<h3 id="ce-qui-ne-lest-pas">Ce qui ne l'est pas</h3>
+<h2 id="ce-qui-ne-lest-pas">Ce qui ne l'est pas</h2>
 <p><strong>Les images et les sons.</strong> PrépaCards ne stocke que du texte. Une carte dont
 le verso était un schéma arrivera avec son texte seul. L'application compte
 exactement combien de cartes sont concernées et vous l'indique avant l'import,
@@ -132,25 +226,6 @@ qu'un calendrier de révision erroné.</p>
 d'une note de six champs. PrépaCards n'a qu'un recto et un verso : le premier
 champ devient le recto, les autres sont regroupés au verso. Les modèles
 courants (Basique, Basique inversé, vocabulaire) passent sans perte.</p>
-<h3 id="ce-fichier-vient-dune-version-recente-danki">« Ce fichier vient d'une version récente d'Anki »</h3>
-<p>Depuis la version 2.1.50, Anki compresse ses exports. PrépaCards sait les lire,
-mais si ce message apparaît, refaites l'export en cochant <strong>Prendre en charge
-les anciennes versions d'Anki</strong> dans la fenêtre d'export.</p>
-<h2 id="depuis-quizlet">Depuis Quizlet</h2>
-<p>Quizlet ne produit pas de fichier : il affiche votre jeu sous forme de texte à
-copier.</p>
-<ol>
-<li>Ouvrez le jeu, menu <strong>⋯</strong> → <strong>Exporter</strong>.</li>
-<li>Copiez le texte proposé (Ctrl+C).</li>
-<li>Dans PrépaCards : <strong>Importer</strong> → <em>Depuis Anki (.apkg) ou Quizlet</em>, et collez
-   dans la zone de texte (Ctrl+V).</li>
-</ol>
-<p>Vous n'avez pas à toucher aux réglages de séparateurs. L'application les
-détecte en regardant lequel découpe le plus de lignes en exactement deux
-colonnes — tabulation, tiret, point-virgule ou barre verticale. Une virgule
-présente dans une définition ne la trompe pas.</p>
-<p>Si votre jeu vient d'un export ancien enregistré en fichier <code>.txt</code>, passez
-plutôt par <strong>Choisir un fichier</strong> : le résultat est le même.</p>
 <h2 id="choisir-ou-arrivent-les-cartes">Choisir où arrivent les cartes</h2>
 <p>Deux options, dans la même fenêtre :</p>
 <ul>
@@ -186,12 +261,13 @@ plutôt par <strong>Choisir un fichier</strong> : le résultat est le même.</p>
   </div>
 </section>
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows 10 et 11.
+<p>PrépaCards est gratuit pour Windows 10 et 11.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/alternative-anki/">Comparatif avec Anki</a> ·
   <a href="/alternative-quizlet/">Comparatif avec Quizlet</a></p>
 </div>
 </div>
+</section>
 </main>
 
 <footer class="pied">
@@ -596,127 +672,47 @@ document.documentElement.classList.add('js');
 })();
 </script>
 <script>
-// Ce qui rend une page de contenu vivante : apparition des blocs au
-// defilement, barre de progression de lecture, et sommaire lateral dont
-// l'entree courante s'allume.
+// Page Importer : onglets Anki / Quizlet
+// =====================================
 //
-// Rien de tout cela n'est indispensable a la lecture : si le script
-// echoue, la page reste complete et lisible. C'est pour cela que les
-// regles d'apparition sont derriere html.js, pose par le script principal.
+// Un seul parcours est affiche a la fois, celui de l'onglet choisi. Sans ce
+// script, rien n'est cache : les deux parcours se suivent sur la page et les
+// onglets eux-memes ne s'affichent pas (voir style.css).
+//
+// L'adresse peut preselectionner un onglet : /importer-anki-quizlet/#quizlet.
+
 (function () {
-  var feuille = document.querySelector('.feuille-texte');
-  if (!feuille) return;
+  var zone = document.getElementById('import-onglets');
+  if (!zone) return;
 
-  var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var onglets = Array.prototype.slice.call(zone.querySelectorAll('[role="tab"]'));
+  if (!onglets.length) return;
 
-  // --- Apparition des blocs -----------------------------------------
-  var blocs = [].slice.call(feuille.children).filter(function (e) {
-    return /^(H2|H3|P|UL|OL|TABLE|DIV)$/.test(e.tagName);
+  function choisir(onglet, deplacerFocus) {
+    onglets.forEach(function (o) {
+      var actif = o === onglet;
+      o.setAttribute('aria-selected', actif ? 'true' : 'false');
+      o.tabIndex = actif ? 0 : -1;
+      var panneau = document.getElementById(o.getAttribute('aria-controls'));
+      if (panneau) panneau.hidden = !actif;
+    });
+    if (deplacerFocus) onglet.focus();
+  }
+
+  onglets.forEach(function (onglet, i) {
+    onglet.addEventListener('click', function () { choisir(onglet, false); });
+    // Fleches gauche / droite, comme pour tout groupe d'onglets.
+    onglet.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      choisir(onglets[(i + d + onglets.length) % onglets.length], true);
+    });
   });
 
-  if (doux || !('IntersectionObserver' in window)) {
-    blocs.forEach(function (e) { e.classList.add('vue'); });
-  } else {
-    var apparition = new IntersectionObserver(function (entrees) {
-      entrees.forEach(function (entree) {
-        if (!entree.isIntersecting) return;
-        entree.target.classList.add('vue');
-        apparition.unobserve(entree.target);
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.02 });
-    blocs.forEach(function (e) { apparition.observe(e); });
-
-    // Ce qui est deja visible au chargement ne doit pas attendre un
-    // defilement : sans cela, le haut de la page reste vide tant qu'on
-    // n'a pas touche a la molette.
-    window.setTimeout(function () {
-      blocs.forEach(function (e) {
-        var r = e.getBoundingClientRect();
-        if (r.top < window.innerHeight) e.classList.add('vue');
-      });
-    }, 60);
-  }
-
-  if (doux) return;
-
-  // --- Barre de progression ------------------------------------------
-  var barre = document.createElement('div');
-  barre.className = 'progression-lecture';
-  document.body.appendChild(barre);
-
-  // --- Sommaire lateral ----------------------------------------------
-  //
-  // Les articles de blog posent deja leur propre sommaire, cote serveur,
-  // dans la colonne laterale (.sommaire-liste, dans templates/article.html).
-  // On evite alors d'en construire un second flottant : on reutilise ses
-  // liens tels quels pour l'entree active. Ailleurs (mentions legales,
-  // pages de texte), on garde le sommaire flottant genere ici.
-  var titres = [].slice.call(feuille.querySelectorAll('h2'));
-  var liens = [];
-  var listeExistante = document.querySelector('.sommaire-liste');
-
-  if (listeExistante) {
-    liens = [].slice.call(listeExistante.querySelectorAll('a'));
-  } else if (titres.length >= 3) {
-    var nav = document.createElement('nav');
-    nav.className = 'sommaire-page';
-    nav.setAttribute('aria-label', 'Sommaire de la page');
-    var liste = document.createElement('ol');
-
-    titres.forEach(function (titre, rang) {
-      if (!titre.id) {
-        titre.id = 'section-' + (rang + 1);
-      }
-      var item = document.createElement('li');
-      var lien = document.createElement('a');
-      lien.href = '#' + titre.id;
-      lien.textContent = titre.textContent;
-      item.appendChild(lien);
-      liste.appendChild(item);
-      liens.push(lien);
-    });
-
-    nav.appendChild(liste);
-    document.body.appendChild(nav);
-  }
-
-  // --- Mise a jour, une seule fois par image ------------------------
-  //
-  // Le defilement declenche bien plus souvent que l'ecran ne se rafraichit.
-  // On se contente donc de noter qu'il faut recalculer, et le calcul a lieu
-  // au prochain rendu : la page reste fluide meme sur une machine lente.
-  var enAttente = false;
-
-  function majEtat() {
-    enAttente = false;
-
-    var hauteur = document.documentElement.scrollHeight - window.innerHeight;
-    var part = hauteur > 0 ? window.scrollY / hauteur : 0;
-    barre.style.transform = 'scaleX(' + Math.min(1, Math.max(0, part)) + ')';
-
-    if (!liens.length) return;
-    // Le titre courant est le dernier passe au-dessus du tiers superieur
-    // de la fenetre : c'est la zone que l'oeil lit reellement.
-    var repere = window.innerHeight / 3;
-    var actif = 0;
-    for (var i = 0; i < titres.length; i++) {
-      if (titres[i].getBoundingClientRect().top <= repere) actif = i;
-    }
-    liens.forEach(function (l, i) {
-      l.classList.toggle('actif', i === actif);
-    });
-  }
-
-  function demander() {
-    if (enAttente) return;
-    enAttente = true;
-    window.requestAnimationFrame(majEtat);
-  }
-
-  window.addEventListener('scroll', demander, { passive: true });
-  window.addEventListener('resize', demander, { passive: true });
-  majEtat();
-})();
+  var depart = /quizlet/i.test(window.location.hash) ? onglets[1] : onglets[0];
+  choisir(depart || onglets[0], false);
+}());
 </script>
 </body>
 </html>
