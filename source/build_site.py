@@ -704,7 +704,7 @@ RESEAUX = [
      "c-.3-.1-.6-.1-.9-.1-1.8 0-3.2 1.5-3.2 3.2 0 1.8 1.4 3.3 3.2 3.3 1.8 0 "
      "3.3-1.4 3.3-3.3V3z"),
     ("Instagram", "https://www.instagram.com/prepacards/", None),
-    ("LinkedIn", "https://www.linkedin.com/company/pr%C3%A9pacards/",
+    ("LinkedIn", "https://www.linkedin.com/company/prepacards/",
      "M3.2 9h3v11h-3zM4.7 3.3a1.9 1.9 0 1 1 0 3.8 1.9 1.9 0 0 1 0-3.8zM9.5 9h3"
      "v1.6c.7-1.2 2-1.9 3.6-1.9 2.6 0 4.4 1.7 4.4 4.8V20h-3v-5.9c0-1.6-.8-2.5"
      "-2.1-2.5-1.4 0-2.3 1-2.3 2.6V20h-3z"),
