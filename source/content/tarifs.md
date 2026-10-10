@@ -28,7 +28,7 @@ faq: true
         <li>Jours de repos</li>
         <li>Statistiques détaillées</li>
         <li>Import Anki, Quizlet et CSV</li>
-        <li>85 paquets gratuits : anglais, allemand, espagnol, italien et formules de maths</li>
+        <li>119 paquets gratuits : anglais, allemand, espagnol, italien et formules de maths</li>
         <li>Données stockées sur votre ordinateur</li>
       </ul>
       <p><a class="bouton-secondaire" href="/telecharger/">Télécharger</a></p>

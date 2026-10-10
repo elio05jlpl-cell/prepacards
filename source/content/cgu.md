@@ -135,7 +135,7 @@ l'Utilisateur s'interdit de :
   à titre gratuit ou onéreux, l'accès à l'Application ou à un Compte ;
 - utiliser l'Application à des fins de fraude aux examens ou concours, ou de
   toute autre manière contraire à sa destination pédagogique ;
-- extraire, dupliquer ou réutiliser de façon substantielle les 85 paquets mis
+- extraire, dupliquer ou réutiliser de façon substantielle les 119 paquets mis
   gratuitement à disposition en dehors d'un usage personnel de révision.
 
 ### 3.3 Évolutions de l'Application

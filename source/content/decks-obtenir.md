@@ -1,6 +1,6 @@
 ---
 title: Obtenir un paquet gratuit | PrépaCards
-description: Créez un compte gratuit pour télécharger un paquet PrépaCards parmi les 85 disponibles : vocabulaire d'anglais, d'allemand, d'espagnol, d'italien, formules de maths.
+description: Créez un compte gratuit pour télécharger un paquet PrépaCards parmi les 119 disponibles : anglais, allemand, espagnol, italien et formules de maths.
 slug: decks/obtenir
 robots: noindex, follow
 ---

@@ -1,6 +1,6 @@
 ---
-title: 85 paquets de flashcards gratuits pour la prépa ECG | PrépaCards
-description: Flashcards gratuites pour la prépa ECG : vocabulaire d'anglais, d'allemand, d'espagnol et d'italien par chapitre, et les formules de maths approfondies.
+title: 119 paquets de flashcards gratuits pour la prépa ECG | PrépaCards
+description: Flashcards gratuites pour la prépa ECG : vocabulaire d'anglais, d'allemand, d'espagnol, d'italien, et formules de maths approfondies et appliquées.
 slug: decks
 faq: true
 ---
@@ -11,9 +11,9 @@ faq: true
     <h1>Les paquets qui m'ont fait entrer à HEC</h1>
     <p class="chapeau">Ce sont mes propres paquets, construits chapitre par
       chapitre pendant mes deux ans de prépa ECG et révisés jusqu'aux oraux :
-      le vocabulaire d'anglais, d'allemand, d'espagnol et d'italien, et toutes
-      les formules de maths approfondies de première année. Je les mets à
-      disposition tels quels.</p>
+      le vocabulaire d'anglais, d'allemand, d'espagnol et d'italien, et le
+      cours de maths en formules, en approfondies comme en appliquées, de la
+      première à la deuxième année. Je les mets à disposition tels quels.</p>
     <p class="sous-bouton">Gratuits · Compte gratuit requis · Un fichier, un double-clic</p>
   </div>
 </section>
@@ -29,7 +29,7 @@ choisissez le fichier — ou double-cliquez simplement dessus si vous avez
 associé l'extension à l'installation.
 
 Les cartes arrivent dans l'arborescence `Langue › Catégorie › Chapitre` ou
-`Maths approfondies › Chapitre`, et sont dues dès le premier jour. Vous n'avez
+`Maths approfondies › Année › Chapitre`, et sont dues dès le premier jour. Vous n'avez
 rien à ranger.
 
 <div class="encart">
@@ -65,10 +65,12 @@ Le sens est celui qui compte en colle et à l'écrit : **du nom de la formule
 vers la formule**. Savoir reconnaître une expression quand on la voit ne dit
 rien de votre capacité à la retrouver devant une feuille blanche.
 
-Les neuf paquets suivent le programme de première année dans l'ordre, du
-raisonnement par récurrence aux probabilités sur un ensemble quelconque. Les
-énoncés y sont réduits à leur écriture symbolique : ce sont des cartes de
-révision, pas un cours — elles supposent que vous avez déjà compris la notion.
+Les paquets de maths suivent les programmes officiels de l'ECG, année par
+année : **maths approfondies** (19 chapitres) et **maths appliquées**
+(24 chapitres, avec les graphes, les statistiques et les chaînes de Markov
+propres à cette option). Les énoncés y sont réduits à leur écriture symbolique :
+ce sont des cartes de révision, pas un cours — elles supposent que vous avez
+déjà compris la notion.
 
 </div>
 </section>

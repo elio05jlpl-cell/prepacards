@@ -717,7 +717,7 @@ RESEAUX = [
 # Chaque entree mene a une page qui existe : l'audit verifie chaque adresse,
 # et une matiere qui ouvrirait une page vide serait pire que son absence.
 # Les filieres scientifique et litteraire sont donc plus maigres que l'ECG,
-# ou vivent les quatre-vingt-cinq paquets.
+# ou vivent les cent dix-neuf paquets.
 MENU_MATIERES = [
     ("/prepa-commerciale/", "Prépa commerciale", "ECG et ECT", [
         ("/decks/#anglais", "Anglais"),
@@ -725,6 +725,7 @@ MENU_MATIERES = [
         ("/decks/#espagnol", "Espagnol"),
         ("/decks/#italien", "Italien"),
         ("/decks/#maths-approfondies", "Maths approfondies"),
+        ("/decks/#maths-appliquees", "Maths appliquées"),
         ("/vocabulaire-anglais-prepa-ecg/", "Le vocabulaire à apprendre"),
         ("/decks/", "Tout afficher"),
     ]),
@@ -1256,7 +1257,7 @@ PAGES_PIVOTS = [
      "matieres": {"langues", "anglais", "allemand", "espagnol", "italien", "maths"},
      "filieres": set(), "generique": True,
      "mots": {"voix", "oral", "prononcer", "formules", "photo"}},
-    {"url": "/decks/", "label": "Les 85 paquets de flashcards gratuits",
+    {"url": "/decks/", "label": "Les 119 paquets de flashcards gratuits",
      "matieres": {"anglais", "langues", "allemand", "espagnol", "italien", "maths"}, "filieres": set(),
      "mots": {"vocabulaire", "paquets", "liste"}},
     {"url": "/prepa-commerciale/", "label": "PrépaCards pour la prépa commerciale (ECG, ECT)",

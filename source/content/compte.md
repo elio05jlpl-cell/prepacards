@@ -111,7 +111,7 @@ autocomplete="new-password" placeholder="8 caractères minimum">
 </form>
 
 <h2>Vos paquets gratuits</h2>
-<p>Les 85 paquets d'anglais, d'allemand, d'espagnol, d'italien et les
+<p>Les 119 paquets d'anglais, d'allemand, d'espagnol, d'italien et les
 formules de maths sont inclus avec votre compte, à tout moment.</p>
 <p><a class="bouton-secondaire" href="/decks/">Voir les paquets</a></p>
 
