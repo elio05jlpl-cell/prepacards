@@ -113,7 +113,7 @@ En le récitant à voix haute et en l'espaçant. Dire le mot force à aller au b
 Oui, les 2 000 cartes sont dans l'application, pas à télécharger. Vous cochez les thèmes voulus dans *Importer → Paquets fournis*.
 
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows 10 et 11.
+  <p>PrépaCards s'essaie 30 jours gratuitement, sans carte bancaire, sur Windows 10 et 11.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/prepa/">Voir la page prépa</a></p>
 </div>

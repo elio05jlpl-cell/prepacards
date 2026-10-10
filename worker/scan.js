@@ -138,7 +138,7 @@ export async function compteDuJeton(requete, env) {
 async function abonnementActif(compteId, env) {
   const reponse = await fetch(
     `${env.SUPABASE_URL}/rest/v1/profiles?id=eq.${compteId}` +
-    '&select=statut,valide_jusqu_au',
+    '&select=statut,valide_jusqu_au,essai_fin',
     {
       headers: {
         apikey: env.SUPABASE_SERVICE_ROLE_KEY,
@@ -149,6 +149,10 @@ async function abonnementActif(compteId, env) {
   const lignes = await reponse.json().catch(() => []);
   const profil = Array.isArray(lignes) ? lignes[0] : null;
   if (!profil) return false;
+
+  // L'essai gratuit de 30 jours (sans carte) donne acces a tout, comme un
+  // abonnement : profiles.essai_fin est pose a l'inscription.
+  if (profil.essai_fin && new Date(profil.essai_fin) > new Date()) return true;
 
   if (!['active', 'trialing'].includes(profil.statut)) return false;
   // valide_jusqu_au absent = abonnement en cours sans fin connue.

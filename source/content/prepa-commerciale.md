@@ -90,7 +90,7 @@ Constituez vos paquets par thème, mais **révisez-les mélangés**. Regrouper l
 La vérification à l'oral fonctionne en espagnol, allemand et italien comme en anglais. Les paquets fournis, eux, ne couvrent que l'anglais : pour la LV2, vous créez vos cartes, avec la traduction automatique proposée à la saisie.
 
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows 10 et 11, avec les 2 000 cartes
+  <p>PrépaCards s'essaie 30 jours gratuitement, sans carte bancaire, sur Windows 10 et 11, avec les 2 000 cartes
   d'anglais ECG incluses. <a href="/telecharger/">Télécharger</a> ·
   <a href="/colle-anglais-prepa/">Préparer une colle d'anglais</a></p>
 </div>

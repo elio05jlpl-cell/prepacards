@@ -114,7 +114,7 @@ fonctionne, ne changez rien.
 
 PrépaCards vise le même usage avec moins de réglages, une interface en
 français, et deux ajouts utiles en langues : la vérification de la
-prononciation à l'oral (dans l'offre complète) et l'import direct de vos
+prononciation à l'oral et l'import direct de vos
 paquets Anki, y compris leurs sous-paquets, avec
 [ce guide d'import](/importer-anki-quizlet/){: target="_blank" rel="noopener" }.
 Il ne fonctionne que sous Windows, et c'est une vraie limite si vous
@@ -148,7 +148,7 @@ Oui : PrépaCards lit les fichiers exportés d'Anki. Rien ne vous oblige à
 choisir une fois pour toutes.
 
 <div class="encart">
-  <p>Gratuit pour Windows 10 et 11.
+  <p>30 jours gratuits, sans carte bancaire, pour Windows 10 et 11.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/prepa-litteraire/">Réviser en khâgne</a></p>
 </div>

@@ -142,7 +142,7 @@ français → italien, avec une phrase d'exemple pour chaque mot du paquet.
 
 L'application fait revenir chaque mot au bon moment et respecte
 scrupuleusement la limite de cartes nouvelles que vous fixez vous-même.
-Avec l'offre complète, elle **prononce le mot** à voix haute et **vérifie
+Elle **prononce le mot** à voix haute et **vérifie
 votre prononciation** au moment précis où vous le dites à votre tour.
 
 <div class="encart">

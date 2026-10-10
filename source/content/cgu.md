@@ -34,7 +34,7 @@ obligations des personnes qui l'utilisent (l'« **Utilisateur** »).
 ### 1.2 Périmètre
 
 Les CGU s'appliquent à l'ensemble des fonctions de l'Application, qu'elles
-relèvent de l'offre gratuite ou de l'offre payante (l'« **Offre Complète**
+relèvent de l'essai gratuit ou de l'abonnement (l'« **Offre Complète**
 »). Les conditions commerciales propres à l'Offre Complète — prix, paiement,
 droit de rétractation, résiliation — font l'objet de
 [Conditions générales de vente](/cgv/) distinctes, qui complètent les

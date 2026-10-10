@@ -94,6 +94,6 @@ Partiellement. Les cartes remplacent avantageusement toute fiche qui n'est qu'un
 <div class="encart">
   <p>PrépaCards crée vos paquets par matière dès la première ouverture, et
   fournit 2 000 cartes d'anglais ECG.
-  <a href="/telecharger/">Télécharger gratuitement</a> ·
+  <a href="/telecharger/">Essayer 30 jours gratuitement</a> ·
   <a href="/blog/reviser-avec-des-flashcards-en-prepa/">La méthode en 5 étapes</a></p>
 </div>

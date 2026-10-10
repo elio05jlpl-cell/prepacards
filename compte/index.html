@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
-<link rel="stylesheet" href="/style.css?v=56ae211c72">
+<link rel="stylesheet" href="/style.css?v=83f80a2347">
 <script>
 // Pose le drapeau avant le premier affichage : les blocs qui apparaissent au
 // defilement sont masques par « html.js ... ». Pose en bas de page seulement,
@@ -155,7 +155,7 @@ autocomplete="current-password" placeholder="8 caractères minimum">
 <p>Installez PrépaCards, puis <strong>Outils → Compte et abonnement</strong>
 et connectez-vous avec cette même adresse. L'abonnement suit le compte,
 pas la machine.</p>
-<p><a class="bouton-secondaire" href="/telecharger/">Télécharger l'application</a></p>
+<p><a class="bouton" href="https://github.com/elio05jlpl-cell/prepacards/releases/latest/download/PrepaCards-installateur.exe">Télécharger l'application pour Windows</a></p>
 <h2 id="votre-sauvegarde">Votre sauvegarde</h2>
 <p id="compte-sauvegarde">Aucune sauvegarde déposée.</p>
 <p>La sauvegarde est <strong>chiffrée sur votre ordinateur</strong> avant
@@ -178,9 +178,9 @@ L'abonnement reste actif jusqu'au terme déjà réglé.</p>
 autocomplete="new-password" placeholder="8 caractères minimum">
 <button class="bouton-secondaire" type="submit" id="compte-mdp-valider">Changer le mot de passe</button>
 </form>
-<h2 id="vos-paquets-gratuits">Vos paquets gratuits</h2>
+<h2 id="vos-paquets">Vos paquets</h2>
 <p>Les 119 paquets d'anglais, d'allemand, d'espagnol, d'italien et les
-formules de maths sont inclus avec votre compte, à tout moment.</p>
+formules de maths se téléchargent avec votre compte, à tout moment.</p>
 <p><a class="bouton-secondaire" href="/decks/">Voir les paquets</a></p>
 <h2 id="zone-dangereuse">Zone dangereuse</h2>
 <aside class="encart encart-danger">
@@ -750,7 +750,16 @@ document.documentElement.classList.add('js');
     var jusqu = profil && profil.valide_jusqu_au;
     var encoreValide = jusqu ? new Date(jusqu).getTime() > Date.now() : false;
     var actif = ['trialing', 'active', 'past_due'].indexOf(statut) !== -1 && encoreValide;
-    return { abonne: actif, statut: statut, offre: (profil && profil.offre) || '', valide_jusqu_au: jusqu || null };
+    if (actif) {
+      return { abonne: true, statut: statut, offre: (profil && profil.offre) || '', valide_jusqu_au: jusqu || null };
+    }
+    // Essai gratuit de 30 jours, sans carte : profiles.essai_fin, pose a
+    // l'inscription par le serveur.
+    var essai = profil && profil.essai_fin;
+    if (essai && new Date(essai).getTime() > Date.now()) {
+      return { abonne: true, statut: 'essai', offre: '', valide_jusqu_au: essai };
+    }
+    return { abonne: false, statut: statut, offre: (profil && profil.offre) || '', valide_jusqu_au: jusqu || null };
   }
 
   function afficherTableau(email, profil, sauvegarde) {
@@ -760,18 +769,24 @@ document.documentElement.classList.add('js');
 
     var a = etatAbonnement(profil);
     var etat = document.getElementById('compte-etat');
-    if (a.abonne) {
+    if (a.abonne && a.statut === 'essai') {
+      var finEssai = dateCourte(a.valide_jusqu_au);
+      etat.innerHTML = '<p><strong>Essai gratuit en cours.</strong> '
+        + (finEssai ? 'Jusqu’au ' + finEssai + '. ' : '')
+        + 'Vous pouvez vous abonner dès maintenant : vous ne payez qu’à la fin '
+        + 'de l’essai. <a href="/tarifs/">Voir l’offre</a></p>';
+    } else if (a.abonne) {
       var offre = a.offre === 'annuel' ? 'annuelle'
         : (a.offre === 'mensuel' ? 'mensuelle' : '');
       var fin = dateCourte(a.valide_jusqu_au);
-      etat.innerHTML = '<p><strong>Offre complète'
-        + (offre ? ' ' + offre : '') + ' active.</strong> '
+      etat.innerHTML = '<p><strong>Abonnement'
+        + (offre ? ' ' + offre : '') + ' actif.</strong> '
         + (a.statut === 'trialing' ? 'Vous êtes en période d’essai. ' : '')
         + (fin ? 'Valable jusqu’au ' + fin + '.' : '') + '</p>';
     } else {
-      etat.innerHTML = '<p><strong>Aucun abonnement sur ce compte.</strong> '
-        + 'Vos cartes, la répétition espacée et les paquets gratuits restent '
-        + 'accessibles. <a href="/tarifs/">Voir l’offre complète</a></p>';
+      etat.innerHTML = '<p><strong>Essai terminé, aucun abonnement.</strong> '
+        + 'Vos cartes restent sur votre ordinateur. '
+        + '<a href="/tarifs/">S’abonner</a></p>';
     }
 
     document.getElementById('compte-sauvegarde').textContent = sauvegarde

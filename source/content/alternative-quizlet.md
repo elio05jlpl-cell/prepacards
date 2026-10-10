@@ -17,7 +17,7 @@ PrépaCards est fait pour mémoriser durablement, seul, sur son ordinateur.</p>
 
 | | PrépaCards | Quizlet |
 |---|---|---|
-| Prix | Gratuit, offre Premium optionnelle | Version gratuite, fonctions avancées par abonnement |
+| Prix | 30 jours gratuits, puis 9,99 € par mois | Version gratuite, fonctions avancées par abonnement |
 | Publicité | <span class="oui">Aucune</span> | Oui dans la version gratuite |
 | Compte en ligne obligatoire | <span class="oui">Non</span> | <span class="non">Oui</span> |
 | Où sont vos données | <span class="oui">Sur votre ordinateur</span> | Sur les serveurs de l'éditeur |
@@ -57,17 +57,16 @@ la page [Confidentialité](/confidentialite/).
 
 **Aucune publicité, et aucune fonction retirée en cours de route.** C'est le
 reproche le plus fréquent adressé à Quizlet : des fonctions auparavant
-gratuites passées derrière un abonnement. Les fonctions gratuites de
-PrépaCards — paquets illimités, répétition espacée, vérification à l'oral —
-tournent entièrement sur votre machine et ne coûtent rien en fonctionnement. Il
-n'y a donc aucune raison économique de les faire payer un jour.
+gratuites passées derrière un abonnement. PrépaCards n'a qu'une offre, annoncée
+dès le départ : 30 jours d'essai complets, puis 9,99 € par mois, avec
+exactement les mêmes fonctions. Rien n'est promis gratuit puis repris.
 
 **La vérification à l'oral est notée automatiquement.** Quizlet peut prononcer
 un mot pour vous ; PrépaCards écoute *votre* prononciation, la transcrit et
 note la carte en conséquence. C'est ce qui prépare réellement à une colle ou à
 un oral.
 
-**La répétition espacée s'applique à toutes vos cartes, gratuitement.** C'est
+**La répétition espacée s'applique à toutes vos cartes.** C'est
 l'algorithme qui décide quand vous revoyez chaque notion, et c'est lui qui fait
 la différence sur un programme de deux ans.
 
@@ -96,7 +95,7 @@ Voir le [guide détaillé de l'import](/importer-anki-quizlet/).
 
 ### Existe-t-il une alternative à Quizlet totalement gratuite ?
 
-Anki l'est, entièrement et sans réserve sur ordinateur, et il est open source. PrépaCards est gratuit pour son cœur — paquets et cartes illimités, répétition espacée complète, import de vos paquets — avec une offre payante limitée aux fonctions qui coûtent à héberger : la vérification à l'oral, la reconnaissance de formules et la traduction automatique. Notre [comparatif avec Anki](/alternative-anki/) détaille les forces de chacun.
+Anki l'est, entièrement et sans réserve sur ordinateur, et il est open source. PrépaCards n'est pas gratuit à vie : il s'essaie 30 jours sans carte bancaire, puis coûte 9,99 € par mois, avec tout inclus — la vérification à l'oral, la photo de formule, 119 paquets prêts. Notre [comparatif avec Anki](/alternative-anki/) détaille les forces de chacun.
 
 ### PrépaCards fonctionne-t-il sur téléphone ?
 

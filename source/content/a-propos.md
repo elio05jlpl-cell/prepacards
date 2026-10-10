@@ -97,10 +97,10 @@ et crée vos paquets par matière. Vous commencez à réviser, pas à ranger.
   cas. Une carte fausse apprise coûte plus cher qu'une carte absente.</p>
   </div>
   <div class="carte">
-  <h3>Gratuit là où ça ne coûte rien</h3>
-  <p>La répétition espacée tourne sur votre machine : elle restera gratuite,
-  avec vos cartes en nombre illimité. Ce qui est payant est ce qui coûte
-  réellement à héberger et à maintenir.</p>
+  <h3>Un mois pour juger, sans carte</h3>
+  <p>Vous essayez tout PrépaCards pendant 30 jours, sans carte bancaire. Si
+  cela vous sert, l'abonnement est de 9,99 € par mois : c'est lui qui finance
+  les modèles à héberger et les paquets à vérifier, sans publicité.</p>
   </div>
   <div class="carte">
   <h3>Rien qu'il faille apprendre avant d'apprendre</h3>
@@ -127,7 +127,7 @@ Celle-ci fait une chose : elle vous présente la bonne carte au bon moment, et
 elle vérifie que vous savez vraiment la réponse.
 
 <p style="margin-top:2em">
-  <a class="bouton" href="/telecharger/">Télécharger gratuitement</a>
+  <a class="bouton" href="/telecharger/">Essayer 30 jours gratuitement</a>
   <a class="bouton-secondaire" href="mailto:contact@prepacards.fr">Nous écrire</a>
 </p>
 

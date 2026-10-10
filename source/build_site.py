@@ -122,7 +122,7 @@ def balise_mesure() -> str:
 
 DOWNLOAD_URL = (
     "https://github.com/elio05jlpl-cell/prepacards/releases/latest/download/"
-    "PrepaCards-installateur.zip"
+    "PrepaCards-installateur.exe"
 )
 
 # Marqueur laisse dans DOWNLOAD_URL tant que l'archive n'est pas hebergee.
@@ -131,11 +131,27 @@ DOWNLOAD_URL = (
 # la plus importante du site coute plus cher que l'absence de bouton.
 DOWNLOAD_PLACEHOLDER = "VOTRE-COMPTE"
 
-BLOC_TELECHARGEMENT_PRET = """<p>
-  <a class="bouton" href="{url}">Télécharger pour Windows (273 Mo)</a>
-</p>
-<p class="sous-bouton">Version 1.3 · Windows 10 et 11 (64 bits) ·
-   Prévoir environ 1,5 Go d'espace disque une fois les modèles installés</p>"""
+# Le compte d'abord : l'essai de 30 jours (sans carte) demarre a la creation
+# du compte, et c'est l'application qui verifie l'acces. Le bouton reel ne
+# s'affiche qu'a une personne connectee (telecharger.js). Le lien reste public
+# cote hebergeur : ce n'est pas lui qui protege, c'est la verification de
+# l'application.
+BLOC_TELECHARGEMENT_PRET = """<div id="telechargement-bloc" data-url="{url}">
+  <div class="telechargement-compte">
+    <p>
+      <a class="bouton" href="/compte/">Créer mon compte · 30 jours offerts</a>
+    </p>
+    <p class="sous-bouton">Une adresse e-mail suffit, sans carte bancaire. Le
+       téléchargement s'affiche juste après · Windows 10 et 11 (64 bits)</p>
+  </div>
+  <div class="telechargement-pret" hidden>
+    <p>
+      <a class="bouton" href="{url}">Télécharger pour Windows (194 Mo)</a>
+    </p>
+    <p class="sous-bouton">Version 1.3.1 · Windows 10 et 11 (64 bits) ·
+       Prévoir environ 1,5 Go d'espace disque une fois les modèles installés</p>
+  </div>
+</div>"""
 
 BLOC_TELECHARGEMENT_ATTENTE = """<div class="encart encart-attention">
   <p><strong>Le téléchargement ouvre très bientôt.</strong> L'application est
@@ -143,7 +159,7 @@ BLOC_TELECHARGEMENT_ATTENTE = """<div class="encart encart-attention">
   votre adresse et vous serez prévenu dès qu'elle est disponible.</p>
   <p><a class="bouton" href="mailto:contact@prepacards.fr?subject=Me%20pr%C3%A9venir%20du%20lancement">Me prévenir du lancement</a></p>
 </div>
-<p class="sous-bouton">Version 1.3 · Windows 10 et 11 (64 bits) ·
+<p class="sous-bouton">Version 1.3.1 · Windows 10 et 11 (64 bits) ·
    Prévoir environ 1,5 Go d'espace disque une fois les modèles installés</p>"""
 
 
@@ -274,6 +290,7 @@ def scripts_animes(corps: str) -> str:
                    ("{{bloc_decks}}", "decks.js"),
                    ('id="liste-articles"', "blog-filtres.js"),
                    ('id="import-onglets"', "importer.js"),
+                   ('{{bloc_telechargement}}', "telecharger.js"),
                    # Le marqueur, et non l'adresse Stripe : a ce
                    # stade les boutons sont encore
                    # « {{bouton_mensuel}} », et chercher
@@ -1523,14 +1540,14 @@ def software_jsonld() -> dict:
         "offers": [
             {
                 "@type": "Offer",
-                "name": "PrépaCards Gratuit",
-                "price": "0",
+                "name": "PrépaCards, abonnement mensuel (30 jours d'essai)",
+                "price": "9.99",
                 "priceCurrency": "EUR",
             },
             {
                 "@type": "Offer",
-                "name": "PrépaCards Premium",
-                "price": "29.00",
+                "name": "PrépaCards, abonnement annuel (30 jours d'essai)",
+                "price": "95.90",
                 "priceCurrency": "EUR",
             },
         ],

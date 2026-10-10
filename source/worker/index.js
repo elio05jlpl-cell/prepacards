@@ -18,6 +18,7 @@
 import { maintenant, normaliserEmail, signatureStripeValide } from './securite.js';
 import { lireFeuille } from './scan.js';
 import { enregistrerPrepa } from './prepa.js';
+import { ouvrirPaiement } from './paiement.js';
 import { compteExiste } from './existence.js';
 import { sInscrire as sInscrireAttente } from './attente.js';
 import { disponible as courrielDisponible, envoyer as envoyerCourriel,
@@ -247,6 +248,9 @@ const ROUTES = {
   'POST /api/scan': lireFeuille,
   // Prepa d'origine, donnee a la premiere ouverture de l'application.
   'POST /api/prepa': enregistrerPrepa,
+  // Ouvre le paiement chez Stripe en reportant ce qui reste de l'essai
+  // gratuit de 30 jours : voir paiement.js.
+  'POST /api/paiement': ouvrirPaiement,
   // La page de connexion demande si l'adresse saisie a deja un compte, pour
   // savoir s'il faut demander le mot de passe ou en faire choisir un.
   'POST /api/compte/existe': compteExiste,

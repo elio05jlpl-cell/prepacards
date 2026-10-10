@@ -352,3 +352,24 @@ alter table public.profiles
 --   where prepa_uai is not null
 --   group by 1, 2, 3
 --   order by etudiants desc;
+
+
+-- --- Essai gratuit de 30 jours, sans carte bancaire -------------------------
+--
+-- Chaque compte dispose de 30 jours d'acces complet a partir de son
+-- inscription. Au dela, il faut un abonnement actif. La date est posee par la
+-- valeur par defaut : le declencheur d'inscription n'a rien a changer.
+--
+-- Deja installe ? Executer ce bloc une fois, dans Supabase : SQL Editor.
+-- Les comptes existants recoivent 30 jours A PARTIR DE CETTE EXECUTION - c'est
+-- le jour de la bascule vers l'offre payante, pas leur date d'inscription.
+
+alter table public.profiles
+    add column if not exists essai_fin timestamptz;
+
+alter table public.profiles
+    alter column essai_fin set default (now() + interval '30 days');
+
+update public.profiles
+   set essai_fin = now() + interval '30 days'
+ where essai_fin is null;

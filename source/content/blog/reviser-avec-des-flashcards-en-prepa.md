@@ -175,6 +175,6 @@ flashcards est souvent largement survendue en ligne :
 <div class="encart">
   <p>PrépaCards applique cette méthode : limites quotidiennes par paquet,
   répétition espacée, et vérification de la prononciation au micro.
-  <a href="/telecharger/">Télécharger gratuitement</a> ou lire
+  <a href="/telecharger/">Essayer 30 jours gratuitement</a> ou lire
   <a href="/prepa/">la page dédiée aux prépas</a>.</p>
 </div>

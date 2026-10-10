@@ -100,6 +100,6 @@ Celles qui reposent sur la répétition espacée, oui. Celles qui se contentent 
 <div class="encart">
   <p>PrépaCards écoute au micro si vous prononcez le mot et note la carte à
   votre place — vous n'êtes plus le juge de votre propre révision.
-  <a href="/telecharger/">Télécharger gratuitement</a> ·
+  <a href="/telecharger/">Essayer 30 jours gratuitement</a> ·
   <a href="/vocabulaire-anglais-prepa-ecg/">Les 20 thèmes d'anglais ECG</a></p>
 </div>

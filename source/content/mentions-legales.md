@@ -10,8 +10,9 @@ noindex: false
 ## Éditeur du site
 
 Le site prepacards.fr est édité par une **personne physique agissant à titre
-non professionnel**. Aucun bien ni service n'y est vendu, et l'application
-PrépaCards est mise à disposition gratuitement.
+non professionnel**. L'application PrépaCards est proposée après un essai
+gratuit de trente jours, puis par abonnement (voir les
+[conditions générales de vente](/cgv/)).
 
 Conformément à l'article 6-III-2 de la loi du 21 juin 2004 pour la confiance
 dans l'économie numérique, l'éditeur non professionnel qui souhaite préserver

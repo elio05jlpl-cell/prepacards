@@ -65,8 +65,8 @@ l'application : elle ne signale ni son installation, ni son usage.
    formules depuis Hugging Face, Google et GitHub. Ces téléchargements
    transmettent ce que transmet toute requête web : votre adresse IP et le
    fichier demandé.
-3. **Lecture en ligne d'une feuille photographiée** (offre complète,
-   optionnelle). Tant que la case « Lecture en ligne » reste cochée, la
+3. **Lecture en ligne d'une feuille ou d'une formule photographiée**
+   (optionnelle). Tant que la case « Lecture en ligne » reste cochée, la
    photo est réduite puis envoyée à notre serveur, hébergé par
    Cloudflare, qui la transmet à Anthropic (États-Unis), éditeur du modèle
    qui la lit. Anthropic la traite selon ses propres conditions

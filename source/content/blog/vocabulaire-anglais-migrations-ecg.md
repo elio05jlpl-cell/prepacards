@@ -229,7 +229,7 @@ Ce vocabulaire reste utile bien au-delà : il sert pour les articles de
 presse sur la politique, l'économie et la société.
 
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows 10 et 11, avec 2 000 cartes
+  <p>PrépaCards s'essaie 30 jours gratuitement, sans carte bancaire, sur Windows 10 et 11, avec 2 000 cartes
   d'anglais ECG incluses.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/vocabulaire-anglais-prepa-ecg/">Les 20 thèmes d'anglais</a></p>

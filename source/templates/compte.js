@@ -145,7 +145,16 @@
     var jusqu = profil && profil.valide_jusqu_au;
     var encoreValide = jusqu ? new Date(jusqu).getTime() > Date.now() : false;
     var actif = ['trialing', 'active', 'past_due'].indexOf(statut) !== -1 && encoreValide;
-    return { abonne: actif, statut: statut, offre: (profil && profil.offre) || '', valide_jusqu_au: jusqu || null };
+    if (actif) {
+      return { abonne: true, statut: statut, offre: (profil && profil.offre) || '', valide_jusqu_au: jusqu || null };
+    }
+    // Essai gratuit de 30 jours, sans carte : profiles.essai_fin, pose a
+    // l'inscription par le serveur.
+    var essai = profil && profil.essai_fin;
+    if (essai && new Date(essai).getTime() > Date.now()) {
+      return { abonne: true, statut: 'essai', offre: '', valide_jusqu_au: essai };
+    }
+    return { abonne: false, statut: statut, offre: (profil && profil.offre) || '', valide_jusqu_au: jusqu || null };
   }
 
   function afficherTableau(email, profil, sauvegarde) {
@@ -155,18 +164,24 @@
 
     var a = etatAbonnement(profil);
     var etat = document.getElementById('compte-etat');
-    if (a.abonne) {
+    if (a.abonne && a.statut === 'essai') {
+      var finEssai = dateCourte(a.valide_jusqu_au);
+      etat.innerHTML = '<p><strong>Essai gratuit en cours.</strong> '
+        + (finEssai ? 'Jusqu’au ' + finEssai + '. ' : '')
+        + 'Vous pouvez vous abonner dès maintenant : vous ne payez qu’à la fin '
+        + 'de l’essai. <a href="/tarifs/">Voir l’offre</a></p>';
+    } else if (a.abonne) {
       var offre = a.offre === 'annuel' ? 'annuelle'
         : (a.offre === 'mensuel' ? 'mensuelle' : '');
       var fin = dateCourte(a.valide_jusqu_au);
-      etat.innerHTML = '<p><strong>Offre complète'
-        + (offre ? ' ' + offre : '') + ' active.</strong> '
+      etat.innerHTML = '<p><strong>Abonnement'
+        + (offre ? ' ' + offre : '') + ' actif.</strong> '
         + (a.statut === 'trialing' ? 'Vous êtes en période d’essai. ' : '')
         + (fin ? 'Valable jusqu’au ' + fin + '.' : '') + '</p>';
     } else {
-      etat.innerHTML = '<p><strong>Aucun abonnement sur ce compte.</strong> '
-        + 'Vos cartes, la répétition espacée et les paquets gratuits restent '
-        + 'accessibles. <a href="/tarifs/">Voir l’offre complète</a></p>';
+      etat.innerHTML = '<p><strong>Essai terminé, aucun abonnement.</strong> '
+        + 'Vos cartes restent sur votre ordinateur. '
+        + '<a href="/tarifs/">S’abonner</a></p>';
     }
 
     document.getElementById('compte-sauvegarde').textContent = sauvegarde

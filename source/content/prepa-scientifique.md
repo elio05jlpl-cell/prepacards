@@ -101,7 +101,7 @@ Quinze à vingt minutes, tous les jours. C'est un complément aux exercices, jam
 Elle se trompe parfois — un *a* italique confondu avec un *∂*. C'est pour ça que le LaTeX reste modifiable et que l'aperçu s'affiche avant l'enregistrement : ce que vous voyez est exactement ce qui ira sur la carte.
 
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows 10 et 11.
+  <p>PrépaCards s'essaie 30 jours gratuitement, sans carte bancaire, sur Windows 10 et 11.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/anki-prepa-mpsi-pcsi/">Comparaison avec Anki en prépa scientifique</a></p>
 </div>

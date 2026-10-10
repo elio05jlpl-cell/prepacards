@@ -85,7 +85,7 @@ outils : écrire une intégrale ou une matrice au clavier est pénible. Anki
 sait afficher du LaTeX, au prix d'un peu de configuration. Pour les langues,
 Anki est solide mais reste muet sur la prononciation de l'élève ;
 c'est le terrain où PrépaCards ajoute quelque chose, avec la vérification de
-la prononciation à l'oral dans son offre complète. Les conseils sur
+la prononciation à l'oral. Les conseils sur
 [les formules de maths](/blog/flashcards-formules-de-maths/){: target="_blank" rel="noopener" }
 valent quel que soit l'outil.
 
@@ -133,11 +133,10 @@ n'est utile que pour retrouver vos paquets ailleurs.
 
 Aucun n'est idéal : la saisie est le point dur. Anki affiche du LaTeX, mais
 il faut apprendre à le saisir. Pour partir d'une photo plutôt que de tout
-retaper, c'est l'offre complète de PrépaCards qui convertit une formule en
-notation mathématique.
+retaper, PrépaCards convertit une formule en notation mathématique.
 
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows 10 et 11.
+  <p>PrépaCards s'essaie 30 jours gratuitement, sans carte bancaire, sur Windows 10 et 11.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/alternative-anki/">Comparatif avec Anki</a></p>
 </div>

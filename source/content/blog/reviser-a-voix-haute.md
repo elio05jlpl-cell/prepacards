@@ -161,7 +161,7 @@ jour de l'épreuve elle-même.
 
 <div class="encart">
   <p>La vérification de la prononciation fonctionne hors ligne en français,
-  anglais, espagnol, allemand et italien, dans l'offre complète de PrépaCards.
+  anglais, espagnol, allemand et italien, dans PrépaCards.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/fonctionnalites/">Comment ça marche</a></p>
 </div>

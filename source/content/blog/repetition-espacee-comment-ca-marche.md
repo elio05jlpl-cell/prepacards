@@ -178,5 +178,5 @@ prépa.
 <div class="encart">
   <p>PrépaCards applique SM-2 avec prévisualisation des intervalles sur chaque
   bouton de notation, et ajoute la vérification de la prononciation.
-  <a href="/telecharger/">Télécharger gratuitement</a>.</p>
+  <a href="/telecharger/">Essayer 30 jours gratuitement</a>.</p>
 </div>

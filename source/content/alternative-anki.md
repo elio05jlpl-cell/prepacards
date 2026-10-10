@@ -17,7 +17,7 @@ chacun est meilleur, pour que vous choisissiez le bon outil.</p>
 
 | | PrépaCards | Anki |
 |---|---|---|
-| Prix | Gratuit, offre Premium optionnelle | Gratuit sur ordinateur et Android ; application iOS payante |
+| Prix | 30 jours gratuits, puis 9,99 € par mois | Gratuit sur ordinateur et Android ; application iOS payante |
 | Code ouvert | Non | Oui |
 | Plateformes | Windows uniquement | Windows, macOS, Linux, Android, iOS |
 | Synchronisation | <span class="non">Non</span> | <span class="oui">Oui, gratuite via AnkiWeb</span> |
@@ -119,7 +119,7 @@ Il reprend volontairement l'organisation qui a fait la réussite d'Anki — paqu
 
 ### Anki est gratuit : pourquoi payer pour PrépaCards ?
 
-Vous n'êtes pas obligé. Les paquets et les cartes en nombre illimité, la répétition espacée complète et l'import de vos paquets existants sont gratuits dans PrépaCards aussi. L'offre payante ne concerne que les fonctions qui coûtent réellement à faire tourner : la vérification à l'oral, la reconnaissance de formules et la traduction automatique.
+Si Anki vous suffit, gardez-le : il est excellent et gratuit. PrépaCards se paie parce qu'il fait ce qu'Anki ne fait pas : la vérification de la prononciation à voix haute, la photo de formule ou de liste transformée en cartes, 119 paquets prêts pour la prépa, et une prise en main sans tutoriel. Vous pouvez l'essayer 30 jours, sans carte bancaire, avant de décider.
 
 ### Puis-je utiliser mes paquets partagés Anki dans PrépaCards ?
 

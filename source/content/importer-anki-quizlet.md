@@ -187,7 +187,7 @@ Oui, un fichier à la fois. Rien n'est écrasé : un import ajoute des cartes au
 Oui. La conversion se fait entièrement sur votre ordinateur, rien n'est envoyé à un serveur. Vos cartes ne quittent pas votre machine.
 
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows 10 et 11.
+  <p>PrépaCards s'essaie 30 jours gratuitement, sans carte bancaire, sur Windows 10 et 11.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/alternative-anki/">Comparatif avec Anki</a> ·
   <a href="/alternative-quizlet/">Comparatif avec Quizlet</a></p>

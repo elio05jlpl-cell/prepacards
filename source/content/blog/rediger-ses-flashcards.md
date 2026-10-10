@@ -183,7 +183,7 @@ Dans PrépaCards, chaque carte dispose d'un recto, d'un verso, et d'un champ
 d'exemple séparé pour la phrase de contexte : ce champ ne fait jamais partie
 de la réponse attendue, il est là uniquement pour fixer le mot ou la notion.
 Les formules s'écrivent en notation mathématique et s'affichent proprement à
-l'écran. Et les paquets de langue gratuits fournis avec l'application sont
+l'écran. Et les paquets de langue gratuits à télécharger sur le site sont
 d'ores et déjà posés dans le bon sens de travail.
 [Voir les paquets gratuits →](/decks/)
 

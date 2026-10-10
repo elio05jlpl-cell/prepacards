@@ -109,7 +109,7 @@ Ne relisez pas le cours en retard : prenez les énoncés de DS corrigés et refa
 
 <div class="encart">
   <p>PrépaCards crée vos paquets par matière selon votre filière dès la
-  première ouverture. <a href="/telecharger/">Télécharger gratuitement</a> ·
+  première ouverture. <a href="/telecharger/">Essayer 30 jours gratuitement</a> ·
   <a href="/blog/reconnaissance-de-schemas-en-prepa/">Pourquoi la reconnaissance
   prime sur le savoir</a></p>
 </div>

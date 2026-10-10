@@ -133,7 +133,7 @@ même manière, comme le détaille
 
 Dans PrépaCards, un paquet « Citations » par matière, avec les quatre formes
 de cartes ci-dessus, tient dans quelques dizaines de cartes. La répétition
-espacée est gratuite et sans limite de cartes ; vous pouvez aussi importer
+espacée est sans limite de cartes ; vous pouvez aussi importer
 un paquet existant d'Anki ou de Quizlet si vous aviez déjà commencé. Une
 **date cible** posée sur le paquet, celle de votre prochain devoir, garantit
 que chaque carte revient au moins une fois avant l'échéance.
@@ -164,7 +164,7 @@ que le sentiment saisit des vérités que la raison seule n'atteint pas. »
 L'idée est sauve, et vous ne risquez aucun faux mot.
 
 <div class="encart">
-  <p>Gratuit pour Windows 10 et 11.
+  <p>30 jours gratuits, sans carte bancaire, pour Windows 10 et 11.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/prepa-litteraire/">Réviser en khâgne</a></p>
 </div>

@@ -111,10 +111,11 @@ déjà compris la notion.
 
 ### Ces paquets sont-ils vraiment gratuits ?
 
-Oui, entièrement. Un compte gratuit est demandé au moment du téléchargement —
-le même qui sert à ouvrir l'application — puis vous téléchargez le fichier et
-vous l'ouvrez. Ils resteront gratuits : ce sont les fonctions de l'application
-qui coûtent à faire tourner, pas des listes de vocabulaire.
+Oui, le téléchargement l'est, et le restera. Un compte gratuit est demandé
+au moment du téléchargement ; vous obtenez ensuite le fichier. Pour **l'ouvrir
+et réviser**, il faut l'application : elle s'essaie 30 jours sans carte
+bancaire, puis coûte 9,99 € par mois (voir [les tarifs](/tarifs/)). Les
+paquets eux-mêmes ne coûtent rien et vous les gardez.
 
 ### Combien de cartes par jour pour en venir à bout ?
 
@@ -142,7 +143,7 @@ prévenu, écrivez à
 <a href="mailto:contact@prepacards.fr">contact@prepacards.fr</a>.
 
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows 10 et 11, avec un compte gratuit.
+  <p>PrépaCards s'essaie 30 jours gratuitement, sans carte bancaire, sur Windows 10 et 11.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/prepa-commerciale/">PrépaCards en ECG</a></p>
 </div>

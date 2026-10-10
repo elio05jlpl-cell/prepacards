@@ -10,16 +10,17 @@ robots: noindex, follow
 
 # Merci, c'est enregistré
 
-Votre abonnement à l'offre complète est actif **dès maintenant**, sans délai
-ni clé à saisir. Stripe vous a envoyé un reçu par e-mail, à l'adresse que
-vous avez indiquée.
+Votre abonnement est enregistré **dès maintenant**, sans délai ni clé à
+saisir. Si vous étiez encore en essai gratuit, le premier prélèvement n'aura
+lieu qu'à la fin de l'essai. Stripe vous a envoyé un reçu par e-mail, à
+l'adresse que vous avez indiquée.
 
 <div class="encart">
   <p><strong>Vérifiez-le tout de suite sur <a href="/compte/">votre compte</a></strong>,
-  avec l'adresse utilisée au paiement : l'offre complète y apparaît dès que la
+  avec l'adresse utilisée au paiement : l'abonnement y apparaît dès que la
   page se charge. L'application se synchronise automatiquement avec le même
-  compte et débloque l'écoute de la prononciation, la vérification à la voix,
-  la lecture labiale et la photo de formule.</p>
+  compte ; si elle affiche encore l'écran d'accès, appuyez sur
+  « Actualiser ».</p>
 </div>
 
 Si vous n'avez pas encore installé PrépaCards, c'est le moment :

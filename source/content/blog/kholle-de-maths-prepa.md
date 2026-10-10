@@ -140,10 +140,10 @@ avec les énoncés exacts, leurs hypothèses et les contre-exemples, et la
 répétition espacée fait revenir chaque carte avant qu'elle ne s'efface.
 Vous pouvez aussi fixer une **date cible**, celle de votre prochaine khôlle
 ou de votre devoir : aucune carte du paquet ne sera repoussée au-delà, ce
-qui garantit de les revoir toutes avant l'échéance. Avec l'offre complète,
-la photo d'une formule ou d'une démonstration se convertit en notation
-mathématique, ce qui évite de tout retaper à la main. Le reste, y compris
-les paquets et les cartes en nombre illimité, est gratuit.
+qui garantit de les revoir toutes avant l'échéance. La photo d'une formule
+ou d'une démonstration se convertit en notation mathématique, ce qui évite
+de tout retaper à la main, et les paquets comme les cartes sont en nombre
+illimité.
 
 ## Questions fréquentes
 
@@ -174,7 +174,7 @@ voix haute en vous entraînant. Pour le reste,
 donne des repères concrets.
 
 <div class="encart">
-  <p>Gratuit pour Windows 10 et 11.
+  <p>30 jours gratuits, sans carte bancaire, pour Windows 10 et 11.
   <a href="/telecharger/">Télécharger</a> ·
   <a href="/reviser-prepa-mpsi-pcsi/">Réviser en MPSI et PCSI</a></p>
 </div>

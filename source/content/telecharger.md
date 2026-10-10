@@ -1,14 +1,15 @@
 ---
-title: Télécharger gratuitement pour Windows | PrépaCards
-description: Télécharger PrépaCards pour Windows 10 et 11 : installation en deux minutes, sans droits administrateur. Vos cartes restent sur votre ordinateur.
+title: Télécharger pour Windows : 30 jours offerts | PrépaCards
+description: Télécharger PrépaCards pour Windows 10 et 11 : 30 jours d'essai sans carte bancaire, installation en deux minutes. Vos cartes restent sur votre ordinateur.
 slug: telecharger
 faq: true
 ---
 
 # Télécharger PrépaCards
 
-<p class="chapeau">Gratuit, pour Windows 10 et 11. Aucun droit
-administrateur nécessaire. Vos cartes restent sur votre ordinateur.</p>
+<p class="chapeau">30 jours gratuits, sans carte bancaire, pour Windows
+10 et 11. Aucun droit administrateur nécessaire. Vos cartes restent sur votre
+ordinateur.</p>
 
 {{bloc_telechargement}}
 
@@ -23,20 +24,21 @@ administrateur nécessaire. Vos cartes restent sur votre ordinateur.</p>
 
 ## Installation
 
-1. Décompressez l'archive téléchargée.
-2. Double-cliquez sur **Installer PrépaCards.bat**.
-3. L'application se copie dans votre profil utilisateur, avec un raccourci sur
-   le Bureau et une entrée dans le menu Démarrer.
-4. Lancez-la depuis le raccourci. Au premier démarrage, créez votre compte
-   PrépaCards (e-mail + mot de passe), ou connectez-vous si vous en avez
-   déjà un. Il porte votre abonnement et vous suivra sur vos autres
-   appareils ; vos cartes, elles, restent sur cet ordinateur. La connexion
-   n'est demandée qu'une fois : les lancements suivants l'ouvrent
-   directement, même sans réseau.
+1. Téléchargez **PrepaCards-installateur.exe** avec le bouton ci-dessus.
+2. Double-cliquez dessus. Si Windows affiche l'avertissement décrit plus haut,
+   cliquez sur *Informations complémentaires* puis *Exécuter quand même*.
+3. Suivez l'assistant : une seule question (un raccourci sur le Bureau ?),
+   puis l'installation, qui prend environ une minute. L'application se copie
+   dans votre profil utilisateur, avec une entrée dans le menu Démarrer.
+4. Lancez-la depuis le raccourci et connectez-vous avec le compte que vous
+   avez créé sur le site. Votre essai de 30 jours court depuis la création du
+   compte. La connexion n'est demandée qu'une fois : les lancements suivants
+   l'ouvrent directement, même sans réseau ; l'application vérifie votre
+   accès en ligne de temps en temps.
 
 L'installation ne demande pas de droits administrateur : tout se fait dans
-votre dossier utilisateur. Pour désinstaller, lancez `Desinstaller.ps1` depuis
-le dossier d'installation — vos cartes sont conservées.
+votre dossier utilisateur. Pour désinstaller : *Paramètres* de Windows, puis
+*Applications*, puis PrépaCards — vos cartes sont conservées.
 
 ## Configuration requise
 
@@ -102,11 +104,11 @@ autre chose, et n'est transmise à personne. Pour la faire retirer, écrivez à
 
 ### Pourquoi le téléchargement est-il si lourd ?
 
-L'archive contient Python et toutes les bibliothèques nécessaires — interface graphique, reconnaissance vocale, traitement d'image, rendu de formules. C'est le prix d'une application qui fonctionne sans rien installer d'autre et sans dépendre d'un serveur. En contrepartie, elle démarre en un peu plus d'une seconde.
+Le programme contient Python et toutes les bibliothèques nécessaires — interface graphique, reconnaissance vocale, traitement d'image, rendu de formules. C'est le prix d'une application qui fonctionne sans rien installer d'autre et sans dépendre d'un serveur. En contrepartie, elle démarre en un peu plus d'une seconde.
 
 ### L'installation peut-elle casser quelque chose sur mon ordinateur ?
 
-L'installateur copie des fichiers dans votre dossier utilisateur et crée deux raccourcis. Il ne touche ni aux fichiers système, ni aux paramètres de Windows, et ne demande pas de droits administrateur. Par défaut, il n'écrit rien dans le registre.
+L'installateur copie des fichiers dans votre dossier utilisateur, crée une entrée dans le menu Démarrer (et un raccourci sur le Bureau si vous le voulez) et ajoute PrépaCards à la liste des applications installées de Windows, ce qui permet de la désinstaller depuis les Paramètres. Il ne touche ni aux fichiers système, ni aux paramètres de Windows, et ne demande pas de droits administrateur. Au premier lancement, l'application demande à se lancer avec Windows pour vous envoyer ses rappels de révision ; vous pouvez le refuser ou le retirer à tout moment dans ses paramètres.
 
 ### Mes cartes sont-elles perdues si je désinstalle ?
 
@@ -114,4 +116,4 @@ Non. Le désinstallateur supprime le programme et les raccourcis, mais conserve 
 
 ### Comment mettre à jour ?
 
-Téléchargez la nouvelle archive et relancez l'installateur : il remplace le programme sans toucher à vos cartes.
+Téléchargez le nouvel installateur et lancez-le : il remplace le programme sans toucher à vos cartes.

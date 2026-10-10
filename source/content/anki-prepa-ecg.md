@@ -96,7 +96,7 @@ Entre quinze et trente nouvelles cartes par jour est tenable sur une année. Au-
 Techniquement oui, en pratique rarement. La saisie en LaTeX est lente et le format carte convient mal à un raisonnement. Si vous voulez des cartes de maths, faites-les porter sur les **déclencheurs** — « quelle méthode devant tel type d'énoncé » — plutôt que sur les formules elles-mêmes.
 
 <div class="encart">
-  <p>PrépaCards est gratuit pour Windows, avec les 2 000 cartes d'anglais ECG
+  <p>PrépaCards s'essaie 30 jours gratuitement, sans carte bancaire, sur Windows, avec les 2 000 cartes d'anglais ECG
   incluses. <a href="/telecharger/">Télécharger</a> ·
   <a href="/alternative-anki/">Comparatif détaillé avec Anki</a></p>
 </div>

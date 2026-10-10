@@ -1,6 +1,6 @@
 ---
 title: Flashcards prépa : réviser à l'oral et en maths | PrépaCards
-description: Flashcards à répétition espacée pour la prépa ECG, MPSI et PCSI. PrépaCards écoute si vous prononcez le mot et transforme une photo de formule en carte. Gratuit.
+description: Flashcards à répétition espacée pour la prépa ECG, MPSI et PCSI : PrépaCards écoute votre prononciation et transforme une photo de formule en carte. Essai gratuit.
 slug: index
 faq: true
 ---
@@ -14,11 +14,11 @@ faq: true
     <p class="chapeau">PrépaCards reprend la répétition espacée qui a fait la
       réputation d'Anki, et ajoute ce qui manquait vraiment.</p>
     <p class="actions">
-      <a class="bouton" href="/telecharger/">Télécharger gratuitement</a>
+      <a class="bouton" href="/telecharger/">Essayer 30 jours gratuitement</a>
       <a class="bouton-secondaire" href="/fonctionnalites/">Voir les fonctionnalités</a>
     </p>
-    <p class="sous-bouton">Windows 10 et 11 · Gratuit ·
-      Vos cartes restent sur votre ordinateur</p>
+    <p class="sous-bouton">Windows 10 et 11 · 30 jours gratuits, sans carte
+      bancaire · Vos cartes restent sur votre ordinateur</p>
   </div>
 </section>
 
@@ -308,11 +308,11 @@ faq: true
 
 ### PrépaCards est-il gratuit ?
 
-Oui. La version gratuite comprend les paquets et les cartes en nombre illimité, la répétition espacée complète avec ses réglages, ses dates cibles et ses statistiques, et l'import de vos paquets existants. L'offre complète ajoute la vérification de la prononciation, la photo de formule et la traduction automatique. Voir [les tarifs](/tarifs/).
+Pendant 30 jours, oui, et sans carte bancaire : tout est inclus, y compris la vérification de la prononciation, la photo de formule et les 119 paquets. Ensuite l'abonnement est de 9,99 € par mois, sans engagement. Vos cartes restent sur votre ordinateur dans tous les cas. Voir [les tarifs](/tarifs/).
 
 ### Mes cartes partent-elles sur un serveur ?
 
-Non. Vos cartes et votre historique de révision sont enregistrés dans un fichier sur votre ordinateur, sur aucun serveur PrépaCards. Seul votre compte gratuit (adresse e-mail et abonnement) est conservé en ligne. La reconnaissance vocale fonctionne également hors ligne. Seules la traduction automatique, le premier téléchargement des modèles et la création du compte nécessitent internet.
+Non. Vos cartes et votre historique de révision sont enregistrés dans un fichier sur votre ordinateur, sur aucun serveur PrépaCards. Seul votre compte (adresse e-mail et abonnement) est conservé en ligne. La reconnaissance vocale fonctionne également hors ligne. Seules la traduction automatique, le premier téléchargement des modèles et la création du compte nécessitent internet.
 
 ### L'application contient-elle déjà des cartes ?
 

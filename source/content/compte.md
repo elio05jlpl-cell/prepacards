@@ -83,7 +83,7 @@ autocomplete="current-password" placeholder="8 caractères minimum">
 <p>Installez PrépaCards, puis <strong>Outils → Compte et abonnement</strong>
 et connectez-vous avec cette même adresse. L'abonnement suit le compte,
 pas la machine.</p>
-<p><a class="bouton-secondaire" href="/telecharger/">Télécharger l'application</a></p>
+<p><a class="bouton" href="{{lien_telechargement}}">Télécharger l'application pour Windows</a></p>
 
 <h2>Votre sauvegarde</h2>
 <p id="compte-sauvegarde">Aucune sauvegarde déposée.</p>
@@ -110,9 +110,9 @@ autocomplete="new-password" placeholder="8 caractères minimum">
 <button class="bouton-secondaire" type="submit" id="compte-mdp-valider">Changer le mot de passe</button>
 </form>
 
-<h2>Vos paquets gratuits</h2>
+<h2>Vos paquets</h2>
 <p>Les 119 paquets d'anglais, d'allemand, d'espagnol, d'italien et les
-formules de maths sont inclus avec votre compte, à tout moment.</p>
+formules de maths se téléchargent avec votre compte, à tout moment.</p>
 <p><a class="bouton-secondaire" href="/decks/">Voir les paquets</a></p>
 
 <h2>Zone dangereuse</h2>

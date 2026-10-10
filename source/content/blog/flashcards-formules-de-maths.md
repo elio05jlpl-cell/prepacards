@@ -195,8 +195,8 @@ en gardant la photo pour le gros du volume et la description en mots pour
 les résultats les plus courts à retenir.
 
 <div class="encart">
-  <p>La reconnaissance de formules en photo fait partie de l'offre Premium de
-  PrépaCards ; la répétition espacée et la vérification à l'oral sont
-  gratuites. <a href="/telecharger/">Télécharger</a> ·
+  <p>La reconnaissance de formules en photo, la répétition espacée et la
+  vérification à l'oral sont incluses dans l'essai de 30 jours, sans carte
+  bancaire. <a href="/telecharger/">Essayer</a> ·
   <a href="/tarifs/">Voir les tarifs</a></p>
 </div>

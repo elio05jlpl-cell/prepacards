@@ -94,7 +94,7 @@ Quinze à vingt minutes, tous les jours. C'est un complément aux exercices, jam
 
 <div class="encart">
   <p>PrépaCards crée vos paquets par matière dès la première ouverture, selon
-  votre filière. <a href="/telecharger/">Télécharger gratuitement</a> ·
+  votre filière. <a href="/telecharger/">Essayer 30 jours gratuitement</a> ·
   <a href="/blog/reconnaissance-de-schemas-en-prepa/">Pourquoi la reconnaissance
   prime sur le savoir</a></p>
 </div>
