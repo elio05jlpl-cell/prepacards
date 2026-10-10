@@ -1,0 +1,4 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Formules de probabilités">
+  <rect width="480" height="200" fill="#dcfce7"/>
+  <path d="M 40 160 h 400" stroke="#15803d" stroke-width="4" stroke-linecap="round"/><path d="M 60 160 C 140 160 170 40 240 40 C 310 40 340 160 420 160" fill="#86efac" stroke="#16a34a" stroke-width="5"/><path d="M 240 40 v 120" stroke="#166534" stroke-width="3" stroke-dasharray="6 6"/><path d="M 180 160 v -52 M 300 160 v -52" stroke="#15803d" stroke-width="3"/>
+</svg>

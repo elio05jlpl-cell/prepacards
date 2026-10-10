@@ -1,0 +1,4 @@
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Maths appliquées ou approfondies">
+  <rect width="480" height="200" fill="#ede9fe"/>
+  <circle cx="205" cy="100" r="64" fill="#7c3aed" fill-opacity=".85"/><circle cx="275" cy="100" r="64" fill="#2563eb" fill-opacity=".8"/><path d="M 240 52 q 18 48 0 96 q -18 -48 0 -96 z" fill="#c4b5fd"/><path d="M 120 40 l 26 26 M 146 40 l -26 26" stroke="#5b21b6" stroke-width="5" stroke-linecap="round"/><path d="M 340 150 h 40 M 360 130 v 40" stroke="#1d4ed8" stroke-width="5" stroke-linecap="round"/>
+</svg>
