@@ -328,3 +328,27 @@ create table if not exists public.liste_attente (
 );
 
 alter table public.liste_attente enable row level security;
+
+
+-- --- Prepa d'origine ---------------------------------------------------
+--
+-- Renseignee par l'application a la premiere ouverture, via la route
+-- /api/prepa du Worker (aucune policy d'ecriture pour l'utilisateur : c'est
+-- ce qui protege le statut d'abonnement). Facultative.
+--
+-- Deja installe ? Executer seulement ce bloc, dans Supabase : SQL Editor.
+
+alter table public.profiles
+    add column if not exists filiere     text,
+    add column if not exists prepa_uai   text,
+    add column if not exists prepa_nom   text,
+    add column if not exists prepa_ville text,
+    add column if not exists prepa_le    timestamptz;
+
+-- D'ou viennent les etudiants (a lancer dans le SQL Editor) :
+--
+--   select prepa_nom, prepa_ville, filiere, count(*) as etudiants
+--   from public.profiles
+--   where prepa_uai is not null
+--   group by 1, 2, 3
+--   order by etudiants desc;

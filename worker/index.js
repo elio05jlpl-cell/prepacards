@@ -17,6 +17,7 @@
 
 import { maintenant, normaliserEmail, signatureStripeValide } from './securite.js';
 import { lireFeuille } from './scan.js';
+import { enregistrerPrepa } from './prepa.js';
 import { compteExiste } from './existence.js';
 import { sInscrire as sInscrireAttente } from './attente.js';
 import { disponible as courrielDisponible, envoyer as envoyerCourriel,
@@ -244,6 +245,8 @@ const ROUTES = {
   // c'est ici, et nulle part dans l'application, que l'abonnement peut
   // etre verifie pour de bon.
   'POST /api/scan': lireFeuille,
+  // Prepa d'origine, donnee a la premiere ouverture de l'application.
+  'POST /api/prepa': enregistrerPrepa,
   // La page de connexion demande si l'adresse saisie a deja un compte, pour
   // savoir s'il faut demander le mot de passe ou en faire choisir un.
   'POST /api/compte/existe': compteExiste,

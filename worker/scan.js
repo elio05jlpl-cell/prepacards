@@ -33,6 +33,10 @@ const TYPES_ACCEPTES = ['image/jpeg', 'image/png', 'image/webp'];
 const SCHEMA_SORTIE = {
   type: 'object',
   properties: {
+    // Ce que la photo montre. Une seule route lit les deux : listes de
+    // vocabulaire ou de fiches, et formules. L'eleve n'a plus a savoir
+    // laquelle des deux fonctions ouvrir, c'est le modele qui le voit.
+    nature: { type: 'string', enum: ['liste', 'formules', 'incertain'] },
     mode: {
       type: 'string',
       enum: ['deux_colonnes', 'alterne', 'separateur', 'incertain'],
@@ -51,14 +55,21 @@ const SCHEMA_SORTIE = {
       },
     },
   },
-  required: ['mode', 'paires'],
+  required: ['nature', 'mode', 'paires'],
   additionalProperties: false,
 };
 
-const CONSIGNE = `Tu lis la photo d'une feuille de vocabulaire d'un élève de
-classe préparatoire. Rends les paires de mots qu'elle contient.
+const CONSIGNE = `Tu lis la photo envoyée par un élève de classe préparatoire.
+Commence par décider de sa nature :
+- « liste » : une feuille de vocabulaire ou de fiches, des termes et leur
+  traduction ou définition ;
+- « formules » : un cours ou une feuille de mathématiques, de physique ou de
+  chimie contenant des formules à retenir ;
+- « incertain » : tu ne sais pas, ou la photo ne contient rien d'exploitable.
 
-Règles :
+Si la nature est « liste », rends les paires de mots qu'elle contient.
+
+Règles pour une liste :
 - Une paire = un terme et sa traduction ou sa définition, tels qu'ils sont
   appariés sur la feuille.
 - Respecte l'ordre de la feuille, de haut en bas.
@@ -69,7 +80,19 @@ Règles :
   l'appariement, rends-le quand même et marque douteuse = true. Une paire
   marquée douteuse sera relue par l'élève ; une paire inventée passera
   inaperçue et sera apprise de travers.
-- Si la feuille ne contient aucune paire, rends une liste vide.`;
+- Si la feuille ne contient aucune paire, rends une liste vide.
+
+Si la nature est « formules », rends une paire par formule ou résultat à
+retenir :
+- recto : une question courte et précise, en français, qui appelle la formule
+  (« Dérivée de ln(u) », « Loi de Gauss, énoncé », « Formule de Bayes ») ;
+- verso : la formule en LaTeX, sans délimiteurs $ ni \[ \], prête à être
+  rendue telle quelle ;
+- mode : « incertain » ;
+- douteuse = true si un symbole est ambigu ou illisible. Ne corrige pas une
+  formule que tu crois fausse : recopie ce qui est écrit.
+- Ignore les démonstrations rédigées, titres et numéros : ne garde que les
+  résultats qui se retiennent par cœur.`;
 
 function json(donnees, statut = 200) {
   return new Response(JSON.stringify(donnees), {
@@ -96,7 +119,7 @@ function moisCourant() {
 // On interroge Supabase avec le jeton DE L'ELEVE plutot que de verifier la
 // signature nous-memes : Supabase sait seul si le jeton a ete revoque, et
 // une verification locale laisserait passer un jeton d'un compte supprime.
-async function compteDuJeton(requete, env) {
+export async function compteDuJeton(requete, env) {
   const entete = requete.headers.get('authorization') || '';
   const jeton = entete.startsWith('Bearer ') ? entete.slice(7) : '';
   if (!jeton) return null;
@@ -245,6 +268,7 @@ export async function lireFeuille(requete, env) {
   }
 
   return json({
+    nature: resultat.nature || 'liste',
     mode: resultat.mode || 'incertain',
     paires: Array.isArray(resultat.paires) ? resultat.paires : [],
     restant,
