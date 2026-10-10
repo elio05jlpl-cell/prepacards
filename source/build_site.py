@@ -1966,6 +1966,8 @@ def render(page: dict, url_path: str, template: str, jsonld_blocks: list) -> str
         "{{version_css}}": css_version(),
         "{{bloc_telechargement}}": bloc_telechargement(),
         "{{bloc_decks}}": bloc_decks(),
+        "{{paiement_mensuel}}": PAIEMENT.get("mensuel", ""),
+        "{{paiement_annuel}}": PAIEMENT.get("annuel", ""),
         "{{nb_paquets}}": str(len(fiches_decks())),
         "{{nb_cartes}}": milliers(sum(f["cartes"] for f in fiches_decks())),
         "{{bloc_paiement}}": bloc_paiement(),

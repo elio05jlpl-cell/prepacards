@@ -164,6 +164,10 @@
 
     var a = etatAbonnement(profil);
     var etat = document.getElementById('compte-etat');
+    // S'abonner : pendant l'essai ou apres sa fin, pas quand un abonnement
+    // paye est deja en cours.
+    var zoneAbonner = document.getElementById('compte-abonner');
+    if (zoneAbonner) zoneAbonner.hidden = a.abonne && a.statut !== 'essai';
     if (a.abonne && a.statut === 'essai') {
       var finEssai = dateCourte(a.valide_jusqu_au);
       etat.innerHTML = '<p><strong>Essai gratuit en cours.</strong> '
@@ -190,6 +194,51 @@
         + (sauvegarde.cartes ? ' · ' + sauvegarde.cartes + ' cartes' : '')
       : 'Aucune sauvegarde déposée pour l’instant.';
   }
+
+  // --- Paiement ---------------------------------------------------------
+  //
+  // Par le service : il reporte ce qu'il reste de l'essai gratuit sur
+  // l'abonnement, donc rien n'est preleve avant la fin de l'essai et aucun
+  // jour offert n'est perdu. S'il ne repond pas (non configure, panne), on
+  // ouvre le lien de paiement fixe : le bouton n'est jamais muet.
+  async function ouvrirPaiement(offre) {
+    var zone = document.getElementById('compte-abonner');
+    var message = document.getElementById('compte-abonner-message');
+    var repli = zone.getAttribute('data-repli-' + offre) || '';
+    message.textContent = 'Ouverture du paiement…';
+    message.hidden = false;
+    try {
+      var reponseSession = await client.auth.getSession();
+      var session = reponseSession.data && reponseSession.data.session;
+      if (!session) throw new Error('session');
+      var reponse = await fetch('/api/paiement', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          authorization: 'Bearer ' + session.access_token,
+        },
+        body: JSON.stringify({ offre: offre }),
+      });
+      var donnees = await reponse.json().catch(function () { return null; });
+      if (reponse.ok && donnees && /^https:\/\//.test(donnees.url || '')) {
+        window.location.href = donnees.url;
+        return;
+      }
+      throw new Error('service');
+    } catch (e) {
+      if (repli) {
+        // Reference du compte : le paiement doit rejoindre CE compte.
+        window.location.href = repli;
+      } else {
+        message.textContent = 'Le paiement n’a pas pu s’ouvrir. Réessayez dans un instant.';
+      }
+    }
+  }
+
+  var abonnerMensuel = document.getElementById('compte-abonner-mensuel');
+  var abonnerAnnuel = document.getElementById('compte-abonner-annuel');
+  if (abonnerMensuel) abonnerMensuel.addEventListener('click', function () { ouvrirPaiement('mensuel'); });
+  if (abonnerAnnuel) abonnerAnnuel.addEventListener('click', function () { ouvrirPaiement('annuel'); });
 
   // Decrit les methodes de connexion actives, et n'affiche « Dissocier »
   // que s'il en reste une autre ensuite : se retrouver hors de son propre

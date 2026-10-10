@@ -79,6 +79,15 @@ autocomplete="current-password" placeholder="8 caractères minimum">
 
 <div class="encart" id="compte-etat"></div>
 
+<div id="compte-abonner" hidden
+     data-repli-mensuel="{{paiement_mensuel}}" data-repli-annuel="{{paiement_annuel}}">
+<p class="compte-actions-identite">
+<button type="button" class="bouton" id="compte-abonner-mensuel">S'abonner · 9,99 € par mois</button>
+<button type="button" class="bouton-secondaire" id="compte-abonner-annuel">Ou 95,90 € par an</button>
+</p>
+<p id="compte-abonner-message" class="compte-message" hidden></p>
+</div>
+
 <h2>Réactiver sur une autre machine</h2>
 <p>Installez PrépaCards, puis <strong>Outils → Compte et abonnement</strong>
 et connectez-vous avec cette même adresse. L'abonnement suit le compte,
