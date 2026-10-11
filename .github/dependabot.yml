@@ -1,0 +1,9 @@
+# Met a jour les actions GitHub utilisees par les workflows (checkout, etc.).
+# Le site n'a aucune dependance npm ni Python : le client Supabase est vendu
+# dans source/static/vendor/ et se met a jour a la main (voir SECURITE.md).
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
