@@ -26,6 +26,14 @@ function memeSecret(a, b) {
 // L'adresse sert de cle de rattachement pour Stripe : on la normalise
 // avant toute comparaison, sinon deux graphies coexistent pour une seule
 // boite aux lettres.
+// Egalite a duree constante de deux chaines (secret de webhook, par exemple).
+// Faux si l'un des deux est vide : un secret non configure ne doit jamais
+// laisser passer une requete qui n'en envoie pas non plus.
+export function egalSecret(a, b) {
+  if (!a || !b) return false;
+  return memeSecret(encodeur.encode(String(a)), encodeur.encode(String(b)));
+}
+
 export function normaliserEmail(email) {
   return String(email || '').trim().toLowerCase();
 }
@@ -37,11 +45,12 @@ export function normaliserEmail(email) {
 // sensible de tout ce qui reste dans ce Worker.
 export async function signatureStripeValide(corps, entete, secret) {
   if (!entete || !secret) return false;
-  const champs = Object.fromEntries(
-    entete.split(',').map((p) => p.split('=').map((s) => s.trim())));
-  const horodatage = champs.t;
-  const signature = champs.v1;
-  if (!horodatage || !signature) return false;
+  // Stripe peut joindre plusieurs signatures v1 (rotation du secret) : l'une
+  // d'elles suffit.
+  const morceaux = entete.split(',').map((p) => p.split('=').map((s) => s.trim()));
+  const horodatage = (morceaux.find(([k]) => k === 't') || [])[1];
+  const signatures = morceaux.filter(([k, v]) => k === 'v1' && v).map(([, v]) => v);
+  if (!horodatage || !signatures.length) return false;
 
   // Un evenement vieux de plus de cinq minutes est refuse : cela empeche de
   // rejouer indefiniment une requete interceptee.
@@ -55,5 +64,5 @@ export async function signatureStripeValide(corps, entete, secret) {
     'HMAC', cle, encodeur.encode(`${horodatage}.${corps}`));
   const attenduHex = [...new Uint8Array(attendu)]
     .map((o) => o.toString(16).padStart(2, '0')).join('');
-  return memeSecret(encodeur.encode(attenduHex), encodeur.encode(signature));
+  return signatures.some((s) => memeSecret(encodeur.encode(attenduHex), encodeur.encode(s)));
 }

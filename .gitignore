@@ -1,2 +1,17 @@
 .wrangler/
 __pycache__/
+
+# Secrets
+# -------
+# Aucune cle dans le depot. Les secrets du Worker se deposent par
+# « npx wrangler secret put NOM » ; un fichier .dev.vars ou .env ne sert
+# qu'aux essais locaux et ne doit jamais etre commite.
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+*.pem
+*.key
+secrets/
+node_modules/

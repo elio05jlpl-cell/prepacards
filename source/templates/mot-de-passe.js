@@ -72,7 +72,9 @@
       formulaire.hidden = true;
       fini.hidden = false;
     } catch (erreur) {
-      dire((erreur && erreur.message) || 'Serveur injoignable. Réessayez.', true);
+      dire(/expired|invalid|jwt/i.test((erreur && erreur.message) || '')
+        ? 'Ce lien a expiré ou a déjà servi. Demandez-en un nouveau depuis la page de connexion.'
+        : 'Le mot de passe n’a pas pu être changé. Réessayez dans un instant.', true);
       valider.disabled = false;
       valider.textContent = libelle;
     }

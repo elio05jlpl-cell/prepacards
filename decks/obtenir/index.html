@@ -615,7 +615,7 @@ document.documentElement.classList.add('js');
     if (/password should be at least/i.test(m)) return 'Le mot de passe doit faire au moins 8 caractères.';
     if (/rate limit/i.test(m)) return 'Trop de tentatives. Réessayez dans quelques minutes.';
     if (/email not confirmed/i.test(m)) return 'Confirmez d’abord votre adresse depuis l’e-mail reçu à l’inscription.';
-    return m || 'Demande refusée.';
+    return 'Demande refusée. Réessayez dans un instant.';
   }
 
   // Lien direct construit sans le declencher : au cas ou le navigateur

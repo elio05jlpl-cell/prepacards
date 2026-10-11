@@ -749,7 +749,7 @@ document.documentElement.classList.add('js');
     if (/manual linking is disabled/i.test(m)) return 'La liaison de comptes n’est pas encore activée côté serveur.';
     if (/(only identity|last identity|only remaining)/i.test(m)) return 'Impossible de dissocier : gardez au moins une méthode de connexion.';
     if (/identity is already linked/i.test(m)) return 'Ce compte Google est déjà associé à un autre compte PrépaCards.';
-    return m || 'Demande refusée.';
+    return 'Demande refusée. Réessayez dans un instant.';
   }
 
   function etatAbonnement(profil) {

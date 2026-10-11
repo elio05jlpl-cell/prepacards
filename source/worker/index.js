@@ -15,7 +15,8 @@
 // son titulaire, et envoyer les deux e-mails que Supabase ne peut pas
 // declencher lui-meme (bienvenue, resiliation) - voir courriel.js.
 
-import { maintenant, normaliserEmail, signatureStripeValide } from './securite.js';
+import { egalSecret, maintenant, normaliserEmail, signatureStripeValide } from './securite.js';
+import { creerLimiteur } from './limiteur.js';
 import { lireFeuille } from './scan.js';
 import { enregistrerPrepa } from './prepa.js';
 import { ouvrirPaiement } from './paiement.js';
@@ -101,7 +102,7 @@ async function supprimerCompte(requete, env) {
 // les mises a jour de profiles par ailleurs (Stripe, etc.) qui ne touchent
 // jamais cette colonne.
 async function gererWebhookProfil(requete, env) {
-  if (requete.headers.get('x-webhook-secret') !== env.WEBHOOK_SECRET) {
+  if (!egalSecret(requete.headers.get('x-webhook-secret'), env.WEBHOOK_SECRET)) {
     return erreur('Non autorisé.', 401);
   }
 
@@ -159,7 +160,9 @@ async function webhookStripe(requete, env) {
     return erreur('Signature invalide.', 400);
   }
 
-  const evenement = JSON.parse(brut);
+  let evenement;
+  try { evenement = JSON.parse(brut); } catch (e) { return erreur('Corps illisible.', 400); }
+  if (!evenement || typeof evenement.id !== 'string') return erreur('Evenement invalide.', 400);
 
   // Stripe rejoue les evenements en cas de doute sur la livraison :
   // appliquer deux fois une resiliation n'est pas anodin.
@@ -258,6 +261,52 @@ const ROUTES = {
   'POST /api/attente': sInscrireAttente,
 };
 
+// --- Garde-fous communs a toutes les routes ---------------------------
+//
+// Taille maximale d'un corps (octets) et quota par adresse IP. Les deux
+// webhooks (Stripe, Supabase) en sont exclus : leur expediteur n'est pas un
+// visiteur, et ils portent leur propre signature. Le quota vit en memoire de
+// l'instance : il freine un poste, il ne remplace pas la regle de limitation
+// de debit de Cloudflare (voir SECURITE.md).
+
+const TAILLE_PAR_DEFAUT = 32 * 1024;
+const TAILLES = {
+  // Une photo de 6 Mo en base64 : environ 8 Mo, avec la marge du JSON.
+  'POST /api/scan': 9 * 1024 * 1024,
+};
+const SANS_GARDE = new Set(['POST /api/stripe', 'POST /api/webhooks/profil']);
+
+const DIX_MINUTES = 10 * 60 * 1000;
+const UNE_HEURE = 60 * 60 * 1000;
+const QUOTAS = {
+  'POST /api/scan': creerLimiteur(20, DIX_MINUTES),
+  'POST /api/paiement': creerLimiteur(10, DIX_MINUTES),
+  'POST /api/prepa': creerLimiteur(10, DIX_MINUTES),
+  'POST /api/compte/supprimer': creerLimiteur(5, UNE_HEURE),
+};
+
+function garde(cle, requete) {
+  if (SANS_GARDE.has(cle)) return null;
+  const limiteur = QUOTAS[cle];
+  if (limiteur && limiteur.tropDeDemandes(requete.headers.get('cf-connecting-ip') || '')) {
+    return erreur('Trop de demandes. Réessayez dans quelques minutes.', 429);
+  }
+  const maximum = TAILLES[cle] || TAILLE_PAR_DEFAUT;
+  const annonce = Number(requete.headers.get('content-length'));
+  if (!Number.isFinite(annonce)) return erreur('Longueur du corps requise.', 411);
+  if (annonce > maximum) return erreur('Requête trop volumineuse.', 413);
+  return null;
+}
+
+/** Ajoute aux reponses de l'API les en-tetes que les routes n'ont pas a
+ *  repeter : jamais de mise en cache, jamais de type devine par le navigateur. */
+function avecEntetes(reponse) {
+  const entetes = new Headers(reponse.headers);
+  entetes.set('cache-control', 'no-store');
+  entetes.set('x-content-type-options', 'nosniff');
+  return new Response(reponse.body, { status: reponse.status, headers: entetes });
+}
+
 export default {
   async fetch(requete, env) {
     const url = new URL(requete.url);
@@ -268,16 +317,20 @@ export default {
       return env.ASSETS.fetch(requete);
     }
 
-    const gestionnaire = ROUTES[`${requete.method} ${url.pathname}`];
-    if (!gestionnaire) return erreur('Route inconnue.', 404);
+    const cle = `${requete.method} ${url.pathname}`;
+    const gestionnaire = ROUTES[cle];
+    if (!gestionnaire) return avecEntetes(erreur('Route inconnue.', 404));
+
+    const refus = garde(cle, requete);
+    if (refus) return avecEntetes(refus);
 
     try {
-      return await gestionnaire(requete, env);
+      return avecEntetes(await gestionnaire(requete, env));
     } catch (e) {
       // Le detail part dans les journaux, jamais dans la reponse : un
       // message d'erreur de base de donnees renseigne un attaquant.
       console.error('erreur', url.pathname, e);
-      return erreur('Erreur interne.', 500);
+      return avecEntetes(erreur('Erreur interne.', 500));
     }
   },
 };
