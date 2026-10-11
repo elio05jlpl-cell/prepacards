@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Récupérer le dépôt
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           # Tout l'historique, pas le seul dernier commit (c'est le défaut).
           # Le plan du site date chaque page par son dernier commit : dans un
