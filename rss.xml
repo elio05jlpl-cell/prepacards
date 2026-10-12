@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>Devoir surveillé : gérer son temps sans retard</title>
+    <link>https://prepacards.fr/blog/gerer-son-temps-en-devoir-surveille/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/gerer-son-temps-en-devoir-surveille/</guid>
+    <pubDate>Mon, 12 Oct 2026 00:00:00 +0000</pubDate>
+    <description>Une dernière question bâclée faute de temps : le découpage du temps compte souvent plus que la maîtrise du cours. La méthode pour ne pas se faire piéger.</description>
+  </item>
+  <item>
     <title>Chimie en prépa : le par cœur qui débloque tout</title>
     <link>https://prepacards.fr/blog/reviser-la-chimie-en-prepa/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/reviser-la-chimie-en-prepa/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/flashcards-formules-de-maths/</guid>
     <pubDate>Wed, 02 Sep 2026 00:00:00 +0000</pubDate>
     <description>Pourquoi les flashcards de maths sont abandonnées si vite, et trois façons de créer des cartes de formules vite : LaTeX, photo du cours, description.</description>
-  </item>
-  <item>
-    <title>Réviser à voix haute : pourquoi ça change tout</title>
-    <link>https://prepacards.fr/blog/reviser-a-voix-haute/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/reviser-a-voix-haute/</guid>
-    <pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
-    <description>L'illusion de savoir est le premier piège de la révision. Pourquoi réciter à voix haute la dissipe, et comment s'y contraindre quand on révise seul.</description>
   </item>
 </channel>
 </rss>
