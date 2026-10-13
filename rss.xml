@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>Sommeil en prépa : combien d'heures, le préserver</title>
+    <link>https://prepacards.fr/blog/sommeil-en-prepa/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/sommeil-en-prepa/</guid>
+    <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+    <description>Sacrifier une heure de sommeil pour réviser coûte souvent plus qu'elle ne rapporte. Combien d'heures sont vraiment nécessaires, et comment les protéger.</description>
+  </item>
+  <item>
     <title>Devoir surveillé : gérer son temps sans retard</title>
     <link>https://prepacards.fr/blog/gerer-son-temps-en-devoir-surveille/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/gerer-son-temps-en-devoir-surveille/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/repetition-espacee-comment-ca-marche/</guid>
     <pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
     <description>Comment marche la répétition espacée, pourquoi elle bat la relecture, et ce que changent les algorithmes SM-2 et FSRS derrière Anki et PrépaCards.</description>
-  </item>
-  <item>
-    <title>Flashcards de formules de maths : 3 méthodes</title>
-    <link>https://prepacards.fr/blog/flashcards-formules-de-maths/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/flashcards-formules-de-maths/</guid>
-    <pubDate>Wed, 02 Sep 2026 00:00:00 +0000</pubDate>
-    <description>Pourquoi les flashcards de maths sont abandonnées si vite, et trois façons de créer des cartes de formules vite : LaTeX, photo du cours, description.</description>
   </item>
 </channel>
 </rss>
