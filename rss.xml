@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>Écrire un essay en anglais qui rapporte des points</title>
+    <link>https://prepacards.fr/blog/ecrire-un-essay-en-anglais-prepa/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/ecrire-un-essay-en-anglais-prepa/</guid>
+    <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
+    <description>Un essay bien structuré rapporte des points avant même d'être relu en détail. La méthode pour construire un plan solide et un vocabulaire qui fait la différence.</description>
+  </item>
+  <item>
     <title>Sommeil en prépa : combien d'heures, le préserver</title>
     <link>https://prepacards.fr/blog/sommeil-en-prepa/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/sommeil-en-prepa/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/reviser-avec-des-flashcards-en-prepa/</guid>
     <pubDate>Tue, 08 Sep 2026 00:00:00 +0000</pubDate>
     <description>Utiliser des flashcards en prépa sans y perdre son temps : quand les créer, combien par jour, et les erreurs qui font abandonner en trois semaines.</description>
-  </item>
-  <item>
-    <title>La répétition espacée expliquée simplement</title>
-    <link>https://prepacards.fr/blog/repetition-espacee-comment-ca-marche/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/repetition-espacee-comment-ca-marche/</guid>
-    <pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
-    <description>Comment marche la répétition espacée, pourquoi elle bat la relecture, et ce que changent les algorithmes SM-2 et FSRS derrière Anki et PrépaCards.</description>
   </item>
 </channel>
 </rss>
