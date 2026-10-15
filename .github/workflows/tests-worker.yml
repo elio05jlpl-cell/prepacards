@@ -1,0 +1,31 @@
+# Tests du Worker (garde-fous, paiement, rapports...) : a chaque push.
+# Sans dependance : Node suffit, les tests importent le code tel quel.
+name: Tests du Worker
+
+on:
+  push:
+    paths:
+      - "source/worker/**"
+      - "worker/**"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  worker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Garde-fous, rapports, paiement, existence, attente
+        run: |
+          cd source
+          for t in garde rapport paiement existence attente; do
+            echo "== $t =="
+            node worker/_test_$t.mjs
+          done

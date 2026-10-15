@@ -21,6 +21,7 @@ import { lireFeuille } from './scan.js';
 import { enregistrerPrepa } from './prepa.js';
 import { ouvrirPaiement } from './paiement.js';
 import { compteExiste } from './existence.js';
+import { recevoirRapport } from './rapport.js';
 import { sInscrire as sInscrireAttente } from './attente.js';
 import { disponible as courrielDisponible, envoyer as envoyerCourriel,
          messageBienvenue, messageResiliation } from './courriel.js';
@@ -259,6 +260,8 @@ const ROUTES = {
   'POST /api/compte/existe': compteExiste,
   // Liste d'attente pour Mac, iPhone et Android (page Telecharger).
   'POST /api/attente': sInscrireAttente,
+  // Rapport d'erreurs envoye par l'application, a la demande de la personne.
+  'POST /api/rapport': recevoirRapport,
 };
 
 // --- Garde-fous communs a toutes les routes ---------------------------
@@ -271,6 +274,7 @@ const ROUTES = {
 
 const TAILLE_PAR_DEFAUT = 32 * 1024;
 const TAILLES = {
+  'POST /api/rapport': 16 * 1024,
   // Une photo de 6 Mo en base64 : environ 8 Mo, avec la marge du JSON.
   'POST /api/scan': 9 * 1024 * 1024,
 };
@@ -283,6 +287,7 @@ const QUOTAS = {
   'POST /api/paiement': creerLimiteur(10, DIX_MINUTES),
   'POST /api/prepa': creerLimiteur(10, DIX_MINUTES),
   'POST /api/compte/supprimer': creerLimiteur(5, UNE_HEURE),
+  'POST /api/rapport': creerLimiteur(5, UNE_HEURE),
 };
 
 function garde(cle, requete) {
