@@ -55,6 +55,19 @@ Rien de ceci n'est réglable depuis le dépôt. Cochez au fur et à mesure.
       identique à `WEBHOOK_SECRET` du Worker.
 - [ ] **Advisors → Security** : lancer l'analyse, il signale toute table sans RLS.
 
+### Supabase : SQL à exécuter une fois (SQL Editor)
+
+Les deux derniers blocs de `source/worker/schema.sql` sont nouveaux et ne
+s'appliquent pas tout seuls :
+
+- [ ] **Rapports d'erreurs** — table `rapports_erreurs` (RLS, sans policy).
+      Sans elle, `/api/rapport` répond 502 et l'application affiche
+      « L'envoi n'a pas abouti ».
+- [ ] **Un seul essai par boîte aux lettres** — fonction `email_canonique` et
+      déclencheur `limiter_essai_doublon`. Vérifier ensuite avec la requête
+      de test à la fin du bloc. Le déclencheur ne bloque jamais une
+      inscription : toute erreur interne laisse passer la ligne.
+
 ### Cloudflare
 
 - [ ] **Security → WAF → Rate limiting rules** : une règle sur

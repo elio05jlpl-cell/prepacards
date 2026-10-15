@@ -373,3 +373,106 @@ alter table public.profiles
 update public.profiles
    set essai_fin = now() + interval '30 days'
  where essai_fin is null;
+
+
+-- --- Rapports d'erreurs de l'application ------------------------------------
+--
+-- Alimentee par POST /api/rapport (Worker, cle service_role). Aucune identite :
+-- ni compte, ni adresse, ni IP. Aucune policy : ni le navigateur ni
+-- l'application ne peuvent la lire ou y ecrire directement.
+--
+-- Deja installe ? Executer ce bloc une fois, dans Supabase : SQL Editor.
+--
+-- Lire les derniers rapports :
+--   select recu_le, version, systeme, contenu->'erreurs'->0->>'type' as type,
+--          contenu->'erreurs'->0->>'message' as message
+--   from public.rapports_erreurs order by recu_le desc limit 50;
+
+create table if not exists public.rapports_erreurs (
+    id        bigint generated always as identity primary key,
+    recu_le   timestamptz not null default now(),
+    version   text not null,
+    systeme   text not null default '',
+    contenu   jsonb not null
+);
+
+alter table public.rapports_erreurs enable row level security;
+
+create index if not exists rapports_erreurs_recu_le
+    on public.rapports_erreurs (recu_le desc);
+
+
+-- --- Un seul essai gratuit par boite aux lettres ----------------------------
+--
+-- Sans cela, « eleve+1@gmail.com », « eleve+2@gmail.com » ou « e.leve@gmail.com »
+-- sont autant de comptes neufs, donc autant d'essais de 30 jours pour la meme
+-- personne. On ramene l'adresse a sa forme canonique (partie « +etiquette »
+-- retiree, points ignores chez Gmail) : si un AUTRE compte a deja la meme
+-- adresse canonique, le nouveau compte se cree normalement mais sans essai
+-- (essai_fin = maintenant).
+--
+-- Ce que cela ne fait PAS : empecher quelqu'un de creer une boite jetable
+-- differente. Ce n'est pas le but ; il s'agit de couper le contournement
+-- trivial, sans suivre les appareils ni conserver d'identifiant.
+--
+-- Le declencheur ne doit JAMAIS empecher une inscription : toute erreur
+-- interne laisse la ligne passer telle quelle.
+--
+-- Deja installe ? Executer ce bloc une fois, dans Supabase : SQL Editor.
+
+create or replace function public.email_canonique(p_email text)
+returns text
+language sql
+immutable
+as $$
+  select case
+    when s.l = '' or s.d = '' then lower(coalesce(p_email, ''))
+    when s.d in ('gmail.com', 'googlemail.com')
+      then replace(split_part(s.l, '+', 1), '.', '') || '@gmail.com'
+    else split_part(s.l, '+', 1) || '@' || s.d
+  end
+  from (
+    select split_part(lower(coalesce(p_email, '')), '@', 1) as l,
+           split_part(lower(coalesce(p_email, '')), '@', 2) as d
+  ) s;
+$$;
+
+create or replace function public.limiter_essai_doublon()
+returns trigger
+language plpgsql
+security definer
+set search_path = public, auth
+as $$
+declare
+  v_email text;
+  v_canon text;
+begin
+  select email into v_email from auth.users where id = new.id;
+  if v_email is null then
+    return new;
+  end if;
+  v_canon := public.email_canonique(v_email);
+  if exists (
+    select 1
+      from public.profiles p
+      join auth.users u on u.id = p.id
+     where p.id <> new.id
+       and public.email_canonique(u.email) = v_canon
+  ) then
+    new.essai_fin := now();
+  end if;
+  return new;
+exception when others then
+  return new;
+end;
+$$;
+
+drop trigger if exists limiter_essai_doublon on public.profiles;
+create trigger limiter_essai_doublon
+    before insert on public.profiles
+    for each row execute function public.limiter_essai_doublon();
+
+-- Verifier la forme canonique (doit rendre 'eleve@gmail.com' quatre fois) :
+--   select public.email_canonique(x) from (values
+--     ('Eleve@gmail.com'), ('e.leve+2@gmail.com'), ('ELEVE+prepa@googlemail.com'),
+--     ('eleve@gmail.com')) as t(x);
