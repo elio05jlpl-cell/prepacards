@@ -45,8 +45,8 @@ tout abonnement en cours reste au tarif souscrit jusqu'à son terme.
 ## 4. Commande et paiement
 
 La commande s'effectue en ligne. Le paiement est traité par [nom du prestataire
-de paiement], qui agit en qualité de revendeur et émet la facture. Le Vendeur
-n'a accès à aucune donnée bancaire.
+de paiement : Stripe Payments Europe, Ltd.], prestataire de paiement. Le
+Vendeur n'a accès à aucune donnée bancaire et reste le vendeur du service.
 
 L'accès est activé après confirmation du paiement, automatiquement, sur le
 compte utilisé pour l'achat : aucune clé de licence n'est à saisir.
@@ -94,7 +94,8 @@ suivants, énoncés avant l'achat :
   les résultats ;
 - la traduction automatique nécessite une connexion internet et repose sur un
   service tiers, dont l'interruption ne peut être imputée au Vendeur ;
-- aucune synchronisation entre appareils n'est fournie ; la sauvegarde des
+- les cartes sont enregistrées sur l'ordinateur de l'utilisateur ; une
+  sauvegarde en ligne chiffrée est proposée, mais la conservation de ses
   données relève de l'utilisateur.
 
 ## 8. Garantie légale

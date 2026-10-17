@@ -33,6 +33,19 @@
     "SUPABASE_URL": "https://ojnntqfafinxrousdvbn.supabase.co"
   },
 
+  // Declencheur planifie : chaque jour a 8 h UTC (9 h ou 10 h a Paris), le
+  // Worker envoie les e-mails de l'essai gratuit (worker/essais.js). Il ne
+  // fait RIEN tant que la variable EMAILS_ESSAI n'est pas a "1".
+  "triggers": {
+    "crons": ["0 8 * * *"]
+  },
+
+  // Journaux et metriques du Worker, consultables dans le tableau de bord
+  // Cloudflare (Workers > prepacardsss > Observability).
+  "observability": {
+    "enabled": true
+  },
+
   "assets": {
 
     // Le depot pousse vers GitHub EST le dossier public/ : la racine du

@@ -50,6 +50,7 @@ autocomplete="email" inputmode="email" placeholder="vous@exemple.fr">
 <input id="compte-mdp" class="connexion-champ" name="mot_de_passe" type="password"
 autocomplete="current-password" placeholder="8 caractères minimum">
 <label class="connexion-rester"><input type="checkbox" id="compte-rester"> Rester connecté sur cet appareil</label>
+<label class="connexion-rester" id="compte-conseils-ligne" hidden><input type="checkbox" id="compte-conseils"> Recevoir quelques conseils d'utilisation par e-mail (désinscription en un clic)</label>
 </div>
 <p id="compte-message" class="compte-message" hidden></p>
 <div class="connexion-actions">
@@ -123,6 +124,14 @@ autocomplete="new-password" placeholder="8 caractères minimum">
 <p>Les 119 paquets d'anglais, d'allemand, d'espagnol, d'italien et les
 formules de maths se téléchargent avec votre compte, à tout moment.</p>
 <p><a class="bouton-secondaire" href="/decks/">Voir les paquets</a></p>
+
+<h2>Vos données</h2>
+<p>Téléchargez dans un fichier lisible tout ce que le service conserve sur
+vous : votre compte, votre abonnement et les informations de votre
+sauvegarde en ligne. Le contenu de la sauvegarde, chiffré sur votre
+ordinateur, ne peut pas être lu par le service.</p>
+<p id="compte-export-message" class="compte-message" hidden></p>
+<button type="button" class="bouton-secondaire" id="compte-exporter">Télécharger mes données</button>
 
 <h2>Zone dangereuse</h2>
 <aside class="encart encart-danger">

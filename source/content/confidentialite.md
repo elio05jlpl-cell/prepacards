@@ -75,7 +75,18 @@ l'application : elle ne signale ni son installation, ni son usage.
    limite mensuelle. Décochez la case et la photo reste sur votre
    ordinateur : la lecture se fait alors localement.
 4. **Votre compte.** Voir la section suivante.
-5. **Consultation de ce site.** Voir plus bas.
+5. **Rapport d'erreurs** (uniquement si vous cliquez sur « Envoyer le
+   rapport d'erreurs » dans *À propos*). L'application envoie à notre serveur
+   sa version, votre système, et les dernières erreurs notées, **après en avoir
+   retiré** votre nom d'utilisateur Windows, vos chemins de dossiers, votre
+   adresse e-mail et tout jeton. Aucune carte, aucun nom de paquet. Le rapport
+   n'est rattaché à aucun compte et n'est conservé que pour corriger l'erreur.
+   Rien ne part sans ce clic.
+6. **Vérification des mises à jour.** Une fois par jour, l'application lit un
+   petit fichier public du site (`/version.json`) pour savoir si une version
+   plus récente existe. Cette requête transmet ce que transmet toute requête
+   web (adresse IP) et rien de plus ; elle n'est rattachée à aucun compte.
+7. **Consultation de ce site.** Voir plus bas.
 
 ## Votre compte
 
@@ -147,8 +158,19 @@ demandée, date), pour la sécurité et la mesure de charge, pendant une durée
 limitée. C'est le traitement minimal inhérent au fonctionnement d'un serveur
 web.
 
-Si vous nous écrivez, votre adresse e-mail et le contenu de votre message sont
-conservés le temps de traiter votre demande, puis supprimés.
+Si vous nous écrivez, y compris par le [formulaire de contact](/contact/), votre
+adresse e-mail et le contenu de votre message sont conservés le temps de traiter
+votre demande, puis supprimés. Le formulaire peut utiliser Cloudflare Turnstile
+pour écarter les robots : ce service est exécuté par Cloudflare et ne dépose pas
+de cookie publicitaire.
+
+**Les e-mails de l'essai gratuit.** Pendant les trente jours d'essai, nous vous
+envoyons un rappel quelques jours avant la fin, puis un message une fois l'essai
+terminé : ce sont des messages liés à votre compte. Nous vous envoyons aussi
+deux messages de conseils d'utilisation (un jour puis une semaine après
+l'inscription) **uniquement si vous avez coché la case prévue** lors de la
+création du compte, décochée par défaut. Chacun de ces messages porte un lien
+pour ne plus recevoir de conseils, en un clic. Ces envois passent par Resend.
 
 **La liste d'attente** (page [Télécharger](/telecharger/#autres-systemes)) : si
 vous demandez une version Mac, iPhone ou Android, nous enregistrons **votre
@@ -170,6 +192,9 @@ la liste est de toute façon supprimée une fois les versions annoncées.
 | E-mail de réinitialisation | Exécution du contrat | Le lien vaut une heure ; l'envoi est journalisé par Resend [durée à vérifier] |
 | Journaux du serveur web | Intérêt légitime (sécurité) | [durée pratiquée par votre hébergeur] |
 | Réponse à un message | Intérêt légitime | Le temps de l'échange, puis suppression |
+| Rappels de l'essai gratuit (fin d'essai) | Exécution du contrat | Jusqu'à la suppression du compte ; le type de message envoyé est noté pour ne pas l'envoyer deux fois |
+| Conseils d'utilisation par e-mail | Consentement (case à cocher) | Jusqu'au retrait du consentement (lien dans chaque message) ou à la suppression du compte |
+| Rapports d'erreurs | Consentement (clic sur l'envoi) ; intérêt légitime (corriger les défauts) | Douze mois au plus, sans lien avec un compte |
 | Liste d'attente (Mac, iPhone, Android) | Consentement | Jusqu'au retrait de votre consentement, ou à l'annonce de la version attendue |
 
 </div>
@@ -186,7 +211,10 @@ l'informatique et des libertés), 3 place de Fontenoy, 75334 Paris Cedex 07,
 <a href="https://www.cnil.fr" rel="nofollow">www.cnil.fr</a>.
 
 S'agissant de vos cartes, la portabilité est immédiate et ne demande aucune
-démarche : *Fichier → Exporter en CSV* dans l'application.
+démarche : *Fichier → Exporter en CSV* dans l'application. Pour les données
+de votre compte (adresse, dates, abonnement, informations de votre sauvegarde
+en ligne), le bouton **Télécharger mes données** de la page
+[Compte](/compte/) vous remet un fichier lisible, immédiatement.
 
 ## Questions fréquentes
 

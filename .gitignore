@@ -15,3 +15,7 @@ __pycache__/
 *.key
 secrets/
 node_modules/
+
+# Identite du vendeur : renseignee a la main avant la mise en vente, jamais commitee
+source/juridique/identite.json
+source/outils/preavis-envoyes.txt

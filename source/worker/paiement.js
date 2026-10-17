@@ -62,7 +62,7 @@ async function adresseDe(requete, env) {
 }
 
 // Parametres de la session. Fonction pure : c'est elle que le test verifie.
-export function parametresSession({ prix, reference, email, essaiFin, maintenant }) {
+export function parametresSession({ prix, reference, email, essaiFin, maintenant, consentementCgv = false }) {
   const p = new URLSearchParams();
   p.set('mode', 'subscription');
   p.set('line_items[0][price]', prix);
@@ -72,6 +72,20 @@ export function parametresSession({ prix, reference, email, essaiFin, maintenant
   p.set('success_url', 'https://prepacards.fr/merci/');
   p.set('cancel_url', 'https://prepacards.fr/tarifs/');
   p.set('allow_promotion_codes', 'true');
+
+  // Acceptation des CGV et renonciation expresse au droit de retractation pour
+  // le contenu numerique fourni des la souscription (article L221-28 du Code
+  // de la consommation). Stripe exige que l'adresse des CGV soit renseignee
+  // dans le tableau de bord (Parametres > Branding > Conditions) : tant que ce
+  // n'est pas fait, activer ceci ferait ECHOUER chaque paiement. D'ou
+  // l'interrupteur STRIPE_CGV_CONSENT, a passer a « 1 » apres coup.
+  if (consentementCgv) {
+    p.set('consent_collection[terms_of_service]', 'required');
+    p.set('custom_text[terms_of_service_acceptance][message]',
+      'J’accepte les conditions générales de vente et je demande l’accès immédiat '
+      + 'au service. Je reconnais perdre mon droit de rétractation dès que le '
+      + 'service a été pleinement exécuté.');
+  }
 
   const fin = essaiFin ? new Date(essaiFin).getTime() : 0;
   if (fin - maintenant > MARGE_STRIPE_MS) {
@@ -101,6 +115,7 @@ export async function ouvrirPaiement(requete, env) {
     email: await adresseDe(requete, env),
     essaiFin: profil.essai_fin,
     maintenant: Date.now(),
+    consentementCgv: env.STRIPE_CGV_CONSENT === '1',
   });
 
   const reponse = await fetch(URL_STRIPE, {

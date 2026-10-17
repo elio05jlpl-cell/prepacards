@@ -3025,12 +3025,22 @@ html.js .import-onglets {
 }
 .attente-choix input { width: 18px; height: 18px; accent-color: var(--bleu); }
 .attente-etiquette { display: block; margin: 0 0 6px; font-weight: 600; color: var(--encre); }
-.attente-form input[type="email"] {
+.attente-form input[type="email"],
+.attente-form input[type="text"]:not(.sans-style),
+.attente-form select,
+.attente-form textarea {
   width: 100%; box-sizing: border-box; height: 46px; padding: 0 14px;
   border: 1px solid var(--bord-net); border-radius: 8px;
   font-family: inherit; font-size: 1rem; color: var(--encre); background: #fff;
 }
-.attente-form input[type="email"]:focus {
+.attente-form textarea { height: auto; padding: 12px 14px; line-height: 1.5; resize: vertical; min-height: 140px; }
+.attente-form select { margin-bottom: 0; }
+.attente-form .attente-etiquette { margin-top: 16px; }
+.attente-form .attente-etiquette:first-child { margin-top: 0; }
+.attente-form input[type="email"]:focus,
+.attente-form input[type="text"]:focus,
+.attente-form select:focus,
+.attente-form textarea:focus {
   outline: none; border-color: var(--bleu); box-shadow: 0 0 0 3px rgba(59, 130, 246, .16);
 }
 .attente-form .bouton { margin-top: 16px; border: 0; cursor: pointer; font-family: inherit; }

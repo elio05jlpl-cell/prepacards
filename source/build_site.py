@@ -271,6 +271,7 @@ def scripts_animes(corps: str) -> str:
                    ('class="avis-grille', "avis.js"),
                    ('class="ficelles-zone', "ficelles.js"),
                    ('id="attente-app"', "attente.js"),
+                   ('id="contact-app"', "contact.js"),
                    # Quatrieme valeur : bibliotheque vendue a charger AVANT
                    # le script, en balise <script src> classique - ces deux
                    # pages parlent a Supabase directement, sans passer par
@@ -867,6 +868,7 @@ FOOTER_COLONNES = [
         ("/cgv/", "CGV"),
         ("/confidentialite/", "Confidentialité"),
         ("/cookies/", "Cookies"),
+        ("/contact/", "Contact"),
     ]),
 ]
 
@@ -907,6 +909,7 @@ PRIORITES = {
     "cookies": "0.3",
     "cgv": "0.3",
     "cgu": "0.3",
+    "contact": "0.4",
 }
 PRIORITE_DEFAUT = "0.6"
 

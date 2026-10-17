@@ -22,6 +22,10 @@ import { enregistrerPrepa } from './prepa.js';
 import { ouvrirPaiement } from './paiement.js';
 import { compteExiste } from './existence.js';
 import { recevoirRapport } from './rapport.js';
+import { desabonner, envoyerEmailsEssai } from './essais.js';
+import { recevoirContact } from './contact.js';
+import { exporterCompte } from './export.js';
+import { etatSante } from './sante.js';
 import { sInscrire as sInscrireAttente } from './attente.js';
 import { disponible as courrielDisponible, envoyer as envoyerCourriel,
          messageBienvenue, messageResiliation } from './courriel.js';
@@ -262,6 +266,16 @@ const ROUTES = {
   'POST /api/attente': sInscrireAttente,
   // Rapport d'erreurs envoye par l'application, a la demande de la personne.
   'POST /api/rapport': recevoirRapport,
+  // Formulaire de contact (Turnstile si TURNSTILE_SECRET est depose).
+  'POST /api/contact': recevoirContact,
+  // Droit d'acces et de portabilite : tout ce que le service sait du compte.
+  'POST /api/compte/exporter': exporterCompte,
+  // Desinscription des conseils par e-mail : lien signe, GET ou POST
+  // (desinscription en un clic des messageries).
+  'GET /api/desabonner': desabonner,
+  'POST /api/desabonner': desabonner,
+  // Surveillance : 200 si le Worker et la base repondent, 503 sinon.
+  'GET /api/sante': etatSante,
 };
 
 // --- Garde-fous communs a toutes les routes ---------------------------
@@ -275,6 +289,7 @@ const ROUTES = {
 const TAILLE_PAR_DEFAUT = 32 * 1024;
 const TAILLES = {
   'POST /api/rapport': 16 * 1024,
+  'POST /api/contact': 12 * 1024,
   // Une photo de 6 Mo en base64 : environ 8 Mo, avec la marge du JSON.
   'POST /api/scan': 9 * 1024 * 1024,
 };
@@ -288,6 +303,11 @@ const QUOTAS = {
   'POST /api/prepa': creerLimiteur(10, DIX_MINUTES),
   'POST /api/compte/supprimer': creerLimiteur(5, UNE_HEURE),
   'POST /api/rapport': creerLimiteur(5, UNE_HEURE),
+  'POST /api/contact': creerLimiteur(4, UNE_HEURE),
+  'POST /api/compte/exporter': creerLimiteur(5, UNE_HEURE),
+  'GET /api/desabonner': creerLimiteur(30, UNE_HEURE),
+  'POST /api/desabonner': creerLimiteur(30, UNE_HEURE),
+  'GET /api/sante': creerLimiteur(120, 60 * 1000),
 };
 
 function garde(cle, requete) {
@@ -313,6 +333,14 @@ function avecEntetes(reponse) {
 }
 
 export default {
+  /** Declencheur planifie (voir "triggers" dans wrangler.jsonc) : les e-mails
+   *  de l'essai gratuit. waitUntil garde le Worker en vie jusqu'a la fin. */
+  async scheduled(evenement, env, ctx) {
+    ctx.waitUntil(envoyerEmailsEssai(env).then((bilan) => {
+      console.info('emails essai', JSON.stringify(bilan));
+    }));
+  },
+
   async fetch(requete, env) {
     const url = new URL(requete.url);
 

@@ -22,10 +22,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Outils d'exploitation (Python)
+        run: |
+          python -m pip install cryptography
+          python source/outils/_test_outils.py
       - name: Garde-fous, rapports, paiement, existence, attente
         run: |
           cd source
-          for t in garde rapport paiement existence attente; do
+          for t in garde rapport phase2 paiement existence attente; do
             echo "== $t =="
             node worker/_test_$t.mjs
           done

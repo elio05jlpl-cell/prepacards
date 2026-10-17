@@ -1,0 +1,12 @@
+{
+  "denomination": "Prénom NOM (entrepreneur individuel) — nom commercial PrépaCards",
+  "statut": "micro-entrepreneur",
+  "adresse": "12 rue Exemple, 75000 Paris",
+  "siret": "SIRET 000 000 000 00000",
+  "mention_tva": "TVA non applicable, article 293 B du CGI.",
+  "libelle_taxes": "TVA non applicable (article 293 B du CGI)",
+  "directeur_publication": "Prénom NOM",
+  "delai_assistance": "deux",
+  "mediateur": "nom, adresse postale et site internet du médiateur de la consommation auquel le vendeur adhère",
+  "date_mise_a_jour": "1er novembre 2026"
+}

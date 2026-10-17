@@ -64,7 +64,7 @@ faq: true
   <div class="conteneur grille-actus revelation fondu">
 
     <a class="actu-vedette" href="/fonctionnalites/">
-      <img src="/img/demo/4-verso.webp" loading="lazy"
+      <img src="/img/demo/4-verso.webp" width="1475" height="1008" loading="lazy"
            alt="Écran d'étude de PrépaCards : une carte de vocabulaire retournée, avec sa traduction et les boutons Vérifier ma prononciation et Vérifier aussi avec la webcam">
       <h2>Vérifier sa prononciation, photographier une formule : ce que
         PrépaCards fait de plus</h2>
@@ -73,25 +73,25 @@ faq: true
     <div class="actu-liste">
 
       <a class="actu" href="/alternative-anki/">
-        <img src="/img/demo/1-accueil.webp" loading="lazy"
+        <img src="/img/demo/1-accueil.webp" width="1475" height="1008" loading="lazy"
              alt="Liste de paquets dans PrépaCards, avec les compteurs de cartes">
         <span>PrépaCards ou Anki : le comparatif, sans détour</span>
       </a>
 
       <a class="actu" href="/alternative-quizlet/">
-        <img src="/img/etude.webp" loading="lazy"
+        <img src="/img/etude.webp" width="1125" height="775" loading="lazy"
              alt="Carte de vocabulaire retournée, avec sa traduction">
         <span>PrépaCards ou Quizlet : lequel tient la distance en prépa ?</span>
       </a>
 
       <a class="actu" href="/blog/repetition-espacee-comment-ca-marche/">
-        <img src="/img/demo/5-statistiques.webp" loading="lazy"
+        <img src="/img/demo/5-statistiques.webp" width="1475" height="1008" loading="lazy"
              alt="Statistiques de révision de PrépaCards, mois par mois">
         <span>La répétition espacée expliquée simplement</span>
       </a>
 
       <a class="actu" href="/blog/combien-de-cartes-par-jour/">
-        <img src="/img/demo/2-paquet.webp" loading="lazy"
+        <img src="/img/demo/2-paquet.webp" width="1475" height="1008" loading="lazy"
              alt="Réglages d'un paquet dans PrépaCards, avec la limite de cartes nouvelles par jour">
         <span>Combien de cartes par jour ? Le calcul que personne ne fait</span>
       </a>

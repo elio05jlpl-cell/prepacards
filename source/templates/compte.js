@@ -65,6 +65,9 @@
   var googleDissocierBtn = document.getElementById('compte-google-dissocier');
   var mdpForm = document.getElementById('compte-mdp-form');
   var supprimerBtn = document.getElementById('compte-supprimer');
+  var exporterBtn = document.getElementById('compte-exporter');
+  var conseilsLigne = document.getElementById('compte-conseils-ligne');
+  var conseilsCase = document.getElementById('compte-conseils');
   var creation = false;
   var identitesActuelles = [];
 
@@ -303,6 +306,7 @@
     etape = 'mdp';
     creation = mode === 'creation';
     etapeMdp.hidden = false;
+    if (conseilsLigne) conseilsLigne.hidden = !creation;
     mdpLibelle.textContent = creation ? 'Choisissez un mot de passe' : 'Mot de passe';
     mdpChamp.setAttribute('autocomplete', creation ? 'new-password' : 'current-password');
     mdpChamp.setAttribute('placeholder', creation ? '8 caractères minimum' : 'Votre mot de passe');
@@ -379,7 +383,11 @@
         // personnelle : un simple mot.
         ? await client.auth.signUp({
             email: email, password: mdp,
-            options: { data: { provenance: 'site-compte' } },
+            // marketing : consentement explicite aux conseils d'utilisation
+            // (case non cochee par defaut). Lu par le declencheur SQL qui cree
+            // le profil ; absent ou illisible, il vaut « non ».
+            options: { data: { provenance: 'site-compte',
+              marketing: !!(conseilsCase && conseilsCase.checked) } },
           })
         : (retenirChoix('compte-rester'), await client.auth.signInWithPassword({ email: email, password: mdp }));
       if (resultat.error) throw resultat.error;
@@ -516,6 +524,45 @@
       } finally {
         bouton.disabled = false;
         bouton.textContent = libelle;
+      }
+    });
+  }
+
+  if (exporterBtn) {
+    exporterBtn.addEventListener('click', async function () {
+      var message = document.getElementById('compte-export-message');
+      function direExport(texte, estErreur) {
+        message.textContent = texte || '';
+        message.hidden = !texte;
+        message.className = 'compte-message' + (estErreur ? ' erreur' : '');
+      }
+      exporterBtn.disabled = true;
+      direExport('Préparation du fichier…', false);
+      try {
+        var sessionReponse = await client.auth.getSession();
+        var session = sessionReponse.data && sessionReponse.data.session;
+        if (!session) throw new Error('Session expirée, reconnectez-vous.');
+        var reponse = await fetch('/api/compte/exporter', {
+          method: 'POST',
+          headers: { authorization: 'Bearer ' + session.access_token },
+        });
+        if (!reponse.ok) {
+          var corps = await reponse.json().catch(function () { return {}; });
+          throw new Error(corps.erreur || 'L’export a échoué.');
+        }
+        var blob = await reponse.blob();
+        var lien = document.createElement('a');
+        lien.href = URL.createObjectURL(blob);
+        lien.download = 'prepacards-mes-donnees.json';
+        document.body.appendChild(lien);
+        lien.click();
+        lien.remove();
+        setTimeout(function () { URL.revokeObjectURL(lien.href); }, 1000);
+        direExport('Fichier téléchargé.', false);
+      } catch (erreur) {
+        direExport(erreur.message || 'L’export a échoué.', true);
+      } finally {
+        exporterBtn.disabled = false;
       }
     });
   }
