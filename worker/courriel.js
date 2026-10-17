@@ -20,7 +20,7 @@ export function disponible(env) {
   return Boolean(env.RESEND_API_KEY && env.COURRIEL_EXPEDITEUR);
 }
 
-export async function envoyer(env, destinataire, sujet, corps, recuperer = fetch) {
+export async function envoyer(env, destinataire, sujet, corps, recuperer = fetch, entetes = null) {
   if (!disponible(env)) throw new Error('Envoi d’e-mails non configuré.');
   const reponse = await recuperer(ENVOI, {
     method: 'POST',
@@ -34,7 +34,10 @@ export async function envoyer(env, destinataire, sujet, corps, recuperer = fetch
       subject: sujet,
       text: corps.texte,
       html: corps.html,
-      ...(env.COURRIEL_REPONSE ? { reply_to: [env.COURRIEL_REPONSE] } : {}),
+      ...(corps.replyTo
+        ? { reply_to: [corps.replyTo] }
+        : (env.COURRIEL_REPONSE ? { reply_to: [env.COURRIEL_REPONSE] } : {})),
+      ...(entetes ? { headers: entetes } : {}),
     }),
   });
   if (!reponse.ok) {
@@ -44,7 +47,7 @@ export async function envoyer(env, destinataire, sujet, corps, recuperer = fetch
   return true;
 }
 
-function enveloppe(interieur) {
+export function enveloppe(interieur) {
   return `<!doctype html><html lang="fr"><body style="margin:0;padding:0;background:#f4f6fb">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6fb;padding:32px 16px">
 <tr><td align="center">

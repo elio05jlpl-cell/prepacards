@@ -23,7 +23,7 @@
 
 <link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
 <link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
-<link rel="stylesheet" href="/style.css?v=83f80a2347">
+<link rel="stylesheet" href="/style.css?v=cadd113753">
 <script>
 // Pose le drapeau avant le premier affichage : les blocs qui apparaissent au
 // defilement sont masques par « html.js ... ». Pose en bas de page seulement,
@@ -145,6 +145,17 @@ l'application : elle ne signale ni son installation, ni son usage.</p>
    limite mensuelle. Décochez la case et la photo reste sur votre
    ordinateur : la lecture se fait alors localement.</li>
 <li><strong>Votre compte.</strong> Voir la section suivante.</li>
+<li><strong>Rapport d'erreurs</strong> (uniquement si vous cliquez sur « Envoyer le
+   rapport d'erreurs » dans <em>À propos</em>). L'application envoie à notre serveur
+   sa version, votre système, et les dernières erreurs notées, <strong>après en avoir
+   retiré</strong> votre nom d'utilisateur Windows, vos chemins de dossiers, votre
+   adresse e-mail et tout jeton. Aucune carte, aucun nom de paquet. Le rapport
+   n'est rattaché à aucun compte et n'est conservé que pour corriger l'erreur.
+   Rien ne part sans ce clic.</li>
+<li><strong>Vérification des mises à jour.</strong> Une fois par jour, l'application lit un
+   petit fichier public du site (<code>/version.json</code>) pour savoir si une version
+   plus récente existe. Cette requête transmet ce que transmet toute requête
+   web (adresse IP) et rien de plus ; elle n'est rattachée à aucun compte.</li>
 <li><strong>Consultation de ce site.</strong> Voir plus bas.</li>
 </ol>
 <h2 id="votre-compte">Votre compte</h2>
@@ -207,8 +218,18 @@ chose ne nécessite pas de savoir qui l'a lue.</p>
 demandée, date), pour la sécurité et la mesure de charge, pendant une durée
 limitée. C'est le traitement minimal inhérent au fonctionnement d'un serveur
 web.</p>
-<p>Si vous nous écrivez, votre adresse e-mail et le contenu de votre message sont
-conservés le temps de traiter votre demande, puis supprimés.</p>
+<p>Si vous nous écrivez, y compris par le <a href="/contact/">formulaire de contact</a>, votre
+adresse e-mail et le contenu de votre message sont conservés le temps de traiter
+votre demande, puis supprimés. Le formulaire peut utiliser Cloudflare Turnstile
+pour écarter les robots : ce service est exécuté par Cloudflare et ne dépose pas
+de cookie publicitaire.</p>
+<p><strong>Les e-mails de l'essai gratuit.</strong> Pendant les trente jours d'essai, nous vous
+envoyons un rappel quelques jours avant la fin, puis un message une fois l'essai
+terminé : ce sont des messages liés à votre compte. Nous vous envoyons aussi
+deux messages de conseils d'utilisation (un jour puis une semaine après
+l'inscription) <strong>uniquement si vous avez coché la case prévue</strong> lors de la
+création du compte, décochée par défaut. Chacun de ces messages porte un lien
+pour ne plus recevoir de conseils, en un clic. Ces envois passent par Resend.</p>
 <p><strong>La liste d'attente</strong> (page <a href="/telecharger/#autres-systemes">Télécharger</a>) : si
 vous demandez une version Mac, iPhone ou Android, nous enregistrons <strong>votre
 adresse e-mail et les systèmes que vous avez cochés</strong>, rien d'autre — ni date de
@@ -254,6 +275,21 @@ la liste est de toute façon supprimée une fois les versions annoncées.</p>
 <td>Le temps de l'échange, puis suppression</td>
 </tr>
 <tr>
+<td>Rappels de l'essai gratuit (fin d'essai)</td>
+<td>Exécution du contrat</td>
+<td>Jusqu'à la suppression du compte ; le type de message envoyé est noté pour ne pas l'envoyer deux fois</td>
+</tr>
+<tr>
+<td>Conseils d'utilisation par e-mail</td>
+<td>Consentement (case à cocher)</td>
+<td>Jusqu'au retrait du consentement (lien dans chaque message) ou à la suppression du compte</td>
+</tr>
+<tr>
+<td>Rapports d'erreurs</td>
+<td>Consentement (clic sur l'envoi) ; intérêt légitime (corriger les défauts)</td>
+<td>Douze mois au plus, sans lien avec un compte</td>
+</tr>
+<tr>
 <td>Liste d'attente (Mac, iPhone, Android)</td>
 <td>Consentement</td>
 <td>Jusqu'au retrait de votre consentement, ou à l'annonce de la version attendue</td>
@@ -270,7 +306,10 @@ portabilité. Pour l'exercer :
 l'informatique et des libertés), 3 place de Fontenoy, 75334 Paris Cedex 07,
 <a href="https://www.cnil.fr" rel="nofollow">www.cnil.fr</a>.</p>
 <p>S'agissant de vos cartes, la portabilité est immédiate et ne demande aucune
-démarche : <em>Fichier → Exporter en CSV</em> dans l'application.</p>
+démarche : <em>Fichier → Exporter en CSV</em> dans l'application. Pour les données
+de votre compte (adresse, dates, abonnement, informations de votre sauvegarde
+en ligne), le bouton <strong>Télécharger mes données</strong> de la page
+<a href="/compte/">Compte</a> vous remet un fichier lisible, immédiatement.</p>
 <section class="faq">
   <p class="faq-eyebrow">FAQ</p>
   <h2>Questions fréquentes</h2>
@@ -351,6 +390,7 @@ qu'accepter.</p>
           <li><a href="/cgv/">CGV</a></li>
           <li><a href="/confidentialite/">Confidentialité</a></li>
           <li><a href="/cookies/">Cookies</a></li>
+          <li><a href="/contact/">Contact</a></li>
         </ul>
       </div>
     </nav>
