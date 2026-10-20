@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>Les temps morts en prépa : le temps qu'on oublie</title>
+    <link>https://prepacards.fr/blog/les-temps-morts-en-prepa/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/les-temps-morts-en-prepa/</guid>
+    <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+    <description>Un trajet, une file d'attente, dix minutes avant un cours : ces minutes perdues représentent plusieurs heures par semaine, à condition de les récupérer.</description>
+  </item>
+  <item>
     <title>Trois colles la même semaine : comment s'organiser</title>
     <link>https://prepacards.fr/blog/gerer-plusieurs-colles-la-meme-semaine/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/gerer-plusieurs-colles-la-meme-semaine/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/combien-de-cartes-par-jour/</guid>
     <pubDate>Mon, 21 Sep 2026 00:00:00 +0000</pubDate>
     <description>20 nouvelles cartes par jour, ce sont 140 révisions quotidiennes six mois plus tard. Le calcul, les seuils tenables en prépa, et comment rattraper un arriéré.</description>
-  </item>
-  <item>
-    <title>Concours blancs : les préparer et en tirer parti</title>
-    <link>https://prepacards.fr/blog/preparer-un-concours-blanc/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/preparer-un-concours-blanc/</guid>
-    <pubDate>Fri, 18 Sep 2026 00:00:00 +0000</pubDate>
-    <description>Un concours blanc ne se prépare pas comme un DS. Comment aborder la semaine, gérer une note catastrophique, et surtout quoi faire de la copie une fois rendue.</description>
   </item>
 </channel>
 </rss>
