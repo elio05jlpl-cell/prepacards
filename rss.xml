@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>La semaine des épreuves écrites : tenir cinq jours</title>
+    <link>https://prepacards.fr/blog/semaine-des-epreuves-ecrites-concours/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/semaine-des-epreuves-ecrites-concours/</guid>
+    <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
+    <description>Cinq à sept épreuves en quelques jours, sans retour en arrière possible : la semaine des écrits se prépare autrement qu'un concours blanc isolé.</description>
+  </item>
+  <item>
     <title>Les temps morts en prépa : le temps qu'on oublie</title>
     <link>https://prepacards.fr/blog/les-temps-morts-en-prepa/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/les-temps-morts-en-prepa/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/prise-de-notes-en-cours/</guid>
     <pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
     <description>Recopier le tableau ne sert à rien si les notes sont inexploitables le soir. Quoi noter, quoi ne pas noter, et comment marquer au vol ce qui deviendra une carte.</description>
-  </item>
-  <item>
-    <title>Combien de cartes par jour ? Le bon calcul</title>
-    <link>https://prepacards.fr/blog/combien-de-cartes-par-jour/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/combien-de-cartes-par-jour/</guid>
-    <pubDate>Mon, 21 Sep 2026 00:00:00 +0000</pubDate>
-    <description>20 nouvelles cartes par jour, ce sont 140 révisions quotidiennes six mois plus tard. Le calcul, les seuils tenables en prépa, et comment rattraper un arriéré.</description>
   </item>
 </channel>
 </rss>
