@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>La synthèse de documents en ECG, une méthode à part</title>
+    <link>https://prepacards.fr/blog/la-synthese-de-documents-en-ecg/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/la-synthese-de-documents-en-ecg/</guid>
+    <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
+    <description>Résumer plusieurs textes sans les commenter, sans plan personnel : la synthèse suit des règles précises, très différentes de celles de la dissertation.</description>
+  </item>
+  <item>
     <title>La semaine des épreuves écrites : tenir cinq jours</title>
     <link>https://prepacards.fr/blog/semaine-des-epreuves-ecrites-concours/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/semaine-des-epreuves-ecrites-concours/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/lv2-en-prepa/</guid>
     <pubDate>Wed, 23 Sep 2026 00:00:00 +0000</pubDate>
     <description>Espagnol, allemand, italien : la LV2 est la matière qu'on sacrifie en premier et qu'on paie au concours. Comment l'entretenir en dix minutes par jour.</description>
-  </item>
-  <item>
-    <title>Prise de notes en cours : noter pour réviser après</title>
-    <link>https://prepacards.fr/blog/prise-de-notes-en-cours/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/prise-de-notes-en-cours/</guid>
-    <pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
-    <description>Recopier le tableau ne sert à rien si les notes sont inexploitables le soir. Quoi noter, quoi ne pas noter, et comment marquer au vol ce qui deviendra une carte.</description>
   </item>
 </channel>
 </rss>
