@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>La procrastination en prépa : pourquoi, et comment</title>
+    <link>https://prepacards.fr/blog/la-procrastination-en-prepa/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/la-procrastination-en-prepa/</guid>
+    <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
+    <description>Ouvrir un cahier et faire autre chose malgré la charge de travail : la procrastination n'est presque jamais un manque de volonté. Ce qui la déclenche vraiment.</description>
+  </item>
+  <item>
     <title>Le syndrome de l'imposteur en prépa, si fréquent</title>
     <link>https://prepacards.fr/blog/syndrome-de-limposteur-en-prepa/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/syndrome-de-limposteur-en-prepa/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/apprendre-le-vocabulaire-espagnol/</guid>
     <pubDate>Fri, 25 Sep 2026 00:00:00 +0000</pubDate>
     <description>Listes oubliées en trois jours, mots reconnus mais jamais produits : pourquoi le vocabulaire espagnol ne rentre pas, et le protocole qui le fait tenir.</description>
-  </item>
-  <item>
-    <title>Réviser les maths en ECG : ce qui s'apprend par cœur</title>
-    <link>https://prepacards.fr/blog/reviser-les-maths-en-ecg/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/reviser-les-maths-en-ecg/</guid>
-    <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
-    <description>En maths appliquées comme en approfondies, une partie du programme se mémorise et le reste se cherche. Où passe la frontière, et comment travailler chacune.</description>
   </item>
 </channel>
 </rss>
