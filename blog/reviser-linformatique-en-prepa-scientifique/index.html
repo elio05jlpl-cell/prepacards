@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informatique en prépa scientifique : pas que coder | PrépaCards</title>
+<meta name="description" content="Complexité, structures de données, algorithmes classiques : l&#x27;option informatique a son propre par cœur, distinct de la programmation elle-même.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://prepacards.fr/blog/reviser-linformatique-en-prepa-scientifique/">
+<link rel="alternate" type="application/rss+xml" title="PrépaCards — Blog" href="/rss.xml">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PrépaCards">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Informatique en prépa scientifique : pas que coder | PrépaCards">
+<meta property="og:description" content="Complexité, structures de données, algorithmes classiques : l&#x27;option informatique a son propre par cœur, distinct de la programmation elle-même.">
+<meta property="og:url" content="https://prepacards.fr/blog/reviser-linformatique-en-prepa-scientifique/">
+<meta property="og:image" content="https://prepacards.fr/img/og-prepacards.png?v=de8ad632">
+<meta property="article:published_time" content="2026-10-29">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Informatique en prépa scientifique : pas que coder | PrépaCards">
+<meta name="twitter:description" content="Complexité, structures de données, algorithmes classiques : l&#x27;option informatique a son propre par cœur, distinct de la programmation elle-même.">
+<meta name="twitter:image" content="https://prepacards.fr/img/og-prepacards.png?v=de8ad632">
+
+<link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
+<link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
+<link rel="stylesheet" href="/style.css?v=cadd113753">
+<link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Informatique en prépa scientifique : pas que coder | PrépaCards", "description": "Complexité, structures de données, algorithmes classiques : l'option informatique a son propre par cœur, distinct de la programmation elle-même.", "image": ["https://prepacards.fr/img/og-prepacards.png?v=de8ad632"], "datePublished": "2026-10-29", "dateModified": "2026-10-29", "author": {"@type": "Organization", "name": "PrépaCards"}, "publisher": {"@type": "Organization", "name": "PrépaCards", "logo": {"@type": "ImageObject", "url": "https://prepacards.fr/img/icone-180.png?v=355bf7c4"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://prepacards.fr/blog/reviser-linformatique-en-prepa-scientifique/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://prepacards.fr/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://prepacards.fr/blog/"}, {"@type": "ListItem", "position": 3, "name": "Informatique en prépa scientifique : pas que coder", "item": "https://prepacards.fr/blog/reviser-linformatique-en-prepa-scientifique/"}]}</script>
+</head>
+<body>
+
+<a class="saut-contenu" href="#contenu">Aller au contenu</a>
+
+<!-- Voile du menu des matieres : hors de l'en-tete expres, car son flou
+     d'arriere-plan (backdrop-filter) cree pour lui seul un nouveau repere
+     de positionnement, et un voile "fixed" pose dedans se serait retrouve
+     confine a la hauteur de la barre au lieu de couvrir la page. -->
+<div class="nav-scrim" aria-hidden="true"></div>
+
+<div class="bandeau-haut">
+  <div class="conteneur bandeau-haut-interieur">
+    <div class="reseaux" aria-label="Réseaux sociaux"><a href="https://www.tiktok.com/@prepacards" aria-label="TikTok" title="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16.5 3c.3 2.3 1.9 3.8 4.2 4v2.9c-1.5.1-2.9-.3-4.2-1.1v5.9c0 3.6-2.9 6.3-6.3 6.3-3.5 0-6.2-2.8-6.2-6.3 0-3.4 2.7-6.2 6.2-6.2.3 0 .6 0 .9.1v3c-.3-.1-.6-.1-.9-.1-1.8 0-3.2 1.5-3.2 3.2 0 1.8 1.4 3.3 3.2 3.3 1.8 0 3.3-1.4 3.3-3.3V3z"/></svg></a><a href="https://www.instagram.com/prepacards/" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true" focusable="false"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17.5" cy="6.5" r="1.2"/></svg></a><a href="https://www.linkedin.com/company/prepacards/" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3.2 9h3v11h-3zM4.7 3.3a1.9 1.9 0 1 1 0 3.8 1.9 1.9 0 0 1 0-3.8zM9.5 9h3v1.6c.7-1.2 2-1.9 3.6-1.9 2.6 0 4.4 1.7 4.4 4.8V20h-3v-5.9c0-1.6-.8-2.5-2.1-2.5-1.4 0-2.3 1-2.3 2.6V20h-3z"/></svg></a></div>
+    <div class="bandeau-actions">
+      <a class="nav-connexion" href="/compte/">Se connecter</a>
+      <a class="bouton-nav" href="/telecharger/">Télécharger</a>
+    </div>
+  </div>
+</div>
+
+<header class="entete">
+
+  <div class="conteneur entete-marque">
+    <a class="marque" href="/">
+      <img src="/img/logo.webp?v=ba64e35e" width="34" height="34" alt="" loading="eager">
+      <span>Prépa<strong>Cards</strong></span>
+    </a>
+    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</header>
+
+<div class="entete-nav-barre">
+  <div class="conteneur entete-nav">
+    <nav class="navigation" aria-label="Navigation principale">
+        <a class="nav-lien" href="/">Accueil</a>
+        <div class="nav-groupe nav-mega"><a class="nav-lien" href="/prepa/" aria-haspopup="true" aria-expanded="false">Matières<svg class="nav-fleche" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="nav-menu mega-panneau"><ul class="mega-gauche"><li class="mega-item ouvert"><a class="mega-filiere" href="/prepa-commerciale/"><span><strong>Prépa commerciale</strong><small>ECG et ECT</small></span><span class="mega-chevron" aria-hidden="true">›</span></a><div class="mega-droite"><p class="mega-droite-titre">Prépa commerciale</p><a href="/decks/#anglais">Anglais</a><a href="/decks/#allemand">Allemand</a><a href="/decks/#espagnol">Espagnol</a><a href="/decks/#italien">Italien</a><a href="/decks/#maths-approfondies">Maths approfondies</a><a href="/decks/#maths-appliquees">Maths appliquées</a><a href="/vocabulaire-anglais-prepa-ecg/">Le vocabulaire à apprendre</a><a href="/decks/">Tout afficher</a></div></li><li class="mega-item"><a class="mega-filiere" href="/prepa-scientifique/"><span><strong>Prépa scientifique</strong><small>MPSI, PCSI, PTSI, MPI, BCPST</small></span><span class="mega-chevron" aria-hidden="true">›</span></a><div class="mega-droite"><p class="mega-droite-titre">Prépa scientifique</p><a href="/reviser-prepa-mpsi-pcsi/">Réviser en MPSI et PCSI</a><a href="/decks/#maths-approfondies">Formules de maths</a><a href="/decks/#anglais">Anglais</a><a href="/fiches-de-revision-prepa/">Fiches de révision</a><a href="/anki-prepa-mpsi-pcsi/">Venir d&#x27;Anki</a><a href="/prepa-scientifique/">Tout afficher</a></div></li><li class="mega-item"><a class="mega-filiere" href="/prepa-litteraire/"><span><strong>Prépa littéraire</strong><small>Khâgnes A/L et B/L</small></span><span class="mega-chevron" aria-hidden="true">›</span></a><div class="mega-droite"><p class="mega-droite-titre">Prépa littéraire</p><a href="/decks/#anglais">Anglais</a><a href="/decks/#allemand">Allemand</a><a href="/decks/#espagnol">Espagnol</a><a href="/decks/#italien">Italien</a><a href="/memoriser-vocabulaire-anglais/">Mémoriser du vocabulaire</a><a href="/fiches-de-revision-prepa/">Fiches de révision</a><a href="/prepa-litteraire/">Tout afficher</a></div></li></ul></div></div>
+        <a class="nav-lien" href="/decks/">Paquets gratuits</a>
+        <a class="nav-lien" href="/importer-anki-quizlet/">Importer</a>
+        <a class="nav-lien" href="/fonctionnalites/">Fonctionnalités</a>
+        <a class="nav-lien" href="/tarifs/">Tarifs</a>
+    </nav>
+  </div>
+</div>
+
+<main id="contenu">
+  <article class="article">
+<header class="bandeau-titre-article">
+<div class="conteneur">
+<p class="etiquette-type">Informatique</p>
+<h1 id="reviser-linformatique-en-prepa-scientifique">Réviser l'informatique en prépa scientifique</h1>
+</div>
+</header>
+<div class="sous-bandeau-titre">
+<div class="conteneur etiquettes-article"><span class="etiquette-article">Prépa scientifique</span></div>
+</div>
+    <div class="disposition-article">
+      <aside class="barre-laterale">
+        <nav class="panneau-sommaire" aria-label="Sommaire de l'article">
+          <button type="button" class="sommaire-bouton" aria-expanded="true">
+            <span>Sommaire</span>
+            <svg class="sommaire-fleche" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <ol class="sommaire-liste">
+<li><a href="#coder-nest-pas-la-meme-competence-que-comprendre-pourquoi-ca-marche">Coder n&#x27;est pas la même compétence que comprendre pourquoi ça marche</a></li><li><a href="#la-complexite-un-par-cur-a-part-entiere">La complexité, un par cœur à part entière</a></li><li><a href="#les-structures-de-donnees-a-connaitre-par-leurs-proprietes">Les structures de données, à connaître par leurs propriétés</a></li><li><a href="#relire-son-code-comme-on-relit-une-demonstration">Relire son code comme on relit une démonstration</a></li><li><a href="#le-vocabulaire-des-bases-de-donnees-et-des-reseaux">Le vocabulaire des bases de données et des réseaux</a></li><li><a href="#le-lien-avec-les-mathematiques-plus-fort-quil-ny-parait">Le lien avec les mathématiques, plus fort qu&#x27;il n&#x27;y paraît</a></li><li><a href="#en-pratique">En pratique</a></li>
+          </ol>
+        </nav>
+      </aside>
+      <div class="conteneur-texte">
+        <div class="cadre-entete">
+          <nav class="fil" aria-label="Fil d'Ariane">
+            <a href="/">Accueil</a> › <a href="/blog/">Blog</a> › <strong>Informatique en prépa scientifique : pas que coder</strong>
+          </nav>
+        </div>
+        <p class="art-meta"><time datetime="2026-10-29">29 octobre 2026</time> · 5 min de lecture · par <a href="/a-propos/">l'équipe PrépaCards</a></p>
+<div class="feuille-texte">
+<div class="chapo">
+<p>L'informatique de prépa scientifique déroute souvent les élèves qui
+savaient déjà programmer avant leur entrée, persuadés que cette
+expérience préalable suffirait largement. Ce n'est vrai qu'en partie :
+savoir écrire du code fonctionnel ne suffit pas à maîtriser les notions
+théoriques attendues — complexité algorithmique, structures de données,
+preuves de correction — qui constituent l'essentiel de ce qui est
+réellement évalué, bien plus que la seule capacité à produire un
+programme qui s'exécute sans erreur.</p>
+</div>
+<h2 id="coder-nest-pas-la-meme-competence-que-comprendre-pourquoi-ca-marche">Coder n'est pas la même compétence que comprendre pourquoi ça marche</h2>
+<p>Un algorithme qui fonctionne, testé et validé sur quelques exemples, ne
+garantit en rien la compréhension de pourquoi il fonctionne dans le cas
+général, ni de sa complexité réelle en temps et en mémoire. Cette
+distinction, souvent négligée par les élèves déjà à l'aise en
+programmation, devient pourtant centrale dès qu'il faut justifier un
+choix d'algorithme plutôt qu'un autre, ou prouver formellement qu'un
+programme se termine et produit le résultat attendu.</p>
+<p>Réviser l'informatique suppose donc de mémoriser des éléments qui ne se
+déduisent pas automatiquement de la pratique du code : la complexité
+exacte des algorithmes classiques de tri et de recherche, les
+invariants de boucle qui permettent de prouver la correction d'un
+programme, le vocabulaire précis qui structure une preuve informatique
+rigoureuse.</p>
+<h2 id="la-complexite-un-par-cur-a-part-entiere">La complexité, un par cœur à part entière</h2>
+<p>Connaître la complexité d'un algorithme classique — tri par insertion,
+tri fusion, recherche dichotomique — ne se retrouve pas en le
+réexécutant mentalement à chaque fois : elle se mémorise directement,
+comme une donnée de référence immédiatement disponible. Une carte qui
+associe le nom de l'algorithme à sa complexité, dans le meilleur cas
+comme dans le pire, et à l'intuition qui explique cette complexité,
+fixe ce repère bien plus efficacement qu'une redérivation systématique
+à chaque rencontre.</p>
+<p><a href="/blog/reviser-les-maths-en-prepa-scientifique/" rel="noopener" target="_blank">Ce même principe de par cœur des méthodes types</a>
+s'applique directement ici : reconnaître rapidement quel algorithme
+mobiliser face à un problème donné, avant même de commencer à
+l'implémenter, fait gagner un temps précieux en devoir surveillé comme
+en colle. Ce réflexe de reconnaissance rapide, plus que la vitesse
+d'écriture du code lui-même, distingue souvent un candidat serein d'un
+candidat qui découvre la structure du problème en même temps qu'il
+commence à écrire, au prix d'un temps précieux perdu à tâtonner.</p>
+<p><a class="carte-liee" href="/blog/reviser-les-maths-en-prepa-scientifique/" target="_blank" rel="noopener">
+  <img src="/img/blog/reviser-les-maths-en-prepa-scientifique.svg?v=7ac036d1" width="112" height="112" alt="" loading="lazy">
+  <span class="carte-liee-texte">
+    <span class="carte-liee-etiquette">À lire aussi</span>
+    <span class="carte-liee-titre">Réviser les maths en prépa scientifique par cœur</span>
+  </span>
+</a></p>
+<h2 id="les-structures-de-donnees-a-connaitre-par-leurs-proprietes">Les structures de données, à connaître par leurs propriétés</h2>
+<p>Piles, files, listes chaînées, arbres binaires : chaque structure de
+données possède des propriétés précises — quelles opérations elle
+permet, avec quelle complexité, dans quel ordre les éléments en
+ressortent. Confondre les propriétés de deux structures voisines, par
+exemple l'ordre de sortie d'une pile et celui d'une file, invalide
+immédiatement tout raisonnement qui s'appuie dessus, même si la logique
+générale de l'algorithme reste par ailleurs correcte.</p>
+<p>Une carte comparative, qui met plusieurs structures côte à côte et
+demande explicitement ce qui les distingue, cible directement ce type
+de confusion — exactement la même logique qui aide à distinguer des
+définitions mathématiques voisines qui se ressemblent en apparence.</p>
+<h3 id="le-vocabulaire-de-la-preuve-precis-et-exigeant">Le vocabulaire de la preuve, précis et exigeant</h3>
+<p>Prouver qu'un algorithme se termine et produit le résultat attendu
+suppose de manier un vocabulaire précis — invariant de boucle,
+terminaison, correction partielle et totale — qui a son sens exact,
+distinct du sens courant de ces mêmes mots. Une preuve qui emploie ce
+vocabulaire de façon approximative perd en rigueur aux yeux d'un
+correcteur, même quand l'intuition sous-jacente est correcte.</p>
+<h3 id="ne-pas-confondre-complexite-en-temps-et-en-memoire">Ne pas confondre complexité en temps et en mémoire</h3>
+<p>Un piège fréquent consiste à ne raisonner qu'en complexité temporelle,
+en oubliant que la mémoire consommée par un algorithme constitue un
+critère tout aussi important dans de nombreux contextes. Deux
+algorithmes de même complexité en temps peuvent avoir des besoins en
+mémoire radicalement différents, ce qui change complètement leur
+pertinence pratique selon la situation. Une carte qui présente
+systématiquement les deux complexités côte à côte, plutôt que la seule
+complexité en temps, évite d'oublier cette dimension complémentaire au
+moment de comparer deux approches possibles.</p>
+<h2 id="relire-son-code-comme-on-relit-une-demonstration">Relire son code comme on relit une démonstration</h2>
+<p>Un programme qui compile et donne le bon résultat sur les cas testés
+n'est pas nécessairement un programme juste dans tous les cas : les cas
+limites — une liste vide, une valeur nulle, un cas particulier non
+anticipé — révèlent souvent des erreurs invisibles tant que le
+programme n'est testé que sur des cas favorables. Prendre l'habitude de
+relire son propre code en se demandant explicitement « que se passe-t-il
+dans ce cas limite précis ? » évite une bonne partie des erreurs qui
+échappent à une relecture superficielle. Ce réflexe se rapproche de la relecture attentive d'une
+démonstration mathématique, où chaque étape mérite d'être vérifiée
+individuellement plutôt que présumée correcte parce que le résultat
+final semble plausible.</p>
+<h2 id="le-vocabulaire-des-bases-de-donnees-et-des-reseaux">Le vocabulaire des bases de données et des réseaux</h2>
+<p>Selon le programme précis suivi, une partie de l'informatique de prépa
+scientifique aborde aussi des notions de bases de données et de
+réseaux, avec leur propre vocabulaire technique — requête, jointure,
+protocole, paquet — largement indépendant des algorithmes et des
+structures de données vus par ailleurs. Ce vocabulaire, plus factuel et
+moins conceptuel que le reste du programme, se traite efficacement par
+des flashcards classiques, sur le même principe que n'importe quel
+lexique technique d'une autre matière scientifique.</p>
+<h2 id="le-lien-avec-les-mathematiques-plus-fort-quil-ny-parait">Le lien avec les mathématiques, plus fort qu'il n'y paraît</h2>
+<p>L'informatique de prépa scientifique s'appuie directement sur des
+notions mathématiques déjà travaillées ailleurs — récurrence,
+dénombrement, logique — ce qui en fait une matière moins isolée qu'elle
+ne le semble au premier abord.
+<a href="/blog/reconnaissance-de-schemas-en-prepa/" rel="noopener" target="_blank">La reconnaissance de schémas types</a>
+vaut ici tout autant qu'en mathématiques : reconnaître qu'un problème se
+résout par récurrence, avant même d'écrire la première ligne de code,
+oriente immédiatement vers la bonne structure d'algorithme.</p>
+<h2 id="en-pratique">En pratique</h2>
+<p>Les paquets de PrépaCards permettent de séparer le vocabulaire théorique
+— complexité, structures, preuves — du code lui-même, révisé par la
+pratique répétée d'exercices plutôt que par des flashcards. Cette
+séparation évite de mélanger deux types d'apprentissage fondamentalement
+différents dans une seule pile de révision peu ciblée.</p>
+<div class="encart">
+  <p>Gratuit pour Windows 10 et 11, avec un compte gratuit.
+  <a href="/telecharger/">Télécharger</a> ·
+  <a href="/blog/flashcards-formules-de-maths/" target="_blank" rel="noopener">Flashcards de formules de maths</a></p>
+</div>
+</div>
+<aside class="pour-aller-plus-loin">
+<h2>Pour aller plus loin</h2>
+<ul>
+<li><a href="/reviser-prepa-mpsi-pcsi/">Réviser en MPSI et PCSI : l&#x27;organisation</a></li>
+<li><a href="/prepa-scientifique/">PrépaCards pour la prépa scientifique</a></li>
+<li><a href="/anki-prepa-mpsi-pcsi/">Anki en MPSI et PCSI : que mettre dessus</a></li>
+</ul>
+</aside>
+<section class="a-lire-egalement">
+<h2 class="a-lire-egalement-titre">À lire également</h2>
+<div class="a-lire-egalement-grille">
+<a class="carte-a-lire" href="/blog/reconnaissance-de-schemas-en-prepa/"><img src="/img/blog/reconnaissance-de-schemas-en-prepa.svg?v=8043e88e" alt="" loading="lazy" width="480" height="200"><span class="carte-a-lire-titre">Entrée en prépa : reconnaître avant de savoir</span><span class="carte-a-lire-cta">Lire la suite »</span></a>
+<a class="carte-a-lire" href="/blog/reviser-la-physique-en-prepa/"><img src="/img/blog/reviser-la-physique-en-prepa.svg?v=4ac83acf" alt="" loading="lazy" width="480" height="200"><span class="carte-a-lire-titre">Physique en prépa : le savoir avant l&#x27;exercice</span><span class="carte-a-lire-cta">Lire la suite »</span></a>
+<a class="carte-a-lire" href="/blog/reviser-la-chimie-en-prepa/"><img src="/img/blog/reviser-la-chimie-en-prepa.svg?v=6a22e39d" alt="" loading="lazy" width="480" height="200"><span class="carte-a-lire-titre">Chimie en prépa : le par cœur qui débloque tout</span><span class="carte-a-lire-cta">Lire la suite »</span></a>
+<a class="carte-a-lire" href="/blog/vocabulaire-scientifique-anglais-prepa/"><img src="/img/blog/vocabulaire-scientifique-anglais-prepa.svg?v=46130369" alt="" loading="lazy" width="480" height="200"><span class="carte-a-lire-titre">Vocabulaire scientifique anglais : vu au lycée ?</span><span class="carte-a-lire-cta">Lire la suite »</span></a>
+</div>
+</section>
+        <aside class="encart-cta">
+          <h2>Essayer PrépaCards</h2>
+          <p>Répétition espacée, vérification de la prononciation à l'oral et
+             formules de maths photographiées. 30 jours gratuits, pour Windows.</p>
+          <a class="bouton" href="/telecharger/">Télécharger PrépaCards</a>
+        </aside>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <nav class="pied-haut" aria-label="Liens de pied de page">
+      <div class="pied-marque">
+        <img src="/img/logo.webp?v=ba64e35e" width="72" height="72" alt="PrépaCards" loading="lazy">
+        <span>Prépa<strong>Cards</strong></span>
+      </div>
+      <div class="pied-colonne">
+        <h2>Révisions</h2>
+        <ul>
+          <li><a href="/prepa-commerciale/">Prépas commerciales</a></li>
+          <li><a href="/prepa-scientifique/">Prépas scientifiques</a></li>
+          <li><a href="/prepa-litteraire/">Prépas littéraires</a></li>
+        </ul>
+      </div>
+      <div class="pied-colonne">
+        <h2>Comparatifs</h2>
+        <ul>
+          <li><a href="/alternative-anki/">PrépaCards ou Anki</a></li>
+          <li><a href="/alternative-quizlet/">PrépaCards ou Quizlet</a></li>
+          <li><a href="/importer-anki-quizlet/">Importer ses paquets</a></li>
+        </ul>
+      </div>
+      <div class="pied-colonne">
+        <h2>Ressources</h2>
+        <ul>
+          <li><a href="/telecharger/">Télécharger</a></li>
+          <li><a href="/blog/">Le blog</a></li>
+          <li><a href="/decks/">Paquets gratuits</a></li>
+          <li><a href="/rss.xml">Flux RSS du blog</a></li>
+        </ul>
+      </div>
+      <div class="pied-colonne">
+        <h2>Informations</h2>
+        <ul>
+          <li><a href="/mentions-legales/">Mentions légales</a></li>
+          <li><a href="/cgu/">CGU</a></li>
+          <li><a href="/cgv/">CGV</a></li>
+          <li><a href="/confidentialite/">Confidentialité</a></li>
+          <li><a href="/cookies/">Cookies</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p class="pied-bas">© 2026 PrépaCards — Application indépendante,
+       sans lien avec Anki ni Quizlet.</p>
+  </div>
+</footer>
+
+<script>
+// Marque tout de suite que JavaScript fonctionne : les regles d'apparition
+// ne s'appliquent qu'a ce moment-la. Sans ce drapeau, un visiteur dont le
+// script echoue verrait une page vide de contenu masque.
+document.documentElement.classList.add('js');
+
+// Signale la connexion dans l'en-tete, sur toutes les pages : sans cela,
+// rien n'indique qu'on est connecte tant qu'on n'a pas rouvert /compte/.
+// Lecture directe du sessionStorage plutot que de charger le client
+// Supabase ici : ce serait 218 ko pour changer un mot dans un lien.
+(function () {
+  var lien = document.querySelector('.nav-connexion');
+  if (!lien) return;
+  try {
+    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token') || localStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
+    var session = brut && JSON.parse(brut);
+    if (session && session.refresh_token) lien.textContent = 'Mon compte';
+  } catch (e) { /* stockage indisponible : on garde "Se connecter" */ }
+})();
+
+(function () {
+  var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cibles = document.querySelectorAll('.revelation, .a-reveler');
+
+  if (doux || !('IntersectionObserver' in window)) {
+    // Navigateur ancien ou mouvement reduit : on affiche tout, sans animer.
+    cibles.forEach(function (e) { e.classList.add('vue'); });
+  } else {
+    var observateur = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (entree) {
+        if (!entree.isIntersecting) return;
+        entree.target.classList.add('vue');
+        // Une fois apparu, l'element n'a plus a etre surveille : sinon il
+        // rejouerait l'animation a chaque remontee dans la page.
+        observateur.unobserve(entree.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
+    cibles.forEach(function (e) { observateur.observe(e); });
+  }
+
+  // En-tete : une ombre apparait des que la page defile, pour la detacher
+  // du contenu qui passe dessous.
+  var entete = document.querySelector('.entete-nav-barre');
+  if (entete) {
+    var majDefile = function () {
+      entete.classList.toggle('abaissee', window.scrollY > 8);
+    };
+    majDefile();
+    window.addEventListener('scroll', majDefile, { passive: true });
+  }
+})();
+
+(function () {
+  var burger = document.querySelector('.burger');
+  var nav = document.querySelector('.navigation');
+  if (!burger || !nav) return;
+  burger.addEventListener('click', function () {
+    var ouvert = nav.classList.toggle('ouvert');
+    burger.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+  });
+})();
+
+// Menu "Matieres" et sous-menus : pilotes par CSS (:hover / :focus-within),
+// pour continuer a fonctionner si ce script echoue a charger. Ce bloc se
+// contente de refleter l'etat reel dans aria-expanded, que la construction
+// du site pose a "false" une fois pour toutes - sans lui, un lecteur
+// d'ecran annoncerait un menu ferme alors qu'il est ouvert sous les yeux
+// d'un visiteur voyant.
+(function () {
+  var groupes = [].slice.call(document.querySelectorAll('.nav-groupe'));
+  if (!groupes.length) return;
+
+  function declencheur(groupe) {
+    return groupe.querySelector('.nav-lien[aria-haspopup="true"]');
+  }
+  function ouvertParCss(groupe) {
+    return groupe.matches(':hover') || groupe.matches(':focus-within');
+  }
+  function actualiser(groupe) {
+    var lien = declencheur(groupe);
+    if (!lien) return;
+    var force = groupe.classList.contains('nav-force-ferme');
+    lien.setAttribute('aria-expanded', (!force && ouvertParCss(groupe)) ? 'true' : 'false');
+  }
+
+  groupes.forEach(function (groupe) {
+    groupe.addEventListener('mouseenter', function () {
+      groupe.classList.remove('nav-force-ferme');
+      actualiser(groupe);
+    });
+    groupe.addEventListener('mouseleave', function () { actualiser(groupe); });
+    groupe.addEventListener('focusin', function () { actualiser(groupe); });
+    // Le focus quitte entierement le groupe : la fermeture forcee au
+    // clavier n'a plus de raison de durer au-dela de ce passage.
+    groupe.addEventListener('focusout', function () {
+      groupe.classList.remove('nav-force-ferme');
+      actualiser(groupe);
+    });
+  });
+
+  // Echap ferme le menu ouvert et rend le focus a son declencheur, sans que
+  // ce regain de focus ne le rouvre aussitot via :focus-within.
+  document.addEventListener('keydown', function (evenement) {
+    if (evenement.key !== 'Escape') return;
+    var ouvert = groupes.filter(ouvertParCss)[0];
+    if (!ouvert) return;
+    ouvert.classList.add('nav-force-ferme');
+    var lien = declencheur(ouvert);
+    if (lien) lien.focus();
+    actualiser(ouvert);
+  });
+})();
+
+// Accordeon mobile : sans survol possible au doigt, un premier appui sur un
+// lien qui a des enfants les deplie au lieu de naviguer tout de suite ; le
+// lien reste un lien normal et un second appui, une fois deplie, navigue.
+(function () {
+  function mobile() {
+    return window.matchMedia('(max-width: 900px)').matches;
+  }
+
+  document.querySelectorAll('.nav-groupe > .nav-lien[aria-haspopup="true"]').forEach(function (lien) {
+    lien.addEventListener('click', function (evenement) {
+      if (!mobile()) return;
+      var groupe = lien.closest('.nav-groupe');
+      if (groupe.classList.contains('ouvert')) return;
+      evenement.preventDefault();
+      groupe.classList.add('ouvert');
+      lien.setAttribute('aria-expanded', 'true');
+    });
+  });
+
+  document.querySelectorAll('.mega-filiere').forEach(function (lien) {
+    lien.addEventListener('click', function (evenement) {
+      if (!mobile()) return;
+      var item = lien.closest('.mega-item');
+      if (item.classList.contains('ouvert')) return;
+      evenement.preventDefault();
+      item.classList.add('ouvert');
+    });
+  });
+})();
+
+(function () {
+  var bouton = document.querySelector('.sommaire-bouton');
+  if (!bouton) return;
+  bouton.addEventListener('click', function () {
+    var ouvert = bouton.getAttribute('aria-expanded') === 'true';
+    bouton.setAttribute('aria-expanded', ouvert ? 'false' : 'true');
+  });
+})();
+
+</script>
+<script>
+// Consentement aux cookies, preferences et mesure d'audience
+// ===========================================================
+//
+// Le seul cookie du site est « pc_consent » : il garde le choix du visiteur six
+// mois. Il est necessaire au bandeau lui-meme, donc exempte de consentement.
+//
+// Valeur : « v2.m1.p1 » (mesure acceptee, preferences acceptees ; 0 si
+// refuse). Refuser est aussi simple qu'accepter : trois boutons de meme poids.
+//
+//  - La mesure d'audience Cloudflare n'est chargee que si elle est acceptee.
+//  - Les preferences (filiere, filtres du blog, derniere lecture) sont rangees
+//    en localStorage si elles sont acceptees ; sinon en sessionStorage, donc
+//    seulement le temps de l'onglet, rien ne persiste.
+(function () {
+  var NOM = 'pc_consent';
+  var DUREE = 60 * 60 * 24 * 183;   // six mois, en secondes
+  var JETON = '570f41119b974bfda2ebca8dfff29bbf';
+  var CLE_PREFS = 'pc-prefs';
+
+  function lire() {
+    var m = document.cookie.match(new RegExp('(?:^|; )' + NOM + '=v2\\.m([01])\\.p([01])'));
+    return m ? { m: m[1] === '1', p: m[2] === '1' } : null;
+  }
+  function ecrire(mesure, prefs) {
+    var securise = location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = NOM + '=v2.m' + (mesure ? 1 : 0) + '.p' + (prefs ? 1 : 0) +
+      '; Max-Age=' + DUREE + '; Path=/; SameSite=Lax' + securise;
+  }
+  function charger_mesure() {
+    if (!JETON || document.getElementById('pc-mesure')) return;
+    var s = document.createElement('script');
+    s.id = 'pc-mesure';
+    s.type = 'module';
+    s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    s.setAttribute('data-cf-beacon', JSON.stringify({ token: JETON }));
+    document.head.appendChild(s);
+  }
+
+  // ---- Preferences -------------------------------------------------------
+  function depot() {
+    var c = lire();
+    return c && c.p ? localStorage : sessionStorage;
+  }
+  function toutes() {
+    try { return JSON.parse(depot().getItem(CLE_PREFS) || '{}') || {}; } catch (e) { return {}; }
+  }
+  window.pcPrefs = {
+    get: function (cle) { return toutes()[cle]; },
+    set: function (cle, valeur) {
+      try {
+        var o = toutes();
+        o[cle] = valeur;
+        depot().setItem(CLE_PREFS, JSON.stringify(o));
+      } catch (e) { /* stockage indisponible */ }
+    },
+  };
+  // Acceptation : les choix faits pendant l'onglet passent en stockage durable.
+  function migrer_vers_local() {
+    try {
+      var brut = sessionStorage.getItem(CLE_PREFS);
+      if (brut) {
+        var l = JSON.parse(localStorage.getItem(CLE_PREFS) || '{}');
+        var s = JSON.parse(brut);
+        for (var k in s) if (!(k in l)) l[k] = s[k];
+        localStorage.setItem(CLE_PREFS, JSON.stringify(l));
+        sessionStorage.removeItem(CLE_PREFS);
+      }
+    } catch (e) { }
+  }
+  function effacer_prefs() {
+    try { localStorage.removeItem(CLE_PREFS); } catch (e) { }
+  }
+
+  // ---- Bandeau -----------------------------------------------------------
+  var boite = null;
+  function fermer() { if (boite) { boite.remove(); boite = null; } }
+
+  function choisir(mesure, prefs) {
+    var avant = lire();
+    ecrire(mesure, prefs);
+    fermer();
+    if (prefs) migrer_vers_local(); else effacer_prefs();
+    if (mesure) charger_mesure();
+    // Retirer un accord deja donne : on recharge pour que la balise ou les
+    // choix affiches disparaissent vraiment.
+    if (avant && ((avant.m && !mesure) || (avant.p && !prefs))) location.reload();
+    else appliquer();
+  }
+
+  function ouvrir(detail) {
+    fermer();
+    var actuel = lire() || { m: false, p: false };
+    boite = document.createElement('div');
+    boite.className = 'pc-cookies';
+    boite.setAttribute('role', 'dialog');
+    boite.setAttribute('aria-label', 'Choix sur les cookies');
+    boite.innerHTML =
+      '<p class="pc-titre">Vos choix sur les cookies</p>' +
+      '<p class="pc-texte"><span class="pc-court">Un seul cookie nécessaire ; préférences et ' +
+      'mesure d’audience facultatives.</span>' +
+      '<span class="pc-long">PrépaCards dépose un seul cookie nécessaire : le souvenir de ce choix. ' +
+      'Les préférences (votre filière, vos filtres, votre dernière lecture) et la mesure ' +
+      'd’audience sont facultatives.</span> <a href="/cookies/">En savoir plus</a></p>' +
+      '<div class="pc-detail"' + (detail ? '' : ' hidden') + '>' +
+      '<label class="pc-ligne"><input type="checkbox" checked disabled> ' +
+      '<span><strong>Nécessaires</strong> : mémoriser ce choix. Toujours actifs.</span></label>' +
+      '<label class="pc-ligne"><input type="checkbox" id="pc-prefs-case"' + (actuel.p ? ' checked' : '') + '> ' +
+      '<span><strong>Préférences</strong> : retenir votre filière, vos filtres du blog ' +
+      'et le dernier article lu, sur cet appareil uniquement.</span></label>' +
+      '<label class="pc-ligne"><input type="checkbox" id="pc-mesure-case"' + (actuel.m ? ' checked' : '') + '> ' +
+      '<span><strong>Mesure d’audience</strong> : Cloudflare Web Analytics, ' +
+      'sans cookie ni identifiant.</span></label>' +
+      '</div>' +
+      '<div class="pc-actions">' +
+      '<button type="button" class="pc-btn" data-pc="non">Tout refuser</button>' +
+      '<button type="button" class="pc-btn" data-pc="oui">Tout accepter</button>' +
+      '<button type="button" class="pc-btn" data-pc="perso">' +
+      (detail ? 'Enregistrer mon choix' : 'Personnaliser') + '</button>' +
+      '</div>';
+    document.body.appendChild(boite);
+    boite.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-pc]');
+      if (!b) return;
+      var a = b.getAttribute('data-pc');
+      if (a === 'non') choisir(false, false);
+      else if (a === 'oui') choisir(true, true);
+      else if (boite.querySelector('.pc-detail').hidden) {
+        boite.querySelector('.pc-detail').hidden = false;
+        b.textContent = 'Enregistrer mon choix';
+      } else {
+        choisir(boite.querySelector('#pc-mesure-case').checked,
+                boite.querySelector('#pc-prefs-case').checked);
+      }
+    });
+    var premier = boite.querySelector('[data-pc="non"]');
+    if (premier) premier.focus();
+  }
+
+  document.addEventListener('click', function (e) {
+    var l = e.target.closest('[data-pc-cookies]');
+    if (!l) return;
+    e.preventDefault();
+    ouvrir(true);
+  });
+
+  // ---- Fonctions qui s'appuient sur les preferences ----------------------
+  var FILIERES = ['commerciale', 'scientifique', 'litteraire'];
+
+  // « Votre filiere » : accueil. Le bloc n'existe que s'il est ecrit dans la
+  // page ; il reste cache sans JavaScript.
+  function pour_vous() {
+    var zone = document.getElementById('pour-vous');
+    if (!zone) return;
+    var f = window.pcPrefs.get('filiere');
+    if (FILIERES.indexOf(f) === -1) f = null;
+    zone.hidden = false;
+    [].forEach.call(zone.querySelectorAll('[data-filiere]'), function (b) {
+      var actif = b.getAttribute('data-filiere') === f;
+      b.classList.toggle('actif', actif);
+      b.setAttribute('aria-pressed', actif ? 'true' : 'false');
+    });
+    [].forEach.call(zone.querySelectorAll('[data-filiere-bloc]'), function (d) {
+      d.hidden = d.getAttribute('data-filiere-bloc') !== f;
+    });
+    var invite = document.getElementById('pour-vous-invite');
+    if (invite) invite.hidden = !!f;
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('#pour-vous [data-filiere]');
+    if (!b) return;
+    var f = b.getAttribute('data-filiere');
+    window.pcPrefs.set('filiere', window.pcPrefs.get('filiere') === f ? null : f);
+    pour_vous();
+  });
+
+  // « Reprendre » : le dernier article lu, sur l'accueil et le blog.
+  function reprendre() {
+    var l = window.pcPrefs.get('lu');
+    [].forEach.call(document.querySelectorAll('.reprendre'), function (z) {
+      if (!l || !l.u || !l.t || l.u === location.pathname) { z.hidden = true; return; }
+      z.textContent = '';
+      z.appendChild(document.createTextNode('Reprendre votre lecture : '));
+      var a = document.createElement('a');
+      a.href = l.u;
+      a.textContent = l.t;
+      z.appendChild(a);
+      z.hidden = false;
+    });
+  }
+  function noter_lecture() {
+    var h1 = document.querySelector('article.article h1');
+    if (!h1 || !/^\/blog\/[^/]+\/$/.test(location.pathname)) return;
+    window.pcPrefs.set('lu', { u: location.pathname, t: h1.textContent.trim() });
+  }
+
+  function appliquer() { pour_vous(); reprendre(); }
+
+  var choix = lire();
+  if (choix && choix.m) charger_mesure();
+  if (!choix) ouvrir(false);
+  appliquer();
+  noter_lecture();
+})();
+</script>
+<script>
+// Ce qui rend une page de contenu vivante : apparition des blocs au
+// defilement, barre de progression de lecture, et sommaire lateral dont
+// l'entree courante s'allume.
+//
+// Rien de tout cela n'est indispensable a la lecture : si le script
+// echoue, la page reste complete et lisible. C'est pour cela que les
+// regles d'apparition sont derriere html.js, pose par le script principal.
+(function () {
+  var feuille = document.querySelector('.feuille-texte');
+  if (!feuille) return;
+
+  var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // --- Apparition des blocs -----------------------------------------
+  var blocs = [].slice.call(feuille.children).filter(function (e) {
+    return /^(H2|H3|P|UL|OL|TABLE|DIV)$/.test(e.tagName);
+  });
+
+  if (doux || !('IntersectionObserver' in window)) {
+    blocs.forEach(function (e) { e.classList.add('vue'); });
+  } else {
+    var apparition = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (entree) {
+        if (!entree.isIntersecting) return;
+        entree.target.classList.add('vue');
+        apparition.unobserve(entree.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.02 });
+    blocs.forEach(function (e) { apparition.observe(e); });
+
+    // Ce qui est deja visible au chargement ne doit pas attendre un
+    // defilement : sans cela, le haut de la page reste vide tant qu'on
+    // n'a pas touche a la molette.
+    window.setTimeout(function () {
+      blocs.forEach(function (e) {
+        var r = e.getBoundingClientRect();
+        if (r.top < window.innerHeight) e.classList.add('vue');
+      });
+    }, 60);
+  }
+
+  if (doux) return;
+
+  // --- Barre de progression ------------------------------------------
+  var barre = document.createElement('div');
+  barre.className = 'progression-lecture';
+  document.body.appendChild(barre);
+
+  // --- Sommaire lateral ----------------------------------------------
+  //
+  // Les articles de blog posent deja leur propre sommaire, cote serveur,
+  // dans la colonne laterale (.sommaire-liste, dans templates/article.html).
+  // On evite alors d'en construire un second flottant : on reutilise ses
+  // liens tels quels pour l'entree active. Ailleurs (mentions legales,
+  // pages de texte), on garde le sommaire flottant genere ici.
+  var titres = [].slice.call(feuille.querySelectorAll('h2'));
+  var liens = [];
+  var listeExistante = document.querySelector('.sommaire-liste');
+
+  if (listeExistante) {
+    liens = [].slice.call(listeExistante.querySelectorAll('a'));
+  } else if (titres.length >= 3) {
+    var nav = document.createElement('nav');
+    nav.className = 'sommaire-page';
+    nav.setAttribute('aria-label', 'Sommaire de la page');
+    var liste = document.createElement('ol');
+
+    titres.forEach(function (titre, rang) {
+      if (!titre.id) {
+        titre.id = 'section-' + (rang + 1);
+      }
+      var item = document.createElement('li');
+      var lien = document.createElement('a');
+      lien.href = '#' + titre.id;
+      lien.textContent = titre.textContent;
+      item.appendChild(lien);
+      liste.appendChild(item);
+      liens.push(lien);
+    });
+
+    nav.appendChild(liste);
+    document.body.appendChild(nav);
+  }
+
+  // --- Mise a jour, une seule fois par image ------------------------
+  //
+  // Le defilement declenche bien plus souvent que l'ecran ne se rafraichit.
+  // On se contente donc de noter qu'il faut recalculer, et le calcul a lieu
+  // au prochain rendu : la page reste fluide meme sur une machine lente.
+  var enAttente = false;
+
+  function majEtat() {
+    enAttente = false;
+
+    var hauteur = document.documentElement.scrollHeight - window.innerHeight;
+    var part = hauteur > 0 ? window.scrollY / hauteur : 0;
+    barre.style.transform = 'scaleX(' + Math.min(1, Math.max(0, part)) + ')';
+
+    if (!liens.length) return;
+    // Le titre courant est le dernier passe au-dessus du tiers superieur
+    // de la fenetre : c'est la zone que l'oeil lit reellement.
+    var repere = window.innerHeight / 3;
+    var actif = 0;
+    for (var i = 0; i < titres.length; i++) {
+      if (titres[i].getBoundingClientRect().top <= repere) actif = i;
+    }
+    liens.forEach(function (l, i) {
+      l.classList.toggle('actif', i === actif);
+    });
+  }
+
+  function demander() {
+    if (enAttente) return;
+    enAttente = true;
+    window.requestAnimationFrame(majEtat);
+  }
+
+  window.addEventListener('scroll', demander, { passive: true });
+  window.addEventListener('resize', demander, { passive: true });
+  majEtat();
+})();
+</script>
+</body>
+</html>

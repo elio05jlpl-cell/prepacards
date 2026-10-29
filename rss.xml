@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>Informatique en prépa scientifique : pas que coder</title>
+    <link>https://prepacards.fr/blog/reviser-linformatique-en-prepa-scientifique/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/reviser-linformatique-en-prepa-scientifique/</guid>
+    <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+    <description>Complexité, structures de données, algorithmes classiques : l'option informatique a son propre par cœur, distinct de la programmation elle-même.</description>
+  </item>
+  <item>
     <title>Entretien de personnalité : pourquoi il intimide</title>
     <link>https://prepacards.fr/blog/grand-oral-entretien-de-personnalite-prepa/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/grand-oral-entretien-de-personnalite-prepa/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/culture-generale-prepa/</guid>
     <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
     <description>Citations, définitions, références, exemples : ce qui se retient par cœur en culture générale en prépa, et comment ne plus citer faux le jour de l'épreuve.</description>
-  </item>
-  <item>
-    <title>Vacances de la Toussaint en prépa : que faire ?</title>
-    <link>https://prepacards.fr/blog/vacances-toussaint-prepa/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/vacances-toussaint-prepa/</guid>
-    <pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate>
-    <description>Se reposer ou rattraper son retard ? Organiser les vacances de la Toussaint en prépa pour revenir en forme, avec les chapitres de septembre consolidés.</description>
   </item>
 </channel>
 </rss>
