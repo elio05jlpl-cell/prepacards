@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Probabilités en ECG : les formules à savoir par cœur | PrépaCards</title>
+<meta name="description" content="Les formules de probabilités à retenir en ECG : lois usuelles, espérance, variance, conditionnement, inégalités et approximations, en tableaux à apprendre.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://prepacards.fr/blog/formules-de-probabilites-ecg/">
+<link rel="alternate" type="application/rss+xml" title="PrépaCards — Blog" href="/rss.xml">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PrépaCards">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Probabilités en ECG : les formules à savoir par cœur | PrépaCards">
+<meta property="og:description" content="Les formules de probabilités à retenir en ECG : lois usuelles, espérance, variance, conditionnement, inégalités et approximations, en tableaux à apprendre.">
+<meta property="og:url" content="https://prepacards.fr/blog/formules-de-probabilites-ecg/">
+<meta property="og:image" content="https://prepacards.fr/img/og-prepacards.png?v=de8ad632">
+<meta property="article:published_time" content="2026-11-15">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Probabilités en ECG : les formules à savoir par cœur | PrépaCards">
+<meta name="twitter:description" content="Les formules de probabilités à retenir en ECG : lois usuelles, espérance, variance, conditionnement, inégalités et approximations, en tableaux à apprendre.">
+<meta name="twitter:image" content="https://prepacards.fr/img/og-prepacards.png?v=de8ad632">
+
+<link rel="icon" href="/img/favicon.png?v=2c577c0c" type="image/png">
+<link rel="apple-touch-icon" href="/img/icone-180.png?v=355bf7c4">
+<link rel="stylesheet" href="/style.css?v=cadd113753">
+<link rel="preload" href="/fonts/libre-franklin-400-latin.woff2?v=52e60585" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/poppins-800-latin.woff2?v=60bf0aba" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Probabilités en ECG : les formules à savoir par cœur | PrépaCards", "description": "Les formules de probabilités à retenir en ECG : lois usuelles, espérance, variance, conditionnement, inégalités et approximations, en tableaux à apprendre.", "image": ["https://prepacards.fr/img/og-prepacards.png?v=de8ad632"], "datePublished": "2026-11-15", "dateModified": "2026-11-15", "author": {"@type": "Organization", "name": "PrépaCards"}, "publisher": {"@type": "Organization", "name": "PrépaCards", "logo": {"@type": "ImageObject", "url": "https://prepacards.fr/img/icone-180.png?v=355bf7c4"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://prepacards.fr/blog/formules-de-probabilites-ecg/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://prepacards.fr/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://prepacards.fr/blog/"}, {"@type": "ListItem", "position": 3, "name": "Probabilités en ECG : les formules à savoir par cœur", "item": "https://prepacards.fr/blog/formules-de-probabilites-ecg/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Faut-il connaître les démonstrations ?", "acceptedAnswer": {"@type": "Answer", "text": "Pour les résultats les plus courts (espérance de la loi binomiale, formule de\nBayes), oui, car elles peuvent être demandées à l'oral. Pour les autres,\nsachez surtout énoncer correctement les hypothèses : c'est ce qu'on vérifie\nd'abord."}}, {"@type": "Question", "name": "Vaut-il mieux apprendre les tableaux ou les refaire ?", "acceptedAnswer": {"@type": "Answer", "text": "Les deux. Les refaire de mémoire sur une feuille est le meilleur test, et\nce qui manque devient une carte. Voir aussi\nl'article sur le cahier d'erreurs."}}, {"@type": "Question", "name": "Les formules sont-elles les mêmes en appliquées et en approfondies ?", "acceptedAnswer": {"@type": "Answer", "text": "Les lois usuelles, l'espérance, la variance et les inégalités sont communes.\nLes différences portent sur la profondeur de certains chapitres.\nL'article sur le choix de l'option\nles compare."}}]}</script>
+</head>
+<body>
+
+<a class="saut-contenu" href="#contenu">Aller au contenu</a>
+
+<!-- Voile du menu des matieres : hors de l'en-tete expres, car son flou
+     d'arriere-plan (backdrop-filter) cree pour lui seul un nouveau repere
+     de positionnement, et un voile "fixed" pose dedans se serait retrouve
+     confine a la hauteur de la barre au lieu de couvrir la page. -->
+<div class="nav-scrim" aria-hidden="true"></div>
+
+<div class="bandeau-haut">
+  <div class="conteneur bandeau-haut-interieur">
+    <div class="reseaux" aria-label="Réseaux sociaux"><a href="https://www.tiktok.com/@prepacards" aria-label="TikTok" title="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16.5 3c.3 2.3 1.9 3.8 4.2 4v2.9c-1.5.1-2.9-.3-4.2-1.1v5.9c0 3.6-2.9 6.3-6.3 6.3-3.5 0-6.2-2.8-6.2-6.3 0-3.4 2.7-6.2 6.2-6.2.3 0 .6 0 .9.1v3c-.3-.1-.6-.1-.9-.1-1.8 0-3.2 1.5-3.2 3.2 0 1.8 1.4 3.3 3.2 3.3 1.8 0 3.3-1.4 3.3-3.3V3z"/></svg></a><a href="https://www.instagram.com/prepacards/" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true" focusable="false"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17.5" cy="6.5" r="1.2"/></svg></a><a href="https://www.linkedin.com/company/prepacards/" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3.2 9h3v11h-3zM4.7 3.3a1.9 1.9 0 1 1 0 3.8 1.9 1.9 0 0 1 0-3.8zM9.5 9h3v1.6c.7-1.2 2-1.9 3.6-1.9 2.6 0 4.4 1.7 4.4 4.8V20h-3v-5.9c0-1.6-.8-2.5-2.1-2.5-1.4 0-2.3 1-2.3 2.6V20h-3z"/></svg></a></div>
+    <div class="bandeau-actions">
+      <a class="nav-connexion" href="/compte/">Se connecter</a>
+      <a class="bouton-nav" href="/telecharger/">Télécharger</a>
+    </div>
+  </div>
+</div>
+
+<header class="entete">
+
+  <div class="conteneur entete-marque">
+    <a class="marque" href="/">
+      <img src="/img/logo.webp?v=ba64e35e" width="34" height="34" alt="" loading="eager">
+      <span>Prépa<strong>Cards</strong></span>
+    </a>
+    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</header>
+
+<div class="entete-nav-barre">
+  <div class="conteneur entete-nav">
+    <nav class="navigation" aria-label="Navigation principale">
+        <a class="nav-lien" href="/">Accueil</a>
+        <div class="nav-groupe nav-mega"><a class="nav-lien" href="/prepa/" aria-haspopup="true" aria-expanded="false">Matières<svg class="nav-fleche" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="nav-menu mega-panneau"><ul class="mega-gauche"><li class="mega-item ouvert"><a class="mega-filiere" href="/prepa-commerciale/"><span><strong>Prépa commerciale</strong><small>ECG et ECT</small></span><span class="mega-chevron" aria-hidden="true">›</span></a><div class="mega-droite"><p class="mega-droite-titre">Prépa commerciale</p><a href="/decks/#anglais">Anglais</a><a href="/decks/#allemand">Allemand</a><a href="/decks/#espagnol">Espagnol</a><a href="/decks/#italien">Italien</a><a href="/decks/#maths-approfondies">Maths approfondies</a><a href="/decks/#maths-appliquees">Maths appliquées</a><a href="/vocabulaire-anglais-prepa-ecg/">Le vocabulaire à apprendre</a><a href="/decks/">Tout afficher</a></div></li><li class="mega-item"><a class="mega-filiere" href="/prepa-scientifique/"><span><strong>Prépa scientifique</strong><small>MPSI, PCSI, PTSI, MPI, BCPST</small></span><span class="mega-chevron" aria-hidden="true">›</span></a><div class="mega-droite"><p class="mega-droite-titre">Prépa scientifique</p><a href="/reviser-prepa-mpsi-pcsi/">Réviser en MPSI et PCSI</a><a href="/decks/#maths-approfondies">Formules de maths</a><a href="/decks/#anglais">Anglais</a><a href="/fiches-de-revision-prepa/">Fiches de révision</a><a href="/anki-prepa-mpsi-pcsi/">Venir d&#x27;Anki</a><a href="/prepa-scientifique/">Tout afficher</a></div></li><li class="mega-item"><a class="mega-filiere" href="/prepa-litteraire/"><span><strong>Prépa littéraire</strong><small>Khâgnes A/L et B/L</small></span><span class="mega-chevron" aria-hidden="true">›</span></a><div class="mega-droite"><p class="mega-droite-titre">Prépa littéraire</p><a href="/decks/#anglais">Anglais</a><a href="/decks/#allemand">Allemand</a><a href="/decks/#espagnol">Espagnol</a><a href="/decks/#italien">Italien</a><a href="/memoriser-vocabulaire-anglais/">Mémoriser du vocabulaire</a><a href="/fiches-de-revision-prepa/">Fiches de révision</a><a href="/prepa-litteraire/">Tout afficher</a></div></li></ul></div></div>
+        <a class="nav-lien" href="/decks/">Paquets gratuits</a>
+        <a class="nav-lien" href="/importer-anki-quizlet/">Importer</a>
+        <a class="nav-lien" href="/fonctionnalites/">Fonctionnalités</a>
+        <a class="nav-lien" href="/tarifs/">Tarifs</a>
+    </nav>
+  </div>
+</div>
+
+<main id="contenu">
+  <article class="article">
+<header class="bandeau-titre-article">
+<div class="conteneur">
+<p class="etiquette-type">Mathématiques</p>
+<h1 id="les-formules-de-probabilites-a-connaitre-par-cur-en-ecg">Les formules de probabilités à connaître par cœur en ECG</h1>
+</div>
+</header>
+<div class="sous-bandeau-titre">
+<div class="conteneur etiquettes-article"><span class="etiquette-article">Prépa commerciale</span></div>
+</div>
+    <div class="disposition-article">
+      <aside class="barre-laterale">
+        <nav class="panneau-sommaire" aria-label="Sommaire de l'article">
+          <button type="button" class="sommaire-bouton" aria-expanded="true">
+            <span>Sommaire</span>
+            <svg class="sommaire-fleche" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <ol class="sommaire-liste">
+<li><a href="#conditionnement-et-independance">Conditionnement et indépendance</a></li><li><a href="#esperance-variance-et-covariance">Espérance, variance et covariance</a></li><li><a href="#les-lois-discretes-usuelles">Les lois discrètes usuelles</a></li><li><a href="#les-lois-a-densite-usuelles">Les lois à densité usuelles</a></li><li><a href="#inegalites-convergences-et-approximations">Inégalités, convergences et approximations</a></li><li><a href="#estimation">Estimation</a></li><li><a href="#comment-les-retenir">Comment les retenir</a></li><li><a href="#questions-frequentes">Questions fréquentes</a></li>
+          </ol>
+        </nav>
+      </aside>
+      <div class="conteneur-texte">
+        <div class="cadre-entete">
+          <nav class="fil" aria-label="Fil d'Ariane">
+            <a href="/">Accueil</a> › <a href="/blog/">Blog</a> › <strong>Probabilités en ECG : les formules à savoir par cœur</strong>
+          </nav>
+        </div>
+        <p class="art-meta"><time datetime="2026-11-15">15 novembre 2026</time> · 5 min de lecture · par <a href="/a-propos/">l'équipe PrépaCards</a></p>
+<div class="feuille-texte">
+<div class="chapo">
+<p>Les probabilités occupent une place importante du programme d'ECG, en
+première comme en deuxième année, et elles reviennent aux écrits comme aux
+oraux. Elles ont une particularité : presque tout y repose sur une dizaine de
+résultats que l'on réutilise sans cesse. Si vous les avez en tête, les
+exercices deviennent des enchaînements ; sinon, chaque question demande de
+tout redémontrer.</p>
+<p>Cet article rassemble l'essentiel, regroupé par situation. Ce n'est pas un
+cours : il suppose que vous avez compris les notions, et sert à vérifier
+que vous les savez sans regarder.</p>
+</div>
+<h2 id="conditionnement-et-independance">Conditionnement et indépendance</h2>
+<div class="tableau-enveloppe">
+<table>
+<thead>
+<tr>
+<th>Résultat</th>
+<th>Formule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Probabilité conditionnelle</td>
+<td>P(A ∣ B) = P(A ∩ B) / P(B)</td>
+</tr>
+<tr>
+<td>Probabilités composées</td>
+<td>P(A ∩ B) = P(B) × P(A ∣ B)</td>
+</tr>
+<tr>
+<td>Probabilités totales</td>
+<td>P(B) = Σ P(Aᵢ) P(B ∣ Aᵢ)</td>
+</tr>
+<tr>
+<td>Formule de Bayes</td>
+<td>P(A ∣ B) = P(B ∣ A) P(A) / P(B)</td>
+</tr>
+<tr>
+<td>Indépendance de A et B</td>
+<td>P(A ∩ B) = P(A) P(B)</td>
+</tr>
+<tr>
+<td>Union</td>
+<td>P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La formule des probabilités totales s'applique à un <strong>système complet
+d'événements</strong> : des événements deux à deux incompatibles dont la réunion
+est tout l'univers. Pensez à vérifier cette condition avant de l'utiliser.</p>
+<h2 id="esperance-variance-et-covariance">Espérance, variance et covariance</h2>
+<div class="tableau-enveloppe">
+<table>
+<thead>
+<tr>
+<th>Résultat</th>
+<th>Formule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Espérance</td>
+<td>E(X) = Σ xᵢ P(X = xᵢ)</td>
+</tr>
+<tr>
+<td>Formule de transfert</td>
+<td>E(g(X)) = Σ g(xᵢ) P(X = xᵢ)</td>
+</tr>
+<tr>
+<td>Linéarité</td>
+<td>E(aX + bY) = a E(X) + b E(Y)</td>
+</tr>
+<tr>
+<td>Variance</td>
+<td>V(X) = E(X²) − E(X)²</td>
+</tr>
+<tr>
+<td>Transformation affine</td>
+<td>V(aX + b) = a² V(X)</td>
+</tr>
+<tr>
+<td>Covariance</td>
+<td>Cov(X, Y) = E(XY) − E(X) E(Y)</td>
+</tr>
+<tr>
+<td>Variance d'une somme</td>
+<td>V(X + Y) = V(X) + V(Y) + 2 Cov(X, Y)</td>
+</tr>
+<tr>
+<td>Indépendance</td>
+<td>X, Y indépendantes ⇒ Cov(X, Y) = 0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Le sens de la dernière ligne est à retenir précisément : l'indépendance
+entraîne une covariance nulle, mais la réciproque est fausse. C'est une
+question d'oral classique.</p>
+<h2 id="les-lois-discretes-usuelles">Les lois discrètes usuelles</h2>
+<div class="tableau-enveloppe">
+<table>
+<thead>
+<tr>
+<th>Loi</th>
+<th>P(X = k)</th>
+<th>Espérance</th>
+<th>Variance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bernoulli B(p)</td>
+<td>p ou 1 − p</td>
+<td>p</td>
+<td>p(1 − p)</td>
+</tr>
+<tr>
+<td>Binomiale B(n, p)</td>
+<td>C(n, k) pᵏ (1 − p)ⁿ⁻ᵏ</td>
+<td>np</td>
+<td>np(1 − p)</td>
+</tr>
+<tr>
+<td 1_ _ n>Uniforme sur</td>
+<td>1 / n</td>
+<td>(n + 1) / 2</td>
+<td>(n² − 1) / 12</td>
+</tr>
+<tr>
+<td>Géométrique G(p)</td>
+<td>(1 − p)ᵏ⁻¹ p, k ≥ 1</td>
+<td>1 / p</td>
+<td>(1 − p) / p²</td>
+</tr>
+<tr>
+<td>Poisson P(λ)</td>
+<td>e⁻λ λᵏ / k!</td>
+<td>λ</td>
+<td>λ</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Deux propriétés servent partout : la loi géométrique est <strong>sans mémoire</strong>
+(P(X &gt; n + k | X &gt; n) = P(X &gt; k)), et la somme de deux variables de Poisson
+indépendantes de paramètres λ et μ suit une loi de Poisson de paramètre
+λ + μ.</p>
+<h2 id="les-lois-a-densite-usuelles">Les lois à densité usuelles</h2>
+<div class="tableau-enveloppe">
+<table>
+<thead>
+<tr>
+<th>Loi</th>
+<th>Densité</th>
+<th>Espérance</th>
+<th>Variance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uniforme sur [a, b]</td>
+<td>1 / (b − a) sur [a, b]</td>
+<td>(a + b) / 2</td>
+<td>(b − a)² / 12</td>
+</tr>
+<tr>
+<td>Exponentielle E(λ)</td>
+<td>λ e⁻λᵗ pour t ≥ 0</td>
+<td>1 / λ</td>
+<td>1 / λ²</td>
+</tr>
+<tr>
+<td>Normale N(m, σ²)</td>
+<td>(1 / σ√(2π)) e^(−(t − m)² / 2σ²)</td>
+<td>m</td>
+<td>σ²</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Pour l'exponentielle, retenez la fonction de répartition F(x) = 1 − e⁻λˣ
+et l'absence de mémoire. Pour la normale, ramenez-vous toujours à la loi
+centrée réduite : si X suit N(m, σ²), alors (X − m) / σ suit N(0, 1), et
+Φ(−x) = 1 − Φ(x).</p>
+<h2 id="inegalites-convergences-et-approximations">Inégalités, convergences et approximations</h2>
+<div class="tableau-enveloppe">
+<table>
+<thead>
+<tr>
+<th>Résultat</th>
+<th>Énoncé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Markov</td>
+<td>X ≥ 0, a &gt; 0 ⇒ P(X ≥ a) ≤ E(X) / a</td>
+</tr>
+<tr>
+<td>Bienaymé-Tchebychev</td>
+<td>P(∣X − E(X)∣ ≥ ε) ≤ V(X) / ε²</td>
+</tr>
+<tr>
+<td>Loi faible des grands nombres</td>
+<td>P(∣X̄ₙ − m∣ ≥ ε) → 0</td>
+</tr>
+<tr>
+<td>Théorème central limite</td>
+<td>(X̄ₙ − m) / (σ / √n) converge en loi vers N(0, 1)</td>
+</tr>
+<tr>
+<td>Binomiale par Poisson</td>
+<td>n grand, p petit, np = λ : B(n, p) ≈ P(np)</td>
+</tr>
+<tr>
+<td>Binomiale par normale</td>
+<td>n grand : B(n, p) ≈ N(np, np(1 − p))</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Les conditions pratiques d'approximation, souvent données dans les énoncés,
+sont à connaître : binomiale vers normale quand n ≥ 30, np ≥ 5 et
+n(1 − p) ≥ 5 ; binomiale vers Poisson quand n ≥ 30, p ≤ 0,1 et np ≤ 15.</p>
+<h2 id="estimation">Estimation</h2>
+<p>Deux définitions suffisent à vous faire gagner du temps : le <strong>biais</strong> d'un
+estimateur est E(θ̂) − θ, et son <strong>risque quadratique</strong> vaut
+V(θ̂) + (biais)². Un estimateur sans biais a donc un risque égal à sa
+variance. Pour une moyenne empirique de variables de même loi,
+E(X̄ₙ) = m et V(X̄ₙ) = σ² / n, d'où l'intervalle de confiance bâti avec le
+théorème central limite.</p>
+<h2 id="comment-les-retenir">Comment les retenir</h2>
+<p>Ces tableaux ne se retiennent pas en les relisant. Deux méthodes
+fonctionnent mieux.</p>
+<ul>
+<li><strong>Poser la question, cacher la réponse.</strong> « Variance de la loi
+  géométrique ? » doit appeler 1 − p sur p² sans hésiter. C'est
+  exactement ce que fait une flashcard, et la répétition espacée la
+  représente au bon moment. L'article sur
+  <a href="/blog/flashcards-formules-de-maths/" rel="noopener" target="_blank">les flashcards de formules de maths</a>
+  détaille comment les rédiger.</li>
+<li><strong>Relier chaque formule à une situation.</strong> Un tirage avec remise, c'est
+  une binomiale ; un temps d'attente avant un premier succès, c'est une
+  géométrique ; une durée de vie sans usure, c'est une exponentielle.</li>
+</ul>
+<p>PrépaCards propose ces résultats déjà rédigés, chapitre par chapitre :
+<a href="/decks/#maths-approfondies">paquets de maths approfondies</a> et
+<a href="/decks/#maths-appliquees">paquets de maths appliquées</a>. Le chapitre
+d'estimation et celui des convergences correspondent aux deux dernières
+sections ci-dessus.</p>
+<section class="faq">
+  <p class="faq-eyebrow">FAQ</p>
+  <h2>Questions fréquentes</h2>
+  <div class="faq-liste">
+  <details class="faq-item">
+    <summary><span>Faut-il connaître les démonstrations ?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="faq-enveloppe"><div class="faq-reponse"><p>Pour les résultats les plus courts (espérance de la loi binomiale, formule de
+Bayes), oui, car elles peuvent être demandées à l'oral. Pour les autres,
+sachez surtout énoncer correctement les hypothèses : c'est ce qu'on vérifie
+d'abord.</p></div></div>
+  </details>
+  <details class="faq-item">
+    <summary><span>Vaut-il mieux apprendre les tableaux ou les refaire ?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="faq-enveloppe"><div class="faq-reponse"><p>Les deux. Les refaire de mémoire sur une feuille est le meilleur test, et
+ce qui manque devient une carte. Voir aussi
+<a href="/blog/cahier-d-erreurs-en-prepa/" rel="noopener" target="_blank">l'article sur le cahier d'erreurs</a>.</p></div></div>
+  </details>
+  <details class="faq-item">
+    <summary><span>Les formules sont-elles les mêmes en appliquées et en approfondies ?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="faq-enveloppe"><div class="faq-reponse"><p>Les lois usuelles, l'espérance, la variance et les inégalités sont communes.
+Les différences portent sur la profondeur de certains chapitres.
+<a href="/blog/maths-appliquees-ou-approfondies-ecg/" rel="noopener" target="_blank">L'article sur le choix de l'option</a>
+les compare.</p></div></div>
+  </details>
+  </div>
+</section>
+<div class="encart">
+  <p>PrépaCards s'essaie 30 jours gratuitement, sans carte bancaire, sur
+  Windows 10 et 11.
+  <a href="/telecharger/">Télécharger</a> ·
+  <a href="/decks/#maths-approfondies">Les paquets de maths</a></p>
+</div>
+</div>
+<aside class="pour-aller-plus-loin">
+<h2>Pour aller plus loin</h2>
+<ul>
+<li><a href="/fonctionnalites/">Vérification à l&#x27;oral et formules en photo</a></li>
+<li><a href="/prepa-commerciale/">PrépaCards pour la prépa commerciale (ECG, ECT)</a></li>
+<li><a href="/decks/">Les 119 paquets de flashcards gratuits</a></li>
+<li><a href="/anki-prepa-ecg/">Anki en prépa ECG : faut-il s&#x27;y mettre ?</a></li>
+</ul>
+</aside>
+<section class="a-lire-egalement">
+<h2 class="a-lire-egalement-titre">À lire également</h2>
+<div class="a-lire-egalement-grille">
+<a class="carte-a-lire" href="/blog/flashcards-formules-de-maths/"><img src="/img/blog/flashcards-formules-de-maths.svg?v=062653a8" alt="" loading="lazy" width="480" height="200"><span class="carte-a-lire-titre">Flashcards de formules de maths : 3 méthodes</span><span class="carte-a-lire-cta">Lire la suite »</span></a>
+<a class="carte-a-lire" href="/blog/kholle-de-maths-prepa/"><img src="/img/blog/kholle-de-maths-prepa.svg?v=240e2dc1" alt="" loading="lazy" width="480" height="200"><span class="carte-a-lire-titre">Khôlle de maths en prépa : réussir au tableau</span><span class="carte-a-lire-cta">Lire la suite »</span></a>
+<a class="carte-a-lire" href="/blog/maths-appliquees-ou-approfondies-ecg/"><img src="/img/blog/maths-appliquees-ou-approfondies-ecg.svg?v=d189b24b" alt="" loading="lazy" width="480" height="200"><span class="carte-a-lire-titre">Appliquées ou approfondies en ECG : que choisir ?</span><span class="carte-a-lire-cta">Lire la suite »</span></a>
+<a class="carte-a-lire" href="/blog/reviser-les-maths-en-ecg/"><img src="/img/blog/reviser-les-maths-en-ecg.svg?v=29300919" alt="" loading="lazy" width="480" height="200"><span class="carte-a-lire-titre">Réviser les maths en ECG : ce qui s&#x27;apprend par cœur</span><span class="carte-a-lire-cta">Lire la suite »</span></a>
+</div>
+</section>
+        <aside class="encart-cta">
+          <h2>Essayer PrépaCards</h2>
+          <p>Répétition espacée, vérification de la prononciation à l'oral et
+             formules de maths photographiées. 30 jours gratuits, pour Windows.</p>
+          <a class="bouton" href="/telecharger/">Télécharger PrépaCards</a>
+        </aside>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <nav class="pied-haut" aria-label="Liens de pied de page">
+      <div class="pied-marque">
+        <img src="/img/logo.webp?v=ba64e35e" width="72" height="72" alt="PrépaCards" loading="lazy">
+        <span>Prépa<strong>Cards</strong></span>
+      </div>
+      <div class="pied-colonne">
+        <h2>Révisions</h2>
+        <ul>
+          <li><a href="/prepa-commerciale/">Prépas commerciales</a></li>
+          <li><a href="/prepa-scientifique/">Prépas scientifiques</a></li>
+          <li><a href="/prepa-litteraire/">Prépas littéraires</a></li>
+        </ul>
+      </div>
+      <div class="pied-colonne">
+        <h2>Comparatifs</h2>
+        <ul>
+          <li><a href="/alternative-anki/">PrépaCards ou Anki</a></li>
+          <li><a href="/alternative-quizlet/">PrépaCards ou Quizlet</a></li>
+          <li><a href="/importer-anki-quizlet/">Importer ses paquets</a></li>
+        </ul>
+      </div>
+      <div class="pied-colonne">
+        <h2>Ressources</h2>
+        <ul>
+          <li><a href="/telecharger/">Télécharger</a></li>
+          <li><a href="/blog/">Le blog</a></li>
+          <li><a href="/decks/">Paquets gratuits</a></li>
+          <li><a href="/rss.xml">Flux RSS du blog</a></li>
+        </ul>
+      </div>
+      <div class="pied-colonne">
+        <h2>Informations</h2>
+        <ul>
+          <li><a href="/mentions-legales/">Mentions légales</a></li>
+          <li><a href="/cgu/">CGU</a></li>
+          <li><a href="/cgv/">CGV</a></li>
+          <li><a href="/confidentialite/">Confidentialité</a></li>
+          <li><a href="/cookies/">Cookies</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p class="pied-bas">© 2026 PrépaCards — Application indépendante,
+       sans lien avec Anki ni Quizlet.</p>
+  </div>
+</footer>
+
+<script>
+// Marque tout de suite que JavaScript fonctionne : les regles d'apparition
+// ne s'appliquent qu'a ce moment-la. Sans ce drapeau, un visiteur dont le
+// script echoue verrait une page vide de contenu masque.
+document.documentElement.classList.add('js');
+
+// Signale la connexion dans l'en-tete, sur toutes les pages : sans cela,
+// rien n'indique qu'on est connecte tant qu'on n'a pas rouvert /compte/.
+// Lecture directe du sessionStorage plutot que de charger le client
+// Supabase ici : ce serait 218 ko pour changer un mot dans un lien.
+(function () {
+  var lien = document.querySelector('.nav-connexion');
+  if (!lien) return;
+  try {
+    var brut = sessionStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token') || localStorage.getItem('sb-ojnntqfafinxrousdvbn-auth-token');
+    var session = brut && JSON.parse(brut);
+    if (session && session.refresh_token) lien.textContent = 'Mon compte';
+  } catch (e) { /* stockage indisponible : on garde "Se connecter" */ }
+})();
+
+(function () {
+  var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cibles = document.querySelectorAll('.revelation, .a-reveler');
+
+  if (doux || !('IntersectionObserver' in window)) {
+    // Navigateur ancien ou mouvement reduit : on affiche tout, sans animer.
+    cibles.forEach(function (e) { e.classList.add('vue'); });
+  } else {
+    var observateur = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (entree) {
+        if (!entree.isIntersecting) return;
+        entree.target.classList.add('vue');
+        // Une fois apparu, l'element n'a plus a etre surveille : sinon il
+        // rejouerait l'animation a chaque remontee dans la page.
+        observateur.unobserve(entree.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
+    cibles.forEach(function (e) { observateur.observe(e); });
+  }
+
+  // En-tete : une ombre apparait des que la page defile, pour la detacher
+  // du contenu qui passe dessous.
+  var entete = document.querySelector('.entete-nav-barre');
+  if (entete) {
+    var majDefile = function () {
+      entete.classList.toggle('abaissee', window.scrollY > 8);
+    };
+    majDefile();
+    window.addEventListener('scroll', majDefile, { passive: true });
+  }
+})();
+
+(function () {
+  var burger = document.querySelector('.burger');
+  var nav = document.querySelector('.navigation');
+  if (!burger || !nav) return;
+  burger.addEventListener('click', function () {
+    var ouvert = nav.classList.toggle('ouvert');
+    burger.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+  });
+})();
+
+// Menu "Matieres" et sous-menus : pilotes par CSS (:hover / :focus-within),
+// pour continuer a fonctionner si ce script echoue a charger. Ce bloc se
+// contente de refleter l'etat reel dans aria-expanded, que la construction
+// du site pose a "false" une fois pour toutes - sans lui, un lecteur
+// d'ecran annoncerait un menu ferme alors qu'il est ouvert sous les yeux
+// d'un visiteur voyant.
+(function () {
+  var groupes = [].slice.call(document.querySelectorAll('.nav-groupe'));
+  if (!groupes.length) return;
+
+  function declencheur(groupe) {
+    return groupe.querySelector('.nav-lien[aria-haspopup="true"]');
+  }
+  function ouvertParCss(groupe) {
+    return groupe.matches(':hover') || groupe.matches(':focus-within');
+  }
+  function actualiser(groupe) {
+    var lien = declencheur(groupe);
+    if (!lien) return;
+    var force = groupe.classList.contains('nav-force-ferme');
+    lien.setAttribute('aria-expanded', (!force && ouvertParCss(groupe)) ? 'true' : 'false');
+  }
+
+  groupes.forEach(function (groupe) {
+    groupe.addEventListener('mouseenter', function () {
+      groupe.classList.remove('nav-force-ferme');
+      actualiser(groupe);
+    });
+    groupe.addEventListener('mouseleave', function () { actualiser(groupe); });
+    groupe.addEventListener('focusin', function () { actualiser(groupe); });
+    // Le focus quitte entierement le groupe : la fermeture forcee au
+    // clavier n'a plus de raison de durer au-dela de ce passage.
+    groupe.addEventListener('focusout', function () {
+      groupe.classList.remove('nav-force-ferme');
+      actualiser(groupe);
+    });
+  });
+
+  // Echap ferme le menu ouvert et rend le focus a son declencheur, sans que
+  // ce regain de focus ne le rouvre aussitot via :focus-within.
+  document.addEventListener('keydown', function (evenement) {
+    if (evenement.key !== 'Escape') return;
+    var ouvert = groupes.filter(ouvertParCss)[0];
+    if (!ouvert) return;
+    ouvert.classList.add('nav-force-ferme');
+    var lien = declencheur(ouvert);
+    if (lien) lien.focus();
+    actualiser(ouvert);
+  });
+})();
+
+// Accordeon mobile : sans survol possible au doigt, un premier appui sur un
+// lien qui a des enfants les deplie au lieu de naviguer tout de suite ; le
+// lien reste un lien normal et un second appui, une fois deplie, navigue.
+(function () {
+  function mobile() {
+    return window.matchMedia('(max-width: 900px)').matches;
+  }
+
+  document.querySelectorAll('.nav-groupe > .nav-lien[aria-haspopup="true"]').forEach(function (lien) {
+    lien.addEventListener('click', function (evenement) {
+      if (!mobile()) return;
+      var groupe = lien.closest('.nav-groupe');
+      if (groupe.classList.contains('ouvert')) return;
+      evenement.preventDefault();
+      groupe.classList.add('ouvert');
+      lien.setAttribute('aria-expanded', 'true');
+    });
+  });
+
+  document.querySelectorAll('.mega-filiere').forEach(function (lien) {
+    lien.addEventListener('click', function (evenement) {
+      if (!mobile()) return;
+      var item = lien.closest('.mega-item');
+      if (item.classList.contains('ouvert')) return;
+      evenement.preventDefault();
+      item.classList.add('ouvert');
+    });
+  });
+})();
+
+(function () {
+  var bouton = document.querySelector('.sommaire-bouton');
+  if (!bouton) return;
+  bouton.addEventListener('click', function () {
+    var ouvert = bouton.getAttribute('aria-expanded') === 'true';
+    bouton.setAttribute('aria-expanded', ouvert ? 'false' : 'true');
+  });
+})();
+
+</script>
+<script>
+// Consentement aux cookies, preferences et mesure d'audience
+// ===========================================================
+//
+// Le seul cookie du site est « pc_consent » : il garde le choix du visiteur six
+// mois. Il est necessaire au bandeau lui-meme, donc exempte de consentement.
+//
+// Valeur : « v2.m1.p1 » (mesure acceptee, preferences acceptees ; 0 si
+// refuse). Refuser est aussi simple qu'accepter : trois boutons de meme poids.
+//
+//  - La mesure d'audience Cloudflare n'est chargee que si elle est acceptee.
+//  - Les preferences (filiere, filtres du blog, derniere lecture) sont rangees
+//    en localStorage si elles sont acceptees ; sinon en sessionStorage, donc
+//    seulement le temps de l'onglet, rien ne persiste.
+(function () {
+  var NOM = 'pc_consent';
+  var DUREE = 60 * 60 * 24 * 183;   // six mois, en secondes
+  var JETON = '570f41119b974bfda2ebca8dfff29bbf';
+  var CLE_PREFS = 'pc-prefs';
+
+  function lire() {
+    var m = document.cookie.match(new RegExp('(?:^|; )' + NOM + '=v2\\.m([01])\\.p([01])'));
+    return m ? { m: m[1] === '1', p: m[2] === '1' } : null;
+  }
+  function ecrire(mesure, prefs) {
+    var securise = location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = NOM + '=v2.m' + (mesure ? 1 : 0) + '.p' + (prefs ? 1 : 0) +
+      '; Max-Age=' + DUREE + '; Path=/; SameSite=Lax' + securise;
+  }
+  function charger_mesure() {
+    if (!JETON || document.getElementById('pc-mesure')) return;
+    var s = document.createElement('script');
+    s.id = 'pc-mesure';
+    s.type = 'module';
+    s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    s.setAttribute('data-cf-beacon', JSON.stringify({ token: JETON }));
+    document.head.appendChild(s);
+  }
+
+  // ---- Preferences -------------------------------------------------------
+  function depot() {
+    var c = lire();
+    return c && c.p ? localStorage : sessionStorage;
+  }
+  function toutes() {
+    try { return JSON.parse(depot().getItem(CLE_PREFS) || '{}') || {}; } catch (e) { return {}; }
+  }
+  window.pcPrefs = {
+    get: function (cle) { return toutes()[cle]; },
+    set: function (cle, valeur) {
+      try {
+        var o = toutes();
+        o[cle] = valeur;
+        depot().setItem(CLE_PREFS, JSON.stringify(o));
+      } catch (e) { /* stockage indisponible */ }
+    },
+  };
+  // Acceptation : les choix faits pendant l'onglet passent en stockage durable.
+  function migrer_vers_local() {
+    try {
+      var brut = sessionStorage.getItem(CLE_PREFS);
+      if (brut) {
+        var l = JSON.parse(localStorage.getItem(CLE_PREFS) || '{}');
+        var s = JSON.parse(brut);
+        for (var k in s) if (!(k in l)) l[k] = s[k];
+        localStorage.setItem(CLE_PREFS, JSON.stringify(l));
+        sessionStorage.removeItem(CLE_PREFS);
+      }
+    } catch (e) { }
+  }
+  function effacer_prefs() {
+    try { localStorage.removeItem(CLE_PREFS); } catch (e) { }
+  }
+
+  // ---- Bandeau -----------------------------------------------------------
+  var boite = null;
+  function fermer() { if (boite) { boite.remove(); boite = null; } }
+
+  function choisir(mesure, prefs) {
+    var avant = lire();
+    ecrire(mesure, prefs);
+    fermer();
+    if (prefs) migrer_vers_local(); else effacer_prefs();
+    if (mesure) charger_mesure();
+    // Retirer un accord deja donne : on recharge pour que la balise ou les
+    // choix affiches disparaissent vraiment.
+    if (avant && ((avant.m && !mesure) || (avant.p && !prefs))) location.reload();
+    else appliquer();
+  }
+
+  function ouvrir(detail) {
+    fermer();
+    var actuel = lire() || { m: false, p: false };
+    boite = document.createElement('div');
+    boite.className = 'pc-cookies';
+    boite.setAttribute('role', 'dialog');
+    boite.setAttribute('aria-label', 'Choix sur les cookies');
+    boite.innerHTML =
+      '<p class="pc-titre">Vos choix sur les cookies</p>' +
+      '<p class="pc-texte"><span class="pc-court">Un seul cookie nécessaire ; préférences et ' +
+      'mesure d’audience facultatives.</span>' +
+      '<span class="pc-long">PrépaCards dépose un seul cookie nécessaire : le souvenir de ce choix. ' +
+      'Les préférences (votre filière, vos filtres, votre dernière lecture) et la mesure ' +
+      'd’audience sont facultatives.</span> <a href="/cookies/">En savoir plus</a></p>' +
+      '<div class="pc-detail"' + (detail ? '' : ' hidden') + '>' +
+      '<label class="pc-ligne"><input type="checkbox" checked disabled> ' +
+      '<span><strong>Nécessaires</strong> : mémoriser ce choix. Toujours actifs.</span></label>' +
+      '<label class="pc-ligne"><input type="checkbox" id="pc-prefs-case"' + (actuel.p ? ' checked' : '') + '> ' +
+      '<span><strong>Préférences</strong> : retenir votre filière, vos filtres du blog ' +
+      'et le dernier article lu, sur cet appareil uniquement.</span></label>' +
+      '<label class="pc-ligne"><input type="checkbox" id="pc-mesure-case"' + (actuel.m ? ' checked' : '') + '> ' +
+      '<span><strong>Mesure d’audience</strong> : Cloudflare Web Analytics, ' +
+      'sans cookie ni identifiant.</span></label>' +
+      '</div>' +
+      '<div class="pc-actions">' +
+      '<button type="button" class="pc-btn" data-pc="non">Tout refuser</button>' +
+      '<button type="button" class="pc-btn" data-pc="oui">Tout accepter</button>' +
+      '<button type="button" class="pc-btn" data-pc="perso">' +
+      (detail ? 'Enregistrer mon choix' : 'Personnaliser') + '</button>' +
+      '</div>';
+    document.body.appendChild(boite);
+    boite.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-pc]');
+      if (!b) return;
+      var a = b.getAttribute('data-pc');
+      if (a === 'non') choisir(false, false);
+      else if (a === 'oui') choisir(true, true);
+      else if (boite.querySelector('.pc-detail').hidden) {
+        boite.querySelector('.pc-detail').hidden = false;
+        b.textContent = 'Enregistrer mon choix';
+      } else {
+        choisir(boite.querySelector('#pc-mesure-case').checked,
+                boite.querySelector('#pc-prefs-case').checked);
+      }
+    });
+    var premier = boite.querySelector('[data-pc="non"]');
+    if (premier) premier.focus();
+  }
+
+  document.addEventListener('click', function (e) {
+    var l = e.target.closest('[data-pc-cookies]');
+    if (!l) return;
+    e.preventDefault();
+    ouvrir(true);
+  });
+
+  // ---- Fonctions qui s'appuient sur les preferences ----------------------
+  var FILIERES = ['commerciale', 'scientifique', 'litteraire'];
+
+  // « Votre filiere » : accueil. Le bloc n'existe que s'il est ecrit dans la
+  // page ; il reste cache sans JavaScript.
+  function pour_vous() {
+    var zone = document.getElementById('pour-vous');
+    if (!zone) return;
+    var f = window.pcPrefs.get('filiere');
+    if (FILIERES.indexOf(f) === -1) f = null;
+    zone.hidden = false;
+    [].forEach.call(zone.querySelectorAll('[data-filiere]'), function (b) {
+      var actif = b.getAttribute('data-filiere') === f;
+      b.classList.toggle('actif', actif);
+      b.setAttribute('aria-pressed', actif ? 'true' : 'false');
+    });
+    [].forEach.call(zone.querySelectorAll('[data-filiere-bloc]'), function (d) {
+      d.hidden = d.getAttribute('data-filiere-bloc') !== f;
+    });
+    var invite = document.getElementById('pour-vous-invite');
+    if (invite) invite.hidden = !!f;
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('#pour-vous [data-filiere]');
+    if (!b) return;
+    var f = b.getAttribute('data-filiere');
+    window.pcPrefs.set('filiere', window.pcPrefs.get('filiere') === f ? null : f);
+    pour_vous();
+  });
+
+  // « Reprendre » : le dernier article lu, sur l'accueil et le blog.
+  function reprendre() {
+    var l = window.pcPrefs.get('lu');
+    [].forEach.call(document.querySelectorAll('.reprendre'), function (z) {
+      if (!l || !l.u || !l.t || l.u === location.pathname) { z.hidden = true; return; }
+      z.textContent = '';
+      z.appendChild(document.createTextNode('Reprendre votre lecture : '));
+      var a = document.createElement('a');
+      a.href = l.u;
+      a.textContent = l.t;
+      z.appendChild(a);
+      z.hidden = false;
+    });
+  }
+  function noter_lecture() {
+    var h1 = document.querySelector('article.article h1');
+    if (!h1 || !/^\/blog\/[^/]+\/$/.test(location.pathname)) return;
+    window.pcPrefs.set('lu', { u: location.pathname, t: h1.textContent.trim() });
+  }
+
+  function appliquer() { pour_vous(); reprendre(); }
+
+  var choix = lire();
+  if (choix && choix.m) charger_mesure();
+  if (!choix) ouvrir(false);
+  appliquer();
+  noter_lecture();
+})();
+</script>
+<script>
+// Ce qui rend une page de contenu vivante : apparition des blocs au
+// defilement, barre de progression de lecture, et sommaire lateral dont
+// l'entree courante s'allume.
+//
+// Rien de tout cela n'est indispensable a la lecture : si le script
+// echoue, la page reste complete et lisible. C'est pour cela que les
+// regles d'apparition sont derriere html.js, pose par le script principal.
+(function () {
+  var feuille = document.querySelector('.feuille-texte');
+  if (!feuille) return;
+
+  var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // --- Apparition des blocs -----------------------------------------
+  var blocs = [].slice.call(feuille.children).filter(function (e) {
+    return /^(H2|H3|P|UL|OL|TABLE|DIV)$/.test(e.tagName);
+  });
+
+  if (doux || !('IntersectionObserver' in window)) {
+    blocs.forEach(function (e) { e.classList.add('vue'); });
+  } else {
+    var apparition = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (entree) {
+        if (!entree.isIntersecting) return;
+        entree.target.classList.add('vue');
+        apparition.unobserve(entree.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.02 });
+    blocs.forEach(function (e) { apparition.observe(e); });
+
+    // Ce qui est deja visible au chargement ne doit pas attendre un
+    // defilement : sans cela, le haut de la page reste vide tant qu'on
+    // n'a pas touche a la molette.
+    window.setTimeout(function () {
+      blocs.forEach(function (e) {
+        var r = e.getBoundingClientRect();
+        if (r.top < window.innerHeight) e.classList.add('vue');
+      });
+    }, 60);
+  }
+
+  if (doux) return;
+
+  // --- Barre de progression ------------------------------------------
+  var barre = document.createElement('div');
+  barre.className = 'progression-lecture';
+  document.body.appendChild(barre);
+
+  // --- Sommaire lateral ----------------------------------------------
+  //
+  // Les articles de blog posent deja leur propre sommaire, cote serveur,
+  // dans la colonne laterale (.sommaire-liste, dans templates/article.html).
+  // On evite alors d'en construire un second flottant : on reutilise ses
+  // liens tels quels pour l'entree active. Ailleurs (mentions legales,
+  // pages de texte), on garde le sommaire flottant genere ici.
+  var titres = [].slice.call(feuille.querySelectorAll('h2'));
+  var liens = [];
+  var listeExistante = document.querySelector('.sommaire-liste');
+
+  if (listeExistante) {
+    liens = [].slice.call(listeExistante.querySelectorAll('a'));
+  } else if (titres.length >= 3) {
+    var nav = document.createElement('nav');
+    nav.className = 'sommaire-page';
+    nav.setAttribute('aria-label', 'Sommaire de la page');
+    var liste = document.createElement('ol');
+
+    titres.forEach(function (titre, rang) {
+      if (!titre.id) {
+        titre.id = 'section-' + (rang + 1);
+      }
+      var item = document.createElement('li');
+      var lien = document.createElement('a');
+      lien.href = '#' + titre.id;
+      lien.textContent = titre.textContent;
+      item.appendChild(lien);
+      liste.appendChild(item);
+      liens.push(lien);
+    });
+
+    nav.appendChild(liste);
+    document.body.appendChild(nav);
+  }
+
+  // --- Mise a jour, une seule fois par image ------------------------
+  //
+  // Le defilement declenche bien plus souvent que l'ecran ne se rafraichit.
+  // On se contente donc de noter qu'il faut recalculer, et le calcul a lieu
+  // au prochain rendu : la page reste fluide meme sur une machine lente.
+  var enAttente = false;
+
+  function majEtat() {
+    enAttente = false;
+
+    var hauteur = document.documentElement.scrollHeight - window.innerHeight;
+    var part = hauteur > 0 ? window.scrollY / hauteur : 0;
+    barre.style.transform = 'scaleX(' + Math.min(1, Math.max(0, part)) + ')';
+
+    if (!liens.length) return;
+    // Le titre courant est le dernier passe au-dessus du tiers superieur
+    // de la fenetre : c'est la zone que l'oeil lit reellement.
+    var repere = window.innerHeight / 3;
+    var actif = 0;
+    for (var i = 0; i < titres.length; i++) {
+      if (titres[i].getBoundingClientRect().top <= repere) actif = i;
+    }
+    liens.forEach(function (l, i) {
+      l.classList.toggle('actif', i === actif);
+    });
+  }
+
+  function demander() {
+    if (enAttente) return;
+    enAttente = true;
+    window.requestAnimationFrame(majEtat);
+  }
+
+  window.addEventListener('scroll', demander, { passive: true });
+  window.addEventListener('resize', demander, { passive: true });
+  majEtat();
+})();
+</script>
+</body>
+</html>

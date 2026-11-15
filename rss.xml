@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>Probabilités en ECG : les formules à savoir par cœur</title>
+    <link>https://prepacards.fr/blog/formules-de-probabilites-ecg/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/formules-de-probabilites-ecg/</guid>
+    <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
+    <description>Les formules de probabilités à retenir en ECG : lois usuelles, espérance, variance, conditionnement, inégalités et approximations, en tableaux à apprendre.</description>
+  </item>
+  <item>
     <title>Cahier d'erreurs en prépa : apprendre de ses fautes</title>
     <link>https://prepacards.fr/blog/cahier-d-erreurs-en-prepa/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/cahier-d-erreurs-en-prepa/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/reviser-les-maths-en-prepa-scientifique/</guid>
     <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
     <description>Théorèmes, hypothèses et méthodes types : les maths de prépa scientifique reposent sur un socle par cœur avant tout raisonnement. Ce qui se mémorise.</description>
-  </item>
-  <item>
-    <title>ECG, scientifique ou littéraire : comment choisir</title>
-    <link>https://prepacards.fr/blog/choisir-sa-prepa-commerciale-scientifique-litteraire/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/choisir-sa-prepa-commerciale-scientifique-litteraire/</guid>
-    <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
-    <description>Trois filières, trois rythmes de travail différents. Ce qui distingue vraiment ECG, prépa scientifique et prépa littéraire, au-delà des matières affichées.</description>
   </item>
 </channel>
 </rss>
