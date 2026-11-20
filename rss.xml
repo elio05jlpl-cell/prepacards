@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>Python en ECG : les commandes à connaître par cœur</title>
+    <link>https://prepacards.fr/blog/python-en-ecg-commandes-a-connaitre/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/python-en-ecg-commandes-a-connaitre/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
+    <description>Les commandes Python exigibles en ECG : numpy, matrices, algèbre linéaire, simulations, graphiques. Ce qu'il faut savoir écrire sans aide, et comment l'apprendre.</description>
+  </item>
+  <item>
     <title>Diagonaliser une matrice en ECG : la méthode</title>
     <link>https://prepacards.fr/blog/diagonaliser-une-matrice-ecg/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/diagonaliser-une-matrice-ecg/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/la-synthese-de-documents-en-ecg/</guid>
     <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
     <description>Résumer plusieurs textes sans les commenter, sans plan personnel : la synthèse suit des règles précises, très différentes de celles de la dissertation.</description>
-  </item>
-  <item>
-    <title>La semaine des épreuves écrites : tenir cinq jours</title>
-    <link>https://prepacards.fr/blog/semaine-des-epreuves-ecrites-concours/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/semaine-des-epreuves-ecrites-concours/</guid>
-    <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
-    <description>Cinq à sept épreuves en quelques jours, sans retour en arrière possible : la semaine des écrits se prépare autrement qu'un concours blanc isolé.</description>
   </item>
 </channel>
 </rss>
