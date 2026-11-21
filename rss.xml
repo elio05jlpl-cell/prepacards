@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>Transformer son cours en flashcards, étape par étape</title>
+    <link>https://prepacards.fr/blog/transformer-son-cours-en-flashcards/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/transformer-son-cours-en-flashcards/</guid>
+    <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
+    <description>Comment transformer un chapitre de cours en flashcards : quoi garder, comment découper, formuler questions et réponses, et combien de cartes viser par chapitre.</description>
+  </item>
+  <item>
     <title>Python en ECG : les commandes à connaître par cœur</title>
     <link>https://prepacards.fr/blog/python-en-ecg-commandes-a-connaitre/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/python-en-ecg-commandes-a-connaitre/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/syndrome-de-limposteur-en-prepa/</guid>
     <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
     <description>Se sentir moins légitime que les autres alors qu'on a été admis comme eux : un ressenti presque universel en prépa, rarement discuté, et pourtant maîtrisable.</description>
-  </item>
-  <item>
-    <title>La synthèse de documents en ECG, une méthode à part</title>
-    <link>https://prepacards.fr/blog/la-synthese-de-documents-en-ecg/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/la-synthese-de-documents-en-ecg/</guid>
-    <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
-    <description>Résumer plusieurs textes sans les commenter, sans plan personnel : la synthèse suit des règles précises, très différentes de celles de la dissertation.</description>
   </item>
 </channel>
 </rss>
