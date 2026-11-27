@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>Exploiter les remarques de son khôlleur</title>
+    <link>https://prepacards.fr/blog/exploiter-les-remarques-d-un-kholleur/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/exploiter-les-remarques-d-un-kholleur/</guid>
+    <pubDate>Fri, 27 Nov 2026 00:00:00 +0000</pubDate>
+    <description>Une khôlle donne des remarques précieuses, souvent oubliées dans l'heure. Comment les noter, les classer et en faire des actions concrètes avant la suivante.</description>
+  </item>
+  <item>
     <title>Ces flashcards qu'on rate toujours : que faire</title>
     <link>https://prepacards.fr/blog/cartes-difficiles-flashcards/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/cartes-difficiles-flashcards/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/reviser-linformatique-en-prepa-scientifique/</guid>
     <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
     <description>Complexité, structures de données, algorithmes classiques : l'option informatique a son propre par cœur, distinct de la programmation elle-même.</description>
-  </item>
-  <item>
-    <title>Entretien de personnalité : pourquoi il intimide</title>
-    <link>https://prepacards.fr/blog/grand-oral-entretien-de-personnalite-prepa/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/grand-oral-entretien-de-personnalite-prepa/</guid>
-    <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
-    <description>Parler de soi devant un jury ne s'improvise pas plus qu'une khôlle. Ce qui se prépare à l'avance, et pourquoi la sincérité rapporte plus que le discours appris.</description>
   </item>
 </channel>
 </rss>
