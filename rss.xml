@@ -6,6 +6,13 @@
   <description>Méthodes de révision pour la prépa : flashcards, répétition espacée et préparation des concours.</description>
   <language>fr-fr</language>
   <item>
+    <title>Un planning de révision réaliste en prépa</title>
+    <link>https://prepacards.fr/blog/planning-de-revision-realiste/</link>
+    <guid isPermaLink="true">https://prepacards.fr/blog/planning-de-revision-realiste/</guid>
+    <pubDate>Sat, 28 Nov 2026 00:00:00 +0000</pubDate>
+    <description>Pourquoi les plannings de révision échouent en prépa, et comment en construire un qui tient : blocs fixes, marges, priorités, bilan chaque semaine.</description>
+  </item>
+  <item>
     <title>Exploiter les remarques de son khôlleur</title>
     <link>https://prepacards.fr/blog/exploiter-les-remarques-d-un-kholleur/</link>
     <guid isPermaLink="true">https://prepacards.fr/blog/exploiter-les-remarques-d-un-kholleur/</guid>
@@ -207,13 +214,6 @@
     <guid isPermaLink="true">https://prepacards.fr/blog/reviser-les-sciences-industrielles-prepa/</guid>
     <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
     <description>Schémas normalisés, chaînes fonctionnelles, vocabulaire technique : la SI exige un par cœur visuel que les flashcards classiques couvrent mal sans méthode.</description>
-  </item>
-  <item>
-    <title>Informatique en prépa scientifique : pas que coder</title>
-    <link>https://prepacards.fr/blog/reviser-linformatique-en-prepa-scientifique/</link>
-    <guid isPermaLink="true">https://prepacards.fr/blog/reviser-linformatique-en-prepa-scientifique/</guid>
-    <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
-    <description>Complexité, structures de données, algorithmes classiques : l'option informatique a son propre par cœur, distinct de la programmation elle-même.</description>
   </item>
 </channel>
 </rss>
